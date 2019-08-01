@@ -24,7 +24,7 @@ return [
         'bank_information' => 'Bank Info',
         'dependant_profiles' => 'Dependant Info',
         'guardian_details'=>'Guardian Info',
-        'applicant_details'=>'Applicant Info',
+        'applicant_details'=>'Applicant Information',
         'upload_documents' => 'Upload Document',
         'od_information' => 'OD Information',
         'remarks' => 'Remarks',
