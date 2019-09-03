@@ -587,7 +587,7 @@ a#deletedraft{
 
 }
 
-.btn#btnsubmitacc, .btn#btncancelacc, .btn#btnnotice
+.btn#btnsubmitacc, .btn#btncancelacc
 {
     float:left !important;
 }
@@ -673,17 +673,57 @@ body#login{
 }
 
 
-#attendwork,
-#otinfo,
-#applicantinfo{
+#attendwork{
     padding-bottom:0 !important;
     padding-top:20px !important;
     
 }
 
-[id^=guardianinfo]
-{
-    padding-bottom:0 !important;
-    padding-top:20px !important;
+.btn{
+    line-height:2rem !important;
 }
 
+/** ---------------------- Kotak hijau --------------------- */
+
+.card-body#cardbody {
+    flex: 1 1 auto !important;
+    padding: 0.75rem !important;
+    background-color: #97d64c !important;
+    border-radius: 15px 15px 0 0 !important;
+    border: 2px solid #97d64c !important;
+    border-bottom: 0 !important;
+}
+
+.row#rowindex {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin-left: -10px !important;
+}
+
+.card#cardindex {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    word-wrap: break-word !important;
+    background-clip: border-box !important;
+    border: 2px solid #97d64c !important;
+    border-bottom: 0 !important;
+    border-radius: 15px 15px 0 0 !important;
+    float: right !important;
+    width: 450px !important;
+    margin-bottom: 3px !important;
+}
+
+.control, fieldset {
+    margin: 6px 0;
+  }
+  
+  label {
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .required {
+    color: red;
+  }
