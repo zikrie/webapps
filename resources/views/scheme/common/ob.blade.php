@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="obform" method="POST" id="reset">
+                <form action="noticeod" method="POST" id="reset">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         <div class="row p-t-20">

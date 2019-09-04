@@ -16,7 +16,7 @@ Route::get('/', function () {
     session(['loginid' => '']);
     session(['loginname' => '']);
     session(['loginbranchcode' => '']);
-    return view('common.auth.login');
+    return view('general.auth.login');
 });
 
 /* -------------------- LOGIN ------------------------ */
@@ -25,7 +25,7 @@ Route::get('/login', function () {
     session(['loginid' => '']);
     session(['loginname' => '']);
     session(['loginbranchcode' => '']);
-    return view('common.auth.login');
+    return view('general.auth.login');
 });
 
 /* -------------------- LOGOUT ----------------------- */
@@ -121,24 +121,24 @@ Route::group(['prefix' => 'Scheme','namespace'=>'Scheme'], function () {
 
 
     /* -------------------------- NOTICE ACCIDENT -- SCO ----------------------------- */
-    Route::get('/noticeaccidentSco', 'NoticeAccidentController@indexSCO');
+    Route::get('/noticeaccident_sco', 'NoticeAccidentController@indexSCO');
     Route::post('/obform_sco', 'CommonController@postObForm');
     Route::post('/accidentDetails_sco', 'NoticeAccidentController@postAccident');
     Route::post('/employerdetails_sco', 'CommonController@postEmployer');
 
     /* --------------------------- NOTICE ACCIDENT -- IO --------------------------- */
-    Route::get('/noticeaccidentIo', 'NoticeAccidentController@indexIO');
+    Route::get('/noticeaccident_io', 'NoticeAccidentController@indexIO');
     /* ---------------------------END OF NOTICE ACCIDENT -- IO ---------------------- */
 
     /* -------------------------- NOTICE ACCIDENT -- SAO --------==------------------- */
-    Route::get('/noticeaccidentSao', 'NoticeAccidentController@indexSAO');
+    Route::get('/noticeaccident_sao', 'NoticeAccidentController@indexSAO');
     /* ----------------------END OF NOTICE ACCIDENT -- SAO --------------------------- */
 
 
     /* --------------------------- NOTICE OD(PK) ------------------------------------ */
-    Route::get('/obform_od', 'NoticeOdController@index');
+    Route::get('/noticeod', 'NoticeOdController@index');
     Route::get('/noticeOd', 'NoticeOdController@index');
-    Route::post('/obform_od', 'CommonController@postObForm');
+    Route::post('/noticeod', 'CommonController@postObForm');
     Route::post('/employerdetails_od', 'CommonController@postEmployer');
     Route::post('/odupdmc', 'NoticeOdController@UpdMC');
     Route::post('/confirmation_od', 'NoticeOdController@postConfirmation');
@@ -151,17 +151,21 @@ Route::group(['prefix' => 'Scheme','namespace'=>'Scheme'], function () {
     /* ---------------------------END OF NOTICE OD(PK) ------------------------------- */
 
     /* --------------------------- NOTICE OD(SCO) ------------------------------------ */
-    Route::get('/obform_sco', 'NoticeOdController@indexSCO');
+    Route::get('/noticeod_sco', 'NoticeOdController@indexSCO');
     /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */
 
     /* --------------------------- NOTICE OD(IO) ------------------------------------ */
-    Route::get('/obform_io', 'NoticeOdController@indexIO');
+    Route::get('/noticeod_io', 'NoticeOdController@indexIO');
     /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */
 
+    /* --------------------------- NOTICE OD(SAO) ------------------------------------ */
+    Route::get('/noticeod_sao', 'NoticeOdController@indexSAO');
+    /* ------------------------ END OF NOTICE OD(SAO) ---------------------------------- */
+
     /* ------------------------------ NOTICE ILAT(PK) -------------------------------- */
-    Route::get('/obformilat', 'NoticeInvalidityController@index');
+    Route::get('/noticeilat', 'NoticeInvalidityController@index');
     Route::post('/wagesilat', 'NoticeInvalidityController@postWages');
-    Route::post('/obformilat', 'CommonController@postObForm');
+    Route::post('/noticeilat', 'CommonController@postObForm');
     Route::post('/ilatinfo', 'NoticeInvalidityController@postIlat_info');
     Route::post('/emphistory', 'NoticeInvalidityController@postEmphistory');
     Route::post('/confirmationilat', 'NoticeInvalidityController@postConfirmation');
@@ -173,10 +177,24 @@ Route::group(['prefix' => 'Scheme','namespace'=>'Scheme'], function () {
     /* ----------------------------END OF NOTICE ILAT(PK) -------------------------------- */
 
     /* ---------------------------- NOTICE ILAT(SCO) ------------------------------------- */
-    Route::get('/noticeinvaliditysco', function () {
+    Route::get('/noticeinvalidity_sco', function () {
         return view('Scheme.noticeinvalidity.sco.index');
     });
     /* ----------------------------END OF NOTICE ILAT(SCO) -------------------------------- */
+
+    
+    /* ---------------------------- NOTICE ILAT(IO) ------------------------------------- */
+    Route::get('/noticeinvalidity_io', function () {
+        return view('Scheme.noticeinvalidity.io.index');
+    });
+    /* ----------------------------END OF NOTICE ILAT(IO) -------------------------------- */
+
+    
+    /* ---------------------------- NOTICE ILAT(SAO) ------------------------------------- */
+    Route::get('/noticeinvalidity_sao', function () {
+        return view('Scheme.noticeinvalidity.sao.index');
+    });
+    /* ----------------------------END OF NOTICE ILAT(SAO) -------------------------------- */
 
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */
@@ -202,15 +220,15 @@ Route::group(['prefix' => 'Scheme','namespace'=>'Scheme'], function () {
     /* ------------------------------ END OF NOTICE DEATH(PK) --------------------------------- */
 
     /* ------------------------------ NOTICE DEATH -- SCO ------------------------------------- */
-    Route::get('/index_sco', 'NoticeDeathController@indexSCO');
+    Route::get('/noticedeath_sco', 'NoticeDeathController@indexSCO');
     /* ------------------------- END OF NOTICE DEATH -- SCO ------------------------------------- */
 
     /* ---------------- NOTICE DEATH -- IO-------------------- */
-    Route::get('/index_io', 'NoticeDeathController@indexIO');
+    Route::get('/noticedeath_io', 'NoticeDeathController@indexIO');
     /* ------------------------- END OF NOTICE DEATH -- IO ------------------------------------- */
 
     /* ------------------------------- NOTICE DEATH -- SAO -------------------------------------- */
-    Route::get('/index_sao', 'NoticeDeathController@indexSAO');
+    Route::get('/noticedeath_sao', 'NoticeDeathController@indexSAO');
     /* ------------------------------ END OF NOTICE DEATH(SAO) --------------------------------- */
 });
 

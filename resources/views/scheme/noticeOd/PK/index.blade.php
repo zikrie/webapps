@@ -1,4 +1,4 @@
-@extends('common.layouts.app')
+@extends('general.layouts.app')
 
 @section('content')
 <div class="col-md-12">
@@ -7,7 +7,7 @@
             
             <ul class="nav customtab" role="tablist" >
                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down"> @lang('scheme/index.attr.claim_info')</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploaddoc" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.upload_documents')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploaddoc" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Upload Documents</span></a> </li>
            </ul>
 
            <!-- Nav tabs -->

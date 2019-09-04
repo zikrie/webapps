@@ -76,7 +76,7 @@ return [
         'dash' => '-',
         'accident_date' => 'Accident Date',
         'claimDetails' => 'Claim Details',
-        'inconsistency' => 'Inconsistency',
+        'inconsistency' => 'Inconsistent Information',
         'preparer' => 'Preparer Information',
         'statement' => 'Statement',
         'investigation_information' => 'Investigation Information',
@@ -105,6 +105,9 @@ return [
         'EIdecision' => 'Employment Injury Decision',
         'wrong_notice' => 'Wrong Notice Type',
         'case_transfer' => 'Case Transfer',
+        'odreport' => 'OD Report',
+        'investigation_info' => 'Investigation Info',
+        'investigation_document' => 'Investigation Document',
     ],
 
  

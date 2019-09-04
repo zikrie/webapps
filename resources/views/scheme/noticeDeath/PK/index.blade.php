@@ -1,8 +1,4 @@
-@extends('common.layouts.app')
-
-@section('maintitle', 'Tab Screen')
-
-@section('desc', 'Form')
+@extends('general.layouts.app')
 
 @section('head')
 <link href="{{ asset("bower_components/footable/css/footable.standalone.min.css")}}" rel="stylesheet" type="text/css" />
@@ -17,8 +13,8 @@
     <ul class="nav customtab" role="tablist" id="tabMenu">
     
         {{-- <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('index.attr.remarks')</span></a> </li> --}}
-        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.claim')</span></a> </li>
-        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#upload" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span  class="hidden-xs-down">@lang('scheme/index.attr.upload')</span></a> </li>
+        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a> </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#upload" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span  class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a> </li>
         
     </ul>
 
@@ -36,7 +32,7 @@
 
             <!-- Wages tab -->
         <div class="tab-pane p-20" id="upload" role="tabpanel">
-            @include('scheme.common.uploaddoc')
+            {{-- @include('scheme.general.upload_doc') --}}
         </div>
     </div>
 </div>
@@ -152,6 +148,20 @@
             $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
             });
         });
+
+        // $(document).ready(function(){
+        //     // Add minus icon for collapse element which is open by default
+        //     $(".collapse1.show").each(function(){
+        //     $(this).prev(".card-header1").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+        //     });
+            
+        //     // Toggle plus minus icon on show hide of collapse element
+        //     $(".collapse1").on('show.bs.collapse1', function(){
+        //     $(this).prev(".card-header1").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+        //     }).on('hide.bs.collapse', function(){
+        //     $(this).prev(".card-header1").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+        //     });
+        // });
         
         </script>
 

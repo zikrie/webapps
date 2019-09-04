@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('general.layouts.app')
 
 @section('maintitle', 'Tab Screen')
 
@@ -622,7 +622,7 @@
                             <h5 class="card-title">@lang('deathDetails.title')</h5>
                             <hr class="m-t-0 m-b-40">
                             <table border="0" cellpadding="5px">
-                                <tr >
+                                {{-- <tr >
                                     <td class="control-label"><label class="control-label">@lang('deathDetails.attr.date_death')</label></td>
                                     <td>:</td>
                                     <td class="control-label text-left">{{substr($deathdetail->dodeath,0,4)}}-{{substr($deathdetail->dodeath,4,2)}}-{{substr($deathdetail->dodeath,6,2)}}</td>
@@ -633,7 +633,7 @@
                                     <td>:</td>
                                     <td class="control-label text-left">
                                     </td>
-                                </tr>
+                                </tr> --}}
                             </table>
 
 

@@ -25,26 +25,26 @@
                 <input type='hidden' name='caserefno' id='caserefno' value='{{$caserefno}}'>
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-                    <h5 class="card-title">@lang('confirmation.title_c')</h5>
+                    <h6 class="card-title-sub">@lang('scheme/confirmation.title_dependant')</h5>
                     <hr>
             
-                    @if (!empty($confirmation -> jsection)) 
-                    @foreach($confirmation -> jsection as $d)
+                    {{-- @if (!empty($confirmation -> jsection)) 
+                    @foreach($confirmation -> jsection as $d) --}}
 
                     <div class="row p-t-20">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.idtype')</label>
-                                @foreach($idtype as $id)
-                                @if(!empty($d) && $id->refcode == $d->idtype)
-                                <input type="text" id="idtype" name="idtype[]" value="{{$id->descen}}" class="form-control" readonly>
-                                 @endif
-                                @endforeach
+                                <label class="control-label">@lang('scheme/confirmation.attr.idtype')</label>
+                                {{-- @foreach($idtype as $id)
+                                @if(!empty($d) && $id->refcode == $d->idtype) --}}
+                                <input type="text" id="idtype" name="idtype[]" {{-- value="{{$id->descen}}"--}} class="form-control" value="New IC" readonly>
+                                 {{-- @endif
+                                @endforeach --}}
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.idno')</label>
+                                <label class="control-label">@lang('scheme/confirmation.attr.idno')</label>
                                 @if(!empty($d) && $d->idno !='')
                                 <input type="text" id="idno" name="idno[]" value="{{ $d->idno }}" class="form-control" readonly>
                                 @else
@@ -54,11 +54,11 @@
                         </div>
 
                         
-                        <input type='hidden' name='uniquerefno[]' id='uniquerefno' value='{{ $d->uniquerefno }}'>
+                        {{-- <input type='hidden' name='uniquerefno[]' id='uniquerefno' value='{{ $d->uniquerefno }}'> --}}
                     
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.sectionj_received')</label>
+                                <label class="control-label">@lang('form/scheme.general.collapse.confirmation.sectionj_received')</label>
                                 <select name="jrecv[]" id="jrecv" class="form-control" onchange='fieldchange()' required>
                                     @if (!empty($d) && $d->jrecv == 'Y')
                                     <option value="Y" selected>Complete</option>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.complete_sectionj')
+                                <label class="control-label">@lang('form/scheme.general.collapse.confirmation.complete_sectionj')
                                 </label>
                                 @if(!empty($d) && $d->jrecvdate != '')
                                 <input type="date" id="jrecvdate" name="jrecvdate[]" onchange='fieldchange()' value="{{substr($d->jrecvdate,0,4)}}-{{substr($d->jrecvdate,4,2)}}-{{substr($d->jrecvdate,6,2)}}" class="form-control" required>
@@ -87,29 +87,29 @@
                 
                     </div>
 
-                    @endforeach
-                    @endif
+                    {{-- @endforeach
+                    @endif --}}
 
-                    <h5 class="card-title">@lang('confirmation.title_ot')</h5>
+                    <h6 class="card-title-sub">@lang('scheme/confirmation.title_ot')</h5>
                     <hr>
 
-                    @if (!empty($confirmation -> jsection)) 
-                    @foreach($confirmation -> jsection as $d)
+                    {{-- @if (!empty($confirmation -> jsection)) 
+                    @foreach($confirmation -> jsection as $d) --}}
 
                     <div class="row p-t-20">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.idtype')</label>
-                                @foreach($idtype as $id)
-                                @if(!empty($d) && $id->refcode == $d->idtype)
-                                <input type="text" id="idtype" name="idtype[]" value="{{$id->descen}}" class="form-control" readonly>
-                                 @endif
-                                @endforeach
+                                <label class="control-label">@lang('scheme/confirmation.attr.idtype')</label>
+                                {{-- @foreach($idtype as $id)
+                                @if(!empty($d) && $id->refcode == $d->idtype) --}}
+                                <input type="text" id="idtype" name="idtype[]" {{-- value="{{$id->descen}}"--}} class="form-control" value="New IC" readonly>
+                                 {{-- @endif
+                                @endforeach --}}
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.idno')</label>
+                                <label class="control-label">@lang('scheme/confirmation.attr.idno')</label>
                                 @if(!empty($d) && $d->idno !='')
                                 <input type="text" id="idno" name="idno[]" value="{{ $d->idno }}" class="form-control" readonly>
                                 @else
@@ -119,11 +119,11 @@
                         </div>
 
                         
-                        <input type='hidden' name='uniquerefno[]' id='uniquerefno' value='{{ $d->uniquerefno }}'>
+                        {{-- <input type='hidden' name='uniquerefno[]' id='uniquerefno' value='{{ $d->uniquerefno }}'> --}}
                     
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.sectionj_received')</label>
+                                <label class="control-label">@lang('form/scheme.general.collapse.confirmation.sectionj_received')</label>
                                 <select name="jrecv[]" id="jrecv" class="form-control" onchange='fieldchange()' required>
                                     @if (!empty($d) && $d->jrecv == 'Y')
                                     <option value="Y" selected>Complete</option>
@@ -140,7 +140,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.complete_sectionj')
+                                <label class="control-label">@lang('form/scheme.general.collapse.confirmation.complete_sectionj')
                                 </label>
                                 @if(!empty($d) && $d->jrecvdate != '')
                                 <input type="date" id="jrecvdate" name="jrecvdate[]" onchange='fieldchange()' value="{{substr($d->jrecvdate,0,4)}}-{{substr($d->jrecvdate,4,2)}}-{{substr($d->jrecvdate,6,2)}}" class="form-control" required>
@@ -152,19 +152,19 @@
                 
                     </div>
 
-                    @endforeach
-                    @endif
+                    {{-- @endforeach
+                    @endif --}}
 
                     <div class="row p-t-20">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label"> @lang('confirmation.attr.notice_date')</label>
+                                <label class="control-label"> @lang('scheme/confirmation.attr.notice_date')</label>
                                 <input type="date" name="notice_date" id="notice_date" onchange='fieldchange()' class="form-control" value="{{date('Y-m-d')}}" readonly>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.acceptance_stamp')</label>
+                                <label class="control-label">@lang('scheme/confirmation.attr.acceptance_stamp')</label>
                                 @if(!empty($confirmation) && $confirmation->stampdate != '')
                                 <input type="date" id="stampdate" name="stampdate" onchange="checkstampdate()" value="{{substr($confirmation->stampdate,0,4)}}-{{substr($confirmation->stampdate,4,2)}}-{{substr($confirmation->stampdate,6,2)}}" class="form-control" required>
                                 @else
@@ -177,7 +177,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="control-label">@lang('confirmation.attr.remarks')</label>
+                                <label class="control-label">@lang('scheme/confirmation.attr.remarks')</label>
                                @if(!empty($confirmation) && $confirmation->remarks != '')
                                 <textarea type="text" id="remarks" name="remarks" value="" onchange='fieldchange()' class="form-control">{{$confirmation->remarks}}</textarea>
                                 @else
@@ -190,18 +190,24 @@
                         
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-actions">
-                                @if (!empty ($confirmation))
-                                <!--button type="submit" name="action" value="Preview" class="btn waves-effect waves-light btn-secondary">@lang('confirmation.preview')</button-->
-                                <button type="submit" name="action" value="Submit" class=" btn waves-effect waves-light btn btn-primary" alt="alert" id="btnsubmit" onclick="return confirm('Are you sure want to submit?');">@lang('confirmation.submit')</button>
-                                <a href="/preview" id='preview' type="button" name="action" value="Preview" class="btn btn-secondary">@lang('confirmation.preview')</a>
-                                {{-- <button type="submit" name="action" value="Submit" class="btn btn-primary" alt="alert"  id="sa-warning">@lang('confirmation.submit')</button> --}}
-                                 @else
-                                <button type="submit" name="action" value="Submit" class="btn waves-effect waves-light btn btn-primary" id="btnsubmit" disabled>@lang('confirmation.submit')</button>
-                                <a href="/preview" id='preview' type="button" name="action" value="Preview" class="btn btn-secondary">@lang('confirmation.preview')</a>
-                                @endif
-                                <button type="submit" name="action" value="Save" id="btnsubmit" class="btn waves-effect waves-light btn btn-success">@lang('confirmation.save')</button>
-                            </div>
+                                <div class="form-actions">
+                                        <!--button type="button" class="btn waves-effect waves-light btn-secondary">Back</button-->
+                                        
+                                     
+                                       @if (!empty ($confirmation))
+                                    
+                                        <button type="submit" name="action" value="Submit" class="btn waves-effect waves-light btn-primary" id="submit" onclick="return confirm('Are you sure want to submit?');">@lang('scheme/confirmation.submit')</button>
+                                        <a href="/Scheme/deathpreview" id='preview' type="button" name="action" value="Preview" class="btn btn-secondary">@lang('scheme/confirmation.preview')</a>
+
+                                        @else
+                                    
+                                        <button type="submit" name="action" value="Submit" class="btn waves-effect waves-light btn-primary" id="submit" disabled>@lang('scheme/confirmation.submit')</button>
+                                        <a href="/Scheme/deathpreview" id='preview' type="button" name="action" value="Preview" class="btn btn-secondary">@lang('scheme/confirmation.preview')</a>
+                                    
+                                        @endif
+
+                                        <button type="submit" name="action" value="Save" class="btn waves-effect waves-light btn-success">@lang('scheme/confirmation.save')</button>
+                                    </div>
                         </div>
                     </div>  
                 </form>
@@ -209,6 +215,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     function fieldchange()

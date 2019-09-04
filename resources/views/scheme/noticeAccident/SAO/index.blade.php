@@ -1,4 +1,4 @@
-@extends('common.layouts.app')
+@extends('general.layouts.app')
 
 @section('content')
 {{-- <div class="col-md-12"><br> --}}

@@ -2,10 +2,10 @@
  
 return [
 
-	'title' => 'Preferred SOCSO Office ',
+    'title' => 'Preferred SOCSO Office ',
 
     'attr' => [
-    	
+        
         'city' => 'City',
         'state' => 'State',
         'city_origin' => ' City (Origin)',
@@ -16,6 +16,7 @@ return [
         'origin' => 'Origin',
         'current' => 'Current',
         'preferred_socso' => 'Preferred SOCSO Office',
+        'preferred_socso_branch' => 'Preferred SOCSO Branch',
         
     ],
 

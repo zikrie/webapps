@@ -55,7 +55,7 @@
         </div>
         <div id="obform" class="collapse" role="tabpanel" aria-labelledby="headingOne2">
             <div class="card-body">
-                @include('scheme.common.ob')
+                @include('scheme.noticeOd.IO.ob')
             </div>
         </div>
     </div>  
@@ -146,51 +146,6 @@
         <div id="jdkdecision" class="collapse" role="tabpanel" aria-labelledby="headingOne8">
             <div class="card-body">
                 @include('scheme.noticeOd.SCO.jdk_decision')
-            </div>
-        </div>
-    </div> 
-    <!-- investigation -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingOne9">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigation" aria-expanded="false" aria-controls="collapseOne6">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.investigation')</h5>
-                </a>
-            </h5>
-        </div>
-        <div id="investigation" class="collapse" role="tabpanel" aria-labelledby="headingOne9">
-            <div class="card-body">
-                @include('scheme.noticeOd.IO.investigation')
-            </div>
-        </div>
-    </div> 
-    <!-- investigation info -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingOne10">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigation_info" aria-expanded="false" aria-controls="collapseOne6">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.investigation_info')</h5>
-                </a>
-            </h5>
-        </div>
-        <div id="investigation_info" class="collapse" role="tabpanel" aria-labelledby="headingOne10">
-            <div class="card-body">
-                @include('scheme.noticeOd.IO.investigationInfo')
-            </div>
-        </div>
-    </div> 
-    <!-- od report -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingOne11">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#odreport" aria-expanded="false" aria-controls="collapseOne6">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.odreport')</h5>
-                </a>
-            </h5>
-        </div>
-        <div id="odreport" class="collapse" role="tabpanel" aria-labelledby="headingOne11">
-            <div class="card-body">
-                @include('scheme.noticeOd.IO.odreport')
             </div>
         </div>
     </div> 

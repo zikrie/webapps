@@ -1,141 +1,188 @@
-@extends('layouts.app')
+@extends('general.layouts.app')
 
 @section('content')
 
 <div class="card-body p-b-0">
-<h4 class="card-title">@lang('index.attr.death_notice')</h4>
-	
-	<!-- Nav tabs -->
-	<ul class="nav customtab" role="tablist">
-		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#case_details" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('index.attr.case_details')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#obform_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.insured_details')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#employer_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.employer_details')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#wages_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.wages_details')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#similarWorker_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.similar_worker') </span></a> </li>	
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#death_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.death_details')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#socso_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.preferred_socso') </span></a> </li>	
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#certification_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.certificate') </span></a> </li>	
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#dependant_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.dependant_profiles')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#guardian_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">@lang('index.attr.guardian_details')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#bankInfo_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.bank_information')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#applicant_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">@lang('index.attr.applicant_details')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#schemeQualifying_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">@lang('index.attr.scheme_qualifying')</span></a> </li>
-		{{-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#adjustment_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">@lang('index.attr.adjustment')</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#benefitRate_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.benefit_rate') </span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#payment_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.payment') </span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#overpayment_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.overpayment') </span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#benefitMgt_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.benefit_mgt') </span></a> </li> --}}
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#investigation_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.investigation') </span></a> </li>	
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#caseFact_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.case_fact') </span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#scoRecommendation_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.sco_recommend') </span></a> </li>		
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistent_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.inconsistent') </span></a> </li>	
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploadDocument_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.upload_document') </span></a> </li>	
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#confirmation_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('index.attr.confirmation') </span></a> </li>	
-	</ul>
+    <h4 class="card-title">@lang('scheme/index.attr.death_notice')</h4>
 
-	<div class="row" id="rowindex">
-		<div class="col-md-12">
-			<div class="card text-left" id="cardindex">
-				<div class="card-body" id="cardbody">
-					<table>
-						<thead>
-						<tr>
-							<td><span class="no_bold">@lang('index.attr.name')</span>&nbsp; <span class="no_bold">@lang('index.attr.dash')</span>&nbsp; <span class="no_bold">@lang('index.attr.idno')</span></td>
-						</tr>
-						<tr>
-							<td><label class="no_margin">Putri Nor Shamiera Natasha Binti Azizan Shah - 940117015674</label></td>
-						</tr>
-						<tr>
-							<td><label></label></td>
-						</tr>
-						
-						<tr>
-							<td><span class="no_bold">@lang('index.attr.schemerefno')</span>&nbsp; <span class="no_bold">@lang('index.attr.dash')</span>&nbsp; <span class="no_bold">@lang('index.attr.dateofdeath')</span></td>
-						</tr>
-						<tr>
-							<td><label class="no_margin">A31FOT181234569-NTU004 - 31/01/2018</label></td>
-						</tr>
-						</thead>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-			
-	<!-- Tab panes -->
-	<div class="tab-content">
-		<div class="tab-pane p-20 active" id="case_details" role="tabpanel">
-			@include('Scheme.noticedeath.caseDetails_SCO')
-		</div>
-		<div class="tab-pane p-20" id="obform_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.obForm_SCO')
-		</div>	
-		<div class="tab-pane p-20" id="death_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.deathDetails_SCO')
-		</div>	
-		<div class="tab-pane p-20" id="bankInfo_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.bankInformation_SCO')
-		</div>
-		<div class="tab-pane p-20" id="employer_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.employerDetails_SCO')
-		</div>
-		<div class="tab-pane p-20" id="wages_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.wagesDetails_SCO')
-		</div>
-		<div class="tab-pane p-20" id="dependant_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.dependantProfiles_SCO')
-		</div>	
-		<div class="tab-pane p-20" id="guardian_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.guardianDetails_SCO')
-		</div>
-		<div class="tab-pane p-20" id="applicant_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.applicantDetails_SCO')
-		</div>
-		<div class="tab-pane p-20" id="schemeQualifying_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.schemeQualifying_SCO')
-		</div>
-		<div class="tab-pane p-20" id="adjustment_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.adjustment_SCO')
-		</div>
-		<div class="tab-pane p-20" id="benefitRate_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.benefitRate_SCO')
-		</div>	
-		<div class="tab-pane p-20" id="payment_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.payment_SCO')
-		</div>
-		<div class="tab-pane p-20" id="overpayment_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.overpayment_SCO')
-		</div>
-		<div class="tab-pane p-20" id="benefitMgt_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.benefitMgt_SCO')
-		</div>
-		<div class="tab-pane p-20" id="certification_SCO" role="tabpanel">
-			@include('Scheme.noticedeath.certification_SCO')
-		</div>
-		<div class="tab-pane p-20" id="similarWorker_SCO" role="tabpanel">
-				@include('Scheme.noticedeath.similarWorker_SCO')
-		</div>
-		<div class="tab-pane p-20" id="caseFact_SCO" role="tabpanel">
-				@include('Scheme.noticedeath.caseFact_SCO')
-		</div>
-		<div class="tab-pane p-20" id="inconsistent_SCO" role="tabpanel">
-				@include('Scheme.noticedeath.inconsistent_SCO')
-		</div>
-		<div class="tab-pane p-20" id="investigation_SCO" role="tabpanel">
-				@include('Scheme.noticedeath.investigation_SCO')
-		</div>
-		<div class="tab-pane p-20" id="scoRecommendation_SCO" role="tabpanel">
-				@include('Scheme.noticedeath.scoRecommend_SCO')
-		</div>
-		<div class="tab-pane p-20" id="socso_SCO" role="tabpanel">
-				@include('Scheme.noticedeath.socsoDealings_SCO')
-		</div>
-		<div class="tab-pane p-20" id="confirmation_SCO" role="tabpanel">
-				@include('Scheme.noticedeath.confirmation_SCO')
-			</div>
-			<div class="tab-pane p-20" id="uploadDocument_SCO" role="tabpanel">
-				@include('Scheme.noticedeath.uploadDocument_SCO')
-		</div>
-	</div>
+        <!-- Nav tabs -->
+    <ul class="nav customtab" role="tablist" id="tabMenu">
+    
+        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a> </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a> </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#investigation" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.investigation')</span></a> </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendations" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a> </li>
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#upload" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span  class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a> </li>
+        
+    </ul>
+
+    <div class="row" id="rowindex">
+            <div class="col-md-12">
+                   <div class="card text-left" id="cardindex">
+                          <div class="card-body" id="cardbody">
+                                 <table>
+                                        <thead>
+                                        <tr>
+                                               <td><span class="no_bold">@lang('form/scheme.general.green_header.name')</span>&nbsp; <span class="no_bold">@lang('form/scheme.general.green_header.dash')</span>&nbsp; <span class="no_bold">@lang('form/scheme.general.green_header.idno')</span></td>
+                                        </tr>
+                                        <tr>
+                                               <td><label class="no_margin">Putri Nor Shamiera Natasha Binti Azizan Shah - 940117015674</label></td>
+                                        </tr>
+                                        <tr>
+                                               <td><label></label></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                               <td><span class="no_bold">@lang('form/scheme.general.green_header.scheme_ref_no')</span>&nbsp; <span class="no_bold">@lang('form/scheme.general.green_header.dash')</span>&nbsp; <span class="no_bold">@lang('form/scheme.general.green_header.date_of_death')</span></td>
+                                        </tr>
+                                        <tr>
+                                               <td><label class="no_margin">A31FOT181234569-NTU004 - 31/01/2018</label></td>
+                                        </tr>
+                                        </thead>
+                                 </table>
+                          </div>
+                   </div>
+            </div>
+     </div>
+    <div class="tab-content tabcontent-border">
+
+        <!-- Remarks tab -->
+        <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
+            @include('scheme.noticeDeath.SCO.remarks')
+        </div>
+        <!-- Claim Details tab -->
+        <div class="tab-pane p-20" id="claim" role="tabpanel">
+            @include('scheme.noticeDeath.SCO.collapse')
+        </div>
+        <!-- Investigation tab -->
+        <div class="tab-pane p-20" id="investigation" role="tabpanel">
+            @include('scheme.noticeDeath.SCO.investigation')
+        </div>
+            <!-- Recommendation tab -->
+        <div class="tab-pane p-20" id="recommendations" role="tabpanel">
+            @include('scheme.noticeDeath.SCO.collapse_rec')
+        </div>
+            <!-- Supporting Document tab -->
+        <div class="tab-pane p-20" id="upload" role="tabpanel">
+            @include('scheme.noticeDeath.SCO.collapse_upload')
+        </div>
+    </div>
 </div>
+
+
+
+<!-- row -->
+<script>
+    //redirect to specific tab
+    $(document).ready(function () {
+    $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
+    });
+</script>
+
+<script>
+    function placeacc(){
+        
+        var accdwhen = $("#placeaccd").val();
+        //alert(accdwhen);
+        $('#descen').find('option').not(':first').remove();
+        if (accdwhen){  
+
+            $.ajax({ 
+                url: '/reftable/'+accdwhen,
+                type: 'GET',
+                dataType: 'json',
+                    success: function(data){
+                    //console.log(data);
+                        var len = 0;
+                        if(data != null){
+                        len = data.length;
+                    }   
+
+                    if(len > 0){
+                        $("#accwhen").empty();
+                        for(var i=0; i<len; i++){
+
+                            var id = data[i].refcode;
+                            var name = data[i].descen; 
+                            
+                            var option ="<option value='"+id+"'>"+name+"</option>";
+
+                            $("#accwhen").append(option);
+                        }
+                    }   
+                
+                    },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " +textStatus);
+                alert("Error :" +errorThrown);
+                }
+            }); 
+        }
+    }
+</script>
+
+<script>
+    function occupationcode(){
+        alert('hi');
+        var suboccucode = $("#occucode").val();
+        alert(suboccucode);
+        $('#descen').find('option').not(':first').remove();
+        if (suboccucode){  
+            alert('masuk');
+            $.ajax({ 
+                url: '/reftable1/'+suboccucode,
+                type: 'GET',
+                dataType: 'json',
+                    success: function(data){
+                    //console.log(data);
+                        var len = 0;
+                        if(data != null){
+                        len = data.length;
+                    }   
+
+                    if(len > 0){
+                        $("#suboccucode").empty();
+                        for(var i=0; i<len; i++){
+
+                            var id = data[i].refcode;
+                            var name = data[i].descen; 
+                            
+                            var option ="<option value='"+id+"'>"+name+"</option>";
+
+                            $("#suboccucode").append(option);
+                        }
+                    }   
+                
+                    },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " +textStatus);
+                alert("Error :" +errorThrown);
+                }
+            }); 
+        }
+    }
+</script>
+
+<script>
+        //redirect to specific tab
+        $(document).ready(function () {
+        $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
+        });
+        
+        $(document).ready(function(){
+            // Add minus icon for collapse element which is open by default
+            $(".collapse.show").each(function(){
+            $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+            });
+            
+            // Toggle plus minus icon on show hide of collapse element
+            $(".collapse").on('show.bs.collapse', function(){
+            $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+            }).on('hide.bs.collapse', function(){
+            $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+            });
+        });
+        
+        </script>
+
 @endsection

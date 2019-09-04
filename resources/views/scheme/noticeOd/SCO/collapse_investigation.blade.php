@@ -65,7 +65,7 @@
         <div class="card-header" role="tab" id="headingOne9">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigation" aria-expanded="false" aria-controls="collapseOne6">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.investigation')</h5>
+                <h5 class="card-title"><i class="fa fa-plus"></i> Investigation</h5>
                 </a>
             </h5>
         </div>

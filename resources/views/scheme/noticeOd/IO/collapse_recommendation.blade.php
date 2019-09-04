@@ -1,6 +1,6 @@
 <div id="accordion2" role="tablist" class="accordion" >
     <!-- inconsistency -->
-    <div class="card m-b-0">
+    {{-- <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne2">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#inconsistent" aria-expanded="true" aria-controls="collapseOne1">
@@ -13,7 +13,7 @@
                 @include('scheme.noticeOd.IO.inconsistency')
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- recommendation -->
     <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne1">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <!-- bank info -->
-    <div class="card m-b-0">
+    {{-- <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne50">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#bank" aria-expanded="false" aria-controls="collapseOne8">
@@ -43,7 +43,7 @@
                 @include('scheme.common.bank')
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- case info -->
     {{-- <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne2">

@@ -1,4 +1,4 @@
-@extends('common.layouts.app')
+@extends('general.layouts.app')
 
 @section('maintitle', 'Tab Screen')
 

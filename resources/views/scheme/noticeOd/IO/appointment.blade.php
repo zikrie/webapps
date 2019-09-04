@@ -23,7 +23,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Investigation Appointment</h5>
+                <h5 class="card-title">Investigation Appointment</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -35,8 +35,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label class="control-label">Date</label>
-                                {{-- <input id="date" name="date" type="date" class="form-control"> --}}
-                                <input id="min-date" name="date" type="text" class="form-control">
+                                <input id="date" name="date" type="date" class="form-control">
+                                {{-- <input id="min-date" name="date" type="text" class="form-control"> --}}
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -55,7 +55,71 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Correspondence Address</label>
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{-- <label class="control-label">Correspondence Address</label> --}}
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div>
+                        {{-- <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Correspondence Address</label>
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div> --}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Name</label>
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Address</label>
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{-- <label class="control-label">Correspondence Address</label> --}}
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Postcode</label>
+                                <input id="postcode" name="postcode" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">City</label>
+                                <input id="city" name="city" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">State</label>
+                                <input id="state" name="state" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="form-group row">
                         <label for="min-date" class="col-sm-4 control-label">Dates</label>
                         <div class="col-sm-8">
                             <div class="input-group input-daterange" id="date-range">
@@ -66,7 +130,7 @@
                                 <input name="takwim-end-date" type="text" class="form-control">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
             <div class="modal-footer">
