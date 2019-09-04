@@ -22,10 +22,10 @@
 				<!-- Tab panes -->
             <div class="tab-content tabcontent-border">
                
-                <div class="tab-pane p-20 active" id="claimDetails" role="tabpanel">
+                <div class="tab-pane p-20 active" id="claim" role="tabpanel">
                         @include('scheme.noticeAccident.PK.collapse')
                 </div>
-                <div class="tab-pane p-20" id="uploadDocuments" role="tabpanel">
+                <div class="tab-pane p-20" id="upload" role="tabpanel">
                         @include('scheme.noticeAccident.PK.collapse_upload')
                 </div>
             </div>
