@@ -62,7 +62,7 @@ Route::get('/testuploaddoc', 'UploadclaimController@getdoc');
 Route::post('/testuploaddoc', 'UploadclaimController@upload');
 
 
-Route::group(['prefix' => 'Scheme','namespace'=>'Scheme'], function () {
+Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* -------------------------------- COMMON ------------------------------------ */
     Route::post('/obform', 'CommonController@postObForm');
     Route::post('/bankinformation', 'CommonController@postBankInfo');
