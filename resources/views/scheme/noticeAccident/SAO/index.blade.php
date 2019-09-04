@@ -8,7 +8,7 @@
 		<ul class="nav customtab" role="tablist">
 			<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.remarks')</span></a> </li>
 			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.claimDetails')</span></a> </li>
-			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistency" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.inconsistent_info')</span></a> </li>
+			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistency" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.investigation_detail')</span></a> </li>
 			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#queryOpinion" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.queryOpinion')</span></a> </li>
 			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommend" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.recommendation')</span></a> </li>
 			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploadDocuments_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down"> @lang('scheme/index.attr.supporting') </span></a> </li>

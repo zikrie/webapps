@@ -150,6 +150,10 @@ Route::group(['prefix' => 'Scheme','namespace'=>'Scheme'], function () {
     // Route::get('/branch/{statecode}', 'NoticeOdController@getbranchname');
     /* ---------------------------END OF NOTICE OD(PK) ------------------------------- */
 
+    /* --------------------------- NOTICE OD(SCO) ------------------------------------ */
+    Route::get('/obform_sco', 'NoticeOdController@indexSCO');
+    /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */
+
     /* --------------------------- NOTICE OD(IO) ------------------------------------ */
     Route::get('/obform_io', 'NoticeOdController@indexIO');
     /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */

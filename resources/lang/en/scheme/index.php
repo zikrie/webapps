@@ -40,7 +40,7 @@ return [
         'idno' => 'ID No',
         'schemerefno' => 'Scheme Ref No',
         'notice_date' => 'Notice Date',
-        'case_details' => 'Case Info',
+        'case_details' => 'Case Infomation',
         'case_fact' => 'Case Fact',
         'wages_con'=> 'Wages Info',
         'credit_period' => 'Credit Period',
@@ -102,6 +102,9 @@ return [
         'legal_opinion' => 'Legal Opinion',
         'ppn_opinion' => 'PPN Opinion',
         'aro_opinion' => 'ARO Opinion',
+        'EIdecision' => 'Employment Injury Decision',
+        'wrong_notice' => 'Wrong Notice Type',
+        'case_transfer' => 'Case Transfer',
     ],
 
  

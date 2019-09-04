@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-10">
         <div class="card">
             <div class="card-body">
                 <form action="#">
@@ -10,7 +10,7 @@
                                     <thead>
                                         <tr>
                                             <th style='width:15%'>Document</th> 
-                                            <th style='width:15%'>Action</th> 
+                                            <th style='width:0.1%'>Action</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -22,7 +22,7 @@
                                             </td>
                                             <td>
                                                 <div class="col-md-12">
-                                                    
+                                                    <button class="btn btn-facebook waves-effect waves-light" type="button"><i class="fas fa-download"></i> </button>
                                                 </div>
                                             </td>
                                         </tr>

@@ -4,7 +4,6 @@
                 <form class="form">     
                         <div class="row">
                                 <div class="col-sm-12">
-                                        <div class="card">
                                         <form class="form">
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingEleven11">
@@ -18,7 +17,6 @@
                                                         </div>
                                                 </div>
                                         </form>
-                                        </div>
                                 </div>
                         </div>
                         <!-- Initial Assessment Disabled Details--> 
