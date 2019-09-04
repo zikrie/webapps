@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Scheme;
+namespace App\Http\Controllers\scheme;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
