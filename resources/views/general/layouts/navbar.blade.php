@@ -20,7 +20,7 @@
             <li> <a class="has-arrow fcolor" href="javascript:void(0)" aria-expanded="false"><i
                         class="ti-layout-grid2"></i><span class="hide-menu">@lang('scheme/navbar.new_claim')</span></a>
                 <ul aria-expanded="false" class="collapse">
-                    <li><a class="fcolor2" href="/Scheme">@lang('scheme/navbar.new_claim')</a></li>
+                    <li><a class="fcolor2" href="/scheme">@lang('scheme/navbar.new_claim')</a></li>
 
                     {{--<li> <a class="has-arrow fcolor2" href="javascript:void(0)" aria-expanded="false"><span
                                 class="hide-menu">@lang('scheme/navbar.upload_doc')</span></a>

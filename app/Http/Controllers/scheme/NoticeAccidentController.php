@@ -363,7 +363,7 @@ class NoticeAccidentController extends CommonController
                 $wbid = $noticedraft->{'wbid'};
                 session(['wbid'=>$wbid]);
                         
-                return redirect('/Scheme/noticeaccident');
+                return redirect('/scheme/noticeaccident');
             } else {
                 return redirect()->back()->with('messagent', 'Failed to create draft');
             }

@@ -20,7 +20,7 @@ class NoticeTypeController extends Controller
         }
         $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
         $noticetype =DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['casetype']);
-        return view('Scheme.common.noticeType', ['idtype'=>$idtype, 'noticetype'=>$noticetype]);
+        return view('scheme.common.noticeType', ['idtype'=>$idtype, 'noticetype'=>$noticetype]);
         
     }
 
