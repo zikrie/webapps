@@ -59,7 +59,7 @@
             @include('scheme.noticeDeath.SCO.investigation')
         </div>
             <!-- Recommendation tab -->
-        <div class="tab-pane p-20" id="recommendation" role="tabpanel">
+        <div class="tab-pane p-20" id="recommendations" role="tabpanel">
             @include('scheme.noticeDeath.SCO.collapse_rec')
         </div>
             <!-- Supporting Document tab -->

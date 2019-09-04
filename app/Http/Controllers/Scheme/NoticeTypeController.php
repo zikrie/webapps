@@ -221,7 +221,7 @@ class NoticeTypeController extends Controller
                         $wbid = $noticedraft->{'wbid'};
                         session(['wbid'=>$wbid]);
                     
-                        return redirect('/Scheme/obformilat');
+                        return redirect('/Scheme/noticeinvalidity');
                     }
                     else
                     {
@@ -247,7 +247,7 @@ class NoticeTypeController extends Controller
                     $wbid = $jsondecode->{'wbid'};
                     session(['wbid'=>$wbid]);
                     
-                    return redirect('/Scheme/obformilat');
+                    return redirect('/Scheme/noticeinvalidity');
                 }
                 //return redirect('/obformilat');
         }

@@ -163,9 +163,9 @@ Route::group(['prefix' => 'Scheme','namespace'=>'Scheme'], function () {
     /* ------------------------ END OF NOTICE OD(SAO) ---------------------------------- */
 
     /* ------------------------------ NOTICE ILAT(PK) -------------------------------- */
-    Route::get('/noticeilat', 'NoticeInvalidityController@index');
+    Route::get('/noticeinvalidity', 'NoticeInvalidityController@index');
     Route::post('/wagesilat', 'NoticeInvalidityController@postWages');
-    Route::post('/noticeilat', 'CommonController@postObForm');
+    Route::post('/noticeinvalidity', 'CommonController@postObForm');
     Route::post('/ilatinfo', 'NoticeInvalidityController@postIlat_info');
     Route::post('/emphistory', 'NoticeInvalidityController@postEmphistory');
     Route::post('/confirmationilat', 'NoticeInvalidityController@postConfirmation');
@@ -177,23 +177,17 @@ Route::group(['prefix' => 'Scheme','namespace'=>'Scheme'], function () {
     /* ----------------------------END OF NOTICE ILAT(PK) -------------------------------- */
 
     /* ---------------------------- NOTICE ILAT(SCO) ------------------------------------- */
-    Route::get('/noticeinvalidity_sco', function () {
-        return view('Scheme.noticeinvalidity.sco.index');
-    });
+    Route::get('/noticeinvalidity_sco', 'NoticeInvalidityController@indexsco');
     /* ----------------------------END OF NOTICE ILAT(SCO) -------------------------------- */
 
     
     /* ---------------------------- NOTICE ILAT(IO) ------------------------------------- */
-    Route::get('/noticeinvalidity_io', function () {
-        return view('Scheme.noticeinvalidity.io.index');
-    });
+    Route::get('/noticeinvalidity_io', 'NoticeInvalidityController@indexio');
     /* ----------------------------END OF NOTICE ILAT(IO) -------------------------------- */
 
     
     /* ---------------------------- NOTICE ILAT(SAO) ------------------------------------- */
-    Route::get('/noticeinvalidity_sao', function () {
-        return view('Scheme.noticeinvalidity.sao.index');
-    });
+    Route::get('/noticeinvalidity_sao', 'NoticeInvalidityController@indexsao');
     /* ----------------------------END OF NOTICE ILAT(SAO) -------------------------------- */
 
 

@@ -408,7 +408,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/Scheme/obformilat');
+                return redirect('/Scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -481,7 +481,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/Scheme/obform_od');
+               return redirect('/Scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -500,7 +500,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/Scheme/obformilat');
+                return redirect('/Scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {

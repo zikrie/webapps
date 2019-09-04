@@ -18,7 +18,7 @@
                 
                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" id="nav_obform" href="#collapse" role="tab"><span
                             class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                            @lang('scheme/index.attr.insured_details')</span></a> </li>
+                            @lang('scheme/index.attr.claim_info')</span></a> </li>
 
                  <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploaddoc" id="nav_uploaddoc" role="tab"><span
                             class="hidden-sm-up"><i class="ti-files"></i></span> <span class="hidden-xs-down">
