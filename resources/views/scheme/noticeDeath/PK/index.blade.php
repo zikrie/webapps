@@ -32,7 +32,7 @@
 
             <!-- Wages tab -->
         <div class="tab-pane p-20" id="upload" role="tabpanel">
-            {{-- @include('scheme.general.upload_doc') --}}
+            @include('scheme.general.upload_doc')
         </div>
     </div>
 </div>

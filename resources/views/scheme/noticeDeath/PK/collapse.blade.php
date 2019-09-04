@@ -29,7 +29,7 @@
                     </div>
                     <div id="collapseOb" class="collapse" role="tabpanel" aria-labelledby="headingOb">
                         <div class="card-body">
-                            {{-- @include('scheme.general.ob') --}}
+                            @include('scheme.general.ob')
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div id="collapseEmployer" class="collapse" role="tabpanel" aria-labelledby="headingEmployer">
                         <div class="card-body">
-                            {{-- @include('scheme.general.employer') --}}
+                            @include('scheme.general.employer')
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                     </div>
                     <div id="collapseWages" class="collapse" role="tabpanel" aria-labelledby="headingWages">
                         <div class="card-body">
-                            {{-- @include('scheme.general.wages') --}}
+                            @include('scheme.general.wages')
                         </div>
                     </div>
                 </div>
