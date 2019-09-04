@@ -25,6 +25,40 @@ class UploadclaimController extends Controller
         }
         
     }
+    public function test(Request $req)
+    {
+        $docname = $req->query('docname');
+        
+        $notes = $req->query('notes');
+        $docid = $req->query('docid');
+        
+        // $docinfo =DB::select('Select t.dn_page_note,t.dn_details_note  from docrepository r,docnotes t where r.docid=t.dn_docid AND r.caserefno=t.dn_caserefno AND r.docname=? ',[$docname]);
+        $docinfo =DB::select('SELECT t.dn_page_note,t.dn_details_note  from docrepository r,docnotes t where r.docid=t.dn_docid AND r.docname=? ',[$docname]);
+        $count ="0";
+       
+    
+        if($docinfo!=null){
+            foreach($docinfo as $index){
+                $dn_page_note[$count]=$index->dn_page_note;
+                $dn_details_note[$count]=$index->dn_details_note;
+                $count++;
+              }
+             
+            // $_SESSION['dn_page_note'] = $dn_page_note;
+            // $_SESSION['dn_details_note'] = $dn_details_note;
+            // $_SESSION['docname'] = $docname;
+            
+        }
+        else{
+            $dn_page_note=null;
+            $dn_details_note=null;
+        }
+    
+        return view('testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'dn_page_note'=>$dn_page_note,'dn_details_note'=>$dn_details_note,'docinfo'=>$docinfo]);
+       
+        // return view('testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'docinfo'=>$docinfo]);
+        
+    }
     
     public function viewstorage(Request $req)
     {
@@ -65,7 +99,7 @@ class UploadclaimController extends Controller
         $operid = session('loginname');
         $brcode = session('loginbranchcode');
         $dataSet = array();
-        
+        dd($uniquerefno);
         $cnt = 0;
         $a = '';
         
@@ -200,6 +234,7 @@ class UploadclaimController extends Controller
         
         
         $jsondata = json_encode($docrepo);
+        dd($docrepo);
        
 
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/upddoc';
@@ -221,6 +256,7 @@ class UploadclaimController extends Controller
         curl_close($ch);
         
         $jsondecode = json_decode($result);
+        dd($result);
         
         
         $errorcode = $jsondecode->{'errorcode'};

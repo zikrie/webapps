@@ -119,7 +119,7 @@
                     </div>
                     <div id="collapseSocso" class="collapse" role="tabpanel" aria-labelledby="headingSocso">
                         <div class="card-body">
-                            {{-- @include('scheme.general.socso') --}}
+                            @include('scheme.general.socso')
                         </div>
                     </div>
                 </div>

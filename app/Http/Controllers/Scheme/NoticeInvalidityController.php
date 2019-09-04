@@ -88,6 +88,7 @@ class NoticeInvalidityController extends CommonController
 
 
         $this->getObProfile($jsondecode);
+        
         //$test = json_encode($jsondecode);
         //return $test;
         //$this->getObContact($jsondecod1);
@@ -188,10 +189,10 @@ class NoticeInvalidityController extends CommonController
         // return $empinfo1;
           // return $empinfo
         
-        $docinfo = array();
-        $this->getDoc($docinfo);
-
-
+        // $docinfo = array();
+        // $this->getDoc($docinfo);
+     
+       
         //SYAHIRAH
          $this->getCertificateEmp($jsondecodemp);
          $jsondecodebank = null;
@@ -331,6 +332,11 @@ class NoticeInvalidityController extends CommonController
         }
 
         $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        $uniquerefno = session('uniquerefno');
+        $caserefno = session ('caserefno');
+        
+        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+       
         // if ($confirmation != null && $confirmation->statecode != '')
         // {
         //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
@@ -1608,6 +1614,7 @@ public function postEmphistory(Request $req)
         
         $docinfo = array();
         $this->getDoc($docinfo);
+        
 
         //SYAHIRAH
          $this->getCertificateEmp($jsondecodemp);
@@ -2223,5 +2230,1036 @@ public function getConfirmation(&$jsondecodeConfirmation)
     {
         //
     }
-   
+    public function indexsco()
+    {
+        $operid = session('loginname');
+        
+        if ($operid == '')
+        {
+            return redirect('/login');
+        }
+        
+        $idno = session('idno');
+        if ($idno == '')
+        {
+            return redirect('/home');
+        }
+        // $caserefno = session ('caserefno');
+        // return$caserefno;
+        $jsondecode='';
+        $jsondecod1='';
+        $jsondecod3='';
+
+        //HANNIS
+        $jsondecodeAssistEmployer="";
+        $jsondecodeEmployerdate="";
+        $jsondecodeWages="";
+
+
+        //SYAHIRAH
+
+        // $jsondecodemp='';
+        $jsondecodebank='';
+        $jsondecodepermanent='';
+
+        //$state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
+        $race=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['race']);
+        $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
+        
+        $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
+        
+        
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+
+        //SYAHIRAH
+        $optionbank=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankloc']);
+        $optionreason=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['rsnnoacc']);
+        $optionbai=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['baists']);
+        $optionpay=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['paymode']);
+        $bankcode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankcode']);
+        $accountype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['acctype']);
+        $overseasbank=$bankcode;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['bankcode']);
+        $overseasbanktype=$accountype;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['acctype']);
+        $emptype = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['emptype']);
+        $occucode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['occupation']);
+        //najmi
+        //$doclist = DB::select('select docdescen,doctype,docdescbm from doctype where doccat=?',['C']);
+        $sql = 'select d.docdescen,d.doctype,d.docdescbm, d.doccat, n.priority from doctype d, noticedoc n '
+                . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
+        $doclist = DB::select($sql,[session('noticetype')]);
+        
+        //chg28062019 irina - get all doc
+        $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
+
+        //return view ('fileupload.claim_info')->with('name',$select);
+
+        $jsondecodeAssist='';
+        $jsondecodeAccddate='';
+        $how = '';
+
+
+        $this->getObProfile($jsondecode);
+        
+        //$test = json_encode($jsondecode);
+        //return $test;
+        //$this->getObContact($jsondecod1);
+        $this->getObFormAssist($jsondecodeAssist);
+        
+        //irina - begin
+        $jsondecodemc = '';
+      
+        $caserefno = session('caserefno');
+        
+
+        $mcdata = null;
+        
+        
+        //return '++'.$accdrefno.'++'.$caserefno.'++';
+
+        //irina - end 
+
+        //HANNIS
+        //$this->getAssist($jsondecodeAssistEmployer);
+        //$this->getEmployer($jsondecodeEmployer);
+        
+        //return json_encode($jsondecodeEmployer);
+        //$jsondecodeWages = array();
+        //$this->getWages($jsondecodeWages);
+        
+        $contrinfo = array();
+        $wagesinfo = array();
+        $data = array();
+
+        // $all = ['contrinfo'=>$contrinfo, 'wagesonfo'=>$wagesinfo, 'data'=>$data];
+        
+        $this->getWages($contrinfo,$wagesinfo);
+       
+        //return $wagesinfo;
+        
+        $empinfo = array();
+        $ilatinfo= array();
+       
+        $this->getEmployment_info($empinfo,$ilatinfo);
+        
+        
+
+        // if ($ilatinfo && $ilatinfo!='')//najmi
+        // {
+        //     $errorcode = $ilatinfo -> {'errorcode'};
+        //     if ($errorcode == -1)
+        //     {
+        //         $ilatinfo= null;      
+        //     }
+        //     else
+        //     {
+        //          $ilatinfo= $ilatinfo->{'data'};
+                 
+        //     }
+        // }
+
+        
+       
+        // $this->getEmployment_info($ilatinfo);
+        // if ($empinfo && $empinfo!='')//najmi
+        // {
+        //     $errorcode = $empinfo->{'errorcode'};
+        //     // return $record;
+        //     if ($errorcode == 0)
+        //     {
+        //         $empinfo= null;
+               
+        //     }
+        //     else
+        //     {
+        //          $empinfo= $empinfo->{'data'};
+        //     }
+            
+        //     // $test = json_encode($empinfo1);
+        //     // return $test;
+        // }
+
+        // if ($ilatinfo && $ilatinfo!='')//najmi
+        // {
+            
+        //     $record_ilatinfo = $ilatinfo->{'record'};
+        //     // return $record;
+        //     if ($record_ilatinfo == 0)
+        //     {
+        //         $ilatinfo= null;
+               
+        //     }
+        //     else
+        //     {
+        //          $ilatinfo= $ilatinfo->{'data'};
+        //          return $ilatinfo;
+        //     }
+            
+        //     // $test = json_encode($empinfo1);
+        //     // return $test;
+        // }
+        // return $empinfo1;
+          // return $empinfo
+        
+        // $docinfo = array();
+        // $this->getDoc($docinfo);
+     
+       
+        //SYAHIRAH
+         $this->getCertificateEmp($jsondecodemp);
+         $jsondecodebank = null;
+         $jsondecodepermanent = null;
+        $this->getBankInfo($jsondecodebank);
+        
+        //return '++'.json_encode($jsondecodebank).'++';
+        //$this->getPermanentInfo($jsondecodepermanent);
+
+
+
+        //$accdrefcode = session('accdrefno');
+        //if($accdrefcode != '')
+        //{
+        //    $this->getAccidentinfo($jsondecod3); 
+            //$data= $jsondecod3->{'data'};
+            // $how= $data['how'];
+        //}
+        
+        //irina
+        $obprofile = null;
+        $obcontact = null;
+        $date = null;
+        $empcert = null;
+
+        $permanentrep = null;
+     
+        
+        if ($jsondecode && $jsondecode!='')//irina
+        {
+            //return json_encode($jsondecode);
+            $record = $jsondecode->{'record'};
+            if ($record == 0)
+            {
+                $obprofile = null;
+            }
+            else
+            {
+                $obprofile = $jsondecode->{'data'};
+                
+                $uniquerefno = $obprofile->{'uniquerefno'};
+                session(['uniquerefno'=>$uniquerefno]);
+                // return $obprofile;
+            }
+            
+            //$test = json_encode($obprofile);
+            //return $test;
+        }
+
+        if ($jsondecod1 && $jsondecod1!='')//irina
+        {
+            $obcontact = $jsondecod1->{'data'};
+        }
+
+        //HANNIS
+        //return json_encode($jsondecodeEmployer);
+        /*if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
+        {
+            $record = $jsondecodeEmployer->{'record'};
+            if ($record > 0)
+            {
+                
+                $emprecord = $jsondecodeEmployer->{'emprecord'};
+                if ($record == 1)
+                {
+                    $empcode = $emprecord[0]->{'empcode'};
+                    session(['empcode'=>$empcode]);
+                }
+            }
+            else
+            {
+                $emprecord = null;
+            }
+            //$date = $jsondecodeEmployer->{'data'};
+        }*/
+
+        /*$empcert = null;
+        //SYAHIRAH
+        if ($jsondecodemp && $jsondecodemp!='')//irina
+        {
+            $errorcode = $jsondecodemp->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $empcert = $jsondecodemp->{'data'};
+            }
+            
+        }*/
+        
+        $bankinfo = null;
+        if ($jsondecodebank && $jsondecodebank!='')//irina
+        {
+            $errorcode = $jsondecodebank->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $bankinfo = $jsondecodebank->{'data'};
+                //return json_encode($bankinfo);
+            }
+            
+           
+        }
+        if ($jsondecodepermanent && $jsondecodepermanent!='')//irina
+        {
+            $permanentrep = $jsondecodepermanent->{'data'};
+        }
+
+        
+        $jsondecodeConfirmation="";
+        $confirmation = null;
+        $url = $this->getConfirmation($jsondecodeConfirmation);
+        
+        //return $url;
+         
+        if ($jsondecodeConfirmation && $jsondecodeConfirmation!='')//irina
+        {
+            $record = $jsondecodeConfirmation->{'record'};
+            if ($record <= 0)
+            {
+                 //$jsondecodeConfirmation = null;
+                 $confirmation = null;
+            }
+            else
+            {
+                $confirmation = $jsondecodeConfirmation->{'data'};
+                //return $confirmation;
+            }
+            
+            // if ($record > 0)
+            // {
+            //     $confirmation = $jsondecodeConfirmation->{''};
+            // }
+            // else
+            // {
+            //     $
+            //     
+            //     confirmation = null;
+            // }
+        }
+
+        $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        $uniquerefno = session('uniquerefno');
+        $caserefno = session ('caserefno');
+        
+        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+       
+        // if ($confirmation != null && $confirmation->statecode != '')
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
+        // }
+        // else
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
+        // }
+        //  return $empinfo;
+          
+        //chg28062019 - send alldoclist to blade
+        return view('scheme.noticeInvalidity.SCO.index',['obprofile'=>$obprofile,'state'=>$state, 
+            'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
+            'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
+            'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 
+            'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode, 
+            'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
+            'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype,'docinfo'=>$docinfo,
+            'empinfo'=>$empinfo,'ilatinfo'=>$ilatinfo,'confirmation'=>$confirmation,'doclist_select'=>$alldoclist,'occucode'=>$occucode]);
+            
+        // return $empinfo;
+    }
+    public function indexio()
+    {
+
+       
+
+        $operid = session('loginname');
+        
+        if ($operid == '')
+        {
+            return redirect('/login');
+        }
+        
+        $idno = session('idno');
+        if ($idno == '')
+        {
+            return redirect('/home');
+        }
+        // $caserefno = session ('caserefno');
+        // return$caserefno;
+        $jsondecode='';
+        $jsondecod1='';
+        $jsondecod3='';
+
+        //HANNIS
+        $jsondecodeAssistEmployer="";
+        $jsondecodeEmployerdate="";
+        $jsondecodeWages="";
+
+
+        //SYAHIRAH
+
+        // $jsondecodemp='';
+        $jsondecodebank='';
+        $jsondecodepermanent='';
+
+        //$state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
+        $race=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['race']);
+        $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
+        
+        $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
+        
+        
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+
+        //SYAHIRAH
+        $optionbank=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankloc']);
+        $optionreason=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['rsnnoacc']);
+        $optionbai=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['baists']);
+        $optionpay=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['paymode']);
+        $bankcode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankcode']);
+        $accountype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['acctype']);
+        $overseasbank=$bankcode;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['bankcode']);
+        $overseasbanktype=$accountype;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['acctype']);
+        $emptype = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['emptype']);
+        $occucode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['occupation']);
+        //najmi
+        //$doclist = DB::select('select docdescen,doctype,docdescbm from doctype where doccat=?',['C']);
+        $sql = 'select d.docdescen,d.doctype,d.docdescbm, d.doccat, n.priority from doctype d, noticedoc n '
+                . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
+        $doclist = DB::select($sql,[session('noticetype')]);
+        
+        //chg28062019 irina - get all doc
+        $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
+
+        //return view ('fileupload.claim_info')->with('name',$select);
+
+        $jsondecodeAssist='';
+        $jsondecodeAccddate='';
+        $how = '';
+
+
+        $this->getObProfile($jsondecode);
+        
+        //$test = json_encode($jsondecode);
+        //return $test;
+        //$this->getObContact($jsondecod1);
+        $this->getObFormAssist($jsondecodeAssist);
+        
+        //irina - begin
+        $jsondecodemc = '';
+      
+        $caserefno = session('caserefno');
+        
+
+        $mcdata = null;
+        
+        
+        //return '++'.$accdrefno.'++'.$caserefno.'++';
+
+        //irina - end 
+
+        //HANNIS
+        //$this->getAssist($jsondecodeAssistEmployer);
+        //$this->getEmployer($jsondecodeEmployer);
+        
+        //return json_encode($jsondecodeEmployer);
+        //$jsondecodeWages = array();
+        //$this->getWages($jsondecodeWages);
+        
+        $contrinfo = array();
+        $wagesinfo = array();
+        $data = array();
+
+        // $all = ['contrinfo'=>$contrinfo, 'wagesonfo'=>$wagesinfo, 'data'=>$data];
+        
+        $this->getWages($contrinfo,$wagesinfo);
+       
+        //return $wagesinfo;
+        
+        $empinfo = array();
+        $ilatinfo= array();
+       
+        $this->getEmployment_info($empinfo,$ilatinfo);
+        
+        
+
+        // if ($ilatinfo && $ilatinfo!='')//najmi
+        // {
+        //     $errorcode = $ilatinfo -> {'errorcode'};
+        //     if ($errorcode == -1)
+        //     {
+        //         $ilatinfo= null;      
+        //     }
+        //     else
+        //     {
+        //          $ilatinfo= $ilatinfo->{'data'};
+                 
+        //     }
+        // }
+
+        
+       
+        // $this->getEmployment_info($ilatinfo);
+        // if ($empinfo && $empinfo!='')//najmi
+        // {
+        //     $errorcode = $empinfo->{'errorcode'};
+        //     // return $record;
+        //     if ($errorcode == 0)
+        //     {
+        //         $empinfo= null;
+               
+        //     }
+        //     else
+        //     {
+        //          $empinfo= $empinfo->{'data'};
+        //     }
+            
+        //     // $test = json_encode($empinfo1);
+        //     // return $test;
+        // }
+
+        // if ($ilatinfo && $ilatinfo!='')//najmi
+        // {
+            
+        //     $record_ilatinfo = $ilatinfo->{'record'};
+        //     // return $record;
+        //     if ($record_ilatinfo == 0)
+        //     {
+        //         $ilatinfo= null;
+               
+        //     }
+        //     else
+        //     {
+        //          $ilatinfo= $ilatinfo->{'data'};
+        //          return $ilatinfo;
+        //     }
+            
+        //     // $test = json_encode($empinfo1);
+        //     // return $test;
+        // }
+        // return $empinfo1;
+          // return $empinfo
+        
+        // $docinfo = array();
+        // $this->getDoc($docinfo);
+     
+       
+        //SYAHIRAH
+         $this->getCertificateEmp($jsondecodemp);
+         $jsondecodebank = null;
+         $jsondecodepermanent = null;
+        $this->getBankInfo($jsondecodebank);
+        
+        //return '++'.json_encode($jsondecodebank).'++';
+        //$this->getPermanentInfo($jsondecodepermanent);
+
+
+
+        //$accdrefcode = session('accdrefno');
+        //if($accdrefcode != '')
+        //{
+        //    $this->getAccidentinfo($jsondecod3); 
+            //$data= $jsondecod3->{'data'};
+            // $how= $data['how'];
+        //}
+        
+        //irina
+        $obprofile = null;
+        $obcontact = null;
+        $date = null;
+        $empcert = null;
+
+        $permanentrep = null;
+     
+        
+        if ($jsondecode && $jsondecode!='')//irina
+        {
+            //return json_encode($jsondecode);
+            $record = $jsondecode->{'record'};
+            if ($record == 0)
+            {
+                $obprofile = null;
+            }
+            else
+            {
+                $obprofile = $jsondecode->{'data'};
+                
+                $uniquerefno = $obprofile->{'uniquerefno'};
+                session(['uniquerefno'=>$uniquerefno]);
+                // return $obprofile;
+            }
+            
+            //$test = json_encode($obprofile);
+            //return $test;
+        }
+
+        if ($jsondecod1 && $jsondecod1!='')//irina
+        {
+            $obcontact = $jsondecod1->{'data'};
+        }
+
+        //HANNIS
+        //return json_encode($jsondecodeEmployer);
+        /*if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
+        {
+            $record = $jsondecodeEmployer->{'record'};
+            if ($record > 0)
+            {
+                
+                $emprecord = $jsondecodeEmployer->{'emprecord'};
+                if ($record == 1)
+                {
+                    $empcode = $emprecord[0]->{'empcode'};
+                    session(['empcode'=>$empcode]);
+                }
+            }
+            else
+            {
+                $emprecord = null;
+            }
+            //$date = $jsondecodeEmployer->{'data'};
+        }*/
+
+        /*$empcert = null;
+        //SYAHIRAH
+        if ($jsondecodemp && $jsondecodemp!='')//irina
+        {
+            $errorcode = $jsondecodemp->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $empcert = $jsondecodemp->{'data'};
+            }
+            
+        }*/
+        
+        $bankinfo = null;
+        if ($jsondecodebank && $jsondecodebank!='')//irina
+        {
+            $errorcode = $jsondecodebank->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $bankinfo = $jsondecodebank->{'data'};
+                //return json_encode($bankinfo);
+            }
+            
+           
+        }
+        if ($jsondecodepermanent && $jsondecodepermanent!='')//irina
+        {
+            $permanentrep = $jsondecodepermanent->{'data'};
+        }
+
+        
+        $jsondecodeConfirmation="";
+        $confirmation = null;
+        $url = $this->getConfirmation($jsondecodeConfirmation);
+        
+        //return $url;
+         
+        if ($jsondecodeConfirmation && $jsondecodeConfirmation!='')//irina
+        {
+            $record = $jsondecodeConfirmation->{'record'};
+            if ($record <= 0)
+            {
+                 //$jsondecodeConfirmation = null;
+                 $confirmation = null;
+            }
+            else
+            {
+                $confirmation = $jsondecodeConfirmation->{'data'};
+                //return $confirmation;
+            }
+            
+            // if ($record > 0)
+            // {
+            //     $confirmation = $jsondecodeConfirmation->{''};
+            // }
+            // else
+            // {
+            //     $
+            //     
+            //     confirmation = null;
+            // }
+        }
+
+        $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        $uniquerefno = session('uniquerefno');
+        $caserefno = session ('caserefno');
+        
+        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+       
+        // if ($confirmation != null && $confirmation->statecode != '')
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
+        // }
+        // else
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
+        // }
+        //  return $empinfo;
+          
+        //chg28062019 - send alldoclist to blade
+        return view('scheme.noticeInvalidity.IO.index',['obprofile'=>$obprofile,'state'=>$state, 
+            'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
+            'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
+            'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 
+            'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode, 
+            'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
+            'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype,'docinfo'=>$docinfo,
+            'empinfo'=>$empinfo,'ilatinfo'=>$ilatinfo,'confirmation'=>$confirmation,'doclist_select'=>$alldoclist,'occucode'=>$occucode]);
+            
+        // return $empinfo;
+    }
+    public function indexsao()
+    {
+
+       
+
+        $operid = session('loginname');
+        
+        if ($operid == '')
+        {
+            return redirect('/login');
+        }
+        
+        $idno = session('idno');
+        if ($idno == '')
+        {
+            return redirect('/home');
+        }
+        // $caserefno = session ('caserefno');
+        // return$caserefno;
+        $jsondecode='';
+        $jsondecod1='';
+        $jsondecod3='';
+
+        //HANNIS
+        $jsondecodeAssistEmployer="";
+        $jsondecodeEmployerdate="";
+        $jsondecodeWages="";
+
+
+        //SYAHIRAH
+
+        // $jsondecodemp='';
+        $jsondecodebank='';
+        $jsondecodepermanent='';
+
+        //$state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
+        $race=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['race']);
+        $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
+        
+        $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
+        
+        
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+
+        //SYAHIRAH
+        $optionbank=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankloc']);
+        $optionreason=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['rsnnoacc']);
+        $optionbai=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['baists']);
+        $optionpay=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['paymode']);
+        $bankcode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankcode']);
+        $accountype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['acctype']);
+        $overseasbank=$bankcode;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['bankcode']);
+        $overseasbanktype=$accountype;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['acctype']);
+        $emptype = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['emptype']);
+        $occucode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['occupation']);
+        //najmi
+        //$doclist = DB::select('select docdescen,doctype,docdescbm from doctype where doccat=?',['C']);
+        $sql = 'select d.docdescen,d.doctype,d.docdescbm, d.doccat, n.priority from doctype d, noticedoc n '
+                . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
+        $doclist = DB::select($sql,[session('noticetype')]);
+        
+        //chg28062019 irina - get all doc
+        $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
+
+        //return view ('fileupload.claim_info')->with('name',$select);
+
+        $jsondecodeAssist='';
+        $jsondecodeAccddate='';
+        $how = '';
+
+
+        $this->getObProfile($jsondecode);
+        
+        //$test = json_encode($jsondecode);
+        //return $test;
+        //$this->getObContact($jsondecod1);
+        $this->getObFormAssist($jsondecodeAssist);
+        
+        //irina - begin
+        $jsondecodemc = '';
+      
+        $caserefno = session('caserefno');
+        
+
+        $mcdata = null;
+        
+        
+        //return '++'.$accdrefno.'++'.$caserefno.'++';
+
+        //irina - end 
+
+        //HANNIS
+        //$this->getAssist($jsondecodeAssistEmployer);
+        //$this->getEmployer($jsondecodeEmployer);
+        
+        //return json_encode($jsondecodeEmployer);
+        //$jsondecodeWages = array();
+        //$this->getWages($jsondecodeWages);
+        
+        $contrinfo = array();
+        $wagesinfo = array();
+        $data = array();
+
+        // $all = ['contrinfo'=>$contrinfo, 'wagesonfo'=>$wagesinfo, 'data'=>$data];
+        
+        $this->getWages($contrinfo,$wagesinfo);
+       
+        //return $wagesinfo;
+        
+        $empinfo = array();
+        $ilatinfo= array();
+       
+        $this->getEmployment_info($empinfo,$ilatinfo);
+        
+        
+
+        // if ($ilatinfo && $ilatinfo!='')//najmi
+        // {
+        //     $errorcode = $ilatinfo -> {'errorcode'};
+        //     if ($errorcode == -1)
+        //     {
+        //         $ilatinfo= null;      
+        //     }
+        //     else
+        //     {
+        //          $ilatinfo= $ilatinfo->{'data'};
+                 
+        //     }
+        // }
+
+        
+       
+        // $this->getEmployment_info($ilatinfo);
+        // if ($empinfo && $empinfo!='')//najmi
+        // {
+        //     $errorcode = $empinfo->{'errorcode'};
+        //     // return $record;
+        //     if ($errorcode == 0)
+        //     {
+        //         $empinfo= null;
+               
+        //     }
+        //     else
+        //     {
+        //          $empinfo= $empinfo->{'data'};
+        //     }
+            
+        //     // $test = json_encode($empinfo1);
+        //     // return $test;
+        // }
+
+        // if ($ilatinfo && $ilatinfo!='')//najmi
+        // {
+            
+        //     $record_ilatinfo = $ilatinfo->{'record'};
+        //     // return $record;
+        //     if ($record_ilatinfo == 0)
+        //     {
+        //         $ilatinfo= null;
+               
+        //     }
+        //     else
+        //     {
+        //          $ilatinfo= $ilatinfo->{'data'};
+        //          return $ilatinfo;
+        //     }
+            
+        //     // $test = json_encode($empinfo1);
+        //     // return $test;
+        // }
+        // return $empinfo1;
+          // return $empinfo
+        
+        // $docinfo = array();
+        // $this->getDoc($docinfo);
+     
+       
+        //SYAHIRAH
+         $this->getCertificateEmp($jsondecodemp);
+         $jsondecodebank = null;
+         $jsondecodepermanent = null;
+        $this->getBankInfo($jsondecodebank);
+        
+        //return '++'.json_encode($jsondecodebank).'++';
+        //$this->getPermanentInfo($jsondecodepermanent);
+
+
+
+        //$accdrefcode = session('accdrefno');
+        //if($accdrefcode != '')
+        //{
+        //    $this->getAccidentinfo($jsondecod3); 
+            //$data= $jsondecod3->{'data'};
+            // $how= $data['how'];
+        //}
+        
+        //irina
+        $obprofile = null;
+        $obcontact = null;
+        $date = null;
+        $empcert = null;
+
+        $permanentrep = null;
+     
+        
+        if ($jsondecode && $jsondecode!='')//irina
+        {
+            //return json_encode($jsondecode);
+            $record = $jsondecode->{'record'};
+            if ($record == 0)
+            {
+                $obprofile = null;
+            }
+            else
+            {
+                $obprofile = $jsondecode->{'data'};
+                
+                $uniquerefno = $obprofile->{'uniquerefno'};
+                session(['uniquerefno'=>$uniquerefno]);
+                // return $obprofile;
+            }
+            
+            //$test = json_encode($obprofile);
+            //return $test;
+        }
+
+        if ($jsondecod1 && $jsondecod1!='')//irina
+        {
+            $obcontact = $jsondecod1->{'data'};
+        }
+
+        //HANNIS
+        //return json_encode($jsondecodeEmployer);
+        /*if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
+        {
+            $record = $jsondecodeEmployer->{'record'};
+            if ($record > 0)
+            {
+                
+                $emprecord = $jsondecodeEmployer->{'emprecord'};
+                if ($record == 1)
+                {
+                    $empcode = $emprecord[0]->{'empcode'};
+                    session(['empcode'=>$empcode]);
+                }
+            }
+            else
+            {
+                $emprecord = null;
+            }
+            //$date = $jsondecodeEmployer->{'data'};
+        }*/
+
+        /*$empcert = null;
+        //SYAHIRAH
+        if ($jsondecodemp && $jsondecodemp!='')//irina
+        {
+            $errorcode = $jsondecodemp->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $empcert = $jsondecodemp->{'data'};
+            }
+            
+        }*/
+        
+        $bankinfo = null;
+        if ($jsondecodebank && $jsondecodebank!='')//irina
+        {
+            $errorcode = $jsondecodebank->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $bankinfo = $jsondecodebank->{'data'};
+                //return json_encode($bankinfo);
+            }
+            
+           
+        }
+        if ($jsondecodepermanent && $jsondecodepermanent!='')//irina
+        {
+            $permanentrep = $jsondecodepermanent->{'data'};
+        }
+
+        
+        $jsondecodeConfirmation="";
+        $confirmation = null;
+        $url = $this->getConfirmation($jsondecodeConfirmation);
+        
+        //return $url;
+         
+        if ($jsondecodeConfirmation && $jsondecodeConfirmation!='')//irina
+        {
+            $record = $jsondecodeConfirmation->{'record'};
+            if ($record <= 0)
+            {
+                 //$jsondecodeConfirmation = null;
+                 $confirmation = null;
+            }
+            else
+            {
+                $confirmation = $jsondecodeConfirmation->{'data'};
+                //return $confirmation;
+            }
+            
+            // if ($record > 0)
+            // {
+            //     $confirmation = $jsondecodeConfirmation->{''};
+            // }
+            // else
+            // {
+            //     $
+            //     
+            //     confirmation = null;
+            // }
+        }
+
+        $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        $uniquerefno = session('uniquerefno');
+        $caserefno = session ('caserefno');
+        
+        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+       
+        // if ($confirmation != null && $confirmation->statecode != '')
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
+        // }
+        // else
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
+        // }
+        //  return $empinfo;
+          
+        //chg28062019 - send alldoclist to blade
+        return view('scheme.noticeInvalidity.SAO.index',['obprofile'=>$obprofile,'state'=>$state, 
+            'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
+            'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
+            'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 
+            'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode, 
+            'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
+            'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype,'docinfo'=>$docinfo,
+            'empinfo'=>$empinfo,'ilatinfo'=>$ilatinfo,'confirmation'=>$confirmation,'doclist_select'=>$alldoclist,'occucode'=>$occucode]);
+            
+        // return $empinfo;
+    }
 }
