@@ -40,7 +40,7 @@
         </div>
         <div id="odempinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne3">
             <div class="card-body">
-                @include('Scheme.noticeOd.PK.odEmphistory')
+                @include('scheme.noticeOd.PK.odEmphistory')
             </div>
         </div>
     </div> 	
@@ -55,7 +55,7 @@
         </div>
         <div id="odinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne4">
             <div class="card-body">
-                @include('Scheme.noticeOd.PK.odInformation')
+                @include('scheme.noticeOd.PK.odInformation')
             </div>
         </div>
     </div> 	
