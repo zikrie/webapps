@@ -135,6 +135,14 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ----------------------END OF NOTICE ACCIDENT -- SAO --------------------------- */
 
 
+     /* -------------------------- NOTICE ACCIDENT -- REVISION --------==------------------- */
+     Route::get('/revisionreversedecision_pk', 'Revision\ReverseDecisionController@index');
+     Route::get('/revisionreversedecision_sco', 'Revision\ReverseDecisionController@index_SCO');
+     Route::get('/revisionreversedecision_io', 'Revision\ReverseDecisionController@index_IO');
+     Route::get('/revisionreversedecision_sao', 'Revision\ReverseDecisionController@index_SAO');
+
+     /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
+
     /* --------------------------- NOTICE OD(PK) ------------------------------------ */
     Route::get('/noticeod', 'NoticeOdController@index');
     Route::post('/noticeod', 'CommonController@postObForm');
