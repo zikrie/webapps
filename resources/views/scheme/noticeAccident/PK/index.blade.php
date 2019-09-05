@@ -13,13 +13,13 @@
     <div class="col-md-12">
         <div class="card-body">
             <h4 class="card-title">@lang('scheme/index.attr.accident_notice')</h4>
-		<!-- Nav tabs -->
-                <ul class="nav customtab" role="tablist" id="tabMenu">
-                        {{-- <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('index.attr.remarks')</span></a> </li> --}}
-                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#upload" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span  class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a> </li>
-                </ul>
-				<!-- Tab panes -->
+            <!-- Nav tabs -->
+            <ul class="nav customtab" role="tablist" id="tabMenu">
+                {{-- <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('index.attr.remarks')</span></a> </li> --}}
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#upload" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span  class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a> </li>
+            </ul>
+	    <!-- Tab panes -->
             <div class="tab-content tabcontent-border">
                
                 <div class="tab-pane p-20 active" id="claim" role="tabpanel">

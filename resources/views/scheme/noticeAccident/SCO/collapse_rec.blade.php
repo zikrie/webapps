@@ -55,7 +55,7 @@
                                         </h6>
                                 </div>
                                 <div id="collapseBank" class="collapse" role="tabpanel" aria-labelledby="headingBanK">
-                                        <div class="card-body">@include('scheme.common.bank')</div>
+                                        <div class="card-body">@include('scheme.general.bank')</div>
                                 </div>
                         </div>
                         {{-- <div class="card m-b-0">

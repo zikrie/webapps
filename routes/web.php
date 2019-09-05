@@ -137,7 +137,6 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
 
     /* --------------------------- NOTICE OD(PK) ------------------------------------ */
     Route::get('/noticeod', 'NoticeOdController@index');
-    Route::get('/noticeOd', 'NoticeOdController@index');
     Route::post('/noticeod', 'CommonController@postObForm');
     Route::post('/employerdetails_od', 'CommonController@postEmployer');
     Route::post('/odupdmc', 'NoticeOdController@UpdMC');

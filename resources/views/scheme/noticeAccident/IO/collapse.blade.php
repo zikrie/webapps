@@ -35,7 +35,7 @@
                                                 </h6>
                                         </div>
                                         <div id="collapseTwelve12" class="collapse" role="tabpanel" aria-labelledby="headingTwelve12">
-                                                <div class="card-body">@include('scheme/common.certification')</div>
+                                                <div class="card-body">@include('scheme/general.certification')</div>
                                         </div>
                                 </div>
                                 <!-- Initial Assessment employementDetails-->
@@ -250,7 +250,7 @@
                                                 </h6>
                                         </div>
                                         <div id="collapseFourteen14" class="collapse" role="tabpanel" aria-labelledby="headingFourteen14">
-                                                <div class="card-body">@include('scheme.common.bank')</div>
+                                                <div class="card-body">@include('scheme.general.bank')</div>
                                         </div>
                                 </div>
                                 <div class="card m-b-0">

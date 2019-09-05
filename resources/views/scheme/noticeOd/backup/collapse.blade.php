@@ -13,7 +13,7 @@
                     </div>
                     <div id="obform" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                         <div class="card-body">
-                            @include('scheme.common.ob')
+                            @include('scheme.general.ob')
                         </div>
                     </div>
                 </div>	

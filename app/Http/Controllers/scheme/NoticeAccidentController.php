@@ -387,13 +387,13 @@ class NoticeAccidentController extends CommonController
                 $wbid = $d->wbid;
                 session(['wbid'=>$wbid]);
                 //return $this->index();//irina comment
-                return redirect('/Scheme/noticeaccident');
+                return redirect('/scheme/noticeaccident');
             }
         }
         //return $this->index();//irina comment
         session(['accdmonth'=>$accdmonth, 'accdyear'=> $accdyear]);
         session(['accddate'=>$date,'accdtime'=>$accdtime]);
-        return redirect('/Scheme/noticeaccident');
+        return redirect('/scheme/noticeaccident');
     }
     
     //FOR CREATE NOTICE DRAFT
