@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('general.layouts.app')
 
 @section('maintitle', 'Tab Screen')
 
@@ -73,10 +73,10 @@
             <div class="tab-content tabcontent-border">
 
                     <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                        @include('Scheme.revision.deathdate.PK.remarks')
+                        @include('scheme.noticeAccident.revision.reverse_decision.PK.remarks')
                     </div>
                     <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                        @include('Scheme.common.uploadDoc')
+                        
                     </div>
 
                     <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
@@ -85,7 +85,7 @@
 
                             <!-- Initial Assessment appointmentdetails-->
                             <div class="card m-b-0">
-                                <div class="card-header" role="tab" id="caseInfo_reverseDecision">
+                                <div class="card-header" role="tab" id="caseInfo_reverse_decision">
                                     <h5 class="mb-0">
                                         <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                             href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
@@ -97,7 +97,7 @@
                                 </div>
                                 <div id="caseInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        @include('Scheme.revision.reverseDecision.PK.case_info')
+                                        <!-- @include('scheme.noticeAccident.revision.reverse_decision.PK.case_info') -->
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 </div>
                                 <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        @include('Scheme.revision.reverseDecision.PK.ob_info')
+                                        <!-- @include('scheme.noticeAccident.revision.reverse_decision.PK.ob_info') -->
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                                 </div>
                                 <div id="fpm" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        @include('Scheme.revision.reverseDecision.PK.fpm')
+                                        <!-- @include('scheme.noticeAccident.revision.reverse_decision.PK.fpm') -->
                                     </div>
                                 </div>
                             </div>
