@@ -28,7 +28,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>@lang('insuredPerson.attr.id_type')</label><span class="required">*</span>
-                                <select class="form-control clearfields" name='idtype' id='idtype' required>
+                                {{-- <select class="form-control clearfields" name='idtype' id='idtype' required>
                                         <option selected readonly disabled hidden>Please Select </option>
                                         @foreach ($idtype as $id)
                                         @if (old('idtype') == $id->refcode)
@@ -39,7 +39,7 @@
                                         <option value="{{$id->refcode}}">{{$id->descen}}</option>
                                         @endif
                                         @endforeach
-                                    </select>                            
+                                    </select>                             --}}
                             </div>
                         </div>
                         <div class="col-md-6">

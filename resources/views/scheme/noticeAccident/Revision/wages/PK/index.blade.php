@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('general.layouts.app')
 
 @section('maintitle', 'Tab Screen')
 
@@ -72,10 +72,10 @@
             <div class="tab-content tabcontent-border">
 
                 <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                    @include('Scheme.revision.deathdate.PK.remarks')
+                    @include('Scheme.noticeAccident.revision.wages.PK.remarks')
                 </div>
                 <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                    @include('Scheme.common.uploadDoc')
+                    {{-- @include('Scheme.common.uploadDoc') --}}
                 </div>
 
                 <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
@@ -95,7 +95,7 @@
                             </div>
                             <div id="caseInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                 <div class="card-body">
-                                    @include('Scheme.revision.wages.PK.case_info')
+                                    @include('Scheme.noticeAccident.revision.Wages.PK.case_info')
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                             </div>
                             <div id="pks" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                 <div class="card-body">
-                                    @include('Scheme.revision.wages.PK.pks')
+                                    @include('Scheme.noticeAccident.revision.wages.PK.pks')
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                             </div>
                             <div id="pks2" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                 <div class="card-body">
-                                    @include('Scheme.revision.wages.PK.pks2')
+                                    {{-- @include('Scheme.revision.wages.PK.pks2') --}}
                                 </div>
                             </div>
                         </div>

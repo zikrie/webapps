@@ -134,13 +134,26 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/noticeaccident_sao', 'NoticeAccidentController@indexSAO');
     /* ----------------------END OF NOTICE ACCIDENT -- SAO --------------------------- */
 
+    
+     /* -------------------------- NOTICE ACCIDENT -- REVISION (OB Profile) ----------------------- */
+     Route::get('/revisionobprofile_pk', 'Revision\OBProfileController@index');
+     Route::get('/revisionobprofile_sco', 'Revision\OBProfileController@index_SCO');
+     Route::get('/revisionobprofile_io', 'Revision\OBProfileController@index_IO');
+     Route::get('/revisionobprofile_sao', 'Revision\OBProfileController@index_SAO');
+     /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
 
-     /* -------------------------- NOTICE ACCIDENT -- REVISION --------==------------------- */
+    /* -------------------------- NOTICE ACCIDENT -- REVISION (Wages) --------------------------- */
+    Route::get('/revisionwages_pk', 'Revision\WagesController@index');
+    Route::get('/revisionwages_sco', 'Revision\WagesController@index_SCO');
+    Route::get('/revisionwages_io', 'Revision\WagesController@index_IO');
+    Route::get('/revisionwages_sao', 'Revision\WagesController@index_SAO');
+    /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
+
+     /* -------------------------- NOTICE ACCIDENT -- REVISION (Reverse Decision) ---------------------- */
      Route::get('/revisionreversedecision_pk', 'Revision\ReverseDecisionController@index');
      Route::get('/revisionreversedecision_sco', 'Revision\ReverseDecisionController@index_SCO');
      Route::get('/revisionreversedecision_io', 'Revision\ReverseDecisionController@index_IO');
      Route::get('/revisionreversedecision_sao', 'Revision\ReverseDecisionController@index_SAO');
-
      /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
 
     /* --------------------------- NOTICE OD(PK) ------------------------------------ */

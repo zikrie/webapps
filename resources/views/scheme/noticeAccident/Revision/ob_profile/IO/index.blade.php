@@ -13,25 +13,27 @@
     <div class="col-md-12">
         <div class="card-body">
             <h3 class="card-title">@lang('index.attr.insuredPersonInfo')</h3>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-body">
                         <ul class="nav customtab" role="tablist" id="tabMenu">
                             <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a>
+                                        class="hidden-xs-down">Remarks</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
+                                        class="hidden-xs-down">Claim Details</span></a>
+                            </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendations"
+                                role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
+                                    class="hidden-xs-down">Recommendation</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
+                                        class="hidden-xs-down">Supporting Document</span></a>
                             </li>
                         </ul>
-
                         <div class="row" id="rowindex">
                             <div class="col-md-12">
                                 <div class="card text-left" id="cardindex">
@@ -64,8 +66,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><label class="no_margin">A31FOT181234569-NTU004 -
-                                                            31/01/2018</label></td>
+                                                    <td><label class="no_margin">A31FOT181234569-NTU004 - 31/01/2018</label></td>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -78,87 +79,14 @@
                             <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
                                 @include('Scheme.noticeAccident.revision.ob_profile.PK.remarks')
                             </div>
-                            <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                {{-- @include('Scheme.general.upload_doc') --}}
-                            </div>
                             <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
-
-                                <div id="accordion2" role="tablist" class="accordion">
-
-                                    <!-- Initial Assessment appointmentdetails-->
-                                    <div class="card m-b-0">
-                                        <div class="card-header" role="tab" id="caseInfo_OBProfile">
-                                            <h5 class="mb-0">
-                                                <a class="link" data-toggle="collapse" data-parent="#accordion2"
-                                                    href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
-                                                    <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.case_info')</h4>
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="caseInfo" class="collapse" role="tabpanel"
-                                            aria-labelledby="headingOne1">
-                                            <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.ob_profile.PK.case_info')
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card m-b-0">
-                                        <div class="card-header" role="tab" id="OBInfo_OBProfile">
-                                            <h5 class="mb-0">
-                                                <a class="link" data-toggle="collapse" data-parent="#accordion2"
-                                                    href="#obProfile" aria-expanded="false"
-                                                    aria-controls="collapseOne1">
-                                                    <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.insuredPersonProfile')</h4>
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="obProfile" class="collapse" role="tabpanel"
-                                            aria-labelledby="headingOne1">
-                                            <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.ob_profile.PK.ob_info')
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card m-b-0">
-                                        <div class="card-header" role="tab" id="OBInfo_OBProfile2">
-                                            <h5 class="mb-0">
-                                                <a class="link" data-toggle="collapse" data-parent="#accordion2"
-                                                    href="#obProfile2" aria-expanded="false"
-                                                    aria-controls="collapseOne1">
-                                                    <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.insuredPersonProfile')</h4>
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="obProfile2" class="collapse" role="tabpanel"
-                                            aria-labelledby="headingOne1">
-                                            <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.ob_profile.PK.ob_info2')
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card m-b-0">
-                                        <div class="card-header" role="tab" id="declaration117_OBProfile">
-                                            <h5 class="mb-0">
-                                                <a class="link" data-toggle="collapse" data-parent="#accordion2"
-                                                    href="#declaration117" aria-expanded="false"
-                                                    aria-controls="collapseOne1">
-                                                    <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.declare')</h4>
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="declaration117" class="collapse" role="tabpanel"
-                                            aria-labelledby="headingOne1">
-                                            <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.ob_profile.PK.declaration117')
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
+                                @include('Scheme.noticeAccident.revision.ob_profile.SCO.collapse')
+                            </div>
+                            <div class="tab-pane p-20" id="recommendations" role="tabpanel">
+                                @include('Scheme.noticeAccident.revision.ob_profile.IO.collapse_recommendation')
+                            </div>
+                            <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
+                                {{-- @include('Scheme.noticeAccident.revision.ob_profile.SCO.uploadDoc') --}}
                             </div>
                         </div>
                     </div>
@@ -167,8 +95,6 @@
         </div>
     </div>
 </div>
-</div>
-
 <!-- row -->
 <script>
     //redirect to specific tab
