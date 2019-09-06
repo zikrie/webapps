@@ -97,7 +97,7 @@
                                 </div>
                                 <div id="caseInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        <!-- @include('scheme.noticeAccident.revision.reverse_decision.PK.case_info') -->
+                                        @include('scheme.noticeAccident.revision.reverse_decision.PK.case_info')
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 </div>
                                 <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        <!-- @include('scheme.noticeAccident.revision.reverse_decision.PK.ob_info') -->
+                                        @include('scheme.noticeAccident.revision.reverse_decision.PK.ob_info')
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                                 </div>
                                 <div id="fpm" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        <!-- @include('scheme.noticeAccident.revision.reverse_decision.PK.fpm') -->
+                                        @include('scheme.noticeAccident.revision.reverse_decision.PK.fpm')
                                     </div>
                                 </div>
                             </div>
