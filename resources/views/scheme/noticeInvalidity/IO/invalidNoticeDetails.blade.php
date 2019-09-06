@@ -196,27 +196,11 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.cp_req')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.yes')</option>
-                                            <option>@lang('scheme/invaNotice.attr.no')</option>
-                                        </select>
-                                    </div>
-                                </div>
+                           
                             </div>
 
                             <div class="row p-t-20">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.s56_req')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.yes')</option>
-                                            <option>@lang('scheme/invaNotice.attr.no')</option>
-                                        </select>
-                                    </div>
-                                </div>
+                               
 
                                 <div class="col-md-4">
                                     <div class="form-group">

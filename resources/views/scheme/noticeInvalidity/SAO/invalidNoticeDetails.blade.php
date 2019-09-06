@@ -198,48 +198,29 @@
                                     </select>
                                 </div>
                             </div>
-
-                            {{--        <div class="col-md-4">
+                        </div>
+                        <div class="row p-t-20">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.cp_req')</label>
+                                        <label
+                                            class="control-label">@lang('scheme/invaNotice.attr.invalid_date_req')</label>
                                         <select class="form-control">
                                             <option>@lang('scheme/invaNotice.attr.yes')</option>
                                             <option>@lang('scheme/invaNotice.attr.no')</option>
                                         </select>
                                     </div>
                                 </div>
-                            </div> --}}
-
-                            <div class="row p-t-20">
+    
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.s56_req')</label>
+                                        <label class="control-label">@lang('scheme/invaNotice.attr.morbid_date_req')</label>
                                         <select class="form-control">
                                             <option>@lang('scheme/invaNotice.attr.yes')</option>
                                             <option>@lang('scheme/invaNotice.attr.no')</option>
                                         </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label
-                                            class="control-label">@lang('scheme/invaNotice.attr.about_illness')</label>
-                                        <input type="text" id="aboutIllness" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label
-                                            class="control-label">@lang('scheme/invaNotice.attr.illness_year')</label>
-                                        <input type="text" id="illnessYear" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            {{--   <div class="form-actions">
-                                <button type="submit" class="btn btn-success"> @lang('insuredPerson.save')</button>
-                            </div> --}}
                     </form>
                 </div>
             </div>

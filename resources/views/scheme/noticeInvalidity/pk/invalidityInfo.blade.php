@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/pensionDetails.attr.desc')</label>
 
-
+                                    <span class="required">*</span>
                                     @if(!empty($ilatinfo) && $ilatinfo->morbiddesc !='')
                                     {{--<input type="text" value="{{ $ilatinfo->morbiddesc }}"
                                     name="descriptionmorbidity" id="descriptionmorbidity" class="form-control">--}}
@@ -52,6 +52,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/pensionDetails.attr.year')</label>
+                                    <span class="required">*</span>
                                     <select class="form-control" name="year_morbidity" onchange='checkyear()'
                                         id='year_morbidity'>
                                         <option></option>
@@ -79,6 +80,7 @@
                                 <div class="form-group">
                                     <label style="white-space:nowrap"
                                         class="control-label">@lang('scheme/pensionDetails.attr.engaged_employment') </label>
+                                        <span class="required">*</span>
                                     <select name="engage" class="form-control" data-placeholder="Choose a Category"
                                         tabindex="1">
                                         @if (!empty($ilatinfo) && $ilatinfo->inemployment !='' &&

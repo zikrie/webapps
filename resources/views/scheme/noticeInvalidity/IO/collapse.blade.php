@@ -77,7 +77,7 @@
         </div>
         <div id="creditPeriod" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeInvalidity.SCO.credit')
+                @include('scheme.noticeInvalidity.IO.credit')
             </div>
         </div>
     </div>
@@ -135,7 +135,7 @@
             </div>
             <div id="invalidityNoticeDetails" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                 <div class="card-body">
-                    @include('scheme.noticeInvalidity.SCO.invalidNoticeDetails')
+                    @include('scheme.noticeInvalidity.IO.invalidNoticeDetails')
                 </div>
             </div>
         </div>
@@ -221,7 +221,7 @@
                     </div>
                     <div id="bank" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                         <div class="card-body">
-                            {{-- @include('scheme.noticeInvalidity.SCO.bank') --}}
+                                @include('scheme.general.bank') 
                         </div>
                     </div>
                 </div>

@@ -51,7 +51,7 @@
                                             <td>@lang('scheme/totalcontri.attr.month_4')</td>
                                             <td>@lang('scheme/totalcontri.attr.month_5')</td>
                                             <td>@lang('scheme/totalcontri.attr.month_6')</td>
-                                            <td rowspan="4">FDSAFA</td>
+                                            <td rowspan="4">RM 2000</td>
                                         </tr>
                                         <tr>
                                             <td><input type="text" class="form-control"></td>

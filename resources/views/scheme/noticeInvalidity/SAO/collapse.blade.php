@@ -194,22 +194,22 @@
         </div>
     </div>
 
-    {{-- <div class="card m-b-0">
+    <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne1">
             <h5 class="mb-0">
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigateDetails"
                     aria-expanded="false" aria-controls="collapseOne1">
                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                        @lang('scheme/index.attr.investigation')</h4>
+                        transfer case</h4>
                 </a>
             </h5>
         </div>
         <div id="investigateDetails" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeInvalidity.SAO.investigation')
+                @include('scheme.noticeInvalidity.SAO.transfer_case')
             </div>
         </div>
-    </div> --}}
+    </div>
     <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne1">
             <h5 class="mb-0">
@@ -222,7 +222,7 @@
         </div>
         <div id="bank" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                {{-- @include('scheme.noticeInvalidity.SCO.bank') --}}
+                    @include('scheme.general.bank') 
             </div>
         </div>
     </div>

@@ -105,6 +105,7 @@
                                                             </div>
                                                         </div>
                                                     </td>
+                                                    <td></td>
                                                     <td><a href='/viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a>
                                                     </td>
@@ -194,7 +195,34 @@
                                                 <td><input type="hidden" name="doccat[{{$cnt}}]"
                                                         value="{{ $d -> doctype}}|{{ $d -> doccat}}">{{ $d-> docdescen}}</td>
                                                         
-                                                <td></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td> 
+                                                        <td>
+                                                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
+                                                                    <input type="checkbox" class="custom-control-input" id="checkbox[{{$cnt}}]" value="check">
+                                                                    <label class="custom-control-label" for="checkbox[{{$cnt}}]"></label>
+                                                                </div>
+                                                            </td>   
+                                                            <td>
+                                                                    <input type="text" class="form-control">
+                                                                </td>
+                                                                <td><input type="date" class="form-control"></td>
+                                                                <td>
+                                                                    <div class="col-md-1">
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="customRadioView" name="customRadio" class="custom-control-input">
+                                                                            <label class="custom-control-label" for="customRadioView">Viewed</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <div class="custom-control custom-radio">
+                                                                            <input type="radio" id="customRadioNot" name="customRadio" class="custom-control-input">
+                                                                            <label class="custom-control-label" for="customRadioNot">Not Required</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                           
 
                                                     <td><a href='/viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td>

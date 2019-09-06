@@ -26,13 +26,13 @@
                                 <label class="control-label">@lang('scheme/ob.attr.state')</label>
                                 <!--input type="text" name="state" id="state" value="@if(!empty($obcontact)){{ $obcontact->statecode }} @endif" class="form-control"-->
                                 <select name='state' id='state' class='form-control'>
-                                    {{-- @foreach($state as $s)
+                                    @foreach($state as $s)
                                     @if(!empty($obprofile) && $obprofile->statecode == $s->refcode)
                                     <option value='{{$s->refcode}}' selected>{{$s->descen}}</option>
                                     @else
                                     <option value='{{$s->refcode}}'>{{$s->descen}}</option>
                                     @endif
-                                    @endforeach --}}
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
