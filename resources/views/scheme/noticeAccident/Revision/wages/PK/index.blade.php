@@ -22,11 +22,11 @@
                             class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a> </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
+                            class="hidden-xs-down">Claim Details</span></a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
+                            class="hidden-xs-down">Supporting Document</span></a>
                 </li>
             </ul>
 
@@ -95,7 +95,7 @@
                             </div>
                             <div id="caseInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                 <div class="card-body">
-                                    @include('Scheme.noticeAccident.revision.Wages.PK.case_info')
+                                    @include('Scheme.noticeAccident.revision.wages.PK.case_info')
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                             </div>
                             <div id="pks2" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                 <div class="card-body">
-                                    {{-- @include('Scheme.revision.wages.PK.pks2') --}}
+                                    @include('Scheme.noticeAccident.revision.wages.PK.pks2')
                                 </div>
                             </div>
                         </div>

@@ -25,12 +25,31 @@
                         </div>
                         @endif
                         <div class="row p-t-20">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
-                                   <label class="control-label">@lang('insuredPerson.attr.id_num')</label><span class="required">*</span>
+                                    <label>@lang('insuredPerson.attr.id_type')</label><span class="required">*</span>
+                                    <select class="form-control clearfields" name='idtype' id='idtype' required>
+                                        <option selected readonly disabled hidden>Please Select </option>
+                                        @foreach ($idtype as $id)
+                                        @if (old('idtype') == $id->refcode)
+                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
+                                        @elseif(!empty($selectidtype)&&$id->refcode == $selectidtype)
+                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
+                                        @else
+                                        <option value="{{$id->refcode}}">{{$id->descen}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>                            
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('insuredPerson.attr.id_num')</label><span class="required">*</span>
                                     <input type="text" id="idNum_obProf" name="id_num" value="" class="form-control">
                                 </div>
                             </div>
+                        </div>
+                        <div class="row p-t-20">    
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">@lang('insuredPerson.attr.ssn')</label>

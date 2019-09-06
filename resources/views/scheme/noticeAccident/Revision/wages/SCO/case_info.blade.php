@@ -25,9 +25,9 @@
                         </div>
                         @endif
                     <div class='row'>
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-4">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.id_type')</label><span class="required">*</span>
+                                <label>@lang('insuredPerson.attr.id_type')</label>
                                 <select class="form-control clearfields" name='idtype' id='idtype' required>
                                     <option selected readonly disabled hidden>Please Select </option>
                                     @foreach ($idtype as $id)
@@ -42,57 +42,76 @@
                                 </select>                            
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-4">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.id_num')</label><span class="required">*</span>
+                                <label>@lang('insuredPerson.attr.id_num')</label>
                                 <input type="text"  id="idNum_wages" name="id_num" value="" class="form-control">
                             </div>
                         </div>
-                    </div>
-                    <div class='row'>
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-4">
                             <div class="form-group">
-                            <label>@lang('insuredPerson.attr.name')</label><span class="required">*</span>
+                            <label>Revision Notice ID</label>
                                 <input type="text" readonly id="name_wages" name="name" value="" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-4">
                             <div class="form-group">
-                            <label>@lang('insuredPerson.attr.rev_type')</label><span class="required">*</span>
+                            <label>Notice ID</label>
                                 <input type="text"  id="revType_wages" name="rev_type" value="" class="form-control">
                             </div>
                         </div>
-                    </div>
-                    <div class='row'>
-                       <div class="col-md-6">
+                       <div class="col-md-4">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.rev_reason')</label><span class="required">*</span>
-                                <select class="form-control" data-placeholder="revReason_wages" tabindex="2">
-                                        <option selected readonly disabled hidden>Please Select </option>
-                                        <option value="Wages Changes">@lang('wages.attr.wagesChanges')</option>
-                                        <option value="Additional Contribution">@lang('wages.attr.additionalContribution')</option>
-                                    </select>
+                                <label>Received Revision Notice Date</label>
+                                    <input type="text"  id="revType_wages" name="rev_type" value="" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.received_rev')</label><span class="required">*</span>
+                                <label class="control-label">Case Type</label>
                                 <input type="text"  id="receivedRevisionNoticeDate_wages" name="receivedRevisionNoticeDate_wages" value="" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class='row'>
-                    <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.source')</label><span class="required">*</span>
-                                <select class="form-control" data-placeholder="source_wages" tabindex="2">
-                                        <option selected readonly disabled hidden>Please Select </option>
-                                        <option value="HUK">@lang('wages.attr.otc')</option>
-                                        <option value="ILAT">@lang('wages.attr.email')</option>
-                                        <option value="HUK">@lang('wages.attr.portal')</option>
-                                        <option value="ILAT">@lang('wages.attr.complaint')</option>
-                                        <option value="HUK">@lang('wages.attr.new_info')</option>                                   
-                                 </select>
+                                <label class="control-label">Notice Type</label>
+                                <input type="text"  id="receivedRevisionNoticeDate_wages" name="receivedRevisionNoticeDate_wages" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Operation Branch Location</label>
+                                <input type="text"  id="receivedRevisionNoticeDate_wages" name="receivedRevisionNoticeDate_wages" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Revision Type</label>
+                                <input type="text"  id="receivedRevisionNoticeDate_wages" name="receivedRevisionNoticeDate_wages" value="" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Revision Reason</label>
+                                <input type="text"  id="receivedRevisionNoticeDate_wages" name="receivedRevisionNoticeDate_wages" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Source</label>
+                                <input type="text"  id="receivedRevisionNoticeDate_wages" name="receivedRevisionNoticeDate_wages" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Accident Date</label>
+                                <input type="date"  id="receivedRevisionNoticeDate_wages" name="receivedRevisionNoticeDate_wages" value="" class="form-control">
                             </div>
                         </div>
                     </div>
