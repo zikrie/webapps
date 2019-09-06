@@ -216,6 +216,13 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ---------------------------- NOTICE ILAT(SAO) ------------------------------------- */
     Route::get('/noticeinvalidity_sao', 'NoticeInvalidityController@indexsao');
     /* ----------------------------END OF NOTICE ILAT(SAO) -------------------------------- */
+    Route::get('/revisioninvalidity', 'Revision\InvalidityController@index_PK');
+    Route::get('/revisioninvalidity_sco', 'Revision\InvalidityController@index_SCO');
+    Route::get('/revisioninvalidity_sao', 'Revision\InvalidityController@index_SAO');
+
+    Route::get('/revisionbankruptcy', 'Revision\BankruptcyController@index_PK');
+    Route::get('/revisionbankruptcy_sco', 'Revision\BankruptcyController@index_SCO');
+    Route::get('/revisionbankruptcy_sao', 'Revision\BankruptcyController@index_SAO');
 
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */
