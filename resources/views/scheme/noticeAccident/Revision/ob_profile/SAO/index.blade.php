@@ -86,7 +86,7 @@
                                 @include('Scheme.noticeAccident.revision.ob_profile.IO.collapse_recommendation')
                             </div>
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                {{-- @include('Scheme.noticeAccident.revision.ob_profile.SCO.uploadDoc') --}}
+                                @include('Scheme.noticeAccident.revision.wages.PK.supporting_document')
                             </div>
                         </div>
                     </div>
