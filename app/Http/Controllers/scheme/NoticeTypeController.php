@@ -14,20 +14,17 @@ class NoticeTypeController extends Controller
     public function index()
     {
         $operid = session('loginname');
-        if ($operid == '')
-        {
+        if ($operid == '') {
             return redirect('/login');
         }
         $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
         $noticetype =DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['casetype']);
-        return view('scheme.common.noticeType', ['idtype'=>$idtype, 'noticetype'=>$noticetype]);
-        
+        return view('scheme.general.notice_type', ['idtype'=>$idtype, 'noticetype'=>$noticetype]);
     }
 
     public function noticeType(Request $request)
     {
-
-    	$idtype = $request->idtype;
+        $idtype = $request->idtype;
         $idno = $request->idno;
         $empcode = $request->empcode;
         $noticetype = $request->notice_type;
@@ -38,9 +35,9 @@ class NoticeTypeController extends Controller
         
 
         session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-        // session(['accdrefno'=>'', 'caserefno'=>'']); 
-        session(['caserefno'=>'']); 
-        session(['uniquerefno'=>'']); 
+        // session(['accdrefno'=>'', 'caserefno'=>'']);
+        session(['caserefno'=>'']);
+        session(['uniquerefno'=>'']);
         session(['message'=>'']);
         session(['noticetype'=>$noticetype]);
 
@@ -53,12 +50,11 @@ class NoticeTypeController extends Controller
         session(['casestatus'=>'','source'=>'','messagemc'=>'','messageacc'=>'','messagebank'=>'']);
         session(['messagecert'=>'','messageemp'=>'','messageod'=>'']);
 
-        if ($request->action == 'search'){
-
-            if($noticetype != '02'||$noticetype != '03'){
+        if ($request->action == 'search') {
+            if ($noticetype != '02'||$noticetype != '03') {
                 $in_employment=null;
             }
-            if ($noticetype != '04'){
+            if ($noticetype != '04') {
                 $select_death_accident = null;
             }
             
@@ -78,61 +74,45 @@ class NoticeTypeController extends Controller
             //     return redirect()->back()->withInput(Input::all())->with('messagent','Record Is Not Found');
             // }
 
-            if($jsonOBAssist == null && $jsonOBAssist == ''){
+            if ($jsonOBAssist == null && $jsonOBAssist == '') {
                 $idnoassist=null;
-            }else
-            {
-                foreach($jsonOBAssist as $testing){
-                    $idnoassist=$testing->{'idinfo'}; 
+            } else {
+                foreach ($jsonOBAssist as $testing) {
+                    $idnoassist=$testing->{'idinfo'};
                 }
             }
             
           
-                return view('scheme.common.noticeType', ['idtype'=>$listidtype, 'noticetype'=>$listnoticetype,'empinfo'=>$jsondecodeAssistEmployer,'obassist'=>$idnoassist,'empcode'=>$empcode,'idno'=>$idno,'selectidtype'=>$idtype,'selectnoticetype'=>$noticetype,'nameid'=>$jsonOBAssist,'in_employment'=>$in_employment,'select_death_accident'=>$select_death_accident]);     
-            
-        
+            return view('scheme.general.notice_type', ['idtype'=>$listidtype, 'noticetype'=>$listnoticetype,'empinfo'=>$jsondecodeAssistEmployer,'obassist'=>$idnoassist,'empcode'=>$empcode,'idno'=>$idno,'selectidtype'=>$idtype,'selectnoticetype'=>$noticetype,'nameid'=>$jsonOBAssist,'in_employment'=>$in_employment,'select_death_accident'=>$select_death_accident]);
         }
-        if ($noticetype == "01") //accident
-        {
-            
-            if ($empcode == '')
-            {
-                return redirect()->back()->withInput(Input::all())->with('messagent','Please fill in employer code');
+        if ($noticetype == "01") { //accident
+            if ($empcode == '') {
+                return redirect()->back()->withInput(Input::all())->with('messagent', 'Please fill in employer code');
             }
             
-            if ($idno == '')
-            {
-                return redirect()->back()->withInput(Input::all())->with('messagent','Please fill in Identification No.');
+            if ($idno == '') {
+                return redirect()->back()->withInput(Input::all())->with('messagent', 'Please fill in Identification No.');
             }
             $jsondecodeAssistEmployer="";
             $this->getAssist($jsondecodeAssistEmployer);
             
-            if ($jsondecodeAssistEmployer)
-            {
-                return redirect('/Scheme/accdatetime');
+            if ($jsondecodeAssistEmployer) {
+                return redirect('/scheme/accdatetime');
+            } else {
+                return redirect()->back()->withInput(Input::all())->with('messagent', 'Employer record not found');
             }
-            else
-            {
-                return redirect()->back()->withInput(Input::all())->with('messagent','Employer record not found');
-            }
-            
-        }
-
-        else if ($noticetype == "02") //od
-        {
-            if ($empcode == '')
-            {
-                return redirect()->back()->withInput(Input::all())->with('messagent','Please fill in employer code');
+        } elseif ($noticetype == "02") { //od
+            if ($empcode == '') {
+                return redirect()->back()->withInput(Input::all())->with('messagent', 'Please fill in employer code');
             }
             
             $jsondecodeAssistEmployer="";
 
             $this->getAssist($jsondecodeAssistEmployer);
             
-            if (!$jsondecodeAssistEmployer)
-            {
+            if (!$jsondecodeAssistEmployer) {
                 // return redirect('/obform_od');
-                return redirect()->back()->withInput(Input::all())->with('messagent','Employer record not found');
+                return redirect()->back()->withInput(Input::all())->with('messagent', 'Employer record not found');
             }
             
             $jsondecodeOdRecord="";
@@ -141,16 +121,14 @@ class NoticeTypeController extends Controller
 
             $record = $jsondecodeOdRecord->{'record'};
 
-        // return $record;
-            if($record=='0')
-            {
+            // return $record;
+            if ($record=='0') {
                 session(['caserefno'=>'']);
 
                 $noticedraft = $this->createnoticedraft();
                 $errorcode = $noticedraft->{'errorcode'};
 
-                if ($errorcode == 0)
-                {
+                if ($errorcode == 0) {
                     $caserefno = $noticedraft->{'caserefno'};
                     session(['caserefno'=>$caserefno]);
                     //chg07072019 - get wbid & put into session
@@ -158,17 +136,12 @@ class NoticeTypeController extends Controller
                     session(['wbid'=>$wbid]);
                     
                     
-                    return redirect('/Scheme/obform_od');
+                    return redirect('/scheme/noticeod');
+                } else {
+                    return redirect()->back()->with('messagent', 'Failed to create draft');
                 }
-                else
-                {
-                    return redirect()->back()->with('messagent','Failed to create draft');
-                }
-            //return $this->index();//irina comment
-
-            }
-            else
-            {
+                //return $this->index();//irina comment
+            } else {
                 $caserefno= $jsondecodeOdRecord->{'caserefno'};
                 session(['caserefno' => $caserefno]);
                 
@@ -176,25 +149,16 @@ class NoticeTypeController extends Controller
                 $wbid = $jsondecodeOdRecord->{'wbid'};
                 session(['wbid'=>$wbid]);
                 //return $this->index();//irina comment
-                return redirect('/Scheme/obform_od');
-        
+                return redirect('/scheme/noticeod');
             }
             //return $this->index();//irina comment
-            return redirect('/Scheme/obform_od');
-
-
-
-            
-        }
-
-        else if ($noticetype == "03") //invalidity
-        {
+            return redirect('/scheme/noticeod');
+        } elseif ($noticetype == "03") { //invalidity
             $jsonOBAssist= '';
             $retcode = $this->getOBAssist($idno, $idtype, $jsonOBAssist);
             
-            if ($retcode < 0)
-            {
-                return redirect()->back()->withInput(Input::all())->with('messagent','Insured Person\'s profile not found');
+            if ($retcode < 0) {
+                return redirect()->back()->withInput(Input::all())->with('messagent', 'Insured Person\'s profile not found');
             }
             
             $jsondecode="";
@@ -205,91 +169,71 @@ class NoticeTypeController extends Controller
 
             // return $record;
                 
-                if($record=='0')
-                {
-                    session(['caserefno'=>'', 'schemerefno'=>'']);
+            if ($record=='0') {
+                session(['caserefno'=>'', 'schemerefno'=>'']);
                     
-                    $noticedraft = $this->createnoticedraft();
-                    $errorcode = $noticedraft->{'errorcode'};
+                $noticedraft = $this->createnoticedraft();
+                $errorcode = $noticedraft->{'errorcode'};
                     
-                    if ($errorcode == 0)
-                    {
-                        $caserefno = $noticedraft->{'caserefno'};
-                        session(['caserefno'=>$caserefno]);
-                        
-                        //chg07072019 - get wbid & put into session
-                        $wbid = $noticedraft->{'wbid'};
-                        session(['wbid'=>$wbid]);
-                    
-                        return redirect('/Scheme/noticeinvalidity');
-                    }
-                    else
-                    {
-                        return redirect()->back()->withInput(Input::all())->with('messagent','Failed to create draft');
-                    }
-                    //return $this->index();//irina comment
-                    
-                }
-                else
-                {
-                    $schemerefno = $jsondecode->{'schemerefno'};
-                    
-                    if ($schemerefno != '')
-                    {
-                        $message = 'Invalidity notice application for this Insured Person is already exist. Scheme Ref No: '.$schemerefno;
-                        
-                        return redirect()->back()->withInput(Input::all())->with('messagent',$message);
-                    }
-                    $caserefno= $jsondecode->{'caserefno'};
+                if ($errorcode == 0) {
+                    $caserefno = $noticedraft->{'caserefno'};
                     session(['caserefno'=>$caserefno]);
-                    
+                        
                     //chg07072019 - get wbid & put into session
-                    $wbid = $jsondecode->{'wbid'};
+                    $wbid = $noticedraft->{'wbid'};
                     session(['wbid'=>$wbid]);
                     
-                    return redirect('/Scheme/noticeinvalidity');
+                    return redirect('/scheme/noticeinvalidity');
+                } else {
+                    return redirect()->back()->withInput(Input::all())->with('messagent', 'Failed to create draft');
                 }
-                //return redirect('/obformilat');
-        }
-        
-        
-        else if ($noticetype == "04") //death
-        {
+                //return $this->index();//irina comment
+            } else {
+                $schemerefno = $jsondecode->{'schemerefno'};
+                    
+                if ($schemerefno != '') {
+                    $message = 'Invalidity notice application for this Insured Person is already exist. Scheme Ref No: '.$schemerefno;
+                        
+                    return redirect()->back()->withInput(Input::all())->with('messagent', $message);
+                }
+                $caserefno= $jsondecode->{'caserefno'};
+                session(['caserefno'=>$caserefno]);
+                    
+                //chg07072019 - get wbid & put into session
+                $wbid = $jsondecode->{'wbid'};
+                session(['wbid'=>$wbid]);
+                    
+                return redirect('/scheme/noticeinvalidity');
+            }
+            //return redirect('/obformilat');
+        } elseif ($noticetype == "04") { //death
             $jsondecodeDeathRecord = "";
             $a = $this->checkDeathRecord($jsondecodeDeathRecord);
             // return $a;
             $record = $jsondecodeDeathRecord->{'record'};
         
             // return $record;
-            if($record=='0')
-            {
+            if ($record=='0') {
                 session(['caserefno'=>'', 'schemerefno'=>'']);
 
                 $noticedraft = $this->createnoticedraft();
                 $errorcode = $noticedraft->{'errorcode'};
 
-                if ($errorcode == 0)
-                {
+                if ($errorcode == 0) {
                     $caserefno = $noticedraft->{'caserefno'};
                     session(['caserefno'=>$caserefno]);
                     $wbid = $noticedraft->{'wbid'};
                     session(['wbid'=>$wbid]);
-                    return redirect('/Scheme/noticedeath');
+                    return redirect('/scheme/noticedeath');
+                } else {
+                    return redirect()->back()->with('messagent', 'Failed to create draft');
                 }
-                else
-                {
-                    return redirect()->back()->with('messagent','Failed to create draft');
-                }
-
-            }
-            else
-            {
+            } else {
                 $schemerefno = $jsondecodeDeathRecord->{'schemerefno'};
                     
-                if ($schemerefno != '')
-                {
+                if ($schemerefno != '') {
                     $message = 'Death notice application for this Insured Person is already exist. Scheme Ref No: '.$schemerefno;
-                    return redirect()->back()->withInput(Input::all())->with('messagent',$message);
+                    return redirect()->back()->withInput(Input::all())->with('messagent', $message);
                 }
                 $caserefno= $jsondecodeDeathRecord->{'caserefno'};
                 session(['caserefno'=>$caserefno]);
@@ -298,15 +242,11 @@ class NoticeTypeController extends Controller
                 $wbid = $jsondecodeDeathRecord->{'wbid'};
                 session(['wbid'=>$wbid]);
                 
-                return redirect('/Scheme/noticedeath');
-
+                return redirect('/scheme/noticedeath');
             }
 
             //return redirect('/obform_death');
-
         }
-
-
     }
     public function checkDeathRecord(&$jsondecodeDeathRecord)
     {
@@ -321,7 +261,7 @@ class NoticeTypeController extends Controller
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -332,7 +272,6 @@ class NoticeTypeController extends Controller
         $jsondecodeDeathRecord = json_decode($result);
         //close connection
         curl_close($ch);
-
     }
      
     public function getOBAssist($idno, $idtype, &$jsonOBAssist)
@@ -342,13 +281,13 @@ class NoticeTypeController extends Controller
         $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/obprofile/'.$idno.'/'.$idtype;
         $ch = curl_init();
         
-        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
 
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
         
         $result = curl_exec($ch);
@@ -358,15 +297,13 @@ class NoticeTypeController extends Controller
         //close connection
         curl_close($ch);
 
-        $jsonOBAssist = json_decode ($result);
+        $jsonOBAssist = json_decode($result);
         
-        if ($jsonOBAssist != null)
-        {
+        if ($jsonOBAssist != null) {
             return 0;
         }
         
         return -1;
-    
     }
     
     public function checkIlatNotice(&$jsondecode)
@@ -376,30 +313,29 @@ class NoticeTypeController extends Controller
 
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/ilatrecordexist?idno='.$idno.'&idtype='.$idtype;
                        
-            // return $url;
-            $ch = curl_init();
+        // return $url;
+        $ch = curl_init();
             
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_PROXY, '');
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PROXY, '');
             
-            curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
     
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $result = curl_exec($ch);
-            //return $result;
-            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-            //return '++'.$result.'++';
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        //return $result;
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        //return '++'.$result.'++';
 
-             //close connection
-             curl_close($ch);
+        //close connection
+        curl_close($ch);
 
-            $jsondecode = json_decode($result);
-
+        $jsondecode = json_decode($result);
     }
     
-     public function getAssist(&$jsondecodeAssistEmployer)
+    public function getAssist(&$jsondecodeAssistEmployer)
     {
         //$idno = '1';
 
@@ -408,13 +344,13 @@ class NoticeTypeController extends Controller
         $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
         $ch = curl_init();
         
-        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
 
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
         
         $result = curl_exec($ch);
@@ -424,8 +360,7 @@ class NoticeTypeController extends Controller
         //close connection
         curl_close($ch);
 
-        $jsondecodeAssistEmployer = json_decode ($result);
-    
+        $jsondecodeAssistEmployer = json_decode($result);
     }
 
     public function checkOdRecordExist(&$jsondecodeOdRecord)
@@ -440,7 +375,7 @@ class NoticeTypeController extends Controller
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -453,8 +388,6 @@ class NoticeTypeController extends Controller
         curl_close($ch);
         // return $result;
         $jsondecodeOdRecord = json_decode($result);
-        
-
     }
 
     public function createnoticedraft()
@@ -467,33 +400,28 @@ class NoticeTypeController extends Controller
         $empcode = session('empcode');//chg27062019 - to send empcode to ws
 
         //chg27062019 - send accddate & accdtime to ws but null value
-        $notice = ['noticetype'=> $noticetype, 'operid'=> $operid,'brcode'=> $brcode, 'idno'=>$idno, 
+        $notice = ['noticetype'=> $noticetype, 'operid'=> $operid,'brcode'=> $brcode, 'idno'=>$idno,
             'idtype'=>$idtype, 'empcode'=>$empcode,'accddate'=>'', 'accdtime'=>''];
         $jsondata = json_encode($notice);
        
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/createdraft';
         $ch = curl_init();
         
-        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
+        curl_setopt($ch, CURLOPT_HTTPGET, false);
         
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
 
-            //close connection
+        //close connection
         curl_close($ch);
         
         return json_decode($result);
     }
-
 }
-
-    
-    
-

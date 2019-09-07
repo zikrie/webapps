@@ -84,8 +84,10 @@
                                                                 class="icon-close"></i></div>
                                                     </td> --}}
                                                     <td><input type="date" class="form-control"></td>
-                                                    <td><a href='/viewdoc?docname={{$d->docname}}'
-                                                            target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    <td><a href='/testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                        target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    {{-- <td><a href='viewdoc?docname={{$d->docname}}'
+                                                            target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
                                                            
                                                     <?php $docfound = true; $cnt++;?>
                                                 </tr>    
@@ -137,10 +139,13 @@
                                                         value="{{ $d -> doctype}}|{{ $d -> doccat}}">{{ $d-> docdescen}}</td>
                                                         
                                                 <td></td>
-
-                                                    <td><a href='/viewdoc?docname={{$d->docname}}'
+                                                <td><input type="date" class="form-control"></td>
+                                                
+                                                <td><a href='/testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                    target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    {{-- <td><a href='viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td>
-                                                    
+                                                     --}}
 
                                                 </tr>
                                                 <?php $cnt++; ?>
@@ -182,11 +187,12 @@
                 
 
                                         <div class="form-actions">
-                                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
-                                            <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                                            <button type="button" id="add_doc" class="btn btn waves-effect waves-light btn-info">@lang('button.adddoc')</button>
-                                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
-                                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
+                                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
+                                            <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
+                                            <button type="button" id="add_doc"
+                                            class="btn btn-secondary">@lang('scheme/uploaddoc.adddoc')</button>
+                                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
+                                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('scheme/noticetype.back')</button>
                                         </div>
 
                                 </div>

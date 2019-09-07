@@ -33,11 +33,11 @@
                                             <thead>
                                                 <tr>
                                                     <th style='width: 5%;align-self: center'>@lang('scheme/pensionDetails.attr.num')</th>
-                                                    <th style='width: 20%;align-self: center'>@lang('scheme/pensionDetails.attr.employer_name')</th>
-                                                    <th style='width: 25%;align-self: center'>@lang('scheme/pensionDetails.attr.employer_address')</th>
-                                                    <th style='width: 15%;align-self: center'>@lang('scheme/pensionDetails.attr.period')</th>
-                                                    <th style='width: 20%;align-self: center'>@lang('scheme/pensionDetails.attr.occupation')</th>
-                                                    <th style='width: 15%;align-self: center'>@lang('scheme/pensionDetails.attr.monthly_wages')</th>
+                                                    <th style='width: 20%;align-self: center'>@lang('scheme/pensionDetails.attr.employer_name')<span class="required">*</span></th>
+                                                    <th style='width: 25%;align-self: center'>@lang('scheme/pensionDetails.attr.employer_address')<span class="required">*</span></th>
+                                                    <th style='width: 15%;align-self: center'>@lang('scheme/pensionDetails.attr.period')<span class="required">*</span></th>
+                                                    <th style='width: 20%;align-self: center'>@lang('scheme/pensionDetails.attr.occupation')<span class="required">*</span></th>
+                                                    <th style='width: 15%;align-self: center'>@lang('scheme/pensionDetails.attr.monthly_wages')<span class="required">*</span></th>
                                                 </tr>
                                             </thead>
                                             <tbody>

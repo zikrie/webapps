@@ -12,7 +12,7 @@
         </div>
         <div id="ob" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.common.ob')
+                @include('scheme.general.ob')
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
         </div>
         <div id="socso" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.common.socso')
+                @include('scheme.general.socso')
             </div>
         </div>
     </div>
@@ -85,7 +85,7 @@
         </div>
         <div id="bankInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.common.bank')
+                @include('scheme.general.bank')
             </div>
         </div>
     </div>

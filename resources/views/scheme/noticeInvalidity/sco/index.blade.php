@@ -16,10 +16,13 @@
             <h4 class="card-title">@lang('scheme/index.attr.invalidity_notice')</h4>
             <!-- Nav tabs -->
             <ul class="nav customtab" role="tablist" id="tabMenu">
-                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.remarks')</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span
+                        class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
+                        Remarks</span></a> </li>
+
                 <li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#collapse" role="tab"><span
                             class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                Claim Info</span></a> </li>
+                            @lang('scheme/index.attr.claim_info')</span></a> </li>
 
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#investigate" id="nav_uploaddoc"
                                 role="tab"><span class="hidden-sm-up"><i class="ti-files"></i></span> <span
@@ -66,13 +69,15 @@
                     </div>
              </div>
             <div class="tab-content tabcontent-border">
-                <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                    @include('scheme.noticeAccident.SCO.remarks')
-                </div>
-                <div class="tab-pane p-20" id="collapse" role="tabpanel">
+                    <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
+                            @include('scheme.noticeInvalidity.SCO.remarks')
+                        </div>
+
+
+                <div class="tab-pane p-20 " id="collapse" role="tabpanel">
                     @include('scheme.noticeInvalidity.SCO.collapse')
                 </div>
-                
+
                 <div class="tab-pane p-20" id="investigate" role="tabpanel">
                         @include('scheme.noticeInvalidity.SCO.investigation')
                     </div>

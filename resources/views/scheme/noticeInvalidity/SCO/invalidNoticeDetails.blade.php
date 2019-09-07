@@ -8,14 +8,14 @@
                             <div class="row p-t-20">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.start_date')</label>
+                                        <label class="control-label">Employment Start Date</label>
                                         <input type="date" name="startDate" id="startDate" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.end_date')</label>
+                                        <label class="control-label">\Employment End Date</label>
                                         <input type="date" name="endDate" id="endDate" class="form-control">
                                     </div>
                                 </div>

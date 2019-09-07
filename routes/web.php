@@ -134,10 +134,37 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/noticeaccident_sao', 'NoticeAccidentController@indexSAO');
     /* ----------------------END OF NOTICE ACCIDENT -- SAO --------------------------- */
 
+    
+     /* -------------------------- NOTICE ACCIDENT -- REVISION (OB Profile) ----------------------- */
+     Route::get('/revisionobprofile_pk', 'Revision\OBProfileController@index');
+     Route::get('/revisionobprofile_sco', 'Revision\OBProfileController@index_SCO');
+     Route::get('/revisionobprofile_io', 'Revision\OBProfileController@index_IO');
+     Route::get('/revisionobprofile_sao', 'Revision\OBProfileController@index_SAO');
+     /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
+
+    /* -------------------------- NOTICE ACCIDENT -- REVISION (Wages) --------------------------- */
+    Route::get('/revisionwages_pk', 'Revision\WagesController@index');
+    Route::get('/revisionwages_sco', 'Revision\WagesController@index_SCO');
+    Route::get('/revisionwages_io', 'Revision\WagesController@index_IO');
+    Route::get('/revisionwages_sao', 'Revision\WagesController@index_SAO');
+    /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
+
+     /* -------------------------- NOTICE ACCIDENT -- REVISION (Reverse Decision) ---------------------- */
+     Route::get('/revisionreversedecision_pk', 'Revision\ReverseDecisionController@index');
+     Route::get('/revisionreversedecision_sco', 'Revision\ReverseDecisionController@index_SCO');
+     Route::get('/revisionreversedecision_io', 'Revision\ReverseDecisionController@index_IO');
+     Route::get('/revisionreversedecision_sao', 'Revision\ReverseDecisionController@index_SAO');
+     /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
+
+    /* -------------------------- NOTICE ACCIDENT -- OTHERS (Reverse Decision) ---------------------- */
+    Route::get('/bgr_pk', 'others\BGRController@index');
+    Route::get('/bgr_sco', 'others\BGRController@index_SCO');
+    Route::get('/bgr_io', 'others\BGRController@index_IO');
+    Route::get('/bgr_sao', 'others\BGRController@index_SAO');
+    /* ----------------------END OF NOTICE ACCIDENT -- OTHERS --------------------------- */
 
     /* --------------------------- NOTICE OD(PK) ------------------------------------ */
     Route::get('/noticeod', 'NoticeOdController@index');
-    Route::get('/noticeOd', 'NoticeOdController@index');
     Route::post('/noticeod', 'CommonController@postObForm');
     Route::post('/employerdetails_od', 'CommonController@postEmployer');
     Route::post('/odupdmc', 'NoticeOdController@UpdMC');
@@ -189,6 +216,13 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ---------------------------- NOTICE ILAT(SAO) ------------------------------------- */
     Route::get('/noticeinvalidity_sao', 'NoticeInvalidityController@indexsao');
     /* ----------------------------END OF NOTICE ILAT(SAO) -------------------------------- */
+    Route::get('/revisioninvalidity', 'Revision\InvalidityController@index_PK');
+    Route::get('/revisioninvalidity_sco', 'Revision\InvalidityController@index_SCO');
+    Route::get('/revisioninvalidity_sao', 'Revision\InvalidityController@index_SAO');
+
+    Route::get('/revisionbankruptcy', 'Revision\BankruptcyController@index_PK');
+    Route::get('/revisionbankruptcy_sco', 'Revision\BankruptcyController@index_SCO');
+    Route::get('/revisionbankruptcy_sao', 'Revision\BankruptcyController@index_SAO');
 
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */

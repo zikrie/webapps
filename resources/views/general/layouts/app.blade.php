@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/images/perkeso1.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/PERKESO_UI/assets/images/perkeso1.png')}}">
     <title>BeAMS</title>
     <!-- This page CSS -->
     <!-- chartist CSS -->

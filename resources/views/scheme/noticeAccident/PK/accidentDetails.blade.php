@@ -3,7 +3,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form method="post" action="{{url ('/Scheme/noticeaccident')}}">
+                <form method="post" action="{{url ('/scheme/noticeaccident')}}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         

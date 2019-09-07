@@ -7,7 +7,12 @@
                     <!-- Column -->
                     <div class="row p-t-20">
                         <div class="col-md-12">
-
+                                <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Employer Code</label>
+                                            <input type="text" id="total_months" class="form-control">
+                                        </div>
+                                    </div>
                             <div class="table-responsive">
                                 <table id="demo-foo-row-toggler" class="table table-bordered"
                                     data-toggle-column="first">
