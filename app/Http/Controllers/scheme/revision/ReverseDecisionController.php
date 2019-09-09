@@ -18,7 +18,7 @@ class ReverseDecisionController extends Controller
 
     public function index_IO()
     {
-        //  return view ('scheme.noticeAccident.revision.reverse_decision.IO.index');
+          return view ('scheme.noticeAccident.revision.reverse_decision.IO.index');
     }
 
     public function index_SCO()
@@ -28,7 +28,7 @@ class ReverseDecisionController extends Controller
 
     public function index_SAO()
     {
-        //  return view ('scheme.noticeAccident.revision.reverse_decision.SAO.index');
+          return view ('scheme.noticeAccident.revision.reverse_decision.SAO.index');
     }
 
   
