@@ -41,7 +41,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label">Source</label>
-                                        <input type="date" id="" class="form-control" >
+                                        <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                             </div>

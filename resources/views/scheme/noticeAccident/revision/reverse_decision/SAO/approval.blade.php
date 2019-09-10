@@ -10,24 +10,26 @@
                             <div class="row p-t-20">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label"> Recommendation</label>
-                                        <select class="form-control">
-                                            <option value="">Please Select</option>
-                                            <option value="">Syor</option>
-                                            <option value="">Tidak Syor</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">Recommendation By</label>
+                                        <label class="control-label">Status Scheme EI Decision</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Recommendation Date</label>
+                                        <label class="control-label">Approval</label>
                                         <input type="date" id="" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Scheme Approved By</label>
+                                        <input type="text" id="" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Schemen Approved Date</label>
+                                        <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                             </div>

@@ -5,33 +5,38 @@
                 <div class="card-body">
                     <form action="#">
                         <div class="form-body">
-                            
-                           
+
                             <div class="row p-t-20">
+                                
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label"> Recommendation</label>
-                                        <select class="form-control">
-                                            <option value="">Please Select</option>
-                                            <option value="">Syor</option>
-                                            <option value="">Tidak Syor</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">Recommendation By</label>
+                                        <label class="control-label">Transfer</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Recommendation Date</label>
-                                        <input type="date" id="" class="form-control" >
+                                        <label class="control-label">Origin</label>
+                                        <input type="text" id="" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Current</label>
+                                        <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                             </div>
-                               
+                            
+                            <div class="row p-t-20">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Remarks</label>
+                                        <textarea type="text" id=""  value="" class="form-control" ></textarea> 
+                                    </div>
+                                </div>
+                            </div>
+
                            
 
                           
@@ -42,3 +47,5 @@
         </div>
     </div>
 </div>
+    
+    

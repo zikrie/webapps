@@ -10,42 +10,55 @@
                             <div class="row p-t-20">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Notice ID</label><span class="required">*</span>
+                                        <label class="control-label">Scheme Ref. No.</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Revision Type</label><span class="required">*</span>
+                                        <label class="control-label">Notice Date</label>
                                         <input type="text" id="" class="form-control" >
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row p-t-20">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Revision Reason</label><span class="required">*</span>
-                                        <textarea type="text" id=""  value="" class="form-control" ></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row p-t-20">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">Received Revision Notice Date</label><span class="required">*</span>
-                                        <input type="date" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Source</label>
+                                        <label class="control-label">Notice Type</label>
+                                        <input type="text" id="" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Scheme Type</label>
+                                        <input type="text" id="" class="form-control" >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Potential HUK case</label>
+                                        <select class="form-control">
+                                            <option value="">Please Select</option>
+                                            <option value="">Yes</option>
+                                            <option value="">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Potential Sek 98</label>
+                                        <select class="form-control">
+                                            <option value="">Please Select</option>
+                                            <option value="">Yes</option>
+                                            <option value="">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Ilat Notice ID</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="row p-t-20">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -54,7 +67,6 @@
                                     </div>
                                 </div>
                             </div>
-
                            
 
                           

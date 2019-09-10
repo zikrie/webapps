@@ -10,7 +10,7 @@
                             <div class="row p-t-20">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label"> Recommendation</label>
+                                        <label class="control-label"> Recommendation IO </label>
                                         <select class="form-control">
                                             <option value="">Please Select</option>
                                             <option value="">Syor</option>
