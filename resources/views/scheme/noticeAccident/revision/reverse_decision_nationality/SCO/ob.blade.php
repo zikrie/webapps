@@ -27,46 +27,50 @@
                     <div class='row'>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.notice')</label><span class="required">*</span>
-                                <input type="text"  id="notice_reverseDecision" name="notice" value="" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>@lang('insuredPerson.attr.rev_type')</label><span class="required">*</span>
-                                <input type="text"  id="revType_reverseDecision" name="revType" value="" class="form-control">
+                                <label>Notice ID</label>
+                                <input type="text" readonly id="notice_reverseDecision" name="notice" value="" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class='row'>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.revReason')</label><span class="required">*</span>
-                                <select class="form-control" data-placeholder="reverseDecision" tabindex="2">
-                                        <option selected readonly disabled hidden>Please Select </option>
-                                        <option value="Employment Injury">@lang('wages.attr.employmentInjury')</option>
-                                        <option value="FPM">@lang('wages.attr.fpm')</option>
-                                </select>
+                                <label>Name</label>
+                                <input type="text" readonly id="name_reverseDecision" name="name" value="" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.receivedRevisionNoticeDate')</label><span class="required">*</span>
-                                <input type="text"  id="receivedRevisionNoticeDate_reverseDecision" class="form-control" name="receivedRevisionNoticeDate" value="">
+                                <label>@lang('insuredPerson.attr.id_type')</label>
+                                <input type="text" readonly id="id_type_reverseDecision" name="id_type" value="" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class='row'>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.source')</label>
-                                <input type="text"  id="source_reverseDecision" name="source" value="" class="form-control">
+                                <label>@lang('insuredPerson.attr.id_num')</label>
+                                <input type="text" readonly id="id_num_reverseDecision" class="form-control" name="id_num" value="">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.remarks')</label>
-                                <input type="text"  id="remark_reverseDecision" name="remark" value="" class="form-control">
+                                <label class="control-label">Case Type</label>
+                                <input type="text" readonly id="noticeDate_reverseDecision" name="noticeDate" value="" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Status</label>
+                                <input type="text" readonly id="accDate_reverseDecision" name="accDate" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">@lang('insuredPerson.attr.ssab')</label><span class="required">*</span>
+                                <input type="text"  id="ssab_reverseDecision" name="ssab" value="" class="form-control">
                             </div>
                         </div>
                     </div>
