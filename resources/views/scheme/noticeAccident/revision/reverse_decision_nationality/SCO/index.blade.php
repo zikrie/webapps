@@ -26,6 +26,12 @@
                                 </a>
                         </li>
                         <li class="nav-item"> 
+                                <a class="nav-link" data-toggle="tab" href="#recommendationSCO" role="tab">
+                                        <span class="hidden-sm-up"><i class="ti-home"></i></span> 
+                                        <span class="hidden-xs-down">Recommendation</span>
+                                </a>
+                        </li>
+                        <li class="nav-item"> 
                                 <a class="nav-link" data-toggle="tab" href="#supportingDocumentReverseDecPK" role="tab">
                                         <span class="hidden-sm-up"><i class="ti-home"></i></span> 
                                         <span class="hidden-xs-down">Supporting Document</span>
@@ -77,6 +83,9 @@
                         <div class="tab-pane p-20 active" id="remarksReverseDecPK" role="tabpanel">
                                 @include('scheme.noticeAccident.revision.reverse_decision_nationality.PK.remarks')
                         </div>
+                        <div class="tab-pane p-20" id="recommendationSCO" role="tabpanel">
+                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.SCO.recommendation')
+                        </div>
                         <div class="tab-pane p-20" id="supportingDocumentReverseDecPK" role="tabpanel">
                                 @include('scheme.noticeAccident.revision.reverse_decision_nationality.PK.supporting_document')
                         </div>
@@ -97,7 +106,7 @@
                                                 </div>
                                                 <div id="caseInfoReverseDecPK" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.PK.caseInformation')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.SCO.caseInformation')
                                                         </div>
                                                 </div>
                                         </div>
@@ -115,44 +124,17 @@
                                                 </div>
                                                 <div id="insuredPersonInfoPK" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.PK.insuredPersonInfo')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.SCO.ob')
                                                         </div>
                                                 </div>
-                                        </div>
-
-                                      
-
-                                                
-
-                                                
-
-                                                 
-
-                                               
+                                        </div>              
                                 </div>
                         </div>
                 </div>
-
-
-            
         </div>
     </div>
 </div>
 <!-- row -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
     //redirect to specific tab
     $(document).ready(function () {
