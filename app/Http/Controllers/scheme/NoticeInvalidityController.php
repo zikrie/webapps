@@ -335,7 +335,7 @@ class NoticeInvalidityController extends CommonController
         $uniquerefno = session('uniquerefno');
         $caserefno = session ('caserefno');
         
-        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        $docinfo =DB::select('Select r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
        
         // if ($confirmation != null && $confirmation->statecode != '')
         // {
@@ -348,7 +348,7 @@ class NoticeInvalidityController extends CommonController
         //  return $empinfo;
           
         //chg28062019 - send alldoclist to blade
-        return view('scheme.noticeInvalidity.PK.index',['obprofile'=>$obprofile,'state'=>$state, 
+        return view('scheme.noticeInvalidity.newClaim.PK.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
             'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
             'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 
@@ -1765,7 +1765,7 @@ public function postEmphistory(Request $req)
         //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
         // }
         //  return $empinfo;
-        return view('scheme.noticeInvalidity.preview',['obprofile'=>$obprofile,'state'=>$state,
+        return view('scheme.noticeInvalidity.newClaim.preview',['obprofile'=>$obprofile,'state'=>$state,
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
             'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
             'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 
@@ -2548,7 +2548,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         $uniquerefno = session('uniquerefno');
         $caserefno = session ('caserefno');
         
-        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        $docinfo =DB::select('Select r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
        
         // if ($confirmation != null && $confirmation->statecode != '')
         // {
@@ -2561,7 +2561,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         //  return $empinfo;
           
         //chg28062019 - send alldoclist to blade
-        return view('scheme.noticeInvalidity.SCO.index',['obprofile'=>$obprofile,'state'=>$state, 
+        return view('scheme.noticeInvalidity.newClaim.SCO.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
             'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
             'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 
@@ -2893,7 +2893,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         $uniquerefno = session('uniquerefno');
         $caserefno = session ('caserefno');
         
-        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        $docinfo =DB::select('Select r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
        
         // if ($confirmation != null && $confirmation->statecode != '')
         // {
@@ -2906,7 +2906,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         //  return $empinfo;
           
         //chg28062019 - send alldoclist to blade
-        return view('scheme.noticeInvalidity.IO.index',['obprofile'=>$obprofile,'state'=>$state, 
+        return view('scheme.noticeInvalidity.newClaim.IO.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
             'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
             'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 
@@ -3238,7 +3238,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         $uniquerefno = session('uniquerefno');
         $caserefno = session ('caserefno');
         
-        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        $docinfo =DB::select('Select r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
        
         // if ($confirmation != null && $confirmation->statecode != '')
         // {
@@ -3251,7 +3251,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         //  return $empinfo;
           
         //chg28062019 - send alldoclist to blade
-        return view('scheme.noticeInvalidity.SAO.index',['obprofile'=>$obprofile,'state'=>$state, 
+        return view('scheme.noticeInvalidity.newClaim.SAO.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
             'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
             'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 

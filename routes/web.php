@@ -145,8 +145,11 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* -------------------------- NOTICE ACCIDENT -- REVISION (Wages) --------------------------- */
     Route::get('/revisionwages_pk', 'Revision\WagesController@index');
     Route::get('/revisionwages_sco', 'Revision\WagesController@index_SCO');
+    Route::get('/revisionwages_sco_spi', 'Revision\WagesController@index_SCO_SPI');
     Route::get('/revisionwages_io', 'Revision\WagesController@index_IO');
+    Route::get('/revisionwages_io_spi', 'Revision\WagesController@index_IO_SPI');
     Route::get('/revisionwages_sao', 'Revision\WagesController@index_SAO');
+    Route::get('/revisionwages_sao_spi', 'Revision\WagesController@index_SAO_SPI');
     /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
 
      /* -------------------------- NOTICE ACCIDENT -- REVISION (Reverse Decision) ---------------------- */
@@ -228,6 +231,10 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/revisionbankruptcy', 'Revision\BankruptcyController@index_PK');
     Route::get('/revisionbankruptcy_sco', 'Revision\BankruptcyController@index_SCO');
     Route::get('/revisionbankruptcy_sao', 'Revision\BankruptcyController@index_SAO');
+
+    Route::get('/revisionsection96', 'Revision\Section96Controller@index_PK');
+    Route::get('/revisionsection96_sco', 'Revision\Section96Controller@index_SCO');
+    Route::get('/revisionsection96_sao', 'Revision\Section96Controller@index_SAO');
 
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */

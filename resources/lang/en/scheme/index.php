@@ -35,6 +35,11 @@ return [
         'generated_document' => 'Generated Documents',
         'routing' => 'Routing',
         'queryOpinion' => 'Query and Opinion',
+        'insurance_details'=>'Wages Info',
+        'detailsContriSalary' => 'Contribution Info',
+        'creditPeriod' => 'Credit Period',
+        'contribution_section'=>'Contribution Section 56',
+        'social_developing' =>'Prefered Sosco',
 
         'name' => 'Name',
         'idno' => 'ID No',
