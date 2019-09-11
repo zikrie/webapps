@@ -4,7 +4,7 @@
             <div class="card-body">
                 <form action="#">
                     <div class="form-body">
-                        <h5 class="card-title">@lang('form/scheme.remarks')</h5>
+                        <h5 class="card-title">	Remarks</h5>
                         <hr>
                         {{-- <div class="col-md-12" id="container">
                             <div class="table-responsive">
@@ -19,11 +19,11 @@
                                     <table class="table table-sm table-bordered" data-toggle-column="first">
                                         <thead>
                                             <tr>
-                                                <th>@lang('form/scheme.general.remarks.date')</th>
-                                                <th>@lang('form/scheme.general.remarks.time')</th>
-                                                <th>@lang('form/scheme.general.remarks.from')</th>
-                                                <th>@lang('form/scheme.general.remarks.to')</th>
-                                                <th>@lang('form/scheme.general.remarks.remarks')</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th>Remarks</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,7 +42,7 @@
                         <div class='row'>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('form/scheme.general.remarks.remarks')</label>
+                                    <label class="control-label">Remarks</label>
                                     <textarea type="text" class="form-control"></textarea>
                                 </div>
                             </div>

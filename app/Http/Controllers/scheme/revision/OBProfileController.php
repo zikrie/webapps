@@ -21,9 +21,9 @@ class OBProfileController extends Controller
         $noticetype="03";
         $doclist = DB::select($sql,[$noticetype]);
         $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
-        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        // $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
         $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
-        return view('scheme.noticeAccident.revision.ob_profile.PK.index',['idtype'=>$idtype,'doclist'=>$doclist,'docinfo'=>$docinfo,'doclist_select'=>$alldoclist, 'month' => $month]);
+        return view('scheme.noticeAccident.revision.ob_profile.PK.index',['idtype'=>$idtype,'doclist'=>$doclist, 'doclist_select'=>$alldoclist, 'month' => $month]);
     }
 
     public function index_IO()

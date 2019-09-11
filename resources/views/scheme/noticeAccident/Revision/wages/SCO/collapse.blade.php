@@ -80,7 +80,7 @@
         <div id="wages" class="collapse" role="tabpanel"
             aria-labelledby="headingOne1">
             <div class="card-body">
-                {{-- @include('Scheme.noticeAccident.revision.ob_profile.SCO.wages') --}}
+               @include('Scheme.noticeAccident.revision.wages.SCO_SPI.wages_latest')
             </div>
         </div>
     </div>

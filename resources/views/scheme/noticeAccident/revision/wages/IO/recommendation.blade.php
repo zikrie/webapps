@@ -7,12 +7,6 @@
                         {{-- <h5 class="card-title">Recommendation</h5>
                         <hr> --}}
                         <div class="row p-t-20">
-                            <div class="col-mdcol-md-12 col-lg-4">
-                                <div class="form-group">
-                                    <label class="control-label">IO Recommendation</label>
-                                    <input type="text" name="caseCategory" id="caseCategory" class="form-control" required>
-                                </div>
-                            </div>
                             <div class="col-mdcol-md-12 col-lg-8">
                                 <div class="form-group">
                                     <label class="control-label">Recommended By</label>
@@ -28,7 +22,6 @@
                                 </div>
                             </div>
                         </div>
-                
                         <div class="form-actions">
                             <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/noticetype.next')</button>
                         </div>             

@@ -145,8 +145,11 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* -------------------------- NOTICE ACCIDENT -- REVISION (Wages) --------------------------- */
     Route::get('/revisionwages_pk', 'Revision\WagesController@index');
     Route::get('/revisionwages_sco', 'Revision\WagesController@index_SCO');
+    Route::get('/revisionwages_sco_spi', 'Revision\WagesController@index_SCO_SPI');
     Route::get('/revisionwages_io', 'Revision\WagesController@index_IO');
+    Route::get('/revisionwages_io_spi', 'Revision\WagesController@index_IO_SPI');
     Route::get('/revisionwages_sao', 'Revision\WagesController@index_SAO');
+    Route::get('/revisionwages_sao_spi', 'Revision\WagesController@index_SAO_SPI');
     /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
 
      /* -------------------------- NOTICE ACCIDENT -- REVISION (Reverse Decision) ---------------------- */

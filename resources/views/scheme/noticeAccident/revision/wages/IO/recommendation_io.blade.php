@@ -9,10 +9,18 @@
                         <div class="row p-t-20">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">IO Recommendation</label>
+                                    <label class="control-label">Recommendation</label>
                                     <input type="text" name="caseCategory" id="caseCategory" class="form-control" required>
                                 </div>
                             </div>
+                            <div class="col-mdcol-md-12 col-lg-4">
+                                <div class="form-group">
+                                    <label class="control-label">Route</label>
+                                    <input type="text" name="caseCategory" id="caseCategory" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-t-20">
                             <div class="col-mdcol-md-12 col-lg-8">
                                 <div class="form-group">
                                     <label class="control-label">Recommended By</label>

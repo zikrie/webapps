@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.insuredPersonInfo')</h3>
+            <h3 class="card-title">Revision Wages</h3>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-body">
@@ -86,7 +86,7 @@
                                 @include('Scheme.noticeAccident.revision.ob_profile.SCO.recommendation')
                             </div>
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                @include('Scheme.noticeAccident.revision.wages.PK.supporting_document')
+                                @include('Scheme.noticeAccident.revision.ob_profile.SCO.supporting_document')
                             </div>
                         </div>
                     </div>

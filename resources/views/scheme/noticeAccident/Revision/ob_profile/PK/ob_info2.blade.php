@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.postal_address')</label>
+                                <label>Address</label>
                                 <input type="text" name="add1" value="" class="form-control">
                             </div>
                         </div>
@@ -46,19 +46,19 @@
                     <div class='row'>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.city')</label>
+                                <label>City</label>
                                 <input type="text" id="city_obProf" class="form-control" name="city" value="">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.state')</label>
+                                <label class="control-label">State</label>
                                 <input type="text"  id="state_obProf" name="state" value="" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.postcode')</label>
+                                <label>Postcode</label>
                                 <input type="text"  id="postcode_obProf" name="postcode" value="" class="form-control">
                             </div>
                         </div>
@@ -66,19 +66,19 @@
                     <div class='row'>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.email')</label>
+                                <label class="control-label">Email Address</label>
                                 <input type="email"  id="email_obProf" name="email" value="" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.telephoneNo')</label>
+                                <label class="control-label">Telephone No</label>
                                 <input type="text" id="telNo_obProf" name="telNo" value="" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.mobileNo')</label>
+                                <label class="control-label">Mobile No</label>
                                 <input type="text"  id="mobileNo_obProf" name="mobileNo" value="" class="form-control">
                             </div>
                         </div>

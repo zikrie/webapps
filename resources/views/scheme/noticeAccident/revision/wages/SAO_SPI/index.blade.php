@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">Revision Insured Person</h3>
+            <h3 class="card-title">Revision Wages</h3>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-body">
@@ -80,7 +80,7 @@
                                 @include('Scheme.noticeAccident.revision.ob_profile.PK.remarks')
                             </div>
                             <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
-                                @include('Scheme.noticeAccident.revision.ob_profile.SAO.collapse')
+                                @include('Scheme.noticeAccident.revision.wages.SAO_SPI.collapse')
                             </div>
                             <div class="tab-pane p-20" id="recommendations" role="tabpanel">
                                 @include('Scheme.noticeAccident.revision.ob_profile.IO.collapse_recommendation')
