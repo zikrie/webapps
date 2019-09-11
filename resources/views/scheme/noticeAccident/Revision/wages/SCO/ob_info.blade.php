@@ -35,7 +35,7 @@
                             <div class="row p-t-20">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>@lang('insuredPerson.attr.id_type')</label>
+                                        <label>ID type</label>
                                         <select class="form-control clearfields" name='idtype' id='idtype' required>
                                             <option selected readonly disabled hidden>Please Select </option>
                                             @foreach ($idtype as $id)

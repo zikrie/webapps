@@ -5,7 +5,8 @@
                 <div class="card-body">
                     <form action="#">
                         <div class="form-body">
-                            
+                             <h5 class="card-title"> SCO Recommendation</h5>
+                        <hr>
                            
                             <div class="row p-t-20">
                                 <div class="col-md-4">

@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.wages')</h3>
+            <h3 class="card-title">Revision Wages</h3>
             <!-- Tab panes -->
 
 
