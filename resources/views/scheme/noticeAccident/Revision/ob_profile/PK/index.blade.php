@@ -79,7 +79,7 @@
                                 @include('Scheme.noticeAccident.revision.ob_profile.PK.remarks')
                             </div>
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                {{-- @include('Scheme.general.upload_doc') --}}
+                                @include('Scheme.noticeAccident.revision.ob_profile.PK.supporting_document')
                             </div>
                             <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
 

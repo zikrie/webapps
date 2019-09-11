@@ -86,7 +86,7 @@
                                 @include('Scheme.noticeAccident.revision.ob_profile.IO.collapse_recommendation')
                             </div>
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                {{-- @include('Scheme.noticeAccident.revision.ob_profile.SCO.uploadDoc') --}}
+                                @include('Scheme.noticeAccident.revision.ob_profile.IO.supporting_document')
                             </div>
                         </div>
                     </div>
@@ -95,6 +95,10 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('js')
 <!-- row -->
 <script>
     //redirect to specific tab

@@ -17,7 +17,7 @@
                                                 </div>
                                                 <div id="uploadDoc" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                 <div class="card-body">
-                                                        @include('scheme.common.uploadDoc1')
+                                                        @include('scheme.general.upload_doc1')
                                                 </div>
                                                 </div>
                                         </div>

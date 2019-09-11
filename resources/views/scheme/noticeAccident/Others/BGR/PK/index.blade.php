@@ -80,7 +80,7 @@
                                 @include('Scheme.noticeAccident.others.BGR.PK.remarks')
                             </div>
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                {{-- @include('Scheme.common.uploadDoc') --}}
+                                @include('Scheme.noticeAccident.others.BGR.PK.supporting_document')
                             </div>
 
                             <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
