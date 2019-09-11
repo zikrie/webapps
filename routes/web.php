@@ -153,10 +153,10 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
 
      /* -------------------------- NOTICE ACCIDENT -- REVISION (Reverse Decision) ---------------------- */
-     Route::get('/revisionreversedecisionbktobkk_pk', 'Revision\ReverseDecisionController@index_bk_to_bkk');
-     Route::get('/revisionreversedecisionbktobkk_sco', 'Revision\ReverseDecisionController@index_SCO_bk_to_bkk');
-     Route::get('/revisionreversedecisionbktobkk_io', 'Revision\ReverseDecisionController@index_IO_bk_to_bkk');
-     Route::get('/revisionreversedecisionbktobkk_sao', 'Revision\ReverseDecisionController@index_SAO_bk_to_bkk');
+     Route::get('/revisionreversedecisionbktobbk_pk', 'Revision\ReverseDecisionController@index_bk_to_bbk');
+     Route::get('/revisionreversedecisionbktobbk_sco', 'Revision\ReverseDecisionController@index_SCO_bk_to_bbk');
+     Route::get('/revisionreversedecisionbktobbk_io', 'Revision\ReverseDecisionController@index_IO_bk_to_bbk');
+     Route::get('/revisionreversedecisionbktobbk_sao', 'Revision\ReverseDecisionController@index_SAO_bk_to_bbk');
 
      Route::get('/revisionreversedecisionnationality_pk', 'Revision\ReverseDecisionController@index_nationality');
      Route::get('/revisionreversedecisionnationality_sco', 'Revision\ReverseDecisionController@index_SCO_nationality');

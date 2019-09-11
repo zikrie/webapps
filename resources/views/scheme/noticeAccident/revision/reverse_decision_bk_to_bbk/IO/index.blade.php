@@ -14,19 +14,19 @@
 
                 <ul class="nav customtab" role="tablist" id="tabMenu">
                         <li class="nav-item"> 
-                                <a class="nav-link active" data-toggle="tab" href="#remarksReverseDecSCO" role="tab">
+                                <a class="nav-link active" data-toggle="tab" href="#remarksReverseDecIO" role="tab">
                                         <span class="hidden-sm-up"><i class="ti-home"></i></span>
                                         <span class="hidden-xs-down">Remarks</span>
                                 </a>
                         </li>
                         <li class="nav-item"> 
-                                <a class="nav-link" data-toggle="tab" href="#claimDetailsReverseDecSCO" role="tab">
+                                <a class="nav-link" data-toggle="tab" href="#claimDetailsReverseDecIO" role="tab">
                                         <span class="hidden-sm-up"><i class="ti-home"></i></span> 
                                         <span class="hidden-xs-down">Claim Details</span>
                                 </a>
                         </li>
                         <li class="nav-item"> 
-                                <a class="nav-link" data-toggle="tab" href="#supportingDocumentReverseDecSCO" role="tab">
+                                <a class="nav-link" data-toggle="tab" href="#supportingDocumentReverseDecIO" role="tab">
                                         <span class="hidden-sm-up"><i class="ti-home"></i></span> 
                                         <span class="hidden-xs-down">Supporting Document</span>
                                 </a>
@@ -74,262 +74,262 @@
 
 
                 <div class="tab-content tabcontent-border">
-                        <div class="tab-pane p-20 active" id="remarksReverseDecSCO" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.remarksSCO')
+                        <div class="tab-pane p-20 active" id="remarksReverseDecIO" role="tabpanel">
+                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.remarksIO')
                         </div>
-                        <div class="tab-pane p-20" id="supportingDocumentReverseDecSCO" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.supportingDocSCO')
+                        <div class="tab-pane p-20" id="supportingDocumentReverseDecIO" role="tabpanel">
+                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.supportingDocIO')
                         </div>
-                        <div class="tab-pane p-20" id="claimDetailsReverseDecSCO" role="tabpanel">
+                        <div class="tab-pane p-20" id="claimDetailsReverseDecIO" role="tabpanel">
                                 <div id="accordion2" role="tablist" class="accordion">
 
                                         <!-- Case Information -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="caseInfo_reverse_decision_SCO">
+                                                <div class="card-header" role="tab" id="caseInfo_reverse_decision_bk_to_bbk_IO">
                                                         <h6 class="mb-0">
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2"
-                                                                href="#caseInfoReverseDecSCO" aria-expanded="false" aria-controls="collapseOne1">
+                                                                href="#caseInfoReverseDecIO" aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i>
                                                                         Case Information
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="caseInfoReverseDecSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="caseInfoReverseDecIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.caseInformation')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.caseInformation')
                                                         </div>
                                                 </div>
                                         </div>
 
                                         <!-- Insured Person Information -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="insuredPersonInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="insuredPersonInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#insurePersonInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#insurePersonInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i>
                                                                 Insured Person Information</h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="insurePersonInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="insurePersonInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.insuredPersonInfo')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.insuredPersonInfo')
                                                         </div>
                                                 </div>
                                         </div>
 
                                         <!-- First Pyment Info -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="firstPaymentInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="firstPaymentInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#firstPaymentInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#firstPaymentInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> First Payment Information (HUS)
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="firstPaymentInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="firstPaymentInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.firstPaymentInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.firstPaymentInfo')
                                                         </div>
                                                 </div>
                                         </div>
                                         
                                         <!-- Accident Notice Information -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="accidentNoticeInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="accidentNoticeInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#accidentNoticeInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#accidentNoticeInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Accident Notice Information
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="accidentNoticeInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="accidentNoticeInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.accidentNoticeInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.accidentNoticeInfo')
                                                         </div>
                                                 </div>
                                         </div>
 
                                         <!-- Death Notice Information -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="deathNoticeInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="deathNoticeInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#deathNoticeInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#deathNoticeInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Death Notice Information
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="deathNoticeInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="deathNoticeInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.deathNoticeInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.deathNoticeInfo')
                                                         </div>
                                                 </div>
                                         </div>
 
                                           <!-- Medical Board Decision -->
-                                          <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="medicalBoardDecision_reverseDecision_SCO">
+                                          <!-- <div class="card m-b-0">
+                                                <div class="card-header" role="tab" id="medicalBoardDecision_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#medicalBoardDecisionSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#medicalBoardDecisioIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Medical Board Decision
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="medicalBoardDecisionSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="medicalBoardDecisionIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.medicalBoardDecision')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.medicalBoardDecision')
                                                         </div>
                                                 </div>
-                                        </div>
+                                        </div> -->
 
                                          <!-- Medical Certificate Information -->
                                          <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="medicalCertificateInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="medicalCertificateInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#medicalCertificateInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#medicalCertificateInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Medical Certificate Information
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="medicalCertificateInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="medicalCertificateInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.medicalCertificateInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.medicalCertificateInfo')
                                                         </div>
                                                 </div>
                                         </div>
 
                                         <!-- Preferred Socso Office -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="preferredSocsoOffice_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="preferredSocsoOffice_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#preferredSocsoOfficeSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#preferredSocsoOfficeIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Preferred Socso Office
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="preferredSocsoOfficeSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="preferredSocsoOfficeIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.preferredSocsoOffice')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.preferredSocsoOffice')
                                                         </div>
                                                 </div>
                                         </div>
 
                                         <!-- Case Transferation -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="caseTransferation_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="caseTransferation_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseTransferationSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseTransferationIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Case Transferation
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="caseTransferationSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="caseTransferationIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.caseTransferation')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.caseTransferation')
                                                         </div>
                                                 </div>
                                         </div>
 
                                          <!-- Bank Information -->
                                          <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="bankInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="bankInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#bankInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#bankInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Bank Information
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="bankInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="bankInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.bankInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.bankInfo')
                                                         </div>
                                                 </div>
                                         </div>
 
                                         <!-- Employer Information -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="employerInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="employerInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#employerInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#employerInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Employer Information
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="employerInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="employerInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.employerInformation')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.employerInformation')
                                                         </div>
                                                 </div>
                                         </div>
 
                                         <!-- Wages Information -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="WagesInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="WagesInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#wagesInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#wagesInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Wages Information
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="wagesInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="wagesInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.wagesInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.wagesInfo')
                                                         </div>
                                                 </div>
                                         </div>
 
                                         <!-- Similar Worker Information -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="similarWorkerInfo_reverseDecision_SCO">
+                                                <div class="card-header" role="tab" id="similarWorkerInfo_reverseDecision_IO">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#similarWorkerInfoSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#similarWorkerInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Similar Worker Information
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="similarWorkerInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                <div id="similarWorkerInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.similarWorkerInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.similarWorkerInfo')
                                                         </div>
                                                 </div>
                                         </div>
 
                                          <!-- Insured Person Confirmation -->
                                          <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="insuredPersonConfirmation_reverseDecision_SCO" style="background-color: #FFFFFF;">
+                                                <div class="card-header" role="tab" id="insuredPersonConfirmation_reverseDecision_IO" style="background-color: #FFFFFF;">
                                                         <h6 class="mb-0">
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#insuredPersonConfirmationSCO"
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#insuredPersonConfirmationIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i> Insured Person Confirmation
                                                                 </h6>
                                                         </a>
                                                         </h6>
                                                 </div>
-                                                <div id="insuredPersonConfirmationSCO" class="collapse" role="tabpanel" aria-labelledby="insuredPersonConfirmation_reverseDecision_SCO">
+                                                <div id="insuredPersonConfirmationIO" class="collapse" role="tabpanel" aria-labelledby="insuredPersonConfirmation_reverseDecision_IO">
                                                         <div class="card-body">
                                                                 <div id="accordionLesisure" role="tablist" class="accordion" >
 
@@ -343,7 +343,7 @@
                                                                                 </div>
                                                                                 <div id="collapseDependentProfile" class="collapse" role="tabpanel" aria-labelledby="headingDependentProfile">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.dependentProfile') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.dependentProfile') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -358,7 +358,7 @@
                                                                                 </div>
                                                                                 <div id="collapseGuardianInfo" class="collapse" role="tabpanel" aria-labelledby="headingGuardianInfo">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.guardianInfo') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.guardianInfo') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -373,7 +373,7 @@
                                                                                 </div>
                                                                                 <div id="collapsedependentEduInfo" class="collapse" role="tabpanel" aria-labelledby="headingdependentEduInfo">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.dependentEduInfo') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.dependentEduInfo') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -388,7 +388,7 @@
                                                                                 </div>
                                                                                 <div id="collapsebankInfo_IPconfirm" class="collapse" role="tabpanel" aria-labelledby="headingbankInfo_IPconfirm">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.bankInfo_IPconfirm') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.bankInfo_IPconfirm') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -400,45 +400,45 @@
 
                                                 <!-- FPM -->
                                                 <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="fpm_reverseDecision_SCO">
+                                                        <div class="card-header" role="tab" id="fpm_reverseDecision_IO">
                                                                 <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#fpmSCO"
+                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#fpmIO"
                                                                         aria-expanded="false" aria-controls="collapseOne1">
                                                                         <h6 class="card-title"><i class="fa fa-plus"></i> FPM
                                                                         </h6>
                                                                 </a>
                                                                 </h6>
                                                         </div>
-                                                        <div id="fpmSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div id="fpmIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.fpm')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.fpm')
                                                                 </div>
                                                         </div>
                                                 </div>
 
-                                                <!-- Investigation Assisstant -->
+                                                <!-- Similar Worker Details -->
                                                 <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="investigationAss_reverseDecision_SCO">
+                                                        <div class="card-header" role="tab" id="similarWorkerDetails_reverseDecision_IO">
                                                                 <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigationAssSCO"
+                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#similarWorkerDetailsIO"
                                                                         aria-expanded="false" aria-controls="collapseOne1">
-                                                                        <h6 class="card-title"><i class="fa fa-plus"></i> Investigation Assisstant
+                                                                        <h6 class="card-title"><i class="fa fa-plus"></i> Similar Worker Details
                                                                         </h6>
                                                                 </a>
                                                                 </h6>
                                                         </div>
-                                                        <div id="investigationAssSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div id="similarWorkerDetailsIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.investigationAss')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.similarWorkerDetails')
                                                                 </div>
                                                         </div>
                                                 </div>
 
                                                  <!-- Statement -->
                                                  <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="statement_reverseDecision_SCO">
+                                                        <div class="card-header" role="tab" id="statement_reverseDecision_IO">
                                                                 <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#statementSCO"
+                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#statementIO"
                                                                         aria-expanded="false" aria-controls="collapseOne1">
                                                                         <h6 class="card-title"><i class="fa fa-plus"></i> Statement
                                                                         </h6>
@@ -446,18 +446,18 @@
                                                                 </h6>
                                                         </div>
                                                         
-                                                        <div id="statementSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div id="statementIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.statementSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.statementIO')
                                                                 </div>
                                                         </div>
                                                 </div>
 
                                                  <!-- Case Fact -->
                                                  <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="caseFactSCO_reverseDecision_SCO">
+                                                        <div class="card-header" role="tab" id="caseFactIO_reverseDecision_IO">
                                                                 <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseFactSCO"
+                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseFactIO"
                                                                         aria-expanded="false" aria-controls="collapseOne1">
                                                                         <h6 class="card-title"><i class="fa fa-plus"></i> Case Fact
                                                                         </h6>
@@ -465,18 +465,18 @@
                                                                 </h6>
                                                         </div>
                                                         
-                                                        <div id="caseFactSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div id="caseFactIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.caseFactSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.caseFactIO')
                                                                 </div>
                                                         </div>
                                                 </div>
 
                                                 <!-- Investigation Information -->
                                                 <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="investigationInfoSCO_reverseDecision_SCO">
+                                                        <div class="card-header" role="tab" id="investigationInfoIO_reverseDecision_IO">
                                                                 <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigationInfoSCO"
+                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigationInfoIO"
                                                                         aria-expanded="false" aria-controls="collapseOne1">
                                                                         <h6 class="card-title"><i class="fa fa-plus"></i> Investigation Information
                                                                         </h6>
@@ -484,18 +484,18 @@
                                                                 </h6>
                                                         </div>
                                                         
-                                                        <div id="investigationInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div id="investigationInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.investigationInfoSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.investigationInfoIO')
                                                                 </div>
                                                         </div>
                                                 </div>
 
                                                 <!-- Inconsistent Information -->
                                                 <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="inconsistentInfoSCO_reverseDecision_SCO">
+                                                        <div class="card-header" role="tab" id="inconsistentInfoIO_reverseDecision_IO">
                                                                 <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#inconsistentInfoSCO"
+                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#inconsistentInfoIO"
                                                                         aria-expanded="false" aria-controls="collapseOne1">
                                                                         <h6 class="card-title"><i class="fa fa-plus"></i> Inconsistent Information
                                                                         </h6>
@@ -503,47 +503,47 @@
                                                                 </h6>
                                                         </div>
                                                         
-                                                        <div id="inconsistentInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div id="inconsistentInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.inconsistentInfoSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.inconsistentInfoIO')
                                                                 </div>
                                                         </div>
                                                 </div>
 
-                                                 <!-- Recommendation SCO -->
+                                                 <!-- Recommendation  -->
                                                  <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="recommendationSCO_reverseDecision_SCO">
+                                                        <div class="card-header" role="tab" id="recommendation_reverseDecision_IO">
                                                                 <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#recommendationSCO"
+                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#recommendation"
                                                                         aria-expanded="false" aria-controls="collapseOne1">
-                                                                        <h6 class="card-title"><i class="fa fa-plus"></i> Recommendation SCO
+                                                                        <h6 class="card-title"><i class="fa fa-plus"></i> Recommendation 
                                                                         </h6>
                                                                 </a>
                                                                 </h6>
                                                         </div>
                                                         
-                                                        <div id="recommendationSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div id="recommendation" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.recommendationSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.recommendation')
                                                                 </div>
                                                         </div>
                                                 </div>
 
-                                                 <!-- Quiry Document -->
+                                                 <!-- Recommendation IO -->
                                                  <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="quiryDocSCO_reverseDecision_SCO">
+                                                        <div class="card-header" role="tab" id="recommendationIO_reverseDecision_IO">
                                                                 <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#quiryDocSCO"
+                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#recommendationIO"
                                                                         aria-expanded="false" aria-controls="collapseOne1">
-                                                                        <h6 class="card-title"><i class="fa fa-plus"></i> Quiry Document
+                                                                        <h6 class="card-title"><i class="fa fa-plus"></i> Recommendation IO
                                                                         </h6>
                                                                 </a>
                                                                 </h6>
                                                         </div>
                                                         
-                                                        <div id="quiryDocSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div id="recommendationIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.quiryDocSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.recommendationIO')
                                                                 </div>
                                                         </div>
                                                 </div>

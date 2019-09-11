@@ -73,7 +73,7 @@
             <div class="tab-content tabcontent-border">
 
                     <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                        @include('scheme.noticeAccident.revision.reverse_decision.PK.remarks')
+                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.remarks')
                     </div>
                     <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
                         
@@ -85,7 +85,7 @@
 
                             <!-- Initial Assessment appointmentdetails-->
                             <div class="card m-b-0">
-                                <div class="card-header" role="tab" id="caseInfo_reverse_decision">
+                                <div class="card-header" role="tab" id="caseInfo_reverse_decision_bk_to_bbk">
                                     <h5 class="mb-0">
                                         <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                             href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
@@ -97,7 +97,7 @@
                                 </div>
                                 <div id="caseInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        @include('scheme.noticeAccident.revision.reverse_decision.PK.case_info')
+                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.case_info')
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 </div>
                                 <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        @include('scheme.noticeAccident.revision.reverse_decision.PK.ob_info')
+                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.ob_info')
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                                 </div>
                                 <div id="fpm" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        @include('scheme.noticeAccident.revision.reverse_decision.PK.fpm')
+                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.fpm')
                                     </div>
                                 </div>
                             </div>
