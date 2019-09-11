@@ -449,19 +449,13 @@
     //         document.getElementById('reasonnoacc').removeAttribute('disabled');
     //     }
     // }
-
     // function myFunction() {
     //     var objTo = document.getElementById('selectBank')
-
     //     if (objTo.value == 'L') {
     //         $('.selectOverseasBank').prop("disabled", true);
     //         $('.selectLocalBank').prop("disabled", false);
-
     //     } else if (objTo.value == 'O') {
     //         $('.selectLocalBank').prop("disabled", true);
     //         $('.selectOverseasBank').prop("disabled", false);
-
     //     }
-
     // }  --}}
-
