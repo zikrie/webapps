@@ -164,7 +164,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
      Route::get('/revisionreversedecisionnationality_sao', 'Revision\ReverseDecisionController@index_SAO_nationality');
      /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
 
-    /* -------------------------- NOTICE ACCIDENT -- OTHERS (Reverse Decision) ---------------------- */
+    /* -------------------------- NOTICE ACCIDENT -- OTHERS (Bon Ganti Rugi) ---------------------- */
     Route::get('/bgr_pk', 'others\BGRController@index');
     Route::get('/bgr_sco', 'others\BGRController@index_SCO');
     Route::get('/bgr_io', 'others\BGRController@index_IO');
