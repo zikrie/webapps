@@ -133,17 +133,14 @@
                             </div>
                         </div>
                         <div class="form-actions">
-                            <button type="submit"
-                                class="btn btn waves-effect waves-light btn-success">@lang('insuredPerson.save')</button>
-                            <button type="button" class="btn btn waves-effect waves-light btn-info"
-                                onclick="submitform()">@lang('noticetype.reset')</button>
+                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                            <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
                             <button type="button" class="btn btn waves-effect waves-light btn-secondary"
-                                id="add_emp_info">ADD EMPLOYMENT INFO</button>
-                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                                onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
-                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                                onclick="window.location='/obform_od'">@lang('noticetype.back')</button>
+                            id="add_emp_info">ADD EMPLOYMENT INFO</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
                         </div>
+                       
 
 
                         <br />

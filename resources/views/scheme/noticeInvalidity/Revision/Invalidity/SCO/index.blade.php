@@ -17,13 +17,26 @@
 
 
             <ul class="nav customtab" role="tablist">
+                    <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab">
+                                <span class="hidden-sm-up"><i class="ti-user"></i></span> <span
+                                    class="hidden-xs-down">@lang('Remarks')</span>
+                            </a>
+                        </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#collapse" role="tab">
+                    <a class="nav-link " data-toggle="tab" href="#collapse" role="tab">
                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span
                             class="hidden-xs-down">@lang('Revision')</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#recommend" role="tab">
+                            <span class="hidden-sm-up"><i class="ti-user"></i></span> <span
+                                class="hidden-xs-down">@lang('Recommendation')</span>
+                        </a>
+                    </li>
 
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#uploaddoc" role="tab">
@@ -35,20 +48,20 @@
             </ul>
 
             <div class="tab-content tabcontent-border">
-                <div class="tab-pane p-20 active" id="collapse" role="tabpanel">
+                    <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
+                            @include('scheme.noticeInvalidity.Revision.Invalidity.SCO.remarks')
+                        </div>
+                <div class="tab-pane p-20 " id="collapse" role="tabpanel">
                     @include('scheme.noticeInvalidity.Revision.Invalidity.SCO.collapse')
                 </div>
-
-                <div class="tab-pane p-20" id="uploaddoc" role="tabpanel">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    @include('scheme.noticeInvalidity.SCO.uploadDoc')
-                                </div>
-                            </div>
-                        </div>
+                <div class="tab-pane p-20 " id="recommend" role="tabpanel">
+                        @include('scheme.noticeInvalidity.Revision.Invalidity.SCO.recommendation')
                     </div>
+    
+                <div class="tab-pane p-20" id="uploaddoc" role="tabpanel">
+                 
+                                    @include('scheme.noticeInvalidity.newClaim.SCO.supportingDoc')
+                       
                 </div>
 
             </div>

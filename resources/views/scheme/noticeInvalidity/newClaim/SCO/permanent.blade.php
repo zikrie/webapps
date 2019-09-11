@@ -66,12 +66,14 @@
                                 </div>
                             </div>
 
-                            <div class="form-actions">
-                                <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('scheme/permanent.cancel')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('scheme/permanent.clear')</button>
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success"> <i class="fa fa-check"></i>
-                                @lang('scheme/permanent.save')</button>
-                            </div>
+                           
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                            <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
+                          
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
                         </div>
                     </div>
                 </form>

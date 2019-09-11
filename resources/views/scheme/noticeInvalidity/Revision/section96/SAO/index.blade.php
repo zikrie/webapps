@@ -22,6 +22,10 @@
                         class="hidden-sm-up"><i class="ti-home"></i></span> <span
                         class="hidden-xs-down">Claim details</span></a>
                     </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommend" role="tab"><span
+                        class="hidden-sm-up"><i class="ti-home"></i></span> <span
+                        class="hidden-xs-down">Recommendation</span></a>
+                    </li>
                     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument" role="tab"><span
                         class="hidden-sm-up"><i class="ti-home"></i></span> <span
                         class="hidden-xs-down">Supporting Documents</span></a>
@@ -69,15 +73,19 @@
                 </div>
                 <div class="tab-content tabcontent-border">
                     <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                        @include('Scheme.noticeInvalidity.Revision.section96.PK.remarks')
+                        @include('Scheme.noticeInvalidity.Revision.section96.SAO.remarks')
                     </div>
-                    <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                        @include('Scheme.general.upload_doc')
-                    </div>
-
                     <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
-                        @include('scheme.noticeInvalidity.Revision.section96.SAO.claimDetails')
-                    </div>
+                            @include('scheme.noticeInvalidity.Revision.section96.SAO.claimDetails')
+                        </div>
+                    <div class="tab-pane p-20" id="recommend" role="tabpanel">
+                            @include('Scheme.noticeInvalidity.Revision.section96.SAO.suggestion')
+                        </div>
+
+                   
+                    <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
+                            @include('Scheme.noticeInvalidity.newClaim.SCO.supportingDoc')
+                        </div>
 </div>
 </div>
 </div>

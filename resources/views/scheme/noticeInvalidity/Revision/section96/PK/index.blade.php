@@ -20,11 +20,12 @@
                             class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a> </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
+                            class="hidden-xs-down">@lang('Claim Details')</span></a>
                 </li>
+                
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
+                            class="hidden-xs-down">@lang('Supporting Document')</span></a>
                 </li>
             </ul>
 
@@ -85,7 +86,7 @@
                                 <h5 class="mb-0">
                                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseInfo"
                                         aria-expanded="false" aria-controls="collapseOne1">
-                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.case_info')
+                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('Case Info')
                                         </h4>
                                     </a>
                                 </h5>
@@ -102,7 +103,7 @@
                                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#obInfo"
                                         aria-expanded="false" aria-controls="collapseOne1">
                                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                                            @lang('index.attr.insuredPersonInfo')</h4>
+                                            @lang('Insured Person Info')</h4>
                                     </a>
                                 </h5>
                             </div>

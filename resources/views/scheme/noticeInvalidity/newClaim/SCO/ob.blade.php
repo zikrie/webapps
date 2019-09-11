@@ -297,11 +297,11 @@
                                 </div> --}}
                             </div>
                             <div class="form-actions">
-                                <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('scheme/ob.cancel')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('scheme/ob.clear')</button-->
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
+                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
+                              
+                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
+                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
                             </div>
                         </div>
                     </form>
