@@ -11,24 +11,24 @@ use DB;
 class ReverseDecisionController extends Controller
 {
     // BK TO BBK
-    public function index_bk_to_bkk()
+    public function index_bk_to_bbk()
     {
-        return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.PK.index');
+        return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.index');
     }
 
-    public function index_IO_bk_to_bkk()
+    public function index_IO_bk_to_bbk()
     {
-          return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.index');
+          return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.index');
     }
 
-    public function index_SCO_bk_to_bkk()
+    public function index_SCO_bk_to_bbk()
     {
-         return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.index');
+         return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SCO.index');
     }
 
-    public function index_SAO_bk_to_bkk()
+    public function index_SAO_bk_to_bbk()
     {
-          return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SAO.index');
+          return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SAO.index');
     }
     // BK TO BBK
 
@@ -36,21 +36,21 @@ class ReverseDecisionController extends Controller
     // NATIONALITY
     public function index_nationality()
     {
-        return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.PK.index');
+        return view ('scheme.noticeAccident.revision.reverse_decision_nationality.PK.index');
     }
     public function index_IO_nationality()
     {
-          return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.index');
+          return view ('scheme.noticeAccident.revision.reverse_decision_nationality.IO.index');
     }
 
     public function index_SCO_nationality()
     {
-         return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.index');
+         return view ('scheme.noticeAccident.revision.reverse_decision_nationality.SCO.index');
     }
 
     public function index_SAO_nationality()
     {
-          return view ('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SAO.index');
+          return view ('scheme.noticeAccident.revision.reverse_decision_nationality.SAO.index');
     }
     //NATIONALITY
   
