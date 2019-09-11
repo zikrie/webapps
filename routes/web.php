@@ -227,6 +227,10 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/revisionbankruptcy_sco', 'Revision\BankruptcyController@index_SCO');
     Route::get('/revisionbankruptcy_sao', 'Revision\BankruptcyController@index_SAO');
 
+    Route::get('/revisionsection96', 'Revision\Section96Controller@index_PK');
+    Route::get('/revisionsection96_sco', 'Revision\Section96Controller@index_SCO');
+    Route::get('/revisionsection96_sao', 'Revision\Section96Controller@index_SAO');
+
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */
     Route::post('/noticedeath', 'NoticeDeathController@postObForm');
