@@ -29,7 +29,7 @@
                                     <input type="date" name="type_revision" id="caseCategory" class="form-control" required>
                                 </div>
                             </div>
-                            <div class="col-mdcol-md-12 col-lg-4">
+                            <div class="col-mdcol-md-12 col-lg-4 ">
                                 <div class="form-group">
                                     <label class="control-label">Created Date</label>
                                     <input type="date" name="name" id="reason_revision" class="form-control" required>
