@@ -80,7 +80,7 @@
         <div id="approvalRevision" class="collapse" role="tabpanel"
             aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('Scheme.noticeAccident.revision.ob_profile.SAO.approval')
+                @include('Scheme.noticeAccident.revision.wages.SAO.approval')
             </div>
         </div>
     </div>
