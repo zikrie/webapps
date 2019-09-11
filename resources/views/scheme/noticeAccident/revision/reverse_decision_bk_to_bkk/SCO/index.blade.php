@@ -75,10 +75,10 @@
 
                 <div class="tab-content tabcontent-border">
                         <div class="tab-pane p-20 active" id="remarksReverseDecSCO" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.remarksSCO')
+                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.remarksSCO')
                         </div>
                         <div class="tab-pane p-20" id="supportingDocumentReverseDecSCO" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.supportingDocSCO')
+                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.supportingDocSCO')
                         </div>
                         <div class="tab-pane p-20" id="claimDetailsReverseDecSCO" role="tabpanel">
                                 <div id="accordion2" role="tablist" class="accordion">
@@ -97,7 +97,7 @@
                                                 </div>
                                                 <div id="caseInfoReverseDecSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.caseInformation')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.caseInformation')
                                                         </div>
                                                 </div>
                                         </div>
@@ -115,7 +115,7 @@
                                                 </div>
                                                 <div id="insurePersonInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.insuredPersonInfo')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.insuredPersonInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -133,7 +133,7 @@
                                                 </div>
                                                 <div id="firstPaymentInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.firstPaymentInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.firstPaymentInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -151,7 +151,7 @@
                                                 </div>
                                                 <div id="accidentNoticeInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.accidentNoticeInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.accidentNoticeInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -169,7 +169,7 @@
                                                 </div>
                                                 <div id="deathNoticeInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.deathNoticeInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.deathNoticeInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -187,7 +187,7 @@
                                                 </div>
                                                 <div id="medicalBoardDecisionSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.medicalBoardDecision')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.medicalBoardDecision')
                                                         </div>
                                                 </div>
                                         </div>
@@ -205,7 +205,7 @@
                                                 </div>
                                                 <div id="medicalCertificateInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.medicalCertificateInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.medicalCertificateInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -223,7 +223,7 @@
                                                 </div>
                                                 <div id="preferredSocsoOfficeSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.preferredSocsoOffice')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.preferredSocsoOffice')
                                                         </div>
                                                 </div>
                                         </div>
@@ -241,7 +241,7 @@
                                                 </div>
                                                 <div id="caseTransferationSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.caseTransferation')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.caseTransferation')
                                                         </div>
                                                 </div>
                                         </div>
@@ -259,7 +259,7 @@
                                                 </div>
                                                 <div id="bankInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.bankInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.bankInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -277,7 +277,7 @@
                                                 </div>
                                                 <div id="employerInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.employerInformation')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.employerInformation')
                                                         </div>
                                                 </div>
                                         </div>
@@ -295,7 +295,7 @@
                                                 </div>
                                                 <div id="wagesInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.wagesInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.wagesInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -313,7 +313,7 @@
                                                 </div>
                                                 <div id="similarWorkerInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.similarWorkerInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.similarWorkerInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -343,7 +343,7 @@
                                                                                 </div>
                                                                                 <div id="collapseDependentProfile" class="collapse" role="tabpanel" aria-labelledby="headingDependentProfile">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.dependentProfile') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.dependentProfile') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -358,7 +358,7 @@
                                                                                 </div>
                                                                                 <div id="collapseGuardianInfo" class="collapse" role="tabpanel" aria-labelledby="headingGuardianInfo">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.guardianInfo') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.guardianInfo') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -373,7 +373,7 @@
                                                                                 </div>
                                                                                 <div id="collapsedependentEduInfo" class="collapse" role="tabpanel" aria-labelledby="headingdependentEduInfo">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.dependentEduInfo') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.dependentEduInfo') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -388,7 +388,7 @@
                                                                                 </div>
                                                                                 <div id="collapsebankInfo_IPconfirm" class="collapse" role="tabpanel" aria-labelledby="headingbankInfo_IPconfirm">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.bankInfo_IPconfirm') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.bankInfo_IPconfirm') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -411,7 +411,7 @@
                                                         </div>
                                                         <div id="fpmSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.fpm')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.fpm')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -429,7 +429,7 @@
                                                         </div>
                                                         <div id="investigationAssSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision.SCO.investigationAss')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.investigationAss')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -448,7 +448,7 @@
                                                         
                                                         <div id="statementSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.statementSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.statementSCO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -467,7 +467,7 @@
                                                         
                                                         <div id="caseFactSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.caseFactSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.caseFactSCO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -486,7 +486,7 @@
                                                         
                                                         <div id="investigationInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.investigationInfoSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.investigationInfoSCO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -505,7 +505,7 @@
                                                         
                                                         <div id="inconsistentInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.inconsistentInfoSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.inconsistentInfoSCO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -524,7 +524,7 @@
                                                         
                                                         <div id="recommendationSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.recommendationSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.recommendationSCO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -543,7 +543,7 @@
                                                         
                                                         <div id="quiryDocSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.SCO.quiryDocSCO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.SCO.quiryDocSCO')
                                                                 </div>
                                                         </div>
                                                 </div>

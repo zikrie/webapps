@@ -75,17 +75,17 @@
 
                 <div class="tab-content tabcontent-border">
                         <div class="tab-pane p-20 active" id="remarksReverseDecIO" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision.IO.remarksIO')
+                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.remarksIO')
                         </div>
                         <div class="tab-pane p-20" id="supportingDocumentReverseDecIO" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision.IO.supportingDocIO')
+                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.supportingDocIO')
                         </div>
                         <div class="tab-pane p-20" id="claimDetailsReverseDecIO" role="tabpanel">
                                 <div id="accordion2" role="tablist" class="accordion">
 
                                         <!-- Case Information -->
                                         <div class="card m-b-0">
-                                                <div class="card-header" role="tab" id="caseInfo_reverse_decision_IO">
+                                                <div class="card-header" role="tab" id="caseInfo_reverse_decision_bk_to_bkk_IO">
                                                         <h6 class="mb-0">
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                                                 href="#caseInfoReverseDecIO" aria-expanded="false" aria-controls="collapseOne1">
@@ -97,7 +97,7 @@
                                                 </div>
                                                 <div id="caseInfoReverseDecIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision.IO.caseInformation')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.caseInformation')
                                                         </div>
                                                 </div>
                                         </div>
@@ -115,7 +115,7 @@
                                                 </div>
                                                 <div id="insurePersonInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision.IO.insuredPersonInfo')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.insuredPersonInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -133,7 +133,7 @@
                                                 </div>
                                                 <div id="firstPaymentInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.firstPaymentInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.firstPaymentInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -151,7 +151,7 @@
                                                 </div>
                                                 <div id="accidentNoticeInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.accidentNoticeInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.accidentNoticeInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -169,7 +169,7 @@
                                                 </div>
                                                 <div id="deathNoticeInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.deathNoticeInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.deathNoticeInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -187,7 +187,7 @@
                                                 </div>
                                                 <div id="medicalBoardDecisionIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.medicalBoardDecision')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.medicalBoardDecision')
                                                         </div>
                                                 </div>
                                         </div> -->
@@ -205,7 +205,7 @@
                                                 </div>
                                                 <div id="medicalCertificateInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.medicalCertificateInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.medicalCertificateInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -223,7 +223,7 @@
                                                 </div>
                                                 <div id="preferredSocsoOfficeIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.preferredSocsoOffice')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.preferredSocsoOffice')
                                                         </div>
                                                 </div>
                                         </div>
@@ -241,7 +241,7 @@
                                                 </div>
                                                 <div id="caseTransferationIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.caseTransferation')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.caseTransferation')
                                                         </div>
                                                 </div>
                                         </div>
@@ -259,7 +259,7 @@
                                                 </div>
                                                 <div id="bankInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.bankInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.bankInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -277,7 +277,7 @@
                                                 </div>
                                                 <div id="employerInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.employerInformation')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.employerInformation')
                                                         </div>
                                                 </div>
                                         </div>
@@ -295,7 +295,7 @@
                                                 </div>
                                                 <div id="wagesInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.wagesInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.wagesInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -313,7 +313,7 @@
                                                 </div>
                                                 <div id="similarWorkerInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.similarWorkerInfo')
+                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.similarWorkerInfo')
                                                         </div>
                                                 </div>
                                         </div>
@@ -343,7 +343,7 @@
                                                                                 </div>
                                                                                 <div id="collapseDependentProfile" class="collapse" role="tabpanel" aria-labelledby="headingDependentProfile">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision.IO.dependentProfile') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.dependentProfile') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -358,7 +358,7 @@
                                                                                 </div>
                                                                                 <div id="collapseGuardianInfo" class="collapse" role="tabpanel" aria-labelledby="headingGuardianInfo">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision.IO.guardianInfo') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.guardianInfo') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -373,7 +373,7 @@
                                                                                 </div>
                                                                                 <div id="collapsedependentEduInfo" class="collapse" role="tabpanel" aria-labelledby="headingdependentEduInfo">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision.IO.dependentEduInfo') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.dependentEduInfo') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -388,7 +388,7 @@
                                                                                 </div>
                                                                                 <div id="collapsebankInfo_IPconfirm" class="collapse" role="tabpanel" aria-labelledby="headingbankInfo_IPconfirm">
                                                                                         <div class="card-body">
-                                                                                                @include('scheme.noticeAccident.revision.reverse_decision.IO.bankInfo_IPconfirm') 
+                                                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.bankInfo_IPconfirm') 
                                                                                         </div>
                                                                                 </div>
                                                                         </div>
@@ -411,7 +411,7 @@
                                                         </div>
                                                         <div id="fpmIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision.IO.fpm')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.fpm')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -429,7 +429,7 @@
                                                         </div>
                                                         <div id="similarWorkerDetailsIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                @include('scheme.noticeAccident.revision.reverse_decision.IO.similarWorkerDetails')
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.similarWorkerDetails')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -448,7 +448,7 @@
                                                         
                                                         <div id="statementIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.statementIO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.statementIO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -467,7 +467,7 @@
                                                         
                                                         <div id="caseFactIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.caseFactIO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.caseFactIO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -486,7 +486,7 @@
                                                         
                                                         <div id="investigationInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.investigationInfoIO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.investigationInfoIO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -505,7 +505,7 @@
                                                         
                                                         <div id="inconsistentInfoIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.inconsistentInfoIO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.inconsistentInfoIO')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -524,7 +524,7 @@
                                                         
                                                         <div id="recommendation" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.recommendation')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.recommendation')
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -543,7 +543,7 @@
                                                         
                                                         <div id="recommendationIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision.IO.recommendationIO')
+                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bkk.IO.recommendationIO')
                                                                 </div>
                                                         </div>
                                                 </div>
