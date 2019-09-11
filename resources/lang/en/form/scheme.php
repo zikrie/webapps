@@ -169,7 +169,32 @@ return [
          'accident' => [
 
             'title' => 'Accident Information',
-
+            'accident_date' => 'Accident Date',
+            'accident_time' => 'Accident Time',
+            'place_accident' => 'Place of Accident',
+            'when_accident' => 'When Accident Happen?',
+            'date_death' => 'Date of Death',
+            'how_accident' => 'How the Accident Happened?',
+            'mode_transport' => 'Mode of Transport',
+            'causeOfAccd' => 'Cause of Accident',
+            'typeInjury' => 'Type of Injury',
+            'locationOfInjury'=> 'Location of Injury',
+            'causative_agent' => 'Causative Agent',
+            'accident_code' => 'Accident Code',
+            'industrial_code' => 'Industrial Code',
+            'employment_code' => 'Employment Code',
+            'reason_travelling' => 'Reason for Travelling on The Day of Accident (For road accident only)',
+            'injury_desc' => 'Injury Description',
+            'accident_workingDay' => 'Is Accident Date a Working Day For The Insured Person',
+            'nameAddress_clinic' => 'Name and Address of Clinic Which Provides First Treatment',
+            'start_date' => 'Attended Work Start Date',
+            'end_date' => 'Attended Work End Date',
+            'start_workingTime' => 'Start Working Time on Accident Day',
+            'rest_period' => 'Time Of Recess On The Accident Date',
+            'end_workingTime' => 'Ending Time of Work on The Accident Date',
+            'witness_name' => 'Name of Witness(If any)',
+            'witness_no' => 'Witness Phone No.',
+            'are_wagesPaid'=> 'Are wages paid on the day of accident?',
          ],
 
          'mc' => [
