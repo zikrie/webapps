@@ -134,6 +134,12 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/noticeaccident_sao', 'NoticeAccidentController@indexSAO');
     /* ----------------------END OF NOTICE ACCIDENT -- SAO --------------------------- */
 
+    /* -------------------------- NOTICE ACCIDENT -- REVISION (Date Of Accident) ----------------------- */
+    Route::get('/revisiondateaccident_pk', 'Revision\DateAccidentController@index');
+    Route::get('/revisiondateaccident_sco', 'Revision\DateAccidentController@index_SCO');
+    Route::get('/revisiondateaccident_io', 'Revision\DateAccidentController@index_IO');
+    Route::get('/revisiondateaccident_sao', 'Revision\DateAccidentController@index_SAO');
+    /* ----------------------END OF NOTICE ACCIDENT -- REVISION --------------------------- */
     
      /* -------------------------- NOTICE ACCIDENT -- REVISION (OB Profile) ----------------------- */
      Route::get('/revisionobprofile_pk', 'Revision\OBProfileController@index');
