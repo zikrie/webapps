@@ -91,7 +91,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ----------------------------------END OF UPLOAD FILE ------------------------------------------ */
 
     /* -------------------------------NOTICE TYPE --------------------------------- */
-    Route::post('/idno', 'NoticeTypeController@noticeType');
+    Route::post('/idno', 'NoticeTypeController@testing');
     Route::get('', 'NoticeTypeController@index');
     Route::get('/idno', 'NoticeTypeController@index');
     /* ------------------------END OF NOTICE TYPE --------------------------------- */

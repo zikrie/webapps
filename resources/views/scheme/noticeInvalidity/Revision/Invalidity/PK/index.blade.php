@@ -17,9 +17,16 @@
 
 
             <ul class="nav customtab" role="tablist">
+                    <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab">
+                                <span class="hidden-sm-up"><i class="ti-user"></i></span> <span
+                                    class="hidden-xs-down">@lang('Remarks')</span>
+                            </a>
+                        </li>
+
 
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#collapse" role="tab">
+                    <a class="nav-link " data-toggle="tab" href="#collapse" role="tab">
                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span
                             class="hidden-xs-down">@lang('Revision')</span>
                     </a>
@@ -35,7 +42,11 @@
             </ul>
             <div class="tab-content tabcontent-border">
 
-                <div class="tab-pane p-20 active" id="collapse" role="tabpanel">
+                    <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
+                            @include('scheme.noticeInvalidity.Revision.Invalidity.PK.remarks')
+                        </div>
+
+                <div class="tab-pane p-20 " id="collapse" role="tabpanel">
                     @include('scheme.noticeInvalidity.Revision.Invalidity.PK.collapse')
                 </div>
     
