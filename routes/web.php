@@ -241,6 +241,9 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/revisionsection96_sco', 'Revision\Section96Controller@index_SCO');
     Route::get('/revisionsection96_sao', 'Revision\Section96Controller@index_SAO');
 
+    Route::get('/revisionreemployment', 'Revision\ReemploymentController@index_PK');
+  
+
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */
     Route::post('/noticedeath', 'NoticeDeathController@postObForm');

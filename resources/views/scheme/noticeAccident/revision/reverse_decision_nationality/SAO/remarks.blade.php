@@ -4,7 +4,7 @@
             <div class="card-body">
                 <form action="#">
                     <div class="form-body">
-                        <h5 class="card-title">@lang('form/scheme.general.tab_title.remarks')</h5>
+                        <h5 class="card-title">@lang('form/scheme.remarks')</h5>
                         <hr>
                         {{-- <div class="col-md-12" id="container">
                             <div class="table-responsive">
@@ -19,11 +19,11 @@
                                     <table class="table table-sm table-bordered" data-toggle-column="first">
                                         <thead>
                                             <tr>
-                                                <th>@lang('form/scheme.general.collapse.remarks.date')</th>
-                                                <th>@lang('form/scheme.general.collapse.remarks.time')</th>
-                                                <th>@lang('form/scheme.general.collapse.remarks.from')</th>
-                                                <th>@lang('form/scheme.general.collapse.remarks.to')</th>
-                                                <th>@lang('form/scheme.general.collapse.remarks.remark')</th>
+                                                <th>@lang('form/scheme.general.remarks.date')</th>
+                                                <th>@lang('form/scheme.general.remarks.time')</th>
+                                                <th>@lang('form/scheme.general.remarks.from')</th>
+                                                <th>@lang('form/scheme.general.remarks.to')</th>
+                                                <th>@lang('form/scheme.general.remarks.remarks')</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,7 +42,7 @@
                         <div class='row'>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('form/scheme.general.collapse.remarks.title')</label>
+                                    <label class="control-label">@lang('form/scheme.general.remarks.remarks')</label>
                                     <textarea type="text" class="form-control"></textarea>
                                 </div>
                             </div>
@@ -52,10 +52,10 @@
                                 <div class="form-actions">
                                     <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                                     <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
-                                    <button type="submit" class="btn btn waves-effect waves-light btn-success">Save</button>
-                                    <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">Reset</button>
-                                    <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">Cancel</button>
-                                    <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">Back</button>
+                                    <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('form/scheme.general.noticetype.save')</button>
+                                    <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('form/scheme.general.noticetype.reset')</button>
+                                    <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('form/scheme.general.noticetype.cancel')</button>
+                                    <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('form/scheme.general.noticetype.back')</button>
                                 </div>
                             </div>
                         </div>

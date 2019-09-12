@@ -14,6 +14,8 @@ return [
          'investigation' => 'Investigation Details',
          'recommendation' => ' Recommendation',
          'supporting_document' => 'Supporting Document',
+         'queryOpinion' => 'Query and Opinion',
+         
 
       ],
 
