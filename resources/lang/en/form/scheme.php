@@ -421,6 +421,11 @@ return [
 
          ],
 
+         'approval' => [
+
+            'tille' => 'Approval',
+         ],
+
          'recommendation' => [
 
             'title' => 'Recommendation',
@@ -475,6 +480,12 @@ return [
          'supporting_document' => [
 
             'title' => 'Supporting Document',
+
+         ],
+
+         'upload_document' => [
+
+            'title' => 'Upload Document',
 
          ],
 

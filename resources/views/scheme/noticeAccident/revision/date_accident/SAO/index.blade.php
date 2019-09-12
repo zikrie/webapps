@@ -24,12 +24,17 @@
 
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a>
+                            </li>
+                            
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendation"
+                                role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
+                                    class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a>
                             </li>
 
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a>
                             </li>
                         </ul>
 
@@ -82,7 +87,7 @@
                             </div>
 
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                @include('Scheme.general.upload_doc')
+                                @include('Scheme.noticeAccident.revision.date_accident.PK.supporting_document')
                             </div>
 
                             <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
@@ -96,7 +101,7 @@
                                                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                                     href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
                                                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.case_info')</h4>
+                                                        @lang('form/scheme.general.collapse.case_info.title')</h4>
                                                 </a>
                                             </h5>
                                         </div>
@@ -113,7 +118,7 @@
                                                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                                     href="#obInfo" aria-expanded="false" aria-controls="collapseOne1">
                                                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.insuredPersonInfo')</h4>
+                                                        @lang('form/scheme.general.collapse.ob.title')</h4>
                                                 </a>
                                             </h5>
                                         </div>
@@ -129,7 +134,7 @@
                                                         href="#statement" aria-expanded="false"
                                                         aria-controls="collapseOne1">
                                                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                            @lang('index.attr.statement')</h4>
+                                                            @lang('form/scheme.general.collapse.statement.title')</h4>
                                                     </a>
                                                 </h5>
                                             </div>
@@ -146,7 +151,7 @@
                                                             href="#caseFact" aria-expanded="false"
                                                             aria-controls="collapseOne1">
                                                             <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                @lang('index.attr.caseFact')</h4>
+                                                                @lang('form/scheme.general.collapse.case_fact.title')</h4>
                                                         </a>
                                                     </h5>
                                                 </div>
@@ -164,7 +169,7 @@
                                                                 data-parent="#accordion2" href="#investigationReport"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                    @lang('index.attr.investigationReport')</h4>
+                                                                    @lang('form/scheme.general.collapse.investigation_report.title')</h4>
                                                             </a>
                                                         </h5>
                                                     </div>
@@ -183,7 +188,7 @@
                                                                 data-parent="#accordion2" href="#inconsistent"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                    @lang('index.attr.inconsistent')</h4>
+                                                                    @lang('form/scheme.general.collapse.inconsistency.title')</h4>
                                                             </a>
                                                         </h5>
                                                     </div>
@@ -240,7 +245,7 @@
                                                                 data-parent="#accordion2" href="#approval"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                    @lang('index.attr.approval')</h4>
+                                                                    @lang('form/scheme.general.collapse.approval.title')</h4>
                                                             </a>
                                                         </h5>
                                                     </div>
