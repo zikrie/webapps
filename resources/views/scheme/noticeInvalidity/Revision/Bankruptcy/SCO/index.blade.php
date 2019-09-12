@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.bankruptcy')</h3>
+            <h3 class="card-title">@lang('Revision Bankruptcy')</h3>
 
             <div class="row">
                 <div class="col-md-12">
@@ -24,11 +24,15 @@
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#collapse"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
+                                        class="hidden-xs-down">@lang('Claim Details')</span></a>
                             </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommend"
+                                role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
+                                    class="hidden-xs-down">@lang('Recommendation')</span></a>
+                        </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploaddoc"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
+                                        class="hidden-xs-down">@lang('Supporting Document')</span></a>
                             </li>
                         </ul>
 
@@ -82,17 +86,18 @@
                             <div class="tab-pane p-20" id="collapse" role="tabpanel">
                                 @include('scheme.noticeInvalidity.Revision.Bankruptcy.SCO.collapse')
                             </div>
+                            <div class="tab-pane p-20" id="recommend" role="tabpanel">
+                                    @include('scheme.noticeInvalidity.Revision.Bankruptcy.SCO.recommendation')
+                                </div>
+
+                            <div class="tab-pane p-20" id="collapse" role="tabpanel">
+                                @include('scheme.noticeInvalidity.Revision.Bankruptcy.SCO.collapse')
+                            </div>
 
                             <div class="tab-pane p-20" id="uploaddoc" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                @include('scheme.noticeInvalidity.SCO.uploadDoc')
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
+                                                @include('scheme.noticeInvalidity.newClaim.SCO.supportingDoc')
+                                          
 
                             </div>
                         </div>

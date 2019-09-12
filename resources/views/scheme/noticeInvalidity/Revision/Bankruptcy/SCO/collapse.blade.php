@@ -7,7 +7,7 @@
                     <a class="link" data-toggle="collapse" data-parent="#accordion2"
                         href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('index.attr.case_info')</h4>
+                            @lang('Case Info')</h4>
                     </a>
                 </h5>
             </div>
@@ -25,7 +25,7 @@
                         href="#bankrupDetails" aria-expanded="false"
                         aria-controls="collapseOne1">
                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('index.attr.bankrupDetails')</h4>
+                            @lang('Bankruptcy Details')</h4>
                     </a>
                 </h5>
             </div>
@@ -42,7 +42,7 @@
                     <a class="link" data-toggle="collapse" data-parent="#accordion2"
                         href="#interim" aria-expanded="false" aria-controls="collapseOne1">
                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('index.attr.interim')</h4>
+                            @lang('Interim')</h4>
                     </a>
                 </h5>
             </div>
@@ -53,21 +53,6 @@
                 </div>
             </div>
         </div>
-        <div class="card m-b-0">
-            <div class="card-header" role="tab" id="recco">
-                <h5 class="mb-0">
-                    <a class="link" data-toggle="collapse" data-parent="#accordion2"
-                        href="#reco" aria-expanded="false" aria-controls="collapseOne1">
-                        <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('Recommendation')</h4>
-                    </a>
-                </h5>
-            </div>
-            <div id="reco" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
-                <div class="card-body">
-                    @include('scheme.noticeInvalidity.Revision.Bankruptcy.SCO.recommendation')
-                </div>
-            </div>
-        </div>
+       
 
     </div>

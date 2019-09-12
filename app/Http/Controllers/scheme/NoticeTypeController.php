@@ -7,6 +7,12 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\Input;
 
+use Illuminate\Support\Facades\Cache;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
+
 class NoticeTypeController extends Controller
 {
     //
@@ -65,8 +71,9 @@ class NoticeTypeController extends Controller
             $jsonOBAssist= '';
             $retcode = $this->getOBAssist($idno, $idtype, $jsonOBAssist);
         
-            
+    
 
+        //    dd($testing);
             $listidtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
             $listnoticetype =DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['casetype']);
             
@@ -341,6 +348,7 @@ class NoticeTypeController extends Controller
 
         $idno = session('idno');
         $empcode = session('empcode');
+        
         $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
         $ch = curl_init();
         
@@ -362,6 +370,51 @@ class NoticeTypeController extends Controller
 
         $jsondecodeAssistEmployer = json_decode($result);
     }
+    public function testing(Request $request)
+    {
+              //  return 'yeay';
+              $empcode = $request->empcode;
+            //   $idno = session('idno');
+            //   $empcode = session('empcode');
+
+              
+
+                try
+                {
+                    $client = new Client([
+                        // Base URI is used with relative requests
+                        'base_uri' => env('WS_DB2_IP', 'localhost').'/api/common/employers/',
+                        // You can set any number of default request options.
+                        'timeout'  => 2.0,
+                    ]);
+
+                
+                    $resource = array(
+                    // "refNo"=> $refno,
+                    "employerCode"=> $empcode,
+                    "employerName"=> null);
+                    $j = json_encode($resource);
+                    
+                    $response = $client->request('GET', 'search', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
+                    dd($response);
+                    $body = $response->getBody();
+                    $stringBody = (string) $body;
+                    $_content = json_decode($stringBody);
+                   // $_content = json_encode($stringBody,true);
+                    dd($_content);
+                  
+                    $testing= $_content ;
+                   // return new ApiResource($_content);
+                    
+                    }
+                    catch(\Exception $e)
+                    {
+                        return $e->getMessage();
+                       
+                    }
+
+        
+        }
 
     public function checkOdRecordExist(&$jsondecodeOdRecord)
     {

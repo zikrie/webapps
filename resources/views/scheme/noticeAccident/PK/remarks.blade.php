@@ -6,7 +6,7 @@
                     <form action="/remark" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-body">
-                            <h3 class="card-title">@lang('index.attr.remarks')</h3>
+                            <h3 class="card-title">@lang('form/scheme.general.tab_title.remarks')</h3>
                             <hr>
                             <div class="row p-t-20">
                              <div class="col-md-12">

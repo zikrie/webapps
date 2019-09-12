@@ -4,7 +4,7 @@
 
 return [
 
-	'general' => [
+   'general' => [
                     
       'tab_title' => [
 
@@ -14,6 +14,8 @@ return [
          'investigation' => 'Investigation Details',
          'recommendation' => ' Recommendation',
          'supporting_document' => 'Supporting Document',
+         'queryOpinion' => 'Query and Opinion',
+         
 
       ],
 
@@ -60,28 +62,47 @@ return [
 
             'title' => 'Insured Person Information',
             
+            'form34_date' => 'Form 34 Received Date',
+            'pobox' => 'P.O Box',
+            'locked_bag' => 'Locked Bag',
+            'wdt' => 'W.D.T',
          ],
 
          'employer' => [
 
             'title' => 'Employer Information',
 
+            'empcode' => 'Employer Code',
+            'emptype' => 'Employer Type',
+            'empname' => 'Employer Name',
+            'business_entity' => 'Business Entity',
+            'sub_business' => 'Sub-Business Entity',
+            'sub_businesslist' => 'Sub-Business Entity List',
+            'service_type' => 'Service Type',
+            'industry_code' => 'Industry Code',
+            'sub_industry' => 'Sub-Industry Code List',
+            'pobox' => 'P.O Box',
+            'locked_bag' => 'Locked Bag',
+            'wdt' => 'W.D.T',
          ],
 
          'wages' => [
 
             'title' => 'Wages Information',
+            'title_additional' => 'Additional Wages Information',
 
             'empcode' => 'Employer Code',
             'company_name' => 'Employer Name',
             'status_work' => 'Status Attended Work',
             'commencement_date' => 'Employment Start Date',
             'end_date' => 'Employment End Date',
-            'wages_paid_accident' => 'Do Wages Paid On Day Accident',
+            'wages_paid_accident' => 'Do Wages Paid On Day Accident?',
+            'month_contribution' => 'Month of Contribution',
             'details_wages_accd' => 'Details of Wages for the Period of 6 Consecutive Months Before the Month of Accident',
             'details_wages_od' => 'Details of Wages for the Period of 6 Consecutive Months Before the Month of Notice of Occupational Disease',
             'details_wages_ilat' => 'Details of Wages for the Period of 6 Consecutive Months Before the Month of Notice of Invalidity',
             'details_wages_death' => 'Details of Wages for the Period of 6 Consecutive Months Before the Month of Death',
+            'employer_info' => 'Employer Information',
             'recommended' => 'Recommended',
             'minimum_wages' => 'Minimum Wages',
             'wages_type' => 'Wages Type',
@@ -93,18 +114,27 @@ return [
             'recommended' => 'Recommended',
             'employer_info' => 'Employer Information',
             'remarks' => 'Remarks',
-
-            'num' =>'No',
+            'num' =>'No.',
             'month' => 'Month',
             'year' => 'Year',
             'wages' => 'Wages (RM)',
             'contribution_paid' => 'Contribution Paid (RM)',
-      
+            'contribution_payable' => 'Contribution Payable (RM)',
+            'contribution_surplus' => 'Contribution Surplus/Deficit (RM)',
+            'contribution' => 'Contribution (RM)',
+            'reason' => 'Reason',
+
          ],
 
          'socso' => [
 
             'title' => 'SOCSO Office',
+
+            'state' => 'State',
+            'city' => 'City',
+            'preferred_socso' => 'Preferred SOCSO Office',
+            'origin' => 'Origin',
+            'current' => 'Current',
 
          ],
 
@@ -118,8 +148,11 @@ return [
             'preparer' => 'Preparer',
             'approver' => 'Approver',
 
-            'sectionj_received' => 'Section J Received',
-            'complete_sectionj' => 'Complete Section J Received Date',
+            'bank_completed' => 'Bank Information Completed?',
+            'stamp_date' => 'Acceptance Stamp Date',
+            'completion_completed' => 'Completion Completed?',
+            'completion_date' => 'Completion Date',
+            'remarks' => 'Remarks',
            
 
          ],
@@ -174,8 +207,22 @@ return [
 
          'mc' => [
 
-            'title' => 'Medical Certification'
+            'title' => 'Medical Certification',
 
+            'title_hus' => 'HUS Information',
+            'type_hus' => 'Type of HUS',
+            'mc' => 'MC',
+            'clinic_details' => 'Name and Address of Clinic of Which Provides Treatment',
+            'start_date' => 'Start Date',
+            'end-date' => 'End Date',
+            'total_days' => 'Total Days',
+            'hus_status' => 'HUS Approval Status',
+            'hus_recommendation_date' => 'HUS Recommendation Date',
+            'hus_recommendation_status' => 'HUS Recommendation Status',
+            'mc_recommendation' => 'MC Recommendation by IO',
+            'total_hus' => 'Total HUS',
+            'remarks' => 'Remarks',
+            'action' => 'Action',
          ],
 
          'certification' => [
@@ -278,9 +325,102 @@ return [
             'title' => 'Investigation',
          ],
 
+         'investigation_report' => [
+
+            'title' => 'Investigation Report',
+
+            'date' => 'Investigation Date',
+            'question1' => 'Whether the insured person is an employee under the SOCSO Act?',
+            'question2' => 'Whether the SOCSO Act applies to this industry?',
+            'question3' => 'Whether the personal injury is caused by an accident or an OD?',
+            'question4' => 'Whether the accident or OD is in the course of his/her employment?',
+            'question5' => 'Whether the accident or the OD arised out of his employment?',
+            'system_recommendation' => 'System Recommendation from IO',
+            'recommendation_date' => 'Recommendation Date',
+
+         ],
+
+         'appointment' => [
+
+            'title' => 'Appointment',
+
+            'investigation_date' => 'Investigation Date',
+            'investigation_time' => 'Investigation Time',
+            'type_person' => 'Type of Person in an Appointment',
+            'address' => 'Address',
+            'name_officer' => 'Name of Investigating Officer',
+            'email_officer' => 'Email of Investigating Officer',
+            'place_officer' => 'Place of Investigating Officer',
+
+         ],
+
+
+         'interviewee_info' => [
+
+            'title' => 'Interviewee Information',
+
+            'inspector_name' => 'Inspector Name',
+            'age' => 'Age',
+            'about_investigation' => 'About the Investigation',
+            
+         ],
+
          'case_fact' => [
 
             'title' => 'Case Fact',
+
+            'list_tasks' => 'List of Tasks',
+            'reviewer_reviews' => 'Reviewer Reviews',
+            'recommendation' => 'Recommendation',
+            'investigator_name' => 'Investigator Name',
+            'date' => 'Date',
+         ],
+
+         'case_transfer' => [
+
+            'title' => 'Case Transfer',
+
+            'transfer' => 'Transfer',
+            'remarks' => 'Remarks',
+            'origin' => 'Origin',
+            'current' => 'Current',
+
+         ],
+
+         'statement' => [
+
+            'title' => 'Statement',
+
+            'download' => 'Download',
+            'no' => 'No.',
+            'doc_name' => 'Document Name',
+
+         ],
+
+         'witness_information' => [
+
+            'title' => 'Witness Information',
+
+            'language' => 'Language',
+            'witness_statement' => 'Witness Statement',
+            'translator_name' => 'Translator Name',
+            'investigation_date' => 'Investigation Date',
+            'investigation_start' => 'Investigation Start Time',
+            'investigation_end' => 'Investigation End Time',
+
+         ],
+
+         'employer_information' => [
+
+            'title' => 'Employer Information',
+
+            'language' => 'Language',
+            'employers_statement' => 'Employers Statement',
+            'translator_name' => 'Translator Name',
+            'investigation_date' => 'Investigation Date',
+            'investigation_start' => 'Investigation Start Time',
+            'investigation_end' => 'Investigation End Time',
+
          ],
 
          'recommendation' => [
@@ -326,6 +466,14 @@ return [
 
          ],
 
+         'investigation_document' => [
+
+            'title' => 'Investigation Document',
+            'doc' => 'Document',
+            'action' => 'Action',
+
+         ],
+
          'supporting_document' => [
 
             'title' => 'Supporting Document',
@@ -336,6 +484,10 @@ return [
 
             'title' => 'Generate Document',
 
+            'doc_description' => 'Document Description',
+            'date' => 'Generated Date',
+            'view' => 'View',
+            
          ],
 
          'preparer' => [
@@ -369,13 +521,157 @@ return [
       ],
    ],
 
-	'notice_invalidity' => [
+   'notice_invalidity' => [
 
       'PK' => [
 
+         'employment_history' => [
+            
+            'title' => 'Employment History',
+
+            'details' => 'Name & Address of Employer for the Last 5 Years of Employment',
+            'no' => 'No.',
+            'name' => 'Employer Name',
+            'address' => 'Employer Address',
+            'working_period' => 'Working Period',
+            'designation' => 'Designation',
+            'delete' => 'Delete',
+
+         ],
+
+         'od_info' => [
+            
+            'title' => 'Occupational Disease Information',
+
+            'od_date' => 'Occupational Disease Date',
+            'description' => 'Description of Occupational Disease',
+            'disease_related' => 'Is the Disease Related to Employment?',
+            'duties' => 'Specify Duties and How Insured Person Exposed to the Danger',
+            'symptoms' => 'Please Explain Symptoms/Sign Encountered',
+            'date_death' => 'Date of Death (if applicable)',
+            'about_disease' => 'About the Disease',
+
+         ],
       ],
 
+      'SCO' => [
+
+         'jdk_decision' => [
+            
+            'title' => 'JDK Decision',
+
+            'potential' => 'Potential Not Employment Injury',
+            'session_date' => 'Session Date',
+            'od_decision' => 'OD Decision',
+            'jdk_decision' => 'JDK Decision',
+            'jdk_type' => 'JDK Type',
+            'assessment_type' => 'Assessment Type',
+            'assessment' => 'Assessment(%)',
+            'provisional_enddate' => 'Provisional Assessment End Date',
+            'els' => 'ELS',
+            'remarks' => 'Remarks',
+            'hus_enddate' => 'HUS End Date',
+            'accrual_date' => 'Accrual Date',
+            'provisional_accrual' => 'Provisional Assessment Accrual Date',
+            'final_accrual' => 'Final Assessment Accrual Date',
+
+            //sao
+
+            'speciality' => 'Speciality',
+            'part_injury' => 'Part of Injury',
+            'location' => 'Appointment Location',
+            'session_date' => 'Session Date',
+            'od_decision' => 'OD Decision',
+
+         ],
+
+         'od_report' => [
+            
+            'title' => 'OD Report',
+
+            'disease' => 'Disease',
+            'type_illness' => 'Type of Illness',
+            'type_questionbank' => 'Type of Question Bank',
+            'question_bank' => 'Question Bank',
+            'no' => 'No.',
+            'question' => 'Question',
+            'evidence' => 'Evidence',
+            'reference' => 'Reference',
+            'recommendation' => 'Recommendation refer to JDK',
+
+         ],
+
+      ],
+
+      'SAO' => [
+
+         'sao_approval' => [
+            
+            'title' => 'SAO Approval',
+
+            'case_status' => 'Case Status',
+            'question1' => 'Whether the insured person is an employee under the SOCSO Act?',
+            'question2' => 'Whether the insured person is an employee under the SOCSO Act?',
+            'question3' => 'Whether the personal injury is caused by an OD?',
+            'question4' => 'Whether the OD is in the course of his/her employment?',
+            'question5' => 'Whether the OD arised out of his/her employment?',
+            'wrong_benefit' => 'Wrong Benefit Type',
+            'status_scheme' => 'Status Scheme EI Decision',
+            'sao_approval' => 'SAO Approval',
+            'reject_reason' => 'Reject Reason',
+            'close_reason' => 'Close Reason',
+            'approval' => 'Approval Refer to JDK',
+            'mar_opinion' => 'MAR Opinion',
+            'approved_date' => 'Scheme Approved Date',
+            'approved_by' => 'Scheme Approved By',
+            'route' => 'Route',
+
+         ],
+
+         'ms_opinion' => [
+            
+            'title' => 'MS Opinion',
+
+            'opinion_type' => 'Opinion Type',
+            'ms_opinion' => 'MS Opinion',
+
+         ],
+
+         'payment_option' => [
+            
+            'title' => 'Payment Option',
+
+            'huk_payment' => 'HUK Payment Option',
+            'date_payment' => 'Date Payment Option',
+            'updated_by' => 'Updated by',
+            'updated_date' => 'Updated Date',
+            'approved_by' => 'Approved By',
+            'approved_date' => 'Approved Date',
+
+         ],
+
+         'benefit_decision' => [
+            
+            'title' => 'Benefit Management Decision',
+
+            'benefit_date' => 'Benefit Approved Date',
+            'benefit_by' => 'Benefit Approved By',
+            'remarks' => 'Remarks',
+
+         ],
+
+         'overpayment' => [
+            
+            'title' => 'Overpayment Information',
+
+            'reason' => 'Overpayment Reason',
+            'debtor_id' => "Debtor's ID",
+            'period' => 'Overpayment Period',
+
+         ],
+      ],
    ],
+
 
    'notice_death' => [
 

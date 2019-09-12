@@ -25,6 +25,10 @@
                                         <span class="hidden-xs-down">Claim Details</span>
                                 </a>
                         </li>
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendations"
+                                role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
+                                    class="hidden-xs-down">Recommendation</span></a>
+                        </li>
                         <li class="nav-item"> 
                                 <a class="nav-link" data-toggle="tab" href="#supportingDocumentReverseDecSCO" role="tab">
                                         <span class="hidden-sm-up"><i class="ti-home"></i></span> 
@@ -76,6 +80,9 @@
                 <div class="tab-content tabcontent-border">
                         <div class="tab-pane p-20 active" id="remarksReverseDecSCO" role="tabpanel">
                                 @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SCO.remarksSCO')
+                        </div>
+                        <div class="tab-pane p-20" id="recommendations" role="tabpanel">
+                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SCO.recommendationSCO')
                         </div>
                         <div class="tab-pane p-20" id="supportingDocumentReverseDecSCO" role="tabpanel">
                                 @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SCO.supportingDocSCO')
@@ -506,25 +513,6 @@
                                                         <div id="inconsistentInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                                 <div class="card-body">
                                                                         @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SCO.inconsistentInfoSCO')
-                                                                </div>
-                                                        </div>
-                                                </div>
-
-                                                 <!-- Recommendation SCO -->
-                                                 <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="recommendationSCO_reverseDecision_SCO">
-                                                                <h6 class="mb-0">
-                                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#recommendationSCO"
-                                                                        aria-expanded="false" aria-controls="collapseOne1">
-                                                                        <h6 class="card-title"><i class="fa fa-plus"></i> Recommendation SCO
-                                                                        </h6>
-                                                                </a>
-                                                                </h6>
-                                                        </div>
-                                                        
-                                                        <div id="recommendationSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
-                                                                <div class="card-body">
-                                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SCO.recommendationSCO')
                                                                 </div>
                                                         </div>
                                                 </div>
