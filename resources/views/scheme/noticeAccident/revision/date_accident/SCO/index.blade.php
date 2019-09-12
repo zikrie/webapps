@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">Revision Date Of Accident</h3>
+            <h3 class="card-title">@lang('index.attr.dateOfAccident')</h3>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-body">
@@ -27,8 +27,8 @@
                                         class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
                             </li>
 
-                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument" role="tab"><span
-                                        class="hidden-sm-up"><i class="ti-home"></i></span> <span
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument"
+                                    role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
                                         class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
                             </li>
                         </ul>
@@ -78,7 +78,7 @@
                         <div class="tab-content tabcontent-border">
 
                             <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                                @include('Scheme.noticeAccident.revision.date_accident.PK.remarks')
+                                @include('Scheme.noticeAccident.revision.date_accident.SCO.remarks')
                             </div>
 
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
@@ -103,7 +103,7 @@
                                         <div id="caseInfo" class="collapse" role="tabpanel"
                                             aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.date_accident.PK.case_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.SCO.case_info')
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,23 @@
                                         </div>
                                         <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.date_accident.PK.ob_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.SCO.ob_info')
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card m-b-0">
+                                        <div class="card-header" role="tab" id="recommendation_dateOfAccident">
+                                            <h5 class="mb-0">
+                                                <a class="link" data-toggle="collapse" data-parent="#accordion2"
+                                                    href="#recommendation" aria-expanded="false" aria-controls="collapseOne1">
+                                                    <h4 class="card-title"><i class="fa fa-plus"></i>
+                                                        @lang('index.attr.recommendation')</h4>
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="recommendation" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                            <div class="card-body">
+                                                @include('Scheme.noticeAccident.revision.date_accident.SCO.recommendation')
                                             </div>
                                         </div>
                                     </div>
