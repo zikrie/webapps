@@ -14,6 +14,8 @@ return [
          'investigation' => 'Investigation Details',
          'recommendation' => ' Recommendation',
          'supporting_document' => 'Supporting Document',
+         'queryOpinion' => 'Query and Opinion',
+         
 
       ],
 
@@ -59,21 +61,6 @@ return [
          'ob' => [
 
             'title' => 'Insured Person Information',
-            'acceptance_stamp' => 'Acceptance Stamp Date',
-            'race' => 'Race',
-            'pobox' => 'P.O Box',
-            'lockedbag' => 'Locked Bag',
-            'wdt' => 'W.D.T',
-            'under_act' => 'Worker Under the Act',
-            'under_act_date' => 'Worker Under the Act Date',
-            'form34_receivedDate' => 'Form 34 Received Date',
-            'ssab_decision' => 'SSAB Decision',
-            'worker_under' => 'Worker Under Act',
-            'worker_not_under' =>' Worker Under Act Date',
-            'sub_occupation' => 'Sub Occupation',
-            'sub_occupation_list' => 'Sub Occupation List',
-            'source' =>'Source',
-            'form_34' => 'Form 34 Date',
             
          ],
 
@@ -120,17 +107,6 @@ return [
          'socso' => [
 
             'title' => 'SOCSO Office',
-            'city' => 'City',
-            'state' => 'State',
-            'city_origin' => ' City (Origin)',
-            'state_origin' => 'State (Origin)',
-            'details' => 'If there is a change of office',
-            'registered_branch' => 'Registered Branch',
-            'registerBranch' => 'Registered Branch',
-            'origin' => 'Origin',
-            'current' => 'Current',
-            'preferred_socso' => 'Preferred SOCSO Office',
-            'preferred_socso_branch' => 'Preferred SOCSO Branch',
 
          ],
 
