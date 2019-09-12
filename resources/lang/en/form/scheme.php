@@ -425,12 +425,17 @@ return [
 
          'approval' => [
 
-            'tille' => 'Approval',
+            'title' => 'Approval',
          ],
 
          'recommendation' => [
 
             'title' => 'Recommendation',
+         ],
+
+         'IO_recommendation' => [
+
+            'title' => 'IO Recommendation',
          ],
 
          'inconsistency' => [
