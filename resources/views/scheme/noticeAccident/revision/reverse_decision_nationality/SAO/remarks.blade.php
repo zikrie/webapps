@@ -4,7 +4,7 @@
             <div class="card-body">
                 <form action="#">
                     <div class="form-body">
-                        <h5 class="card-title">@lang('form/scheme.general.tab_title.remarks')</h5>
+                        <h5 class="card-title">@lang('form/scheme.remarks')</h5>
                         <hr>
                         {{-- <div class="col-md-12" id="container">
                             <div class="table-responsive">

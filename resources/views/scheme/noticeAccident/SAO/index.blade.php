@@ -3,15 +3,15 @@
 @section('content')
 {{-- <div class="col-md-12"><br> --}}
 	<div class="card-body p-b-0">
-		<h4 class="card-title">@lang('scheme/index.attr.accident_notice')</h4>
+		<h4 class="card-title">@lang('form/scheme.general.tab_title.accident_notice')</h4>
 		<!-- Nav tabs -->
 		<ul class="nav customtab" role="tablist">
-			<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.remarks')</span></a> </li>
-			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.claimDetails')</span></a> </li>
-			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistency" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.investigation_detail')</span></a> </li>
-			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#queryOpinion" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.queryOpinion')</span></a> </li>
-			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommend" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.recommendation')</span></a> </li>
-			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploadDocuments_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down"> @lang('scheme/index.attr.supporting') </span></a> </li>
+			<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a> </li>
+			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a> </li>
+			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistency" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.investigation')</span></a> </li>
+			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#queryOpinion" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.queryOpinion')</span></a> </li>
+			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommend" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a> </li>
+			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploadDocuments_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down"> @lang('form/scheme.general.tab_title.supporting_document')</span></a> </li>
 		</ul><br>
 		<div class="row" id="rowindex">
 			<div class="col-md-12">

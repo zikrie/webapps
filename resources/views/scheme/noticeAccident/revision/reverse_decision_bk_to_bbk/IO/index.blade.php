@@ -97,7 +97,7 @@
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                                                 href="#caseInfoReverseDecIO" aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i>
-                                                                        Case Information
+                                                                        @lang('form/scheme.general.collapse.case_info.caseinfo') 
                                                                 </h6>
                                                         </a>
                                                         </h6>
@@ -116,7 +116,7 @@
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#insurePersonInfoIO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i>
-                                                                Insured Person Information</h6>
+                                                                @lang('form/scheme.general.collapse.ob.title') </h6>
                                                         </a>
                                                         </h6>
                                                 </div>

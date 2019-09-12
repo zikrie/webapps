@@ -14,6 +14,8 @@ return [
          'investigation' => 'Investigation Details',
          'recommendation' => ' Recommendation',
          'supporting_document' => 'Supporting Document',
+         'queryOpinion' => 'Query and Opinion',
+         
 
       ],
 
@@ -421,9 +423,19 @@ return [
 
          ],
 
+         'approval' => [
+
+            'title' => 'Approval',
+         ],
+
          'recommendation' => [
 
             'title' => 'Recommendation',
+         ],
+
+         'IO_recommendation' => [
+
+            'title' => 'IO Recommendation',
          ],
 
          'inconsistency' => [
@@ -475,6 +487,12 @@ return [
          'supporting_document' => [
 
             'title' => 'Supporting Document',
+
+         ],
+
+         'upload_document' => [
+
+            'title' => 'Upload Document',
 
          ],
 
