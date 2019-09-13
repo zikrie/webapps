@@ -445,14 +445,22 @@ return [
          'recommendation' => [
 
             'title' => 'Recommendation',
-
+            'updatedBy' => 'Updated By',
+            'updatedDate' => 'Updated Date',
+            'recommendationIO' => 'Recommended IO',
             'recommended_by' => 'Recommended By',
             'recommended_date' => 'Recommended Date',
+            'created_date' => 'Created Date',
+            'created_by' => 'Created By',
+            'route' => 'Route',
          ],
 
          'IO_recommendation' => [
 
             'title' => 'IO Recommendation',
+            'recommendation' => 'Recommendation',
+            'recommended_by' => 'Recommended By',
+            'recommended_date' => 'Recommended Date',
          ],
 
          'inconsistency' => [

@@ -10,7 +10,7 @@
                             <div class="row p-t-20">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label"> Recommendation</label>
+                                        <label class="control-label">  @lang('form/scheme.general.collapse.IO_recommendation.recommendation')</label>
                                         <select class="form-control">
                                             <option value="">Please Select</option>
                                             <option value="">Syor</option>
@@ -20,13 +20,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Recommendation By</label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.IO_recommendation.recommended_by')</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Recommendation Date</label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.IO_recommendation.recommended_date')</label>
                                         <input type="date" id="" class="form-control" >
                                     </div>
                                 </div>
