@@ -243,6 +243,8 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
 
     Route::get('/revisionreemployment', 'Revision\ReemploymentController@index_PK');
   
+    Route::get('/revisionpaymentoption', 'Revision\PaymentOptionController@index_PK');
+    Route::get('/revisionpaymentoption_sao', 'Revision\PaymentOptionController@index_SAO');
 
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */

@@ -81,13 +81,13 @@
 
                 <div class="tab-content tabcontent-border">
                         <div class="tab-pane p-20 active" id="remarksReverseDecPK" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.PK.remarks')
+                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.SCO.remarks')
                         </div>
                         <div class="tab-pane p-20" id="recommendationSCO" role="tabpanel">
                                 @include('scheme.noticeAccident.revision.reverse_decision_nationality.SCO.recommendation')
                         </div>
                         <div class="tab-pane p-20" id="supportingDocumentReverseDecPK" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.PK.supporting_document')
+                                @include('scheme.noticeAccident.revision.reverse_decision_nationality.SCO.supporting_document')
                         </div>
                         <div class="tab-pane p-20" id="claimDetailsReverseDecPK" role="tabpanel">
                                 <div id="accordion2" role="tablist" class="accordion">

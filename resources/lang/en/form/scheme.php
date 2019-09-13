@@ -493,6 +493,14 @@ return [
          'upload_document' => [
 
             'title' => 'Upload Document',
+            'revisionNoticeID' => 'Revision Notice ID',
+            'updateBy' => 'Update By',
+            'updateDate' => 'Update Date',
+            'docdesc' => 'Document Description',
+            'docpath' => 'Document Path',
+            'date' => 'Date',
+            'view' => 'View',
+            'delete' => 'Delete',
 
          ],
 
