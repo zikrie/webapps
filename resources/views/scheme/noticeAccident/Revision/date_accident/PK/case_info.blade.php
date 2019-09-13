@@ -27,7 +27,7 @@
                             <div class="row p-t-20">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('insuredPerson.attr.id_type')</label><span class="required">*</span>
+                                            <label class="control-label">@lang('form/personal-info.id_type')</label><span class="required">*</span>
                                             <select class="form-control clearfields" name='idtype' id='idtype' required>
                                         <option selected readonly disabled hidden>Please Select </option>
                                         @foreach ($idtype as $id)
@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">@lang('insuredPerson.attr.id_num')</label><span class="required">*</span>
+                                                <label class="control-label">@lang('form/personal-info.id_no')</label><span class="required">*</span>
                                                 <input type="text" id="id_num" name="id_num" value="" class="form-control" >
                                             </div>
                                         </div>
@@ -53,27 +53,27 @@
                             <div class='row'>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('insuredPerson.attr.accDate')</label><span class="required">*</span>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.case_info.accident_date')</label><span class="required">*</span>
                                         <input type="date" id="od" name="od" value="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('insuredPerson.attr.typerev')</label><span class="required">*</span>
-                                        <input class="form-control" type="text" name="typeofrev" id="acc_revtype" value="">
+                                        <label class="control-label">@lang('form/scheme.general.collapse.case_info.type_revision')</label><span class="required">*</span>
+                                        <input class="form-control" type="text" name="type_revision" id="type_revision" value="">
                                     </div>
                                 </div>
                             </div>
                             <div class='row'>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('insuredPerson.attr.received_rev')</label><span class="required">*</span>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.case_info.received_revision')</label><span class="required">*</span>
                                         <input type="date" id="acc_rec_rev" name="received_rev" value="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>@lang('insuredPerson.attr.source')</label><span class="required">*</span>
+                                        <label>@lang('form/scheme.general.collapse.case_info.source')</label><span class="required">*</span>
                                         <input type="text" id="acc_source" class="form-control" name="source"  value="">
                                     </div>
                                 </div>
@@ -81,9 +81,9 @@
                             <div class="form-actions">
                                 <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('insuredPerson.save')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
+                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
+                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
                             </div>
                         </div>
                     </form>

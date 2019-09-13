@@ -12,7 +12,7 @@
     <div id="recommendation" class="collapse" role="tabpanel"
         aria-labelledby="headingOne1">
         <div class="card-body">
-            @include('Scheme.noticeAccident.revision.date_accident.IO.recommendation')
+            @include('Scheme.noticeAccident.revision.date_accident.SCO.recommendation')
         </div>
     </div>
 </div>

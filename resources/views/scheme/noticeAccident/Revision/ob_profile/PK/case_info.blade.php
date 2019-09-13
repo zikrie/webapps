@@ -27,7 +27,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.id_type')</label><span class="required">*</span>
+                                    <label>@lang('form/personal-info.id_type')</label><span class="required">*</span>
                                     <select class="form-control clearfields" name='idtype' id='idtype' required>
                                         <option selected readonly disabled hidden>Please Select </option>
                                         @foreach ($idtype as $id)
@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.id_num')</label><span class="required">*</span>
+                                    <label class="control-label">@lang('form/personal-info.id_no')</label><span class="required">*</span>
                                     <input type="text" id="idNum_obProf" name="id_num" value="" class="form-control">
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.name')</label><span class="required">*</span>
+                                    <label class="control-label">@lang('form/personal-info.name')</label><span class="required">*</span>
                                     <input type="text"  id="name_obProf" name="name" value="" class="form-control">
                                 </div>
                             </div>
@@ -110,10 +110,10 @@
                         <div class="form-actions">
                             <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('insuredPerson.save')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
+                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
                               
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
+                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
                         </div>
                     </div>
                 </form>
