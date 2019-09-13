@@ -101,14 +101,14 @@
                                                 </div>
                                                 <!-- Initial Assessment Mobility Details--> 
                                                 <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="testMC">
+                                                        <div class="card-header" role="tab" id="husInfoSCO">
                                                                 <h6 class="mb-0">                           
                                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#testMC" aria-expanded="false" aria-controls="testMC">
                                                                         <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.HUS_info')</h4>
                                                                         </a>
                                                                 </h6>
                                                         </div>
-                                                        <div id="testMC" class="collapse" role="tabpanel" aria-labelledby="testMC">
+                                                        <div id="testMC" class="collapse" role="tabpanel" aria-labelledby="husInfoSCO">
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.medicalCertificate_SCO')</div>
                                                         </div>
                                                 </div>
