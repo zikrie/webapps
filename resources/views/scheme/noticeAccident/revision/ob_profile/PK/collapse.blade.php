@@ -6,7 +6,7 @@
                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                     href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                        Case Info</h4>
+                        @lang('form/scheme.general.collapse.case_info.title')</h4>
                 </a>
             </h5>
         </div>
@@ -24,7 +24,7 @@
                     href="#obProfile" aria-expanded="false"
                     aria-controls="collapseOne1">
                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                        Insured Person</h4>
+                         @lang('form/scheme.general.collapse.ob.title')</h4>
                 </a>
             </h5>
         </div>
@@ -42,7 +42,7 @@
                     href="#obProfile2" aria-expanded="false"
                     aria-controls="collapseOne1">
                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                       Insured Person (New)</h4>
+                        @lang('form/scheme.general.collapse.ob.title') (New)</h4>
                 </a>
             </h5>
         </div>
@@ -60,7 +60,7 @@
                     href="#declaration117" aria-expanded="false"
                     aria-controls="collapseOne1">
                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                        Declaration 117</h4>
+                        @lang('form/scheme.general.collapse.declaration.title') </h4>
                 </a>
             </h5>
         </div>

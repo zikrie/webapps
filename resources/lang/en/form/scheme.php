@@ -45,7 +45,7 @@ return [
 
       'green_header' => [
 
-         'name' => 'Name', 
+         'name' => 'Name',
          'idno' => 'Identification No',
          'scheme_ref_no' => 'Scheme Ref No',
          'date_of_death' => 'Date of Death',
@@ -66,6 +66,11 @@ return [
             'pobox' => 'P.O Box',
             'locked_bag' => 'Locked Bag',
             'wdt' => 'W.D.T',
+            'notice' => 'Notice',
+            'case_type' => 'Case Type',
+            'notice_ID' => 'Notice ID',
+            'status' => 'Status',
+
          ],
 
          'employer' => [
@@ -253,8 +258,7 @@ return [
             'working' => 'Is Still Working?',
             'declare_117' => 'Declaration 117',
             'acc_potential' => 'Accident Potential',
-            'yes' => 'Yes',
-            'no' => 'No',
+            'type_revision' => 'Type of Revision',
 
             // OD_RTW
             
@@ -283,6 +287,8 @@ return [
             'socsoRegistrationOffice' => 'SOCSO Registration Office ',
             'socsoOffice'=> 'SOCSO Office ',
             'accident_date' => 'Accident Date',
+            'received_revision' => 'Received Revision Notice Date',
+            'source' => 'Source',
 
             //DEATH NOTICE
 
@@ -370,6 +376,8 @@ return [
             'title' => 'Case Fact',
 
             'list_tasks' => 'List of Tasks',
+            'reviewer_comment' => 'Reviewer Comment',
+            'approval_comment' => 'Approval Comment',
             'reviewer_reviews' => 'Reviewer Reviews',
             'recommendation' => 'Recommendation',
             'investigator_name' => 'Investigator Name',
@@ -433,17 +441,17 @@ return [
             'title' => 'Recommendation',
             'updatedBy' => 'Updated By',
             'updatedDate' => 'Updated Date',
-            'recommendationIO' => 'Recommendation IO',
-            'recommendationBy' => 'Recommendation By',
-            'recommendationDate' => 'Recommendation Date',
+            'recommendationIO' => 'Recommended IO',
+            'recommended_by' => 'Recommended By',
+            'recommended_date' => 'Recommended Date',
          ],
 
          'IO_recommendation' => [
 
             'title' => 'IO Recommendation',
             'recommendation' => 'Recommendation',
-            'recommendationBy' => 'Recommendation By',
-            'recommendationDate' => 'Recommendation Date',
+            'recommended_by' => 'Recommended By',
+            'recommended_date' => 'Recommended Date',
          ],
 
          'inconsistency' => [
@@ -481,6 +489,14 @@ return [
             'sender_note' => 'Sender Note',
             'office' => 'Office',
             'notes' => "Recipient's Notes",
+
+         ],
+
+         'declaration' => [
+
+            'title' => 'Declaration 117',
+            'doc' => 'Document',
+            'action' => 'Action',
 
          ],
 
@@ -531,7 +547,7 @@ return [
 
 
          ],
-            /*========= FOR REVISION =========*/ 
+            /*========= FOR REVISION =========*/
          'pks' => [
 
             'title' => 'PKS',
@@ -810,10 +826,10 @@ return [
             'city' => 'City',
             'state' => 'State',
             'postcode' => 'Postcode',
-            'demised_date' => 'Demised Date',   
+            'demised_date' => 'Demised Date',
             'po_box' => 'P.O Box',
             'locked_bag' => 'Locked Bag',
-            'wdt' => 'W.D.T', 
+            'wdt' => 'W.D.T',
 
          ],
 

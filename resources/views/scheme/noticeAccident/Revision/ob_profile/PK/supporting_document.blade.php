@@ -5,7 +5,7 @@
                 <form action="{{ route('claim.upload') }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
-                        <h5 class="card-title">@lang('scheme/uploaddoc.title')</h5>
+                        <h5 class="card-title">@lang('form/scheme.general.collapse.upload_document.title')</h5>
                         <hr clas>
                         {{-- @if(Session::get('messagedoc')) --}}
                         {{-- <div class="card-footer"> --}}

@@ -83,7 +83,7 @@
                         <div class="tab-content tabcontent-border">
 
                             <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                                @include('Scheme.noticeAccident.revision.date_accident.SAO.remarks')
+                                @include('Scheme.noticeAccident.revision.date_accident.PK.remarks')
                             </div>
 
                             <div class="tab-pane p-20" id="recommendation" role="tabpanel">
@@ -112,7 +112,7 @@
                                         <div id="caseInfo" class="collapse" role="tabpanel"
                                             aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.date_accident.SAO.case_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.PK.case_info')
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@
                                         </div>
                                         <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.date_accident.SAO.ob_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.PK.ob')
                                             </div>
                                         </div>
                                         <div class="card m-b-0">
@@ -145,7 +145,7 @@
                                             <div id="statement" class="collapse" role="tabpanel"
                                                 aria-labelledby="headingOne1">
                                                 <div class="card-body">
-                                                    @include('Scheme.noticeAccident.revision.date_accident.SAO.statement')
+                                                    @include('Scheme.noticeAccident.revision.date_accident.IO.statement')
                                                 </div>
                                             </div>
                                             <div class="card m-b-0">
@@ -162,7 +162,7 @@
                                                 <div id="caseFact" class="collapse" role="tabpanel"
                                                     aria-labelledby="headingOne1">
                                                     <div class="card-body">
-                                                        @include('Scheme.noticeAccident.revision.date_accident.SAO.case_fact')
+                                                        @include('Scheme.noticeAccident.revision.date_accident.IO.case_fact')
                                                     </div>
                                                 </div>
                                                 <div class="card m-b-0">

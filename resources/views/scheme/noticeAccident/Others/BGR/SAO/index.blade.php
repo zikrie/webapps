@@ -24,11 +24,11 @@
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">Claim Details</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">Supporting Document</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a>
                             </li>
                         </ul>
 

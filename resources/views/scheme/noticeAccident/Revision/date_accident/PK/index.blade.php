@@ -119,7 +119,7 @@
                                         </div>
                                         <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.date_accident.PK.ob_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.PK.ob')
                                             </div>
                                         </div>
                                     </div>
