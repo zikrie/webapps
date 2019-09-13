@@ -515,7 +515,12 @@ return [
 
 
          ],
+            /*========= FOR REVISION =========*/ 
+         'pks' => [
 
+            'title' => 'PKS',
+
+         ],
       ],
             
    ],
@@ -530,14 +535,14 @@ return [
 
    ],
 
-   'notice_od' => [
+   'notice_invalidity' => [
 
       'PK' => [
 
       ],
    ],
 
-   'notice_invalidity' => [
+   'notice_od' => [
 
       'PK' => [
 

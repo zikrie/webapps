@@ -1,4 +1,4 @@
-@extends('general.layouts.app')
+@extends('common.layouts.app')
 
 @section('maintitle', 'Tab Screen')
 
@@ -14,7 +14,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="/scheme/idno" method="post">
+                <form action="/Scheme/idno" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         <h5 class="card-title">@lang('scheme/noticetype.title')</h5>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/noticetype.attr.notice_type')</label>
                                     <select name="notice_type" id='notice_type' class="form-control clearfields">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3" id="still_employment" style="display:none;">
+                            <div class="col-md-4" id="still_employment" style="display:none;">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/noticetype.attr.in_employment')</label>
                                     <select name="in_employment" id="in_employment" class="form-control clearfields">
@@ -71,7 +71,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3" id="death_accident" style="display:none;">
+                            <div class="col-md-4" id="death_accident" style="display:none;">
                                     <div class="form-group">
                                         <label class="control-label">@lang('scheme/noticetype.attr.death_accident')</label>
                                         <select name="select_death_accident" id="select_death_accident" class="form-control clearfields">
@@ -90,12 +90,14 @@
                                             <option value="Yes">@lang('scheme/noticetype.attr.yes')</option>
                                             <option value="No">@lang('scheme/noticetype.attr.no')</option>
                                             @endif
+    
+    
                                         </select>
                                     </div>
                                 </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/employer.attr.employerCode')</label>
                                     @if(!empty($empcode))
@@ -110,7 +112,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/noticetype.attr.id_type')</label>
                                     <select class="form-control clearfields" name='idtype' id='idtype' required>
@@ -133,7 +135,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/noticetype.attr.enter_ic')</label>
                                     @if(!empty($idno))
@@ -248,14 +250,14 @@
                   
                     <div class="form-actions">
                         <button type="submit" id="btnnotice"
-                            class="btn btn waves-effect waves-light btn-success">@lang('button.next')</button>
+                            class="btn btn waves-effect waves-light btn-success">@lang('scheme/noticetype.next')</button>
                         <button type="button" id="btn_reset" class="btn btn waves-effect waves-light btn-info"
-                            onclick="submitform()">@lang('button.reset')</button>
+                            onclick="submitform()">@lang('scheme/noticetype.reset')</button>
 
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                            onclick="window.location='/noticetype'">@lang('button.cancel')</button>
+                            onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                            onclick="window.location='/obform_od'">@lang('button.back')</button>
+                            onclick="window.location='/obform_od'">@lang('scheme/noticetype.back')</button>
                     </div>
                 </form>
 
