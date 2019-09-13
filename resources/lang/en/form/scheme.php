@@ -431,11 +431,19 @@ return [
          'recommendation' => [
 
             'title' => 'Recommendation',
+            'updatedBy' => 'Updated By',
+            'updatedDate' => 'Updated Date',
+            'recommendationIO' => 'Recommendation IO',
+            'recommendationBy' => 'Recommendation By',
+            'recommendationDate' => 'Recommendation Date',
          ],
 
          'IO_recommendation' => [
 
             'title' => 'IO Recommendation',
+            'recommendation' => 'Recommendation',
+            'recommendationBy' => 'Recommendation By',
+            'recommendationDate' => 'Recommendation Date',
          ],
 
          'inconsistency' => [

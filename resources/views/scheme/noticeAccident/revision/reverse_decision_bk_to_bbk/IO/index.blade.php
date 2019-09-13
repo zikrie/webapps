@@ -16,23 +16,23 @@
                         <li class="nav-item"> 
                                 <a class="nav-link active" data-toggle="tab" href="#remarksReverseDecIO" role="tab">
                                         <span class="hidden-sm-up"><i class="ti-home"></i></span>
-                                        <span class="hidden-xs-down">Remarks</span>
+                                        <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span>
                                 </a>
                         </li>
                         <li class="nav-item"> 
                                 <a class="nav-link" data-toggle="tab" href="#claimDetailsReverseDecIO" role="tab">
                                         <span class="hidden-sm-up"><i class="ti-home"></i></span> 
-                                        <span class="hidden-xs-down">Claim Details</span>
+                                        <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span>
                                 </a>
                         </li>
-                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendations"
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendationReverseDecIO"
                                 role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                    class="hidden-xs-down">Recommendation</span></a>
+                                    class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a>
                         </li>
                         <li class="nav-item"> 
                                 <a class="nav-link" data-toggle="tab" href="#supportingDocumentReverseDecIO" role="tab">
                                         <span class="hidden-sm-up"><i class="ti-home"></i></span> 
-                                        <span class="hidden-xs-down">Supporting Document</span>
+                                        <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span>
                                 </a>
                         </li>
                 </ul>
@@ -80,9 +80,6 @@
                 <div class="tab-content tabcontent-border">
                         <div class="tab-pane p-20 active" id="remarksReverseDecIO" role="tabpanel">
                                 @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.remarksIO')
-                        </div>
-                        <div class="tab-pane p-20" id="recommendations" role="tabpanel">
-                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.collapse_recommendation')
                         </div>
                         <div class="tab-pane p-20" id="supportingDocumentReverseDecIO" role="tabpanel">
                                 @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.supportingDocIO')
@@ -516,6 +513,46 @@
                                                                 </div>
                                                         </div>
                                                 </div>
+                                </div>
+                        </div>
+
+                        <div class="tab-pane p-20" id="recommendationReverseDecIO" role="tabpanel">
+                                <div id="accordionrecommendationReverseDecIO" role="tablist" class="accordion">
+                                      <!-- Recommendation -->
+                                      <div class="card m-b-0">
+                                                <div class="card-header" role="tab" id="recommendation_reverseDecision_IO">
+                                                        <h6 class="mb-0">
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordionrecommendationReverseDecIO" href="#recommendationIO"
+                                                                aria-expanded="false" aria-controls="collapseOne1">
+                                                                <h6 class="card-title"><i class="fa fa-plus"></i>
+                                                                Recommendation </h6>
+                                                        </a>
+                                                        </h6>
+                                                </div>
+                                                <div id="recommendationIO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div class="card-body">
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.recommendation')
+                                                        </div>
+                                                </div>
+                                        </div>   
+
+                                        <!-- Recommendation IO -->
+                                      <div class="card m-b-0">
+                                                <div class="card-header" role="tab" id="recommendationIO_reverseDecision_IO">
+                                                        <h6 class="mb-0">
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordionrecommendationReverseDecIO" href="#recommendationIO_IO"
+                                                                aria-expanded="false" aria-controls="collapseOne1">
+                                                                <h6 class="card-title"><i class="fa fa-plus"></i>
+                                                                Recommendation IO</h6>
+                                                        </a>
+                                                        </h6>
+                                                </div>
+                                                <div id="recommendationIO_IO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                                        <div class="card-body">
+                                                                @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.IO.recommendationIO')
+                                                        </div>
+                                                </div>
+                                        </div>      
                                 </div>
                         </div>
                 </div>

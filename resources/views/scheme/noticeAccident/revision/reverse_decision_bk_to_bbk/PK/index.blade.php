@@ -122,14 +122,14 @@
                                     <h6 class="mb-0">
                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#fpm"
                                             aria-expanded="false" aria-controls="collapseOne1">
-                                            <h6 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.fpm')
+                                            <h6 class="card-title"><i class="fa fa-plus"></i>FPM
                                             </h6>
                                         </a>
                                     </h6>
                                 </div>
                                 <div id="fpm" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                       fpm
+                                    @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.fpm')
                                     </div>
                                 </div>
                             </div>
