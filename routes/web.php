@@ -246,6 +246,15 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/revisionpaymentoption', 'Revision\PaymentOptionController@index_PK');
     Route::get('/revisionpaymentoption_sao', 'Revision\PaymentOptionController@index_SAO');
 
+    Route::get('/permanentrepresentatives', 'others\PermanentrepresentativesController@index_PK');
+    Route::get('/permanentrepresentatives_sco', 'others\PermanentrepresentativesController@index_SCO');
+    Route::get('/permanentrepresentatives_io', 'others\PermanentrepresentativesController@index_IO');
+    Route::get('/permanentrepresentatives_sao', 'others\PermanentrepresentativesController@index_SAO');
+    Route::get('/permanentrepresentatives_akd', 'others\PermanentrepresentativesController@index_AKD');
+    Route::get('/permanentrepresentatives_hof', 'others\PermanentrepresentativesController@index_HOF');
+    Route::get('/permanentrepresentatives_hol', 'others\PermanentrepresentativesController@index_HOL');
+    Route::get('/permanentrepresentatives_pkdis', 'others\PermanentrepresentativesController@index_PKDIS');
+
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */
     Route::post('/noticedeath', 'NoticeDeathController@postObForm');
