@@ -28,13 +28,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.recommendationBy')</label>
+                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.recommended_by')</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.recommendationDate')</label>
+                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.recommended_date')</label>
                                         <input type="date" id="" class="form-control" >
                                     </div>
                                 </div>
