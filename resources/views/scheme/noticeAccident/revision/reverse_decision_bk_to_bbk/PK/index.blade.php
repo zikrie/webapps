@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.reverseDecision')</h3>
+            <h6 class="card-title">Reverse Decision</h6>
             <!-- Tab panes -->
 
 
@@ -23,11 +23,11 @@
                 </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
+                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
+                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a>
                 </li>
             </ul>
 
@@ -76,7 +76,7 @@
                         @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.remarks')
                     </div>
                     <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                        
+                    @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.supporting_document')
                     </div>
 
                     <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
@@ -86,14 +86,14 @@
                             <!-- Initial Assessment appointmentdetails-->
                             <div class="card m-b-0">
                                 <div class="card-header" role="tab" id="caseInfo_reverse_decision_bk_to_bbk">
-                                    <h5 class="mb-0">
+                                    <h6 class="mb-0">
                                         <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                             href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
-                                            <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                @lang('index.attr.case_info')
-                                            </h4>
+                                            <h6 class="card-title"><i class="fa fa-plus"></i>
+                                                Case Info
+                                            </h6>
                                         </a>
-                                    </h5>
+                                    </h6>
                                 </div>
                                 <div id="caseInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
@@ -103,13 +103,13 @@
                             </div>
                             <div class="card m-b-0">
                                 <div class="card-header" role="tab" id="insuredPerson_reserveDecision">
-                                    <h5 class="mb-0">
+                                    <h6 class="mb-0">
                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#obInfo"
                                             aria-expanded="false" aria-controls="collapseOne1">
-                                            <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                @lang('index.attr.insuredPersonInfo')</h4>
+                                            <h6 class="card-title"><i class="fa fa-plus"></i>
+                                            @lang('form/scheme.general.collapse.ob.title')</h6>
                                         </a>
-                                    </h5>
+                                    </h6>
                                 </div>
                                 <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
@@ -119,17 +119,17 @@
                             </div>
                             <div class="card m-b-0">
                                 <div class="card-header" role="tab" id="fpm_ereserveDecision">
-                                    <h5 class="mb-0">
+                                    <h6 class="mb-0">
                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#fpm"
                                             aria-expanded="false" aria-controls="collapseOne1">
-                                            <h4 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.fpm')
-                                            </h4>
+                                            <h6 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.fpm')
+                                            </h6>
                                         </a>
-                                    </h5>
+                                    </h6>
                                 </div>
                                 <div id="fpm" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                     <div class="card-body">
-                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.PK.fpm')
+                                       fpm
                                     </div>
                                 </div>
                             </div>
