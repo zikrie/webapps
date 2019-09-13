@@ -49,14 +49,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row p-t-20">    
+                        {{-- <div class="row p-t-20">    
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.ssn')</label>
-                                    <input type="text" readonly id="accDeclare_obProfile" name="acc_dec" value="" class="form-control">
+                                    <label class="control-label">@lang('form/personal-info.name')</label>
+                                    <input type="text" readonly id="accDeclare_obProfile" name="name" value="" class="form-control">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.acc_dec')</label>
+                                    <label class="control-label">@lang('form/scheme.general.collapse.case_info.type_revision')</label>
                                     <input type="text" readonly id="accDeclare_obProfile" name="acc_dec" value="" class="form-control">
                                 </div>
                             </div>
@@ -74,13 +74,13 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.typerev')</label><span class="required">*</span>
+                                <label class="control-label">@lang('form/scheme.general.collapse.case_info.reason_revision')</label><span class="required">*</span>
                                 <input type="text" id="typeRev_obProf" name="type_rev" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.rec_date')</label>
+                                    <label class="control-label">@lang('form/scheme.general.collapse.case_info.received_revision')</label>
                                     <input type="text" readonly id="recDate_obProfile" name="rec_date" value="" class="form-control">
                                 </div>
                             </div>
@@ -88,22 +88,34 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.reason_rev')</label><span class="required">*</span>
+                                    <label class="control-label">@lang('form/scheme.general.collapse.case_info.year')</label><span class="required">*</span>
                                     <input type="text" id="reasonRev_obProf" name="reasonRev" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.year')</label>
-                                    <input type="text" readonly id="year_obProfile" name="year" value="" class="form-control">
+                                    <label class="control-label">@lang('form/scheme.general.collapse.case_info.received_date')</label>
+                                    <input type="text" readonly id="received_date" name="received_date" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.received_rev')</label><span class="required">*</span>
-                                    <input type="text" id="receivedRev_obProfile" name="received_rev" value="" class="form-control">
+                                    <label class="control-label">@lang('form/scheme.general.collapse.case_info.acceptance_declaration')</label><span class="required">*</span>
+                                    <input type="text" id="acceptance_declaration" name="acceptance_declaration" value="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('form/scheme.general.collapse.case_info.SSN_received')</label><span class="required">*</span>
+                                    <input type="text" id="SSN_received" name="SSN_received" value="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('form/scheme.general.collapse.case_info.received_revision')</label><span class="required">*</span>
+                                    <input type="text" id="SSN_received" name="SSN_received" value="" class="form-control">
                                 </div>
                             </div>
                         </div>

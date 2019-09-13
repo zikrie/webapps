@@ -253,12 +253,18 @@ return [
             'SPIeligible' => 'SPI Eligible',
             'notice_date' => 'Notice Date',
             'form34_date' => 'Form 34 Received Date',
+            'received_date' => 'Received Date',
             'registrationDate' => 'Registration Date',
             'notice_type' => 'Notice Type',
             'working' => 'Is Still Working?',
+            'acceptance_declaration' => 'Acceptance Declaration 117',
             'declare_117' => 'Declaration 117',
             'acc_potential' => 'Accident Potential',
             'type_revision' => 'Type of Revision',
+            'reason_revision' => 'Reason Revision',
+            'year' => 'Year',
+            'SSN_received' => 'SSN Appendix A Received',
+            'received_revision' => 'Received Revision Notice Date',
 
             // OD_RTW
             
