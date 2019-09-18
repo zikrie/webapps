@@ -36,7 +36,7 @@
              </style>
 </head>
 <body>
-   
+
     
 @if($notes=='Y')
 
@@ -63,13 +63,13 @@
                 if ($show == "0") {
                     ?>
                     {{-- <a href="' . $folder_path . '">Link text</a> --}}
-                    <a href="testing?<?php echo $query?>&show=1"><i class="fa fa-eye"></i>
+                <a href="testing?docname={{$docname}}&notes={{$notes}}&docid={{$docid}}&show=1"><i class="fa fa-eye"></i>
                         Show Note
                     </a>
                     <?php
                 } else { //show
                     ?>
-                    <a href="testing?<?php echo $query?>&show=0" ><i class="fa fa-share fa-fw"></i>
+                    <a href="testing?docname={{$docname}}&notes={{$notes}}&docid={{$docid}}&show=0"><i class="fa fa-share fa-fw"></i>
                         Hide Note
                     </a>
                     <?php

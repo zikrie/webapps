@@ -67,10 +67,11 @@ class NoticeTypeController extends Controller
             
             $jsondecodeAssistEmployer='';
             $this->getAssist($jsondecodeAssistEmployer);
+            
             // dd($jsondecodeAssistEmployer);
             $jsonOBAssist= '';
             $this->getOBAssist($idno, $idtype, $jsonOBAssist);
-            
+            dd($jsonOBAssist);
            
     
 
