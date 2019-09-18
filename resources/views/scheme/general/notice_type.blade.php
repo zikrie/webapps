@@ -1,4 +1,4 @@
-@extends('common.layouts.app')
+@extends('general.layouts.app')
 
 @section('maintitle', 'Tab Screen')
 
@@ -14,7 +14,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="/Scheme/idno" method="post">
+                <form action="/scheme/idno" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         <h5 class="card-title">@lang('scheme/noticetype.title')</h5>
@@ -100,11 +100,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/employer.attr.employerCode')</label>
-                                    @if(!empty($empcode))
-                                    <input type="text" id='empcode' name="empcode" value="{{ $empcode }}"
+                                    @if(!empty($employerCode))
+                                    <input type="text" id='empcode' name="empcode" value="{{ $employerCode }}"
                                         class="form-control clearfields">
                                     @else
-                                    <input type="text" id='empcode' name="empcode" value="{{ old('empcode') }}"
+                                    <input type="text" id='empcode' name="empcode" value="{{ old('employerCode') }}"
                                         class="form-control clearfields">{{-- {{Session::get('empcode')}} --}}
                                     <!--label class="" >{{Session::get('error')}}</label-->
                                     @endif
@@ -180,8 +180,8 @@
                                                     <center>No Record Found</center>
                                                 </td>
                                                 @else
-                                            <td>{{ $empinfo -> empcode}}</td>
-                                            <td>{{ $empinfo -> empname}}</td>
+                                            <td>{{ $empinfo -> employerCode}}</td>
+                                            <td>{{ $empinfo -> employerName}}</td>
                                             @endif
                                         </tr>
 

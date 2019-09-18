@@ -12,10 +12,9 @@ return [
          'remarks' => 'Remarks',
          'claim' => 'Claim Details',
          'investigation' => 'Investigation Details',
-         'inconsistent_doubt' => 'Inconsistent and Doubtful Info',
          'recommendation' => ' Recommendation',
          'supporting_document' => 'Supporting Document',
-         'query_opinion' => 'Query and Opinion',
+         'queryOpinion' => 'Query and Opinion',
          
 
       ],
@@ -470,7 +469,7 @@ return [
 
          'inconsistency' => [
 
-            'title' => 'Inconsistent and Doubtful Information',
+            'title' => 'Inconsistency',
             'add_item' => 'Add Item',
             'section' => 'Section',
             'item' => 'Item',

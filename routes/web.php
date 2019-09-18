@@ -85,7 +85,10 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::post('insertlola', 'UploadobprofileController@upload')->name('obprofile.upload');
     Route::post('insert', 'UploadclaimController@upload')->name('claim.upload');
     Route::get('/viewdoc', 'UploadclaimController@viewstorage');
-
+    Route::get('/testing', 'UploadclaimController@test');
+    Route::get('/viewNoNotes', 'UploadclaimController@viewNonotes');
+    Route::get('/viewNotes', 'UploadclaimController@viewnotes');
+    
     //irina
     Route::get('/scanningdone', 'UploadclaimController@ScanningDone');
     /* ----------------------------------END OF UPLOAD FILE ------------------------------------------ */
@@ -245,6 +248,15 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
   
     Route::get('/revisionpaymentoption', 'Revision\PaymentOptionController@index_PK');
     Route::get('/revisionpaymentoption_sao', 'Revision\PaymentOptionController@index_SAO');
+
+    Route::get('/permanentrepresentatives', 'others\PermanentrepresentativesController@index_PK');
+    Route::get('/permanentrepresentatives_sco', 'others\PermanentrepresentativesController@index_SCO');
+    Route::get('/permanentrepresentatives_io', 'others\PermanentrepresentativesController@index_IO');
+    Route::get('/permanentrepresentatives_sao', 'others\PermanentrepresentativesController@index_SAO');
+    Route::get('/permanentrepresentatives_akd', 'others\PermanentrepresentativesController@index_AKD');
+    Route::get('/permanentrepresentatives_hof', 'others\PermanentrepresentativesController@index_HOF');
+    Route::get('/permanentrepresentatives_hol', 'others\PermanentrepresentativesController@index_HOL');
+    Route::get('/permanentrepresentatives_pkdis', 'others\PermanentrepresentativesController@index_PKDIS');
 
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */

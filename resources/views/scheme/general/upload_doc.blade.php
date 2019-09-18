@@ -84,8 +84,10 @@
                                                                 class="icon-close"></i></div>
                                                     </td> --}}
                                                     <td><input type="date" class="form-control"></td>
-                                                    <td><a href='/viewdoc?docname={{$d->docname}}'
-                                                            target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                        target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    {{-- <td><a href='viewdoc?docname={{$d->docname}}'
+                                                            target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
                                                            
                                                     <?php $docfound = true; $cnt++;?>
                                                 </tr>    
@@ -137,10 +139,12 @@
                                                         value="{{ $d -> doctype}}|{{ $d -> doccat}}">{{ $d-> docdescen}}</td>
                                                         
                                                 <td></td>
-
-                                                    <td><a href='/viewdoc?docname={{$d->docname}}'
+                                                <td><input type="date" class="form-control"></td>
+                                                <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                    target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    {{-- <td><a href='viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td>
-                                                    
+                                                     --}}
 
                                                 </tr>
                                                 <?php $cnt++; ?>

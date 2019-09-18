@@ -64,13 +64,14 @@ class NoticeTypeController extends Controller
                 $select_death_accident = null;
             }
             
-            $jsondecodeAssistEmployer="";
-
+            
+            $jsondecodeAssistEmployer='';
             $this->getAssist($jsondecodeAssistEmployer);
-
+            // dd($jsondecodeAssistEmployer);
             $jsonOBAssist= '';
-            $retcode = $this->getOBAssist($idno, $idtype, $jsonOBAssist);
-        
+            $this->getOBAssist($idno, $idtype, $jsonOBAssist);
+            
+           
     
 
         //    dd($testing);
@@ -84,6 +85,8 @@ class NoticeTypeController extends Controller
             if ($jsonOBAssist == null && $jsonOBAssist == '') {
                 $idnoassist=null;
             } else {
+                $jsonOBAssist = $jsonOBAssist->{'identificationInfoList'};
+                dd($jsonOBAssist);
                 foreach ($jsonOBAssist as $testing) {
                     $idnoassist=$testing->{'idinfo'};
                 }
@@ -283,34 +286,71 @@ class NoticeTypeController extends Controller
      
     public function getOBAssist($idno, $idtype, &$jsonOBAssist)
     {
+        try
+        {
+            $client = new Client([
+                // Base URI is used with relative requests
+                'base_uri' => env('WS_DB2_IP', 'localhost').'/api/common/',
+                // You can set any number of default request options.
+                'timeout'  => 2.0,
+            ]);
+
+        
+            $resource = array(
+            // "refNo"=> $refno,
+            "identificationType"=> "4",
+            "identificationNo"=> "$idno");
+            $j = json_encode($resource);
+            
+            $response = $client->request('GET', 'ip', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
+           
+            $body = $response->getBody()->getContents();
+          
+            $stringBody = (string) $body;
+            
+            $jsonOBAssist = json_decode($stringBody);
+            //  dd($jsonOBAssist);
+            
+         $jsonOBAssist = $jsonOBAssist->{'employeeInfoList'};
+            // dd($jsondecodeAssistEmployer);
+         
+           // $_content = json_encode($stringBody,true);
+           // return new ApiResource($_content);
+            
+            }
+            catch(\Exception $e)
+            {
+                return $e->getMessage();
+               
+            }
         //$idno = '1';
 
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/obprofile/'.$idno.'/'.$idtype;
-        $ch = curl_init();
+        // $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/obprofile/'.$idno.'/'.$idtype;
+        // $ch = curl_init();
         
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
+        // curl_setopt($ch, CURLOPT_URL, $url);
+        // curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
+        // curl_setopt($ch, CURLOPT_HTTPGET, true);
 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
         
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        // $result = curl_exec($ch);
+        // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
     
-        //close connection
-        curl_close($ch);
+        // //close connection
+        // curl_close($ch);
 
-        $jsonOBAssist = json_decode($result);
+        // $jsonOBAssist = json_decode($result);
         
-        if ($jsonOBAssist != null) {
-            return 0;
-        }
+        // if ($jsonOBAssist != null) {
+        //     return 0;
+        // }
         
-        return -1;
+        // return -1;
     }
     
     public function checkIlatNotice(&$jsondecode)
@@ -348,72 +388,72 @@ class NoticeTypeController extends Controller
 
         $idno = session('idno');
         $empcode = session('empcode');
-        
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
-        $ch = curl_init();
-        
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        try
+        {
+            $client = new Client([
+                // Base URI is used with relative requests
+                'base_uri' => env('WS_DB2_IP', 'localhost').'/api/common/',
+                // You can set any number of default request options.
+                'timeout'  => 2.0,
+            ]);
+
+        
+            $resource = array(
+            // "refNo"=> $refno,
+            "employerCode"=> $empcode,
+            "employerName"=> "f");
+            $j = json_encode($resource);
+            
+            $response = $client->request('GET', 'employers', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
+            
+            $body = $response->getBody()->getContents();
+           
+            $stringBody = (string) $body;
+           
+            
+            $jsondecodeAssistEmployer = json_decode($stringBody);
+            $jsondecodeAssistEmployer = $jsondecodeAssistEmployer->{'businessInfo'};
+            // dd($jsondecodeAssistEmployer);
+         
+           // $_content = json_encode($stringBody,true);
+           // return new ApiResource($_content);
+            
+            }
+            catch(\Exception $e)
+            {
+                return $e->getMessage();
+               
+            }
+        
+        // $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
+        // $ch = curl_init();
+        
+        // curl_setopt($ch, CURLOPT_URL, $url);
+        // curl_setopt($ch, CURLOPT_PROXY, '');
+        
+        // curl_setopt($ch, CURLOPT_HTTPGET, true);
+
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
         
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        // $result = curl_exec($ch);
+        // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
     
-        //close connection
-        curl_close($ch);
+        // //close connection
+        // curl_close($ch);
 
-        $jsondecodeAssistEmployer = json_decode($result);
+        // $jsondecodeAssistEmployer = json_decode($response);
     }
     public function testing(Request $request)
     {
               //  return 'yeay';
               $empcode = $request->empcode;
+            
             //   $idno = session('idno');
-            //   $empcode = session('empcode');
-
-              
-
-                try
-                {
-                    $client = new Client([
-                        // Base URI is used with relative requests
-                        'base_uri' => env('WS_DB2_IP', 'localhost').'/api/common/employers/',
-                        // You can set any number of default request options.
-                        'timeout'  => 2.0,
-                    ]);
-
-                
-                    $resource = array(
-                    // "refNo"=> $refno,
-                    "employerCode"=> $empcode,
-                    "employerName"=> null);
-                    $j = json_encode($resource);
-                    
-                    $response = $client->request('GET', 'search', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
-                    dd($response);
-                    $body = $response->getBody();
-                    $stringBody = (string) $body;
-                    $_content = json_decode($stringBody);
-                   // $_content = json_encode($stringBody,true);
-                    dd($_content);
-                  
-                    $testing= $_content ;
-                   // return new ApiResource($_content);
-                    
-                    }
-                    catch(\Exception $e)
-                    {
-                        return $e->getMessage();
-                       
-                    }
-
-        
+            //   $empcode = session('empcode');  
         }
 
     public function checkOdRecordExist(&$jsondecodeOdRecord)
