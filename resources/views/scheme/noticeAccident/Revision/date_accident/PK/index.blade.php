@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('general.layouts.app')
 
 @section('maintitle', 'Tab Screen')
 
@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.dateOfAccident')</h3>
+            <h3 class="card-title">Revision Date Of Accident</h3>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-body">
@@ -24,12 +24,12 @@
 
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a>
                             </li>
-
+                            
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument" role="tab"><span
                                         class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a>
                             </li>
                         </ul>
 
@@ -78,11 +78,11 @@
                         <div class="tab-content tabcontent-border">
 
                             <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                                @include('Scheme.revision.accident.PK.remarks')
+                                @include('Scheme.noticeAccident.revision.date_accident.PK.remarks')
                             </div>
 
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                @include('Scheme.common.uploadDoc')
+                                @include('Scheme.noticeAccident.revision.date_accident.PK.supporting_document')
                             </div>
 
                             <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
@@ -96,14 +96,14 @@
                                                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                                     href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
                                                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.case_info')</h4>
+                                                        @lang('form/scheme.general.collapse.case_info.title')</h4>
                                                 </a>
                                             </h5>
                                         </div>
                                         <div id="caseInfo" class="collapse" role="tabpanel"
                                             aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.revision.accident.PK.case_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.PK.case_info')
                                             </div>
                                         </div>
                                     </div>
@@ -113,13 +113,13 @@
                                                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                                     href="#obInfo" aria-expanded="false" aria-controls="collapseOne1">
                                                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.insuredPersonInfo')</h4>
+                                                        @lang('form/scheme.general.collapse.ob.title')</h4>
                                                 </a>
                                             </h5>
                                         </div>
                                         <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.revision.accident.PK.ob_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.PK.ob')
                                             </div>
                                         </div>
                                     </div>

@@ -7,7 +7,7 @@
                     <a class="link" data-toggle="collapse" data-parent="#accordion2"
                         href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('index.attr.case_info')</h4>
+                            @lang('Case Info')</h4>
                     </a>
                 </h5>
             </div>
@@ -25,7 +25,7 @@
                         href="#bankrupDetails" aria-expanded="false"
                         aria-controls="collapseOne1">
                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('index.attr.bankrupDetails')</h4>
+                            @lang('Bankruptcy Details')</h4>
                     </a>
                 </h5>
             </div>
@@ -42,7 +42,7 @@
                     <a class="link" data-toggle="collapse" data-parent="#accordion2"
                         href="#interim" aria-expanded="false" aria-controls="collapseOne1">
                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('index.attr.interim')</h4>
+                            @lang('Interim')</h4>
                     </a>
                 </h5>
             </div>
@@ -76,7 +76,7 @@
                     <a class="link" data-toggle="collapse" data-parent="#accordion2"
                         href="#app" aria-expanded="false" aria-controls="collapseOne1">
                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('index.attr.interim')</h4>
+                            @lang('Interim')</h4>
                     </a>
                 </h5>
             </div>

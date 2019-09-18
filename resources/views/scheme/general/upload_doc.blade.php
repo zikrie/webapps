@@ -84,7 +84,7 @@
                                                                 class="icon-close"></i></div>
                                                     </td> --}}
                                                     <td><input type="date" class="form-control"></td>
-                                                    <td><a href='/testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                    <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
                                                         target="_blank"><i class="far fa-file-alt"></i></a></td>
                                                     {{-- <td><a href='viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
@@ -140,8 +140,7 @@
                                                         
                                                 <td></td>
                                                 <td><input type="date" class="form-control"></td>
-                                                
-                                                <td><a href='/testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
                                                     target="_blank"><i class="far fa-file-alt"></i></a></td>
                                                     {{-- <td><a href='viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td>

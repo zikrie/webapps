@@ -55,6 +55,14 @@ return [
         'reason' => 'Reason',
         'remarks' => 'Remark',
         'accept' => 'Accept',
+        'contribute' => 'Contribute',
+        'action' => 'Action',
+        'source'=> 'Source',
+        'recommended_by' =>'Recommended By',
+        'recommended_date' => 'Recommended Date',
+        'total_month_contribute'=>'Total Month Contribute',
+        
+        'recommendation' => 'Recommended',
     ],
 
     'save' => 'SAVE',

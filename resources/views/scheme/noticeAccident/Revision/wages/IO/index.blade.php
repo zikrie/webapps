@@ -12,26 +12,26 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.insuredPersonInfo')</h3>
+            <h3 class="card-title">Revision Wages</h3>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-body">
                         <ul class="nav customtab" role="tablist" id="tabMenu">
                             <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">Remarks</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">Claim Details</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendations"
                                 role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                    class="hidden-xs-down">Recommendation</span></a>
+                                    class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">Supporting Document</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a>
                             </li>
                         </ul>
                         <div class="row" id="rowindex">
@@ -77,13 +77,13 @@
                         <!-- Tab panes -->
                         <div class="tab-content tabcontent-border">
                             <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                                @include('Scheme.noticeAccident.revision.ob_profile.PK.remarks')
+                                @include('Scheme.noticeAccident.revision.wages.PK.remarks')
                             </div>
                             <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
-                                @include('Scheme.noticeAccident.revision.wages.SCO.collapse')
+                                @include('Scheme.noticeAccident.revision.wages.IO.collapse')
                             </div>
                             <div class="tab-pane p-20" id="recommendations" role="tabpanel">
-                                @include('Scheme.noticeAccident.revision.ob_profile.IO.collapse_recommendation')
+                                @include('Scheme.noticeAccident.revision.wages.IO.collapse_recommendation')
                             </div>
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
                                 @include('Scheme.noticeAccident.revision.wages.PK.supporting_document')

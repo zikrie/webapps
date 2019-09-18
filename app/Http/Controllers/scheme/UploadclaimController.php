@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use DB;
 use Storage;
 use Response;
+use setasign\Fpdi\Fpdi;
+
+
 
 class UploadclaimController extends Controller
 {
@@ -28,22 +31,22 @@ class UploadclaimController extends Controller
     public function test(Request $req)
     {
         $docname = $req->query('docname');
-        
+        $show=$req->query('show');
+       
         $notes = $req->query('notes');
         $docid = $req->query('docid');
         
         // $docinfo =DB::select('Select t.dn_page_note,t.dn_details_note  from docrepository r,docnotes t where r.docid=t.dn_docid AND r.caserefno=t.dn_caserefno AND r.docname=? ',[$docname]);
         $docinfo =DB::select('SELECT t.dn_page_note,t.dn_details_note  from docrepository r,docnotes t where r.docid=t.dn_docid AND r.docname=? ',[$docname]);
         $count ="0";
-       
-    
+
         if($docinfo!=null){
             foreach($docinfo as $index){
                 $dn_page_note[$count]=$index->dn_page_note;
                 $dn_details_note[$count]=$index->dn_details_note;
                 $count++;
               }
-             
+              session(['dn_page_note' =>$dn_page_note,'dn_details_note'=>$dn_details_note]);
             // $_SESSION['dn_page_note'] = $dn_page_note;
             // $_SESSION['dn_details_note'] = $dn_details_note;
             // $_SESSION['docname'] = $docname;
@@ -53,8 +56,10 @@ class UploadclaimController extends Controller
             $dn_page_note=null;
             $dn_details_note=null;
         }
-    
-        return view('testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'dn_page_note'=>$dn_page_note,'dn_details_note'=>$dn_details_note,'docinfo'=>$docinfo]);
+        session(['docname' =>$docname]);
+       
+  
+        return view('scheme.general.testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'dn_page_note'=>$dn_page_note,'dn_details_note'=>$dn_details_note,'docinfo'=>$docinfo,'show'=>$show]);
        
         // return view('testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'docinfo'=>$docinfo]);
         
@@ -271,5 +276,69 @@ class UploadclaimController extends Controller
         }
         
       
+    }
+    public function viewnotes(){
+ // $docname = session('docname');
+   $docname="201907240008_C03_20190823_1.pdf";
+   
+   $dn_page_note=session('dn_page_note');
+   $dn_details_note=session('dn_details_note');
+
+   $pdf = new Fpdi();
+   $docpath = 'app/documents/'.$docname;
+   //$docpath = 'C:/MOTION/IMAGES/'.$docname;
+   $path = storage_path($docpath);
+   $pageCount = $pdf->setSourceFile($path);
+
+   $countfor="0";
+for ($i = 1; $i <= $pageCount; $i++) {
+  if($dn_page_note[$countfor]==$i)
+  {
+    $tplIdx = $pdf->importPage($i, '/MediaBox');
+    $pdf->SetTitle($docname);
+    $pdf->AddPage();
+    $pdf->useTemplate($tplIdx);
+    $pdf->SetFont('Helvetica');
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->setFillColor(255,255,0); //rgb color
+    $pdf->SetXY(30, 30);
+    $pdf->Cell(($pdf->GetStringWidth($dn_details_note[$countfor]) + 2), 7, $dn_details_note[$countfor], 2, 20 ,'L', TRUE);
+    $countfor++;
+  }
+  else{
+    $pdf->SetTitle($docname);
+    $tplIdx = $pdf->importPage($i, '/MediaBox');
+    $pdf->AddPage();
+    $pdf->header = false;
+    $pdf->useTemplate($tplIdx);
+ 
+  }
+}
+
+$pdf->Output();
+    }
+    public function viewNonotes(){
+         $docname = session('docname');
+        
+       
+        $pdf = new Fpdi();
+
+        //Merging of the existing PDF pages to the final PDF
+        $docpath = 'app/documents/'.$docname;
+        //$docpath = 'C:/MOTION/IMAGES/'.$docname;
+        $path = storage_path($docpath);
+        $pageCount = $pdf->setSourceFile($path);
+        for ($i = 1; $i <= $pageCount; $i++) {
+        
+            $tplIdx = $pdf->importPage($i, '/MediaBox');
+           
+            $pdf->AddPage();
+            $pdf->SetTitle($docname);
+            $pdf->header = false;
+            
+            $pdf->useTemplate($tplIdx);
+        }
+        
+        $pdf->Output();
     }
 }

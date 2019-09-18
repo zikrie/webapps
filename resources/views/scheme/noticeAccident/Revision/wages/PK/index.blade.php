@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.wages')</h3>
+            <h3 class="card-title">Revision Wages</h3>
             <!-- Tab panes -->
 
 
@@ -22,11 +22,11 @@
                             class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a> </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                            class="hidden-xs-down">Claim Details</span></a>
+                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                            class="hidden-xs-down">Supporting Document</span></a>
+                            class="hidden-xs-down">@lang('form/scheme.general.tab_title.support_document')</span></a>
                 </li>
             </ul>
 
@@ -88,7 +88,7 @@
                                 <h5 class="mb-0">
                                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseInfo"
                                         aria-expanded="false" aria-controls="collapseOne1">
-                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.case_info')
+                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.case_info.title')
                                         </h4>
                                     </a>
                                 </h5>
@@ -104,7 +104,7 @@
                                 <h5 class="mb-0">
                                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#pks"
                                         aria-expanded="false" aria-controls="collapseOne1">
-                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.pks')</h4>
+                                        <h4 class="card-title"><i class="fa fa-plus"></i>  @lang('form/scheme.general.collapse.pks.title') -SBK</h4>
                                     </a>
                                 </h5>
                             </div>
@@ -119,7 +119,7 @@
                                 <h5 class="mb-0">
                                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#pks2"
                                         aria-expanded="false" aria-controls="collapseOne1">
-                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.pks2')</h4>
+                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.pks.title') -SPI</h4>
                                     </a>
                                 </h5>
                             </div>
