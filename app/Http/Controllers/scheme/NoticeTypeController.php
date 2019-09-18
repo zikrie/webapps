@@ -70,6 +70,7 @@ class NoticeTypeController extends Controller
             // dd($jsondecodeAssistEmployer);
             $jsonOBAssist= '';
             $this->getOBAssist($idno, $idtype, $jsonOBAssist);
+            
            
     
 
@@ -302,12 +303,13 @@ class NoticeTypeController extends Controller
             $j = json_encode($resource);
             
             $response = $client->request('GET', 'ip', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
-              
+           
             $body = $response->getBody()->getContents();
           
             $stringBody = (string) $body;
             
             $jsonOBAssist = json_decode($stringBody);
+            //  dd($jsonOBAssist);
             
          $jsonOBAssist = $jsonOBAssist->{'employeeInfoList'};
             // dd($jsondecodeAssistEmployer);
@@ -406,8 +408,9 @@ class NoticeTypeController extends Controller
             $response = $client->request('GET', 'employers', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
             
             $body = $response->getBody()->getContents();
-          
+           
             $stringBody = (string) $body;
+           
             
             $jsondecodeAssistEmployer = json_decode($stringBody);
             $jsondecodeAssistEmployer = $jsondecodeAssistEmployer->{'businessInfo'};

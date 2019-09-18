@@ -1,4 +1,4 @@
-@extends('common.layouts.app')
+@extends('general.layouts.app')
 
 @section('maintitle', 'Tab Screen')
 
@@ -14,7 +14,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="/Scheme/idno" method="post">
+                <form action="/scheme/idno" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         <h5 class="card-title">@lang('scheme/noticetype.title')</h5>

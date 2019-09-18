@@ -85,7 +85,10 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::post('insertlola', 'UploadobprofileController@upload')->name('obprofile.upload');
     Route::post('insert', 'UploadclaimController@upload')->name('claim.upload');
     Route::get('/viewdoc', 'UploadclaimController@viewstorage');
-
+    Route::get('/testing', 'UploadclaimController@test');
+    Route::get('/viewNoNotes', 'UploadclaimController@viewNonotes');
+    Route::get('/viewNotes', 'UploadclaimController@viewnotes');
+    
     //irina
     Route::get('/scanningdone', 'UploadclaimController@ScanningDone');
     /* ----------------------------------END OF UPLOAD FILE ------------------------------------------ */
