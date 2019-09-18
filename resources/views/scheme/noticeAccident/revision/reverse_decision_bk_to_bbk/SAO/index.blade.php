@@ -581,7 +581,7 @@
                                                         <a class="link" data-toggle="collapse" data-parent="#accordionrecommendationReverseDecSAO" href="#recommendationIO_SAO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i>
-                                                                Recommendation IO</h6>
+                                                                Recommendation SAO</h6>
                                                         </a>
                                                         </h6>
                                                 </div>

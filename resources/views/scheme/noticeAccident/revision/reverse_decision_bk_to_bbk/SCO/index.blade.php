@@ -209,7 +209,8 @@
                                                 </div>
                                                 <div id="medicalCertificateInfoSCO" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                                         <div class="card-body">
-                                                        @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SCO.medicalCertificateInfo')
+                                                        @include('scheme.noticeAccident.SCO.medicalCertificate_SCO')
+                                                        {{-- @include('scheme.noticeAccident.revision.reverse_decision_bk_to_bbk.SCO.medicalCertificateInfo') --}}
                                                         </div>
                                                 </div>
                                         </div>
@@ -562,7 +563,7 @@
                                                         <a class="link" data-toggle="collapse" data-parent="#accordionrecommendationReverseDecSCO" href="#recommendationIO_SCO"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h6 class="card-title"><i class="fa fa-plus"></i>
-                                                                Recommendation SAO</h6>
+                                                                Recommendation SCO</h6>
                                                         </a>
                                                         </h6>
                                                 </div>

@@ -9,6 +9,11 @@ use App\ObForm;
 use Illuminate\Support\Facades\Input;
 use Log;//asma
 
+use GuzzleHttp\Psr7; //atikah
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
+
 class NoticeAccidentController extends CommonController
 {
     /**
@@ -318,33 +323,42 @@ class NoticeAccidentController extends CommonController
         $accdyear = substr($date, 0, 4);
         $accdmonth = substr($date, 4, 2);
         
-        //return '++'.$idno.'++'.$date.'++'.$time.'++';
-        //$idno = '800920145348';
-        //$date ='20170114';
-        //$time = '100000';
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/checkaccidentdate?date='.$date.'&time='.$accdtime.'&idno='.$idno.'&idtype='.$idtype;
-        //return $url;
-        $ch = curl_init();
-        
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        //guzzle - atikah  
+        try
+        {
+            $client = new Client([
+               
+                // Base URI is used with relative requests
+                'base_uri' => env('WS_IP', 'localhost').'/api/wsmotion/',
+                // You can set any number of default request options.
+                'timeout'  => 2.0,
+            ]);
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        //return '++'.$result.'++';
-        $jsondecode = json_decode($result);
-        //close connection
-        curl_close($ch);
-        
-        //return $result;
-
-        $record = $jsondecode->{'record'};
-        
+            $resource = array(
+                // "refNo"=> $refno,
+                "date"=> $date,
+                "time"=> $accdtime,
+                "idno"=> $idno,
+                "idtype"=> $idtype);
+                $j = json_encode($resource);
+                
+                $response = $client->request('GET', 'checkaccidentdate', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
+                // dd($response);
+                $body = $response->getBody();
+                $stringBody = (string) $body;
+                $_content = json_decode($stringBody);
+               // $_content = json_encode($stringBody,true);
+                dd($_content);
+              
+               // return new ApiResource($_content);
+        }
+        catch(\Exception $e)
+        {
+            return $e->getMessage();
+            
+        }
+        $record = $_content->{'record'};
+        // dd($record);
         //return $record;
         if ($record=='0') {
             session(['accdrefno'=>'']);
@@ -369,7 +383,7 @@ class NoticeAccidentController extends CommonController
             }
             //return $this->index();//irina comment
         } else {
-            $data= $jsondecode->{'data'};
+            $data= $_content->{'data'};
             foreach ($data as $d) {
                 //chg07072019 - check if record exist & not draft, cannot proceed
                 $schemerefno = $d->schemerefno;

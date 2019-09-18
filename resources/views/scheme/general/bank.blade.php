@@ -24,9 +24,9 @@
                         </div>
                         @endif
                         <div class="row p-t-20">
-                            <div class="col-md-4">
+                            <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/bank.attr.payment')</label>
+                                    <label class="control-label">@lang('form/scheme.general.collapse.bank.payment')</label>
                                     <select class="form-control" name='paymode' id='paymode' required>
                                         {{-- <option value=""></option>     --}}
                                         @foreach($optionpay as $opay)
@@ -41,9 +41,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4" id="bank_location">
+                            <div class="col-md-12 col-lg-4" id="bank_location">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/bank.attr.bank_location')</label>
+                                    <label class="control-label">@lang('form/scheme.general.collapse.bank.bank_account')</label>
                                     <select class="form-control select" id="bankloc" name='bankloc'
                                     onchange="myFunction()">
                                     @foreach($optionbank as $ob)
@@ -59,9 +59,9 @@
                         </div>
                         <div id="bank_reason">
                             <div class="row p-t-20">
-                                <div class="col-md-4">
+                                <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('scheme/bank.attr.reason')</label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.bank.reason')</label>
                                         @if (!empty($bankinfo) && $bankinfo->accexist=='N')
                                         <select class="form-control select" name='reasonnoacc' id='reasonnoacc'>
                                         @else
@@ -84,9 +84,9 @@
                         <div id="bank_eft">
                             <div id="local_bank">
                                 <div class="row p-t-20">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.bank_name')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.bank_name')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='L')
                                             <select class="form-control selectLocalBank" name='bankcode' id='bankcode'>
                                                 @elseif (!empty($bankinfo) && $bankinfo->bankloc=='O')
@@ -109,9 +109,9 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.bank_accNo')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.bank_accNo')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='L')
                                             <input type="text" name="localaccno" id="localaccno" class="form-control selectLocalBank clearFields" value="{{$bankinfo->accno}}">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='O')
@@ -123,9 +123,9 @@
                                     </div>
                                 </div>
                                 <div class="row p-t-20">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.type_acc')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.type_acc')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='L' && $bankinfo->acctype)
                                             <select class="form-control selectLocalBank" name='localacctype'
                                             id='localacctype' value="{{$bankinfo->acctype}}">
@@ -153,9 +153,9 @@
                                     </div>
                                 </div>
                                 <div class="row p-t-20">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12 col-lg-8">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.bank_address')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.bank_address')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='O')
                                             <input type="text" name="ovbankaddr" id="ovbankaddr" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->bankaddr}}">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
@@ -169,9 +169,9 @@
                             </div>
                             <div id="oversea_bank">
                                 <div class="row p-t-20">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.bank_name')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.bank_name')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='O' && $bankinfo->ovbankname)
                                             <input type="text" name="ovbankname" id="ovbankname" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->ovbankname}}">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
@@ -181,9 +181,9 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.bank_accNo')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.bank_accNo')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='O' && $bankinfo->accno)
                                             <input type="text" name="ovaccno" id="ovaccno" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->accno}}">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
@@ -195,9 +195,9 @@
                                     </div>
                                 </div>
                                 <div class="row p-t-20">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.ov_type_acc')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.ov_type_acc')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='O')
                                             <select class="form-control selectOverseasBank" name='ovacctype' id='ovacctype'>
                                                 @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
@@ -212,7 +212,7 @@
                                                 @if (!empty($bankinfo) && $bankinfo->bankloc == 'O' &&
                                                 $bankinfo->acctype == $ovt->refcode)
                                                 <option value="{{$ovt->refcode}}" selected>{{$ovt->descen}}</option>
-                                                <option>@lang('scheme/bank.attr.joint')</option>
+                                                <option>@lang('form/scheme.general.collapse.bank.joint')</option>
                                                 @else
                                                 <option value="{{$ovt->refcode}}">{{$ovt->descen}}</option>
                                                 @endif
@@ -222,23 +222,23 @@
                                     </div>
                                 </div>
                                 <div class="row p-t-20">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.country')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.country')</label>
                                             <input type="text" name="country" id="country" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.currency')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.currency')</label>
                                             <input type="text" name="currency" id="currency" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row p-t-20">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.swift_code')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.swift_code')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='O')
                                             <input type="text" name="swiftcode" id="swiftcode" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->swiftcode}}">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
@@ -248,9 +248,9 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12 col-lg-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.bsb_code')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.bsb_code')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='O')
                                             <input type="text" name="bsbcode" id="bsbcode" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->bsbcode}}">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
@@ -263,9 +263,9 @@
                                     </div>
                                 </div>
                                 <div class="row p-t-20">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12 col-lg-8">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('scheme/bank.attr.ov_bank_address')</label>
+                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.ov_bank_address')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='O')
                                             <input type="text" name="ovbankaddr" id="ovbankaddr" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->bankaddr}}">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
@@ -281,13 +281,13 @@
 
 {{-- 
                         <div class="row p-t-20">
-                            <div class="col-md-4">
+                            <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/bank.attr.country')</label>
                                     <input type="text" name="country" id="country" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/bank.attr.currency')</label>
                                     <input type="text" name="currency" id="currency" class="form-control">
@@ -418,9 +418,9 @@
                             <div class='row'>
                                 <div class="col-md-12">
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
-                                        <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
-                                        <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
+                                        <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                                        <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
                                     </div>
                                 </div>
                             </div>

@@ -12,9 +12,10 @@ return [
          'remarks' => 'Remarks',
          'claim' => 'Claim Details',
          'investigation' => 'Investigation Details',
+         'inconsistent_doubt' => 'Inconsistent and Doubtful Info',
          'recommendation' => ' Recommendation',
          'supporting_document' => 'Supporting Document',
-         'queryOpinion' => 'Query and Opinion',
+         'query_opinion' => 'Query and Opinion',
          
 
       ],
@@ -174,7 +175,7 @@ return [
             'suspense' => 'Suspense',
             'closed' => 'Closed',
             'substatus_desc' => 'Sub Status Description',
-            'payment' => 'Payment Mode',
+            'payment' => 'Payment Method',
             'cheque' => 'Cheque',
             'eft' => 'EFT',
             'no_payment' => 'No Payment',
@@ -207,6 +208,10 @@ return [
          'accident' => [
 
             'title' => 'Accident Information',
+
+            'accident_date' => 'Accident Date',
+            'accident_time' => 'Accident Time',
+            'place_accident' => 'Place Accident',
 
          ],
 
@@ -465,7 +470,7 @@ return [
 
          'inconsistency' => [
 
-            'title' => 'Inconsistency',
+            'title' => 'Inconsistent and Doubtful Information',
             'add_item' => 'Add Item',
             'section' => 'Section',
             'item' => 'Item',
