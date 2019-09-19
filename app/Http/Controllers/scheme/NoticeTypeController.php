@@ -71,7 +71,7 @@ class NoticeTypeController extends Controller
             // dd($jsondecodeAssistEmployer);
             $jsonOBAssist= '';
             $this->getOBAssist($idno, $idtype, $jsonOBAssist);
-            dd($jsonOBAssist);
+           
            
     
 
@@ -86,10 +86,9 @@ class NoticeTypeController extends Controller
             if ($jsonOBAssist == null && $jsonOBAssist == '') {
                 $idnoassist=null;
             } else {
-                $jsonOBAssist = $jsonOBAssist->{'identificationInfoList'};
-                dd($jsonOBAssist);
+                
                 foreach ($jsonOBAssist as $testing) {
-                    $idnoassist=$testing->{'idinfo'};
+                    $idnoassist=$testing->{'identificationInfoList'};
                 }
             }
             
