@@ -31,7 +31,7 @@ return [
         'upload_documents' => 'Upload Document',
         'od_information' => 'OD Info',
         'remarks' => 'Remarks',
-        'claim_info' => 'Claim Details Information',
+        'claim_info' => 'Claim Details',
         'generated_document' => 'Generated Documents',
         'routing' => 'Routing',
         'queryOpinion' => 'Query and Opinion',
