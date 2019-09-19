@@ -91,8 +91,8 @@ class NoticeTypeController extends Controller
                     $idnoassist=$testing->{'identificationInfoList'};
                 }
             }
-            
-          
+            // return $idnoassist;
+            // dd($idnoassist);
             return view('scheme.general.notice_type', ['idtype'=>$listidtype, 'noticetype'=>$listnoticetype,'empinfo'=>$jsondecodeAssistEmployer,'obassist'=>$idnoassist,'empcode'=>$empcode,'idno'=>$idno,'selectidtype'=>$idtype,'selectnoticetype'=>$noticetype,'nameid'=>$jsonOBAssist,'in_employment'=>$in_employment,'select_death_accident'=>$select_death_accident]);
         }
         if ($noticetype == "01") { //accident
@@ -299,7 +299,7 @@ class NoticeTypeController extends Controller
             $resource = array(
             // "refNo"=> $refno,
             "identificationType"=> "4",
-            "identificationNo"=> "$idno");
+            "identificationNo"=> $idno);
             $j = json_encode($resource);
             
             $response = $client->request('GET', 'ip', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);

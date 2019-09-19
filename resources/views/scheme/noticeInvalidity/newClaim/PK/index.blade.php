@@ -36,12 +36,9 @@
                 </div>
 
                 <div class="tab-pane p-20" id="uploaddoc" role="tabpanel">
-                        <div id="accordion2" role="tablist" class="accordion">
-
-                                
-                
-                    @include('scheme.general.upload_doc')
-                        </div>
+                    <div id="accordion2" role="tablist" class="accordion">
+                        @include('scheme.general.upload_doc')
+                    </div>
                 </div>
             </div>
         </div>
