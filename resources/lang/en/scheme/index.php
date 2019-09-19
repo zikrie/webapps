@@ -6,7 +6,7 @@ return [
 
         'accident_notice' => 'Accident Notice',
         'od_notice' => 'Occupational Disease Notice',
-        'invalidity_notice' => 'Invalidity Notice',
+        'invalidity_notice' => 'New Registration - Invalidity Notice',
         'death_notice' => 'Death Notice',
         'insured_details' => 'Insured Person Info',
         'employer_details' => 'Employer Info',
