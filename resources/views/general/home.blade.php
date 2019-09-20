@@ -119,82 +119,80 @@
 
             <div class="col-12">
                 <div class="card">
+                    <div class="table-responsive" >
+                        <table id="tblwb" class="table table-sm table-bordered"  data-toggle-column="first">
+                            <thead>
+                                <tr>
+                                    <th>@lang('scheme/home.select')</th>
+                                    @if (Session::get('loginrole')== 'pk')
+                                    <th>@lang('scheme/home.delete')</th>
+                                    @endif
+                                    <th>@lang('scheme/home.no')</th>
+                                    <th>@lang('scheme/home.date')</th>
+                                    <th>@lang('scheme/home.desc')</th>
+                                    <th>@lang('scheme/home.aging')</th>
+                                    <th>@lang('scheme/home.noticetype')</th>
+                                    <th style='display: none'>@lang('scheme/home.caserefno')</th>
+                                    <th style='display: none'>noticetype</th>
+                                    <th>@lang('scheme/home.idno')</th>
+                                    <th>@lang('scheme/home.scheme_ref_no')</th>
+                                    <th>@lang('scheme/home.case_id')</th>
+                                    <th>@lang('scheme/home.revision_ref_no')</th>
+                                    <th>@lang('scheme/home.med_ref_no')</th>
+                                    <th>@lang('scheme/home.rtw_ref_no')</th>
 
-                    <table id="tblwb" class="table table-sm table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>@lang('scheme/home.select')</th>
-                                @if (Session::get('loginrole')== 'pk')
-                                <th>@lang('scheme/home.delete')</th>
-                                @endif
-                                <th>@lang('scheme/home.no')</th>
-                                <th>@lang('scheme/home.date')</th>
-                                <th>@lang('scheme/home.desc')</th>
-                                <th>@lang('scheme/home.aging')</th>
-                                <th>@lang('scheme/home.noticetype')</th>
-                                <th style='display: none'>@lang('scheme/home.caserefno')</th>
-                                <th style='display: none'>noticetype</th>
-                                <th>@lang('scheme/home.idno')</th>
-                                <th>@lang('scheme/home.scheme_ref_no')</th>
-                                <th>@lang('scheme/home.case_id')</th>
-                                <th>@lang('scheme/home.revision_ref_no')</th>
-                                <th>@lang('scheme/home.med_ref_no')</th>
-                                <th>@lang('scheme/home.rtw_ref_no')</th>
+                                </tr>
+                            </thead>
 
-                            </tr>
-                        </thead>
-
-                        <tbody class='align-middle'>
-                            @if (!empty($workbasket))
-                            @if (count($workbasket) == 0)
-                            <td>No record</td>
-                            @else
-                            @foreach ($workbasket as $wb)
-                            <tr>
-
-                                <td><a id='selectdraft' href='/getnotice?caserefno={{$wb['caserefno']}}&casetype={{$wb['noticetype']}}&wbid={{$wb['wbid']}}'><i class="fas fa-edit"></i></a></td>
-                                
-                                @if (Session::get('loginrole')== 'pk')
-                                @if ($wb['status'] == '01'){{--draft--}}
-                                <td><a id="deletedraft" onclick="return confirm('Are you sure want to delete the draft?');" href='/deletedraft?caserefno={{$wb['caserefno']}}&wbid={{$wb['wbid']}}'><i class="fas fa-trash-alt fa-sm"></i></a></td>
+                            <tbody class='align-middle'>
+                                @if (!empty($workbasket))
+                                @if (count($workbasket) == 0)
+                                <td>No record</td>
                                 @else
-                                <td></td>
-                                @endif
-                                @endif
-                                <td>{{ $wb['wbid'] }}</td>
-                                <td>{{substr($wb['date'],6,2)}}-{{substr($wb['date'],4,2)}}-{{substr($wb['date'],0,4)}}</td>
-                                <td>{{ $wb['descen'] }}</td>
-                                <td><?php 
-                                $wbdate = DateTime::createFromFormat('Ymd', $wb['date']);
-                                $currdate = new DateTime();
-                                $difference = $currdate->diff($wbdate);
-                                echo ($difference->d);
-                                ?></td>
-                                <td>{{ $wb['noticetypedesc'] }}</td>
-                                <td style='display: none'>{{ $wb['caserefno'] }}</td>
-                                <td style='display: none'>{{ $wb['noticetype'] }}</td>
-                                <td>{{ $wb['idno'] }}</td>
-                                <td>{{ $wb['schemerefno'] }}</td>
-                                <td>{{ $wb['caseid']}}</td>
-                                <td>{{ $wb['revisionrefno'] }}</td>
-                                <td>{{ $wb['medrefno'] }}</td>
-                                <td>{{ $wb['rtwrefno'] }}</td>
+                                @foreach ($workbasket as $wb)
+                                <tr>
+
+                                        <td><a id='selectdraft' href='/getnotice?caserefno={{$wb['caserefno']}}&casetype={{$wb['noticetype']}}&wbid={{$wb['wbid']}}'><i class="fas fa-edit"></i></a></td>
+                                        
+                                        @if (Session::get('loginrole')== 'pk')
+                                        @if ($wb['status'] == '01'){{--draft--}}
+                                        <td><a id="deletedraft" onclick="return confirm('Are you sure want to delete the draft?');" href='/deletedraft?caserefno={{$wb['caserefno']}}&wbid={{$wb['wbid']}}'><i class="fas fa-trash-alt fa-sm"></i></a></td>
+                                        @else
+                                        <td></td>
+                                        @endif
+                                        @endif
+                                        <td>{{ $wb['wbid'] }}</td>
+                                        <td>{{substr($wb['date'],6,2)}}-{{substr($wb['date'],4,2)}}-{{substr($wb['date'],0,4)}}</td>
+                                        <td>{{ $wb['descen'] }}</td>
+                                        <td><?php 
+                                        $wbdate = DateTime::createFromFormat('Ymd', $wb['date']);
+                                        $currdate = new DateTime();
+                                        $difference = $currdate->diff($wbdate);
+                                        echo ($difference->d);
+                                        ?></td>
+                                        <td>{{ $wb['noticetypedesc'] }}</td>
+                                        <td style='display: none'>{{ $wb['caserefno'] }}</td>
+                                        <td style='display: none'>{{ $wb['noticetype'] }}</td>
+                                        <td>{{ $wb['idno'] }}</td>
+                                        <td>{{ $wb['schemerefno'] }}</td>
+                                        <td>{{ $wb['caseid']}}</td>
+                                        <td>{{ $wb['revisionrefno'] }}</td>
+                                        <td>{{ $wb['medrefno'] }}</td>
+                                        <td>{{ $wb['rtwrefno'] }}</td>
 
 
-                            </tr>
-                            @endforeach
-                            @endif
-                            @else
-                            
-                            
-                            @endif
-                        </tbody>
-                    </table>
-                                            
+                                    </tr>
+                                    @endforeach
+                                    @endif
+                                    @else                            
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>          
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </div>
 
