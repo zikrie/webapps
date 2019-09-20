@@ -127,8 +127,9 @@ class NoticeTypeController extends Controller
             
             $jsondecodeOdRecord="";
             $a=$this->checkOdRecordExist($jsondecodeOdRecord);
-            // return $a;
-
+            dd($jsondecodeOdRecord);
+            // return($jsondecodeOdRecord);
+            // dd($jsondecodeOdRecord);
             $record = $jsondecodeOdRecord->{'record'};
 
             // return $record;
@@ -473,14 +474,18 @@ class NoticeTypeController extends Controller
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
+        // dd($result);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        //return '++'.$result.'++';
+        // return '++'.$result.'++';
 
         //close connection
         curl_close($ch);
         // return $result;
         $jsondecodeOdRecord = json_decode($result);
+
+        // dd($jsondecodeOdRecord);
+        // return
     }
 
     public function createnoticedraft()
