@@ -669,7 +669,7 @@ class NoticeOdController extends CommonController
         $idtype= session('idtype');
 
 
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/obprofile/'.$idno.'&idtype='.$idtype;
+        $url = 'http://'.env('WS_IP', 'localhost').'/wsassistsimulation/obprofile/'.$idno.'&idtype='.$idtype;
         $ch = curl_init();
         
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -696,7 +696,7 @@ class NoticeOdController extends CommonController
 
         $idno = session('idno');
         $empcode = session('empcode');
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
+        $url = 'http://'.env('WS_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
         $ch = curl_init();
         
         curl_setopt($ch,CURLOPT_URL, $url);
@@ -831,7 +831,7 @@ class NoticeOdController extends CommonController
         }
 
 
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/contribution/'.$idno;//irina
+        $url = 'http://'.env('WS_IP', 'localhost').'/wsassistsimulation/contribution/'.$idno;//irina
         //return $url;
         $ch = curl_init();
         
