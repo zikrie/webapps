@@ -335,7 +335,7 @@ class NoticeInvalidityController extends CommonController
         $uniquerefno = session('uniquerefno');
         $caserefno = session ('caserefno');
         
-        $docinfo =DB::select('Select r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        $docinfo =DB::select('Select r.notes, r.docid, r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from BEAMS.docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
        
         // if ($confirmation != null && $confirmation->statecode != '')
         // {

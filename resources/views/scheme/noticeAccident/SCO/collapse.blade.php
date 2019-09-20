@@ -18,7 +18,7 @@
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.prepare')</div>
                                                         </div>
                                                 </div>
-                                        <!-- Initial Assessment appointmentdetails-->
+                                        <!-- Case Info-->
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingOne1">
                                                                 <h6 class="mb-0">                           
@@ -42,7 +42,7 @@
                                                                 <div class="card-body">@include('scheme/general.certification')</div>
                                                         </div>
                                                 </div>
-                                                <!-- Initial Assessment employementDetails-->
+                                                <!-- OB Form-->
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingTwo2">
                                                                 <h6 class="mb-0">                           
@@ -57,6 +57,7 @@
                                                                 </div>
                                                         </div>
                                                 </div>
+                                                <!-- Employer-->
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingSeven7">
                                                                 <h6 class="mb-0">                           
@@ -71,7 +72,7 @@
                                                                 </div>
                                                         </div>
                                                 </div>
-                                                <!-- Initial Assessment Education and Skills--> 
+                                                <!--Accident Details--> 
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingFive5">
                                                                 <h6 class="mb-0">                           
@@ -84,7 +85,7 @@
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.accidentDetails')</div>
                                                         </div>
                                                 </div>
-                                                <!-- Initial Assessment Disabled Details--> 
+                                                <!--Wages--> 
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingEight8">
                                                                 <h6 class="mb-0">                           
@@ -99,16 +100,16 @@
                                                                 <div class="card-body"> @include('scheme.noticeAccident.SCO.wages')</div>
                                                         </div>
                                                 </div>
-                                                <!-- Initial Assessment Mobility Details--> 
+                                                <!--HUS--> 
                                                 <div class="card m-b-0">
-                                                        <div class="card-header" role="tab" id="testMC">
+                                                        <div class="card-header" role="tab" id="husInfoSCO">
                                                                 <h6 class="mb-0">                           
                                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#testMC" aria-expanded="false" aria-controls="testMC">
                                                                         <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.HUS_info')</h4>
                                                                         </a>
                                                                 </h6>
                                                         </div>
-                                                        <div id="testMC" class="collapse" role="tabpanel" aria-labelledby="testMC">
+                                                        <div id="testMC" class="collapse" role="tabpanel" aria-labelledby="husInfoSCO">
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.medicalCertificate_SCO')</div>
                                                         </div>
                                                 </div>
@@ -125,8 +126,8 @@
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.similarWorker_SCO')</div>
                                                         </div>
                                                 </div> --}}
-                                                <!-- Initial Assessment Treatment Details--> 
-                                                <div class="card m-b-0">
+                                                <!-- Case Fact--> 
+                                                {{-- <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingNine9">
                                                                 <h6 class="mb-0">                           
                                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseNine9" aria-expanded="false" aria-controls="collapseNine9">
@@ -137,7 +138,7 @@
                                                         <div id="collapseNine9" class="collapse" role="tabpanel" aria-labelledby="headingNine9">
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.caseFact_SCO')</div>
                                                         </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingTen10">
                                                                 <h6 class="mb-0">                           
@@ -162,6 +163,7 @@
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.investigation_SCO')</div>
                                                         </div>
                                                 </div> --}}
+                                                <!-- SOCSO--> 
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingThirteen13">
                                                                 <h6 class="mb-0">                           
@@ -174,6 +176,7 @@
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.socso')</div>
                                                         </div>
                                                 </div>
+                                                <!-- BANK--> 
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingFourteen14">
                                                                 <h6 class="mb-0">                           
@@ -186,6 +189,7 @@
                                                                 <div class="card-body">@include('scheme.general.bank')</div>
                                                         </div>
                                                 </div>
+                                                <!-- Confirmation--> 
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingFifteen15">
                                                                 <h6 class="mb-0">                           

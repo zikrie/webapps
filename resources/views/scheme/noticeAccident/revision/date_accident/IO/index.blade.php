@@ -24,12 +24,17 @@
 
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claimDetails')</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a>
+                            </li>
+
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendation_io"
+                                    role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a>
                             </li>
 
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supportingDocument')</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a>
                             </li>
                         </ul>
 
@@ -78,11 +83,15 @@
                         <div class="tab-content tabcontent-border">
 
                             <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                                @include('Scheme.noticeAccident.revision.date_accident.IO.remarks')
+                                @include('Scheme.noticeAccident.revision.date_accident.PK.remarks')
+                            </div>
+
+                            <div class="tab-pane p-20" id="recommendation_io" role="tabpanel">
+                                @include('Scheme.noticeAccident.revision.date_accident.IO.collapse_recommendation')
                             </div>
 
                             <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                                @include('Scheme.general.upload_doc')
+                                @include('Scheme.noticeAccident.revision.date_accident.PK.supporting_document')
                             </div>
 
                             <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
@@ -96,14 +105,14 @@
                                                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                                     href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
                                                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.case_info')</h4>
+                                                        @lang('form/scheme.general.collapse.case_info.title')</h4>
                                                 </a>
                                             </h5>
                                         </div>
                                         <div id="caseInfo" class="collapse" role="tabpanel"
                                             aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.date_accident.IO.case_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.PK.case_info')
                                             </div>
                                         </div>
                                     </div>
@@ -113,13 +122,13 @@
                                                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                                                     href="#obInfo" aria-expanded="false" aria-controls="collapseOne1">
                                                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('index.attr.insuredPersonInfo')</h4>
+                                                        @lang('form/scheme.general.collapse.ob.title')</h4>
                                                 </a>
                                             </h5>
                                         </div>
                                         <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                             <div class="card-body">
-                                                @include('Scheme.noticeAccident.revision.date_accident.IO.ob_info')
+                                                @include('Scheme.noticeAccident.revision.date_accident.PK.ob')
                                             </div>
                                         </div>
                                         <div class="card m-b-0">
@@ -129,7 +138,7 @@
                                                         href="#statement" aria-expanded="false"
                                                         aria-controls="collapseOne1">
                                                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                            @lang('index.attr.statement')</h4>
+                                                            @lang('form/scheme.general.collapse.statement.title')</h4>
                                                     </a>
                                                 </h5>
                                             </div>
@@ -146,7 +155,7 @@
                                                             href="#caseFact" aria-expanded="false"
                                                             aria-controls="collapseOne1">
                                                             <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                @lang('index.attr.caseFact')</h4>
+                                                                @lang('form/scheme.general.collapse.case_fact.title')</h4>
                                                         </a>
                                                     </h5>
                                                 </div>
@@ -163,7 +172,7 @@
                                                                 data-parent="#accordion2" href="#investigationReport"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                    @lang('index.attr.investigationReport')</h4>
+                                                                    @lang('form/scheme.general.collapse.investigation_report.title')</h4>
                                                             </a>
                                                         </h5>
                                                     </div>
@@ -181,7 +190,7 @@
                                                                 data-parent="#accordion2" href="#inconsistent"
                                                                 aria-expanded="false" aria-controls="collapseOne1">
                                                                 <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                    @lang('index.attr.inconsistent')</h4>
+                                                                    @lang('form/scheme.general.collapse.inconsistency.title')</h4>
                                                             </a>
                                                         </h5>
                                                     </div>
@@ -189,42 +198,6 @@
                                                         aria-labelledby="headingOne1">
                                                         <div class="card-body">
                                                             @include('Scheme.noticeAccident.revision.date_accident.IO.inconsistent_info')
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card m-b-0">
-                                                    <div class="card-header" role="tab" id="recommendation_dateOfAccident">
-                                                        <h5 class="mb-0">
-                                                            <a class="link" data-toggle="collapse"
-                                                                data-parent="#accordion2" href="#recommendation"
-                                                                aria-expanded="false" aria-controls="collapseOne1">
-                                                                <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                    @lang('index.attr.recommendation')</h4>
-                                                            </a>
-                                                        </h5>
-                                                    </div>
-                                                    <div id="recommendation" class="collapse" role="tabpanel"
-                                                        aria-labelledby="headingOne1">
-                                                        <div class="card-body">
-                                                            @include('Scheme.noticeAccident.revision.date_accident.IO.recommendation')
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card m-b-0">
-                                                    <div class="card-header" role="tab" id="recommendationIO_dateOfAccident">
-                                                        <h5 class="mb-0">
-                                                            <a class="link" data-toggle="collapse"
-                                                                data-parent="#accordion2" href="#recommendationIO"
-                                                                aria-expanded="false" aria-controls="collapseOne1">
-                                                                <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                                    @lang('index.attr.IOrecommendation')</h4>
-                                                            </a>
-                                                        </h5>
-                                                    </div>
-                                                    <div id="recommendationIO" class="collapse" role="tabpanel"
-                                                        aria-labelledby="headingOne1">
-                                                        <div class="card-body">
-                                                            @include('Scheme.noticeAccident.revision.date_accident.IO.recommendation_IO')
                                                         </div>
                                                     </div>
                                                 </div>

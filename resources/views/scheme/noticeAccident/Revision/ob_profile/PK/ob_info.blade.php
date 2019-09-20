@@ -27,7 +27,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Name</label>
+                                    <label class="control-label">@lang('form/personal-info.name')</label>
                                     <input type="text" readonly id="name" name="name" value="" class="form-control" required>
                                 </div>
                             </div>
@@ -35,14 +35,14 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">ID No.</label>
+                                    <label class="control-label">@lang('form/personal-info.id_no')</label>
                                     <input type="text" readonly id="idNum_obProf" name="idNum" value=""
                                         class="form-control" disabled>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">ID Type</label>
+                                    <label class="control-label">@lang('form/personal-info.id_type')</label>
                                     <input type="text" readonly id="idType_obProf" name="idType" value=""
                                         class="form-control" disabled>
                                 </div>
@@ -141,12 +141,12 @@
                         <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
                         <button type="submit"
-                            class="btn btn waves-effect waves-light btn-success">@lang('insuredPerson.save')</button>
+                            class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
                         <button type="button" class="btn btn waves-effect waves-light btn-info"
-                            onclick="submitform()">@lang('noticetype.reset')</button>
+                            onclick="submitform()">@lang('button.reset')</button>
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                            onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
-                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('noticetype.back')</button>
+                            onclick="window.location='/noticetype'">@lang('button.cancel')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
                     </div>
                 </form>
             </div>

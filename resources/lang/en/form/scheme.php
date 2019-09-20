@@ -45,7 +45,7 @@ return [
 
       'green_header' => [
 
-         'name' => 'Name', 
+         'name' => 'Name',
          'idno' => 'Identification No',
          'scheme_ref_no' => 'Scheme Ref No',
          'date_of_death' => 'Date of Death',
@@ -66,6 +66,11 @@ return [
             'pobox' => 'P.O Box',
             'locked_bag' => 'Locked Bag',
             'wdt' => 'W.D.T',
+            'notice' => 'Notice',
+            'case_type' => 'Case Type',
+            'notice_ID' => 'Notice ID',
+            'status' => 'Status',
+
          ],
 
          'employer' => [
@@ -169,7 +174,7 @@ return [
             'suspense' => 'Suspense',
             'closed' => 'Closed',
             'substatus_desc' => 'Sub Status Description',
-            'payment' => 'Payment Mode',
+            'payment' => 'Payment Method',
             'cheque' => 'Cheque',
             'eft' => 'EFT',
             'no_payment' => 'No Payment',
@@ -202,6 +207,10 @@ return [
          'accident' => [
 
             'title' => 'Accident Information',
+
+            'accident_date' => 'Accident Date',
+            'accident_time' => 'Accident Time',
+            'place_accident' => 'Place Accident',
 
          ],
 
@@ -248,13 +257,18 @@ return [
             'SPIeligible' => 'SPI Eligible',
             'notice_date' => 'Notice Date',
             'form34_date' => 'Form 34 Received Date',
+            'received_date' => 'Received Date',
             'registrationDate' => 'Registration Date',
             'notice_type' => 'Notice Type',
             'working' => 'Is Still Working?',
+            'acceptance_declaration' => 'Acceptance Declaration 117',
             'declare_117' => 'Declaration 117',
             'acc_potential' => 'Accident Potential',
-            'yes' => 'Yes',
-            'no' => 'No',
+            'type_revision' => 'Type of Revision',
+            'reason_revision' => 'Reason Revision',
+            'year' => 'Year',
+            'SSN_received' => 'SSN Appendix A Received',
+            'received_revision' => 'Received Revision Notice Date',
 
             // OD_RTW
             
@@ -283,6 +297,8 @@ return [
             'socsoRegistrationOffice' => 'SOCSO Registration Office ',
             'socsoOffice'=> 'SOCSO Office ',
             'accident_date' => 'Accident Date',
+            'received_revision' => 'Received Revision Notice Date',
+            'source' => 'Source',
 
             //DEATH NOTICE
 
@@ -370,6 +386,8 @@ return [
             'title' => 'Case Fact',
 
             'list_tasks' => 'List of Tasks',
+            'reviewer_comment' => 'Reviewer Comment',
+            'approval_comment' => 'Approval Comment',
             'reviewer_reviews' => 'Reviewer Reviews',
             'recommendation' => 'Recommendation',
             'investigator_name' => 'Investigator Name',
@@ -423,9 +441,30 @@ return [
 
          ],
 
+         'approval' => [
+
+            'title' => 'Approval',
+         ],
+
          'recommendation' => [
 
             'title' => 'Recommendation',
+            'updatedBy' => 'Updated By',
+            'updatedDate' => 'Updated Date',
+            'recommendationIO' => 'Recommended IO',
+            'recommended_by' => 'Recommended By',
+            'recommended_date' => 'Recommended Date',
+            'created_date' => 'Created Date',
+            'created_by' => 'Created By',
+            'route' => 'Route',
+         ],
+
+         'IO_recommendation' => [
+
+            'title' => 'IO Recommendation',
+            'recommendation' => 'Recommendation',
+            'recommended_by' => 'Recommended By',
+            'recommended_date' => 'Recommended Date',
          ],
 
          'inconsistency' => [
@@ -466,6 +505,14 @@ return [
 
          ],
 
+         'declaration' => [
+
+            'title' => 'Declaration 117',
+            'doc' => 'Document',
+            'action' => 'Action',
+
+         ],
+
          'investigation_document' => [
 
             'title' => 'Investigation Document',
@@ -477,6 +524,20 @@ return [
          'supporting_document' => [
 
             'title' => 'Supporting Document',
+
+         ],
+
+         'upload_document' => [
+
+            'title' => 'Upload Document',
+            'revisionNoticeID' => 'Revision Notice ID',
+            'updateBy' => 'Update By',
+            'updateDate' => 'Update Date',
+            'docdesc' => 'Document Description',
+            'docpath' => 'Document Path',
+            'date' => 'Date',
+            'view' => 'View',
+            'delete' => 'Delete',
 
          ],
 
@@ -499,7 +560,12 @@ return [
 
 
          ],
+            /*========= FOR REVISION =========*/
+         'pks' => [
 
+            'title' => 'PKS',
+
+         ],
       ],
             
    ],
@@ -514,14 +580,14 @@ return [
 
    ],
 
-   'notice_od' => [
+   'notice_invalidity' => [
 
       'PK' => [
 
       ],
    ],
 
-   'notice_invalidity' => [
+   'notice_od' => [
 
       'PK' => [
 
@@ -773,10 +839,10 @@ return [
             'city' => 'City',
             'state' => 'State',
             'postcode' => 'Postcode',
-            'demised_date' => 'Demised Date',   
+            'demised_date' => 'Demised Date',
             'po_box' => 'P.O Box',
             'locked_bag' => 'Locked Bag',
-            'wdt' => 'W.D.T', 
+            'wdt' => 'W.D.T',
 
          ],
 

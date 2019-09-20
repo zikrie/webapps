@@ -4,7 +4,7 @@
             <div class="card-body">
                 <form action="#">
                     <div class="form-body">
-                        <h5 class="card-title">Remarks</h5>
+                        <h5 class="card-title">  @lang('form/scheme.general.collapse.remarks.title')</h5>
                         <hr>
                         {{-- <div class="col-md-12" id="container">
                             <div class="table-responsive">
@@ -19,11 +19,11 @@
                                     <table class="table table-sm table-bordered" data-toggle-column="first">
                                         <thead>
                                             <tr>
-                                                <th>Date</th>
-                                                <th>Time</th>
-                                                <th>From</th>
-                                                <th>To</th>
-                                                <th>Remarks</th>
+                                                <th> @lang('form/scheme.general.collapse.remarks.date')</th>
+                                                <th> @lang('form/scheme.general.collapse.remarks.time')</th>
+                                                <th> @lang('form/scheme.general.collapse.remarks.from')</th>
+                                                <th> @lang('form/scheme.general.collapse.remarks.to')</th>
+                                                <th> @lang('form/scheme.general.collapse.remarks.remark')</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,7 +42,7 @@
                         <div class='row'>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">Remarks</label>
+                                    <label class="control-label">@lang('form/scheme.general.collapse.remarks.remark')</label>
                                     <textarea type="text" class="form-control"></textarea>
                                 </div>
                             </div>

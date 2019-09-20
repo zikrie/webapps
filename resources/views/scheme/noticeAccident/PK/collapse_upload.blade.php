@@ -22,7 +22,7 @@
                                             </div>
                                     </div>
                                     <!-- generated doc -->
-                                    <div class="card m-b-0">
+                                    {{-- <div class="card m-b-0">
                                             <div class="card-header" role="tab" id="headingOne2">
                                             <h5 class="mb-0">                           
                                                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#generatedDoc" aria-expanded="true" aria-controls="collapseOne1">
@@ -35,7 +35,7 @@
                                                     @include('scheme.noticeAccident.SCO.generated_doc')
                                             </div>
                                             </div>
-                                    </div>
+                                    </div> --}}
                             </div>
                     </div>
             </div><!-- Row -->

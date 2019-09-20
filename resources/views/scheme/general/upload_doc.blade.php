@@ -30,8 +30,10 @@
                         @endif
 
                         <div class="form-actions">
+
                             <div class="row">
                                 <div class="col-12">
+
                                     <div class="table-responsive">
                                         @if(count($errors)>0)
 
@@ -83,10 +85,10 @@
                                                     </div>
                                                     </td> --}}
                                                     <td><input type="date" class="form-control"></td>
-                                                    {{-- <td><a href='/testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
-                                                            target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
-                                                    <td><a href='viewdoc?docname={{$d->docname}}'
-                                                    target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                            target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    {{-- <td><a href='viewdoc?docname={{$d->docname}}'
+                                                    target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
 
                                                     <?php $docfound = true; $cnt++;?>
                                                 </tr>
@@ -141,12 +143,11 @@
 
                                                     <td></td>
                                                     <td><input type="date" class="form-control"></td>
-
-                                                    {{-- <td><a href='/testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
-                                                            target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
-                                                    <td><a href='viewdoc?docname={{$d->docname}}'
+                                                    <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                            target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                    {{-- <td><a href='viewdoc?docname={{$d->docname}}'
                                                     target="_blank"><i class="far fa-file-alt"></i></a></td>
-                                                   
+                                                    --}}
 
                                                 </tr>
                                                 <?php $cnt++; ?>
@@ -170,15 +171,18 @@
                                                         @endforeach
                                                     </select>
                                                 </td>
+
                                             </tr>
+
+
                                         </table>
                                     </div>
-                                    <div class="form-action">
 
-                                        <!--button type="submit"
-                                            class="btn btn-rounded btn-block btn-outline-success ">Upload All</button-->
 
-                                    </div>
+
+
+
+
                                     <div class="form-actions">
                                         <button type="submit"
                                             class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
@@ -193,13 +197,17 @@
                                             id='btncancelacc'
                                             onclick="window.location='/obform_od'">@lang('scheme/noticetype.back')</button>
                                     </div>
+
                                 </div>
                             </div>
-                            <br/>
+                            <br />
+
+
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <!-- Row -->
 </div>

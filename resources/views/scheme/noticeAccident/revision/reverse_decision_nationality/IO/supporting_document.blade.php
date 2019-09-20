@@ -5,7 +5,7 @@
                 <form action="{{ route('claim.upload') }}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
-                        <h5 class="card-title">@lang('scheme/uploaddoc.title')</h5>
+                        <h5 class="card-title">@lang('form/scheme.general.collapse.upload_document.title')</h5>
                         <hr clas>
                         {{-- @if(Session::get('messagedoc')) --}}
                         {{-- <div class="card-footer"> --}}
@@ -32,19 +32,19 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Revision Notice ID </label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.upload_document.revisionNoticeID') </label>
                                         <input type="text" name="revision_id" id="revision_id" value="" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Updated By </label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.upload_document.updateBy')</label>
                                         <input type="text" name="updated_by" id="updated_by" value="" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Updated Date</label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.upload_document.updateDate')</label>
                                         <input type="date" name="date" id="date" value="" class="form-control" readonly>
                                     </div>
                                 </div>
@@ -58,11 +58,11 @@
                                     <thead>
                                         <tr>
                                             <th style="display:none;">Doctype </th>
-                                            <th>@lang('scheme/uploaddoc.attr.docdesc')</th>
-                                            <th>@lang('scheme/uploaddoc.attr.docpath')</th>
-                                            <th>@lang('scheme/uploaddoc.attr.date')</th>
-                                            <th>@lang('scheme/uploaddoc.attr.view')</th>
-                                           <th>@lang('scheme/uploaddoc.attr.delete')</th>
+                                            <th>@lang('form/scheme.general.collapse.upload_document.docdesc')</th>
+                                            <th>@lang('form/scheme.general.collapse.upload_document.docpath')</th>
+                                            <th>@lang('form/scheme.general.collapse.upload_document.date')</th>
+                                            <th>@lang('form/scheme.general.collapse.upload_document.view')</th>
+                                           <th>@lang('form/scheme.general.collapse.upload_document.delete')</th>
 
                                         </tr>
                                     </thead>

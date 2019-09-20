@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form action="/employerdetails_od" method="POST" id="reset">
+                <form action="employerDetails" method="POST" id="reset">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         {{-- <h5 class="card-title">@lang('employerDetails.title')</h5>
@@ -184,50 +184,48 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('scheme/employer.attr.state')</label>
-                                    <select class="form-control" tabindex="1" name='state' id='state'>
-                                        @foreach($state as $id)
-                                        @if (!empty($emprecord) && $emprecord->statecode == $id->refcode)
-                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
-                                        @else
-                                        <option value="{{$id->refcode}}">{{$id->descen}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>@lang('scheme/employer.attr.city')</label>
-                                    @if(!empty($emprecord) && $emprecord->city != '')
-                                    <input type="text" id="city" name="city" value="{{$emprecord->city}}" class="form-control clearFields">
-                                    @elseif(!empty($employer) && $employer->city != '')
-                                    <input type="text" id="city" name="city" value="{{$employer->city}}" class="form-control clearFields">
+                        <div class='row'>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">@lang('scheme/ob.attr.state')</label>
+                                <!--input type="text" name="state" id="state" value="@if(!empty($obcontact)){{ $obcontact->statecode }} @endif" class="form-control"-->
+                                <select name='state' id='state' class='form-control'>
+                                    <option value="please select" selected hidden readonly>@lang('scheme/noticetype.attr.please_select')</option>
+                                    @foreach($state as $s)
+                                    @if(!empty($obprofile) && $obprofile->statecode == $s->refcode)
+                                    <option value='{{$s->refcode}}' selected>{{$s->descen}}</option>
                                     @else
-                                    <input type="text" id="city" name="city" value="" class="form-control clearFields">
+                                    <option value='{{$s->refcode}}'>{{$s->descen}}</option>
                                     @endif
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('scheme/employer.attr.postcode')</label>
-                                    @if(!empty($emprecord) && $emprecord->postcode != '')
-                                    <input type="text" id="postcode" name="postcode" value="{{$emprecord->postcode}}" class="form-control clearFields">
-                                    @elseif(!empty($employer) && $employer->postcode != '')
-                                    <input type="text" id="postcode" name="postcode" value="{{$employer->postcode}}" class="form-control clearFields">
-                                    @else
-                                    <input type="text" id="postcode" name="postcode" value="{{old('postcode')}}" class="form-control clearFields">
-                                    @endif
-                                </div>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>@lang('scheme/ob.attr.city')</label>
+                                @if(!empty($obprofile) && $obprofile->city != '')
+                                <input type="text" id="city" name="city" value="{{ $obprofile->city }}" class="form-control clearFields">
+                                @else
+                                <input type="text" id="city" name="city" value="" class="form-control clearFields">
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>@lang('scheme/ob.attr.postcode')</label>
+                                @if(!empty($obprofile) && $obprofile->postcode != '')
+                                <input type="text" id="postcode" name="postcode" value="{{ $obprofile->postcode }}" class="form-control clearFields">
+                                @else
+                                <input type="text" id="postcode" name="postcode" value="" class="form-control clearFields">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>P.O BOX</label>
+                                    <label>@lang('scheme/employer.attr.pobox')</label>
                                     @if(!empty($emprecord) && $emprecord->pobox != '')
                                     <input type="text" id="pobox" name="pobox" value="{{$emprecord->pobox}}" class="form-control clearFields">
                                     @elseif(!empty($employer) && $employer->pobox != '')
@@ -239,7 +237,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Locked Bag</label>
+                                    <label>@lang('scheme/employer.attr.lockedbag')</label>
                                     @if(!empty($emprecord) && $emprecord->lockedbag != '')
                                     <input type="text" id="lockedbag" name="lockedbag" value="{{$emprecord->lockedbag}}" class="form-control clearFields">
                                     @elseif(!empty($employer) && $employer->lockedbag != '')
@@ -251,7 +249,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>W.D.T</label>
+                                    <label>@lang('scheme/employer.attr.wdt')</label>
                                     @if(!empty($emprecord) && $emprecord->wdt != '')
                                     <input type="text" id="wdt" name="wdt" value="{{$emprecord->wdt}}" class="form-control clearFields">
                                     @elseif(!empty($employer) && $employer->wdt != '')
@@ -300,10 +298,17 @@
                                 </div>
                             </div>  
                         </div>
+                            
+                            
                         <div class="form-actions">
-                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
-                            <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                        </div>   
+                            <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
+                            <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
+                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
+                            {{-- <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('noticetype.back')</button> --}}
+                        </div>
+                            
                         <br/>   
                     </div>
                 </form>
