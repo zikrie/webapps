@@ -80,13 +80,13 @@ return [
             // or 'db2_ibmi_ibm' / 'db2_zos_odbc' / 'db2_expressc_odbc
             'driverName' => '{IBM i Access ODBC Driver}',
             // or '{iSeries Access ODBC Driver}' '{IBM i Access ODBC Driver 64-bit}'
-            'host' => 'server',
-            'username' => '',
-            'password' => '',
+            'host' => '10.6.20.30',
+            'username' => 'QSECOFR',
+            'password' => 'qsecofr1',
             'database' => 'BEAMS',
             'prefix' => '',
             'schema' => 'BEAMS',
-            'port' => 50000,
+            'port' => 446,
             'date_format' => 'Y-m-d H:i:s',
             'odbc_keywords' => [
                 'SIGNON' => 3,

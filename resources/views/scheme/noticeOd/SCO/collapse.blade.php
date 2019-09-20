@@ -40,7 +40,7 @@
         </div>
         <div id="certificate" class="collapse" role="tabpanel" aria-labelledby="headingOne14">
             <div class="card-body">
-                @include('scheme.common.certification')
+                @include('scheme.general.certification')
             </div>
         </div>
     </div> 
@@ -70,7 +70,7 @@
         </div>
         <div id="employer" class="collapse" role="tabpanel" aria-labelledby="headingOne3">
             <div class="card-body">
-                @include('scheme.common.employer')
+                @include('scheme.general.employer')
             </div>
         </div>
     </div>  
@@ -205,7 +205,7 @@
         </div>
         <div id="bankinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne13">
             <div class="card-body">
-                @include('scheme.common.bank')
+                @include('scheme.general.bank')
             </div>
         </div>
     </div>

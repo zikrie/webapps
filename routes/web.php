@@ -205,6 +205,33 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/noticeod_sao', 'NoticeOdController@indexSAO');
     /* ------------------------ END OF NOTICE OD(SAO) ---------------------------------- */
 
+    /* --------------------------- NOTICE OD(REVISION) ------------------------------------ */
+    Route::get('/revisionprovisional_sco', 'Revision\ProvisionalController@index_SCO');
+    Route::get('/revisionprovisional_sao', 'Revision\ProvisionalController@index_SAO');
+    Route::get('/revisionchangedate', 'Revision\ChangeDateODController@index');
+    Route::get('/revisionchangedate_sco', 'Revision\ChangeDateODController@index_SCO');
+    Route::get('/revisionchangedate_io', 'Revision\ChangeDateODController@index_IO');
+    Route::get('/revisionchangedate_sao', 'Revision\ChangeDateODController@index_SAO');
+    Route::get('/revisionmedical_pk','Revision\MedicalController@index_pk');
+    Route::get('/revisionmedical_sco','Revision\MedicalController@index_sco');
+    Route::get('/revisionmedical_io','Revision\MedicalController@index_io');
+    Route::get('/revisionmedical_sao','Revision\MedicalController@index_sao');
+    Route::get('/revisionassess_sco', 'Revision\AssessmentController@indexRevisionSCO');
+    Route::get('/revisionassess_sao', 'Revision\AssessmentController@indexRevisionSAO');
+    Route::get('/revisionels', 'Revision\ElsController@index');
+    Route::get('/revisionels_sco', 'Revision\ElsController@indexEls');
+    Route::get('/revisionels_io', 'Revision\ElsController@indexElsIO');
+    Route::get('/revisionels_sao', 'Revision\ElsController@indexElsSao');
+
+    /* ------------------------ END OF NOTICE OD(REVISION) ---------------------------------- */
+
+    /* --------------------------- NOTICE OD(OTHERS) ------------------------------------ */
+    Route::get('/noic', 'Others\NoIcController@index');
+    Route::get('/noic_sco', 'Others\NoIcController@index_SCO');
+    Route::get('/noic_sao', 'Others\NoIcController@index_SAO');
+
+    /* ------------------------ END OF NOTICE OD(OTHERS) ---------------------------------- */
+
     /* ------------------------------ NOTICE ILAT(PK) -------------------------------- */
     Route::get('/noticeinvalidity', 'NoticeInvalidityController@index');
     Route::post('/wagesilat', 'NoticeInvalidityController@postWages');
