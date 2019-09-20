@@ -6,7 +6,7 @@ return [
 
         'accident_notice' => 'Accident Notice',
         'od_notice' => 'Occupational Disease Notice',
-        'invalidity_notice' => 'Invalidity Notice',
+        'invalidity_notice' => 'New Registration - Invalidity Notice',
         'death_notice' => 'Death Notice',
         'insured_details' => 'Insured Person Info',
         'employer_details' => 'Employer Info',
@@ -31,7 +31,7 @@ return [
         'upload_documents' => 'Upload Document',
         'od_information' => 'OD Info',
         'remarks' => 'Remarks',
-        'claim_info' => 'Claim Details Information',
+        'claim_info' => 'Claim Details',
         'generated_document' => 'Generated Documents',
         'routing' => 'Routing',
         'queryOpinion' => 'Query and Opinion',

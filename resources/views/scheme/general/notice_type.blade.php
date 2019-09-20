@@ -205,6 +205,7 @@
 
                                     <tbody class='align-middle'>
                                         @if (empty($obassist))
+                                        
                                         <tr>
                                                 <td colspan="2">
                                                     <center>No Record Found</center>
@@ -214,13 +215,13 @@
                                         @foreach($obassist as $data)
                                      
                                         @foreach($nameid as $data_name)
-                                                  @if($data ->idtype ==$selectidtype)
+                                                  {{-- @if($data ->identificationTypeId ==$selectidtype) --}}
                                                          <tr>
-                                                          <td>{{ $data -> idno}}</td>
+                                                          <td>{{ $data -> identificationNo}}</td>
                                                            <td>{{ $data_name -> name }}</td>
 
                                                           </tr>
-                                                     @endif
+                                                     {{-- @endif --}}
                                                      @if( $loop->iteration > 1)
                                                    <input type="hidden" value="2" id="ic_more">
                                                  @endif

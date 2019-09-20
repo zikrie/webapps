@@ -36,18 +36,18 @@
              </style>
 </head>
 <body>
-   
+
     
 @if($notes=='Y')
 
 <div class="container" style="width:100%; height:100%;"  oncontextmenu ="event.preventDefault();$('#context-menu').show();$('#context-menu').offset({'top':mouseY,'left':mouseX})">
         <div style="width: 80%; margin: 0 auto">
          @if($show!=null && $show=='1')
-        <embed type="application/pdf" src="viewNotes" width="100%" height="702" ></embed>
+        <embed type="application/pdf" src="viewNotes" width="100%" height="835" ></embed>
         @elseif($show!=null && $show =='0')
-        <embed type="application/pdf" src="viewNoNotes" width="100%" height="702" ></embed>
+        <embed type="application/pdf" src="viewNoNotes" width="100%" height="835" ></embed>
         @elseif($show==null)
-        <embed type="application/pdf" src="viewNotes" width="100%" height="702" ></embed>
+        <embed type="application/pdf" src="viewNotes" width="100%" height="835" ></embed>
         </div>
         @endif
  </div>
@@ -63,13 +63,13 @@
                 if ($show == "0") {
                     ?>
                     {{-- <a href="' . $folder_path . '">Link text</a> --}}
-                    <a href="testing?<?php echo $query?>&show=1"><i class="fa fa-eye"></i>
+                <a href="testing?docname={{$docname}}&notes={{$notes}}&docid={{$docid}}&show=1"><i class="fa fa-eye"></i>
                         Show Note
                     </a>
                     <?php
                 } else { //show
                     ?>
-                    <a href="testing?<?php echo $query?>&show=0" ><i class="fa fa-share fa-fw"></i>
+                    <a href="testing?docname={{$docname}}&notes={{$notes}}&docid={{$docid}}&show=0"><i class="fa fa-share fa-fw"></i>
                         Hide Note
                     </a>
                     <?php
@@ -81,7 +81,7 @@
 @elseif($notes == 'N' ||$notes ==null)
     <div class="container" style="width:100%; height:100%;"  oncontextmenu ="event.preventDefault();$('#context-menu').show();$('#context-menu').offset({'top':mouseY,'left':mouseX})">
             <div style="width: 80%; margin: 0 auto">
-            <embed type="application/pdf" src="viewNoNotes" width="100%" height="702" ></embed>
+            <embed type="application/pdf" src="viewNoNotes" width="100%" height="835" ></embed>
             </div>
      </div>
      @else

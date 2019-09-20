@@ -36,12 +36,12 @@
 
                                     <div class="table-responsive">
                                         @if(count($errors)>0)
-                                        
-                                            @foreach($errors->all() as $error)
 
-                                            <div class="alert alert-warning">{{$error}} </div>
-<br>
-                                            @endforeach
+                                        @foreach($errors->all() as $error)
+
+                                        <div class="alert alert-warning">{{$error}} </div>
+                                        <br>
+                                        @endforeach
 
 
                                         @endif
@@ -56,7 +56,7 @@
                                                     <th>@lang('scheme/uploaddoc.attr.docpath')</th>
                                                     <th>@lang('scheme/uploaddoc.attr.date')</th>
                                                     <th>@lang('scheme/uploaddoc.attr.view')</th>
-                                                   <th>@lang('scheme/uploaddoc.attr.delete')</th> 
+                                                    <th>@lang('scheme/uploaddoc.attr.delete')</th>
 
                                                 </tr>
                                             </thead>
@@ -69,19 +69,20 @@
                                                 @if ($d->doctype == $data->doctype)
                                                 <tr>
 
-                                                    
+
                                                     <td style="display:none;"><input type="hidden" class="number"
                                                             value="{{$cnt}}"></td>
                                                     <td style="display:none;"><input type="hidden"
                                                             name="doctype[{{$cnt}}]" value="{{ $data -> doctype}}">
                                                     </td>
                                                     <td><input type="hidden" name="doccat[{{$cnt}}]"
-                                                            value="{{ $data -> doctype}}|{{ $data -> doccat}}">{{ $data -> docdescen}}</td>
-                                                            <td></td>
+                                                            value="{{ $data -> doctype}}|{{ $data -> doccat}}">{{ $data -> docdescen}}
+                                                    </td>
+                                                    <td></td>
                                                     {{-- <td><input type="file" name="pdf[{{$cnt}}]"
-                                                            id="pdf_cancel_{{$cnt}}">
-                                                        <div class="preview btn_cancel_{{$cnt}}"> <i
-                                                                class="icon-close"></i></div>
+                                                    id="pdf_cancel_{{$cnt}}">
+                                                    <div class="preview btn_cancel_{{$cnt}}"> <i class="icon-close"></i>
+                                                    </div>
                                                     </td> --}}
                                                     <td><input type="date" class="form-control"></td>
                                                     <!-- <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
@@ -90,42 +91,43 @@
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td> 
                                                            
                                                     <?php $docfound = true; $cnt++;?>
-                                                </tr>    
+                                                </tr>
                                                 {{$d->doctype=''}}
                                                 @endif
-                                                
+
                                                 @endforeach
-                                                
+
                                                 @endif
 
                                                 @if ($docfound == false)
                                                 <tr>
                                                     <td style="display:none;"><input type="hidden" class="number"
-                                                        value="{{$cnt}}"></td>
-                                                <td style="display:none;"><input type="hidden"
-                                                        name="doctype[{{$cnt}}]" value="{{ $data -> doctype}}">
-                                                </td>
-                                                <td><input type="hidden" name="doccat[{{$cnt}}]"
-                                                        value="{{ $data -> doctype}}|{{ $data -> doccat}}">{{ $data -> docdescen}}</td>
-                                                        
-                                                <td><span class="choosefile"><input type="file" name="pdf[{{$cnt}}]"
-                                                        id="pdf_cancel_{{$cnt}}">
-                                                   
-                                                        <i class=" preview btn_cancel_{{$cnt}} icon-close"></i>
-                                                    
-                                                    </span>
-                                                </td>
-                                                <td><input type="date" class="form-control"></td>
+                                                            value="{{$cnt}}"></td>
+                                                    <td style="display:none;"><input type="hidden"
+                                                            name="doctype[{{$cnt}}]" value="{{ $data -> doctype}}">
+                                                    </td>
+                                                    <td><input type="hidden" name="doccat[{{$cnt}}]"
+                                                            value="{{ $data -> doctype}}|{{ $data -> doccat}}">{{ $data -> docdescen}}
+                                                    </td>
+
+                                                    <td><span class="choosefile"><input type="file" name="pdf[{{$cnt}}]"
+                                                                id="pdf_cancel_{{$cnt}}">
+
+                                                            <i class=" preview btn_cancel_{{$cnt}} icon-close"></i>
+
+                                                        </span>
+                                                    </td>
+                                                    <td><input type="date" class="form-control"></td>
                                                     <td></td>
-                                                    
-                                                    
+
+
 
                                                 </tr>
                                                 <?php $cnt++; ?>
                                                 @endif
-                                                
+
                                                 @endforeach
-                                                
+
                                                 @if (!empty($docinfo))
                                                 @foreach ($docinfo as $d)
                                                 @if ($d->doctype != '')
@@ -177,22 +179,23 @@
 
 
 
-                                    <div class="form-action">
-                                       
-                                        <!--button type="submit"
-                                            class="btn btn-rounded btn-block btn-outline-success ">Upload All</button-->
-                                        
-                                    </div>
-                
 
-                                        <div class="form-actions">
-                                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
-                                            <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
-                                            <button type="button" id="add_doc"
+
+
+                                    <div class="form-actions">
+                                        <button type="submit"
+                                            class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
+                                        <button type="button" class="btn btn waves-effect waves-light btn-info"
+                                            onclick="submitform()">@lang('scheme/noticetype.reset')</button>
+                                        <button type="button" id="add_doc"
                                             class="btn btn-secondary">@lang('scheme/uploaddoc.adddoc')</button>
-                                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
-                                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('scheme/noticetype.back')</button>
-                                        </div>
+                                        <button type="button" class="btn waves-effect waves-light btn-secondary"
+                                            id='btncancelacc'
+                                            onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-secondary"
+                                            id='btncancelacc'
+                                            onclick="window.location='/obform_od'">@lang('scheme/noticetype.back')</button>
+                                    </div>
 
                                 </div>
                             </div>

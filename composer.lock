@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92284fff02423b5a7505b1258d3ce8dd",
+    "content-hash": "33bf44f3d2432768157d0e6bbd7be0f4",
     "packages": [
         {
             "name": "anouar/fpdf",
@@ -94,6 +94,57 @@
                 "pdf"
             ],
             "time": "2019-09-10T08:08:34+00:00"
+        },
+        {
+            "name": "cooperl/laravel-db2",
+            "version": "5.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cooperl22/laravel-db2.git",
+                "reference": "c5aa87d9a3f7446eaaba9293a03da0b30582b36d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cooperl22/laravel-db2/zipball/c5aa87d9a3f7446eaaba9293a03da0b30582b36d",
+                "reference": "c5aa87d9a3f7446eaaba9293a03da0b30582b36d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.8.*",
+                "php": ">=7.1.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cooperl\\Database\\DB2\\DB2ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cooperl\\Database\\DB2\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Rault",
+                    "role": "Developer"
+                }
+            ],
+            "description": "laravel-db2 is a simple DB2 service provider for Laravel. It provides DB2 Connection by extending the Illuminate Database component of the laravel framework.",
+            "keywords": [
+                "database",
+                "db2",
+                "laravel",
+                "odbc",
+                "pdo"
+            ],
+            "time": "2019-07-16T07:42:20+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

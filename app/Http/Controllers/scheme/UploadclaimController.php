@@ -57,7 +57,9 @@ class UploadclaimController extends Controller
             $dn_details_note=null;
         }
         session(['docname' =>$docname]);
-       
+        // $testing=nl2br($dn_details_note[2]);
+        //  dd($dn_details_note) ;
+        //  return $dn_details_note[2];   
   
         return view('scheme.general.testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'dn_page_note'=>$dn_page_note,'dn_details_note'=>$dn_details_note,'docinfo'=>$docinfo,'show'=>$show]);
        
@@ -104,7 +106,7 @@ class UploadclaimController extends Controller
         $operid = session('loginname');
         $brcode = session('loginbranchcode');
         $dataSet = array();
-        dd($uniquerefno);
+        // dd($uniquerefno);
         $cnt = 0;
         $a = '';
         
@@ -239,7 +241,7 @@ class UploadclaimController extends Controller
         
         
         $jsondata = json_encode($docrepo);
-        dd($docrepo);
+       
        
 
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/upddoc';
@@ -261,7 +263,7 @@ class UploadclaimController extends Controller
         curl_close($ch);
         
         $jsondecode = json_decode($result);
-        dd($result);
+        // dd($result);
         
         
         $errorcode = $jsondecode->{'errorcode'};
@@ -283,7 +285,7 @@ class UploadclaimController extends Controller
    
    $dn_page_note=session('dn_page_note');
    $dn_details_note=session('dn_details_note');
-
+   
    $pdf = new Fpdi();
    $docpath = 'app/documents/'.$docname;
    //$docpath = 'C:/MOTION/IMAGES/'.$docname;
@@ -294,6 +296,7 @@ class UploadclaimController extends Controller
 for ($i = 1; $i <= $pageCount; $i++) {
   if($dn_page_note[$countfor]==$i)
   {
+    // $dn_details_note[$countfor]=nl2br($dn_details_note[$countfor]);
     $tplIdx = $pdf->importPage($i, '/MediaBox');
     $pdf->SetTitle($docname);
     $pdf->AddPage();

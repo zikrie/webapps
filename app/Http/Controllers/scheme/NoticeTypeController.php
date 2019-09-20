@@ -67,10 +67,11 @@ class NoticeTypeController extends Controller
             
             $jsondecodeAssistEmployer='';
             $this->getAssist($jsondecodeAssistEmployer);
+            
             // dd($jsondecodeAssistEmployer);
             $jsonOBAssist= '';
             $this->getOBAssist($idno, $idtype, $jsonOBAssist);
-            
+           
            
     
 
@@ -85,14 +86,13 @@ class NoticeTypeController extends Controller
             if ($jsonOBAssist == null && $jsonOBAssist == '') {
                 $idnoassist=null;
             } else {
-                $jsonOBAssist = $jsonOBAssist->{'identificationInfoList'};
-                dd($jsonOBAssist);
+                
                 foreach ($jsonOBAssist as $testing) {
-                    $idnoassist=$testing->{'idinfo'};
+                    $idnoassist=$testing->{'identificationInfoList'};
                 }
             }
-            
-          
+            // return $idnoassist;
+            // dd($idnoassist);
             return view('scheme.general.notice_type', ['idtype'=>$listidtype, 'noticetype'=>$listnoticetype,'empinfo'=>$jsondecodeAssistEmployer,'obassist'=>$idnoassist,'empcode'=>$empcode,'idno'=>$idno,'selectidtype'=>$idtype,'selectnoticetype'=>$noticetype,'nameid'=>$jsonOBAssist,'in_employment'=>$in_employment,'select_death_accident'=>$select_death_accident]);
         }
         if ($noticetype == "01") { //accident
@@ -127,8 +127,9 @@ class NoticeTypeController extends Controller
             
             $jsondecodeOdRecord="";
             $a=$this->checkOdRecordExist($jsondecodeOdRecord);
-            // return $a;
-
+            dd($jsondecodeOdRecord);
+            // return($jsondecodeOdRecord);
+            // dd($jsondecodeOdRecord);
             $record = $jsondecodeOdRecord->{'record'};
 
             // return $record;
@@ -299,7 +300,7 @@ class NoticeTypeController extends Controller
             $resource = array(
             // "refNo"=> $refno,
             "identificationType"=> "4",
-            "identificationNo"=> "$idno");
+            "identificationNo"=> $idno);
             $j = json_encode($resource);
             
             $response = $client->request('GET', 'ip', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
@@ -473,14 +474,18 @@ class NoticeTypeController extends Controller
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
+        // dd($result);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        //return '++'.$result.'++';
+        // return '++'.$result.'++';
 
         //close connection
         curl_close($ch);
         // return $result;
         $jsondecodeOdRecord = json_decode($result);
+
+        // dd($jsondecodeOdRecord);
+        // return
     }
 
     public function createnoticedraft()
