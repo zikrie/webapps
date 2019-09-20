@@ -58,7 +58,7 @@ class UploadclaimController extends Controller
         }
         session(['docname' =>$docname]);
         // $testing=nl2br($dn_details_note[2]);
-         dd($dn_details_note) ;
+        //  dd($dn_details_note) ;
         //  return $dn_details_note[2];   
   
         return view('scheme.general.testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'dn_page_note'=>$dn_page_note,'dn_details_note'=>$dn_details_note,'docinfo'=>$docinfo,'show'=>$show]);
@@ -106,7 +106,7 @@ class UploadclaimController extends Controller
         $operid = session('loginname');
         $brcode = session('loginbranchcode');
         $dataSet = array();
-        dd($uniquerefno);
+        // dd($uniquerefno);
         $cnt = 0;
         $a = '';
         
@@ -263,7 +263,7 @@ class UploadclaimController extends Controller
         curl_close($ch);
         
         $jsondecode = json_decode($result);
-        dd($result);
+        // dd($result);
         
         
         $errorcode = $jsondecode->{'errorcode'};
