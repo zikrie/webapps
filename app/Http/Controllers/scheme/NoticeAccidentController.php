@@ -323,48 +323,42 @@ class NoticeAccidentController extends CommonController
         $accdyear = substr($date, 0, 4);
         $accdmonth = substr($date, 4, 2);
         
-        //guzzle - atikah  
-        try
-        {
-            $client = new Client([
-               
-                // Base URI is used with relative requests
-                'base_uri' => env('WS_IP', 'localhost').'/api/wsmotion/',
-                // You can set any number of default request options.
-                'timeout'  => 2.0,
-            ]);
+        //return '++'.$idno.'++'.$date.'++'.$time.'++';
+        //$idno = '800920145348';
+        //$date ='20170114';
+        //$time = '100000';
+        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/checkaccidentdate?date='.$date.'&time='.$accdtime.'&idno='.$idno.'&idtype='.$idtype;
+        //return $url;
+        $ch = curl_init();
+        
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PROXY, '');
+        
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
-            $resource = array(
-                // "refNo"=> $refno,
-                "date"=> $date,
-                "time"=> $accdtime,
-                "idno"=> $idno,
-                "idtype"=> $idtype);
-                $j = json_encode($resource);
-                
-                $response = $client->request('GET', 'checkaccidentdate', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
-                // dd($response);
-                $body = $response->getBody();
-                $stringBody = (string) $body;
-                $_content = json_decode($stringBody);
-               // $_content = json_encode($stringBody,true);
-                //dd($_content);
-              
-               // return new ApiResource($_content);
-        }
-        catch(\Exception $e)
-        {
-            return $e->getMessage();
-            
-        }
-        $record = $_content->{'record'};
-        // dd($record);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        //return '++'.$result.'++';
+        $jsondecode = json_decode($result);
+        // dd($jsondecode);
+        //close connection
+        
+        curl_close($ch);
+        
+        //return $result;
+
+        $record = $jsondecode->{'record'};
+        dd($record);
         //return $record;
         if ($record=='0') {
             session(['accdrefno'=>'']);
             
             $noticedraft = $this->createnoticedraft($date, $accdtime);//chg27062019 - send $accddate & $accdtime into param
             //return $noticedraft;
+            dd($noticedraft);
             $errorcode = $noticedraft->{'errorcode'};
             
             if ($errorcode == 0) {
@@ -383,7 +377,7 @@ class NoticeAccidentController extends CommonController
             }
             //return $this->index();//irina comment
         } else {
-            $data= $_content->{'data'};
+            $data= $jsondecode->{'data'};
             foreach ($data as $d) {
                 //chg07072019 - check if record exist & not draft, cannot proceed
                 $schemerefno = $d->schemerefno;
@@ -425,7 +419,7 @@ class NoticeAccidentController extends CommonController
         $notice = ['noticetype'=> $noticetype, 'operid'=> $operid,'brcode'=> $brcode, 'idno'=>$idno,
             'idtype'=>$idtype, 'empcode'=>$empcode,'accddate'=>$accddate, 'accdtime'=>$accdtime];
         $jsondata = json_encode($notice);
-        
+       
         //return $jsondata;
        
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/createdraft';
@@ -442,7 +436,7 @@ class NoticeAccidentController extends CommonController
         $result = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-
+        // dd($result);
         //close connection
         curl_close($ch);
         
