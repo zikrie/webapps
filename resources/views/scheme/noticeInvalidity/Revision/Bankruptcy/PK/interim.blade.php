@@ -27,7 +27,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                   <label class="control-label">@lang('insuredPerson.attr.amount_to_paid')</label>
+                                   <label class="control-label">@lang('Nett amount to be paid (RM)')</label>
                                     <input type="text" id="amountPaid_bankruptcy" name="amount_to_paid" value="" class="form-control">
                                 </div>
                             </div>

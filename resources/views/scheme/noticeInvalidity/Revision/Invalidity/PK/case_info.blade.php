@@ -89,8 +89,8 @@
                                    <label class="control-label">@lang('Acceptance Declaration 117')</label><span class="required">*</span>
                                    <select class="form-control" data-placeholder="acc_dec" readonly tabindex="2">
                                         <option selected disabled hidden>Please Choose</option>
-                                        <option value="Yes">@lang('wages.attr.Yes')</option>
-                                        <option value="No">@lang('wages.attr.No')</option>
+                                        <option value="Yes">@lang('Yes')</option>
+                                        <option value="No">@lang('No')</option>
                                     </select>
                                 </div>
                             </div>

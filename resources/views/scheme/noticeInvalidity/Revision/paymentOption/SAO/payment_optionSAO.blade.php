@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                    <label class="control-label">HUK Payment Option</label>
-                                   <input type="text" id="hukPaymentOptionPayment" name="hukPaymentOption" value="" class="form-control">
+                                   <input type="text" readonly id="hukPaymentOptionPayment" name="hukPaymentOption" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">

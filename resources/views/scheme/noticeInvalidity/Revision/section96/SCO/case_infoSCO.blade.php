@@ -27,14 +27,14 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.notice')</label><span class="required">*</span>
+                                    <label>@lang('Notice')</label><span class="required">*</span>
                                     <input type="text" id="notice_section96" name="notice" value=""
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.rev_type')</label><span class="required">*</span>
+                                    <label>@lang('Type Of Revision')</label><span class="required">*</span>
                                     <input type="text" id="revType_section96" name="revType" value=""
                                         class="form-control">
                                 </div>
@@ -43,21 +43,21 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.stopPaymentType')</label><span
+                                    <label>@lang('Stop Payment Type')</label><span
                                         class="required">*</span>
                                     <select class="form-control" data-placeholder="optionHUKorILAT_section96"
                                         tabindex="2">
                                         <option selected readonly disabled hidden>Please Choose </option>
-                                        <option value="Stop Payment ILT (S96)">@lang('wages.attr.stopPaymentILT')
+                                        <option value="">@lang('Stop Payment ILT (S96)')
                                         </option>
-                                        <option value="Stop Payment HUK (S96)">@lang('wages.attr.stopPaymentHUK')
+                                        <option value="">@lang('Stop Payment HUK (S96)')
                                         </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.ilatNoticeID')</label><span
+                                    <label>@lang('ILAT Notice ID')</label><span
                                         class="required">*</span>
                                     <input type="text" id="ilatNoticeID_section96" class="form-control"
                                         name="ilatNoticeID" value="">
@@ -67,7 +67,7 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.hukNoticeID')</label><span
+                                    <label class="control-label">@lang('HUK Notice ID')</label><span
                                         class="required">*</span>
                                     <input type="text" id="hukNoticeID_Section96" name="hukNoticeID" value=""
                                         class="form-control">
@@ -76,13 +76,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label
-                                        class="control-label">@lang('insuredPerson.attr.optionHUKorILAT')</label><span
+                                        class="control-label">@lang('Option HUK or ILAT')</label><span
                                         class="required">*</span>
                                     <select class="form-control" data-placeholder="optionHUKorILAT_section96"
                                         tabindex="2">
                                         <option selected readonly disabled hidden>Please Select </option>
-                                        <option value="HUK">@lang('wages.attr.HUK')</option>
-                                        <option value="ILAT">@lang('wages.attr.ILAT')</option>
+                                        <option value="">@lang('HUK')</option>
+                                        <option value="">@lang('ILAT')</option>
                                     </select>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label
-                                        class="control-label">@lang('insuredPerson.attr.dateOfOptionReceived')</label><span
+                                        class="control-label">@lang('Date Of Option Received')</label><span
                                         class="required">*</span>
                                     <input type="date" id="dateOfOptionReceived_Section96" name="dateOfOptionReceived"
                                         value="" class="form-control">
@@ -102,11 +102,11 @@
                             <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
                             <button type="submit"
-                                class="btn btn waves-effect waves-light btn-success">@lang('insuredPerson.save')</button>
+                                class="btn btn waves-effect waves-light btn-success">@lang('Save')</button>
                             <button type="button" class="btn btn waves-effect waves-light btn-info"
-                                onclick="submitform()">@lang('noticetype.reset')</button>
+                                onclick="submitform()">@lang('Reset')</button>
                             <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                                onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
+                                onclick="window.location='/noticetype'">@lang('Cancel')</button>
                         </div>
                     </div>
                 </form>

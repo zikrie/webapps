@@ -27,20 +27,20 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.contracterIncharge')</label>
+                                    <label>@lang('Contracter Incharge')</label>
                                     <input type="text" id="contracterIncharge" name="contracterIncharge" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.contractedInchargePhoneNo')</label>
+                                    <label>@lang('Contracted Incharge Phone Number')</label>
                                     <input type="text" id="contractedInchargePhoneNo" name="contractedInchargePhoneNo" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.postal_address')</label>
+                                <label>@lang('Postal Address')</label>
                                 <input type="text" readonly name="add1" value="" class="form-control">
                             </div>
                         </div>
@@ -58,19 +58,19 @@
                     <div class='row'>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.postcode')</label>
+                                <label>@lang('Postcode')</label>
                                 <input type="text" readonly id="postcode_dependent" name="postcode" value="" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.city')</label>
+                                <label>@lang('City')</label>
                                 <input type="text" readonly id="city_dependent" class="form-control" name="city" value="">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.state')</label>
+                                <label class="control-label">@lang('State')</label>
                                 <input type="text" readonly  id="state_dependent" name="state" value="" class="form-control">
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                     <div class='row'>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.branchPerkesoName')</label>
+                                    <label>@lang('Branch Perkeso Name')</label>
                                     <input type="text" id="branchPerkesoName" name="branchPerkesoName" value=""
                                         class="form-control">
                                 </div>
@@ -87,7 +87,6 @@
                         <div class="form-actions">
                                 <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                              
                                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
                                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
                             </div>
