@@ -275,6 +275,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
   
     Route::get('/revisionpaymentoption', 'Revision\PaymentOptionController@index_PK');
     Route::get('/revisionpaymentoption_sao', 'Revision\PaymentOptionController@index_SAO');
+    Route::get('/revisionpaymentoption_sco', 'Revision\PaymentOptionController@index_SCO');
 
     Route::get('/permanentrepresentatives', 'others\PermanentrepresentativesController@index_PK');
     Route::get('/permanentrepresentatives_sco', 'others\PermanentrepresentativesController@index_SCO');

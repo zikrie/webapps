@@ -27,13 +27,13 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.signOfDate')</label>
+                                    <label>@lang('Sign Of Date')</label>
                                     <input type="date" id="signOfDate" name="signOfDate" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.signedBy')</label>
+                                    <label>@lang('Signed By')</label>
                                     <input type="text" id="signedBy" name="signedBy" value="" class="form-control">
                                 </div>
                             </div>
@@ -41,14 +41,14 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.methodPayment')</label>
+                                    <label>@lang('Method Payment')</label>
                                     <input type="text" readonly id="methodPayment" name="methodPayment" value=""
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.handedDocDate')</label>
+                                    <label>@lang('Handed Document Date')</label>
                                     <input type="date" readonly id="handedDocDate" name="handedDocDate" value=""
                                         class="form-control">
                                 </div>

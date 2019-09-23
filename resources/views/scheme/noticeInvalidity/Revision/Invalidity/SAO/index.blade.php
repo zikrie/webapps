@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h4 class="card-title">@lang('index.attr.invalidity')</h4>
+            <h4 class="card-title">@lang('Invalidity')</h4>
             <!-- Tab panes -->
 
 
@@ -62,7 +62,7 @@
 
                 <div class="tab-pane p-20" id="uploaddoc" role="tabpanel">
                     
-                                    @include('scheme.noticeInvalidity.newClaim.SCO.supportingDoc')
+                 @include('scheme.noticeInvalidity.newClaim.SCO.supportingDoc')
                             
                 </div>
             </div>

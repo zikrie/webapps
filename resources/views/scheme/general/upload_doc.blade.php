@@ -85,11 +85,11 @@
                                                     </div>
                                                     </td> --}}
                                                     <td><input type="date" class="form-control"></td>
-                                                    <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
-                                                            target="_blank"><i class="far fa-file-alt"></i></a></td>
-                                                    {{-- <td><a href='viewdoc?docname={{$d->docname}}'
-                                                    target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
-
+                                                    <!-- <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                        target="_blank"><i class="far fa-file-alt"></i></a></td> -->
+                                                     <td><a href='viewdoc?docname={{$d->docname}}'
+                                                            target="_blank"><i class="far fa-file-alt"></i></a></td> 
+                                                           
                                                     <?php $docfound = true; $cnt++;?>
                                                 </tr>
                                                 {{$d->doctype=''}}
@@ -133,21 +133,20 @@
                                                 @if ($d->doctype != '')
                                                 <tr>
                                                     <td style="display:none;"><input type="hidden" class="number"
-                                                            value="{{$cnt}}"></td>
-                                                    <td style="display:none;"><input type="hidden"
-                                                            name="doctype[{{$cnt}}]" value="{{ $d -> doctype}}">
-                                                    </td>
-                                                    <td><input type="hidden" name="doccat[{{$cnt}}]"
-                                                            value="{{ $d -> doctype}}|{{ $d -> doccat}}">{{ $d-> docdescen}}
-                                                    </td>
-
-                                                    <td></td>
-                                                    <td><input type="date" class="form-control"></td>
-                                                    <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                        value="{{$cnt}}"></td>
+                                                <td style="display:none;"><input type="hidden"
+                                                        name="doctype[{{$cnt}}]" value="{{ $d -> doctype}}">
+                                                </td>
+                                                <td><input type="hidden" name="doccat[{{$cnt}}]"
+                                                        value="{{ $d -> doctype}}|{{ $d -> doccat}}">{{ $d-> docdescen}}</td>
+                                                        
+                                                <td></td>
+                                                <td><input type="date" class="form-control"></td>
+                                                <!-- <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                    target="_blank"><i class="far fa-file-alt"></i></a></td> -->
+                                                     <td><a href='viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td>
-                                                    {{-- <td><a href='viewdoc?docname={{$d->docname}}'
-                                                    target="_blank"><i class="far fa-file-alt"></i></a></td>
-                                                    --}}
+                                                     
 
                                                 </tr>
                                                 <?php $cnt++; ?>

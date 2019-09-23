@@ -56,11 +56,11 @@
                                     <label>@lang('PR Type')</label>
                                     <select class="form-control" data-placeholder="source_wages" tabindex="2">
                                         <option selected disabled hidden>Please Choose </option>
-                                        <option value="mother">@lang('wages.attr.mother')</option>
-                                        <option value="father">@lang('wages.attr.father')</option>
-                                        <option value="husband">@lang('wages.attr.husband')</option>
-                                        <option value="wife">@lang('wages.attr.wife')</option>
-                                        <option value="others">@lang('wages.attr.other')</option>
+                                        <option value="mother">@lang('Mother')</option>
+                                        <option value="father">@lang('Father')</option>
+                                        <option value="husband">@lang('Husband')</option>
+                                        <option value="wife">@lang('Wife')</option>
+                                        <option value="others">@lang('Other')</option>
                                     </select>
                                 </div>
                             </div>
@@ -172,11 +172,11 @@
                                 <label class="control-label"> @lang('OB Situation')</label>
                                 <select class="form-control" data-placeholder="" tabindex="2">
                                     <option selected readonly disabled hidden>Please Choose </option>
-                                    <option value="">@lang('wages.attr.coma')</option>
-                                    <option value="">@lang('wages.attr.bedridden')</option>
-                                    <option value="">@lang('wages.attr.paralyzed')</option>
-                                    <option value="">@lang('wages.attr.lostMemory')</option>
-                                    <option value="">@lang('wages.attr.unable')</option>
+                                    <option value="">@lang('Coma')</option>
+                                    <option value="">@lang('Bedridden')</option>
+                                    <option value="">@lang('Paralyzed')</option>
+                                    <option value="">@lang('Lost Memory')</option>
+                                    <option value="">@lang('Unable')</option>
                                 </select>
                             </div>
                         </div>
@@ -185,8 +185,8 @@
                                 <label class="control-label">@lang('Permanent Representative Status')</label>
                                 <select class="form-control" data-placeholder="" tabindex="2">
                                     <option selected readonly disabled hidden>Please Choose </option>
-                                    <option value="">@lang('wages.attr.permanent')</option>
-                                    <option value="">@lang('wages.attr.nonPermanent')</option>
+                                    <option value="">@lang('Permanent')</option>
+                                    <option value="">@lang('Non Permanent')</option>
                                 </select>
                             </div>
                         </div>
@@ -231,11 +231,11 @@
                                 <label class="control-label"> @lang('OB Situation')</label>
                                 <select class="form-control" data-placeholder="" tabindex="2">
                                     <option selected readonly disabled hidden>Please Choose </option>
-                                    <option value="">@lang('wages.attr.coma')</option>
-                                    <option value="">@lang('wages.attr.bedridden')</option>
-                                    <option value="">@lang('wages.attr.paralyzed')</option>
-                                    <option value="">@lang('wages.attr.lostMemory')</option>
-                                    <option value="">@lang('wages.attr.unable')</option>
+                                    <option value="">@lang('Coma')</option>
+                                    <option value="">@lang('Bedridden')</option>
+                                    <option value="">@lang('Paralyzed')</option>
+                                    <option value="">@lang('Lost Memory')</option>
+                                    <option value="">@lang('Unable')</option>
                                 </select>
                             </div>
                         </div>
@@ -244,8 +244,8 @@
                                 <label class="control-label">@lang('PR Status')</label>
                                 <select class="form-control" data-placeholder="" tabindex="2">
                                     <option selected readonly disabled hidden>Please Choose </option>
-                                    <option value="">@lang('wages.attr.permanent')</option>
-                                    <option value="">@lang('wages.attr.nonPermanent')</option>
+                                    <option value="">@lang('Permanent')</option>
+                                    <option value="">@lang('Non Permanent')</option>
                                 </select>
                             </div>
                         </div>

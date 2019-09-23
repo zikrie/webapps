@@ -99,7 +99,27 @@
                                 </div>
                             </div>
                         </div>
-                     
+                        <div class='row'>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('Postcode')</label><span class="required">*</span>
+                                    <input type="text" id="postcode" name="postcode" value=""
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('City')</label><span class="required">*</span>
+                                    <input type="text" id="city" class="form-control" name="city" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('State')</label><span class="required">*</span>
+                                    <input type="text" id="state" name="state" value="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-actions">
                                 <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
