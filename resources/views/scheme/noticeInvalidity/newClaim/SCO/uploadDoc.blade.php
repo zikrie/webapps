@@ -53,8 +53,8 @@
                                                     <th style="width:5%">@lang('scheme/uploaddoc.attr.uploaddate')</th>
                                                     <th style="width:5%">@lang('scheme/uploaddoc.attr.certify')</th>
                                                     <th style="width:10%">@lang('scheme/uploaddoc.attr.source')</th>
-                                                    <th style="width:10%">@lang('scheme/uploaddoc.attr.doctype')</th>
-                                                    <th style="width:20%">@lang('scheme/uploaddoc.attr.docpath')</th>
+                                                    <th style="width:10%">@lang('scheme/uploaddoc.attr.docpath')</th>
+                                                    <th style="width:20%">@lang('Status')</th>
                                                     <th style="width:5%">@lang('scheme/uploaddoc.attr.verify')</th>
                                                     <th style="width:5%">@lang('scheme/uploaddoc.attr.view')</th>
                                                     {{-- <th>@lang('scheme/uploaddoc.attr.delete')</th>  --}}
@@ -90,7 +90,7 @@
                                                     <td>
                                                         <input type="text" class="form-control">
                                                     </td>
-                                                    <td><input type="date" class="form-control"></td>
+                                                   <td></td>
                                                     <td>
                                                         <div class="col-md-1">
                                                             <div class="custom-control custom-radio">
