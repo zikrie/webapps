@@ -415,7 +415,7 @@ class NoticeTypeController extends Controller
             
             $jsondecodeAssistEmployer = json_decode($stringBody);
             $jsondecodeAssistEmployer = $jsondecodeAssistEmployer->{'businessInfo'};
-             dd($jsondecodeAssistEmployer);
+             
          
            // $_content = json_encode($stringBody,true);
            // return new ApiResource($_content);

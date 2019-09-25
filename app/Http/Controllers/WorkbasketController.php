@@ -185,7 +185,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
                 
-                return redirect('/Scheme/noticeaccident');
+                return redirect('/scheme/noticeaccident');
             }
            else if ($casetype == '02')
             { 
@@ -204,7 +204,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/Scheme/obform_od');
+               return redirect('/scheme/obform_od');
             }
             else if ($casetype == '03')
             { 
@@ -223,7 +223,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/Scheme/obformilat');
+                return redirect('/scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -244,7 +244,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
                 
-                return redirect('/Scheme/noticedeath');
+                return redirect('/scheme/noticedeath');
             }
         }
         else if ($caseinfo->status == '02')//submitted to SCO - nanti change routing to screen SCO
@@ -277,7 +277,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
                 
-                return redirect('/Scheme/noticeaccident');
+                return redirect('/scheme/noticeaccident');
             }
            else if ($casetype == '02')
             { 
@@ -296,7 +296,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/Scheme/obform_od');
+               return redirect('/scheme/obform_od');
             }
             else if ($casetype == '03')
             { 
@@ -315,7 +315,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/Scheme/obformilat');
+                return redirect('/scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -336,7 +336,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
                 
-                return redirect('/Scheme/noticedeath');
+                return redirect('/scheme/noticedeath');
             }
         }
         
@@ -370,7 +370,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
                 
-                return redirect('/Scheme/noticeaccident');
+                return redirect('/scheme/noticeaccident');
             }
            else if ($casetype == '02')
             { 
@@ -408,7 +408,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/Scheme/obformilat');
+                return redirect('/scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -429,7 +429,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
                 
-                return redirect('/Scheme/noticedeath');
+                return redirect('/scheme/noticedeath');
             }
         }
         else if ($caseinfo->status == '07')//submitted to SAO - nanti change routing to screen SAO
@@ -462,7 +462,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
                 
-                return redirect('/Scheme/noticeaccident');
+                return redirect('/scheme/noticeaccident');
             }
            else if ($casetype == '02')
             { 
@@ -481,7 +481,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/Scheme/obform_od');
+               return redirect('/scheme/obform_od');
             }
             else if ($casetype == '03')
             { 
@@ -500,7 +500,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/Scheme/obformilat');
+                return redirect('/scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -521,7 +521,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
                 
-                return redirect('/Scheme/noticedeath');
+                return redirect('/scheme/noticedeath');
             }
         }
         

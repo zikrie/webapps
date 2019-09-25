@@ -315,7 +315,8 @@ class UploadclaimController extends Controller
    $pageCount = $pdf->setSourceFile($path);
 
    $countfor="0";
-   
+   $xaxis="30";
+   $yaxis="30";
 for ($i = 1; $i <= $pageCount; $i++) {
   if($dn_page_note[$countfor]==$i)
   {
@@ -327,28 +328,35 @@ for ($i = 1; $i <= $pageCount; $i++) {
       $pdf->SetFont('Helvetica');
       $pdf->SetTextColor(0, 0, 0);
       $pdf->setFillColor(255,255,0); //rgb color
-      $pdf->SetXY(30, 30);
+     
       if(count(array_keys($dn_page_note, $dn_page_note[$countfor]))>1){
 
         for ($u = 1; $u <= $pageCount; $u++) {
             if($dn_specific_note[$u]==$u){
                 if(strpos(nl2br($dn_details_note[$u]),"<br />")!=false){
                     $pdf->Multicell(($pdf->GetStringWidth($dn_details_note[$u]) +  strlen($dn_details_note[$u])), 10, $dn_details_note[$u], 90, 20 ,'L', TRUE);
+                    $pdf->SetXY($xaxis, $yaxis);
                 }
             else{
                 $pdf->cell(($pdf->GetStringWidth($dn_details_note[$u]) + strlen($dn_details_note[$u])), 10, $dn_details_note[$u], 90, 20 ,'L', TRUE);
+                $pdf->SetXY($xaxis, $yaxis);
             }    
             }
+            $yaxis++;
+            
            
         }
         $countfor++;
       }
+      
       else{
         if(strpos(nl2br($dn_details_note[$countfor]),"<br />")!=false){
             $pdf->Multicell(($pdf->GetStringWidth($dn_details_note[$countfor]) +  strlen($dn_details_note[$countfor])), 10, $dn_details_note[$countfor], 90, 20 ,'L', TRUE);
+            $pdf->SetXY(30, 30);
         }
     else{
         $pdf->cell(($pdf->GetStringWidth($dn_details_note[$countfor]) + strlen($dn_details_note[$countfor])), 10, $dn_details_note[$countfor], 90, 20 ,'L', TRUE);
+        $pdf->SetXY(30, 30);
     }
 
       }

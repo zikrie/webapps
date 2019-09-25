@@ -85,6 +85,12 @@
  <!-- end - This is for export functionality only -->
 
  <script src="/PERKESO_UI/assets/node_modules/sweetalert/jquery.sweet-alert.custom.js"></script>
+ <script src="/PERKESO_UI/assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
+ <!-- Bootstrap tether Core JavaScript -->
+ <script src="/PERKESO_UI/assets/node_modules/popper/popper.min.js"></script>
+ <script src="/PERKESO_UI/assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+ <!--Wave Effects -->
+ <script src="/PERKESO_UI/assets/node_modules/bootstrap-tagsinput/dist/js/waves.js"></script>
 
 <script>
     // MAterial Date picker    
