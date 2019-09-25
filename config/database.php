@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'ibmi'),
 
     /*
     |--------------------------------------------------------------------------
@@ -89,15 +89,16 @@ return [
             'driver' => 'db2_ibmi_odbc',
             // or 'db2_ibmi_ibm' / 'db2_zos_odbc' / 'db2_expressc_odbc
             'driverName' => '{IBM i Access ODBC Driver}',
-            // or '{iSeries Access ODBC Driver}' '{IBM i Access ODBC Driver 64-bit}'
+            // or '{iSeries Access ODBC Driver}' / '{IBM i Access ODBC Driver 64-bit}'
             'host' => '10.6.20.30',
             'username' => 'QSECOFR',
             'password' => 'qsecofr1',
-            'database' => 'BEAMS_DEV',
+            'database' => 'BEAMS',
             'prefix' => '',
-            'schema' => 'BEAMS_DEV',
+            'schema' => 'BEAMS',
             'port' => 446,
             'date_format' => 'Y-m-d H:i:s',
+            // or 'Y-m-d H:i:s.u' / 'Y-m-d-H.i.s.u'...
             'odbc_keywords' => [
                 'SIGNON' => 3,
                 'SSL' => 0,
@@ -153,15 +154,13 @@ return [
             'options' => [
                 PDO::ATTR_CASE => PDO::CASE_LOWER,
                 PDO::ATTR_PERSISTENT => false,
-            /*    PDO::I5_ATTR_DBC_SYS_NAMING => false,
-                PDO::I5_ATTR_COMMIT => PDO::I5_TXN_NO_COMMIT,
-                PDO::I5_ATTR_JOB_SORT => false, 
-                PDO::I5_ATTR_DBC_LIBL => '',
-                PDO::I5_ATTR_DBC_CURLIB => '',  */
-            ],
+                //PDO::I5_ATTR_DBC_SYS_NAMING => false,
+                //PDO::I5_ATTR_COMMIT => PDO::I5_TXN_NO_COMMIT,
+                //PDO::I5_ATTR_JOB_SORT => false,
+                //PDO::I5_ATTR_DBC_LIBL => '',
+                //PDO::I5_ATTR_DBC_CURLIB => '',
+            ]
         ],
-
-
     ],
 
     /*

@@ -80,13 +80,13 @@ return [
             // or 'db2_ibmi_ibm' / 'db2_zos_odbc' / 'db2_expressc_odbc
             'driverName' => '{IBM i Access ODBC Driver}',
             // or '{iSeries Access ODBC Driver}' '{IBM i Access ODBC Driver 64-bit}'
-            'host' => 'server',
-            'username' => '',
-            'password' => '',
-            'database' => 'WRKRDBDIRE entry',
+            'host' => '10.6.20.30',
+            'username' => 'QSECOFR',
+            'password' => 'qsecofr1',
+            'database' => 'BEAMS',
             'prefix' => '',
-            'schema' => 'default schema',
-            'port' => 50000,
+            'schema' => 'BEAMS',
+            'port' => 446,
             'date_format' => 'Y-m-d H:i:s',
             'odbc_keywords' => [
                 'SIGNON' => 3,
@@ -143,11 +143,11 @@ return [
             'options' => [
                 PDO::ATTR_CASE => PDO::CASE_LOWER,
                 PDO::ATTR_PERSISTENT => false,
-                //PDO::I5_ATTR_DBC_SYS_NAMING => false,
-                //PDO::I5_ATTR_COMMIT => PDO::I5_TXN_NO_COMMIT,
-                //PDO::I5_ATTR_JOB_SORT => false,
-                //PDO::I5_ATTR_DBC_LIBL => '',
-                //PDO::I5_ATTR_DBC_CURLIB => '',
+                // PDO::I5_ATTR_DBC_SYS_NAMING => false,
+                // PDO::I5_ATTR_COMMIT => PDO::I5_TXN_NO_COMMIT,
+                // PDO::I5_ATTR_JOB_SORT => false,
+                // PDO::I5_ATTR_DBC_LIBL => '',
+                // PDO::I5_ATTR_DBC_CURLIB => '',
             ],
         ],
 
