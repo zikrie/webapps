@@ -27,13 +27,13 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                   <label class="control-label">@lang('insuredPerson.attr.name')</label>
+                                   <label class="control-label">@lang('Name')</label>
                                    <input type="text" readonly id="name_reemployment" name="name" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.id_num')</label>
+                                    <label class="control-label">@lang('ID Number')</label>
                                     <input type="text" readonly id="idNum_reemployment" name="id_num" value="" class="form-control">
                                 </div>
                             </div>
@@ -41,13 +41,13 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                   <label class="control-label">@lang('insuredPerson.attr.casetype')</label>
+                                   <label class="control-label">@lang('Casetype')</label>
                                    <input type="text" readonly id="caseType_reemployment" name="casetype" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.status')</label>
+                                    <label class="control-label">@lang('Status')</label>
                                     <input type="text" readonly id="status_reemployment" name="status" value="" class="form-control">
                                 </div>
                             </div>
@@ -55,9 +55,9 @@
                         <div class="form-actions">
                             <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('insuredPerson.save')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>   
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
+                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('Save')</button>
+                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('Reset')</button>   
+                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('Cancel')</button>
                         </div>
                     </div>
                 </form>

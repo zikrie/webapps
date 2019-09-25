@@ -50,7 +50,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>@lang('IC No.')</label>
-                                    <input type="text" id="new_ic" name="new_ic" value="" class="form-control">
+                                    <input type="text" readonly id="new_ic" name="new_ic" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -76,7 +76,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('Case Type')</label>
-                                    <input type="text" readonly id="casetype" name="casetype" value="" class="form-control">
+                                    <input type="text" readonly id="casetype" name="casetype" value=""
+                                        class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -102,22 +103,24 @@
                                     <label>@lang('Source')</label>
                                     <select class="form-control" data-placeholder="source_wages" readonly tabindex="2">
                                         <option selected readonly disabled hidden>Please Choose </option>
-                                        <option value="Akuan117">@lang('wages.attr.akuan117')</option>
-                                        <option value="Counter">@lang('wages.attr.counter')</option>
+                                        <option value="Akuan117">@lang('Akuan 117')</option>
+                                        <option value="Counter">@lang('Counter')</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-actions">
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                              
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
-                            </div>
+                            <button type="submit"
+                                class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                            <button type="button" class="btn btn waves-effect waves-light btn-info"
+                                onclick="submitform()">@lang('button.reset')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
+                                onclick="window.location='/noticetype'">@lang('button.cancel')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
+                                onclick="window.location='/obform_od'">@lang('button.back')</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-

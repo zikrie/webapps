@@ -27,23 +27,26 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.reasonExchange')</label>
+                                    <label>@lang('Reason Exchange')</label>
                                     <select class="form-control" data-placeholder="source_wages" tabindex="2">
                                         <option selected readonly disabled hidden>Please Choose </option>
-                                        <option value="">@lang('wages.attr.insuredPersonRecovering')</option>
-                                        <option value="">@lang('wages.attr.insurePersonDeath')</option>
-                                        <option value="">@lang('wages.attr.exchangePermanentRepresentatives')</option>
+                                        <option value="">@lang('Insured Person Recovering')</option>
+                                        <option value="">@lang('Insure Person Death')</option>
+                                        <option value="">@lang('Exchange Permanent Representatives')</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-actions">
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                              
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
-                            </div>
+                            <button type="submit"
+                                class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                            <button type="button" class="btn btn waves-effect waves-light btn-info"
+                                onclick="submitform()">@lang('button.reset')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
+                                onclick="window.location='/noticetype'">@lang('button.cancel')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
+                                onclick="window.location='/obform_od'">@lang('button.back')</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -51,4 +54,3 @@
     </div>
 </div>
 </div>
-

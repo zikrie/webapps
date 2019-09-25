@@ -27,7 +27,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.refNoAppendixA')</label>
+                                    <label class="control-label">@lang('Ref Number Appendix A')</label>
                                     <input type="text" readonly id="refNoAppendixA" name="refNoAppendixA" value=""
                                         class="form-control">
                                 </div>
@@ -42,19 +42,19 @@
                         <div class='row'>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.new_ic')</label>
+                                    <label>@lang('New IC')</label>
                                     <input type="text" id="new_ic" name="new_ic" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.old_ic')</label>
+                                    <label>@lang('Old IC')</label>
                                     <input type="text" readonly id="old_ic" name="old_ic" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.others')</label>
+                                    <label>@lang('Others')</label>
                                     <input type="text" readonly id="other" name="other" value="" class="form-control">
                                 </div>
                             </div>
@@ -62,13 +62,13 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.notice')</label>
+                                    <label>@lang('Notice')</label>
                                     <input type="text" readonly id="notice" name="notice" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.casetype')</label>
+                                    <label>@lang('Casetype')</label>
                                     <input type="text" readonly id="casetype" name="casetype" value="" class="form-control">
                                 </div>
                             </div>
@@ -76,14 +76,14 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.insuredPersonName')</label>
+                                    <label>@lang('Insured Person Name')</label>
                                     <input type="text" readonly id="insuredPersonName" name="insuredPersonName" value=""
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.generateDate')</label>
+                                    <label>@lang('Generate Date')</label>
                                     <input type="date" readonly id="generateDate" name="generateDate" value=""
                                         class="form-control">
                                 </div>
@@ -92,7 +92,7 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.source')</label>
+                                    <label>@lang('Source')</label>
                                     <select class="form-control" data-placeholder="source_wages" readonly tabindex="2">
                                         <option selected readonly disabled hidden>Please Choose </option>
                                         <option value="Akuan117">@lang('wages.attr.akuan117')</option>

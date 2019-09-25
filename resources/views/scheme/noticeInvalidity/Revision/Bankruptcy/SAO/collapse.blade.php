@@ -71,12 +71,12 @@
             </div>
         </div>
         <div class="card m-b-0">
-            <div class="card-header" role="tab" id="app">
+            <div class="card-header" role="tab" id="approval">
                 <h5 class="mb-0">
                     <a class="link" data-toggle="collapse" data-parent="#accordion2"
                         href="#app" aria-expanded="false" aria-controls="collapseOne1">
                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                            @lang('Interim')</h4>
+                            @lang('Approval')</h4>
                     </a>
                 </h5>
             </div>

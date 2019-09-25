@@ -57,6 +57,7 @@
                                         class="form-control">
                                 </div>
                             </div>
+                        </div>
                             <div class="form-actions">
                                     <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
                                     <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>

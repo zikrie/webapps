@@ -12,8 +12,10 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('Section 96')</h3>
+            <h4 class="card-title">@lang('Payment Option')</h4>
             <!-- Tab panes -->
+
+
             <ul class="nav customtab" role="tablist" id="tabMenu">
                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
@@ -22,7 +24,6 @@
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
                             class="hidden-xs-down">@lang('Claim Details')</span></a>
                 </li>
-                
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument" role="tab"><span
                             class="hidden-sm-up"><i class="ti-home"></i></span> <span
                             class="hidden-xs-down">@lang('Supporting Document')</span></a>
@@ -69,11 +70,12 @@
                 </div>
             </div>
             <div class="tab-content tabcontent-border">
+
                 <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                    @include('Scheme.noticeInvalidity.Revision.section96.PK.remarks')
+                    @include('Scheme.noticeInvalidity.Revision.paymentOption.SCO.remarks')
                 </div>
                 <div class="tab-pane p-20" id="supportingDocument" role="tabpanel">
-                    @include('Scheme.general.upload_doc')
+                    @include('Scheme.general.upload_Doc')
                 </div>
 
                 <div class="tab-pane p-20" id="claimDetails" role="tabpanel">
@@ -82,7 +84,7 @@
 
                         <!-- Initial Assessment appointmentdetails-->
                         <div class="card m-b-0">
-                            <div class="card-header" role="tab" id="caseInfo_section96">
+                            <div class="card-header" role="tab" id="caseInfo_Payment">
                                 <h5 class="mb-0">
                                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseInfo"
                                         aria-expanded="false" aria-controls="collapseOne1">
@@ -93,23 +95,57 @@
                             </div>
                             <div id="caseInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                 <div class="card-body">
-                                    @include('Scheme.noticeInvalidity.Revision.section96.PK.case_info')
+                                    @include('Scheme.noticeInvalidity.Revision.paymentOption.SCO.case_info')
                                 </div>
                             </div>
                         </div>
                         <div class="card m-b-0">
-                            <div class="card-header" role="tab" id="insuredPerson_section96">
+                            <div class="card-header" role="tab" id="applicantInfo_Payment">
                                 <h5 class="mb-0">
-                                    <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#obInfo"
-                                        aria-expanded="false" aria-controls="collapseOne1">
-                                        <h4 class="card-title"><i class="fa fa-plus"></i>
-                                            @lang('Insured Person Info')</h4>
+                                    <a class="link" data-toggle="collapse" data-parent="#accordion2"
+                                        href="#applicantInfo" aria-expanded="false" aria-controls="collapseOne1">
+                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('Applicant')
+                                        </h4>
                                     </a>
                                 </h5>
                             </div>
-                            <div id="obInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                            <div id="applicantInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                                 <div class="card-body">
-                                    @include('Scheme.noticeInvalidity.Revision.section96.PK.ob_info')
+                                    @include('Scheme.noticeInvalidity.Revision.paymentOption.SCO.applicant_info')
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card m-b-0">
+                            <div class="card-header" role="tab" id="insuredPersonInfo_paymentOption">
+                                <h5 class="mb-0">
+                                    <a class="link" data-toggle="collapse" data-parent="#accordion2"
+                                        href="#insuredPerson" aria-expanded="false" aria-controls="collapseOne1">
+                                        <h4 class="card-title"><i class="fa fa-plus"></i>
+                                            @lang('Insured Person Info')
+                                        </h4>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="insuredPerson" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                <div class="card-body">
+                                    @include('Scheme.noticeInvalidity.Revision.paymentOption.SCO.ob_info')
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card m-b-0">
+                            <div class="card-header" role="tab" id="paymentOption_medical">
+                                <h5 class="mb-0">
+                                    <a class="link" data-toggle="collapse" data-parent="#accordion2"
+                                        href="#paymentOption" aria-expanded="false" aria-controls="collapseOne1">
+                                        <h4 class="card-title"><i class="fa fa-plus"></i>
+                                            @lang('Payment Option')
+                                        </h4>
+                                    </a>
+                                </h5>
+                            </div>
+                            <div id="paymentOption" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                <div class="card-body">
+                                    @include('Scheme.noticeInvalidity.Revision.paymentOption.SCO.payment_option')
                                 </div>
                             </div>
                         </div>
@@ -119,6 +155,8 @@
         </div>
     </div>
 </div>
+
+
 
 <!-- row -->
 <script>

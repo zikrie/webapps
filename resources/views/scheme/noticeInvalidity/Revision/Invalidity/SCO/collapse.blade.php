@@ -6,13 +6,13 @@
             <h5 class="mb-0">
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseInfo"
                     aria-expanded="false" aria-controls="collapseOne1">
-                    <h4 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.case_info')</h4>
+                    <h4 class="card-title"><i class="fa fa-plus"></i> @lang('Case Info')</h4>
                 </a>
             </h5>
         </div>
         <div id="caseInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeInvalidity.Revision.Invalidity.SAO.case_info')
+                @include('scheme.noticeInvalidity.Revision.Invalidity.SCO.case_info')
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
             <h5 class="mb-0">
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#decaration"
                     aria-expanded="false" aria-controls="collapseOne1">
-                    <h4 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.declare')</h4>
+                    <h4 class="card-title"><i class="fa fa-plus"></i> @lang('Declaration 117')</h4>
                 </a>
             </h5>
         </div>
