@@ -10,9 +10,5 @@ return [
           'race' => 'Race',
           'date_birth' => 'Date of Birth',
           'gender' => 'Gender',
-          'occupation_form34' => 'Occupation (Based on Form 34)',
-          'occupation' => 'Occupation',
-          'sub_occupation' => 'Sub Occupation',
-          'sub_occupationlist' => 'Sub Occupation List',
 	
 ];

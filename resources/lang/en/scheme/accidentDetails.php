@@ -11,22 +11,18 @@ return [
     'in_premises' => "In the employer's premises",
     'out_premises' => "Outside of the employer's premises",
     'other_trans' => 'Others Transport',
-    'accident_dateTime' => 'Accident Date and Time',
 
     'yes' => 'Yes',
     'no' => 'No',
 
     'attr' => [
         'accident_date' => 'Accident Date',
-        'accident_time' => 'Accident Time',
+        'time_accident' => 'Accident Time',
         'place_accident' => 'Place of Accident',
         'when_accident' => 'When Accident Happen?',
         'date_death' => 'Date of Death',
         'how_accident' => 'How the Accident Happened?',
         'mode_transport' => 'Mode of Transport',
-        'causeOfAccd' => 'Cause of Accident',
-        'typeInjury' => 'Type of Injury',
-        'locationOfInjury'=> 'Location of Injury',
         'causative_agent' => 'Causative Agent',
         'accident_code' => 'Accident Code',
         'industrial_code' => 'Industrial Code',
@@ -64,13 +60,10 @@ return [
         'pedestrian' => 'Pedestrian',
         'train'=> 'Train',
         'modeTransport_others' => 'Mode of Transport (Others)',
-        'viewOriginal' => 'VIEW ORIGINAL',
     ],
 
     'save' => 'SAVE',
-    'cancel' => 'Cancel',
-    'clear' => 'Clear',
-    'close' => 'CLOSE',
-    'save' => 'SAVE',
+    'cancel' => 'CANCEL',
+    'clear' => 'CLEAR',
  
 ];
