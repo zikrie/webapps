@@ -5,6 +5,8 @@
                 <form action="/odemphistory" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
+                        <h5 class="card-title">@lang('scheme/odDetails.emphistory_title')</h5>
+                        <hr>
                         @if(Session::get('msgodemphist')) 
                         <div class="card-footer">
 
@@ -35,7 +37,6 @@
                                                     <th>@lang('scheme/odDetails.attr.employer_address')</th>
                                                     <th>@lang('scheme/odDetails.attr.period')</th>
                                                     <th data-breakpoints="xs sm">@lang('scheme/odDetails.attr.designation')</th>
-                                                    <th>Delete</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -52,7 +53,6 @@
                                                     <td><textarea type="text" id="empadd[{{$i}}]" name="empadd[{{$i}}]" value="" class="form-control"></textarea></td>
                                                     <td><textarea type="text" id="duration[{{$i}}]" name="duration[{{$i}}]" value="" class="form-control"></textarea></td>
                                                     <td><textarea type="text" id="designation[{{$i}}]" name="designation[{{$i}}]" value="" class="form-control"></textarea></td>
-                                                    <td></td>
                                                 </tr>
                                                 @endfor
                                                 @else
@@ -64,7 +64,6 @@
                                                     <td><textarea type="text" id="empadd[{{$i}}]" name="empadd[{{$i}}]" value="" class="form-control">{{$odemp->empadd}}</textarea></td>
                                                     <td><textarea type="text" id="duration[{{$i}}]" name="duration[{{$i}}]" value="" class="form-control">{{$odemp->duration}}</textarea></td>
                                                     <td><textarea type="text" id="designation[{{$i}}]" name="designation[{{$i}}]" value="" class="form-control">{{$odemp->designation}}</textarea></td>
-                                                    <td></td>
                                                 </tr>
                                                 <?php $i++; ?>
                                                 @endforeach
@@ -75,7 +74,6 @@
                                                     <td><textarea type="text" id="empadd[{{$j}}]" name="empadd[{{$j}}]" value="" class="form-control"></textarea></td>
                                                     <td><textarea type="text" id="duration[{{$j}}]" name="duration[{{$j}}]" value="" class="form-control"></textarea></td>
                                                     <td><textarea type="text" id="designation[{{$j}}]" name="designation[{{$j}}]" value="" class="form-control"></textarea></td>
-                                                    <td></td>
                                                 </tr>
                                                 @endfor
 
@@ -85,18 +83,18 @@
                                         </table>
                                     </div>
                                 </div>
-                                
+                                <button type="button" class="btn btn waves-effect waves-light btn-secondary"
+                                id="add_emp_od">@lang('scheme/odDetails.attr.add_employer_info')</button>
                             </div>
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/insuredPerson.save')</button>
-                            {{-- <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
-                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
-                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('noticetype.back')</button> --}}
-                            <button type="button" class="btn btn waves-effect waves-light btn-secondary"
-                            id="add_emp_od">ADD EMPLOYMENT INFO</button>
-                        </div>
+                                {{-- <button data-toggle="tab" href="#odinfo" role="tab" class="btn waves-effect waves-light btn-info" id="btn-nextOdInfo">@lang('insuredPerson.next')</button> --}}
+                                <button type="submit" class="btn waves-effect waves-light btn-success">
+                                        @lang('scheme/insuredPerson.save')</button>
+                                {{-- <button data-toggle="tab" href="#employer" role="tab" class="btn waves-effect waves-light btn-info" id="btn-previousEmpDetails">@lang('insuredPerson.previous')</button> --}}
+                                {{-- <button type="button" class="btn waves-effect waves-light btn-info">@lang('insuredPerson.previous')</button> --}}
+                                    </div>
                         </div>
                     </form>
                 </div>
