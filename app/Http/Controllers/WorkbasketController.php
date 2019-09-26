@@ -185,192 +185,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
                 
-                return redirect('/scheme/noticeaccident');
-            }
-           else if ($casetype == '02')
-            { 
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
-                    $idno=$obprofile->idno;
-                    $idtype=$obprofile->idtype;
-                }
-                
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
-                    $empcode=$employer->empcode;
-                }
-                
-                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-               
-               return redirect('/scheme/obform_od');
-            }
-            else if ($casetype == '03')
-            { 
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
-                    $idno=$obprofile->idno;
-                    $idtype=$obprofile->idtype;
-                }
-                
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
-                    $empcode=$employer->empcode;
-                }
-                
-                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-                
-                return redirect('/scheme/noticeinvalidity');
-            }
-            else if ($casetype == '04')
-            {
-                $obprofile = DB::selectOne('select c.idno, c.idtype from caseobprofile c, personcat p '
-                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?',[$caserefno,'OB']);
-                if ($obprofile)
-                {
-                    $idno=$obprofile->idno;
-                    $idtype=$obprofile->idtype;
-                }
-                
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
-                    $empcode=$employer->empcode;
-                }
-                
-                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-                
-                
-                return redirect('/scheme/noticedeath');
-            }
-        }
-        else if ($caseinfo->status == '02')//submitted to SCO - nanti change routing to screen SCO
-        {
-            if ($casetype == '01')
-            {
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
-                    $idno=$obprofile->idno;
-                    $idtype=$obprofile->idtype;
-                }
-                
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
-                    $empcode=$employer->empcode;
-                }
-                
-                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?',[$caserefno]);
-                if ($accdinfo)
-                {
-                    $accddate=$accdinfo->accddate;
-                    $accdtime=$accdinfo->accdtime;
-                    
-                    $accdyear = substr($accddate,0,4);
-                    $accdmonth = substr($accddate,4,2);
-                }
-                
-                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-                session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
-                
-                return redirect('/scheme/noticeaccident');
-            }
-           else if ($casetype == '02')
-            { 
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
-                    $idno=$obprofile->idno;
-                    $idtype=$obprofile->idtype;
-                }
-                
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
-                    $empcode=$employer->empcode;
-                }
-                
-                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-               
-               return redirect('/scheme/obform_od');
-            }
-            else if ($casetype == '03')
-            { 
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
-                    $idno=$obprofile->idno;
-                    $idtype=$obprofile->idtype;
-                }
-                
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
-                    $empcode=$employer->empcode;
-                }
-                
-                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-                
-                return redirect('/scheme/noticeinvalidity');
-            }
-            else if ($casetype == '04')
-            {
-                $obprofile = DB::selectOne('select c.idno, c.idtype from caseobprofile c, personcat p '
-                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?',[$caserefno,'OB']);
-                if ($obprofile)
-                {
-                    $idno=$obprofile->idno;
-                    $idtype=$obprofile->idtype;
-                }
-                
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
-                    $empcode=$employer->empcode;
-                }
-                
-                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-                
-                
-                return redirect('/scheme/noticedeath');
-            }
-        }
-        
-        else if ($caseinfo->status == '03')//submitted to IO - nanti change routing to screen IO
-        {
-            if ($casetype == '01')
-            {
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
-                    $idno=$obprofile->idno;
-                    $idtype=$obprofile->idtype;
-                }
-                
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
-                    $empcode=$employer->empcode;
-                }
-                
-                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?',[$caserefno]);
-                if ($accdinfo)
-                {
-                    $accddate=$accdinfo->accddate;
-                    $accdtime=$accdinfo->accdtime;
-                    
-                    $accdyear = substr($accddate,0,4);
-                    $accdmonth = substr($accddate,4,2);
-                }
-                
-                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-                session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
-                
-                return redirect('/scheme/noticeaccident');
+                return redirect('/Scheme/noticeaccident');
             }
            else if ($casetype == '02')
             { 
@@ -408,7 +223,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/scheme/noticeinvalidity');
+                return redirect('/Scheme/obformilat');
             }
             else if ($casetype == '04')
             {
@@ -429,7 +244,192 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
                 
-                return redirect('/scheme/noticedeath');
+                return redirect('/Scheme/noticedeath');
+            }
+        }
+        else if ($caseinfo->status == '02')//submitted to SCO - nanti change routing to screen SCO
+        {
+            if ($casetype == '01')
+            {
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
+                if ($obprofile)
+                {
+                    $idno=$obprofile->idno;
+                    $idtype=$obprofile->idtype;
+                }
+                
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
+                if ($employer)
+                {
+                    $empcode=$employer->empcode;
+                }
+                
+                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?',[$caserefno]);
+                if ($accdinfo)
+                {
+                    $accddate=$accdinfo->accddate;
+                    $accdtime=$accdinfo->accdtime;
+                    
+                    $accdyear = substr($accddate,0,4);
+                    $accdmonth = substr($accddate,4,2);
+                }
+                
+                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
+                session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
+                
+                return redirect('/Scheme/noticeaccident');
+            }
+           else if ($casetype == '02')
+            { 
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
+                if ($obprofile)
+                {
+                    $idno=$obprofile->idno;
+                    $idtype=$obprofile->idtype;
+                }
+                
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
+                if ($employer)
+                {
+                    $empcode=$employer->empcode;
+                }
+                
+                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
+               
+               return redirect('/Scheme/obform_od');
+            }
+            else if ($casetype == '03')
+            { 
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
+                if ($obprofile)
+                {
+                    $idno=$obprofile->idno;
+                    $idtype=$obprofile->idtype;
+                }
+                
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
+                if ($employer)
+                {
+                    $empcode=$employer->empcode;
+                }
+                
+                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
+                
+                return redirect('/Scheme/obformilat');
+            }
+            else if ($casetype == '04')
+            {
+                $obprofile = DB::selectOne('select c.idno, c.idtype from caseobprofile c, personcat p '
+                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?',[$caserefno,'OB']);
+                if ($obprofile)
+                {
+                    $idno=$obprofile->idno;
+                    $idtype=$obprofile->idtype;
+                }
+                
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
+                if ($employer)
+                {
+                    $empcode=$employer->empcode;
+                }
+                
+                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
+                
+                
+                return redirect('/Scheme/noticedeath');
+            }
+        }
+        
+        else if ($caseinfo->status == '03')//submitted to IO - nanti change routing to screen IO
+        {
+            if ($casetype == '01')
+            {
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
+                if ($obprofile)
+                {
+                    $idno=$obprofile->idno;
+                    $idtype=$obprofile->idtype;
+                }
+                
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
+                if ($employer)
+                {
+                    $empcode=$employer->empcode;
+                }
+                
+                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?',[$caserefno]);
+                if ($accdinfo)
+                {
+                    $accddate=$accdinfo->accddate;
+                    $accdtime=$accdinfo->accdtime;
+                    
+                    $accdyear = substr($accddate,0,4);
+                    $accdmonth = substr($accddate,4,2);
+                }
+                
+                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
+                session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
+                
+                return redirect('/Scheme/noticeaccident');
+            }
+           else if ($casetype == '02')
+            { 
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
+                if ($obprofile)
+                {
+                    $idno=$obprofile->idno;
+                    $idtype=$obprofile->idtype;
+                }
+                
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
+                if ($employer)
+                {
+                    $empcode=$employer->empcode;
+                }
+                
+                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
+               
+               return redirect('/Scheme/obform_od');
+            }
+            else if ($casetype == '03')
+            { 
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
+                if ($obprofile)
+                {
+                    $idno=$obprofile->idno;
+                    $idtype=$obprofile->idtype;
+                }
+                
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
+                if ($employer)
+                {
+                    $empcode=$employer->empcode;
+                }
+                
+                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
+                
+                return redirect('/Scheme/obformilat');
+            }
+            else if ($casetype == '04')
+            {
+                $obprofile = DB::selectOne('select c.idno, c.idtype from caseobprofile c, personcat p '
+                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?',[$caserefno,'OB']);
+                if ($obprofile)
+                {
+                    $idno=$obprofile->idno;
+                    $idtype=$obprofile->idtype;
+                }
+                
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
+                if ($employer)
+                {
+                    $empcode=$employer->empcode;
+                }
+                
+                session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
+                
+                
+                return redirect('/Scheme/noticedeath');
             }
         }
         else if ($caseinfo->status == '07')//submitted to SAO - nanti change routing to screen SAO
@@ -462,7 +462,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 session(['accddate' =>$accddate, 'accdtime' => $accdtime, 'accdmonth'=>$accdmonth, 'accdyear'=>$accdyear]);
                 
-                return redirect('/scheme/noticeaccident');
+                return redirect('/Scheme/noticeaccident');
             }
            else if ($casetype == '02')
             { 
@@ -481,7 +481,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/scheme/obform_od');
+               return redirect('/Scheme/obform_od');
             }
             else if ($casetype == '03')
             { 
@@ -500,7 +500,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/scheme/noticeinvalidity');
+                return redirect('/Scheme/obformilat');
             }
             else if ($casetype == '04')
             {
@@ -521,7 +521,7 @@ class WorkbasketController extends Controller
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
                 
-                return redirect('/scheme/noticedeath');
+                return redirect('/Scheme/noticedeath');
             }
         }
         
@@ -553,14 +553,14 @@ class WorkbasketController extends Controller
         session(['messagecert'=>'','messageemp'=>'','messageod'=>'']);
 
         //chg23072019 - tambah get column status from caseinfo
-        $result = DB::select('select w.wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
-            w.rtwrefno, r.descen, w.caserefno, c.casetype, c.status from workbasket w, caseinfo c, reftable r where 
-            w.caserefno = c.caserefno and w.taskcode = r.refcode and r.tablerefcode =? and w.operid=? order by w.date,w.time',
-                ['taskcode', $operid]);
         // $result = DB::select('select w.wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
-        //     w.rtwrefno, r.descen, w.caserefno, c.casetype, c.status from "workbasket" w, caseinfo c, reftable r where 
+        //     w.rtwrefno, r.descen, w.caserefno, c.casetype, c.status from BEAMS.workbasket w, BEAMS.caseinfo c, BEAMS.reftable r where 
         //     w.caserefno = c.caserefno and w.taskcode = r.refcode and r.tablerefcode =? and w.operid=? order by w.date,w.time',
         //         ['taskcode', $operid]);
+        $result = DB::select('select w.wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
+            w.rtwrefno, r.descen, w.caserefno, c.casetype, c.status from "workbasket" w, caseinfo c, reftable r where 
+            w.caserefno = c.caserefno and w.taskcode = r.refcode and r.tablerefcode =? and w.operid=? order by w.date,w.time',
+                ['taskcode', $operid]);
 
         // $now = time(); // or your date as well
         // $your_date = strtotime('date');
