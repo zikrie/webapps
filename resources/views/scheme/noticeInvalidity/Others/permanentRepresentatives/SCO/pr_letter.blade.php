@@ -28,13 +28,13 @@
                         <div class='row'>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>@lang('Contacted Officer Incharge Name')</label>
+                                    <label>@lang('Contactor Officer Incharge Name')</label>
                                     <input type="text" id="new_ic" name="new_ic" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('Contacted Officer Incharge Phone No')</label>
+                                    <label>@lang('Contactor Officer Incharge Phone No')</label>
                                     <input type="text" id="other" name="other" value="" class="form-control">
                                 </div>
                             </div>

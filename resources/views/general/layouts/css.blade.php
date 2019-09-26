@@ -8,6 +8,7 @@
 <link href="/PERKESO_UI/horizontal-nav-fullwidth/dist/css/style.min.css" rel="stylesheet">
 <!-- Dashboard 1 Page CSS -->
 <link href="/PERKESO_UI/horizontal-nav-fullwidth/dist/css/pages/dashboard2.css" rel="stylesheet">
+<link href="/PERKESO_UI/horizontal-nav-fullwidth/dist/css/pages/error-pages.css" rel="stylesheet">
 
 <link rel="stylesheet" href="/PERKESO_UI/assets/node_modules/dropify/dist/css/dropify.min.css">
 
@@ -34,5 +35,8 @@
     <link href="/PERKESO_UI/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
     <link href="/PERKESO_UI/assets/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
     <link href="/PERKESO_UI/assets/node_modules/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+   
+    <!-- page css -->
+ 
 
 <link href="{{ asset('/css/overrides.css') }}" rel="stylesheet" type="text/css" />

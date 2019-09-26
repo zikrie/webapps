@@ -51,11 +51,12 @@
                                                     <th style="width:5%">@lang('scheme/uploaddoc.attr.docdesc')</th>
                                                     <th style="width:5%">@lang('scheme/uploaddoc.attr.recvdate')</th>
                                                     <th style="width:5%">@lang('scheme/uploaddoc.attr.uploaddate')</th>
-                                                    <th style="width:5%">@lang('scheme/uploaddoc.attr.certify')</th>
+                                                    
                                                     <th style="width:10%">@lang('scheme/uploaddoc.attr.source')</th>
-                                                    <th style="width:10%">@lang('scheme/uploaddoc.attr.doctype')</th>
-                                                    <th style="width:20%">@lang('scheme/uploaddoc.attr.docpath')</th>
-                                                    <th style="width:5%">@lang('scheme/uploaddoc.attr.verify')</th>
+                                                    <th style="width:10%">@lang('Document Type')</th>
+                                                    <th style="width:10%">@lang('scheme/uploaddoc.attr.docpath')</th>
+                                                    <th style="width:20%">@lang('Status')</th>
+                                                  
                                                     <th style="width:5%">@lang('scheme/uploaddoc.attr.view')</th>
                                                     {{-- <th>@lang('scheme/uploaddoc.attr.delete')</th>  --}}
 
@@ -90,7 +91,7 @@
                                                     <td>
                                                         <input type="text" class="form-control">
                                                     </td>
-                                                    <td><input type="date" class="form-control"></td>
+                                                   <td></td>
                                                     <td>
                                                         <div class="col-md-1">
                                                             <div class="custom-control custom-radio">
@@ -128,18 +129,13 @@
                                                     <td><input type="hidden" name="doccat[{{$cnt}}]" value="{{ $data -> doctype}}|{{ $data -> doccat}}">{{ $data -> docdescen}}</td>
                                                     <td><input type="date" class="form-control"></td>
                                                     <td><input type="date" class="form-control"></td> 
-                                                    <td>
-                                                        <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                                            <input type="checkbox" class="custom-control-input" id="checkbox[{{$cnt}}]" value="check">
-                                                            <label class="custom-control-label" for="checkbox[{{$cnt}}]"></label>
-                                                        </div>
-                                                    </td>   
+                                                   
                                                     <td>
                                                         {{-- <input type="text" class="form-control"> --}}
                                                         <select class="form-control" name="" id="">
-                                                            <option value="">Counter</option>
-                                                            <option value="">Post</option>
-                                                            <option value="">Portal</option>
+                                                            <option value="">Online</option>
+                                                            <option value="">Offline</option>
+                                                          
                                                         </select>
                                                     </td>
                                                     <td><select class="form-control" name="" id="">
@@ -147,16 +143,18 @@
                                                             <option value="">Original</option>
                                                         </select>
                                                     </td> 
-                                                    <td><span class="choosefile"><input type="file" name="pdf[{{$cnt}}]" id="pdf_cancel_{{$cnt}}">
+                                                    <td>
+                                                    </td>
+                                                    {{-- <td><span class="choosefile"><input type="file" name="pdf[{{$cnt}}]" id="pdf_cancel_{{$cnt}}">
                                                     
                                                             <i class=" preview btn_cancel_{{$cnt}} icon-close"></i>
                                                         
                                                         </span>
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         <select class="form-control" name="" id="">
-                                                            <option value="">   </option>
-                                                            <option value="">View</option>
+                                                            
+                                                            <option value="">Required</option>
                                                             <option value="">Not Required</option>
                                                         </select>
                                                         {{-- <div class="col-md-1">
@@ -172,6 +170,7 @@
                                                             </div>
                                                         </div> --}}
                                                     </td>
+                                                   
                                                     <td></td>
                                                     
                                                     

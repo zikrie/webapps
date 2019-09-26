@@ -128,7 +128,7 @@ class NoticeTypeController extends Controller
             
             $jsondecodeOdRecord="";
             $a=$this->checkOdRecordExist($jsondecodeOdRecord);
-            dd($jsondecodeOdRecord);
+           
             // return($jsondecodeOdRecord);
             // dd($jsondecodeOdRecord);
             $record = $jsondecodeOdRecord->{'record'};
@@ -390,7 +390,7 @@ class NoticeTypeController extends Controller
 
         $idno = session('idno');
         $empcode = session('empcode');
-
+   
         try
         {
             $client = new Client([
@@ -416,7 +416,7 @@ class NoticeTypeController extends Controller
             
             $jsondecodeAssistEmployer = json_decode($stringBody);
             $jsondecodeAssistEmployer = $jsondecodeAssistEmployer->{'businessInfo'};
-            dd($jsondecodeAssistEmployer);
+             
          
            // $_content = json_encode($stringBody,true);
            // return new ApiResource($_content);
