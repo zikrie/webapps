@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
-                                            <button type="submit" class="btn btn-primary">@lang('scheme/accidentDetails.save')</button>
+                                            <button type="submit" id="recommend_save" class="btn btn-primary recommend_save">@lang('scheme/accidentDetails.save')</button>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@
                             </div> 
                             {{-- End POPUP From Dropdown  --}}
                         </div>
-                        <div class='row'>
+                        <div class='row' id="Outer" >
                             <div class="col-md-12 col-lg-8">
                                 <div class="card">
                                     <table class="table table-sm table-bordered" cellspacing="0" width="100%">

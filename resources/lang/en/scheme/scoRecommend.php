@@ -42,14 +42,6 @@ return [
        'scheme_recommend_date'=>' SCO Scheme Recommendation Date',
        'scheme_by'=>' Scheme Recommended By',
        'potential_96'=>'Potential 96',
-       'action' => 'Action',
-       'recommend' => 'Recommend',
-       'query' => 'Query',
-       'medical_Opinion' => 'Medical Opinion',
-       'legalopinion' => 'Legal Opinion',
-       'PPNopinion' => 'PPN Opinion',
-       'AROopinion' => 'ARO Opinion',
-       'wrongBenefitType' => 'Wrong Benefit Type',
 
       // 
     ],

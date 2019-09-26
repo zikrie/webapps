@@ -2,36 +2,35 @@
  
 return [
 
-    'title' => 'Case Information',
+	'title' => 'Case Information',
     
 
 
     'attr' => [
-        
+    	
         'case_status' => 'Case Status',
-        'acceptance' => 'Acceptance',
-        'scheme_ref_no' => 'Scheme Reference Number',
-        'SPIeligible' => 'SPI Eligible',
+        'case_category' => 'Case Category',
+        'scheme_ref_no' => 'Scheme Reference No.',
+        'type_scheme' => 'Type of Scheme',
         'notice_date' => 'Notice Date',
-        'form34_date' => 'Form 34 Received Date',
-        'registrationDate' => 'Registration Date',
         'notice_type' => 'Notice Type',
+        'accident_date' => 'Accident Date',
+        'form34_received' => 'Form 34 Received Date',
+        'registration_date' => 'Registration Date',
+        'socso_registration' => 'SOCSO Registration Office',
+        'socso_office' => 'SOCSO Office',
         'working' => 'Is Still Working?',
         'declare_117' => 'Declaration 117',
         'acc_potential' => 'Accident Potential',
         'yes' => 'Yes',
         'no' => 'No',
-
-         //OD_RTW
-        
         'caseinfo' => 'Case Information',
-        'caseCategory' => 'Case Category',
         'spi_eligible' => 'SPI Eligible',
         'scheme_eligible' => 'Scheme Eligible',
-        'typeOfScheme' => 'Type Of Scheme',
+        'scheme_type' => 'Scheme Type',
         'status_scheme' => 'Status Scheme EI Decision',
         'death_date' => 'Date of Death',
-        'death_age' => 'Age At the time of Death',
+        'death_age' => 'Age at the Time of Death',
         'death_source' => 'Source of Death Information',
         'potential_96' => 'Potential Sek 96',
         'potential_HUK' => 'Potential HUK case',
@@ -46,18 +45,24 @@ return [
         'not_qualified' => ' Not Qualified',
         'not_qualified' => ' Not Qualified',
         'minimum_12' => ' Minimum 12 Months',
-        'socsoRegistrationOffice' => 'SOCSO Registration Office ',
-        'socsoOffice'=> 'SOCSO Office ',
-        'accident_date' => 'Accident Date',
+        'acceptance' => 'Acceptance',
+
+        //DEATH NOTICE SCO
+
+        'notice_id' => 'Notice ID',
+        'qualifying_condition' => 'Qualifying Condition',
+        'periodical_receiver' => 'Periodical HUS/HUK Receiver',
+        'date_death' => 'Date of Death',
+        'age_death' => 'Age at the time of death',
+        'source_death' => 'Source of death information',
         
  
     ],
 
-    'save' => 'Save',
-    'next' => 'Next',
-    'cancel' => 'Cancel',
-    'clear' => 'Clear',
-    'submit' => 'Submit',
-    'view'=> 'View',
+    'save' => 'SAVE & NEXT',
+    'cancel' => 'CANCEL',
+    'clear' => 'CLEAR',
+    'submit' => 'SUBMIT',
+    'view'=> 'VIEW',
  
 ];

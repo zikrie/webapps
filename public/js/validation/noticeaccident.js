@@ -1,5 +1,4 @@
 // For select 2
-
 $(document).ready(function () {
     var language= $('#change_language').val();
     if(language=="BM"){
