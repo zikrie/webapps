@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.section96')</h3>
+            <h3 class="card-title">@lang('Section 96')</h3>
             <!-- Tab panes -->
             <ul class="nav customtab" role="tablist" id="tabMenu">
                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span

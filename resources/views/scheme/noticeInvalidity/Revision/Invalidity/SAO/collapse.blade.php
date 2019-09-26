@@ -5,7 +5,7 @@
             <div class="card-header" role="tab" id="caseInfo_invalidity">
                 <h5 class="mb-0">
                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
-                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('index.attr.case_info')</h4>
+                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('Case Info')</h4>
                     </a>
                 </h5>
             </div>
@@ -19,7 +19,7 @@
             <div class="card-header" role="tab" id="obInfo_invalidity">
                 <h5 class="mb-0">
                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#obInfo" aria-expanded="false" aria-controls="collapseOne1">
-                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('OB Info')</h4>
+                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('Insured Person Info')</h4>
                     </a>
                 </h5>
             </div>
@@ -48,7 +48,7 @@
             <div class="card-header" role="tab" id="decaration117_invalidity">
                 <h5 class="mb-0">
                     <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#decaration117" aria-expanded="false" aria-controls="collapseOne1">
-                        <h4 class="card-title"><i class="fa fa-plus"></i>  @lang('index.attr.declare')</h4>
+                        <h4 class="card-title"><i class="fa fa-plus"></i>  @lang('Declaration 117')</h4>
                     </a>
                 </h5>
             </div>

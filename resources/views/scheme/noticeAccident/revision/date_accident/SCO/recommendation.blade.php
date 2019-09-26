@@ -27,7 +27,7 @@
                             <div class='row'>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('insuredPerson.attr.recommendation')</label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.recommendation.title')</label>
                                         <input type="text" id="recommendation" name="recommendation" value="" class="form-control" >
                                     </div>
                                 </div>
@@ -35,13 +35,13 @@
                             <div class='row'>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('insuredPerson.attr.recommendedBy')</label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.recommendation.recommended_by')</label>
                                         <input type="text" readonly id="recommendedBy" name="recommendedBy" value="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('insuredPerson.attr.recommendDate')</label>
+                                        <label class="control-label">@lang('form/scheme.general.collapse.recommendation.recommended_date')</label>
                                         <input type="date" readonly name="recommendDate" id="recommendDate" value="" class="form-control">
                                     </div>
                                 </div>
@@ -49,9 +49,9 @@
                             <div class="form-actions">
                                 <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('insuredPerson.save')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
+                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
+                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
                             </div>
                         </div>
                     </form>

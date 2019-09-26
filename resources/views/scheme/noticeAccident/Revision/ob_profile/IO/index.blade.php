@@ -19,19 +19,19 @@
                         <ul class="nav customtab" role="tablist" id="tabMenu">
                             <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">Remarks</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">Claim Details</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommendations"
                                 role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                    class="hidden-xs-down">Recommendation</span></a>
+                                    class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a>
                             </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingDocument"
                                     role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span
-                                        class="hidden-xs-down">Supporting Document</span></a>
+                                        class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a>
                             </li>
                         </ul>
                         <div class="row" id="rowindex">

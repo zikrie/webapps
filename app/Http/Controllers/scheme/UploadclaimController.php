@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use DB;
 use Storage;
 use Response;
+use setasign\Fpdi\Fpdi;
+
+
 
 class UploadclaimController extends Controller
 {
@@ -28,22 +31,31 @@ class UploadclaimController extends Controller
     public function test(Request $req)
     {
         $docname = $req->query('docname');
-        
+        $show=$req->query('show');
+       
         $notes = $req->query('notes');
         $docid = $req->query('docid');
         
         // $docinfo =DB::select('Select t.dn_page_note,t.dn_details_note  from docrepository r,docnotes t where r.docid=t.dn_docid AND r.caserefno=t.dn_caserefno AND r.docname=? ',[$docname]);
-        $docinfo =DB::select('SELECT t.dn_page_note,t.dn_details_note  from docrepository r,docnotes t where r.docid=t.dn_docid AND r.docname=? ',[$docname]);
+        $docinfo =DB::select('SELECT t.dn_page_note,t.dn_details_note ,t.specific_notes from docrepository r,docnotes t where r.docid=t.dn_docid AND r.docname=? ORDER BY t.dn_page_note ASC, t.specific_notes ASC' ,[$docname]);
+  
         $count ="0";
-       
-    
+
         if($docinfo!=null){
             foreach($docinfo as $index){
                 $dn_page_note[$count]=$index->dn_page_note;
                 $dn_details_note[$count]=$index->dn_details_note;
+                $dn_specific_note[$count]=$index->specific_notes;
+                // $array_pdf[$count] = [
+                //     'dn_details_note' =>$index->dn_details_note,
+                //     'specific_notes' =>$index->specific_notes
+                // ];
+                
+                //   $dn_details_note[$count]=nl2br($dn_details_note[$count]);
                 $count++;
+               
               }
-             
+              session(['dn_page_note' =>$dn_page_note,'dn_details_note'=>$dn_details_note,'dn_specific_note'=>$dn_specific_note,'docname'=>$docname]);
             // $_SESSION['dn_page_note'] = $dn_page_note;
             // $_SESSION['dn_details_note'] = $dn_details_note;
             // $_SESSION['docname'] = $docname;
@@ -53,8 +65,23 @@ class UploadclaimController extends Controller
             $dn_page_note=null;
             $dn_details_note=null;
         }
+     
+// dd($dn_page_note);
+    //    dd(session($dn_details_note[2]));
+    //       $testing=nl2br($dn_details_note[2]);
+   
     
-        return view('testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'dn_page_note'=>$dn_page_note,'dn_details_note'=>$dn_details_note,'docinfo'=>$docinfo]);
+   
+    //  dd($dn_details_note[0]);
+    //  dd($testing) ;
+        //   return $dn_details_note[0];
+    //    if(in_array("2",$dn_page_note)>1){
+       
+    //    }
+    // dd(count(array_keys($dn_page_note, $dn_page_note[0])));
+ 
+    //    dd(strlen($dn_details_note[0]));
+        return view('scheme.general.testing',['notes'=>$notes,'docid'=>$docid,'docname'=>$docname,'docinfo'=>$docinfo,'show'=>$show]);
        
         // return view('testing',['docname'=>$docname,'notes'=>$notes,'docid'=>$docid,'docinfo'=>$docinfo]);
         
@@ -99,7 +126,7 @@ class UploadclaimController extends Controller
         $operid = session('loginname');
         $brcode = session('loginbranchcode');
         $dataSet = array();
-        dd($uniquerefno);
+        // dd($uniquerefno);
         $cnt = 0;
         $a = '';
         
@@ -234,7 +261,7 @@ class UploadclaimController extends Controller
         
         
         $jsondata = json_encode($docrepo);
-        dd($docrepo);
+       
        
 
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/upddoc';
@@ -256,7 +283,7 @@ class UploadclaimController extends Controller
         curl_close($ch);
         
         $jsondecode = json_decode($result);
-        dd($result);
+        // dd($result);
         
         
         $errorcode = $jsondecode->{'errorcode'};
@@ -271,5 +298,130 @@ class UploadclaimController extends Controller
         }
         
       
+    }
+    public function viewnotes(){
+  $docname = session('docname');  
+   $dn_page_note=session('dn_page_note');
+   $dn_details_note=session('dn_details_note');
+   $dn_specific_note=session('dn_specific_note');
+ 
+   
+//    $array_pdf=session('array_pdf');
+   
+   $pdf = new Fpdi();
+   $docpath = 'app/documents/'.$docname;
+   //$docpath = 'C:/MOTION/IMAGES/'.$docname;
+   $path = storage_path($docpath);
+   $pageCount = $pdf->setSourceFile($path);
+
+   $countfor="0";
+   $xaxis="30";
+   $yaxis="30";
+for ($i = 1; $i <= $pageCount; $i++) {
+  if($dn_page_note[$countfor]==$i)
+  {
+     
+      $tplIdx = $pdf->importPage($i, '/MediaBox');
+      $pdf->SetTitle($docname);
+      $pdf->AddPage();
+      $pdf->useTemplate($tplIdx);
+      $pdf->SetFont('Helvetica');
+      $pdf->SetTextColor(0, 0, 0);
+      $pdf->setFillColor(255,255,0); //rgb color
+     
+      if(count(array_keys($dn_page_note, $dn_page_note[$countfor]))>1){
+
+        for ($u = 1; $u <= $pageCount; $u++) {
+            if($dn_specific_note[$u]==$u){
+                if(strpos(nl2br($dn_details_note[$u]),"<br />")!=false){
+                    $pdf->Multicell(($pdf->GetStringWidth($dn_details_note[$u]) +  strlen($dn_details_note[$u])), 10, $dn_details_note[$u], 90, 20 ,'L', TRUE);
+                    $pdf->SetXY($xaxis, $yaxis);
+                }
+            else{
+                $pdf->cell(($pdf->GetStringWidth($dn_details_note[$u]) + strlen($dn_details_note[$u])), 10, $dn_details_note[$u], 90, 20 ,'L', TRUE);
+                $pdf->SetXY($xaxis, $yaxis);
+            }    
+            }
+            $yaxis++;
+            
+           
+        }
+        $countfor++;
+      }
+      
+      else{
+        if(strpos(nl2br($dn_details_note[$countfor]),"<br />")!=false){
+            $pdf->Multicell(($pdf->GetStringWidth($dn_details_note[$countfor]) +  strlen($dn_details_note[$countfor])), 10, $dn_details_note[$countfor], 90, 20 ,'L', TRUE);
+            $pdf->SetXY(30, 30);
+        }
+    else{
+        $pdf->cell(($pdf->GetStringWidth($dn_details_note[$countfor]) + strlen($dn_details_note[$countfor])), 10, $dn_details_note[$countfor], 90, 20 ,'L', TRUE);
+        $pdf->SetXY(30, 30);
+    }
+
+      }
+      
+
+    //   if(count(array_keys($dn_page_note, $dn_page_note[$countfor]))>1){
+    //     $pdf->Cell(($pdf->GetStringWidth(nl2br($dn_details_note[$countfor])) + 2), 7, nl2br($dn_details_note[$countfor]), 2, 20 ,'L', TRUE);
+    //     $pdf->Cell(($pdf->GetStringWidth($dn_details_note[$countfor]) + 20), 7, $dn_details_note[2], 90, 20 ,'L', TRUE);
+    //   }
+    //   else{
+    //     $pdf->Cell(($pdf->GetStringWidth(nl2br($dn_details_note[$countfor])) + 2), 10, nl2br($dn_details_note[$countfor]), 90, 20 ,'L', TRUE);
+    //   }
+      $countfor++;
+  }
+  elseif($dn_details_note[$countfor]!=null){
+    $tplIdx = $pdf->importPage($i, '/MediaBox');
+    $pdf->SetTitle($docname);
+    $pdf->AddPage();
+    $pdf->useTemplate($tplIdx);
+    $pdf->SetFont('Helvetica');
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->setFillColor(255,255,0); //rgb color
+    $pdf->SetXY(30, 30);
+     if(strpos(nl2br($dn_details_note[$countfor]),"<br />")!=false){
+            $pdf->Multicell(($pdf->GetStringWidth($dn_details_note[$countfor]) +  strlen($dn_details_note[$countfor])), 10, $dn_details_note[$countfor], 90, 20 ,'L', TRUE);
+        }
+    else{
+        $pdf->cell(($pdf->GetStringWidth($dn_details_note[$countfor]) + strlen($dn_details_note[$countfor])), 10, $dn_details_note[$countfor], 90, 20 ,'L', TRUE);
+    }
+
+  }
+  else{
+    $pdf->SetTitle($docname);
+    $tplIdx = $pdf->importPage($i, '/MediaBox');
+    $pdf->AddPage();
+    $pdf->header = false;
+    $pdf->useTemplate($tplIdx);
+ 
+  }
+}
+
+$pdf->Output();
+    }
+    public function viewNonotes(){
+         $docname = session('docname');
+        
+       
+        $pdf = new Fpdi();
+
+        //Merging of the existing PDF pages to the final PDF
+        $docpath = 'app/documents/'.$docname;
+        //$docpath = 'C:/MOTION/IMAGES/'.$docname;
+        $path = storage_path($docpath);
+        $pageCount = $pdf->setSourceFile($path);
+        for ($i = 1; $i <= $pageCount; $i++) {
+        
+            $tplIdx = $pdf->importPage($i, '/MediaBox');
+           
+            $pdf->AddPage();
+            $pdf->SetTitle($docname);
+            $pdf->header = false;
+            
+            $pdf->useTemplate($tplIdx);
+        }
+        
+        $pdf->Output();
     }
 }

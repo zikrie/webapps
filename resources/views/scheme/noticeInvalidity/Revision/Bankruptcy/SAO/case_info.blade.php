@@ -25,54 +25,30 @@
                         </div>
                         @endif
                         <div class="row p-t-20">
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.id_type')</label>
-                                    <select class="form-control clearfields" name='idtype' id='idtype' required>
-                                        <option selected readonly disabled hidden>Please Select </option>
-                                        @foreach ($idtype as $id)
-                                        @if (old('idtype') == $id->refcode)
-                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
-                                        @elseif(!empty($selectidtype)&&$id->refcode == $selectidtype)
-                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
-                                        @else
-                                        <option value="{{$id->refcode}}">{{$id->descen}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.id_num')</label>
-                                    <input type="text" id="idNum_bankruptcy" name="id_num" value=""
-                                        class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-0"><br>
-                                <button type="button" data-toggle="modal" data-target="#modal_huk"
-                                    class="btn btn-primary btn-facebook waves-effect waves-light"><i
-                                        class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                        <div class="row p-t-20">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.name')</label>
+                                    <label class="control-label">@lang('Name')</label>
                                     <input type="text" readonly id="name_bankruptcy" name="name" value=""
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.id_type')</label>
-                                    <input type="text" readonly id="idType_bankruptcy" name="id_type" value=""
-                                        class="form-control">
+                                    <label class="control-label">@lang('ID Type')</label>
+                                    <select class="form-control" data-placeholder="idType_invalidity" tabindex="2" readonly>
+                                        <option selected disabled hidden>Please Choose </option>
+                                        <option value="New IC">@lang('New IC')</option>
+                                        <option value="Old IC">@lang('Old IC')</option>
+                                        <option value="Army ID">@lang('Army ID')</option>
+                                        <option value="Police ID">@lang('Police ID')</option>
+                                        <option value="Social Security ID">@lang('Social Security ID')</option>
+                                        <option value="CID">@lang('CID')</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.id_num')</label>
+                                    <label class="control-label">@lang('ID Number')</label>
                                     <input type="text" readonly id="idNum_bankruptcy" name="id_num" value=""
                                         class="form-control">
                                 </div>
@@ -81,21 +57,21 @@
                         <div class="row p-t-20">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.notice')</label>
+                                    <label class="control-label">@lang('Notice')</label>
                                     <input type="text" readonly id="noticeID_bankruptcy" name="noticeID" value=""
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.casetype')</label>
+                                    <label class="control-label">@lang('Casetype')</label>
                                     <input type="text" readonly id="caseType_bankruptcy" name="casetype" value=""
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.payment')</label>
+                                    <label class="control-label">@lang('Payment Method')</label>
                                     <input type="text" id="paymentMeth_bankruptcy" name="paymenr" value=""
                                         class="form-control">
                                 </div>
@@ -104,12 +80,9 @@
                         <div class="form-actions">
                             <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
-                            <button type="submit"
-                                class="btn btn waves-effect waves-light btn-success">@lang('insuredPerson.save')</button>
-                            <button type="button" class="btn btn waves-effect waves-light btn-info"
-                                onclick="submitform()">@lang('noticetype.reset')</button>
-                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                                onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
+                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('Save')</button>
+                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('Reset')</button>
+                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('Cancel')</button>
                         </div>
                     </div>
                 </form>

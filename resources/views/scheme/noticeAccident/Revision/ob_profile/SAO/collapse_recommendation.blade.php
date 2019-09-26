@@ -5,7 +5,7 @@
             <h5 class="mb-0">
                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                     href="#caseInfo" aria-expanded="false" aria-controls="collapseOne1">
-                    <h4 class="card-title"><i class="fa fa-plus"></i>Recommendation</h4>
+                    <h4 class="card-title"><i class="fa fa-plus"></i>@lang('form/scheme.general.collapse.recommendation.title')</h4>
                 </a>
             </h5>
         </div>
@@ -22,7 +22,7 @@
                 <a class="link" data-toggle="collapse" data-parent="#accordion2"
                     href="#obProfile" aria-expanded="false"
                     aria-controls="collapseOne1">
-                    <h4 class="card-title"><i class="fa fa-plus"></i>IO Recommendation</h4>
+                    <h4 class="card-title"><i class="fa fa-plus"></i>IO @lang('form/scheme.general.collapse.recommendation.title')</h4>
                 </a>
             </h5>
         </div>

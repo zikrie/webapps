@@ -16,62 +16,74 @@
             <h4 class="card-title">@lang('scheme/index.attr.invalidity_notice')</h4>
             <!-- Nav tabs -->
             <ul class="nav customtab" role="tablist" id="tabMenu">
-                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span
-                        class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                        Remarks</span></a> </li>
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span
+                            class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
+                            Remarks</span></a> </li>
 
                 <li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#collapse" role="tab"><span
                             class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
                             @lang('scheme/index.attr.claim_info')</span></a> </li>
 
-                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#investigate" id="nav_uploaddoc"
-                                role="tab"><span class="hidden-sm-up"><i class="ti-files"></i></span> <span
-                                    class="hidden-xs-down">
-                                    Investigation Details</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#investigate" id="nav_uploaddoc"
+                        role="tab"><span class="hidden-sm-up"><i class="ti-files"></i></span> <span
+                            class="hidden-xs-down">
+                            Investigation Details</span></a> </li>
 
-                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommend" id="nav_uploaddoc"
-                                        role="tab"><span class="hidden-sm-up"><i class="ti-files"></i></span> <span
-                                            class="hidden-xs-down">
-                                            Recommendation</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommend" id="nav_uploaddoc"
+                        role="tab"><span class="hidden-sm-up"><i class="ti-files"></i></span> <span
+                            class="hidden-xs-down">
+                            Recommendation</span></a> </li>
 
-                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingdoc" role="tab"><span
-                                class="hidden-sm-up"><i class="ti-email"></i></span> <span
-                                class="hidden-xs-down">@lang('scheme/index.attr.upload_documents')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supportingdoc" role="tab"><span
+                            class="hidden-sm-up"><i class="ti-email"></i></span> <span
+                            class="hidden-xs-down">@lang('Supporting Document')</span></a> </li>
 
             </ul>
             <!-- Tab panes -->
             <div class="row" id="rowindex">
-                    <div class="col-md-12">
-                           <div class="card text-left" id="cardindex">
-                                  <div class="card-body" id="cardbody">
-                                         <table>
-                                                <thead>
-                                                <tr>
-                                                       <td><span class="no_bold">@lang('form/scheme.general.green_header.name')</span>&nbsp; <span class="no_bold">@lang('form/scheme.general.green_header.dash')</span>&nbsp; <span class="no_bold">@lang('form/scheme.general.green_header.idno')</span></td>
-                                                </tr>
-                                                <tr>
-                                                       <td><label class="no_margin">Putri Nor Shamiera Natasha Binti Azizan Shah - 940117015674</label></td>
-                                                </tr>
-                                                <tr>
-                                                       <td><label></label></td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                       <td><span class="no_bold">@lang('form/scheme.general.green_header.scheme_ref_no')</span>&nbsp; <span class="no_bold">@lang('form/scheme.general.green_header.dash')</span>&nbsp; <span class="no_bold">@lang('form/scheme.general.green_header.date_of_death')</span></td>
-                                                </tr>
-                                                <tr>
-                                                       <td><label class="no_margin">A31FOT181234569-NTU004 - 31/01/2018</label></td>
-                                                </tr>
-                                                </thead>
-                                         </table>
-                                  </div>
-                           </div>
-                    </div>
-             </div>
-            <div class="tab-content tabcontent-border">
-                    <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
-                            @include('scheme.noticeInvalidity.newClaim.SCO.remarks')
+                <div class="col-md-12">
+                    <div class="card text-left" id="cardindex">
+                        <div class="card-body" id="cardbody">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td><span
+                                                class="no_bold">@lang('form/scheme.general.green_header.name')</span>&nbsp;
+                                            <span
+                                                class="no_bold">@lang('form/scheme.general.green_header.dash')</span>&nbsp;
+                                            <span class="no_bold">@lang('form/scheme.general.green_header.idno')</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="no_margin">Putri Nor Shamiera Natasha Binti Azizan Shah -
+                                                940117015674</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label></label></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><span
+                                                class="no_bold">@lang('form/scheme.general.green_header.scheme_ref_no')</span>&nbsp;
+                                            <span
+                                                class="no_bold">@lang('form/scheme.general.green_header.dash')</span>&nbsp;
+                                            <span
+                                                class="no_bold">@lang('form/scheme.general.green_header.date_of_death')</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="no_margin">A31FOT181234569-NTU004 - 31/01/2018</label></td>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content tabcontent-border">
+                <div class="tab-pane p-20 active" id="remarks" role="tabpanel">
+                    @include('scheme.noticeInvalidity.newClaim.SCO.remarks')
+                </div>
 
 
                 <div class="tab-pane p-20 " id="collapse" role="tabpanel">
@@ -79,20 +91,20 @@
                 </div>
 
                 <div class="tab-pane p-20" id="investigate" role="tabpanel">
-                        @include('scheme.noticeInvalidity.newClaim.SCO.investigation')
-                    </div>
+                    @include('scheme.noticeInvalidity.newClaim.SCO.investigation')
+                </div>
 
-                    
+
                 <div class="tab-pane p-20" id="recommend" role="tabpanel">
-                        @include('scheme.noticeInvalidity.newClaim.SCO.recommendation')
-                    </div>
+                    @include('scheme.noticeInvalidity.newClaim.SCO.recommendation')
+                </div>
 
                 <div class="tab-pane p-20" id="supportingdoc" role="tabpanel">
                     @include('scheme.noticeInvalidity.newClaim.SCO.supportingDoc')
                 </div>
 
             </div>
-            
+
         </div>
     </div>
 </div>

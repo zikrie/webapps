@@ -10,31 +10,31 @@
                             <div class="row p-t-20">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label"> Updated By</label>
+                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.updatedBy')</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Updated Date</label>
+                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.updatedDate')</label>
                                         <input type="date" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Recommendation IO</label>
+                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.recommendationIO')</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Recommendation By</label>
+                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.recommended_by')</label>
                                         <input type="text" id="" class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">Recommendation Date</label>
+                                        <label class="control-label"> @lang('form/scheme.general.collapse.recommendation.recommended_date')</label>
                                         <input type="date" id="" class="form-control" >
                                     </div>
                                 </div>

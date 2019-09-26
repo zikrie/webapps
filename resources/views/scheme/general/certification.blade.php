@@ -6,7 +6,7 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 					<div class="form-body">
 						<div class="row">
-								<div class="col-md-12 col-lg-4">
+								<div class="col-md-4">
 									<div class="form-group">
 										<label class="control-label">@lang('scheme/certification.attr.name')</label>
 										<input type="text" id="name" name="name" value="" class="form-control">
@@ -14,7 +14,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12 col-lg-4">
+								<div class="col-md-4">
 									<div class="form-group">
 										<label class="control-label">@lang('scheme/certification.attr.designation')</label>
 										<input type="text" id="designation" name="designation" value="" class="form-control">
@@ -22,7 +22,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-12 col-lg-2">
+								<div class="col-md-2">
 									<div class="form-group">
 										<label class="control-label">@lang('scheme/certification.attr.date')</label>
 										<input type="date" id="date" name="date" value="" class="form-control">

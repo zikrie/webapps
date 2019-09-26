@@ -40,7 +40,7 @@
                 </div> --}}
                 <div class="col-md-12" id="container">
                     <div class="table-responsive" id="table-medical">
-                        <div class="form-actions">
+                        <div class="form-actions text-right">
                             <button type="button" id="btn_add_mc0" value='0' class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addMc')</button>
                         </div>{{-- <label class="control-label">@lang('medicalDetails.attr.medicalleave')</label> --}}
                         <table  id="table-medical-details0" class="table table-sm table-bordered" data-toggle-column="first">
@@ -48,9 +48,9 @@
                                 <tr>
                                     <th style='width:20%'>@lang('scheme/mc.attr.type_hus')</th> 
                                     <th style='width:20%'>@lang('scheme/mc.attr.nameAddress_clinic')</th> 
-                                    <th style='width:1%'>@lang('scheme/mc.attr.start_date')</th>
-                                    <th style='width:1%'>@lang('scheme/mc.attr.end_date')</th>
-                                    <th style='width:8%'>@lang('scheme/mc.attr.days_work')</th>
+                                    <th style='width:17%'>@lang('scheme/mc.attr.start_date')</th>
+                                    <th style='width:18%'>@lang('scheme/mc.attr.end_date')</th>
+                                    <th style='width:15%'>@lang('scheme/mc.attr.days_work')</th>
                                     <th style='width: 8%'>@lang('scheme/mc.attr.action')</th>
                                 </tr>
                             </thead>
@@ -127,7 +127,7 @@
             </div>
             <div class="form-actions text-right">
                 <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' onclick="mcsubmit()">@lang('scheme/ob.save')</button>
-                {{-- <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button> --}}
+                <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button>
                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
                 <button type="submit" name="action" value="Back" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('scheme/noticetype.back')</button>

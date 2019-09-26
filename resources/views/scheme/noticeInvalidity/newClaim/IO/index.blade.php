@@ -35,7 +35,7 @@
 
                  <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploaddoc" id="nav_uploaddoc" role="tab"><span
                             class="hidden-sm-up"><i class="ti-files"></i></span> <span class="hidden-xs-down">
-                            @lang('scheme/index.attr.upload_documents')</span></a> </li> 
+                            @lang('Supporting Document')</span></a> </li> 
 
             </ul>
             <div class="row" id="rowindex">
