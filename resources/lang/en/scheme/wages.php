@@ -2,12 +2,12 @@
  
 return [
 
-    'title' => 'Wages Information',
+	'title' => 'Wages Information',
 
     'attr' => [
         'empcode' => 'Employer Code',
         'company_name' => 'Employer Name',
-        'status_work' => 'Status Attended Work',
+    	'status_work' => 'Status Attended Work',
         'commencement_date' => 'Employment Start Date',
         'end_date' => 'Employment End Date',
         'wages_paid_accident' => 'Do Wages Paid On Day Accident',
@@ -51,18 +51,6 @@ return [
         'reject' => 'Reject',
         'recommended' => 'Recommended',
         'employer_info' => 'Employer Information',
-        'similarWorker' => 'Similar Worker',
-        'reason' => 'Reason',
-        'remarks' => 'Remark',
-        'accept' => 'Accept',
-        'contribute' => 'Contribute',
-        'action' => 'Action',
-        'source'=> 'Source',
-        'recommended_by' =>'Recommended By',
-        'recommended_date' => 'Recommended Date',
-        'total_month_contribute'=>'Total Month Contribute',
-        
-        'recommendation' => 'Recommended',
     ],
 
     'save' => 'SAVE',
