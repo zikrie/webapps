@@ -64,7 +64,7 @@
             <div class="card-header" role="tab" id="headingWages">
                     <h6 class="mb-0">                           
                             <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseWages" aria-expanded="false" aria-controls="collapseWages">
-                            <h6 class="card-title"><i class="fa fa-plus"></i>@lang('form/scheme.general.collapse.wages.title')</h6>
+                            <h6 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.wages.title')</h6>
                             </a>
                     </h6>
             </div>

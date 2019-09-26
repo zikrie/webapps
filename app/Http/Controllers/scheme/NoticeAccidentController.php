@@ -53,15 +53,18 @@ class NoticeAccidentController extends CommonController
         $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
         $mcsts=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['mcsts']);
         $transport=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['transport']);
+      
         
         $causative=DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['causative']);
+        // dd($causative);
         $accdcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['accdcode']);
         $industcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['industcode']);
+    
         $profcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['profcode']);
         $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
         $worksts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['worksts']);
         $hussts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['hussts']);
-
+     
         //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
         //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
 
@@ -97,10 +100,13 @@ class NoticeAccidentController extends CommonController
         //$test = json_encode($jsondecode);
         //return $test;
         //$this->getObContact($jsondecod1);
-        $this->getObFormAssist($jsondecodeAssist);
-        $url = $this->getConfirmation($jsondecodeConfirmation);
+
+        // $this->getObFormAssist($jsondecodeAssist);
+        // $url = $this->getConfirmation($jsondecodeConfirmation);
+        
         //return $url;
         //return json_encode($jsondecodeConfirmation);
+        // dd('ya');
 
         $confirmation = null;
         if ($jsondecodeConfirmation && $jsondecodeConfirmation!='') {
@@ -119,6 +125,8 @@ class NoticeAccidentController extends CommonController
         $accdrefno = session('accdrefno');
         //return accdrefno;
         $caserefno = session('caserefno');
+        $jsonOBAssist = session('jsonOBAssist');
+        $jsondecodeAssistEmployer = session('jsondecodeAssistEmployer');
         
         // $accddata = null;
         $mcdata = null;
@@ -351,14 +359,13 @@ class NoticeAccidentController extends CommonController
         //return $result;
 
         $record = $jsondecode->{'record'};
-        dd($record);
         //return $record;
         if ($record=='0') {
             session(['accdrefno'=>'']);
             
             $noticedraft = $this->createnoticedraft($date, $accdtime);//chg27062019 - send $accddate & $accdtime into param
             //return $noticedraft;
-            dd($noticedraft);
+            // dd($noticedraft);
             $errorcode = $noticedraft->{'errorcode'};
             
             if ($errorcode == 0) {
@@ -418,8 +425,10 @@ class NoticeAccidentController extends CommonController
         //chg27062019 - send $accddate & $accdtime to ws
         $notice = ['noticetype'=> $noticetype, 'operid'=> $operid,'brcode'=> $brcode, 'idno'=>$idno,
             'idtype'=>$idtype, 'empcode'=>$empcode,'accddate'=>$accddate, 'accdtime'=>$accdtime];
+
+        
         $jsondata = json_encode($notice);
-       
+        //    dd($jsondata);
         //return $jsondata;
        
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/createdraft';
@@ -1801,7 +1810,7 @@ class NoticeAccidentController extends CommonController
             $mcmonth = '';
             $mcyear = '';
             $mcinfo = array();
-            //dd($req->all());
+            // dd($req->all());
 
             $mc_arr = $req->input('hussts');
             $i = 0;
@@ -2417,7 +2426,10 @@ class NoticeAccidentController extends CommonController
         //chg28062019 irina - get all doc
         $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
 
+        $question1 = 'Whether the insured person is an employee under the SOCSO Act?';
+        $question2 = ' Whether the SOCSO Act applies to this industry?';
 
+        session(['question1' =>$question1,'question2' => $question2]);
         //return view ('fileupload.claim_info')->with('name',$select);
 
         $jsondecodeAssist='';
@@ -2625,7 +2637,29 @@ class NoticeAccidentController extends CommonController
             'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts,
             'mcdata'=>$mcdata,'caserefno'=>$caserefno, 'accdrefno'=>$accdrefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
             'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,
-            'doclist_select'=>$alldoclist, 'occucode'=>$occucode]);
+            'doclist_select'=>$alldoclist, 'occucode'=>$occucode, 'question1' => $question1 , 'question2' => $question2]);
+    }
+
+    // public function recommendationTestGet()
+    // {
+    //     $question1 = 'Whether the insured person is an employee under the SOCSO Act?';
+    //     $question2 = ' Whether the SOCSO Act applies to this industry?';
+
+
+    //     return view('noticeAccident.SCO.recommendation_popup', ['question1' => $question1 , 'question2' => $question2]);
+    // }
+
+    public function recommendationTestPost(req $req)
+    {
+        $question1 = $req->question1;
+        $question2 = $req->question2;
+
+        $question = [
+            "ques1" => $question1,
+            "ques2" => $question2
+        ];
+
+        return redirect()->back();
     }
 
     /* ---------------- NOTICE ACCIDENT -- IO-------------------- */

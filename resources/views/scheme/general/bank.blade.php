@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="/bankinformation_od" id="reset">
+                <form method="POST" action="bankinformation_od" id="reset">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                     <div class="form-body">

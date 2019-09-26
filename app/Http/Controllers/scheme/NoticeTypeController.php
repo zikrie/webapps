@@ -64,7 +64,6 @@ class NoticeTypeController extends Controller
                 $select_death_accident = null;
             }
             
-            
             $jsondecodeAssistEmployer='';
             $this->getAssist($jsondecodeAssistEmployer);
             
@@ -72,8 +71,10 @@ class NoticeTypeController extends Controller
             $jsonOBAssist= '';
             $this->getOBAssist($idno, $idtype, $jsonOBAssist);
            
-           
-    
+            
+            session(['jsonOBAssist'=>$jsonOBAssist]);
+            session(['jsondecodeAssistEmployer'=>$jsondecodeAssistEmployer]);
+
 
         //    dd($testing);
             $listidtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
@@ -415,7 +416,7 @@ class NoticeTypeController extends Controller
             
             $jsondecodeAssistEmployer = json_decode($stringBody);
             $jsondecodeAssistEmployer = $jsondecodeAssistEmployer->{'businessInfo'};
-            // dd($jsondecodeAssistEmployer);
+            dd($jsondecodeAssistEmployer);
          
            // $_content = json_encode($stringBody,true);
            // return new ApiResource($_content);

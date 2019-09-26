@@ -9,16 +9,10 @@
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/scoRecommend.attr.action')</label>
                                         <select name="dd_recommendation" id="dd_recommendation" class="form-control">
-                                            <option value="recommend">@lang('scheme/scoRecommend.attr.recommend')</option> 
-                                            <option value="query">@lang('scheme/scoRecommend.attr.query')</option> 
-                                            <option value="medical_opinion">@lang('scheme/scoRecommend.attr.medical_Opinion')</option> 
-                                            <option value="investigation">@lang('scheme/scoRecommend.attr.investigation')</option> 
-                                            <option value="legal_opinion">@lang('scheme/scoRecommend.attr.legalopinion')</option> 
-                                            <option value="PPNOpinion">@lang('scheme/scoRecommend.attr.PPNopinion')</option> 
-                                            <option value="AROopinion">@lang('scheme/scoRecommend.attr.AROopinion')</option> 
-                                            <option value="wrong_benefit_type">@lang('scheme/scoRecommend.attr.wrongBenefitType')</option>
+                                            <option value="recommend"  >@lang('scheme/scoRecommend.attr.recommend')</option> 
+                                            <option value="investigation" >@lang('scheme/scoRecommend.attr.investigation')</option> 
+                                            <option value="wrong_benefit_type">Wrong Notice Type</option>
                                             <option value="transfer_case">Case Transfer</option> 
-                                            <option value="send_notification">Send Notification</option>  
                                         </select>
                                 </div>
                             </div>
@@ -26,6 +20,7 @@
                                 <button type="button" name="action" id="ddNext" class="btn btn-facebook waves-effect waves-light" data-toggle="modal" data-whatever="@fat">Next</button>
                             </div>
                             {{-- POPUP From Dropdown  --}}
+                            {{-- RECOMMENDATION --}}
                             <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                                 <div class="modal-dialog modal-xl" role="document">
                                     <div class="modal-content">
@@ -35,6 +30,25 @@
                                         </div>
                                         <div class="modal-body">
                                             @include('scheme.noticeAccident.SCO.recommendation_popup') 
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
+                                            <button type="submit" class="btn btn-primary">@lang('scheme/accidentDetails.save')</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                             {{-- POPUP From Dropdown  --}}
+                             {{-- WRONG NOTICE TYPE --}}
+                             <div class="modal fade" id="exampleModal11" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel11">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header  card-title">
+                                            <h4 class="modal-title" id="exampleModalLabel11">Wrong Notice Type</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @include('scheme.noticeAccident.SCO.wrong_notice_popup') 
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
@@ -113,7 +127,7 @@
                                         </thead>
                                         <tbody class='align-middle'>
                                             <tr> 
-                                                <td></td>
+                                                <td>1</td>
                                                 <td><input type="date" name="recommendation_date" value="" class="form-control" ></td>
                                                 <td><input type="text" name="recommend_by" value="" class="form-control" ></td>
                                                 <td><input type="text" name="role" value="" class="form-control" ></td>
@@ -125,8 +139,10 @@
                                                 </td>
                                                 <td>
                                                     <div class="col-md-0">
-                                                        <button type="button" name="action" id="action" class="btn btn-facebook waves-effect waves-light" data-toggle="modal" data-target="#exampleModal0" data-whatever="@fat">View</button>
+                                                        <button type="button" name="action" id="action" class="btn btn-facebook waves-effect waves-light" data-toggle="modal" data-target="#recommendationview_popup" data-whatever="@fat">View</button>
                                                     </div>
+
+                                                    {{-- RECOMMENDATION POPUP --}}
                                                     <div class="modal fade" id="exampleModal0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel0">
                                                         <div class="modal-dialog modal-xl" role="document">
                                                             <div class="modal-content">
@@ -145,6 +161,26 @@
                                                             </div>
                                                         </div>
                                                     </div> 
+
+                                                    {{--View POPUP --}}
+                                                    <div class="modal fade" id="recommendationview_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel0">
+                                                        <div class="modal-dialog modal-xl" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header  card-title">
+                                                                    <h4 class="modal-title" id="exampleModalLabel0">Employment Injury Decision</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    @include('scheme.noticeAccident.SCO.recommendationview_popup') 
+                                                                </div>
+                        
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
+                                                                    <button type="submit" class="btn btn-primary">@lang('scheme/accidentDetails.save')</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
                                                 </td> 
                                             </tr>
                                         </tbody>
@@ -152,6 +188,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <h5 class="card-title-sub"> Potentials </h5>
+                        <hr>
+
                         <div class="row p-t-20">
                             <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
@@ -172,7 +212,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row p-t-20">
+                        {{-- <div class="row p-t-20">
                             <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="control-label">Invalidity Benefit Ref. No. </label>
@@ -190,7 +230,7 @@
                                         </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class='row'>
                             <div class="col-md-12">
                                 <div class="form-actions">
@@ -208,26 +248,3 @@
     </div>
 </div>
 
-<script>
-     $("#ddNext").click(function () {
-    var dd_recommendation = $('#dd_recommendation').val();
-    if (dd_recommendation == 'recommend') {
-      
-        var testing ="#exampleModal1";
-
-    } else if(dd_recommendation == 'transfer_case') {
-       
-        var testing ="#exampleModal12";
-    }
-    else if(dd_recommendation == 'query') {
-       
-       var testing ="#exampleModal13";
-    }
-    else if(dd_recommendation == 'send_notification') {
-       
-       var testing ="#exampleModal14";
-    }
-    $("#ddNext").attr('data-target', testing);
-    });
-   
-</script>

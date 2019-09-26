@@ -2,32 +2,44 @@
  
 return [
 
-	'title' => 'Maklumat Cuti Sakit',
+	'title' => 'Medical Certificate Information',
 
     'attr' => [
-    	'nameAddress_clinic' => 'Nama & Alamat Klinik yang Memberikan Rawatan',
-        'medical_leave' => 'Cuti Sakit',
-        'start_mc' => 'Tarikh Mula',
-        'end_mc' => 'Tarikh Tamat',
-        'mc_status' => 'Status MC',
-        'total_days' => 'Jumlah hari',
-        'wages_mc' => 'Bekerja dan dibayar gaji dalam tempoh MC',
-        'start_date' => 'Tarikh Mula Hadir Kerja',
-        'end_date' => 'Tarikh Tamat Hadir Kerja',
-        'attended_work' => 'Hadir Kerja',
-        'status' => 'Status Hadir Kerja',
-        'action'=>'Tindakan',
-        'yes' => 'Ya',
-        'no' => 'Tidak', 
-        'type_hus' => 'Jenis HUS',
-        'medicalleave'=>'Cuti Sakit',
+    	'nameAddress_clinic' => 'Name and Address of Clinic of which Provides Treatment',
+        'start_mc' => 'Start Date',
+        'end_mc' => 'End Date',
+        'mc_status' => 'MC Status',
+        'total_days' => 'Total Day(s)',
+        'wages_mc' => 'Wages Paid on MC Duration',
+        'start_date' => 'Start Date',
+        'end_date' => 'End Date',
+        'days_work' => 'Total Days',
+        'status' => 'Status',
+        'action'=>'Action',
+        'yes' => 'Yes',
+        'no' => 'No', 
+        'medical_leave'=>'Medical Leave',
+        'type_hus'=>'Type Of HUS',
+        'attended_work'=>'Attended Work',
+        'medicalleave'=>'Medical Leave',
+
+        //ILAT SCO
+
+        'invalidity_date'=>'Invalidity Starting Date',
+        'morbidity_date' => 'Morbidity Date',
+        'jd_date' => 'JD Session Date',
+        'illness' => 'About Illness',
+        'invalidity_decision' => 'Invalidity Decision',
+        'els' => 'ELS',
+        'jd_type' => 'JD Type'
 
     ],
 
-    'save' => 'SIMPAN',
+    'save' => 'SAVE',
+    'addmc'=>'ADD MC',
     'cancel' => 'Batal',
     'clear' => 'Padam',
-    'addmc'=>'TAMBAH MC',
-    'addwork'=>'Tambah Hari bekerja',
+    'choose' => 'Please select',
+    'addwork'=>'Add Attended Work',
  
 ];

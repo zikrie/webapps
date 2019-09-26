@@ -1,0 +1,30 @@
+<?php
+
+return [
+
+	'title' => 'Pemberitahuan',
+	'no_claim' => 'Jumlah Tugasan',
+	'list_claim' => 'Senarai Tuntutan',
+	'search' => 'Cari',
+	'no' => 'No.',
+	'date' => 'Tarikh',
+	'aging' => 'Aging',
+	'scheme_ref_no' => 'No. Rujukan Skim',
+	'case_id' => 'Kes ID',
+	'revision_ref_no' => 'No. Rujukan Ulangkaji',
+	'med_ref_no' => 'No. Rujukan Perubatan',
+	'rtw_ref_no' => 'No. Rujukan RTW',
+	'desc' => 'Keterangan',
+	'action' => 'Tindakan',
+	'total_task' => 'Jumlah Tugasan',
+	'check' => 'BM',
+	'task' => 'Peti Tugasan',
+	'IC' => 'Sila Masukkan No Kad Pengenalan',
+	'scan' => 'Imbas',
+	'upload' => 'Muat Naik',
+	'view' => 'Papar',
+	'ic' => 'Sila Masukkan Kad Pengenalan',
+        'idno' => 'No. ID',
+        'caserefno'=>'No. Rujukan Sementara',
+        'noticetype'=>'Jenis Notis',
+];

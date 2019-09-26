@@ -1,7 +1,7 @@
 <div class="col-lg-12">
     <div class="card">
     <div class="card-body">
-        <form method="post" action="{{url ('/updmc')}}">
+        <form action="HUS" method="POST">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="caserefno" value="{{-- {{$caserefno}} --}}">
             <div class="form-body ">
@@ -57,7 +57,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-expanded="true" class="workrow" id="tr0_0">
+                                <tr data-expanded="true" class="workrow tr0_0" id="tr0_0">
                                     <td>
                                         <div class="col-md-12">
                                             <select class="form-control" name="hussts[]">
@@ -107,8 +107,8 @@
                                         </div>
                                     </td> --}}
                                     <td>
-                                        <div class="col-md-12">
-                                            <select class="form-control" name="hussts[]">
+                                        <div class="col-md-12" >
+                                            <select id="hus_recommendation0_0" class="form-control" name="hussts[]">
                                                 <option value="">Please select</option>
                                                 <option value="" selected>Approved</option>
                                                 <option value="" >Rejected</option>
@@ -195,12 +195,11 @@
 				</div>
             </div>
             <div class="form-actions text-right">
-                <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' onclick="mcsubmit()">@lang('scheme/ob.save')</button>
-                {{-- <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button> --}}
-                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
-                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
-                <button type="submit" name="action" value="Back" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('scheme/noticetype.back')</button>
-                
+                    <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' onclick="mcsubmit()">@lang('scheme/ob.save')</button>
+                    {{-- <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button> --}}
+                    <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
+                    <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
+                    <button type="submit" name="action" value="Back" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('scheme/noticetype.back')</button>
             </div>
         </div>
     </div>
@@ -337,16 +336,16 @@
             for (k = 0; k <= j; k++) { 
                 if($("#add_attended_work"+i+"_"+k).length == 0) { //if doesn't exist
 
-                    $('#table-medical-details'+i+' > tbody:last-child').append('<tr data-expanded="true" class="workrow" id="tr'+i+'_'+k+'"><td><div class="col-md-12"><select class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected> MC </option><option value="" > Light Duty </option></select></div></td>'+
+                    $('#table-medical-details'+i+' > tbody:last-child').append('<tr data-expanded="true" class="workrow tr'+i+'_'+k+'" id="tr'+i+'_'+k+'"><td><div class="col-md-12"><select class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected> MC </option><option value="" > Light Duty </option></select></div></td>'+
                         "<td>"+
                                         "<div class='col-md-12'>"+
                                             "<input id='clinicname' name='clinicinfo' type='text' value='' class='form-control counttotalmc' required>"+
                                         "</div>"+
                                     "</td>"+
-                    '<td><div class="col-md-12"><input type="date" value="" id="mcstartdate_'+i+'_'+k+'" name="mcstartdate_'+i+'_'+k+'[]" class="form-control counttotalmc" ></div></td><td><div class="col-md-12"><input type="date" value="" id="mcenddate_'+i+'_'+k+'" name="mcenddate_'+i+'_'+k+'[]" class="form-control counttotalmc" ></div></td><td><input type="text" id="totalmc_'+i+'_'+k+'" name="totalmc_'+i+'_'+k+'[]" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+k+'"><i class="fas fa-trash-alt fa-sm"></i></button><button id="add_attended_work'+i+'_'+k+'" value="'+i+'_'+k+'" type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">'+
-                                            '<i class="ti-plus text" aria-hidden="true"></i>'+
-                                            '<i class="ti-plus text-active" aria-hidden="true"></i>'+
-                                        '</button></td><td><div class="col-md-12"><select class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected>Approved</option><option value="" >Rejected</option><option value="" >Attended Work and Salary Paid during MC</option><option value="" >Overlapped</option><option value="" >Overlapped-Approved</option><option value="" >Overlapped-Rejected</option></select></div></td></tr>');
+                                    '<td><div class="col-md-12"><input type="date" value="" id="mcstartdate_'+i+'_'+k+'" name="mcstartdate_'+i+'_'+k+'[]" class="form-control counttotalmc" ></div></td><td><div class="col-md-12"><input type="date" value="" id="mcenddate_'+i+'_'+k+'" name="mcenddate_'+i+'_'+k+'[]" class="form-control counttotalmc" ></div></td><td><input type="text" id="totalmc_'+i+'_'+k+'" name="totalmc_'+i+'_'+k+'[]" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+k+'"><i class="fas fa-trash-alt fa-sm"></i></button><button id="add_attended_work'+i+'_'+k+'" value="'+i+'_'+k+'" type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">'+
+                                        '<i class="ti-plus text" aria-hidden="true"></i>'+
+                                        '<i class="ti-plus text-active" aria-hidden="true"></i>'+
+                                    '</button></td><td><div class="col-md-12"><select id="hus_recommendation'+i+'_'+k+'" class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected>Approved</option><option value="" >Rejected</option><option value="" >Attended Work and Salary Paid during MC</option><option value="" >Overlapped</option><option value="" >Overlapped-Approved</option><option value="" >Overlapped-Rejected</option></select></div></td></tr>');
 
                     add_attend_work(i,k);
                     modal_delete();
@@ -370,6 +369,8 @@
                 var i = values[0];
                 var j = values[1];
                 // alert('i: '+i+' j: '+j);
+                
+                $('[id^=hus_recommendation]').attr('disabled', true);
 
                 var k = $("tr[id^=tr"+i+"_"+j+"_]").length;
                 // alert(k);
@@ -377,7 +378,7 @@
                     if($("#tr"+i+"_"+j+"_"+w).length == 0) { 
                         // alert("hihihihi");
 
-                        $('#tr'+i+'_'+j).after('<tr id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo" type="text" value="" class="form-control counttotalmc" required></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="workstartdate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="workenddate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalwork_'+i+'_'+j+'_'+w+'" value="" class="form-control" readonly><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td><td><div class="col-md-12"><select class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected>Approved</option><option value="" >Rejected</option><option value="" >Attended Work and Salary Paid during MC</option><option value="" >Overlapped</option><option value="" >Overlapped-Approved</option><option value="" >Overlapped-Rejected</option></select></div></td> </tr>');
+                        $('#tr'+i+'_'+j).after('<tr class="workrow tr'+i+'_'+j+'" id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo" type="text" value="" class="form-control counttotalmc" readonly></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="workstartdate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="workenddate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalwork_'+i+'_'+j+'_'+w+'" value="" class="form-control" readonly><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td><td><div class="col-md-12"><select class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected>Approved</option><option value="" >Rejected</option><option value="" >Attended Work and Salary Paid during MC</option><option value="" >Overlapped</option><option value="" >Overlapped-Approved</option><option value="" >Overlapped-Rejected</option></select></div></td> </tr>');
             
                         modal_delete();
                         totalwork();
@@ -385,7 +386,7 @@
                         break;
                     }
                 }
-                
+
                 });
 
     }
@@ -394,16 +395,46 @@
 
         // Delete work
         $('.btn_del_workmc').on('click',function(){
-            // alert("hehehe");
+
+            // del_attended_work0_0_1
             var delete_id = $(this).attr('id');
+            var values = delete_id.split('_');
+            var id1 = values[2];
+            var id2 = values[3];
+            var id3 = values[4];
+
+            var no_of_child = $('[id^="del_attended_'+id1+'_'+id2+'_"]').length;
+            if(no_of_child == 1){
+
+                id1 = id1.substr(-1);
+                $('#hus_recommendation'+id1+'_'+id2).prop('disabled', false);
+            }
+            console.log('id1:'+id1);
+            console.log('id2:'+id2);
+            console.log('id3:'+id3);
+            console.log('no_of_child:'+no_of_child);
             console.log(delete_id);
             $("#deletemodal").modal('show');
             $("#deletemodal .modal-footer button").on('click', function(e) {
                 var btn_id = event.target.id;
                 if(btn_id == 'btn_delete'){
                     e.preventDefault();
-                    $("#"+delete_id).closest("tr").remove();
-                    
+                    var check = 'del_attended_'+id1+'_'+id2;
+                    console.log('check:'+check);
+                    console.log('delete_id:'+delete_id);
+                    if (delete_id == check){
+                        console.log("hahhahahahahaha: .tr"+id1+"_"+id2);
+                        //alert("aa");
+                        // $("#"+delete_id).closest("tr").remove();
+                        // $("tr").remove(".tr"+id1+"_"+id2);
+
+                        $(".tr"+id1+"_"+id2).each(function(){
+                            $(this).remove();
+                        })
+                    }else{
+                        $("#"+delete_id).closest("tr").remove();
+                    }
+
                 }
             });
         });

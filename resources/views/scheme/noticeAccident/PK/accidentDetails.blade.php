@@ -326,7 +326,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label
-                                    class="control-label">@lang('form/scheme.general.collapse.accident.nameAddress_clinic')1</label><span class="required">*</span>
+                                    class="control-label">@lang('form/scheme.general.collapse.accident.nameAddress_clinic')</label><span class="required">*</span>
                                     <textarea type="text" id="clinicinfo" name="clinicinfo" class="form-control clearFields" required>@if(!empty($accinfo)){{$accinfo->clinicinfo}} @endif</textarea>
                                 </div>
                             </div>

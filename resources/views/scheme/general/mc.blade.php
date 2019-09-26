@@ -1,7 +1,7 @@
 <div class="col-lg-12">
     <div class="card">
     <div class="card-body">
-        <form method="post" action="{{url ('/updmc')}}">
+        <form method="post" action="updmc">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="caserefno" value="{{-- {{$caserefno}} --}}">
             <div class="form-body ">
@@ -40,7 +40,7 @@
                 </div> --}}
                 <div class="col-md-12" id="container">
                     <div class="table-responsive" id="table-medical">
-                        <div class="form-actions text-right">
+                        <div class="form-actions">
                             <button type="button" id="btn_add_mc0" value='0' class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addMc')</button>
                         </div>{{-- <label class="control-label">@lang('medicalDetails.attr.medicalleave')</label> --}}
                         <table  id="table-medical-details0" class="table table-sm table-bordered" data-toggle-column="first">
@@ -50,8 +50,8 @@
                                     <th style='width:20%'>@lang('scheme/mc.attr.nameAddress_clinic')</th> 
                                     <th style='width:17%'>@lang('scheme/mc.attr.start_date')</th>
                                     <th style='width:18%'>@lang('scheme/mc.attr.end_date')</th>
-                                    <th style='width:15%'>@lang('scheme/mc.attr.days_work')</th>
-                                    <th style='width: 8%'>@lang('scheme/mc.attr.action')</th>
+                                    <th style='width:10%'>@lang('scheme/mc.attr.days_work')</th>
+                                    <th style='width: 12%'>@lang('scheme/mc.attr.action')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -127,7 +127,7 @@
             </div>
             <div class="form-actions text-right">
                 <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' onclick="mcsubmit()">@lang('scheme/ob.save')</button>
-                <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button>
+                {{-- <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button> --}}
                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
                 <button type="submit" name="action" value="Back" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('scheme/noticetype.back')</button>
@@ -308,7 +308,7 @@
                     if($("#tr"+i+"_"+j+"_"+w).length == 0) { 
                         // alert("hihihihi");
 
-                        $('#tr'+i+'_'+j).after('<tr id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="Attended Work" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo" type="text" value="" class="form-control counttotalmc" required></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="workstartdate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="workenddate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalwork_'+i+'_'+j+'_'+w+'" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td> </tr>');
+                        $('#tr'+i+'_'+j).after('<tr id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="Attended Work" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo" type="text" value="" class="form-control counttotalmc" readonly></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="workstartdate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="workenddate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalwork_'+i+'_'+j+'_'+w+'" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td> </tr>');
             
                         modal_delete();
                         totalwork();

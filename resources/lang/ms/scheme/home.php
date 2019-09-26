@@ -1,30 +1,31 @@
 <?php
-
+ 
 return [
 
-	'title' => 'Pemberitahuan',
-	'no_claim' => 'Jumlah Tugasan',
-	'list_claim' => 'Senarai Tuntutan',
-	'search' => 'Cari',
-	'no' => 'No.',
-	'date' => 'Tarikh',
-	'aging' => 'Aging',
-	'scheme_ref_no' => 'No. Rujukan Skim',
-	'case_id' => 'Kes ID',
-	'revision_ref_no' => 'No. Rujukan Ulangkaji',
-	'med_ref_no' => 'No. Rujukan Perubatan',
-	'rtw_ref_no' => 'No. Rujukan RTW',
-	'desc' => 'Keterangan',
-	'action' => 'Tindakan',
-	'total_task' => 'Jumlah Tugasan',
-	'check' => 'BM',
-	'task' => 'Peti Tugasan',
-	'IC' => 'Sila Masukkan No Kad Pengenalan',
-	'scan' => 'Imbas',
-	'upload' => 'Muat Naik',
-	'view' => 'Papar',
-	'ic' => 'Sila Masukkan Kad Pengenalan',
-        'idno' => 'No. ID',
-        'caserefno'=>'No. Rujukan Sementara',
-        'noticetype'=>'Jenis Notis',
+    'title' => 'Notification',
+    'total_task' => 'Total Task',
+    'list_claim' => 'List of Claim',
+    'search' => 'Search',
+    'select'=>'Select',
+    'delete'=>'Delete',
+    'no' => 'WB ID',
+    'date' => 'Date',
+    'aging' => 'Aging',
+    'scheme_ref_no' => 'Scheme Ref No.',
+    'case_id' => 'Case Id',
+    'desc' => 'Description',
+    'action' => 'Action',
+        'revision_ref_no'=>'Revision Ref No',
+        'med_ref_no'=>'Medical Ref No',
+        'rtw_ref_no'=>'RTW Ref No',
+        'caserefno'=>'Temp Ref No',
+        'noticetype'=>'Notice Type',
+        'task' => 'Task Inbox',
+                'idno' => 'ID No',
+                'draft'=> 'Draft',
+                'query'=>'Query',
+    'check'=>'EN'
+                
+
+ 
 ];
