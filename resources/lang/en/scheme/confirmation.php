@@ -2,9 +2,10 @@
  
 return [
 
-	'title' => 'Confirmation of Insured Person',
+	'title' => 'Confirmation',
     'title_ob'=>'Confirmation of Insured Person',
-    'title_ot'=>'Confirmation of Dependants/Claimant',
+    'title_ot'=>'Confirmation of Claimant',
+    'title_dependant'=>'Confirmation of Dependant',
     'bank_info' => 'Bank Information',
     'local_bank' => 'Local Bank',
     'overseas_bank' => 'Overseas Bank',

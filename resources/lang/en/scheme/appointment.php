@@ -2,25 +2,23 @@
  
 return [
 
-    'title' => 'Investigation Appointment',
+	'title' => 'Appointment',
     'title1' => 'Statement',
     'title_assisstant' => 'Investigation Assisstant',
     'title2' => 'Inspector Information',
     'title_interviewee' => 'Interviewee Information',
-    'title_interviewer' => 'Interviewer Information',
     'title_witness' => 'Witness Information',
     'title_employer' => 'Employer Information',
     'case_fact' => 'Case Fact',
     'inconsistent_info' => 'Inconsistent Information',
-    'justification' => 'Justification/Finding',
+    'justification' => 'Justification Finding',
 
 
     
     'attr' => [
-        
-        'investigate_date' => 'Date',
-        'investigate_time' => 'Time',
-        'location' => 'Location',
+    	
+        'investigate_date' => 'Investigation Date',
+        'investigate_time' => 'Investigation Time',
         'type_person' => 'Type of Person in an Appointment',
         'employer' => 'Employer',
         'insured_person' => 'Insured Person',
@@ -54,15 +52,9 @@ return [
         'state' => 'State',
         'telno' => 'Telephone No.',
         'age' => 'Age',
-        'about_investigation' => 'Statement',
-        'action' => 'Action',
+        'about_investigation' => 'About the Investigation',
 
         //witness
-        'interviewerName' => 'Interviewer Name',
-        'investigationDate' => 'Investigation Date',
-        'investigationStartTime' => 'Investigation Start Time',
-        'investigationEndTime' => 'Investigation End Time',
-        'identificationNo' => 'Identification No',
         'new_id' => 'New Identification ID',
         'witness_name' => 'Name',
         'witness_statement' => 'Witness Statement',
@@ -71,11 +63,6 @@ return [
         'investigation_date' => 'Investigation Date',
         'investigation_starttime' => 'Investigation Start Time',
         'investigation_endtime' => 'Investigation End Time',
-        'malay' => 'Bahasa',
-        'english' => 'English',
-        'tamil' => 'Tamil',
-        'mandarin' => 'Mandarin',
-        'others' => 'Others',
 
         //employer information
         'employer_name' => 'Name',
@@ -102,7 +89,7 @@ return [
         'date_od' => 'Occupational Disease Date',
         'desc_od' => 'Description of Occupational Disease',
         'symptom' => 'Symptom/Sign Encountered',
-        'others' => 'Others',
+        'others' => 'Others', 
         'data' => 'Data',
         'review' => 'Review',
         'review_by' => 'Review by',
@@ -117,26 +104,16 @@ return [
         'justification' => 'Justification/Finding',
         'justify_by' => 'Justify by',
 
-        'interviewee_type' => 'Interviewee Type',
-        'category_type' => 'Category Of Interviewee',
-        'dependents_name' => 'Name of Person Attending',
-        'name' => 'Name',
-        'interviewee_name' => 'Interviewee Name',
+        'interviewee_type' => 'Interviewee type',
+        'dependents_name' => 'Name of Dependents',
+        'interviewee_name' => 'Interviewees Name',
         'address' => 'Address',
         'support_doc' => 'Supporting Document',
         'icon_12' => 'download Icon Form 12',
         'inspector_name' => 'Inspector Name',
         'inspector_name' => 'Inspector Name',
-        'officer_name' => 'Name of Investigating Officer',
-        'officer_email' => 'Email of Investigating Officer',
-        'investigate_site' => 'Location of Investigation',
-        'docToReq' => 'Document To Request',
-        'attentionTo' => 'Attention To',
-        'interviewAttendees' => 'Interview Attendees',
-        'interviewLocation' => 'Interview Location',
-        'correspondenceAddress' => 'Correspondence Address',
-        'translator_name' => 'Translator Name',
-        'category_interviewee' => 'Category of Interviewee',
+        
+        
  
     ],
 
@@ -146,3 +123,4 @@ return [
     'submit' => 'Submit',
  
 ];
+

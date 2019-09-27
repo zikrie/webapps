@@ -256,7 +256,7 @@
         //alert('test');
         var submitbutton = document.getElementById('btnSubmit');
         //alert(submitbutton);
-        submitbutton.disabled = true;
+        if(submitbutton != null) submitbutton.disabled = true;
         //alert('test');
     }
     
