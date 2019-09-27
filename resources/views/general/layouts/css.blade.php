@@ -19,8 +19,7 @@
 <!-- Color picker plugins css -->
 <link href="/PERKESO_UI/assets/node_modules/jquery-asColorPicker-master/dist/css/asColorPicker.css" rel="stylesheet">
 <!-- Date picker plugins css -->
-<link href="/PERKESO_UI/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet"
-    type="text/css" />
+<link href="/PERKESO_UI/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
 <!-- Custom CSS -->
 <link href="/PERKESO_UI/assets/node_modules/wizard/steps.css" rel="stylesheet">
 <!--alerts CSS -->

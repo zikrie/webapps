@@ -143,7 +143,7 @@ $(function () {
     }
     update();
     
-    $("body").trigger("resize");
+    //$("body").trigger("resize");
     //This is for the perfect scroll
     
     $('.slimscrollcountry').perfectScrollbar(); 
