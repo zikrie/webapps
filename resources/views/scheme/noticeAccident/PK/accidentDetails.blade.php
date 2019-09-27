@@ -216,9 +216,9 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">@lang('form/scheme.general.collapse.accident.reason_travelling')</label>
-                                        @if(!empty($accinfo)&&$accinfo->reasontravel!=null)
+                                        @if(!empty($accinfo)&&$accinfo->reasontravel)
                                         <textarea type="text" id="reason" name="reason" class="form-control clearFields" placeholder="">{{$accinfo->reasontravel}}</textarea>
-                                        @elseif ($accinfo->reasontravel==null)
+                                        @elseif (!empty($accinfo)&&$accinfo->reasontravel)
                                         <textarea type="text" id="reason" name="reason" class="form-control clearFields" placeholder="" disabled></textarea>
                                         @else
                                         <textarea type="text" id="reason" name="reason" class="form-control clearFields" placeholder="" ></textarea>
@@ -227,6 +227,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label class="control-label">Injury Description</label>
                                         <textarea type="text" id="injurydesc"  name="injurydesc" class="form-control clearFields" placeholder="">@if(!empty($accinfo)){{$accinfo->injurydesc}} @endif</textarea>
                                     </div>
                                 </div>
@@ -326,7 +327,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label
-                                    class="control-label">@lang('form/scheme.general.collapse.accident.nameAddress_clinic')1</label><span class="required">*</span>
+                                    class="control-label">@lang('form/scheme.general.collapse.accident.nameAddress_clinic')</label><span class="required">*</span>
                                     <textarea type="text" id="clinicinfo" name="clinicinfo" class="form-control clearFields" required>@if(!empty($accinfo)){{$accinfo->clinicinfo}} @endif</textarea>
                                 </div>
                             </div>

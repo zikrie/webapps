@@ -1,321 +1,142 @@
 <div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <div class="p-20">
-          <form action="#">
-            <h5 class="card-title">@lang('scheme/appointment.title')</h5>
-            <hr>
-              <div class="row p-t-20">
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label class="control-label">@lang('scheme/appointment.attr.investigate_date')</label>
-                    <input type="date" name="investigate_date" id="investigate_date" class="form-control">
-                  </div>
-                </div>
-                        
-                <div class="col-md-4">
-                  <div class="form-group">
-                      <label class="control-label">@lang('scheme/appointment.attr.investigate_time')</label>
-                        <div class="input-group clockpicker" data-placement="bottom" data-align="top" data-autoclose="true">
-                          <input type="text" class="form-control" name="time" value="">
-                            <div class="input-group-append">
-                              <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                            
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="control-label">@lang('scheme/appointment.attr.type_person')</label>
-                          <input type="text" name="typeperson" id="typeperson" class="form-control">
-                        </div>
-                      </div>
-                    </div>
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body"> 
+                <form class="form">
+                    {{-- <h4 class="card-title">@lang('appointment.title')</h4> --}}
 
-                    <div class="row p-t-20">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="control-label">@lang('scheme/appointment.attr.ot_name')</label>
-                            <input type="text" name="otname" id="otname" class="form-control">
-                          </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                          <div class="form-group">
-                            <label class="control-label">@lang('scheme/appointment.attr.name_person_attend')</label>
-                            <input type="text" name="personattend" id="personattend" class="form-control">
-                          </div>
-                        </div>
-                            
-                        <div class="col-md-4">
-                          <div class="form-group">
-                              <label class="control-label">@lang('scheme/appointment.attr.address')</label>
-                              <input type="text" name="address" id="address" class="form-control">
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row p-t-20">
-                        <div class="col-md-4">
-                          <div class="form-group">
-                            <label class="control-label">@lang('scheme/appointment.attr.name_officer')</label>
-                            <input type="text" name="nameofficer" id="nameofficer" class="form-control">
-                          </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                          <div class="form-group">
-                            <label class="control-label">@lang('scheme/appointment.attr.email_officer')</label>
-                            <input type="text" name="emailofficer" id="emailofficer" class="form-control">
-                          </div>
-                        </div>
-                            
-                        <div class="col-md-4">
-                          <div class="form-group">
-                            <label class="control-label">@lang('scheme/appointment.attr.place_officer')</label>
-                            <input type="text" name="placeofficer" id="placeofficer" class="form-control">
-                          </div>
-                        </div>
-                      </div>
-                        
-
-                          {{--     <div class="row p-t-20">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('appointment.attr.support_doc')</label>
-                                   <input type="text" name="support_doc" id="support_doc" class="form-control">
-                                </div>
-                            </div>
-                        
-
-                            </div> --}}
-
-                            <h3 class="box-title m-t-40">@lang('scheme/appointment.title1')</h3>
-                            <hr><hr>
-                            <div class="row p-t-20">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.icon_12')</label>
-                                   <input type="text" name="icon_12" id="icon_12" class="form-control">
-                                </div>
-                            </div>
-                            </div>
-
-
-                             <h3 class="box-title m-t-40">@lang('scheme/appointment.title2')</h3>
-                            <hr>
-                            <div class="row p-t-20">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.inspector_name')</label>
-                                   <input type="text" name="inspector_name" id="inspector_name" class="form-control">
-                                </div>
-                            </div>
-                            </div>
-
-                            <h3 class="box-title m-t-40">@lang('scheme/appointment.title_interviewee')</h3>
-                            <hr>
-                            <div class="row p-t-20">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.name')</label>
-                                   <input type="text" name="name" id="name" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.id_type')</label>
-                                   <input type="text" name="idtype" id="idtype" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.id_no')</label>
-                                   <input type="text" name="idno" id="idno" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.postal_address')</label>
-                                   <input type="text" name="postaladdress" id="postaladdress" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                <div class="form-group">
-                                  {{--  <label class="control-label">@lang('scheme/appointment.attr.postal_address')</label> --}}
-                                   <input type="text" name="postaladdress" id="postaladdress" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                <div class="form-group">
-                                   {{-- <label class="control-label">@lang('scheme/appointment.attr.postal_address')</label> --}}
-                                   <input type="text" name="postaladdress" id="postaladdress" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.postcode')</label>
-                                   <input type="text" name="postcode" id="postcode" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.city')</label>
-                                   <input type="text" name="city" id="city" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.state')</label>
-                                   <input type="text" name="state" id="state" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.telno')</label>
-                                   <input type="text" name="telno" id="telno" class="form-control">
-                                </div>
-                            </div>
-
-                                <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.age')</label>
-                                   <input type="text" name="age" id="age" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.about_investigation')</label>
-                                   <textarea type="text" name="about" id="about" class="form-control"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                          <h3 class="box-title m-t-40">@lang('scheme/appointment.title_witness')</h3>
-                            <hr>
-                            <div class="row p-t-20">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.witness_name')</label>
-                                   <input type="text" name="witnessname" id="witnessname" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.id_type')</label>
-                                   <input type="text" name="idtype" id="idtype" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.id_no')</label>
-                                   <input type="text" name="idno" id="idno" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.witness_statement')</label>
-                                   <input type="text" name="witness_statement" id="witness_statement" class="form-control">
-                                </div>
-                            </div>
-
-                                <div class="col-md-6">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.language')</label>
-                                   <input type="text" name="language" id="language" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.translator_name')</label>
-                                   <input type="text" name="translator_name" id="translator_name" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                <div class="form-group">
-                                   <label class="control-label">@lang('scheme/appointment.attr.investigation_date')</label>
-                                   <input type="date" name="investigation_date" id="investigation_date" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('scheme/appointment.attr.investigation_starttime')</label>
-                                    <div class="input-group clockpicker" data-placement="bottom" data-align="top"
-                                        data-autoclose="true">
-                                        <input type="text" class="form-control" name="investigation_starttime" id="investigation_starttime" value="">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('scheme/appointment.attr.investigation_endtime')</label>
-                                    <div class="input-group clockpicker" data-placement="bottom" data-align="top"
-                                        data-autoclose="true">
-                                        <input type="text" class="form-control" name="investigation_endtime" id="investigation_endtime" value="">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         
-  
-                        <div class="form-actions">
-                            <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('odDetails.cancel')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('odDetails.clear')</button-->
-                                    <button type="submit" class="btn btn waves-effect waves-light btn-success">
-                                    @lang('scheme/odDetails.save')</button>
-                                </div>             
-                            </form>
-
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="calendar"></div>
                         </div>
                     </div>
-                </div>
+
+                    <br><br>       
+                </form>
             </div>
         </div>
+    </div>
+</div>
+    
+{{-- MODAL --}}
+<div class="modal fade" id="event-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="card-title">Investigation Appointment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="event-index">
+                <form class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Date</label>
+                                <input id="date" name="date" type="date" class="form-control">
+                                {{-- <input id="min-date" name="date" type="text" class="form-control"> --}}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Time</label>
+                                    <div class="input-group clockpicker" data-placement="bottom" data-align="top"
+                                    data-autoclose="true">
+                                        <input type="time" class="form-control" id='time' name="time" value="">
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Location</label>
+                                <input id="location" name="location" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Correspondence Address</label>
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{-- <label class="control-label">Correspondence Address</label> --}}
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div>
+                        {{-- <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Correspondence Address</label>
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div> --}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Name</label>
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Address</label>
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                {{-- <label class="control-label">Correspondence Address</label> --}}
+                                <input id="address" name="adresss" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Postcode</label>
+                                <input id="postcode" name="postcode" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">City</label>
+                                <input id="city" name="city" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">State</label>
+                                <input id="state" name="state" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="form-group row">
+                        <label for="min-date" class="col-sm-4 control-label">Dates</label>
+                        <div class="col-sm-8">
+                            <div class="input-group input-daterange" id="date-range">
+                                <input id="min-date" name="takwim-start-date" type="text" class="form-control">
+                                <div class="input-group-prepend input-group-append">
+                                    <div class="input-group-text">to</div>
+                                </div>
+                                <input name="takwim-end-date" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div> --}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="save-event">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
