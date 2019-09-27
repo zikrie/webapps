@@ -3,8 +3,6 @@
         <div class="card">
             <div class="card-body">
                 <form action="#">
-                    <h5 class="card-title">@lang('scheme/saoApproval.title_sao')</h5>
-                    <hr>
                     <div class="row p-t-20">
                         <div class="col-md-4">
                             <div class="form-group">

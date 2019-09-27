@@ -261,12 +261,11 @@
 				</div>
             </div>
             <div class="form-actions text-right">
-                <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' onclick="mcsubmit()">@lang('scheme/ob.save')</button>
-                {{-- <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button> --}}
-                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
-                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
-                <button type="submit" name="action" value="Back" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('scheme/noticetype.back')</button>
-                
+                    <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' onclick="mcsubmit()">@lang('scheme/ob.save')</button>
+                    {{-- <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button> --}}
+                    <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
+                    <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
+                    <button type="submit" name="action" value="Back" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('scheme/noticetype.back')</button>
             </div>
         </div>
     </div>
@@ -361,6 +360,8 @@
                 var i = values[0];
                 var j = values[1];
                 // alert('i: '+i+' j: '+j);
+                
+                $('[id^=hus_recommendation]').attr('disabled', true);
 
                 var k = $("tr[id^=tr"+i+"_"+j+"_]").length;
                 // alert(k);
@@ -376,7 +377,7 @@
                         break;
                     }
                 }
-                
+
                 });
 
     }
@@ -385,16 +386,46 @@
 
         // Delete work
         $('.btn_del_workmc').on('click',function(){
-            // alert("hehehe");
+
+            // del_attended_work0_0_1
             var delete_id = $(this).attr('id');
+            var values = delete_id.split('_');
+            var id1 = values[2];
+            var id2 = values[3];
+            var id3 = values[4];
+
+            var no_of_child = $('[id^="del_attended_'+id1+'_'+id2+'_"]').length;
+            if(no_of_child == 1){
+
+                id1 = id1.substr(-1);
+                $('#hus_recommendation'+id1+'_'+id2).prop('disabled', false);
+            }
+            console.log('id1:'+id1);
+            console.log('id2:'+id2);
+            console.log('id3:'+id3);
+            console.log('no_of_child:'+no_of_child);
             console.log(delete_id);
             $("#deletemodal").modal('show');
             $("#deletemodal .modal-footer button").on('click', function(e) {
                 var btn_id = event.target.id;
                 if(btn_id == 'btn_delete'){
                     e.preventDefault();
-                    $("#"+delete_id).closest("tr").remove();
-                    
+                    var check = 'del_attended_'+id1+'_'+id2;
+                    console.log('check:'+check);
+                    console.log('delete_id:'+delete_id);
+                    if (delete_id == check){
+                        console.log("hahhahahahahaha: .tr"+id1+"_"+id2);
+                        //alert("aa");
+                        // $("#"+delete_id).closest("tr").remove();
+                        // $("tr").remove(".tr"+id1+"_"+id2);
+
+                        $(".tr"+id1+"_"+id2).each(function(){
+                            $(this).remove();
+                        })
+                    }else{
+                        $("#"+delete_id).closest("tr").remove();
+                    }
+
                 }
             });
         });

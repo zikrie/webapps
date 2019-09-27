@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h3 class="card-title">@lang('index.attr.bgr')</h3>
+            <h3 class="card-title">BON GANTI RUGI</h3>
 
             <div class="row">
                 <div class="col-md-12">

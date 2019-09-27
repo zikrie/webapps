@@ -1,12 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Scheme\NewClaim;
+namespace App\Http\Controllers\scheme\NewClaim;
 
 use Illuminate\Http\Request;
 use DB;
 use App\ObForm;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Cache;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
 
 class NoticeOdController extends CommonController
 {
@@ -48,10 +54,14 @@ class NoticeOdController extends CommonController
 
         
         $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
+        // return $idtype;
         $occucode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['occupation']);
+        // return $occucode;
         // $suboccupation=DB::select('select so_occcode, so_suboccdescen from suboccupation  where  occupationcode=?', [$occupation[0]->refcode]);
         $race=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['race']);
+        // return $race;
         $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
+        // return $national;
         $mcsts=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['mcsts']);
         $transport=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['transport']);
         $accdplace=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdplace']);
@@ -63,6 +73,7 @@ class NoticeOdController extends CommonController
         $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
         $worksts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['worksts']);
         $hussts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['hussts']);
+        // return $hussts;
         
         //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
         //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
@@ -81,7 +92,7 @@ class NoticeOdController extends CommonController
         //najmi
         //$doclist = DB::select('select docdescen,doctype,docdescbm from doctype where doccat=?',['C']);
         $sql = 'select d.docdescen,d.doctype,d.docdescbm, d.doccat, n.priority from doctype d, noticedoc n '
-                . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
+        . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
         $doclist = DB::select($sql,[session('noticetype')]);
         
         //chg28062019 irina - get all doc
@@ -103,7 +114,7 @@ class NoticeOdController extends CommonController
         
         //irina - begin
         $caserefno = session('caserefno');
-     
+
 
         //HANNIS
         $this->getAssist($jsondecodeAssistEmployer);
@@ -125,7 +136,7 @@ class NoticeOdController extends CommonController
 
         $docinfo = array();
         $this->getDoc($docinfo);
-         
+
         $jsondecodepermanent = null;
         $bankinfo = null;
         $test = $this->getBankInfo($jsondecodebank);
@@ -151,7 +162,7 @@ class NoticeOdController extends CommonController
         $empcert = null;
 
         $permanentrep = null;
-     
+
         //return $jsondecode;
         
         if ($jsondecode && $jsondecode!='')//irina
@@ -179,7 +190,7 @@ class NoticeOdController extends CommonController
         //notice od
         $jsondecodeOdinfo="";
         $this->getOdInfo($jsondecodeOdinfo);
-            
+
         if ($jsondecodeOdinfo && $jsondecodeOdinfo!='')//hannis
         {
             $errorcode = $jsondecodeOdinfo->{'errorcode'};
@@ -257,7 +268,7 @@ class NoticeOdController extends CommonController
                 $bankinfo = null;
             }
             
-           
+
         }
         
 
@@ -272,34 +283,34 @@ class NoticeOdController extends CommonController
             if ($record <= 0)
             {
                  //$jsondecodeConfirmation = null;
-                 $confirmation = null;
-            }
-            else
-            {
-                $confirmation = $jsondecodeConfirmation->{'data'};
+               $confirmation = null;
+           }
+           else
+           {
+            $confirmation = $jsondecodeConfirmation->{'data'};
                 //return $confirmation;
-            }
-             
         }
-        
+
+    }
+
         //return $confirmation;
-        
-        $jsondecodemc = '';
-        $this->GetMCDetails($jsondecodemc);
+
+    $jsondecodemc = '';
+    $this->GetMCDetails($jsondecodemc);
         //return json_encode($jsondecodemc);
-        if ($jsondecodemc && $jsondecodemc != '')
+    if ($jsondecodemc && $jsondecodemc != '')
+    {
+        $errorcode = $jsondecodemc->{'errorcode'};
+
+        if ($errorcode != 0)
         {
-            $errorcode = $jsondecodemc->{'errorcode'};
-
-            if ($errorcode != 0)
-            {
-                $jsondecodemc = null;
-            }
-
-
+            $jsondecodemc = null;
         }
-        
-        $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+
+
+    }
+
+    $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
         // if ($confirmation != null && $confirmation->statecode != '')
         // {
         //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
@@ -308,7 +319,7 @@ class NoticeOdController extends CommonController
         // {
         //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
         // }
-        
+
         //return json_encode($jsondecodemc);
         /*
         $mcinfo = $jsondecodemc->{'mcinfo'};
@@ -331,7 +342,7 @@ class NoticeOdController extends CommonController
         
         //return $bankinfo;
         
-        return view('scheme.noticeOd.index',['obprofile'=>$obprofile,'state'=>$state, 
+        return view('scheme.noticeOd.PK.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'occucode'=>$occucode, 'race'=>$race, 'national'=>$national, 'mcsts'=>$mcsts, 'transport'=>$transport,
             'accdplace'=>$accdplace, 'accdwhen'=>$accdwhen , 'obformassist' => $jsondecodeAssist, 
             'employer' => $jsondecodeAssistEmployer, 'emprecord' => $emprecord,'wagesinfo' => $wagesinfo,
@@ -364,115 +375,214 @@ class NoticeOdController extends CommonController
         
         //return $result;
         $jsondecode = json_decode($result);
+        // dd($jsondecode);
         //close connection
         curl_close($ch);
     }
     
     public function UpdMC(Request $req)
     {
-        $operid = session('loginname');
-        $brcode = session('loginbranchcode');
-        $idno= session('idno');
-        $caserefno = session('caserefno');
-        
-        $clinicname = $req->clinicinfo;
-        $mcstartdate = $req->mcstartdate;
-        $mcmonth = '';
-        $mcyear = '';
-        
-        if (strlen($mcstartdate) == 10)
-        {
-            $mcstartdate = str_replace('-', '', $mcstartdate);
-            $mcmonth = substr($mcstartdate,4,2);
-            $mcyear = substr($mcstartdate,0,4);
-        }
-        
-        
-        $mcenddate = $req->mcenddate;
-        if (strlen($mcenddate) == 10)
-        {
-            $mcenddate = str_replace('-', '', $mcenddate);
-        }
-        
-        
-        $mcstatus = '08';//New
-        $totalmc = $req->totalmc;
-        $hussts = $req->hussts;
-        
-        $wagespaid = $req->wagespaid;
-        
-        $workstartdate = $req->workstartdate;
-        if (strlen($workstartdate) == 10)
-        {
-            $workstartdate = str_replace('-', '', $workstartdate);
+        if ($req->action== 'Submit') {
+
+            dd($req->all());
+
+            $parent = count($req->hussts);
+
+            for($i=0;$i<$parent;$i++)
+            {
+                $hussts = $req->input('hussts')[$i];
+                $clinicinfo = $req->input('clinicinfo')[$i];
+                $startdate = $req->input('startdate')[$i];
+                $enddate = $req->input('enddate')[$i];
+                $totalmc = $req->input('totalmc')[$i];
+
+                $child = count($req->mcitemstartdate[$i]);
+
+                    for($j=0;$j<$child;$j++)
+                    {
+                        $mcitemstartdate = $req->input('mcitemstartdate')[$i][$j];
+                        $mcitemenddate = $req->input('mcitemenddate')[$i][$j];
+                        $totalmcitem = $req->input('totalmcitem')[$i][$j];
+                        $approvalsts = $req->input('approvalsts')[$i][$j];
+
+                        $mcitem[$i][$j]=['mcitemstartdate'=>$mcitemstartdate,'mcitemenddate'=>$mcitemenddate,'totalmcitem'=>$totalmcitem,'approvalsts'=>$approvalsts];
+                    }
+
+                $mcinfo[$i] = ['husstatus'=>$hussts,'clinicinfo'=>$clinicinfo,'startdate'=>$startdate,'enddate'=>$enddate,'totalmc'=>$totalmc,'scorecommend'=>$scorecommend];
+
+
+
+            }
+
+            $data = ['mcinfo'=>mcinfo, 'mcitem'=>$mcitem];
+
+            dd($data);
+
+            // dd($data);
+            $endpoint ='http://127.0.0.1:8000/api/scheme/noticedeath';
+            $options = [
+                'exceptions' => false,
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json'],
+                    'body' => json_encode($data)
+                ];
+    
+            
+            // dd($options);
+            $client = new Client();
+            $response = $client->post($endpoint, $options);
+
+            dd($response->getBody()->getContents());
+        // dd($response);
+
         }
 
-        $workenddate = $req->workenddate;
-        if (strlen($workenddate) == 10)
-        {
-            $workenddate = str_replace('-', '', $workenddate);
-        }
-        
-        $totalwork = $req->totalwork;
-        $worksts = $req->statuswork;
-        $wagespaid = $req->wagespaid;
-        
-        $workinfo = array();
-        $workinfo[0] = ['wagespaid'=>'','workstartdate'=>$workstartdate, 'workenddate'=>$workenddate,
-                        'totalwork'=>$totalwork, 'statuswork'=>$worksts];
-        
-        $mcinfo = array();
-        $mcinfo[0] = ['hussts'=>$hussts,'startdate'=>$mcstartdate,'enddate'=>$mcenddate, 'mcsts'=>$mcstatus, 'totalmc'=>$totalmc,
-                    'workinfo'=>$workinfo];
-        
+    }
+       // dd('ya');
+
+
+        // $clinicinfo = $req->clinicinfo;
+
+        // // $parent = count($req->hussts);
+
+        // for($i=0;$i<$clinicinfo;$i++)
+        //     {
+        //         $hussts = $req->hussts[$i];
+        //         $mcstartdate = $req->mcstartdate[$i];
+        //         // dd($mcstartdate);
+        //         $mcenddate = $req->mcenddate[$i];
+        //         $totalmc = $req->totalmc[$i];
+        //         $mcstatus = '8';//New
+
+        //         // $child = count($req->workstartdate[$i]);
+
+        //             for($j=0;$j<$clinicinfo;$j++)
+        //             {
+        //                 $wagespaid = null;
+        //                 $workstartdate = $req->workstartdate[$i][$j];
+        //                 $workenddate = $req->workenddate[$i][$j];
+        //                 $totalwork = $req->totalwork[$i][$j];
+        //                 $statuswork = null;
+
+        //                 $workinfo[$i][$j]=['workstartdate'=>$workstartdate,'workenddate'=>$workenddate,'totalwork'=>$totalwork, 'wagespaid'=>null, 'statuswork'=>null];
+        //             }
+
+        //         $mcinfo[$i] = ['hussts'=>$hussts,'startdate'=>$mcstartdate,'enddate'=>$mcenddate,'totalmc'=>$totalmc,'mcstatus'=>$mcstatus, 'workinfo'=>$workinfo];
+
+        //     }
+
+        //     $mcdata = ['operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 'idno'=>$idno, 'mcinfo'=>$mcinfo];
+
+        //     dd($mcdata);
+
+
+       //  $clinicinfo = $req->clinicinfo;
+       //  $hussts = $req->hussts;
+       //  $mcstartdate = $req->mcstartdate;
+       //  // dd($mcstartdate);
+       //  $mcenddate = $req->mcenddate;
+       //  $mcstatus = '08';//New
+       //  $totalmc = $req->totalmc;
+       //  $workinfo = array();
+       //  $cnt = 0;
+       //  $lola="9";
+       //  for($i=1;$i<=$lola;$i++){
+       // $parent =$req->mcstartdate_0_.$i;
+       //  }
+
+       //     dd($parent);
+        // for($i=0,i<)
+// $testing=$req->workstartdate[];
+// dd($testing);
+//         foreach ($req->workstartdate_0_0_0[] as $idx)
+//         {
+
+//             $wagespaid = null;
+//             $workenddate = $req->workenddate[$idx];
+//             // dd($workenddate);
+//             $totalwork = $req->totalwork[$idx];
+//             $statuswork = null;
+
+//             $workinfo[$cnt] = ['wagespaid'=>null,'workstartdate'=>$workstartdate, 'workenddate'=>$workenddate, 'totalwork'=>$totalwork, 'statuswork'=>null];
+//         }
+
+        // $mcinfo = array();
+        // $mcinfo[0] = ['hussts'=>$hussts,'startdate'=>$mcstartdate,'enddate'=>$mcenddate, 'mcsts'=>$mcstatus, 'totalmc'=>$totalmc,
+        // 'workinfo'=>$workinfo];
+
+        // $mcdata = ['operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 'idno'=>$idno, 
+        // 'clinicinfo'=>$clinicinfo, 'mcinfo'=>$mcinfo];
+
+        // dd($mcdata);
+
+            // dd($data);
+
+        //     $options = [
+        //     'headers' => [
+        //         'Content-Type' => 'application/json',
+        //         'Accept' => 'application/json'
+        //     ],
+        //     'json' => [
+        //         "data" => $data
+        //     ],     
+
+        // ];
+
+        // $res = json_decode($result);
+        // //return $jsondata.'++'.$result;
+        // $retcode = $res->{'errorcode'};
+
+        // if ($retcode == 0)
+        // {
+        //     session(['mcmonth'=>$mcmonth,'mcyear'=>$mcyear]);
+        //     //return redirect()->back()->with('messagemc','Save successful');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
+        //     return redirect()->back()->withInput(['tab'=>'wages'])->with('messagemc','Save successful');
+        // }
+        // else
+        // {
+        //     ///return redirect()->back()->with('messagemc','Save unsuccessful');
+        //     return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messagemc','Save unsuccessful');
+        // }
+
+
+
+
+        // if (strlen($mcstartdate) == 10)
+        // {
+        //     $mcstartdate = str_replace('-', '', $mcstartdate);
+        //     $mcmonth = substr($mcstartdate,4,2);
+        //     $mcyear = substr($mcstartdate,0,4);
+        // }
+
+
+
+        // if (strlen($mcenddate) == 10)
+        // {
+        //     $mcenddate = str_replace('-', '', $mcenddate);
+        // }
+
+
+
+        // if (strlen($workstartdate) == 10)
+        // {
+        //     $workstartdate = str_replace('-', '', $workstartdate);
+        // }
+
+
+        // if (strlen($workenddate) == 10)
+        // {
+        //     $workenddate = str_replace('-', '', $workenddate);
+        // }
+
+
+
         //$clinicinfo = array();
         //$clinicinfo[0] = ['clinicname'=>$clinicname, 'mcinfo'=>$mcinfo];
-        
-        $mcdata = ['operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 
-                'clinicinfo'=>$clinicname, 'mcinfo'=>$mcinfo];
-        
-        $jsondata = json_encode($mcdata);
-        
-        //return $jsondata;
 
 
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/updmcinfo';
-        
 
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-
-        curl_close($ch);
-        
-        $res = json_decode($result);
-        //return $jsondata.'++'.$result;
-        $retcode = $res->{'errorcode'};
-        
-        if ($retcode == 0)
-        {
-            session(['mcmonth'=>$mcmonth,'mcyear'=>$mcyear]);
-            //return redirect()->back()->with('messagemc','Save successful');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
-            return redirect()->back()->withInput(['tab'=>'wages'])->with('messagemc','Save successful');
-        }
-        else
-        {
-            ///return redirect()->back()->with('messagemc','Save unsuccessful');
-            return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messagemc','Save unsuccessful');
-        }
-        
-        
-    }
+        // return $jsondata;
     
     //irina
     
@@ -505,101 +615,92 @@ class NoticeOdController extends CommonController
     }
 
     //get ob profile
-     public function getObProfile(&$jsondecode)
+    public function getObProfile(&$jsondecode)
     {    
         $idno= session('idno');
         $idtype= session('idtype');
         $caserefno= session('caserefno');
         $operid= session('loginname');
-        
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/obprofile?idno='.$idno.'&idtype='.$idtype.'&caserefno='.$caserefno.'&operid='.$operid;
 
-        // 
-        
-        $ch = curl_init();
-        
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        
-        $jsondecode = json_decode($result);
+        $url = env('WS_IP', 'localhost').'/api/wsmotion/';
 
-        // return $jsondecode;
-        //close connection
-        curl_close($ch);
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'idno' => $idno,
+                'idtype' => $idtype,
+                'caserefno' => $caserefno,
+                'operid' => $operid
+            ],     
+            
+        ];
+        // dd($options);
+        $client = new Client();
+
+        $response = $client->get($url.'obprofile?idno='.$idno.'&idtype='.$idtype.'&caserefno='.$caserefno.'&operid='.$operid)->getBody();
+        $jsondecode = json_decode($response->getContents());
+        // dd($jsondecode);
+        
     }
 
       // GET EMPLOYER FROM DB - HANNIS 
     public function getEmployer(&$jsondecodeEmployer)
     {
-        
+
         $caserefno = session('caserefno');
 
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/employer?caserefno='.$caserefno;
+        $url = env('WS_IP', 'localhost').'/api/wsmotion/';
         
-        // if ($accdrefno != '')
-        // {
-        //     $url = $url.'&accdrefno='.$accdrefno;
-        // }
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'caserefno' => $caserefno
+            ],     
+            
+        ];
+        // dd($options);
+        $client = new Client();
 
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+        $response = $client->get($url.'employer?caserefno='.$caserefno)->getBody();
+        $jsondecodeEmployer = json_decode($response->getContents());
         
-        
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-    
-        //close connection
-        curl_close($ch);
-
-        $jsondecodeEmployer= json_decode ($result);
-    
     }
 
     //  get od employer history
     public function getOdEmphistory(&$jsondecodeOdEmphistory)
     {
-        $caserefno = session ('caserefno'); // get session
+        $idno= session('idno');
+        $idtype= session('idtype');
+        $caserefno= session('caserefno');
+        $operid= session('loginname');
 
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/odemphistory?caserefno='.$caserefno;//hannis
 
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+        $url = env('WS_IP', 'localhost').'/api/wsmotion/';
 
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-        
-        
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'caserefno' => $caserefno,
+            ],     
+            
+        ];
+        // dd($options);
+        $client = new Client();
 
-        // return $result;
-    
-        $jsondecodeOdEmphistory = json_decode($result);
+        $response = $client->get($url.'odemphistory?caserefno='.$caserefno)->getBody();
+        $jsondecodeOdEmphistory = json_decode($response->getContents());
+        // dd($jsondecodeOdEmphistory);
 
-        //close connection
-         curl_close($ch);
-
-    
     }
 
 
@@ -608,25 +709,26 @@ class NoticeOdController extends CommonController
     {
 
         $caserefno = session('caserefno');
-        // $idno = session('idno');
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/getodinfo?caserefno='.$caserefno;
 
-        $ch = curl_init();
+        $url = env('WS_IP', 'localhost').'/api/wsmotion/';
 
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'caserefno' => $caserefno,
+            ],     
+            
+        ];
+        // dd($options);
+        $client = new Client();
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        
-        $jsondecodeOdinfo = json_decode($result);
-        //close connection
-        curl_close($ch);
+        $response = $client->get($url.'getodinfo?caserefno='.$caserefno)->getBody();
+        $jsondecodeOdinfo = json_decode($response->getContents());
+        // dd($jsondecodeOdinfo);
+
     }
     
     
@@ -639,7 +741,7 @@ class NoticeOdController extends CommonController
 
         $notice = ['noticetype'=> $noticetype, 'operid'=> $operid,'brcode'=> $brcode, 'idno'=>$idno];
         $jsondata = json_encode($notice);
-       
+
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/createdraft';
         $ch = curl_init();
         
@@ -690,13 +792,13 @@ class NoticeOdController extends CommonController
 
 
     // GET EMPLOYER FROM ASSIST - HANNIS 
-      public function getAssist(&$jsondecodeAssistEmployer)
+    public function getAssist(&$jsondecodeAssistEmployer)
     {
         //$idno = '1';
 
         $idno = session('idno');
         $empcode = session('empcode');
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
+        $url = 'http://'.env('ASSIST', 'localhost').'/wsassistsimulation/employer/'.$empcode;
         $ch = curl_init();
         
         curl_setopt($ch,CURLOPT_URL, $url);
@@ -711,12 +813,12 @@ class NoticeOdController extends CommonController
         $result = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-    
+
         //close connection
         curl_close($ch);
 
         $jsondecodeAssistEmployer = json_decode ($result);
-    
+
     }
 
     public function getDoc(&$docinfo)//&$newwages)
@@ -741,15 +843,15 @@ class NoticeOdController extends CommonController
         $result = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-    
+
         //close connection
         curl_close($ch);
 
         $docinfo = json_decode ($result);
-    
+
     }
 
-     // GET WAGES FROM DB - HANNIS 
+    // GET WAGES FROM DB - HANNIS 
     public function getWages(&$contrinfo, &$wagesinfo)//&$newwages)
     {
         $caserefno = session ('caserefno'); // get session
@@ -773,171 +875,73 @@ class NoticeOdController extends CommonController
 
         
         //$url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/wage/'.$idno.'/'.$month.'/'.$year.'/'.$count;//irina
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/wages?caserefno='.$caserefno.'&month='.$month.'&year='.$year.'&count='.$count;//irina
-        //return $url;
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+        $url = env('WS_IP', 'localhost').'/api/wsmotion/';//kai
 
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-        
-        
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-    
-        //close connection
-        curl_close($ch);
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'caserefno' => $caserefno,
+                'month' => $month,
+                'year' => $year,
+                'count' => $count
+            ],     
+            
+        ];
+        // dd($options);
+        $client = new Client();
 
-        $jsondecodeWages = json_decode ($result);
-        
+        $response = $client->get($url.'wages?caserefno='.$caserefno.'&month='.$month.'&year='.$year.'&count='.$count)->getBody();
+        $jsondecodeWages = json_decode($response->getContents());
+        // dd($jsondecodeWages);
+
         if ($jsondecodeWages != null && $jsondecodeWages != '')
         {
-            // $wagesinfo = $jsondecodeWages->{'wagesinfo'};
-             $record = $jsondecodeWages->{'record'};
-             // return $record;
+         // $wagesinfo = $jsondecodeWages->{'wagesinfo'};
+           $record = $jsondecodeWages->{'record'};
+         // return $record;
 
-                if ($record > 0)
-                {
-                    $wagesinfo = $jsondecodeWages->{'data'};
-                    /*
-                    foreach ($data as $d)
-                    {
-                        $empcode = $d->{'empcode'};
-                        $empname = $d->{'empname'};
-                        $startdate = $d->{'startdate'};
-                        $enddate = $d->{'enddate'};
-                        $wagesinfo = $d->{'wagesinfo'};
-                    }
-                
-                    foreach ($wagesinfo as $w)
-                    {
-                        $year = $w->{'year'};
-                        $month = $w->{'month'};
-                        $wages = $w->{'wages'};
-                    }*/
-                
-
-                }
-                else
-                {
-                    $wagesinfo = null;
-                }
-
+           if ($record > 0)
+           {
+            $wagesinfo = $jsondecodeWages->{'data'};
+        }
+        else
+        {
+            $wagesinfo = null;
         }
 
+    }
 
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/contribution/'.$idno;//irina
-        //return $url;
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
 
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-        
-        
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        $url = env('ASSIST_IP', 'localhost').'/wsassistsimulation/contribution/';//kai
 
-        // return $result;
-    
-        //close connection
-        curl_close($ch);
-
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'idno' => $idno
+            ],     
+            
+        ];
+        // dd($options);
+        $client = new Client();
         $newwages = array();
         $count = 0;
-        $jsondecodeContribution = json_decode ($result);
-        
+
+        $response = $client->get($url.$idno)->getBody();
+        $jsondecodeContribution = json_decode($response->getContents());
+        // dd($jsondecodeContribution);
+
         if ($jsondecodeContribution && $jsondecodeContribution!='')
         {
             $contrinfo = $jsondecodeContribution->{'contributioninfo'};
-            //$contribution = $contributioninfo[0]->{'contribution'};
-            /*
-            if ($jsondecodeWages != null && $jsondecodeWages!='')//irina
-            {
-                $record = $jsondecodeWages->{'record'};
-                if ($record > 0)
-                {
-                    $data = $jsondecodeWages->{'data'};
-                    
-                    foreach ($data as $d)
-                    {
-                        $empcode = $d->{'empcode'};
-                        $empname = $d->{'empname'};
-                        $wagesinfo = $d->{'wagesinfo'};
-                        
-                        foreach ($$contributioninfo as $contr)
-                        {
-                            if ($contr->{'empcode'} == $empcode)
-                            {
-                                $assistcontr = $contr->{'contribution'};
-                                 
-                                foreach($assistcontr as $ass)
-                                {
-                                    
-                                    if($ass->{'month'} == $contr->{'month'} && 
-                                        $ass->{'year'} == $contr->{'year'})
-                                    {
-                                        $newwages[$count] = ['month'=>$wages->{'month'}, 'year'=>$wages->{'year'}, 'wages'=>$wages->{'wages'}, 'contribution'=>$contr->{'contribution'}];
-                                        $count++;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            
-                foreach($jsondecodeWages as $wages)
-                {
-                    foreach($contribution as $contr)
-                    {
-                        if($wages->{'month'} == $contr->{'month'} && 
-                            $wages->{'year'} == $contr->{'year'})
-                        {
-                            $newwages[$count] = ['month'=>$wages->{'month'}, 'year'=>$wages->{'year'}, 'wages'=>$wages->{'wages'}, 'contribution'=>$contr->{'contribution'}];
-                            $count++;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                foreach($contribution as $contr)
-                {
-                    
-                    $newwages[$count] = ['month'=>$contr->{'month'}, 'year'=>$contr->{'year'}, 'wages'=>null, 'contribution'=>$contr->{'contribution'}];
-                    $count++;
-                    
-                }
-            }*/
         }
-        /*else
-        {
-            if ($jsondecodeWages != null && $jsondecodeWages!='')//irina
-            {
-                foreach($jsondecodeWages as $wages)
-                {
-                    $newwages[$count] = ['month'=>$wages->{'month'}, 'year'=>$wages->{'year'}, 'wages'=>$wages->{'wages'}, 'contribution'=>null];
-                    $count++;
-                    
-                }
-            }
-        }*/
-        
 
-        
-    
     }
-   
 
 
     //GET BRANCH NAME FROM DB - FOR SOCSO
@@ -951,35 +955,30 @@ class NoticeOdController extends CommonController
 
      //GET BANK INFO FROM DB - SYAHIRAH
     public function getBankInfo(&$jsondecodebank)
-        {
-            //$idno='1';
-            $caserefno = session('caserefno');
-            $url = 'http://'.env('WS_IP', 'perkesows.com').'/api/wsmotion/bankinfo?caserefno='.$caserefno;
-            //return $url;
+    {
 
-            $ch = curl_init();
-            
-            curl_setopt($ch,CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_PROXY, '');
-            
-            curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-            curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-            
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-            $result = curl_exec($ch);
-            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            
+        $caserefno = session('caserefno');
 
-            $jsondecodebank =json_decode($result);
-            // $data =$jsondecode->{'data'};
+        $url = env('WS_IP', 'localhost').'/api/wsmotion/';
 
-            //close connection
-            curl_close($ch);
-            //return view('noticeAccident.certificateEmployee',['data'=>$jsondecode]);
-            //return view ('noticeAccident.obForm');
-            // return $httpcode; //$httpcode will contain json data returned by API
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'caserefno' => $caserefno,
+            ],     
+            
+        ];
+        // dd($options);
+        $client = new Client();
 
-        }
+        $response = $client->get($url.'bankinfo?caserefno='.$caserefno)->getBody();
+        $jsondecodebank = json_decode($response->getContents());
+        // dd($jsondecodebank);
+
+    }
 
 
     public function getConfirmation(&$jsondecodeConfirmation)
@@ -988,24 +987,25 @@ class NoticeOdController extends CommonController
         $caserefno = session('caserefno');
         $uniquerefno = session('uniquerefno');
         // $idno = session('idno');
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/getconfirmation?caserefno='.$caserefno.'&applicantid='.$uniquerefno;
+        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/';
 
-        $ch = curl_init();
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'caserefno' => $caserefno,
+                'uniquerefno' => $uniquerefno
+            ],     
+            
+        ];
+        // dd($options);
+        $client = new Client();
 
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        
-        $jsondecodeConfirmation = json_decode($result);
-        //close connection
-        curl_close($ch);
+        $response = $client->get($url.'getconfirmation?caserefno='.$caserefno.'&applicantid='.$uniquerefno)->getBody();
+        $jsondecodeConfirmation = json_decode($response->getContents());
+        // dd($jsondecodeConfirmation);
     }
 
    //for preview - GET
@@ -1073,7 +1073,7 @@ class NoticeOdController extends CommonController
         //najmi
         //$doclist = DB::select('select docdescen,doctype,docdescbm from doctype where doccat=?',['C']);
         $sql = 'select d.docdescen,d.doctype,d.docdescbm, d.doccat from doctype d, noticedoc n '
-                . 'where n.casetype=? and n.doctype = d.doctype';
+        . 'where n.casetype=? and n.doctype = d.doctype';
         $doclist = DB::select($sql,['02']);
 
         //return view ('fileupload.claim_info')->with('name',$select);
@@ -1100,7 +1100,7 @@ class NoticeOdController extends CommonController
         
         //irina - begin
         $caserefno = session('caserefno');
-     
+
 
         //HANNIS
         $this->getAssist($jsondecodeAssistEmployer);
@@ -1122,7 +1122,7 @@ class NoticeOdController extends CommonController
 
         $docinfo = array();
         $this->getDoc($docinfo);
-         
+
         $jsondecodepermanent = null;
         $test = $this->getBankInfo($jsondecodebank);
         
@@ -1142,7 +1142,7 @@ class NoticeOdController extends CommonController
         //}
         
         // $this->getAccidentinfo($jsondecod3); 
-                
+
         // if ($jsondecod3 && $jsondecod3!='')//irina
         // {
         //     $errorcode = $jsondecod3->{'errorcode'};
@@ -1155,7 +1155,7 @@ class NoticeOdController extends CommonController
         //     {
         //         $accddata = null;
         //     }
-            
+
         // }
         //irina
         $obprofile = null;
@@ -1164,7 +1164,7 @@ class NoticeOdController extends CommonController
         $empcert = null;
 
         $permanentrep = null;
-     
+
         //return $jsondecode;
         
         if ($jsondecode && $jsondecode!='')//irina
@@ -1192,41 +1192,41 @@ class NoticeOdController extends CommonController
         //notice od
         $jsondecodeOdinfo="";
         $this->getOdInfo($jsondecodeOdinfo);
-            
+
         if ($jsondecodeOdinfo && $jsondecodeOdinfo!='')//hannis
         {
             $errorcode = $jsondecodeOdinfo->{'errorcode'};
             if ($errorcode == 0)
-             {
-                 $oddata = $jsondecodeOdinfo->{'data'};
-             }
-             else
-             {
-                 $oddata = null;
-             }
-        }
+            {
+               $oddata = $jsondecodeOdinfo->{'data'};
+           }
+           else
+           {
+               $oddata = null;
+           }
+       }
 
 
-         $jsondecodeOdEmphistory="";
-         $this->getOdEmphistory($jsondecodeOdEmphistory);
+       $jsondecodeOdEmphistory="";
+       $this->getOdEmphistory($jsondecodeOdEmphistory);
 
          if ($jsondecodeOdEmphistory && $jsondecodeOdEmphistory!='')//hannis
          {
-             $record = $jsondecodeOdEmphistory->{'record'};
-             if ($record > 0)
-             {
-                 $odempinfo = $jsondecodeOdEmphistory->{'data'};
-             }
-             else
-             {
-                 $odempinfo = null;
-             }
+           $record = $jsondecodeOdEmphistory->{'record'};
+           if ($record > 0)
+           {
+               $odempinfo = $jsondecodeOdEmphistory->{'data'};
+           }
+           else
+           {
+               $odempinfo = null;
+           }
              //$date = $jsondecodeEmployer->{'data'};
-         }
+       }
 
         // return $odempinfo;
 
-        
+
 
 
         /*if ($jsondecod1 && $jsondecod1!='')//irina
@@ -1270,7 +1270,7 @@ class NoticeOdController extends CommonController
                 $bankinfo = null;
             }
             
-           
+
         }
         
 
@@ -1285,34 +1285,34 @@ class NoticeOdController extends CommonController
             if ($record <= 0)
             {
                  //$jsondecodeConfirmation = null;
-                 $confirmation = null;
-            }
-            else
-            {
-                $confirmation = $jsondecodeConfirmation->{'data'};
+               $confirmation = null;
+           }
+           else
+           {
+            $confirmation = $jsondecodeConfirmation->{'data'};
                 //return $confirmation;
-            }
-             
         }
-        
+
+    }
+
         //return $confirmation;
-        
-        $jsondecodemc = '';
-        $this->GetMCDetails($jsondecodemc);
+
+    $jsondecodemc = '';
+    $this->GetMCDetails($jsondecodemc);
         //return json_encode($jsondecodemc);
-        if ($jsondecodemc && $jsondecodemc != '')
+    if ($jsondecodemc && $jsondecodemc != '')
+    {
+        $errorcode = $jsondecodemc->{'errorcode'};
+
+        if ($errorcode != 0)
         {
-            $errorcode = $jsondecodemc->{'errorcode'};
-
-            if ($errorcode != 0)
-            {
-                $jsondecodemc = null;
-            }
-
-
+            $jsondecodemc = null;
         }
-        
-        $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+
+
+    }
+
+    $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
         // if ($confirmation != null && $confirmation->statecode != '')
         // {
         //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
@@ -1321,291 +1321,289 @@ class NoticeOdController extends CommonController
         // {
         //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
         // }
-        
-        
+
+
 
         //return $bankinfo;
-        
-        return view('scheme.noticeOd.preview',['obprofile'=>$obprofile,'state'=>$state, 
-            'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'mcsts'=>$mcsts, 'transport'=>$transport,
-            'accdplace'=>$accdplace, 'accdwhen'=>$accdwhen , 'obformassist' => $jsondecodeAssist, 
-            'employer' => $jsondecodeAssistEmployer, 'emprecord' => $emprecord,'wagesinfo' => $wagesinfo,
-            'contribution'=>$contrinfo, 'data'=>$data,'bankinfo'=>$bankinfo, 'optionbank'=>$optionbank, 
-            'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode, 
-            'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month, 
-            'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts, 
-            'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype, 'oddata'=>$oddata,
-            'docinfo'=>$docinfo, 'confirmation'=>$confirmation,'odempinfo'=>$odempinfo,
-            'hussts'=>$hussts,'mcdata'=>$jsondecodemc, 'listid'=>$listid]);
-    }
+
+    return view('scheme.noticeOd.preview',['obprofile'=>$obprofile,'state'=>$state, 
+        'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'mcsts'=>$mcsts, 'transport'=>$transport,
+        'accdplace'=>$accdplace, 'accdwhen'=>$accdwhen , 'obformassist' => $jsondecodeAssist, 
+        'employer' => $jsondecodeAssistEmployer, 'emprecord' => $emprecord,'wagesinfo' => $wagesinfo,
+        'contribution'=>$contrinfo, 'data'=>$data,'bankinfo'=>$bankinfo, 'optionbank'=>$optionbank, 
+        'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode, 
+        'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month, 
+        'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts, 
+        'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype, 'oddata'=>$oddata,
+        'docinfo'=>$docinfo, 'confirmation'=>$confirmation,'odempinfo'=>$odempinfo,
+        'hussts'=>$hussts,'mcdata'=>$jsondecodemc, 'listid'=>$listid]);
+}
 
 
 
 
-    
+
 
 
 
 
     //  --------POST-----------
 
-    
+
 
      //POST OBCONTANT AT DB
-      public function postObcontact(Request $req)
-        {
-            $idno  = $req->idno;
-            $add1 = $req->add1;
-            $add2 = $req->add2;
-            $add3 = $req->add3;
-            $postcode = $req->postcode;
-            $city = $req->city;
-            $statecode = $req->statecode;
-            $telno = $req->telno;
-            $mobileno = $req->mobileno;
-            $email = $req->email;
-            $nationality = $req->nationality;
-            $addby = $req->addby;
-            $dateadd = $req->dateadd;
+public function postObcontact(Request $req)
+{
+    $idno  = $req->idno;
+    $add1 = $req->add1;
+    $add2 = $req->add2;
+    $add3 = $req->add3;
+    $postcode = $req->postcode;
+    $city = $req->city;
+    $statecode = $req->statecode;
+    $telno = $req->telno;
+    $mobileno = $req->mobileno;
+    $email = $req->email;
+    $nationality = $req->nationality;
+    $addby = $req->addby;
+    $dateadd = $req->dateadd;
 
-        $obForm = ['idno'=> $idno, 'add1'=> $add1,'add2'=> $add2, 'add3'=> $add3, 'postcode'=> $postcode, 'city'=> $city, 'statecode'=> $statecode,  'telno'=> $telno,  'mobileno'=> $mobileno,  'email'=> $email,  'nationality'=> $nationality,  'addby'=> $addby, 'dateadd'=> $dateadd ];
-        $jsondata = json_encode($obForm);
-       
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newobcontact';
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+    $obForm = ['idno'=> $idno, 'add1'=> $add1,'add2'=> $add2, 'add3'=> $add3, 'postcode'=> $postcode, 'city'=> $city, 'statecode'=> $statecode,  'telno'=> $telno,  'mobileno'=> $mobileno,  'email'=> $email,  'nationality'=> $nationality,  'addby'=> $addby, 'dateadd'=> $dateadd ];
+    $jsondata = json_encode($obForm);
+
+    $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newobcontact';
+    $ch = curl_init();
+
+    curl_setopt($ch,CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_PROXY, '');
+
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
+    curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
+
+    curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch);
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
 
             //close connection
-        curl_close($ch);
+    curl_close($ch);
         //return redirect()->back();
         // return $this->index();
-    }
+}
 
      //POST OBFORM AT DB 
-    public function postObForm(Request $req)
-    {
+public function postObForm(Request $req)
+{
         // $previdno = $req->previdno;
-        $idno  = $req->idno;
-        $idtype = $req->idtype;
-        $oldidno = '';
-        $passportno='';
-        $name = $req->name;
-        $dob = $req->dob;
-        $dob = substr($req->dob,6,4).substr($req->dob, 3,2).substr($req->dob,0,2);
-        $race = $req->race;
-        $gender = $req->gender;
-        $occupation = $req->occupation;
-        $dodeath='';
-        $add1 = $req->add1;
-        $add2 = $req->add2;
-        $add3 = $req->add3;
-        $postcode = $req->postcode;
-        $city = $req->city;
-        $pobox = '';
-        $lockedbag = '';
-        $wdt = '';
-        $statecode = $req->statecode;
-        $telno = $req->telno;
-        $mobileno = $req->mobileno;
-        $email = $req->email;
-        $nationality = $req->nationality;
+    $idno  = $req->idno;
+    $idtype = $req->idtype;
+    $oldidno = '';
+    $passportno='';
+    $name = $req->name;
+    $dob = $req->dob;
+    $dob = substr($req->dob,6,4).substr($req->dob, 3,2).substr($req->dob,0,2);
+    $race = $req->race;
+    $gender = $req->gender;
+    $occupation = $req->occupation;
+    $dodeath='';
+    $add1 = $req->add1;
+    $add2 = $req->add2;
+    $add3 = $req->add3;
+    $postcode = $req->postcode;
+    $city = $req->city;
+    $pobox = '';
+    $lockedbag = '';
+    $wdt = '';
+    $statecode = $req->statecode;
+    $telno = $req->telno;
+    $mobileno = $req->mobileno;
+    $email = $req->email;
+    $nationality = $req->nationality;
 
-        $operid = session('loginname');
-        $brcode = session('loginbranchcode');
-        $caserefno = session('caserefno');
+    $operid = session('loginname');
+    $brcode = session('loginbranchcode');
+    $caserefno = session('caserefno');
         // $uniquerefno = session('uniquerefno');
 
-        $obForm = ['caserefno'=>$caserefno,'idno'=> $idno,'idtype'=> $idtype,'oldidno' =>$oldidno, 'passportno'=>$passportno,
-            'name'=> $name, 'dob'=> $dob, 'race'=> $race, 'gender'=> $gender, 'occupation'=> $occupation, 'dodeath'=>$dodeath, 'add1'=>$add1,'add2'=>$add2,'add3'=>$add3,
-            'postcode'=>$postcode, 'city'=>$city,'pobox'=>$pobox, 'lockedbag'=>$lockedbag, 'wdt'=>$wdt, 'statecode'=>$statecode, 'telno'=>$telno, 'mobileno'=>$mobileno, 'email'=>$email,'nationality'=>$nationality, 'operid'=>$operid, 'brcode'=>$brcode];
-        
-        $jsondata = json_encode($obForm);
-        return $jsondata;
+    $obForm = ['caserefno'=>$caserefno,'idno'=> $idno,'idtype'=> $idtype,'oldidno' =>$oldidno, 'passportno'=>$passportno,
+    'name'=> $name, 'dob'=> $dob, 'race'=> $race, 'gender'=> $gender, 'occupation'=> $occupation, 'dodeath'=>$dodeath, 'add1'=>$add1,'add2'=>$add2,'add3'=>$add3,
+    'postcode'=>$postcode, 'city'=>$city,'pobox'=>$pobox, 'lockedbag'=>$lockedbag, 'wdt'=>$wdt, 'statecode'=>$statecode, 'telno'=>$telno, 'mobileno'=>$mobileno, 'email'=>$email,'nationality'=>$nationality, 'operid'=>$operid, 'brcode'=>$brcode];
 
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newobprofile';
-        $ch = curl_init();
+    $jsondata = json_encode($obForm);
+        // return $jsondata;
 
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
+    $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newobprofile';
+    $ch = curl_init();
 
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
+    curl_setopt($ch,CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_PROXY, '');
 
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
+    curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
+
+    curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch);
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
 
         //return '++'.$result.'++';
             //close connection
-        curl_close($ch);
+    curl_close($ch);
         //return redirect()->back();
         // return $this->index();
 
         //$this->postOBContact($req);
-        $jsondecode = json_decode($result);
+    $jsondecode = json_decode($result);
         //return $result;
-        
+
+    $errorcode = $jsondecode->{'errorcode'};
+    if ($errorcode == 0)
+    {
+        $uniquerefno = $jsondecode->{'uniquerefno'};
+        session(['uniquerefno'=>$uniquerefno]);
+        return redirect()->back()->with('messageob','Save successful');
+    }
+    else
+    {
+        return redirect()->back()->with('messageob','Save unsuccessful');
+    }
+
+}
+
+    //POST EMPLOYER AT DB - HANNIS
+public function postEmployer(Request $req)
+{
+    $caserefno= session('caserefno');
+    $operid= session('loginname');
+    $brcode= session('loginbranchcode');
+    $empcode= $req->empcode;
+    $empname = $req->empname;
+    $emptype= $req->emptype;
+    $add1 = $req->add1;
+    $add2 = $req->add2;
+    $add3 = $req->add3;
+    $postcode = $req->postcode;
+    $city = $req->city;
+    $statecode = $req->state;
+    $pobox = $req->pobox;
+    $lockedbag = $req->lockedbag;
+    $wdt = $req->wdt;
+    $telno = $req->telno;
+    $faxno = $req->faxno;
+    $email = $req->email;
+
+    $employer = ['caserefno'=>$caserefno,'operid'=>$operid,'brcode'=>$brcode, 'empcode'=>$empcode,
+    'empname'=>$empname, 'emptype'=>$emptype,'add1'=>$add1,'add2'=>$add2,'add3'=>$add3, 'postcode'=>$postcode,
+    'city'=>$city, 'statecode'=>$statecode,'pobox'=>$pobox, 'lockedbag'=>$lockedbag, 'wdt'=>$wdt, 'telno'=>$telno, 'faxno'=>$faxno, 'email'=>$email];
+
+    $jsondata = json_encode($employer);
+
+        // return $jsondata;
+
+
+    $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newemployer';
+
+    $ch = curl_init();
+
+    curl_setopt($ch,CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_PROXY, '');
+
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
+    curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
+
+    curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch);
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+
+    curl_close($ch);
+        //return $result;
+
+    $jsondecode = json_decode($result);
+
+    if ($jsondecode && $jsondecode != '')
+    {
         $errorcode = $jsondecode->{'errorcode'};
+            // return $errorcode;
         if ($errorcode == 0)
         {
-            $uniquerefno = $jsondecode->{'uniquerefno'};
-            session(['uniquerefno'=>$uniquerefno]);
-            return redirect()->back()->with('messageob','Save successful');
+                // session(['empcode',$empcode]);
+            return redirect()->back()->with('messageemp','Save successful');
         }
         else
         {
-            return redirect()->back()->with('messageob','Save unsuccessful');
+            return redirect()->back()->with('messageemp','Save unsuccessful');
         }
-        
-     }
-
-    //POST EMPLOYER AT DB - HANNIS
-    public function postEmployer(Request $req)
-    {
-        $caserefno= session('caserefno');
-        $operid= session('loginname');
-        $brcode= session('loginbranchcode');
-        $empcode= $req->empcode;
-        $empname = $req->empname;
-        $emptype= $req->emptype;
-        $add1 = $req->add1;
-        $add2 = $req->add2;
-        $add3 = $req->add3;
-        $postcode = $req->postcode;
-        $city = $req->city;
-        $statecode = $req->state;
-        $pobox = $req->pobox;
-        $lockedbag = $req->lockedbag;
-        $wdt = $req->wdt;
-        $telno = $req->telno;
-        $faxno = $req->faxno;
-        $email = $req->email;
-
-        $employer = ['caserefno'=>$caserefno,'operid'=>$operid,'brcode'=>$brcode, 'empcode'=>$empcode,
-            'empname'=>$empname, 'emptype'=>$emptype,'add1'=>$add1,'add2'=>$add2,'add3'=>$add3, 'postcode'=>$postcode,
-            'city'=>$city, 'statecode'=>$statecode,'pobox'=>$pobox, 'lockedbag'=>$lockedbag, 'wdt'=>$wdt, 'telno'=>$telno, 'faxno'=>$faxno, 'email'=>$email];
-
-        $jsondata = json_encode($employer);
-        
-        // return $jsondata;
-
-
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newemployer';
-
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-
-        curl_close($ch);
-        
-        //return $result;
-        
-        $jsondecode = json_decode($result);
-        
-        if ($jsondecode && $jsondecode != '')
-        {
-            $errorcode = $jsondecode->{'errorcode'};
-            // return $errorcode;
-            if ($errorcode == 0)
-            {
-                // session(['empcode',$empcode]);
-                return redirect()->back()->with('messageemp','Save successful');
-            }
-            else
-            {
-                return redirect()->back()->with('messageemp','Save unsuccessful');
-            }
-        }
-        
     }
 
+}
+
 //POST WAGES AT DB - HANNIS
-    public function postWages(Request $req)
+public function postWages(Request $req)
+{
+
+    $data = array();
+    $cntdata = 0;
+    foreach ($req->empcode as $index => $empcodefld)
     {
-        $caserefno= session('caserefno'); 
-        $operid = session('loginname');
-        // $brcode = session('loginbranchcode');
-        
+        $empcode = $empcodefld;
+        $empname = $req->empname[$index];
+        $startdate = $req->startdate[$index];
+        $startdate = str_replace('-', '', $startdate);
+        $enddate = $req->enddate[$index];
+        $enddate = str_replace('-', '', $enddate);
+        $wagesinfo = array();
+        $cnt = 0;
 
-        $data = array();
-        $cntdata = 0;
-        foreach ($req->empcode as $index => $empcodefld)
+        foreach($req->month[$index] as $idx => $monthfld)
         {
-            $empcode = $empcodefld;
-            $empname = $req->empname[$index];
-            $startdate = $req->startdate[$index];
-            $startdate = str_replace('-', '', $startdate);
-            $enddate = $req->enddate[$index];
-            $enddate = str_replace('-', '', $enddate);
-            $wagesinfo = array();
-            $cnt = 0;
-            
-            foreach($req->month[$index] as $idx => $monthfld)
-            {
-                $month = $monthfld;
-                $year = $req->year[$index][$idx];
-                $wages = $req->wages[$index][$idx];
-                $contr = $req->contrpaid[$index][$idx];
-                
-                $wagesinfo[$cnt] = ['month'=>$month, 'year'=>$year, 'wages'=>$wages, 'contrpaid'=>$contr, 'assumedwages'=>'',
-                    'contrpayable'=>'','contrdiff'=>'', 'contrsts'=>'','recommended'=>'', 'reason'=>'', 'wageremarks'=>'']; 
-                
-                $cnt++;
-            }
-            
-            $data[$cntdata] = ['empcode'=>$empcode, 'empname'=>$empname, 'startdate'=>$startdate, 'enddate'=>$enddate, 'wagesinfo'=>$wagesinfo];
-            $cntdata++;
-            
+            $month = $monthfld;
+            $year = $req->year[$index][$idx];
+            $wages = $req->wages[$index][$idx];
+            $contr = $req->contrpaid[$index][$idx];
+
+            $wagesinfo[$cnt] = ['month'=>$month, 'year'=>$year, 'wages'=>$wages, 'contrpaid'=>$contr, 'assumedwages'=>'',
+            'contrpayable'=>'','contrdiff'=>'', 'contrsts'=>'','recommended'=>'', 'reason'=>'', 'wageremarks'=>'']; 
+
+            $cnt++;
         }
-        
-        $wages = ['caserefno'=>$caserefno, 'operid'=>$operid, 'data'=>$data];
-        $jsondata = json_encode($wages);
-        // return $jsondata;
 
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newwages';
+        $data[$cntdata] = ['empcode'=>$empcode, 'empname'=>$empname, 'startdate'=>$startdate, 'enddate'=>$enddate, 'wagesinfo'=>$wagesinfo];
+        $cntdata++;
 
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+    }
 
-        curl_close($ch);
-        
-        $jsondecode = json_decode($result);
-        // return $jsondata.'++'.$result;
-        
+    // dd($data);
+
+    $url = env('WS_IP', 'localhost').'/api/wsmotion/'; 
+
+    $options = [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ],
+
+        'json' => [
+            "operid"=> session('loginname'),
+            "caserefno"=> session('caserefno'),
+            "data" => $data
+        ],
+
+    ];
+    // dd($options);
+    $client = new Client();
+
+    try {
+
+        $response = $client->post($url.'newwages',$options);
+            // dd($response);
+        $body = $response->getBody()->getContents();
+            // dd($body);
+        $jsondecode = json_decode($body);
+
         $errorcode = $jsondecode->{'errorcode'};
         // return $errorcode;
         if ($errorcode == 0)
@@ -1616,194 +1614,311 @@ class NoticeOdController extends CommonController
         {
             return redirect()->back()->withInput(['tab'=>'wages'])->with('messagewage','Save unsuccessful');
         }
-        
+
+
     }
-    
-    public function Submit(Request $req)
+
+    catch(\Exception $e)
     {
-        
-        
+        return $e->getMessage();
+
     }
-    
+
+    // $wages = ['caserefno'=>$caserefno, 'operid'=>$operid, 'data'=>$data];
+    // $jsondata = json_encode($wages);
+    //     // return $jsondata;
+
+    // $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newwages';
+
+    // $ch = curl_init();
+
+    // curl_setopt($ch,CURLOPT_URL, $url);
+    // curl_setopt($ch, CURLOPT_PROXY, '');
+
+    // curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
+    // curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
+
+    // curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // $result = curl_exec($ch);
+    // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+
+    // curl_close($ch);
+
+    // $jsondecode = json_decode($result);
+    //     // return $jsondata.'++'.$result;
+
+    // $errorcode = $jsondecode->{'errorcode'};
+    //     // return $errorcode;
+    // if ($errorcode == 0)
+    // {
+    //     return redirect()->back()->withInput(['tab'=>'wages'])->with('messagewage','Save successful');
+    // }
+    // else
+    // {
+    //     return redirect()->back()->withInput(['tab'=>'wages'])->with('messagewage','Save unsuccessful');
+    // }
+
+}
+
+public function Submit(Request $req)
+{
+
+
+}
+
 
     //post bank info
-     public function postBankInfo(Request $req)
+public function postBankInfo(Request $req)
+{
+
+    $url = env('WS_IP', 'localhost').'/api/wsmotion/';
+
+    $accexist = '';
+    $reasonnoacc= $req->reasonnoacc;
+    $baists= '';
+    $substsdesc= '';
+    $paymode= $req->paymode;
+    $bankloc= $req->bankloc;
+    $bankcode= $req->bankcode;
+    $ovbankname= $req->ovbankname;
+    $swiftcode = $req->swiftcode;
+    $bsbcode = $req->bsbcode;
+    $localbankbr= $req->localbankbr;
+    $localaccno= $req->localaccno;
+    $localbankaddr = $req->localbankaddr;
+    $localacctype= $req->localacctype;
+    $ovaccno = $req->ovaccno;
+    $ovbankaddr = $req->ovbankaddr;
+    $ovbankbr = $req->ovbankbr;
+    $ovacctype = $req->ovacctype;
+
+    if ($paymode == '01')
     {
-        $caserefno= session('caserefno');//$req->idno;
-        $operid = session('loginname');
-        $brcode = session('loginbranchcode');
-        
-        $accexist= $req->accexist;
-        $reasonnoacc= $req->reasonnoacc;
-        $baists= $req->baists;
-        $substsdesc= $req->substsdesc;
-        $paymode= $req->paymode;
-        $bankloc= $req->bankloc;
-        $bankcode= $req->bankcode;
-        $ovbankname= $req->ovbankname;
-        $swiftcode = $req->swiftcode;
-        $bsbcode = $req->bsbcode;
-        $localbankbr= $req->localbankbr;
-        $localaccno= $req->localaccno;
-        $localbankaddr = $req->localbankaddr;
-        $localacctype= $req->localacctype;
-        $ovaccno = $req->ovaccno;
-        $ovbankaddr = $req->ovbankaddr;
-        $ovbankbr = $req->ovbankbr;
-        $ovacctype = $req->ovacctype;
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
 
-        if ($paymode == '01')
+            'json' => [
+                "accexist" => '',
+                "reasonnoacc"=> $reasonnoacc,
+                "baists"=> '',
+                "substsdesc"=> '',
+                "paymode"=> $paymode,
+                "bankloc"=> null,
+                "bankcode"=> null,
+                "ovbankname"=>null,
+                "swiftcode" => null,
+                "bsbcode" => null,
+                "bankbr"=> null,
+                "bankaddr" => null,
+                "accno"=> null,
+                "acctype"=> null,
+                "caserefno"=> session('caserefno'),
+                "operid"=> session('loginname'),
+                "brcode"=> session('loginbranchcode')
+            ],
+
+        ];
+    }
+
+    else if ($paymode == '02')
+    {
+        if ($bankloc == 'L')
         {
-            $bankinfo=['operid'=>$operid,'brcode'=>$brcode,'caserefno'=>$caserefno,'accexist'=>$accexist,'reasonnoacc'=>$reasonnoacc, 'baists'=>null, 'substsdesc'=>null, 'paymode'=>$paymode, 'bankloc'=>null,'bankcode'=>null,'ovbankname'=>null,'bankbr'=>null,'bankaddr'=>null,'accno'=>null,'acctype'=>null,'swiftcode'=>null,'bsbcode'=>null];
+            $options = [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json'
+                ],
+
+                'json' => [
+                    "accexist" => '',
+                    "reasonnoacc"=> null,
+                    "baists"=> '',
+                    "substsdesc"=> '',
+                    "paymode"=> $paymode,
+                    "bankloc"=> $bankloc,
+                    "bankcode"=> $bankcode,
+                    "ovbankname"=> null,
+                    "swiftcode" => null,
+                    "bsbcode" => null,
+                    "bankbr"=> null,
+                    "accno"=> $localaccno,
+                    "bankaddr" => $localbankaddr,
+                    "acctype"=> $localacctype,
+
+                    "caserefno"=> session('caserefno'),
+                    "operid"=> session('loginname'),
+                    "brcode"=> session('loginbranchcode')
+                ],
+
+            ];
         }
-
-        else if ($paymode == '02')
+        else if ($bankloc == 'O')
         {
-            if ($bankloc == 'L')
-            {
-                $bankinfo=['operid'=>$operid,'brcode'=>$brcode,'caserefno'=>$caserefno,'accexist'=>null,'reasonnoacc'=>null, 'baists'=>$baists, 'substsdesc'=>$substsdesc, 'paymode'=>$paymode,'bankloc'=>$bankloc,'bankcode'=>$bankcode,'ovbankname'=>null,'bankbr'=>$localbankbr,'bankaddr'=>$localbankaddr,'accno'=>$localaccno,'acctype'=>$localacctype,'swiftcode'=>null,'bsbcode'=>null];
-            }
-            else if ($bankloc == 'O')
-            {
-                $bankinfo=['operid'=>$operid,'brcode'=>$brcode,'caserefno'=>$caserefno,'accexist'=>null,'reasonnoacc'=>null, 'baists'=>$baists, 'substsdesc'=>$substsdesc, 'paymode'=>$paymode,'bankloc'=>$bankloc,'bankcode'=>$bankcode, 'ovbankname'=>$ovbankname,'bankbr'=>$ovbankbr,'bankaddr'=>$ovbankaddr,'accno'=>$ovaccno,'acctype'=>$ovacctype, 'swiftcode'=>$swiftcode,'bsbcode'=>$bsbcode];
-            }
-        }
+           $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
 
-        else 
-        {
-            $bankinfo=['operid'=>$operid,'brcode'=>$brcode,'caserefno'=>$caserefno,'accexist'=>null,'reasonnoacc'=>null, 'baists'=>null, 'substsdesc'=>null, 'paymode'=>$paymode,'bankloc'=>null,'bankcode'=>null,'ovbankname'=>null,'bankbr'=>null,'bankaddr'=>null,'accno'=>null,'acctype'=>null,'swiftcode'=>null,'bsbcode'=>null];
-        }
+            'json' => [
+                "accexist" => '',
+                    // dd($accexist);
+                "reasonnoacc"=> null,
+                    // dd($reasonnoacc);
+                "baists"=> '',
+                "substsdesc"=> '',
+                "paymode"=> $paymode,
+                "bankloc"=> $bankloc,
+                "bankcode"=> null,
+                "ovbankname"=> $ovbankname,
+                "swiftcode" => $swiftcode,
+                "bsbcode" => $bsbcode,
+                "bankbr"=> null,
+                "accno" => $ovaccno,
+                "bankaddr" => $ovbankaddr,
+                "acctype" => $ovacctype,
 
-        
-        $jsondata = json_encode($bankinfo);
-        // return $jsondata;
+                "caserefno"=> session('caserefno'),
+                "operid"=> session('loginname'),
+                "brcode"=> session('loginbranchcode')
+            ],
 
+        ];
+    }
+}
 
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/bankinfo';
+else 
+{
+    $options = [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ],
 
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        'json' => [
+            "accexist" => '',
+                // dd($accexist);
+            "reasonnoacc"=> null,
+                // dd($reasonnoacc);
+            "baists"=> '',
+            "substsdesc"=> '',
+            "paymode"=> null,
+            "bankloc"=> null,
+            "bankcode"=> null,
+            "ovbankname"=> null,
+            "swiftcode" => null,
+            "bsbcode" => null,
+            "accno" => null,
+            "bankaddr" => null,
+            "bankbr" => null,
+            "acctype" => null,
+            "caserefno"=> session('caserefno'),
+            "operid"=> session('loginname'),
+            "brcode"=> session('loginbranchcode')
+        ],
 
-        // return view('noticeAccident.index');
-       // return redirect()->back;
-            //close connection
-        curl_close($ch);
-        
-        $jsondecode = json_decode($result);
-        // return $jsondata.'+'.$result;
-        
-        if ($jsondecode && $jsondecode != '')
-        {
-            $errorcode = $jsondecode->{'errorcode'};
+    ];
+}
+
+    // dd($options);
+$client = new Client();
+
+try {
+
+    $response = $client->post($url.'bankinfo',$options);
+        // dd($response);
+    $body = $response->getBody()->getContents();
+        // dd($body);
+    $jsondecode = json_decode($body);
+
+    if ($jsondecode && $jsondecode != '')
+    {
+        $errorcode = $jsondecode->{'errorcode'};
             // return $errorcode;
-            if ($errorcode == 0)
-            {
-                return redirect()->back()->withInput(['tab'=>'bankinfo'])->with('messagebank','Save successful');
-            }
-            else
-            {
-                return redirect()->back()->withInput(['tab'=>'bankinfo'])->with('messagebank','Save unsuccessful');
-            }
+        if ($errorcode == 0)
+        {
+            return redirect()->back()->withInput(['tab'=>'bankinfo'])->with('messagebank','Save successful');
         }
-      
-        
-        // return $httpcode;
+        else
+        {
+            return redirect()->back()->withInput(['tab'=>'bankinfo'])->with('messagebank','Save unsuccessful');
+        }
     }
 
 
+}
+
+catch(\Exception $e)
+{
+    return $e->getMessage();
+
+}
+
+}
+
     //post od employer history
-    public function postOdEmphistory(Request $req)
+public function postOdEmphistory(Request $req)
+{
+
+    $url = env('WS_IP', 'localhost').'/api/wsmotion/';
+
+
+    $emprecord = Input::get('empname');
+    $data = array();
+    $i = 0;
+    foreach ($emprecord as $idx =>$name)
     {
-      
-        $caserefno = session('caserefno');
-        // $idno= session('idno');
-        $operid= session('loginname');
-        $brcode = session('loginbranchcode');
-        
-        //return Input::all();
-        
-        $emprecord = Input::get('empname');
-        $data = array();
-        $i = 0;
-        foreach ($emprecord as $idx =>$name)
-        {
             //return $name.'++'.$idx;
-            $empname= $req->empname[$idx];
-            $empadd= $req->empadd[$idx];
-            $duration= $req->duration[$idx];
-            $designation= $req->designation[$idx];
-            
-            if ($empname == '' && $empadd == '' && $duration == '' && $designation == '')
-            {
-                continue;
-            }
-            
-            $data[$i] = ['empname'=>$empname, 'empadd'=>$empadd, 'duration'=>$duration, 'designation'=>$designation];
-            
-            $i++;
+        $empname= $req->empname[$idx];
+        $empadd= $req->empadd[$idx];
+        $duration= $req->duration[$idx];
+        $designation= $req->designation[$idx];
+
+        if ($empname == '' && $empadd == '' && $duration == '' && $designation == '')
+        {
+            continue;
         }
-        
-        
-        
 
-        // $data = ['empname'=>$empname, 'empadd'=>$empadd, 'duration'=>$duration, 'designation'=>$designation];
-        
-        
-        // $cnt = 0;
+        $data[$i] = ['empname'=>$empname, 'empadd'=>$empadd, 'duration'=>$duration, 'designation'=>$designation];
 
-        // foreach($data as $d)
-        // {
-        //     $empname= $d->empname;
-        //     $empadd= $d->empadd;
-        //     $duration= $d->duration;
-        //     $designation= $d->designation;
+        $i++;
+    }
 
-        //     $data[$cnt]=['empname'=>$empname,'empadd'=>$empadd, 
-        //     'duration'=>$duration, 'designation'=>$designation];
-        //     $cnt++;
-        // }
+        // dd($data);
 
-        $odemphist = ['caserefno'=>$caserefno,'operid'=>$operid, 
-            'brcode'=>$brcode, 'data'=>$data];
-        $jsondata = json_encode($odemphist);
-        
-        // return $jsondata;
+    $options = [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ],
 
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/odemphistory';
-        
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        'json' => [
+            "data" => $data,
+            "operid"=> session('loginname'),
+            "brcode"=> session('brcode'),
+            "caserefno"=> session('caserefno')
+        ],
 
-        curl_close($ch);
+    ];
+        // dd($options);
+    $client = new Client();
 
-        // return $result;
-        $jsondecode = json_decode($result);
+    try {
 
-        // return $jsondata.'++'.$result;
+        $response = $client->post($url.'odemphistory',$options);
+            // dd($response);
+        $body = $response->getBody()->getContents();
+            // dd($body);
+        $jsondecode = json_decode($body);
+
         $errorcode = $jsondecode->{'errorcode'};
-        // return $errorcode;
+            // return $errorcode;
         if ($errorcode == 0)
         {
             return redirect()->back()->withInput(['tab'=>'odinfo'])->with('msgodemphist','Save Successful');
@@ -1813,252 +1928,277 @@ class NoticeOdController extends CommonController
             return redirect()->back()->withInput(['tab'=>'odempinfo'])->with('msgodemphist','Save Unsuccessful');
         }
 
+
     }
 
-    //post od info
-    public function postOdinfo(Request $req)
+    catch(\Exception $e)
     {
-      
-        $operid= session('loginname');
-        $brcode= session('loginbranchcode');
-        $caserefno = session('caserefno');
-        //$accddate = substr($accddate,6,4).substr($accddate,3,2).substr($accddate,0,2);
-       
-        $oddesc= $req->oddesc;
-        $emprelated= $req->emprelated;
-        $dutydesc= $req->dutydesc;
-        $symptom= $req->symptom;
-        $clinicinfo= $req->clinicinfo;
-        
-        $odinfo=['operid'=>$operid,'brcode'=>$brcode, 'caserefno'=>$caserefno,'oddesc'=>$oddesc,'emprelated'=>$emprelated, 
-            'dutydesc'=>$dutydesc, 'symptom'=>$symptom, 'clinicinfo'=>$clinicinfo];
+        return $e->getMessage();
 
-        $jsondata = json_encode($odinfo);
-        
-        // return $jsondata;
+    }
+}
 
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/updodinfo';
-        
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
 
-        curl_close($ch);
-        
-        $jsondecode = json_decode($result);
+    //post od info
+public function postOdinfo(Request $req)
+{
 
-        // return $jsondecode;
+    $url = env('WS_IP', 'localhost').'/api/wsmotion/';
+
+    $options = [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ],
+
+        'json' => [
+            "oddesc" => $req->oddesc,
+            "emprelated"=> $req->emprelated,
+            "dutydesc"=> $req->dutydesc,
+            "symptom"=> $req->symptom,
+            "clinicinfo"=>$req->clinicinfo,
+            "operid"=> session('loginname'),
+            "brcode"=> session('loginbranchcode'),
+            "caserefno"=> session('caserefno')
+        ],
+
+    ];
+        // dd($options);
+    $client = new Client();
+
+    try {
+
+        $response = $client->post($url.'updodinfo',$options);
+            // dd($response);
+        $body = $response->getBody()->getContents();
+            // dd($body);
+        $jsondecode = json_decode($body);
+
         $errorcode = $jsondecode->{'errorcode'};
+            // return $errorcode;
         if ($errorcode == 0)
         {
-            return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messageod','Save Successful');
+            return redirect()->back()->withInput(['tab'=>'odinfo'])->with('messageod','Save Successful');
         }
         else
         {
-            return redirect()->back()->withInput(['tab'=>'odinfo'])->with('messageod','Save Unsuccessful');
+            return redirect()->back()->withInput(['tab'=>'odempinfo'])->with('messageod','Save Unsuccessful');
         }
-        
-        
+
+
     }
+
+    catch(\Exception $e)
+    {
+        return $e->getMessage();
+
+    }
+
+
+}
 
     //for confirmation 
-    public function postConfirmation(Request $req)
-    {
-        if ($req->action == 'Save')
+public function postConfirmation(Request $req)
+{
+    // if ($req->action == 'Save')
+    // // {   
+    //     $caserefno = session('caserefno');
+    //     $operid = session('loginname');
+    //     $brcode = session('loginbranchcode');
+    //     $uniquerefno = session('uniquerefno');
+
+    $preferedbranch = $req->brname;
+    $stampdate = $req->stampdate;
+        // $stampdate = substr($stampdate,6,4).substr($stampdate,3,2).substr($stampdate,0,2);
+    $stampdate = str_replace('-', '', $stampdate);
+    $jrecv = $req->jrecv;
+    $jrecvdate = $req->jrecvdate;
+    $jrecvdate = str_replace('-', '', $jrecvdate);
+        // $jrecvdate = substr($jrecvdate,6,4).substr($jrecvdate,3,2).substr($jrecvdate,0,2);
+    $remarks = $req->remarks;
+
+    $url = env('WS_IP', 'localhost').'/api/wsmotion/';
+
+    $options = [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json'
+        ],
+
+        'json' => [
+            "caserefno"=> session('caserefno'),
+            "operid"=> session('loginname'),
+            "brcode"=> session ('loginbranchcode'),
+            "uniquerefno"=> session ('uniquerefno'),
+            "preferedbranch"=> $preferedbranch,
+            "stampdate"=> $stampdate,
+            "jrecv"=> $jrecv,
+            "jrecvdate"=> $jrecvdate,
+            "remarks"=> $remarks
+        ],
+
+    ];
+
+
+    // dd($options);
+    $client = new Client();
+
+    try {
+
+        $response = $client->post($url.'updconfirmation',$options);
+        // dd($response);
+        $body = $response->getBody()->getContents();
+        // dd($body);
+        $jsondecodeConfirmation = json_decode($body);
+
+        $errorcode = $jsondecodeConfirmation->{'errorcode'};
+        // return $errorcode;
+        if ($errorcode == 0)
         {
-            $caserefno = session('caserefno');
-            $operid = session('loginname');
-            $brcode = session('loginbranchcode');
-            $uniquerefno = session('uniquerefno');
-
-            $preferedbranch = $req->brname;
-            $stampdate = $req->stampdate;
-            // $stampdate = substr($stampdate,6,4).substr($stampdate,3,2).substr($stampdate,0,2);
-            $stampdate = str_replace('-', '', $stampdate);
-            $jrecv = $req->jrecv;
-            $jrecvdate = $req->jrecvdate;
-            $jrecvdate = str_replace('-', '', $jrecvdate);
-            // $jrecvdate = substr($jrecvdate,6,4).substr($jrecvdate,3,2).substr($jrecvdate,0,2);
-            $remarks = $req->remarks;
-
-
-            $confirmation = ['caserefno'=>$caserefno, 'operid'=>$operid, 'brcode'=>$brcode,
-                            'stampdate'=>$stampdate, 'preferedbranch'=>$preferedbranch, 'uniquerefno'=>$uniquerefno,
-                            'jrecv'=>$jrecv, 'jrecvdate'=>$jrecvdate, 'remarks'=>$remarks];
-
-
-            $jsondata = json_encode($confirmation);
-
-            //return $jsondata;
-
-
-            $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/updconfirmation';
-
-
-            $ch = curl_init();
-
-            curl_setopt($ch,CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_PROXY, '');
-
-            curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-            curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-
-            curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $result = curl_exec($ch);
-            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-
-            curl_close($ch);
-
-            $jsondecodeConfirmation = json_decode($result);
-
-            // return $jsondecodeConfirmation;
-            $errorcode = $jsondecodeConfirmation->{'errorcode'};
-            if ($errorcode == 0)
-            {
-                return redirect()->back()->withInput(['tab'=>'confirmation'])->with('messageconf','Save Successful');
-            }
-            else
-            {
-                return redirect()->back()->withInput(['tab'=>'confirmation'])->with('messageconf','Save Unsuccessful');
-            }
+            return redirect()->back()->withInput(['tab'=>'confirmation'])->with('messageconf','Save Successful');
         }
-        else if($req->action=='Preview')
+        else
         {
-            // return redirect('/success');
+            return redirect()->back()->withInput(['tab'=>'confirmation'])->with('messageconf','Save Unsuccessful');
         }
-        else if ($req->action == 'Submit')
-        {
-            $operid = session('loginname');
-            $brcode = session('loginbranchcode');
-            $caserefno= session('caserefno');
-            $wbid = session('wbid');//chg07072019
-
-            $prevschemerefno='';
 
 
-            $datatosend = ['operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 'prevschemerefno'=>$prevschemerefno,
-                'wbid'=>$wbid];//chg07072019
-
-
-            $jsondata = json_encode($datatosend);
-
-            //return $jsondata;
-
-
-            $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/submit';
-
-
-            $ch = curl_init();
-
-            curl_setopt($ch,CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_PROXY, '');
-
-            curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-            curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-
-            curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $result = curl_exec($ch);
-            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-
-            curl_close($ch);
-
-            $jsondecode = json_decode($result);
-            //return $result;
-            $errorcode = $jsondecode->{'errorcode'};
-
-            if ($errorcode == 0)
-            {
-                $schemerefno = $jsondecode->{'schemerefno'};
-                $casestatus = $jsondecode->{'casests'};
-                $source = $jsondecode->{'source'};
-                //session(['messageconf'=>'Scheme Reference No: '.$schemerefno]);
-                session(['schemerefno'=>$schemerefno]);
-                session(['casestatus'=>$casestatus]);
-                session(['source'=>$source]);
-                return redirect('/success');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
-            }
-            else
-            {
-                $errordesc = $jsondecode->{'errordesc'};
-                return redirect()->back()->withInput(['tab'=>'confirmation'])->with('messageconf','Submission unsuccessful. '.$errordesc);
-            }
-        }
-        
-        
     }
 
-    public function indexIO()
+    catch(\Exception $e)
     {
-        $operid = session('loginname');
-        
-        if ($operid == '')
+        return $e->getMessage();
+
+    }
+
+}
+    
+    //kai comment off 27092019
+
+    // }
+    // else if($req->action=='Preview')
+    // {
+    //         // return redirect('/success');
+    // }
+    // else if ($req->action == 'Submit')
+    // {
+    // $operid = session('loginname');
+    // $brcode = session('loginbranchcode');
+    // $caserefno= session('caserefno');
+    //         $wbid = session('wbid');//chg07072019
+
+    //         $prevschemerefno='';
+
+
+    //         $datatosend = ['operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 'prevschemerefno'=>$prevschemerefno,
+    //             'wbid'=>$wbid];//chg07072019
+
+
+    //             $jsondata = json_encode($datatosend);
+
+    //         //return $jsondata;
+
+
+    //             $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/submit';
+
+
+    //             $ch = curl_init();
+
+    //             curl_setopt($ch,CURLOPT_URL, $url);
+    //             curl_setopt($ch, CURLOPT_PROXY, '');
+
+    //             curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
+    //             curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
+
+    //             curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    //             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //             $result = curl_exec($ch);
+    //             $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    //             $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+
+    //             curl_close($ch);
+
+    //             $jsondecode = json_decode($result);
+    //         //return $result;
+    //             $errorcode = $jsondecode->{'errorcode'};
+
+    //             if ($errorcode == 0)
+    //             {
+    //                 $schemerefno = $jsondecode->{'schemerefno'};
+    //                 $casestatus = $jsondecode->{'casests'};
+    //                 $source = $jsondecode->{'source'};
+    //             //session(['messageconf'=>'Scheme Reference No: '.$schemerefno]);
+    //                 session(['schemerefno'=>$schemerefno]);
+    //                 session(['casestatus'=>$casestatus]);
+    //                 session(['source'=>$source]);
+    //             return redirect('/success');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
+    //         }
+    //         else
+    //         {
+    //             $errordesc = $jsondecode->{'errordesc'};
+    //             return redirect()->back()->withInput(['tab'=>'confirmation'])->with('messageconf','Submission unsuccessful. '.$errordesc);
+    //         }
+    //     // }
+
+
+        public function indexIO()
         {
-            return redirect('/login');
-        }
-        
-        $idno = session('idno');
-        if ($idno == '')
-        {
-            return redirect('/home');
-        }
-        
-        $jsondecode='';
-        $jsondecod1='';
-        $jsondecod3='';
+            $operid = session('loginname');
+
+            if ($operid == '')
+            {
+                return redirect('/login');
+            }
+
+            $idno = session('idno');
+            if ($idno == '')
+            {
+                return redirect('/home');
+            }
+
+            $jsondecode='';
+            $jsondecod1='';
+            $jsondecod3='';
 
         //HANNIS
-        $jsondecodeAssistEmployer="";
-        $jsondecodeEmployerdate="";
-        $jsondecodeWages="";
+            $jsondecodeAssistEmployer="";
+            $jsondecodeEmployerdate="";
+            $jsondecodeWages="";
 
 
         //SYAHIRAH
 
         // $jsondecodemp='';
-        $jsondecodebank='';
-        $jsondecodepermanent='';
+            $jsondecodebank='';
+            $jsondecodepermanent='';
 
-        
-        $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
-        $occucode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['occupation']);
-        $race=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['race']);
-        $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
-        $mcsts=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['mcsts']);
-        $transport=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['transport']);
-        $accdplace=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdplace']);
-        $accdwhen=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdwhen']);
-        $causative=DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['causative']);
-        $accdcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['accdcode']);
-        $industcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['industcode']);
-        $profcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['profcode']);
-        $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
-        $worksts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['worksts']);
-        $hussts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['hussts']);
-        
+
+            $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
+            $occucode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['occupation']);
+            $race=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['race']);
+            $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
+            $mcsts=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['mcsts']);
+            $transport=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['transport']);
+            $accdplace=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdplace']);
+            $accdwhen=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdwhen']);
+            $causative=DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['causative']);
+            $accdcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['accdcode']);
+            $industcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['industcode']);
+            $profcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['profcode']);
+            $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
+            $worksts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['worksts']);
+            $hussts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['hussts']);
+
         //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
         //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
 
         //SYAHIRAH
-        $optionbank=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankloc']);
-        $optionreason=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['rsnnoacc']);
-        $optionbai=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['baists']);
-        $optionpay=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['paymode']);
-        $bankcode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankcode']);
-        $accountype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['acctype']);
+            $optionbank=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankloc']);
+            $optionreason=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['rsnnoacc']);
+            $optionbai=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['baists']);
+            $optionpay=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['paymode']);
+            $bankcode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankcode']);
+            $accountype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['acctype']);
         $overseasbank=$bankcode;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['bankcode']);
         $overseasbanktype=$accountype;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['acctype']);
         $emptype = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['emptype']);
@@ -2066,7 +2206,7 @@ class NoticeOdController extends CommonController
         //najmi
         //$doclist = DB::select('select docdescen,doctype,docdescbm from doctype where doccat=?',['C']);
         $sql = 'select d.docdescen,d.doctype,d.docdescbm, d.doccat, n.priority from doctype d, noticedoc n '
-                . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
+        . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
         $doclist = DB::select($sql,[session('noticetype')]);
         
         //chg28062019 irina - get all doc
@@ -2088,7 +2228,7 @@ class NoticeOdController extends CommonController
         
         //irina - begin
         $caserefno = session('caserefno');
-     
+
 
         //HANNIS
         $this->getAssist($jsondecodeAssistEmployer);
@@ -2110,7 +2250,7 @@ class NoticeOdController extends CommonController
 
         $docinfo = array();
         $this->getDoc($docinfo);
-         
+
         $jsondecodepermanent = null;
         $bankinfo = null;
         $test = $this->getBankInfo($jsondecodebank);
@@ -2136,7 +2276,7 @@ class NoticeOdController extends CommonController
         $empcert = null;
 
         $permanentrep = null;
-     
+
         //return $jsondecode;
         
         if ($jsondecode && $jsondecode!='')//irina
@@ -2164,7 +2304,7 @@ class NoticeOdController extends CommonController
         //notice od
         $jsondecodeOdinfo="";
         $this->getOdInfo($jsondecodeOdinfo);
-            
+
         if ($jsondecodeOdinfo && $jsondecodeOdinfo!='')//hannis
         {
             $errorcode = $jsondecodeOdinfo->{'errorcode'};
@@ -2242,7 +2382,7 @@ class NoticeOdController extends CommonController
                 $bankinfo = null;
             }
             
-           
+
         }
         
 
@@ -2257,34 +2397,34 @@ class NoticeOdController extends CommonController
             if ($record <= 0)
             {
                  //$jsondecodeConfirmation = null;
-                 $confirmation = null;
-            }
-            else
-            {
-                $confirmation = $jsondecodeConfirmation->{'data'};
+               $confirmation = null;
+           }
+           else
+           {
+            $confirmation = $jsondecodeConfirmation->{'data'};
                 //return $confirmation;
-            }
-             
         }
-        
+
+    }
+
         //return $confirmation;
-        
-        $jsondecodemc = '';
-        $this->GetMCDetails($jsondecodemc);
+
+    $jsondecodemc = '';
+    $this->GetMCDetails($jsondecodemc);
         //return json_encode($jsondecodemc);
-        if ($jsondecodemc && $jsondecodemc != '')
+    if ($jsondecodemc && $jsondecodemc != '')
+    {
+        $errorcode = $jsondecodemc->{'errorcode'};
+
+        if ($errorcode != 0)
         {
-            $errorcode = $jsondecodemc->{'errorcode'};
-
-            if ($errorcode != 0)
-            {
-                $jsondecodemc = null;
-            }
-
-
+            $jsondecodemc = null;
         }
-        
-        $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+
+
+    }
+
+    $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
         // if ($confirmation != null && $confirmation->statecode != '')
         // {
         //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
@@ -2293,7 +2433,7 @@ class NoticeOdController extends CommonController
         // {
         //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
         // }
-        
+
         //return json_encode($jsondecodemc);
         /*
         $mcinfo = $jsondecodemc->{'mcinfo'};
@@ -2316,7 +2456,336 @@ class NoticeOdController extends CommonController
         
         //return $bankinfo;
         
-        return view('Scheme.noticeOd.index_io',['obprofile'=>$obprofile,'state'=>$state, 
+        return view('scheme.noticeOd.IO.index',['obprofile'=>$obprofile,'state'=>$state, 
+            'idtype'=>$idtype, 'occucode'=> $occucode, 'race'=>$race, 'national'=>$national, 'mcsts'=>$mcsts, 'transport'=>$transport,
+            'accdplace'=>$accdplace, 'accdwhen'=>$accdwhen , 'obformassist' => $jsondecodeAssist, 
+            'employer' => $jsondecodeAssistEmployer, 'emprecord' => $emprecord,'wagesinfo' => $wagesinfo,
+            'contribution'=>$contrinfo, 'data'=>$data,'bankinfo'=>$bankinfo, 'optionbank'=>$optionbank, 
+            'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode, 
+            'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
+            'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts, 
+            'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
+            'docinfo'=>$docinfo, 'odempinfo' => $odempinfo, 'oddata'=>$oddata, 'confirmation'=>$confirmation,
+            'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'doclist_select'=>$alldoclist]);
+
+    }
+
+    public function indexSCO()
+    {
+        $operid = session('loginname');
+        
+        if ($operid == '')
+        {
+            return redirect('/login');
+        }
+        
+        $idno = session('idno');
+        if ($idno == '')
+        {
+            return redirect('/home');
+        }
+        
+        $jsondecode='';
+        $jsondecod1='';
+        $jsondecod3='';
+
+        //HANNIS
+        $jsondecodeAssistEmployer="";
+        $jsondecodeEmployerdate="";
+        $jsondecodeWages="";
+
+
+        //SYAHIRAH
+
+        // $jsondecodemp='';
+        $jsondecodebank='';
+        $jsondecodepermanent='';
+
+        
+        $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
+        $occucode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['occupation']);
+        $race=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['race']);
+        $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
+        $mcsts=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['mcsts']);
+        $transport=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['transport']);
+        $accdplace=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdplace']);
+        $accdwhen=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdwhen']);
+        $causative=DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['causative']);
+        $accdcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['accdcode']);
+        $industcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['industcode']);
+        $profcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['profcode']);
+        $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
+        $worksts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['worksts']);
+        $hussts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['hussts']);
+        
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+
+        //SYAHIRAH
+        $optionbank=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankloc']);
+        $optionreason=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['rsnnoacc']);
+        $optionbai=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['baists']);
+        $optionpay=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['paymode']);
+        $bankcode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankcode']);
+        $accountype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['acctype']);
+        $overseasbank=$bankcode;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['bankcode']);
+        $overseasbanktype=$accountype;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['acctype']);
+        $emptype = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['emptype']);
+        
+        //najmi
+        //$doclist = DB::select('select docdescen,doctype,docdescbm from doctype where doccat=?',['C']);
+        $sql = 'select d.docdescen,d.doctype,d.docdescbm, d.doccat, n.priority from doctype d, noticedoc n '
+        . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
+        $doclist = DB::select($sql,[session('noticetype')]);
+        
+        //chg28062019 irina - get all doc
+        $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
+
+
+        //return view ('fileupload.claim_info')->with('name',$select);
+
+        $jsondecodeAssist='';
+        $jsondecodeAccddate='';
+        $how = '';
+
+
+        $this->getObProfile($jsondecode);
+        //$test = json_encode($jsondecode);
+        // return $jsondecode;
+        //$this->getObContact($jsondecod1);
+        $this->getObFormAssist($jsondecodeAssist);
+        
+        //irina - begin
+        $caserefno = session('caserefno');
+
+
+        //HANNIS
+        $this->getAssist($jsondecodeAssistEmployer);
+        $jsondecodeEmployer="";
+        $this->getEmployer($jsondecodeEmployer);
+        
+        //return json_encode($jsondecodeEmployer);
+        //$jsondecodeWages = array();
+        //$this->getWages($jsondecodeWages);
+        
+        $contrinfo = array();
+        // $wagesinfo = array();
+        $data = array();
+
+        // $all = ['contrinfo'=>$contrinfo, 'wagesonfo'=>$wagesinfo, 'data'=>$data];
+        
+        $url = $this->getWages($contrinfo,$wagesinfo);
+        //return $url;
+
+        $docinfo = array();
+        $this->getDoc($docinfo);
+
+        $jsondecodepermanent = null;
+        $bankinfo = null;
+        $test = $this->getBankInfo($jsondecodebank);
+        
+        //return $test;
+        //return '++'.json_encode($jsondecodebank).'++';
+        //$this->getPermanentInfo($jsondecodepermanent);
+
+
+
+        //$accdrefcode = session('accdrefno');
+        //if($accdrefcode != '')
+        //{
+        //    $this->getAccidentinfo($jsondecod3); 
+            //$data= $jsondecod3->{'data'};
+            // $how= $data['how'];
+        //}
+        
+        //irina
+        $obprofile = null;
+        $obcontact = null;
+        $date = null;
+        $empcert = null;
+
+        $permanentrep = null;
+
+        //return $jsondecode;
+        
+        if ($jsondecode && $jsondecode!='')//irina
+        {
+            // return json_encode($jsondecode);
+            // return $jsondecode;
+            $record = $jsondecode->{'record'};
+            if ($record == 0)
+            {
+                $obprofile = null;
+            }
+            else
+            {
+                $obprofile = $jsondecode->{'data'};
+                $uniquerefno = $obprofile->{'uniquerefno'};
+                session(['uniquerefno'=>$uniquerefno]);
+            }
+
+
+            
+            //$test = json_encode($obprofile);
+            //return $test;
+        }
+
+        //notice od
+        $jsondecodeOdinfo="";
+        $this->getOdInfo($jsondecodeOdinfo);
+
+        if ($jsondecodeOdinfo && $jsondecodeOdinfo!='')//hannis
+        {
+            $errorcode = $jsondecodeOdinfo->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $oddata = $jsondecodeOdinfo->{'data'};
+            }
+            else
+            {
+                $oddata = null;
+            }
+        }
+
+
+        $jsondecodeOdEmphistory="";
+        $this->getOdEmphistory($jsondecodeOdEmphistory);
+
+        if ($jsondecodeOdEmphistory && $jsondecodeOdEmphistory!='')//hannis
+        {
+            $record = $jsondecodeOdEmphistory->{'record'};
+            if ($record > 0)
+            {
+                $odempinfo = $jsondecodeOdEmphistory->{'data'};
+            }
+            else
+            {
+                $odempinfo = null;
+            }
+            //$date = $jsondecodeEmployer->{'data'};
+        }
+
+        // return $odempinfo;
+
+        
+
+
+        /*if ($jsondecod1 && $jsondecod1!='')//irina
+        {
+            $obcontact = $jsondecod1->{'data'};
+        }*/
+
+        //HANNIS
+        //return json_encode($jsondecodeEmployer);
+        if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
+        {
+            $record = $jsondecodeEmployer->{'record'};
+            if ($record > 0)
+            {
+                $emprecord = $jsondecodeEmployer->{'emprecord'};
+                // $emprecord = $jsondecodeEmployer->{'emprecord'};
+                // if ($record == 1)
+                // {
+                //     // $empcode = $emprecord[0]->{'empcode'};
+                //     // session(['empcode'=>$empcode]);
+                // }
+            }
+            else
+            {
+                $emprecord = null;
+            }
+            //$date = $jsondecodeEmployer->{'data'};
+        }
+
+        //return $jsondecodebank;
+        if ($jsondecodebank && $jsondecodebank!='')//irina
+        {
+            $errorcode = $jsondecodebank->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $bankinfo = $jsondecodebank->{'data'};
+                //return json_encode($bankinfo);
+            }
+            else
+            {
+                $bankinfo = null;
+            }
+            
+
+        }
+        
+
+        $jsondecodeConfirmation="";
+        $confirmation = null;
+        $this->getConfirmation($jsondecodeConfirmation);
+        //return json_encode($jsondecodeConfirmation);
+
+        if ($jsondecodeConfirmation && $jsondecodeConfirmation!='')//irina
+        {
+            $record = $jsondecodeConfirmation->{'record'};
+            if ($record <= 0)
+            {
+                 //$jsondecodeConfirmation = null;
+               $confirmation = null;
+           }
+           else
+           {
+            $confirmation = $jsondecodeConfirmation->{'data'};
+                //return $confirmation;
+        }
+
+    }
+
+        //return $confirmation;
+
+    $jsondecodemc = '';
+    $this->GetMCDetails($jsondecodemc);
+        //return json_encode($jsondecodemc);
+    if ($jsondecodemc && $jsondecodemc != '')
+    {
+        $errorcode = $jsondecodemc->{'errorcode'};
+
+        if ($errorcode != 0)
+        {
+            $jsondecodemc = null;
+        }
+
+
+    }
+
+    $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        // if ($confirmation != null && $confirmation->statecode != '')
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
+        // }
+        // else
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
+        // }
+
+        //return json_encode($jsondecodemc);
+        /*
+        $mcinfo = $jsondecodemc->{'mcinfo'};
+        foreach($mcinfo as $mc)
+        {
+            //return json_encode($mc);
+            if (!empty($mc->workinfo) && $mc->workinfo != '')
+            {
+                foreach($mc->workinfo as $key2 => $work)
+                {
+                    return $key2;
+                }
+            }
+            else
+            {
+                return 'empty';
+            }
+                                      
+        }*/
+        
+        //return $bankinfo;
+        
+        return view('scheme.noticeOd.SCO.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'occucode'=> $occucode, 'race'=>$race, 'national'=>$national, 'mcsts'=>$mcsts, 'transport'=>$transport,
             'accdplace'=>$accdplace, 'accdwhen'=>$accdwhen , 'obformassist' => $jsondecodeAssist, 
             'employer' => $jsondecodeAssistEmployer, 'emprecord' => $emprecord,'wagesinfo' => $wagesinfo,
@@ -2329,17 +2798,336 @@ class NoticeOdController extends CommonController
             'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'doclist_select'=>$alldoclist]);
     }
 
-    public function indexSCO()
-    {
-        return view('Scheme.noticeOd.index_sco');
-    }
 
     public function indexSAO()
     {
-        return view('Scheme.noticeOd.index_sao');
+        $operid = session('loginname');
+        
+        if ($operid == '')
+        {
+            return redirect('/login');
+        }
+        
+        $idno = session('idno');
+        if ($idno == '')
+        {
+            return redirect('/home');
+        }
+        
+        $jsondecode='';
+        $jsondecod1='';
+        $jsondecod3='';
+
+        //HANNIS
+        $jsondecodeAssistEmployer="";
+        $jsondecodeEmployerdate="";
+        $jsondecodeWages="";
+
+
+        //SYAHIRAH
+
+        // $jsondecodemp='';
+        $jsondecodebank='';
+        $jsondecodepermanent='';
+
+        
+        $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
+        $occucode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['occupation']);
+        $race=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['race']);
+        $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
+        $mcsts=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['mcsts']);
+        $transport=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['transport']);
+        $accdplace=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdplace']);
+        $accdwhen=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdwhen']);
+        $causative=DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['causative']);
+        $accdcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['accdcode']);
+        $industcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['industcode']);
+        $profcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['profcode']);
+        $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
+        $worksts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['worksts']);
+        $hussts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['hussts']);
+        
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+        //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
+
+        //SYAHIRAH
+        $optionbank=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankloc']);
+        $optionreason=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['rsnnoacc']);
+        $optionbai=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['baists']);
+        $optionpay=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['paymode']);
+        $bankcode=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['bankcode']);
+        $accountype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['acctype']);
+        $overseasbank=$bankcode;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['bankcode']);
+        $overseasbanktype=$accountype;//DB::select('Select refcode, descen from reftable where tablerefcode=?', ['acctype']);
+        $emptype = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['emptype']);
+        
+        //najmi
+        //$doclist = DB::select('select docdescen,doctype,docdescbm from doctype where doccat=?',['C']);
+        $sql = 'select d.docdescen,d.doctype,d.docdescbm, d.doccat, n.priority from doctype d, noticedoc n '
+        . 'where n.casetype=? and n.doctype = d.doctype order by n.priority';
+        $doclist = DB::select($sql,[session('noticetype')]);
+        
+        //chg28062019 irina - get all doc
+        $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
+
+
+        //return view ('fileupload.claim_info')->with('name',$select);
+
+        $jsondecodeAssist='';
+        $jsondecodeAccddate='';
+        $how = '';
+
+
+        $this->getObProfile($jsondecode);
+        //$test = json_encode($jsondecode);
+        // return $jsondecode;
+        //$this->getObContact($jsondecod1);
+        $this->getObFormAssist($jsondecodeAssist);
+        
+        //irina - begin
+        $caserefno = session('caserefno');
+
+
+        //HANNIS
+        $this->getAssist($jsondecodeAssistEmployer);
+        $jsondecodeEmployer="";
+        $this->getEmployer($jsondecodeEmployer);
+        
+        //return json_encode($jsondecodeEmployer);
+        //$jsondecodeWages = array();
+        //$this->getWages($jsondecodeWages);
+        
+        $contrinfo = array();
+        // $wagesinfo = array();
+        $data = array();
+
+        // $all = ['contrinfo'=>$contrinfo, 'wagesonfo'=>$wagesinfo, 'data'=>$data];
+        
+        $url = $this->getWages($contrinfo,$wagesinfo);
+        //return $url;
+
+        $docinfo = array();
+        $this->getDoc($docinfo);
+
+        $jsondecodepermanent = null;
+        $bankinfo = null;
+        $test = $this->getBankInfo($jsondecodebank);
+        
+        //return $test;
+        //return '++'.json_encode($jsondecodebank).'++';
+        //$this->getPermanentInfo($jsondecodepermanent);
+
+
+
+        //$accdrefcode = session('accdrefno');
+        //if($accdrefcode != '')
+        //{
+        //    $this->getAccidentinfo($jsondecod3); 
+            //$data= $jsondecod3->{'data'};
+            // $how= $data['how'];
+        //}
+        
+        //irina
+        $obprofile = null;
+        $obcontact = null;
+        $date = null;
+        $empcert = null;
+
+        $permanentrep = null;
+
+        //return $jsondecode;
+        
+        if ($jsondecode && $jsondecode!='')//irina
+        {
+            // return json_encode($jsondecode);
+            // return $jsondecode;
+            $record = $jsondecode->{'record'};
+            if ($record == 0)
+            {
+                $obprofile = null;
+            }
+            else
+            {
+                $obprofile = $jsondecode->{'data'};
+                $uniquerefno = $obprofile->{'uniquerefno'};
+                session(['uniquerefno'=>$uniquerefno]);
+            }
+
+
+            
+            //$test = json_encode($obprofile);
+            //return $test;
+        }
+
+        //notice od
+        $jsondecodeOdinfo="";
+        $this->getOdInfo($jsondecodeOdinfo);
+
+        if ($jsondecodeOdinfo && $jsondecodeOdinfo!='')//hannis
+        {
+            $errorcode = $jsondecodeOdinfo->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $oddata = $jsondecodeOdinfo->{'data'};
+            }
+            else
+            {
+                $oddata = null;
+            }
+        }
+
+
+        $jsondecodeOdEmphistory="";
+        $this->getOdEmphistory($jsondecodeOdEmphistory);
+
+        if ($jsondecodeOdEmphistory && $jsondecodeOdEmphistory!='')//hannis
+        {
+            $record = $jsondecodeOdEmphistory->{'record'};
+            if ($record > 0)
+            {
+                $odempinfo = $jsondecodeOdEmphistory->{'data'};
+            }
+            else
+            {
+                $odempinfo = null;
+            }
+            //$date = $jsondecodeEmployer->{'data'};
+        }
+
+        // return $odempinfo;
+
+        
+
+
+        /*if ($jsondecod1 && $jsondecod1!='')//irina
+        {
+            $obcontact = $jsondecod1->{'data'};
+        }*/
+
+        //HANNIS
+        //return json_encode($jsondecodeEmployer);
+        if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
+        {
+            $record = $jsondecodeEmployer->{'record'};
+            if ($record > 0)
+            {
+                $emprecord = $jsondecodeEmployer->{'emprecord'};
+                // $emprecord = $jsondecodeEmployer->{'emprecord'};
+                // if ($record == 1)
+                // {
+                //     // $empcode = $emprecord[0]->{'empcode'};
+                //     // session(['empcode'=>$empcode]);
+                // }
+            }
+            else
+            {
+                $emprecord = null;
+            }
+            //$date = $jsondecodeEmployer->{'data'};
+        }
+
+        //return $jsondecodebank;
+        if ($jsondecodebank && $jsondecodebank!='')//irina
+        {
+            $errorcode = $jsondecodebank->{'errorcode'};
+            if ($errorcode == 0)
+            {
+                $bankinfo = $jsondecodebank->{'data'};
+                //return json_encode($bankinfo);
+            }
+            else
+            {
+                $bankinfo = null;
+            }
+            
+
+        }
+        
+
+        $jsondecodeConfirmation="";
+        $confirmation = null;
+        $this->getConfirmation($jsondecodeConfirmation);
+        //return json_encode($jsondecodeConfirmation);
+
+        if ($jsondecodeConfirmation && $jsondecodeConfirmation!='')//irina
+        {
+            $record = $jsondecodeConfirmation->{'record'};
+            if ($record <= 0)
+            {
+                 //$jsondecodeConfirmation = null;
+               $confirmation = null;
+           }
+           else
+           {
+            $confirmation = $jsondecodeConfirmation->{'data'};
+                //return $confirmation;
+        }
+
+    }
+
+        //return $confirmation;
+
+    $jsondecodemc = '';
+    $this->GetMCDetails($jsondecodemc);
+        //return json_encode($jsondecodemc);
+    if ($jsondecodemc && $jsondecodemc != '')
+    {
+        $errorcode = $jsondecodemc->{'errorcode'};
+
+        if ($errorcode != 0)
+        {
+            $jsondecodemc = null;
+        }
+
+
+    }
+
+    $state=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['state']);
+        // if ($confirmation != null && $confirmation->statecode != '')
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$confirmation->statecode]);
+        // }
+        // else
+        // {
+        //     $branch = DB::select('select brcode,brname from branch where statecode=?',[$state[0]->refcode]);
+        // }
+
+        //return json_encode($jsondecodemc);
+        /*
+        $mcinfo = $jsondecodemc->{'mcinfo'};
+        foreach($mcinfo as $mc)
+        {
+            //return json_encode($mc);
+            if (!empty($mc->workinfo) && $mc->workinfo != '')
+            {
+                foreach($mc->workinfo as $key2 => $work)
+                {
+                    return $key2;
+                }
+            }
+            else
+            {
+                return 'empty';
+            }
+                                      
+        }*/
+        
+        //return $bankinfo;
+        
+        return view('scheme.noticeOd.SAO.index',['obprofile'=>$obprofile,'state'=>$state, 
+            'idtype'=>$idtype, 'occucode'=> $occucode, 'race'=>$race, 'national'=>$national, 'mcsts'=>$mcsts, 'transport'=>$transport,
+            'accdplace'=>$accdplace, 'accdwhen'=>$accdwhen , 'obformassist' => $jsondecodeAssist, 
+            'employer' => $jsondecodeAssistEmployer, 'emprecord' => $emprecord,'wagesinfo' => $wagesinfo,
+            'contribution'=>$contrinfo, 'data'=>$data,'bankinfo'=>$bankinfo, 'optionbank'=>$optionbank, 
+            'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode, 
+            'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
+            'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts, 
+            'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
+            'docinfo'=>$docinfo, 'odempinfo' => $odempinfo, 'oddata'=>$oddata, 'confirmation'=>$confirmation,
+            'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'doclist_select'=>$alldoclist]);
     }
 }
 
 
 
-   
+
