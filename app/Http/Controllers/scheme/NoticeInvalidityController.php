@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
 
 class NoticeInvalidityController extends CommonController
 {
@@ -45,7 +49,7 @@ class NoticeInvalidityController extends CommonController
 
         //SYAHIRAH
 
-        // $jsondecodemp='';
+      
         $jsondecodebank='';
         $jsondecodepermanent='';
 
@@ -194,7 +198,7 @@ class NoticeInvalidityController extends CommonController
      
        
         //SYAHIRAH
-         $this->getCertificateEmp($jsondecodemp);
+        
          $jsondecodebank = null;
          $jsondecodepermanent = null;
         $this->getBankInfo($jsondecodebank);
@@ -269,17 +273,7 @@ class NoticeInvalidityController extends CommonController
             //$date = $jsondecodeEmployer->{'data'};
         }*/
 
-        /*$empcert = null;
-        //SYAHIRAH
-        if ($jsondecodemp && $jsondecodemp!='')//irina
-        {
-            $errorcode = $jsondecodemp->{'errorcode'};
-            if ($errorcode == 0)
-            {
-                $empcert = $jsondecodemp->{'data'};
-            }
-            
-        }*/
+     
         
         $bankinfo = null;
         if ($jsondecodebank && $jsondecodebank!='')//irina
@@ -852,316 +846,95 @@ class NoticeInvalidityController extends CommonController
         $caserefno = session ('caserefno'); // get session
         $idno = session ('idno'); // get session
         $month = date('m');//session ('accdmonth');
-        $year = date('Y');//session('accdyear');
-
-        //$idno = '960422016554';
-        // $month = '03';
-        // $year = '2019';
+        $year = date('Y');//session('accdyear');  
         $count = '24';
 
-        
-        //$url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/wage/'.$idno.'/'.$month.'/'.$year.'/'.$count;//irina
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/wages?caserefno='.$caserefno.'&month='.$month.'&year='.$year.'&count='.$count;//irina
-        
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-        
-        
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-    
-        //close connection
-        curl_close($ch);
-
-        $jsondecodeWages = json_decode ($result);
-        
-        if ($jsondecodeWages != null && $jsondecodeWages != '')
+        try
         {
-            // $wagesinfo = $jsondecodeWages->{'wagesinfo'};
-            $record = $jsondecodeWages->{'record'};
-            if ($record > 0)
+            $client = new Client([
+                'base_uri' => env('WS_IP', 'localhost').'/api/wsmotion/',
+                'timeout'  => 2.0,
+            ]);
+
+        
+            $resource = array(
+            // "refNo"=> $refno,
+            "caserefno"=> $caserefno,
+            "month"=> $month,
+            "year"=>$year,
+            "count"=>$count
+          );
+            $j = json_encode($resource);
+            
+            $response = $client->request('GET', 'wages', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
+            
+            
+            $body = $response->getBody()->getContents();
+           
+            $stringBody = (string) $body;
+           
+            
+            $jsondecodeWages = json_decode($stringBody);
+        
+            if ($jsondecodeWages != null && $jsondecodeWages != '')
             {
-                $wagesinfo = $jsondecodeWages->{'data'};
-            }
-            else
-            {
-                $wagesinfo = null;
-            }
-
-        }
-
-
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/contribution/'.$idno;//irina
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-        
-        
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-
-        // return $result;
-    
-        //close connection
-        curl_close($ch);
-
-        $newwages = array();
-        $count = 0;
-        $jsondecodeContribution = json_decode ($result);
-        
-        if ($jsondecodeContribution && $jsondecodeContribution!='')
-        {
-            $contrinfo = $jsondecodeContribution->{'contributioninfo'};
-            //$contribution = $contributioninfo[0]->{'contribution'};
-            /*
-            if ($jsondecodeWages != null && $jsondecodeWages!='')//irina
-            {
+                // $wagesinfo = $jsondecodeWages->{'wagesinfo'};
                 $record = $jsondecodeWages->{'record'};
                 if ($record > 0)
                 {
-                    $data = $jsondecodeWages->{'data'};
-                    
-                    foreach ($data as $d)
-                    {
-                        $empcode = $d->{'empcode'};
-                        $empname = $d->{'empname'};
-                        $wagesinfo = $d->{'wagesinfo'};
-                        
-                        foreach ($$contributioninfo as $contr)
-                        {
-                            if ($contr->{'empcode'} == $empcode)
-                            {
-                                $assistcontr = $contr->{'contribution'};
-                                 
-                                foreach($assistcontr as $ass)
-                                {
-                                    
-                                    if($ass->{'month'} == $contr->{'month'} && 
-                                        $ass->{'year'} == $contr->{'year'})
-                                    {
-                                        $newwages[$count] = ['month'=>$wages->{'month'}, 'year'=>$wages->{'year'}, 'wages'=>$wages->{'wages'}, 'contribution'=>$contr->{'contribution'}];
-                                        $count++;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    $wagesinfo = $jsondecodeWages->{'data'};
                 }
+                else
+                {
+                    $wagesinfo = null;
+                }
+    
+            }
+         
+           // $_content = json_encode($stringBody,true);
+           // return new ApiResource($_content);
             
-                foreach($jsondecodeWages as $wages)
-                {
-                    foreach($contribution as $contr)
-                    {
-                        if($wages->{'month'} == $contr->{'month'} && 
-                            $wages->{'year'} == $contr->{'year'})
-                        {
-                            $newwages[$count] = ['month'=>$wages->{'month'}, 'year'=>$wages->{'year'}, 'wages'=>$wages->{'wages'}, 'contribution'=>$contr->{'contribution'}];
-                            $count++;
-                        }
-                    }
-                }
             }
-            else
+            catch(\Exception $e)
             {
-                foreach($contribution as $contr)
-                {
-                    
-                    $newwages[$count] = ['month'=>$contr->{'month'}, 'year'=>$contr->{'year'}, 'wages'=>null, 'contribution'=>$contr->{'contribution'}];
-                    $count++;
-                    
-                }
-            }*/
-        }
-        /*else
-        {
-            if ($jsondecodeWages != null && $jsondecodeWages!='')//irina
-            {
-                foreach($jsondecodeWages as $wages)
-                {
-                    $newwages[$count] = ['month'=>$wages->{'month'}, 'year'=>$wages->{'year'}, 'wages'=>$wages->{'wages'}, 'contribution'=>null];
-                    $count++;
-                    
-                }
+                return $e->getMessage();
+               
             }
-        }*/
         
+       
+            try
+            {
+                $client = new Client([
+                    'base_uri' => env('ASSIST_IP', 'localhost').'/wsassistsimulation/contribution/',
+                    'timeout'  => 2.0,
+                ]);
+    
+                $response = $client->request('GET', $idno, ['headers' => ['Content-Type' => 'application/json']]);
+ 
+        
+                $body = $response->getBody()->getContents();
+           
+                $stringBody = (string) $body;
+               
+                
+                $jsondecodeContribution = json_decode($stringBody);
+                
+      
+                if ($jsondecodeContribution && $jsondecodeContribution!='')
+                {
+                    $contrinfo = $jsondecodeContribution->{'contributioninfo'};
+                   
+                }    
+            }
+            catch(\Exception $e)
+            {
+                return $e->getMessage();
+               
+            }
 
-        
     
     }
-    
-    public function GetMCDetails(&$jsondecode)
-    {
-        $caserefno = session('caserefno');
-        
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/getmcinfo?caserefno='.$caserefno;
-        $ch = curl_init();
-        
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        
-        //return $result;
-        $jsondecode = json_decode($result);
-        //close connection
-        curl_close($ch);
-    }
-
-    //GET ACCIDENT INFO 
-       public function getAccidentinfo(&$jsondecod3)
-    {   
-        //$accdrefno='1';
-        //$idno='800920145348';
-        $accdrefno=session('accdrefno');
-        $idno=session('idno');
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/getaccidentinfo?accdrefno='.$accdrefno.'&idno='.$idno;
-        
-        $ch = curl_init();
-        
-        
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        
-        $jsondecod3 = json_decode($result);
-        //close connection
-        curl_close($ch);
-    }
-
-
-     // // GET MC DETAIL
-    //     public function getMCDetail(&$jsondecod4)
-    // {   
-    //     $mcrefno='1';
-    //     $url = 'http://perkesows.com/api/mcdetail/'.$mcrefno;
-    //     $ch = curl_init();
-        
-    //     curl_setopt($ch, CURLOPT_URL, $url);
-    //     curl_setopt($ch, CURLOPT_PROXY, '');
-        
-    //     curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-    //     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //     $result = curl_exec($ch);
-    //     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    //     // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        
-    //     $jsondecod4 = json_decode($result);
-    //     //close connection
-    //     curl_close($ch);
-    // }
-
-    //GET BRANCH NAME FROM DB - FOR SOCSO
-    // public function getbranchname($statecode)
-    // {
-    //     $branch=DB::select('select brcode, brname from branch  where  statecode=?', [$statecode]);
-    //     return json_encode($branch);
-
-    // }
-
-    //GET CERTIFICATE FROM DB - SYAHIRAH
-    public function getCertificateEmp(&$jsondecodemp)
-    {
-        // $caserefno='1';
-        $caserefno = session('caserefno');
-        // $url = 'http://perkesows.localhost/api/certificates/'.$caserefno;
-        $url = 'http://'.env('WS_IP', 'perkesows.com').'/api/wsmotion/certificate?caserefno='.$caserefno;
-        $ch = curl_init();
-
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-
-        $jsondecodemp=json_decode($result);
-        // $data =$jsondecode->{'data'};
-
-        //close connection
-        curl_close($ch);
-        //return view('noticeAccident.certificateEmployee',['data'=>$jsondecode]);
-        //return view ('noticeAccident.obForm');
-        // return $httpcode; //$httpcode will contain json data returned by API
-
-    }
-
-     //GET BANK INFO FROM DB - SYAHIRAH
-   
-   
-   //GET PERMANENT FROM DB - SYAHIRAH
-    public function getPermanentInfo(&$jsondecodepermanent)
-    {
-        //$idno='1';
-        $idno = session('idno');
-        $url = 'http://'.env('WS_IP', 'perkesows.com').'/api/wsmotion/permanentrep/'.$idno;
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        
-
-        $jsondecodepermanent =json_decode($result);
-        // $data =$jsondecode->{'data'};
-        
-
-        //close connection
-        curl_close($ch);
-        //return view('noticeAccident.certificateEmployee',['data'=>$jsondecode]);
-        //return view ('noticeAccident.obForm');
-        // return $httpcode; //$httpcode will contain json data returned by API
-
-    }
-
-
-
-    //  --------POST-----------
-
-    
-
-     //POST OBCONTANT AT DB
-      public function postObcontact(Request $req)
+     public function postObcontact(Request $req)
         {
             $idno  = $req->idno;
             $add1 = $req->add1;
@@ -1223,28 +996,6 @@ class NoticeInvalidityController extends CommonController
     //  $idno= session('idno');
         $caserefno = session ('caserefno');
         // $idno =session('idno');
-
-   /*$data=['empname'=> $emp_name, 'empadd'=> $emp_address,'duration'=> $emp_period, 'designation'=> $emp_occupation, 'salary'=> $emp_monthly_wages ];
-
-    $emphistory = ['caserefno'=> $caserefno,'operid'=> $operid,'brcode'=>$brcode,'data' =>[$data]];
-    $jsondata = json_encode($emphistory);
-    // $empinfo1= $jsondata->{'data'};
-    // return $jsondata;
-    $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/emphistory';
-    $ch = curl_init();
-    
-    curl_setopt($ch,CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_PROXY, '');
-    
-    curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-    curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-    
-    curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $result = curl_exec($ch);
-    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);*/
-
     $moribity = ['operid'=> $operid,'brcode'=> $brcode,'caserefno'=>$caserefno,'morbiddesc' =>$descriptionmorbidity,'morbidyear'=>$year_morbidity ,'inemployment'=>$engage ,'endempdate' =>$dafe_of_cessation];
     $jsondata_moribity = json_encode($moribity);
 
@@ -1281,12 +1032,6 @@ class NoticeInvalidityController extends CommonController
         return redirect()->back()->withInput(['tab'=>'pensiondetails'])->with('messageilat','Save unsuccessful');
     }
 
-
-
-    
-    
-    //return redirect()->back();
-    // return $this->index();
 }
 public function postEmphistory(Request $req)
     {
@@ -1324,22 +1069,7 @@ public function postEmphistory(Request $req)
         
         
 
-        // $data = ['empname'=>$empname, 'empadd'=>$empadd, 'duration'=>$duration, 'designation'=>$designation];
-        
-        
-        // $cnt = 0;
-
-        // foreach($data as $d)
-        // {
-        //     $empname= $d->empname;
-        //     $empadd= $d->empadd;
-        //     $duration= $d->duration;
-        //     $designation= $d->designation;
-
-        //     $data[$cnt]=['empname'=>$empname,'empadd'=>$empadd, 
-        //     'duration'=>$duration, 'designation'=>$designation];
-        //     $cnt++;
-        // }
+      
 
         $emphist = ['caserefno'=>$caserefno,'operid'=>$operid, 
             'brcode'=>$brcode, 'data'=>$data];
@@ -1471,7 +1201,7 @@ public function postEmphistory(Request $req)
 
         //SYAHIRAH
 
-        // $jsondecodemp='';
+      
         $jsondecodebank='';
         $jsondecodepermanent='';
 
@@ -1617,7 +1347,7 @@ public function postEmphistory(Request $req)
         
 
         //SYAHIRAH
-         $this->getCertificateEmp($jsondecodemp);
+      
          $jsondecodebank = null;
          $jsondecodepermanent = null;
         $this->getBankInfo($jsondecodebank);
@@ -1695,16 +1425,7 @@ public function postEmphistory(Request $req)
 
         /*$empcert = null;
         //SYAHIRAH
-        if ($jsondecodemp && $jsondecodemp!='')//irina
-        {
-            $errorcode = $jsondecodemp->{'errorcode'};
-            if ($errorcode == 0)
-            {
-                $empcert = $jsondecodemp->{'data'};
-            }
-            
-        }*/
-        
+     
         $bankinfo = null;
         if ($jsondecodebank && $jsondecodebank!='')//irina
         {
@@ -2258,7 +1979,6 @@ public function getConfirmation(&$jsondecodeConfirmation)
 
         //SYAHIRAH
 
-        // $jsondecodemp='';
         $jsondecodebank='';
         $jsondecodepermanent='';
 
@@ -2407,7 +2127,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
      
        
         //SYAHIRAH
-         $this->getCertificateEmp($jsondecodemp);
+   
          $jsondecodebank = null;
          $jsondecodepermanent = null;
         $this->getBankInfo($jsondecodebank);
@@ -2484,15 +2204,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
 
         /*$empcert = null;
         //SYAHIRAH
-        if ($jsondecodemp && $jsondecodemp!='')//irina
-        {
-            $errorcode = $jsondecodemp->{'errorcode'};
-            if ($errorcode == 0)
-            {
-                $empcert = $jsondecodemp->{'data'};
-            }
-            
-        }*/
+     
         
         $bankinfo = null;
         if ($jsondecodebank && $jsondecodebank!='')//irina
@@ -2603,7 +2315,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
 
         //SYAHIRAH
 
-        // $jsondecodemp='';
+        
         $jsondecodebank='';
         $jsondecodepermanent='';
 
@@ -2752,7 +2464,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
      
        
         //SYAHIRAH
-         $this->getCertificateEmp($jsondecodemp);
+  
          $jsondecodebank = null;
          $jsondecodepermanent = null;
         $this->getBankInfo($jsondecodebank);
@@ -2831,13 +2543,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         //SYAHIRAH
         if ($jsondecodemp && $jsondecodemp!='')//irina
         {
-            $errorcode = $jsondecodemp->{'errorcode'};
-            if ($errorcode == 0)
-            {
-                $empcert = $jsondecodemp->{'data'};
-            }
-            
-        }*/
+  
         
         $bankinfo = null;
         if ($jsondecodebank && $jsondecodebank!='')//irina
@@ -2948,7 +2654,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
 
         //SYAHIRAH
 
-        // $jsondecodemp='';
+ 
         $jsondecodebank='';
         $jsondecodepermanent='';
 
@@ -3097,7 +2803,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
      
        
         //SYAHIRAH
-         $this->getCertificateEmp($jsondecodemp);
+        
          $jsondecodebank = null;
          $jsondecodepermanent = null;
         $this->getBankInfo($jsondecodebank);

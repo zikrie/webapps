@@ -789,7 +789,7 @@ class NoticeAccidentController extends CommonController
         // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
         
         $jsondecod3 = json_decode($result);
-
+dd($jsondecod3);
         // return $jsondecod3;
         //close connection
         curl_close($ch);

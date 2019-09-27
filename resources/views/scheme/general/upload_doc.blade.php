@@ -85,10 +85,10 @@
                                                     </div>
                                                     </td> --}}
                                                     <td><input type="date" class="form-control"></td>
-                                                    <!-- <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
-                                                        target="_blank"><i class="far fa-file-alt"></i></a></td> -->
-                                                     <td><a href='viewdoc?docname={{$d->docname}}'
-                                                            target="_blank"><i class="far fa-file-alt"></i></a></td> 
+                                                    <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                        target="_blank"><i class="far fa-file-alt"></i></a></td> 
+                                                     {{-- <td><a href='viewdoc?docname={{$d->docname}}'
+                                                            target="_blank"><i class="far fa-file-alt"></i></a></td>  --}}
                                                            
                                                     <?php $docfound = true; $cnt++;?>
                                                 </tr>
@@ -142,10 +142,10 @@
                                                         
                                                 <td></td>
                                                 <td><input type="date" class="form-control"></td>
-                                                <!-- <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
-                                                    target="_blank"><i class="far fa-file-alt"></i></a></td> -->
-                                                     <td><a href='viewdoc?docname={{$d->docname}}'
-                                                            target="_blank"><i class="far fa-file-alt"></i></a></td>
+                                                <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
+                                                    target="_blank"><i class="far fa-file-alt"></i></a></td> 
+                                                     {{-- <td><a href='viewdoc?docname={{$d->docname}}'
+                                                            target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
                                                      
 
                                                 </tr>
