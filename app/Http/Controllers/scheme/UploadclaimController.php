@@ -205,57 +205,24 @@ class UploadclaimController extends Controller
                 ];
             }
             
-          
+            // $extension = $pdf->getClientOriginalExtension();
+ 
+            // //filename to store
+            // $filenametostore = $docname.'_'.uniqid().'.'.$extension;
             
-             $pdf->storeAs('documents', $docname);
+            // Storage::disk('ftp')->put($filenametostore, fopen($pdf, 'r+'));
+            //  $testing=  Storage::disk('ftp');
+            //  $pdf->storeAs($testing, $docname);
+
+             
+            //  Storage::disk('sftp')->append($pdf, $docname);
+             Storage::disk('sftp')->put($docname, file_get_contents($pdf));
+            //  $pdf->storeAs('documents', $docname);
             
              
         }
 
-        //najmi
-        /*
-        foreach ($request->pdf_selection as $pdf_selection)
-        {
-            
-            $date = date('Ymd');
-            $doctype_selection = $request->idtype;
-            $doccat_selection=DB::select('Select doccat from doctype where docdescen=?', [$doctype_selection]);
-            
-            if ($doccat_selection == 'O')
-            {
-                $docname_selection = $idno.'_'.$doctype_selection.'_'.$date.'.pdf';
-                $dataSet_selection[$cnt++] = [
-                    'caserefno' => '',
-                    'idno' =>$idno,
-                    'docdate' =>$date,
-                    'doctime' =>date('His'), 
-                    'doccat' => $doccat_selection,
-                    'doctype' => $doctype_selection,
-                    'docname' => $docname_selection,
-                    'doccount'=>2
-
-                ];
-            }
-            else if ($doccat_selection == 'C')
-            {
-                $docname_selection = $caserefno.'_'.$doctype_selection.'_'.$date.'.pdf';
-                $dataSet_selection[$cnt++] = [
-                    'caserefno' => $caserefno,
-                    'idno' =>$idno,
-                    'docdate' =>$date,
-                    'doctime' =>date('His'), 
-                    'doccat' => $doccat_selection,
-                    'doctype' => $doctype_selection,
-                    'docname' => $docname_selection,
-                    'doccount'=>2
-
-                ];
-            }
-            
-          
-            
-            $pdf_selection->storeAs('documents', $docname_selection);
-        }*/
+        
         
         $docrepo = ['operid'=>$operid, 'brcode'=>$brcode, 'docinfo'=>$dataSet];
         
