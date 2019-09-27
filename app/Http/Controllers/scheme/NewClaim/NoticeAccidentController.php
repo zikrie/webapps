@@ -9,6 +9,8 @@ use App\ObForm;
 use Illuminate\Support\Facades\Input;
 use Log;//asma
 
+
+
 use GuzzleHttp\Psr7; //atikah
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -53,18 +55,15 @@ class NoticeAccidentController extends CommonController
         $national=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['national']);
         $mcsts=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['mcsts']);
         $transport=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['transport']);
-      
         
         $causative=DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['causative']);
-        // dd($causative);
         $accdcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['accdcode']);
         $industcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['industcode']);
-    
         $profcode = DB::select('Select refcode, descen from reftable where tablerefcode=? order by descen', ['profcode']);
         $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
         $worksts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['worksts']);
         $hussts = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['hussts']);
-     
+
         //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
         //$transport=DB::select('Select refcode, descen from reftable where tablerefcode=?', ['transport']);
 
@@ -100,13 +99,10 @@ class NoticeAccidentController extends CommonController
         //$test = json_encode($jsondecode);
         //return $test;
         //$this->getObContact($jsondecod1);
-
-        // $this->getObFormAssist($jsondecodeAssist);
-        // $url = $this->getConfirmation($jsondecodeConfirmation);
-        
+        $this->getObFormAssist($jsondecodeAssist);
+        $url = $this->getConfirmation($jsondecodeConfirmation);
         //return $url;
         //return json_encode($jsondecodeConfirmation);
-        // dd('ya');
 
         $confirmation = null;
         if ($jsondecodeConfirmation && $jsondecodeConfirmation!='') {
@@ -125,8 +121,6 @@ class NoticeAccidentController extends CommonController
         $accdrefno = session('accdrefno');
         //return accdrefno;
         $caserefno = session('caserefno');
-        $jsonOBAssist = session('jsonOBAssist');
-        $jsondecodeAssistEmployer = session('jsondecodeAssistEmployer');
         
         // $accddata = null;
         $mcdata = null;
@@ -134,7 +128,6 @@ class NoticeAccidentController extends CommonController
                 
         if ($jsondecod3 && $jsondecod3!='') {//irina
             $errorcode = $jsondecod3->{'errorcode'};
-            // dd($errorcode);
             if ($errorcode == 0) {
                 $accddata = $jsondecod3->{'data'};
                 session(['accddate'=>$accddata->accddate]);
@@ -154,6 +147,17 @@ class NoticeAccidentController extends CommonController
                 $jsondecodemc = null;
             }
         }
+
+        // $jsondecodehus = '';
+        // $this->getHusInfo($jsondecodehus);
+        // //return $jsondecodemc;
+        // if ($jsondecodehus && $jsondecodehus != '') {
+        //     $errorcode = $jsondecodehus->{'errorcode'};
+
+        //     if ($errorcode != 0) {
+        //         $jsondecodehus = null;
+        //     }
+        // }
                 
                 
         
@@ -332,41 +336,48 @@ class NoticeAccidentController extends CommonController
         $accdyear = substr($date, 0, 4);
         $accdmonth = substr($date, 4, 2);
         
-        //return '++'.$idno.'++'.$date.'++'.$time.'++';
-        //$idno = '800920145348';
-        //$date ='20170114';
-        //$time = '100000';
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/checkaccidentdate?date='.$date.'&time='.$accdtime.'&idno='.$idno.'&idtype='.$idtype;
-        //return $url;
-        $ch = curl_init();
-        
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        //guzzle - atikah  
+        try
+        {
+            $client = new Client([
+               
+                // Base URI is used with relative requests
+                'base_uri' => env('WS_IP', 'localhost').'/api/wsmotion/',
+                // You can set any number of default request options.
+                'timeout'  => 2.0,
+            ]);
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        //return '++'.$result.'++';
-        $jsondecode = json_decode($result);
-        // dd($jsondecode);
-        //close connection
-        
-        curl_close($ch);
-        
-        //return $result;
-
-        $record = $jsondecode->{'record'};
+            $resource = array(
+                // "refNo"=> $refno,
+                "date"=> $date,
+                "time"=> $accdtime,
+                "idno"=> $idno,
+                "idtype"=> $idtype);
+                $j = json_encode($resource);
+                
+                $response = $client->request('GET', 'checkaccidentdate', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
+                // dd($response);
+                $body = $response->getBody();
+                $stringBody = (string) $body;
+                $_content = json_decode($stringBody);
+               // $_content = json_encode($stringBody,true);
+                //dd($_content);
+              
+               // return new ApiResource($_content);
+        }
+        catch(\Exception $e)
+        {
+            return $e->getMessage();
+            
+        }
+        $record = $_content->{'record'};
+        // dd($record);
         //return $record;
         if ($record=='0') {
             session(['accdrefno'=>'']);
             
             $noticedraft = $this->createnoticedraft($date, $accdtime);//chg27062019 - send $accddate & $accdtime into param
             //return $noticedraft;
-            // dd($noticedraft);
             $errorcode = $noticedraft->{'errorcode'};
             
             if ($errorcode == 0) {
@@ -385,7 +396,7 @@ class NoticeAccidentController extends CommonController
             }
             //return $this->index();//irina comment
         } else {
-            $data= $jsondecode->{'data'};
+            $data= $_content->{'data'};
             foreach ($data as $d) {
                 //chg07072019 - check if record exist & not draft, cannot proceed
                 $schemerefno = $d->schemerefno;
@@ -426,10 +437,8 @@ class NoticeAccidentController extends CommonController
         //chg27062019 - send $accddate & $accdtime to ws
         $notice = ['noticetype'=> $noticetype, 'operid'=> $operid,'brcode'=> $brcode, 'idno'=>$idno,
             'idtype'=>$idtype, 'empcode'=>$empcode,'accddate'=>$accddate, 'accdtime'=>$accdtime];
-
-        
         $jsondata = json_encode($notice);
-        //    dd($jsondata);
+        
         //return $jsondata;
        
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/createdraft';
@@ -446,7 +455,7 @@ class NoticeAccidentController extends CommonController
         $result = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        // dd($result);
+
         //close connection
         curl_close($ch);
         
@@ -760,58 +769,30 @@ class NoticeAccidentController extends CommonController
     //GET ACCIDENT INFO
     public function getAccidentinfo(&$jsondecod3)
     {
-        $caserefno = session('caserefno');
+        //$accdrefno='1';
+        //$idno='800920145348';
+        $caserefno=session('caserefno');
+        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/getaccidentinfo?caserefno='.$caserefno;
+        
+        $ch = curl_init();
+        
+        
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PROXY, '');
+        
+        curl_setopt($ch, CURLOPT_HTTPGET, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
-        $url = env('WS_IP', 'localhost').'/api/wsmotion/';
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        
+        $jsondecod3 = json_decode($result);
 
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json'
-            ],
-            'json' => [
-                'caserefno' => $caserefno,
-            ],     
-            
-        ];
-        // dd($options);
-        $client = new Client();
-
-        $response = $client->get($url.'getaccidentinfo?caserefno='.$caserefno)->getBody();
-        $jsondecod3 = json_decode($response->getContents());
-        // dd($jsondecod3);
-
-
-        // try
-        // {
-        //     $client = new Client([
-        //         // Base URI is used with relative requests
-        //         'base_uri' => env('WS_IP', 'localhost').'/api/wsmotion/',
-        //         // You can set any number of default request options.
-        //         'timeout'  => 2.0,
-        //     ]);
-
-        //     $resource = array(
-        //     // "refNo"=> $refno,
-        //     "caserefno"=> $caserefno);
-        //     $j = json_encode($resource);
-            
-        //     $response = $client->request('GET', 'getaccidentinfo', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
-           
-        //     $body = $response->getBody()->getContents();
-        //     // dd($caserefno);
-        //     $stringBody = (string) $body;
-            
-        //     $jsondecod3 = json_decode($stringBody);
-            
-        //     //  dd($jsondecod3);
-            
-        // }
-        //     catch(\Exception $e)
-        // {
-        //     return $e->getMessage();
-            
-        // }
+        // return $jsondecod3;
+        //close connection
+        curl_close($ch);
     }
 
     //GET MC DETAIL
@@ -1240,11 +1221,10 @@ class NoticeAccidentController extends CommonController
     //POST ACCIDENT AT DB
     public function postAccident(Request $req)
     {
-        // if ($req->action== 'Submit') 
-        // {
-            // $operid = session('loginname');
-            // $brcode = session('loginbranchcode');
-            // $caserefno = session('caserefno');
+        if ($req->action== 'Submit') {
+            $operid = session('loginname');
+            $brcode = session('loginbranchcode');
+            $caserefno = session('caserefno');
             //$idno= session('idno');
             //$accddate = substr($accddate,6,4).substr($accddate,3,2).substr($accddate,0,2);
         
@@ -1296,186 +1276,73 @@ class NoticeAccidentController extends CommonController
             //$empcode = session('empcode');
             
             //return $req->all();
-            $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/';
-
-            if ($accwhen == '07') 
-            {
-
-                $options = [
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                        'Accept' => 'application/json'
-                    ],
             
-                    'json' => [
-                        "accddate" => $accddate,
-                        'accdtime'=>$accdtime,
-                        'place'=>$place,
-                        'accwhen'=>$accwhen, 
-                        'whendesc'=>$whendesc,
-                        'how'=>$how,  
-                        'wagespaid'=>$wagespaid, 
-                        'transport'=>$transport,
-                        'transportothers'=>$transportothers, 
-                        'causative'=>$causative, 
-                        'accdcode'=>$accdcode,
-                        'industrialcode'=>$industrialcode,
-                        'employmentcode'=>$employmentcode,
-                        'reasontravel'=>$reasontravel,
-                        'injurydesc'=>$injurydesc, 
-                        'accwork'=>$accwork,
-                        'startworktime'=>$startworktime,
-                        'restperiod'=>$restperiod, 
-                        'endworktime'=>$endworktime,
-                        'witnessname'=>$witnessname,
-                        'witnesscontact'=>$witnesscontact,
-                        'clinicinfo'=>$clinicinfo,
-                        'operid' => session('operid'),
-                        'brcode' => session('brcode'),
-                        'caserefno' => session('caserefno')
-                    ],
-            
-                ];
-
-                // $accident=[ 'operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 'accddate'=>$accddate,'accdtime'=>$accdtime,
-                // 'place'=>$place, 'accwhen'=>$accwhen, 'whendesc'=>$whendesc,'how'=>$how,  'wagespaid'=>$wagespaid, 'transport'=>$transport,
-                // 'transportothers'=>$transportothers, 'causative'=>$causative, 'accdcode'=>$accdcode,
-                // 'industrialcode'=>$industrialcode,'employmentcode'=>$employmentcode,'reasontravel'=>$reasontravel,
-                // 'injurydesc'=>$injurydesc, 'accwork'=>$accwork,'startworktime'=>$startworktime,
-                // 'restperiod'=>$restperiod, 'endworktime'=>$endworktime,'witnessname'=>$witnessname,'witnesscontact'=>$witnesscontact,
-                // 'clinicinfo'=>$clinicinfo];
-            } 
-            
-            else {
-
-                $options = [
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                        'Accept' => 'application/json'
-                    ],
-            
-                    'json' => [
-                        "accddate" => $accddate,
-                        'accdtime'=>$accdtime,
-                        'place'=>$place,
-                        'accwhen'=>$accwhen, 
-                        'whendesc'=>null,
-                        'how'=>$how,  
-                        'wagespaid'=>$wagespaid, 
-                        'transport'=>$transport,
-                        'transportothers'=>$transportothers, 
-                        'causative'=>$causative, 
-                        'accdcode'=>$accdcode,
-                        'industrialcode'=>$industrialcode,
-                        'employmentcode'=>$employmentcode,
-                        'reasontravel'=>$reasontravel,
-                        'injurydesc'=>$injurydesc, 
-                        'accwork'=>$accwork,
-                        'startworktime'=>$startworktime,
-                        'restperiod'=>$restperiod, 
-                        'endworktime'=>$endworktime,
-                        'witnessname'=>$witnessname,
-                        'witnesscontact'=>$witnesscontact,
-                        'clinicinfo'=>$clinicinfo,
-                        'operid' => session('operid'),
-                        'brcode' => session('brcode'),
-                        'caserefno' => session('caserefno')
-
-                    ],
-            
-                ];
-
-                // $accident=[ 'operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 'accddate'=>$accddate,'accdtime'=>$accdtime,
-                // 'place'=>$place, 'accwhen'=>$accwhen, 'whendesc'=>null, 'how'=>$how,  'wagespaid'=>$wagespaid, 'transport'=>$transport,
-                // 'transportothers'=>$transportothers, 'causative'=>$causative, 'accdcode'=>$accdcode,
-                // 'industrialcode'=>$industrialcode,'employmentcode'=>$employmentcode,'reasontravel'=>$reasontravel,
-                // 'injurydesc'=>$injurydesc, 'accwork'=>$accwork,'startworktime'=>$startworktime,
-                // 'restperiod'=>$restperiod, 'endworktime'=>$endworktime,'witnessname'=>$witnessname,'witnesscontact'=>$witnesscontact,
-                // 'clinicinfo'=>$clinicinfo];
+            if ($accwhen == '07') {
+                $accident=[ 'operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 'accddate'=>$accddate,'accdtime'=>$accdtime,
+                'place'=>$place, 'accwhen'=>$accwhen, 'whendesc'=>$whendesc,'how'=>$how,  'wagespaid'=>$wagespaid, 'transport'=>$transport,
+                'transportothers'=>$transportothers, 'causative'=>$causative, 'accdcode'=>$accdcode,
+                'industrialcode'=>$industrialcode,'employmentcode'=>$employmentcode,'reasontravel'=>$reasontravel,
+                'injurydesc'=>$injurydesc, 'accwork'=>$accwork,'startworktime'=>$startworktime,
+                'restperiod'=>$restperiod, 'endworktime'=>$endworktime,'witnessname'=>$witnessname,'witnesscontact'=>$witnesscontact,
+                'clinicinfo'=>$clinicinfo];
+            } else {
+                $accident=[ 'operid'=>$operid, 'brcode'=>$brcode, 'caserefno'=>$caserefno, 'accddate'=>$accddate,'accdtime'=>$accdtime,
+                'place'=>$place, 'accwhen'=>$accwhen, 'whendesc'=>null, 'how'=>$how,  'wagespaid'=>$wagespaid, 'transport'=>$transport,
+                'transportothers'=>$transportothers, 'causative'=>$causative, 'accdcode'=>$accdcode,
+                'industrialcode'=>$industrialcode,'employmentcode'=>$employmentcode,'reasontravel'=>$reasontravel,
+                'injurydesc'=>$injurydesc, 'accwork'=>$accwork,'startworktime'=>$startworktime,
+                'restperiod'=>$restperiod, 'endworktime'=>$endworktime,'witnessname'=>$witnessname,'witnesscontact'=>$witnesscontact,
+                'clinicinfo'=>$clinicinfo];
             }
-        
-            // dd($options);
-            $client = new Client();
-        
-            try {
-        
-                $response = $client->post($url.'updaccidentinfo',$options);
-                    // dd($response);
-                $body = $response->getBody()->getContents();
-                    // dd($body);
-                $jsondecode = json_decode($body);
-        
-                $errorcode = $jsondecode->{'errorcode'};
-                // dd($errorcode);
-                if ($errorcode == 0) 
-                {
-                    $caserefno = $jsondecode->{'caserefno'};
-                    session(['caserefno'=>$caserefno]);
-                    session(['accddate'=>$accddate]);
-                    
-                    //chg14072019 - put accdyear & month in session after save
-                    $accdyear = substr($accddate, 0, 4);
-                    $accdmonth = substr($accddate, 4, 2);
-                    session(['accdmonth'=>$accdmonth, 'accdyear'=> $accdyear]);
-                
-                    return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messageacc', 'Save successful');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
-                } 
-                else 
-                {
-                    return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messageacc', 'Save unsuccessful');
-                }
-                // elseif ($req->action== 'Back') 
-                // {
-                //     return redirect('/noticeaccident')->withInput(['tab'=>'employer']);
-                // }
-        
-        
-            }
-        
-            catch(\Exception $e)
-            {
-                return $e->getMessage();
-            }
+            
     
-            // $ch = curl_init();
+            $jsondata = json_encode($accident);
             
-            // curl_setopt($ch, CURLOPT_URL, $url);
-            // curl_setopt($ch, CURLOPT_PROXY, '');
-            
-            // curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
-            // curl_setopt($ch, CURLOPT_HTTPGET, false);
-            
-            // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            // $result = curl_exec($ch);
-            // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+            //return $jsondata;
     
-            // curl_close($ch);
+    
+            $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/updaccidentinfo';
+            
+    
+            $ch = curl_init();
+            
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_PROXY, '');
+            
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
+            curl_setopt($ch, CURLOPT_HTTPGET, false);
+            
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $result = curl_exec($ch);
+            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+    
+            curl_close($ch);
             
             
             
-        //     $jsondecode = json_decode($result);
-        //     //return $result;
-        //     $errorcode = $jsondecode->{'errorcode'};
+            $jsondecode = json_decode($result);
+            //return $result;
+            $errorcode = $jsondecode->{'errorcode'};
             
-        //     if ($errorcode == 0) {
-        //         $caserefno = $jsondecode->{'caserefno'};
-        //         session(['caserefno'=>$caserefno]);
-        //         session(['accddate'=>$accddate]);
+            if ($errorcode == 0) {
+                $caserefno = $jsondecode->{'caserefno'};
+                session(['caserefno'=>$caserefno]);
+                session(['accddate'=>$accddate]);
                 
-        //         //chg14072019 - put accdyear & month in session after save
-        //         $accdyear = substr($accddate, 0, 4);
-        //         $accdmonth = substr($accddate, 4, 2);
-        //         session(['accdmonth'=>$accdmonth, 'accdyear'=> $accdyear]);
+                //chg14072019 - put accdyear & month in session after save
+                $accdyear = substr($accddate, 0, 4);
+                $accdmonth = substr($accddate, 4, 2);
+                session(['accdmonth'=>$accdmonth, 'accdyear'=> $accdyear]);
                 
-        //         return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messageacc', 'Save successful');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
-        //     } else {
-        //         return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messageacc', 'Save unsuccessful');
-        //     }
-        // } elseif ($req->action== 'Back') {
-        //     return redirect('/noticeaccident')->withInput(['tab'=>'employer']);
-        // }
+                return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messageacc', 'Save successful');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
+            } else {
+                return redirect()->back()->withInput(['tab'=>'mcdetails'])->with('messageacc', 'Save unsuccessful');
+            }
+        } elseif ($req->action== 'Back') {
+            return redirect('/noticeaccident')->withInput(['tab'=>'employer']);
+        }
     }
     
     //for confirmation - post
@@ -1713,8 +1580,7 @@ class NoticeAccidentController extends CommonController
         //}
         
         $this->getAccidentinfo($jsondecod3);
-        
-        // dd($jsondecod3);
+                
         if ($jsondecod3 && $jsondecod3!='') {//irina
             $errorcode = $jsondecod3->{'errorcode'};
             if ($errorcode == 0) {
@@ -1949,13 +1815,89 @@ class NoticeAccidentController extends CommonController
     public function UpdMC(Request $req)
     {
         if ($req->action== 'Submit') {
-            //$no = count($req->hussts);
+
+            dd($req->all());
+
+            $parent = count($req->hussts);
+
+            for($i=0;$i<$parent;$i++)
+            {
+                $hussts = $req->input('hussts')[$i];
+                $clinicinfo = $req->input('clinicinfo')[$i];
+                $startdate = $req->input('startdate')[$i];
+                $enddate = $req->input('enddate')[$i];
+                $totalmc = $req->input('totalmc')[$i];
+                $scorecommend = $req->input('scorecommend')[$i];
+
+                $child = count($req->mcitemstartdate[$i]);
+
+                    for($j=0;$j<$child;$j++)
+                    {
+                        $mcitemstartdate = $req->input('mcitemstartdate')[$i][$j];
+                        $mcitemenddate = $req->input('mcitemenddate')[$i][$j];
+                        $totalmcitem = $req->input('totalmcitem')[$i][$j];
+                        $approvalsts = $req->input('approvalsts')[$i][$j];
+
+                        $mcitem[$i][$j]=['mcitemstartdate'=>$mcitemstartdate,'mcitemenddate'=>$mcitemenddate,'totalmcitem'=>$totalmcitem,'approvalsts'=>$approvalsts];
+                    }
+
+                $mcinfo[$i] = ['husstatus'=>$hussts,'clinicinfo'=>$clinicinfo,'startdate'=>$startdate,'enddate'=>$enddate,'totalmc'=>$totalmc,'scorecommend'=>$scorecommend];
+
+
+
+            }
+
+            $data = ['mcinfo'=>mcinfo, 'mcitem'=>$mcitem];
+
+            dd($data);
+
+            // dd($data);
+            $endpoint ='http://127.0.0.1:8000/api/scheme/noticedeath';
+            $options = [
+                'exceptions' => false,
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json'],
+                    'body' => json_encode($data)
+                ];
+    
+            
+            // dd($options);
+            $client = new Client();
+            $response = $client->post($endpoint, $options);
+
+            dd($response->getBody()->getContents());
+        // dd($response);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             $mcmonth = '';
             $mcyear = '';
             $mcinfo = array();
-            // dd($req->all());
+            dd($req->all());
 
+            $mc_arr = $req->input('mcitemenddate')[0][0];
+            dd($mc_arr);
             $mc_arr = $req->input('hussts');
             $i = 0;
             // Loop for dynamic medical leave
@@ -2570,10 +2512,7 @@ class NoticeAccidentController extends CommonController
         //chg28062019 irina - get all doc
         $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
 
-        $question1 = 'Whether the insured person is an employee under the SOCSO Act?';
-        $question2 = ' Whether the SOCSO Act applies to this industry?';
 
-        session(['question1' =>$question1,'question2' => $question2]);
         //return view ('fileupload.claim_info')->with('name',$select);
 
         $jsondecodeAssist='';
@@ -2632,8 +2571,24 @@ class NoticeAccidentController extends CommonController
                 $jsondecodemc = null;
             }
         }
+        
+
+        //zik hus info(sco)
+        $jsondecodehus = '';
+        $jsondecodehus = $this->getHusInfo($jsondecodehus);
+        $jsondecodehus =json_decode($jsondecodehus);
+        // return $jsondecodemc;
+        if ($jsondecodehus && $jsondecodehus != '') {
+
+            // $jsondecodehus = $jsondecodehus->{'parent'};
+            // $errorcode = $jsondecodehus->{'errorcode'};
+
+            if ($errorcode != 0) {
+                $jsondecodehus = null;
+            }
+        }
                 
-                
+        // dd($jsondecodehus);       
         
         
         //irina - end
@@ -2780,30 +2735,8 @@ class NoticeAccidentController extends CommonController
             'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
             'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts,
             'mcdata'=>$mcdata,'caserefno'=>$caserefno, 'accdrefno'=>$accdrefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
-            'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,
-            'doclist_select'=>$alldoclist, 'occucode'=>$occucode, 'question1' => $question1 , 'question2' => $question2]);
-    }
-
-    // public function recommendationTestGet()
-    // {
-    //     $question1 = 'Whether the insured person is an employee under the SOCSO Act?';
-    //     $question2 = ' Whether the SOCSO Act applies to this industry?';
-
-
-    //     return view('noticeAccident.SCO.recommendation_popup', ['question1' => $question1 , 'question2' => $question2]);
-    // }
-
-    public function recommendationTestPost(req $req)
-    {
-        $question1 = $req->question1;
-        $question2 = $req->question2;
-
-        $question = [
-            "ques1" => $question1,
-            "ques2" => $question2
-        ];
-
-        return redirect()->back();
+            'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,'jsondecodehus'=>$jsondecodehus,
+            'doclist_select'=>$alldoclist, 'occucode'=>$occucode,'husinfo'=>$jsondecodehus]);
     }
 
     /* ---------------- NOTICE ACCIDENT -- IO-------------------- */
@@ -3089,6 +3022,21 @@ class NoticeAccidentController extends CommonController
     // }
     /* ---------------- NOTICE ACCIDENT -- SAO-------------------- */
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //zik
     public function indexSAO()
     {
         //return session('caserefno');
@@ -3368,4 +3316,150 @@ class NoticeAccidentController extends CommonController
     // {
     //     return view('scheme.noticeAccident.SAO.index_SAO');
     // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    //zik (hus info)
+    public function getHusInfo(&$jsondecode)
+    {
+        $caserefno = session('caserefno');
+        
+        $client = new Client();
+		// $url = config('endpoint.url');
+        // $url = config('services.endpoint.url');
+        
+        $endpoint ='api.com/api/mcinfoo?caserefno='.$caserefno;
+
+		// dd($url);
+		$response = $client->get( $endpoint)->getBody();
+		$content = json_decode($response->getContents());
+        $jsondecode = $content;
+
+        return json_encode($jsondecode);
+    //   dd($content);
+        
+    }
+
+    public function postHusInfo(Request $req)
+    {
+        $caserefno = session('caserefno');
+        $operid = session('loginname');
+
+
+        if ($req->action== 'Submit') {
+
+        //    dd($req->all());
+            if($req){
+                $mcitem = [];
+                $mcinfo = [];
+
+                $parent = count($req->hussts);
+
+                for($i=0;$i<$parent;$i++)
+                {
+                    $hussts = $req->input('hussts')[$i];
+                    $clinicinfo = $req->input('clinicinfo')[$i];
+                    $startdate = $req->input('startdate')[$i];
+                    $startdate =  str_replace('-', '', $startdate);
+                    $enddate = $req->input('enddate')[$i];
+                    $enddate = str_replace('-', '', $enddate);
+                    $totalmc = $req->input('totalmc')[$i];
+                    $scorecommend = $req->input('scorecommend')[$i];
+
+                    if($req->mcitemstartdate[$i]){
+                        $child = count($req->mcitemstartdate[$i]);
+
+
+
+                            for($j=0;$j<$child;$j++)
+                            {
+                                $mcitemstartdate = $req->input('mcitemstartdate')[$i][$j];
+                                $mcitemstartdate = str_replace('-', '', $mcitemstartdate);
+                                $mcitemenddate = $req->input('mcitemenddate')[$i][$j];
+                                $mcitemenddate = str_replace('-', '', $mcitemenddate);
+                                $totalmcitem = $req->input('totalmcitem')[$i][$j];
+                                $approvalsts = $req->input('approvalsts')[$i][$j];
+
+                                $mcitem[$i][$j]=['mcitemstartdate'=>$mcitemstartdate,'mcitemenddate'=>$mcitemenddate,'totalmcitem'=>$totalmcitem,'approvalsts'=>$approvalsts];
+                            }
+                    }
+
+                    $mcinfo[$i] = ['husstatus'=>$hussts,'clinicinfo'=>$clinicinfo,'startdate'=>$startdate,'enddate'=>$enddate,'totalmc'=>$totalmc,'scorecommend'=>$scorecommend];
+
+
+
+                }
+
+                $data = ['mcinfo'=>$mcinfo, 'mcitem'=>$mcitem, 'caserefno'=>$caserefno, 'operid'=>$operid ];
+
+            // dd($data);
+
+                // dd($data);
+                $endpoint ='api.com/api/mcinfo';
+                $options = [
+                    'exceptions' => false,
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                        'Accept' => 'application/json'],
+                        'body' => json_encode($data)
+                    ];
+        
+                
+                // dd($options);
+                $client = new Client();
+                $response = $client->post($endpoint, $options);
+
+                // dd($response->getBody()->getContents());
+            // dd($response);
+
+            $jsondecode = json_decode($response->getBody()->getContents());
+            // return $jsondata. '++' .$result;
+
+        //  dd($jsondecode);
+            
+            $errorcode = $jsondecode->{'errorcode'};
+            // return $errorcode;
+            if ($errorcode == 0)
+            {
+                return redirect()->back()->with('messagemc','Save Successful');
+            // return redirect()->back()->withInput(['tab'=>'husInfoSCO'])->with('messagemc','Save Successful');
+            }
+            else if ($errorcode == 1)
+            {
+                return redirect()->back()->with('messagemc','Data is Empty');
+            }
+            else
+            {
+                return redirect()->back()->with('messagemc','Save unSuccessful');
+            }
+        }else{
+
+            return redirect()->back()->with('messagemc','Data is Empty');
+
+        }
+    }
+}
+
+    
+
+
+
 }
