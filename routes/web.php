@@ -119,7 +119,8 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
 
     //irina
     Route::post('/noticeaccident', 'NoticeAccidentController@postAccident');
-    Route::post('/updmc', 'NoticeAccidentController@UpdMC');
+    //zik
+    Route::post('/HUS', 'NoticeAccidentController@postHusInfo');
     /* --------------------------END OF NOTICE ACCIDENT(PK) ------------------------ */
 
     /* -------------------------- NOTICE ACCIDENT -- SCO ----------------------------- */
@@ -183,7 +184,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/noticeod', 'NoticeOdController@index');
     Route::post('/noticeod', 'CommonController@postObForm');
     Route::post('/employerdetails_od', 'CommonController@postEmployer');
-    Route::post('/odupdmc', 'NoticeOdController@UpdMC');
+    Route::post('/updmc', 'NoticeOdController@UpdMC');
     Route::post('/confirmation_od', 'NoticeOdController@postConfirmation');
     Route::post('/bankinformation_od', 'NoticeOdController@postBankInfo');
     Route::post('/wagesdetails_od', 'NoticeOdController@postWages');

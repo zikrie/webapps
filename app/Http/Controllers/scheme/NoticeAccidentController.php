@@ -9,6 +9,8 @@ use App\ObForm;
 use Illuminate\Support\Facades\Input;
 use Log;//asma
 
+
+
 use GuzzleHttp\Psr7; //atikah
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -145,6 +147,17 @@ class NoticeAccidentController extends CommonController
                 $jsondecodemc = null;
             }
         }
+
+        // $jsondecodehus = '';
+        // $this->getHusInfo($jsondecodehus);
+        // //return $jsondecodemc;
+        // if ($jsondecodehus && $jsondecodehus != '') {
+        //     $errorcode = $jsondecodehus->{'errorcode'};
+
+        //     if ($errorcode != 0) {
+        //         $jsondecodehus = null;
+        //     }
+        // }
                 
                 
         
@@ -1802,13 +1815,89 @@ class NoticeAccidentController extends CommonController
     public function UpdMC(Request $req)
     {
         if ($req->action== 'Submit') {
-            //$no = count($req->hussts);
+
+            dd($req->all());
+
+            $parent = count($req->hussts);
+
+            for($i=0;$i<$parent;$i++)
+            {
+                $hussts = $req->input('hussts')[$i];
+                $clinicinfo = $req->input('clinicinfo')[$i];
+                $startdate = $req->input('startdate')[$i];
+                $enddate = $req->input('enddate')[$i];
+                $totalmc = $req->input('totalmc')[$i];
+                $scorecommend = $req->input('scorecommend')[$i];
+
+                $child = count($req->mcitemstartdate[$i]);
+
+                    for($j=0;$j<$child;$j++)
+                    {
+                        $mcitemstartdate = $req->input('mcitemstartdate')[$i][$j];
+                        $mcitemenddate = $req->input('mcitemenddate')[$i][$j];
+                        $totalmcitem = $req->input('totalmcitem')[$i][$j];
+                        $approvalsts = $req->input('approvalsts')[$i][$j];
+
+                        $mcitem[$i][$j]=['mcitemstartdate'=>$mcitemstartdate,'mcitemenddate'=>$mcitemenddate,'totalmcitem'=>$totalmcitem,'approvalsts'=>$approvalsts];
+                    }
+
+                $mcinfo[$i] = ['husstatus'=>$hussts,'clinicinfo'=>$clinicinfo,'startdate'=>$startdate,'enddate'=>$enddate,'totalmc'=>$totalmc,'scorecommend'=>$scorecommend];
+
+
+
+            }
+
+            $data = ['mcinfo'=>mcinfo, 'mcitem'=>$mcitem];
+
+            dd($data);
+
+            // dd($data);
+            $endpoint ='http://127.0.0.1:8000/api/scheme/noticedeath';
+            $options = [
+                'exceptions' => false,
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json'],
+                    'body' => json_encode($data)
+                ];
+    
+            
+            // dd($options);
+            $client = new Client();
+            $response = $client->post($endpoint, $options);
+
+            dd($response->getBody()->getContents());
+        // dd($response);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             $mcmonth = '';
             $mcyear = '';
             $mcinfo = array();
-            //dd($req->all());
+            dd($req->all());
 
+            $mc_arr = $req->input('mcitemenddate')[0][0];
+            dd($mc_arr);
             $mc_arr = $req->input('hussts');
             $i = 0;
             // Loop for dynamic medical leave
@@ -2482,8 +2571,24 @@ class NoticeAccidentController extends CommonController
                 $jsondecodemc = null;
             }
         }
+        
+
+        //zik hus info(sco)
+        $jsondecodehus = '';
+        $jsondecodehus = $this->getHusInfo($jsondecodehus);
+        $jsondecodehus =json_decode($jsondecodehus);
+        // return $jsondecodemc;
+        if ($jsondecodehus && $jsondecodehus != '') {
+
+            // $jsondecodehus = $jsondecodehus->{'parent'};
+            // $errorcode = $jsondecodehus->{'errorcode'};
+
+            if ($errorcode != 0) {
+                $jsondecodehus = null;
+            }
+        }
                 
-                
+        // dd($jsondecodehus);       
         
         
         //irina - end
@@ -2630,8 +2735,8 @@ class NoticeAccidentController extends CommonController
             'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
             'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts,
             'mcdata'=>$mcdata,'caserefno'=>$caserefno, 'accdrefno'=>$accdrefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
-            'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,
-            'doclist_select'=>$alldoclist, 'occucode'=>$occucode]);
+            'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,'jsondecodehus'=>$jsondecodehus,
+            'doclist_select'=>$alldoclist, 'occucode'=>$occucode,'husinfo'=>$jsondecodehus]);
     }
 
     /* ---------------- NOTICE ACCIDENT -- IO-------------------- */
@@ -2917,6 +3022,21 @@ class NoticeAccidentController extends CommonController
     // }
     /* ---------------- NOTICE ACCIDENT -- SAO-------------------- */
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //zik
     public function indexSAO()
     {
         //return session('caserefno');
@@ -3196,4 +3316,150 @@ class NoticeAccidentController extends CommonController
     // {
     //     return view('scheme.noticeAccident.SAO.index_SAO');
     // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    //zik (hus info)
+    public function getHusInfo(&$jsondecode)
+    {
+        $caserefno = session('caserefno');
+        
+        $client = new Client();
+		// $url = config('endpoint.url');
+        // $url = config('services.endpoint.url');
+        
+        $endpoint ='api.com/api/mcinfoo?caserefno='.$caserefno;
+
+		// dd($url);
+		$response = $client->get( $endpoint)->getBody();
+		$content = json_decode($response->getContents());
+        $jsondecode = $content;
+
+        return json_encode($jsondecode);
+    //   dd($content);
+        
+    }
+
+    public function postHusInfo(Request $req)
+    {
+        $caserefno = session('caserefno');
+        $operid = session('loginname');
+
+
+        if ($req->action== 'Submit') {
+
+        //    dd($req->all());
+            if($req){
+                $mcitem = [];
+                $mcinfo = [];
+
+                $parent = count($req->hussts);
+
+                for($i=0;$i<$parent;$i++)
+                {
+                    $hussts = $req->input('hussts')[$i];
+                    $clinicinfo = $req->input('clinicinfo')[$i];
+                    $startdate = $req->input('startdate')[$i];
+                    $startdate =  str_replace('-', '', $startdate);
+                    $enddate = $req->input('enddate')[$i];
+                    $enddate = str_replace('-', '', $enddate);
+                    $totalmc = $req->input('totalmc')[$i];
+                    $scorecommend = $req->input('scorecommend')[$i];
+
+                    if($req->mcitemstartdate[$i]){
+                        $child = count($req->mcitemstartdate[$i]);
+
+
+
+                            for($j=0;$j<$child;$j++)
+                            {
+                                $mcitemstartdate = $req->input('mcitemstartdate')[$i][$j];
+                                $mcitemstartdate = str_replace('-', '', $mcitemstartdate);
+                                $mcitemenddate = $req->input('mcitemenddate')[$i][$j];
+                                $mcitemenddate = str_replace('-', '', $mcitemenddate);
+                                $totalmcitem = $req->input('totalmcitem')[$i][$j];
+                                $approvalsts = $req->input('approvalsts')[$i][$j];
+
+                                $mcitem[$i][$j]=['mcitemstartdate'=>$mcitemstartdate,'mcitemenddate'=>$mcitemenddate,'totalmcitem'=>$totalmcitem,'approvalsts'=>$approvalsts];
+                            }
+                    }
+
+                    $mcinfo[$i] = ['husstatus'=>$hussts,'clinicinfo'=>$clinicinfo,'startdate'=>$startdate,'enddate'=>$enddate,'totalmc'=>$totalmc,'scorecommend'=>$scorecommend];
+
+
+
+                }
+
+                $data = ['mcinfo'=>$mcinfo, 'mcitem'=>$mcitem, 'caserefno'=>$caserefno, 'operid'=>$operid ];
+
+            // dd($data);
+
+                // dd($data);
+                $endpoint ='api.com/api/mcinfo';
+                $options = [
+                    'exceptions' => false,
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                        'Accept' => 'application/json'],
+                        'body' => json_encode($data)
+                    ];
+        
+                
+                // dd($options);
+                $client = new Client();
+                $response = $client->post($endpoint, $options);
+
+                // dd($response->getBody()->getContents());
+            // dd($response);
+
+            $jsondecode = json_decode($response->getBody()->getContents());
+            // return $jsondata. '++' .$result;
+
+        //  dd($jsondecode);
+            
+            $errorcode = $jsondecode->{'errorcode'};
+            // return $errorcode;
+            if ($errorcode == 0)
+            {
+                return redirect()->back()->with('messagemc','Save Successful');
+            // return redirect()->back()->withInput(['tab'=>'husInfoSCO'])->with('messagemc','Save Successful');
+            }
+            else if ($errorcode == 1)
+            {
+                return redirect()->back()->with('messagemc','Data is Empty');
+            }
+            else
+            {
+                return redirect()->back()->with('messagemc','Save unSuccessful');
+            }
+        }else{
+
+            return redirect()->back()->with('messagemc','Data is Empty');
+
+        }
+    }
+}
+
+    
+
+
+
 }

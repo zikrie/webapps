@@ -19,15 +19,17 @@
                     @endif 
                     <input type='hidden' name='caserefno' id='caserefno' value=''>
                     <input type="hidden" name="_token" value="">
+                
                     <div class="row p-t-20">
                         <!--/span-->
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>@lang('scheme/preparer.attr.preparedBy')</label>
-                                <input type="text" class="form-control clearFields" name="city"  value="">
+                                <input type="text" class="form-control clearFields" name="operid"  value="">
                             </div>
                         </div>
                     </div>
+               
                     <div class="row p-t-20">
                         <!--/span-->
                         <div class="col-md-12 col-lg-4">
