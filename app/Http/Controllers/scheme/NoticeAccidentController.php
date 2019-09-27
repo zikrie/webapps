@@ -148,6 +148,8 @@ class NoticeAccidentController extends CommonController
             }
         }
 
+
+        // //zik
         // $jsondecodehus = '';
         // $this->getHusInfo($jsondecodehus);
         // //return $jsondecodemc;
@@ -789,7 +791,7 @@ class NoticeAccidentController extends CommonController
         // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
         
         $jsondecod3 = json_decode($result);
-dd($jsondecod3);
+
         // return $jsondecod3;
         //close connection
         curl_close($ch);
@@ -2588,7 +2590,7 @@ dd($jsondecod3);
             }
         }
                 
-        // dd($jsondecodehus);       
+       //  dd($jsondecodehus);       
         
         
         //irina - end
@@ -3022,21 +3024,6 @@ dd($jsondecod3);
     // }
     /* ---------------- NOTICE ACCIDENT -- SAO-------------------- */
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //zik
     public function indexSAO()
     {
         //return session('caserefno');
