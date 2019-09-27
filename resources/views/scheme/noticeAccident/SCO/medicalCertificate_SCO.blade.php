@@ -1,7 +1,7 @@
 <div class="col-lg-12">
     <div class="card">
     <div class="card-body">
-        <form action="HUS" method="POST">
+        <form method="POST" action="HUS">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="caserefno" value="{{-- {{$caserefno}} --}}">
             <div class="form-body ">
@@ -30,19 +30,13 @@
                 @endif
                 </div>
 
-                {{-- <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="control-label">@lang('scheme/medicalDetails.attr.nameAddress_clinic')</label><span class="required">*</span>
-                            <textarea type="text" id="clinicname" name="clinicinfo" class="form-control" required>@if (!empty($mcdata)){{ $mcdata->clinicinfo }}@endif</textarea>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="col-md-12" id="container">
                     <div class="table-responsive" id="table-medical">
                         <div class="form-actions">
                             <button type="button" id="btn_add_mc0" value='0' class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addhus')</button>
                         </div>{{-- <label class="control-label">@lang('medicalDetails.attr.medicalleave')</label> --}}
+                        
+                        
                         <table  id="table-medical-details0" class="table table-sm table-bordered" data-toggle-column="first">
                             <thead>
                                 <tr>
@@ -56,34 +50,37 @@
                                     <th style='width:15%'>@lang('scheme/mc.attr.hus_recommendation')</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr data-expanded="true" class="workrow tr0_0" id="tr0_0">
+                            <!-- @php print_r($husinfo); @endphp -->
+                            @if(!empty($husinfo->parent))
+                                @foreach($husinfo->parent as $key => $parent)
+
+                                <tr data-expanded="true" class="workrow" id="tr0_0">
                                     <td>
                                         <div class="col-md-12">
                                             <select class="form-control" name="hussts[]">
                                             <option value="">Please select</option>
-                                            <option value="" selected> MC </option>
-                                            <option value="" > Light Duty </option>
+                                            <option value="mc" <?php if($parent->husstatus == 'mc') echo 'selected'; ?>> MC </option>
+                                            <option value="ld" <?php if($parent->husstatus == 'ld') echo 'selected'; ?>> Light Duty </option>
                                             </select>
                                         </div>
-                                    </td>
+                                    </td> 
                                     <td>
                                         <div class="col-md-12">
-                                            <input id="clinicname" name="clinicinfo" type="text" value="@if (!empty($mcdata)){{ $mcdata->clinicinfo }}@endif" class="form-control counttotalmc" required>
+                                            <input id="clinicname" name="clinicinfo[]" type="text" value="@if (!empty($parent)){{ $parent->clinicinfo }}@endif" class="form-control counttotalmc" required>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input id="mcstartdate_0_0" name="mcstartdate_0_0[]" type="date" value="@if (!empty($mc) && $mc->startdate!=''){{ (DateTime::createFromFormat('Ymd', $mc->startdate))->format('Y-m-d') }}@endif" class="form-control counttotalmc" required>
+                                            <input id="mcstartdate_0_0" name="startdate[]" type="date" value="@if (!empty($parent) && $parent->startdate!=''){{ (DateTime::createFromFormat('Ymd', $parent->startdate))->format('Y-m-d') }}@endif" class="form-control counttotalmc" required>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input type="date" id="mcenddate_0_0" name="mcenddate_0_0[]" value="" class="form-control counttotalmc" >
+                                            <input type="date" id="mcenddate_0_0" name="enddate[]" value="@if (!empty($parent) && $parent->enddate!=''){{ (DateTime::createFromFormat('Ymd', $parent->enddate ))->format('Y-m-d') }}@endif" class="form-control counttotalmc" >
                                         </div>
                                     </td>
                                     <td>
-                                        <input type="text" id="totalmc_0_0" name="totalmc_0_0[]" value="" class="form-control" readonly>
+                                        <input type="text" id="totalmc_0_0" name="totalmc[]" value="@if (!empty($parent)){{ $parent->totalmc }}@endif" class="form-control" readonly>
                                     </td>
                                     <td>
                                         <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work0_0"><i class="fas fa-trash-alt fa-sm"></i></button>
@@ -92,64 +89,133 @@
                                             <i class="ti-plus text-active" aria-hidden="true"></i>
                                         </button>
                                     </td>
-                                    {{-- <td>
-                                        <div class="col-md-12">
-                                            <select class="form-control" name="hussts[]">
-                                                <option value="">Please select</option>
-                                                <option value="" selected>Approved</option>
-                                                <option value="" >Rejected</option>
-                                                <option value="" >Pending</option>
-                                                <option value="" >Attended Work and Salary Paid during MC</option>
-                                                <option value="" >Overlapped</option>
-                                                <option value="" >Overlapped-Approved</option>
-                                                <option value="" >Overlapped-Rejected</option>
-                                            </select>
-                                        </div>
-                                    </td> --}}
+                                   
                                     <td>
-                                        <div class="col-md-12" >
-                                            <select id="hus_recommendation0_0" class="form-control" name="hussts[]">
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="scorecommend[]">
                                                 <option value="">Please select</option>
-                                                <option value="" selected>Approved</option>
-                                                <option value="" >Rejected</option>
-                                                <option value="" >Pending</option>
-                                                <option value="" >Attended Work and Salary Paid during MC</option>
-                                                <option value="" >Overlapped</option>
-                                                <option value="" >Overlapped-Approved</option>
-                                                <option value="" >Overlapped-Rejected</option>
+                                                <option value="approved" <?php if($parent->scorecommend == 'approved') echo 'selected'; ?>>Approved</option>
+                                                <option value="rejected" <?php if($parent->scorecommend == 'rejected') echo 'selected'; ?>>Rejected</option>
+                                                <option value="pending" <?php if($parent->scorecommend == 'pending') echo 'selected'; ?>>Pending</option>
+                                                <option value="paidduring" <?php if($parent->scorecommend == 'paidduring') echo 'selected'; ?>>Attended Work and Salary Paid during MC</option>
+                                                <option value="overlapped" <?php if($parent->scorecommend == 'overlapped') echo 'selected'; ?>>Overlapped</option>
+                                                <option value="overlappedapproved" <?php if($parent->scorecommend == 'overlappedapproved') echo 'selected'; ?>>Overlapped-Approved</option>
+                                                <option value="overlappedrejected" <?php if($parent->scorecommend == 'overlappedrejected') echo 'selected'; ?>>Overlapped-Rejected</option>
                                             </select>
                                         </div>
                                     </td>
                                 </tr>
-                                {{-- <tr>
+                                @if(!empty($husinfo->child))
+                                {
+                                        @foreach($husinfo->child[$key] as  $child)
+                                        {
+                                                            <!-- @php print_r($child); @endphp  -->
+                                                        <tr id="tr'+i+'_'+j+'_'+w+'">
+                                                                <td>
+                                                                    <div class="col-md-12"> 
+                                                                        <input  name="attendedwork" type="text" value="" class="form-control counttotalwork" readonly>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <input id="clinicname" name="clinicinfo['+j+'][]" type="text"  value="" class="form-control counttotalmc" disabled>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <input   type="date" id="workstartdate_'+i+'_'+j+'_'+w+'" name="mcitemstartdate['+j+'][]" value="@if (!empty($parent) && $child->mcitemstartdate!=''){{ (DateTime::createFromFormat('Ymd', $child->mcitemstartdate))->format('Y-m-d') }}@endif"  class="form-control counttotalwork" >
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <input type="date"  id="workenddate_'+i+'_'+j+'_'+w+'" name="mcitemenddate['+j+'][]" value="@if (!empty($parent) && $child->mcitemenddate!=''){{ (DateTime::createFromFormat('Ymd', $child->mcitemenddate))->format('Y-m-d') }}@endif"  class="form-control counttotalwork" >
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalmcitem['+j+'][]" value="@if (!empty($child)){{ $child ->totalmcitem }}@endif" class="form-control" readonly>
+                                                                        <td>
+                                                                            <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'">
+                                                                                <i class="fas fa-trash-alt fa-sm"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="col-md-12">
+                                                                                <select class="form-control" name="approvalsts['+j+'][]">
+                                                                                    <option value="">Please select</option><option value="approved" selected>Approved</option>
+                                                                                    <option value="rejected" >Rejected</option><option value="pending" >Pending</option>
+                                                                                    <option value="paidduring" >Attended Work and Salary Paid during MC</option>
+                                                                                    <option value="overlapped" >Overlapped</option>
+                                                                                    <option value="overlappedapproved" >Overlapped-Approved</option>
+                                                                                    <option value="overlappedreject" >Overlapped-Rejected</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                </td> 
+                                                            
+                                                        </tr>
+                                    
+                                         @endforeach
+                                    @endif
+                                @endforeach
+                                    
+                            @else
+                            <tbody>
+                                <tr data-expanded="true" class="workrow" id="tr0_0">
                                     <td>
-                                        <div class="form-group">
-                                            <input  name="attendedwork" type="text" value="Attended Work" class="form-control counttotalwork" readonly>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="hussts[]">
+                                            <option value="">Please select</option>
+                                            <option value="mc" selected> MC </option>
+                                            <option value="ld" > Light Duty </option>
+                                            </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input  name="" type="date" value="" id="workstartdatedate0" name="workstartdate0[]" class="form-control counttotalwork" >
+                                            <input id="clinicname" name="clinicinfo[]" type="text" value="@if (!empty($mcdata)){{ $mcdata->clinicinfo }}@endif" class="form-control counttotalmc" required>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input name="" type="date" value="" id="workenddate0" name="workenddate0[]" class="form-control counttotalwork" >
+                                            <input id="mcstartdate_0_0" name="startdate[]" type="date" value="@if (!empty($mc) && $mc->startdate!=''){{ (DateTime::createFromFormat('Ymd', $mc->startdate))->format('Y-m-d') }}@endif" class="form-control counttotalmc" required>
                                         </div>
                                     </td>
                                     <td>
-                                        <input type="text" value="" id="totalwork0" name="totalwork0[]" class="form-control" readonly>
+                                        <div class="col-md-12">
+                                            <input type="date" id="mcenddate_0_0" name="enddate[]" value="" class="form-control counttotalmc" >
+                                        </div>
                                     </td>
                                     <td>
-                                        <button type="button"  class="btn btn-sm btn-danger btn_del_workmc"><i class="fas fa-trash-alt fa-sm"></i></button>
-                                        <button id="add-attended-work" type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">
+                                        <input type="text" id="totalmc_0_0" name="totalmc[]" value="" class="form-control" readonly>
+                                    </td>
+                                    <td>
+                                        <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work0_0"><i class="fas fa-trash-alt fa-sm"></i></button>
+                                        <button id="add_attended_work0_0" value='0_0' type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">
                                             <i class="ti-plus text" aria-hidden="true"></i>
                                             <i class="ti-plus text-active" aria-hidden="true"></i>
-                                        </button> 
+                                        </button>
                                     </td>
-                                </tr> --}}
+                                   
+                                    <td>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="scorecommend[]">
+                                                <option value="">Please select</option>
+                                                <option value="approved" selected>Approved</option>
+                                                <option value="rejected" >Rejected</option>
+                                                <option value="pending" >Pending</option>
+                                                <option value="paidduring" >Attended Work and Salary Paid during MC</option>
+                                                <option value="overlapped" >Overlapped</option>
+                                                <option value="overlappedapproved" >Overlapped-Approved</option>
+                                                <option value="overlappedrejected" >Overlapped-Rejected</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                               
                             </tbody>
-                        </table>     
+                            @endif  
+                        </table>   
+                        
                         <label class="control-label" id='lblmcerror0' style='color:red'></label>
                     </div>
                 </div>
@@ -237,81 +303,6 @@
         //alert("Masuk");
         var i=0;
 
-        //Append New MC
-        $('#btn_add_clinic').click(function(){
-            i++;
-            html = "<br><br> Clinic Name<hr>" +
-            "<div class='col-md-12' id='container'>"+
-                "<div class='col-md-12'>"+
-                "<div class='table-responsive   ' id='table-medical'>"+
-                        "<div class='form-actions text-right'>"+
-                        "<button type='button' id='btn_add_mc"+i+"'value='"+i+"' class='btn btn-sm waves-effect waves-light btn-info'>@lang('scheme/mc.addMc')</button>"+
-                        "</div>"+
-                        "<table  id='table-medical-details"+i+"' class='table table-sm table-bordered' data-toggle-column='first'>"+
-                            "<thead>"+
-                                "<tr>"+
-                                    "<th style='width:20%'>@lang('scheme/mc.attr.type_hus')</th>"+
-                                    "<th style='width:20%'>@lang('scheme/mc.attr.nameAddress_clinic')</th>"+ 
-                                    "<th style='width:17%'>@lang('scheme/mc.attr.start_date')</th>"+
-                                    "<th style='width:18%'>@lang('scheme/mc.attr.end_date')</th>"+
-                                    "<th style='width:15%'>@lang('scheme/mc.attr.days_work')</th>"+
-                                    "<th style='width: 8%'>@lang('scheme/mc.attr.action')</th>"+
-                                "</tr>"+
-                            "</thead>"+
-                            "<tbody>"+
-                                "<tr data-expanded='true' class='workrow' id='tr"+i+"_0'>"+
-                                    "<td>"+
-                                        "<div class='col-md-12'>"+
-                                            "<select class='form-control' name='hussts[]'>"+
-                                            "<option value=''>Please select</option>"+
-                                            "<option value='' selected> MC </option>"+
-                                            "<option value='' > Light Duty </option>"+
-                                            "</select>"+
-                                        "</div>"+
-                                    "</td>"+
-                                    "<td>"+
-                                        "<div class='col-md-12'>"+
-                                            "<input id='clinicname' name='clinicinfo' type='text' value='' required>"+
-                                        "</div>"+
-                                    "</td>"+
-                                    "<td>"+
-                                        "<div class='col-md-12'>"+
-                                        " <input type='date' value='' id='mcstartdate_"+i+"_0' name='mcstartdate_"+i+"_0[]' class='form-control counttotalmc' >"+
-                                        "</div>"+
-                                    "</td>"+
-                                    "<td>"+
-                                        "<div class='col-md-12'>"+
-                                            "<input type='date' value='' id='mcenddate_"+i+"_0' name='mcenddate_"+i+"_0[]' class='form-control counttotalmc' >"+
-                                        "</div>"+
-                                " </td>"+
-                                    "<td>"+
-                                        "<input type='text' value='' id='totalmc_"+i+"_0' name='totalmc_"+i+"_0[]' class='form-control' readonly>"+
-                                    "</td>"+
-                                    "<td>"+
-                                        "<button type='button'  class='btn btn-sm btn-danger btn_del_workmc' id='del_attended_work"+i+"_0'><i class='fas fa-trash-alt fa-sm'></i></button>"+
-                                        "<button id='add_attended_work"+i+"_0' value='"+i+"_0' type='button' class='btn btn-info' data-toggle='button' data-more='#sh' aria-pressed='false'>"+
-                                            "<i class='ti-plus text' aria-hidden='true'></i>"+
-                                            "<i class='ti-plus text-active' aria-hidden='true'></i>"+
-                                        "</button>"+
-                                    "</td>"+
-                            "</tr>"+
-                            "</tbody>"+
-                        "</table>"+ 
-                        "<label class='control-label' id='lblmcerror"+i+"' style='color:red'></label>"+
-                    "</div>"+
-                "</div>"+
-            "</div>";
-
-            $('#new-mc').append(html);   
-            
-            addmc(i);
-            add_attend_work(i,0);
-            modal_delete();
-            totalmc();
-            
-
-        });
-
         // Get the total work day
         $('.counttotalwork').on('change',function(){
             var current_id = event.target.id;
@@ -336,16 +327,16 @@
             for (k = 0; k <= j; k++) { 
                 if($("#add_attended_work"+i+"_"+k).length == 0) { //if doesn't exist
 
-                    $('#table-medical-details'+i+' > tbody:last-child').append('<tr data-expanded="true" class="workrow tr'+i+'_'+k+'" id="tr'+i+'_'+k+'"><td><div class="col-md-12"><select class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected> MC </option><option value="" > Light Duty </option></select></div></td>'+
+                    $('#table-medical-details'+i+' > tbody:last-child').append('<tr data-expanded="true" class="workrow" id="tr'+i+'_'+k+'"><td><div class="col-md-12"><select class="form-control" name="hussts['+k+']"><option value="">Please select</option><option value="mc" selected> MC </option><option value="ld" > Light Duty </option></select></div></td>'+
                         "<td>"+
                                         "<div class='col-md-12'>"+
-                                            "<input id='clinicname' name='clinicinfo' type='text' value='' class='form-control counttotalmc' required>"+
+                                            "<input id='clinicname' name='clinicinfo["+k+"]' type='text' value='' class='form-control counttotalmc' required>"+
                                         "</div>"+
                                     "</td>"+
-                                    '<td><div class="col-md-12"><input type="date" value="" id="mcstartdate_'+i+'_'+k+'" name="mcstartdate_'+i+'_'+k+'[]" class="form-control counttotalmc" ></div></td><td><div class="col-md-12"><input type="date" value="" id="mcenddate_'+i+'_'+k+'" name="mcenddate_'+i+'_'+k+'[]" class="form-control counttotalmc" ></div></td><td><input type="text" id="totalmc_'+i+'_'+k+'" name="totalmc_'+i+'_'+k+'[]" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+k+'"><i class="fas fa-trash-alt fa-sm"></i></button><button id="add_attended_work'+i+'_'+k+'" value="'+i+'_'+k+'" type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">'+
-                                        '<i class="ti-plus text" aria-hidden="true"></i>'+
-                                        '<i class="ti-plus text-active" aria-hidden="true"></i>'+
-                                    '</button></td><td><div class="col-md-12"><select id="hus_recommendation'+i+'_'+k+'" class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected>Approved</option><option value="" >Rejected</option><option value="" >Attended Work and Salary Paid during MC</option><option value="" >Overlapped</option><option value="" >Overlapped-Approved</option><option value="" >Overlapped-Rejected</option></select></div></td></tr>');
+                    '<td><div class="col-md-12"><input type="date" value="" id="mcstartdate_'+i+'_'+k+'" name="startdate['+k+']" class="form-control counttotalmc" ></div></td><td><div class="col-md-12"><input type="date" value="" id="mcenddate_'+i+'_'+k+'" name="enddate['+k+']" class="form-control counttotalmc" ></div></td><td><input type="text" id="totalmc_'+i+'_'+k+'" name="totalmc['+k+']" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+k+'"><i class="fas fa-trash-alt fa-sm"></i></button><button id="add_attended_work'+i+'_'+k+'" value="'+i+'_'+k+'" type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">'+
+                                            '<i class="ti-plus text" aria-hidden="true"></i>'+
+                                            '<i class="ti-plus text-active" aria-hidden="true"></i>'+
+                                        '</button></td><td><div class="col-md-12"><select class="form-control" name="scorecommend['+k+']"><option value="">Please select</option><option value="approved" selected>Approved</option><option value="rejected" >Rejected</option><option value="pending" >Pending</option><option value="paidduring" >Attended Work and Salary Paid during MC</option><option value="overlapped" >Overlapped</option><option value="overlappedapproved" >Overlapped-Approved</option><option value="overlappedrejected" >Overlapped-Rejected</option></select></div></td></tr>');
 
                     add_attend_work(i,k);
                     modal_delete();
@@ -378,7 +369,7 @@
                     if($("#tr"+i+"_"+j+"_"+w).length == 0) { 
                         // alert("hihihihi");
 
-                        $('#tr'+i+'_'+j).after('<tr class="workrow tr'+i+'_'+j+'" id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo" type="text" value="" class="form-control counttotalmc" readonly></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="workstartdate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="workenddate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalwork_'+i+'_'+j+'_'+w+'" value="" class="form-control" readonly><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td><td><div class="col-md-12"><select class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected>Approved</option><option value="" >Rejected</option><option value="" >Attended Work and Salary Paid during MC</option><option value="" >Overlapped</option><option value="" >Overlapped-Approved</option><option value="" >Overlapped-Rejected</option></select></div></td> </tr>');
+                        $('#tr'+i+'_'+j).after('<tr id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo['+j+'][]" type="text" value="" class="form-control counttotalmc" disabled></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="mcitemstartdate['+j+'][]" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="mcitemenddate['+j+'][]" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalmcitem['+j+'][]" value="" class="form-control" readonly><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td><td><div class="col-md-12"><select class="form-control" name="approvalsts['+j+'][]"><option value="">Please select</option><option value="approved" selected>Approved</option><option value="rejected" >Rejected</option><option value="pending" >Pending</option><option value="paidduring" >Attended Work and Salary Paid during MC</option><option value="overlapped" >Overlapped</option><option value="overlappedapproved" >Overlapped-Approved</option><option value="overlappedreject" >Overlapped-Rejected</option></select></div></td> </tr>');
             
                         modal_delete();
                         totalwork();
