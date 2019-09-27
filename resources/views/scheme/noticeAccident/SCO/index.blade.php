@@ -8,7 +8,7 @@
 		<ul class="nav customtab" role="tablist">
 			<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a> </li>
 			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claimDetails" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a> </li>
-			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistency" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.inconsistent_doubt')</span></a> </li>
+			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistency" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Inconsistent Information</span></a> </li>
 			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#query_opinion" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.query_opinion')</span></a> </li>
 			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recommend" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a> </li>
 			<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploadDocuments_SCO" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a> </li>
@@ -53,7 +53,7 @@
 				@include('scheme.noticeAccident.SCO.collapse_investigation')
 			</div>
 			<div class="tab-pane p-20" id="query_opinion" role="tabpanel">
-				{{-- @include('scheme.noticeAccident.SCO.collapse_investigation') --}}
+				@include('scheme.noticeAccident.SCO.collapse_query')
 			</div>
 			<div class="tab-pane p-20" id="recommend" role="tabpanel">
 				@include('scheme.noticeAccident.SCO.collapse_rec')

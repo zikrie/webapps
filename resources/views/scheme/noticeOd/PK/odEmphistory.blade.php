@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form action="/odemphistory" method="post">
+                <form action="/scheme/odemphistory" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         @if(Session::get('msgodemphist')) 
@@ -25,16 +25,16 @@
                         <div class="row p-t-20">
                             <div class="col-12">
                                 <div class="card">
-                                    <label>@lang('scheme/odDetails.attr.nameAddress')</label>
+                                    <label>@lang('scheme/od.attr.nameAddress')</label>
                                     <div class="table-responsive">
                                         <table id="table_add_emp_od" class="table table-bordered attendtable" data-toggle-column="first">
                                             <thead>
                                                 <tr>
-                                                    <th data-breakpoints="xs">@lang('scheme/odDetails.attr.num')</th>
-                                                    <th>@lang('scheme/odDetails.attr.employer_name')</th>
-                                                    <th>@lang('scheme/odDetails.attr.employer_address')</th>
-                                                    <th>@lang('scheme/odDetails.attr.period')</th>
-                                                    <th data-breakpoints="xs sm">@lang('scheme/odDetails.attr.designation')</th>
+                                                    <th data-breakpoints="xs">@lang('scheme/od.attr.num')</th>
+                                                    <th>@lang('scheme/od.attr.employer_name')</th>
+                                                    <th>@lang('scheme/od.attr.employer_address')</th>
+                                                    <th>@lang('scheme/od.attr.period')</th>
+                                                    <th data-breakpoints="xs sm">@lang('scheme/od.attr.designation')</th>
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/insuredPerson.save')</button>
+                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
                             {{-- <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
                             <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
                             <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('noticetype.back')</button> --}}

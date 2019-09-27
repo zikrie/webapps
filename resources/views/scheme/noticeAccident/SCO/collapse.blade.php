@@ -97,7 +97,7 @@
                                                                 </h6>
                                                         </div>
                                                         <div id="collapseEight8" class="collapse" role="tabpanel" aria-labelledby="headingEight8">
-                                                                <div class="card-body"> @include('scheme.noticeAccident.SCO.wages')</div>
+                                                                <div class="card-body"> @include('scheme.noticeAccident.SCO.wages1')</div>
                                                         </div>
                                                 </div>
                                                 <!--HUS--> 
