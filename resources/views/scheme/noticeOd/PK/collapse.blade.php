@@ -2,9 +2,9 @@
      <!-- Ob Form -->
      <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOb">
-            <h6 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseOb" aria-expanded="false" aria-controls="collapseOb"><h6 class="card-title"><i class="fa fa-plus"></i>
-                @lang('form/scheme.general.collapse.ob.title')</h6>
+            <h5 class="mb-0">                           
+                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseOb" aria-expanded="false" aria-controls="collapseOb"><h5 class="card-title"><i class="fa fa-plus"></i>
+                @lang('form/scheme.general.collapse.ob.title')</h5>
                 </a>
             </h6>
         </div>
@@ -17,9 +17,10 @@
     <!-- Employer Details -->
     <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingEmployer">
-            <h6 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseEmployer" aria-expanded="false" aria-controls="collapseEmployer"><h6 class="card-title"><i class="fa fa-plus"></i>
-                @lang('form/scheme.general.collapse.employer.title')</h6>
+            <h5 class="mb-0">                           
+                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseEmployer" aria-expanded="false" aria-controls="collapseEmployer">
+                <h5 class="card-title"><i class="fa fa-plus"></i>
+                @lang('form/scheme.general.collapse.employer.title')</h5>
                 </a>
             </h6>
         </div>
@@ -34,7 +35,7 @@
         <div class="card-header" role="tab" id="headingOdHist">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#odempOdHist" aria-expanded="false" aria-controls="collapseOne3">
-                <h5 class="card-title"><i class="fa fa-plus"></i>@lang('form/scheme.general.collapse.employer_history.title')</h5>
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.notice_od.PK.employment_history.title')</h5>
                 </a>
             </h5>
         </div>
@@ -49,7 +50,7 @@
         <div class="card-header" role="tab" id="headingOdInfo">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#odinfo" aria-expanded="false" aria-controls="collapseOne4">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.od_information.title')</h5>
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.notice_od.PK.od_info.title')</h5>
                 </a>
             </h5>
         </div>
@@ -64,7 +65,7 @@
         <div class="card-header" role="tab" id="headingMC">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#mcdetails" aria-expanded="false" aria-controls="collapseOne5">
-                <h5 class="card-title"><i class="fa fa-plus"></i>@lang('form/scheme.general.collapse.mc.title')</h5>
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.mc.title')</h5>
                 </a>
             </h5>
         </div>
@@ -124,7 +125,7 @@
         <div class="card-header" role="tab" id="headingCert">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#certificate" aria-expanded="false" aria-controls="collapseOne9">
-                <h5 class="card-title"><i class="fa fa-plus"></i>@lang('form/scheme.general.collapse.certification.title')</h5>
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.certification.title')</h5>
                 </a>
             </h5>
         </div>
@@ -139,7 +140,7 @@
         <div class="card-header" role="tab" id="headingConfirm">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#confirmation" aria-expanded="false" aria-controls="collapseOne10">
-                <h5 class="card-title"><i class="fa fa-plus"></i>@lang('form/scheme.general.collapse.confirmation.title')</h5>
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.confirmation.title_confirmation')</h5>
                 </a>
             </h5>
         </div>

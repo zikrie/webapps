@@ -148,6 +148,7 @@ return [
             'title' => 'Confirmation of Dependant',
             'title_ob'=>'Confirmation of Insured Person',
             'title_ot'=>'Confirmation of Claimant',
+            'title_confirmation' => 'Confirmation',
             'bank_info' => 'Bank Information',
             'bankrupt' => 'Bankrupt',
             'preparer' => 'Preparer',

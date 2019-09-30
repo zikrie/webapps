@@ -9,7 +9,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label ">@lang('scheme/ob.attr.form34_receivedDate')</label><span class="required">*</span>
-                                    <input type="date" id="form34" name="form34" value="" class="form-control clearFields" required>
+                                    <input type="date" id="f34recvdate" name="f34recvdate" value="{{ $obprofile->f34recvdate }}" class="form-control clearFields" required>
                                 </div>
                             </div>
                         </div>
@@ -48,109 +48,40 @@
                         </div>
                         <div class='row'>
                             <div class="col-md-6">
-                                        <div class="card">
+                                <div class="card">
+                                    <table id="tblwb" class="table table-sm table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>@lang('scheme/ob.attr.id_type')</th>
+                                                <th>@lang('scheme/ob.attr.id_no')</th>
+                                            </tr>
+                                        </thead>
 
-                                            <table id="tblwb" class="table table-sm table-bordered" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>@lang('scheme/ob.attr.id_type')</th>
-                                                        <th>@lang('scheme/ob.attr.id_no')</th>
-                                                    </tr>
-                                                </thead>
+                                        <tbody class='align-middle'>
+                                            @if(!empty($obprofile))
+                                            <tr>
+                                                @foreach($idtype as $id)
+                                                @if (!empty($obprofile) && $id->refcode == $obprofile->idtype)
+                                                <td><input type="hidden" name="idtype" id="idtype" value="{{$obprofile->idtype}}" class="form-control" required>{{$id->descen}}</td>
+                                                @endif
+                                                @endforeach
 
-                                                <tbody class='align-middle'>
-                                                    @if(!empty($obprofile))
-                                                    <tr>
-                                                        @foreach($idtype as $id)
-                                                        @if (!empty($obprofile) && $id->refcode == $obprofile->idtype)
-                                                        <td><input type="hidden" name="idtype" id="idtype" value="{{$obprofile->idtype}}" class="form-control" required>{{$id->descen}}</td>
-                                                        @endif
-                                                        @endforeach
-
-                                                        @if(!empty($obprofile) && $obprofile->idno !='')
-                                                        <td><input type="hidden" id="idno" name="idno" value="{{ $obprofile->idno }}" class="form-control" required >{{ $obprofile->idno }}</td>
-                                                        @elseif(!empty($obformassist) && $obformassist->idno !='')
-                                                        <td><input type="hidden" id="idno" name="idno" value="{{ $obformassist->idno }}" class="form-control" required>{{ $obformassist->idno }}</td>
-                                                        @else
-                                                        <td><input type="hidden" id="idno" name="idno" value="" class="form-control" required></td>
-                                                        @endif
-                                                    @endif
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                
- 
-                            {{-- <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.id_type')</label>
-
-                                    <select id="idtype" class="form-control" value="@if(!empty($obprofile)){{$obprofile->idtype}} @endif" name="idtype" required>
-                                        <option value="">@if(!empty($obprofile)){{$obprofile->idtype}} @endif</option>
-                                        @foreach($idtype as $id)
-                                        @if (!empty($obprofile) && $id->refcode == $obprofile->idtype)
-                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
-                                        @else
-                                        <option value="{{$id->refcode}}">{{$id->descen}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
+                                                @if(!empty($obprofile) && $obprofile->idno !='')
+                                                <td><input type="hidden" id="idno" name="idno" value="{{ $obprofile->idno }}" class="form-control" required >{{ $obprofile->idno }}</td>
+                                                @elseif(!empty($obformassist) && $obformassist->idno !='')
+                                                <td><input type="hidden" id="idno" name="idno" value="{{ $obformassist->idno }}" class="form-control" required>{{ $obformassist->idno }}</td>
+                                                @else
+                                                <td><input type="hidden" id="idno" name="idno" value="" class="form-control" required></td>
+                                                @endif
+                                            @endif
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.id_no')</label>
-                                    @if(!empty($obprofile) && $obprofile->idno !='')
-                                    <input type="text" id="idno" name="idno" value="{{ $obprofile->idno }}" class="form-control" required readonly>
-                                    <input type="hidden" id="previdno" name="previdno" value="{{ $obprofile->idno }}" class="form-control" required readonly>
-                                    @elseif(!empty($obformassist) && $obformassist->idno !='')
-                                    <input type="text" id="idno" name="idno" value="{{ $obformassist->idno }}" class="form-control" required>
-                                    <input type="hidden" id="previdno" name="previdno" value="{{ $obformassist->idno }}" class="form-control" required readonly>
-                                    @else
-                                    <input type="text" id="idno" name="idno" value="" class="form-control" required>
-                                    @endif
-                                </div>
-                            </div> 
                         </div>
-
-                                  <div class="col-md-6">
-                                        <div class="card">
-                                            <label class="control-label">List of ID</label>
-
-                                            <table id="tblwb" class="table table-sm table-bordered" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Identification Type</th>
-                                                        <th>Identification No.</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody class='align-middle'>
-                                                    @if (!empty($listid))
-                                                    @foreach($listid as $list)
-                                                    <tr>
-                                                        <td>{{ $list->idtype }}</td>
-
-                                                        <td>{{ $list->idno }}</td>
-
-                                                    </tr>
-                                                    @endforeach
-                                                    @endif
-
-
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                    </div>
-
-                                </div> --}}
-
                         <div class='row'>
-                            <div class="col-md-3">
+                            {{-- <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.dateOfBirth')</label>
                                     @if(!empty($obprofile) && $obprofile->dob !='')
@@ -160,11 +91,21 @@
                                     @else
                                     <input type="date" id="dob" name="dob" value="" class="form-control clearFields">
                                     @endif
-
+                                </div>
+                            </div> --}}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('scheme/ob.attr.dateOfBirth')</label>
+                                    @if(!empty($obprofile) && $obprofile->dob !='')
+                                    <input type="date" id="dob" name="dob" value="{{$obprofile->dob}}" class="form-control clearFields">
+                                    @elseif(!empty($obformassist) && $obformassist->dob !='')
+                                    <input type="date" id="dob" name="dob" value="{{$obprofile->dob}}" class="form-control clearFields">
+                                    @else
+                                    <input type="date" id="dob" name="dob" value="" class="form-control clearFields">
+                                    @endif
                                 </div>
                             </div>
-                        
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.race')</label>
                                     {{--  <input type="text" id="race" value="{{ $obprofile->race }}" class="form-control"> --}}
@@ -182,7 +123,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.gender')</label>
                                     {{--  <input type="text" id="gender" value="{{ $obprofile->gender }}" class="form-control"> --}}
@@ -221,7 +162,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.occupation')</label>
                                     <select class="form-control clearFields" name="occucode" id="occucode" onchange="statechange()"> 
@@ -236,24 +177,7 @@
                                     </select>
                                 </div>
                             </div>
-                            {{-- <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.sub_occupation')</label>
-                                    <select name="suboccupation" id="suboccupation" class="form-control" onchange='fieldchange()'required>
-                                        <option value=""></option>
-                                        @foreach($suboccupation as $so)
-                                        @if (!empty($obprofile) && $obprofile->suboccupation == $so->so_occcode)
-                                        <option value="{{$so->so_occcode}}" selected>{{$so->so_occcode}}</option>
-                                        @elseif (!empty($obformassist) && $obformassist->suboccupation == $so->so_occcode)
-                                        <option value="{{$so->so_occcode}}" selected>{{$so->so_occcode}}</option>
-                                        @else
-                                        <option value="{{$so->so_occcode}}">{{$so->so_occcode}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div> --}}
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.sub_occupation')</label>
                                     @if(!empty($obprofile) && $obprofile->suboccucode != '')
@@ -265,56 +189,19 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.sub_list')</label>
                                     @if(!empty($obprofile) && $obprofile->suboccucodelist != '')
-                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obprofile->suboccupation }}" class="form-control">
+                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obprofile->suboccucodelist }}" class="form-control">
                                     @elseif(!empty($obformassist) && $obformassist->suboccucodelist != '')
-                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obformassist->suboccupation }}" class="form-control">
+                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obformassist->suboccucodelist }}" class="form-control">
                                     @else
                                     <input type="text" id="suboccucodelist" name="suboccucodelist" value="" class="form-control">
                                     @endif
                                 </div>
                             </div>
-                            {{-- <div class="col-md-6">
-                        <div class="form-group">
-                            <label> @lang('socso.attr.state')</label>
-                            <select name="state1" id="state1" class="form-control" onchange="statechange()" required>
-                                @foreach($state as $S)
-                                @if (!empty($confirmation) && $confirmation->statecode == $S->refcode)
-                                    <option value="{{$S->refcode}}" selected>{{$S->descen}}</option>
-                                @else
-                                     <option value="{{$S->refcode}}">{{$S->descen}}</option>
-                                @endif
-                                @endforeach
-                            </select>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                     <div class="form-group">
-                        <label>@lang('socso.attr.city')</label>
-                        <select name="brname" id="brname" class="form-control" onchange='fieldchange()' required>
-                            <option value=""></option>
-                            @foreach($branch as $B)
-                            @if (!empty($confirmation) && $confirmation->preferredbranch == $B->brcode)
-                            <option value="{{$B->brcode}}" selected>{{$B->brname}}</option>
-                            @else
-                               <option value="{{$B->brcode}}">{{$B->brname}}</option>
-                            @endif
-                            @endforeach
-                        </select>
-                              </div>
-                          </div> --}}
-                        </div>
-                        <!--div class='row'>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">Date of Death</label>
-                                    <input type="date" name="dodeath" id="dodeath" value="@if(!empty($obprofile)){{ $obprofile->dodeath }} @endif" class="form-control">
-                                </div>
-                            </div>
-                        </div-->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -328,147 +215,147 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                 {{--  <label>@lang('scheme/ob.attr.postal_address2')</label> --}}
-                                 @if(!empty($obprofile) && $obprofile->add2 != '')
-                                 <input type="text" id="add2" name="add2" value="{{ $obprofile->add2 }}" class="form-control clearFields">
-                                 @else
-                                 <input type="text" id="add2" name="add2" value="" class="form-control clearFields">
-                                 @endif
-                             </div>
-                         </div>
-                         <div class="col-md-12">
-                            <div class="form-group">
-                                {{-- <label>@lang('scheme/ob.attr.postal_address3')</label> --}}
-                                @if(!empty($obprofile) && $obprofile->add3 != '')
-                                <input type="text" id="add3" name="add3" value="{{ $obprofile->add3 }}" class="form-control clearFields">
-                                @else
-                                <input type="text" id="add3" name="add3" value="" class="form-control clearFields">
-                                @endif
+                                     {{--  <label>@lang('scheme/ob.attr.postal_address2')</label> --}}
+                                     @if(!empty($obprofile) && $obprofile->add2 != '')
+                                     <input type="text" id="add2" name="add2" value="{{ $obprofile->add2 }}" class="form-control clearFields">
+                                     @else
+                                     <input type="text" id="add2" name="add2" value="" class="form-control clearFields">
+                                     @endif
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">@lang('scheme/ob.attr.state')</label>
-                                <!--input type="text" name="state" id="state" value="@if(!empty($obcontact)){{ $obcontact->statecode }} @endif" class="form-control"-->
-                                <select name='state' id='state' class='form-control'>
-                                    <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
-                                    @foreach($state as $s)
-                                    @if(!empty($obprofile) && $obprofile->statecode == $s->refcode)
-                                    <option>Please Select</option>
-                                    <option value='{{$s->refcode}}' selected>{{$s->descen}}</option>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{-- <label>@lang('scheme/ob.attr.postal_address3')</label> --}}
+                                    @if(!empty($obprofile) && $obprofile->add3 != '')
+                                    <input type="text" id="add3" name="add3" value="{{ $obprofile->add3 }}" class="form-control clearFields">
                                     @else
-                                    <option value='{{$s->refcode}}'>{{$s->descen}}</option>
+                                    <input type="text" id="add3" name="add3" value="" class="form-control clearFields">
                                     @endif
-                                    @endforeach
-                                </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>@lang('scheme/ob.attr.city')</label>
-                                @if(!empty($obprofile) && $obprofile->city != '')
-                                <input type="text" id="city" name="city" value="{{ $obprofile->city }}" class="form-control clearFields">
-                                @else
-                                <input type="text" id="city" name="city" value="" class="form-control clearFields">
-                                @endif
+                        <div class='row'>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('scheme/ob.attr.state')</label>
+                                    <!--input type="text" name="state" id="state" value="@if(!empty($obcontact)){{ $obcontact->statecode }} @endif" class="form-control"-->
+                                    <select name='statecode' id='statecode' class='form-control'>
+                                        <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
+                                        @foreach($state as $s)
+                                        @if(!empty($obprofile) && $obprofile->statecode == $s->refcode)
+                                        <option>Please Select</option>
+                                        <option value='{{$s->refcode}}' selected>{{$s->descen}}</option>
+                                        @else
+                                        <option value='{{$s->refcode}}'>{{$s->descen}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>@lang('scheme/ob.attr.postcode')</label>
-                                @if(!empty($obprofile) && $obprofile->postcode != '')
-                                <input type="text" id="postcode" name="postcode" value="{{ $obprofile->postcode }}" class="form-control clearFields">
-                                @else
-                                <input type="text" id="postcode" name="postcode" value="" class="form-control clearFields">
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>@lang('scheme/ob.attr.pobox')</label>
-                                @if(!empty($obprofile) && $obprofile->pobox != '')
-                                <input type="text" id="pobox" name="pobox" value="{{ $obprofile->pobox }}" class="form-control clearFields">
-                                @else
-                                <input type="text" id="pobox" name="pobox" value="" class="form-control clearFields">
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>@lang('scheme/ob.attr.lockedbag')</label>
-                                @if(!empty($obprofile) && $obprofile->lockedbag != '')
-                                <input type="text" id="lockedbag" name="lockedbag" value="{{ $obprofile->lockedbag }}" class="form-control clearFields">
-                                @else
-                                <input type="text" id="lockedbag" name="lockedbag" value="" class="form-control clearFields">
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>@lang('scheme/ob.attr.wdt')</label>
-                                @if(!empty($obprofile) && $obprofile->wdt != '')
-                                <input type="text" id="wdt" name="wdt" value="{{ $obprofile->wdt }}" class="form-control clearFields">
-                                @else
-                                <input type="text" id="wdt" name="wdt" value="" class="form-control clearFields">
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>@lang('scheme/ob.attr.telNo')</label>
-                                @if(!empty($obprofile) && $obprofile->telno != '')
-                                <input type="text" id="telno" name="telno" value="{{ $obprofile->telno }}" class="form-control clearFields">
-                                @else
-                                <input type="text" id="telno" name="telno" value="" class="form-control clearFields">
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>@lang('scheme/ob.attr.mobileNo')</label>
-                                @if(!empty($obprofile) && $obprofile->mobileno != '')
-                                <input type="text" id="mobileno" name="mobileno" value="{{ $obprofile->mobileno }}" class="form-control clearFields">
-                                @else
-                                <input type="text" id="mobileno" name="mobileno" value="" class="form-control clearFields">
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>@lang('scheme/ob.attr.email')</label>
-                                @if(!empty($obprofile) && $obprofile->email != '')
-                                <input type="email" id="email" name="email" value="{{ $obprofile->email }}" class="form-control clearFields">
-                                @else
-                                <input type="email" id="email" name="email" value="" class="form-control clearFields">
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">@lang('scheme/ob.attr.citizen')</label>
-                                {{-- <input type="text" id="citizen" value="@if(!empty($obprofile)){{ $obprofile->nationality }} @endif" class="form-control"> --}}
-                                <select class="form-control" tabindex="1" name='nationality' id='nationality'>
-                                    <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
-                                    @foreach($national as $N)
-                                    @if (!empty($obprofile) && $obprofile->nationality == $N->refcode)
-                                    <option value="{{$N->refcode}}" selected>{{$N->descen}}</option>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('scheme/ob.attr.city')</label>
+                                    @if(!empty($obprofile) && $obprofile->city != '')
+                                    <input type="text" id="city" name="city" value="{{ $obprofile->city }}" class="form-control clearFields">
                                     @else
-                                    <option value="{{$N->refcode}}">{{$N->descen}}</option>
+                                    <input type="text" id="city" name="city" value="" class="form-control clearFields">
                                     @endif
-                                    @endforeach
-                                </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('scheme/ob.attr.postcode')</label>
+                                    @if(!empty($obprofile) && $obprofile->postcode != '')
+                                    <input type="text" id="postcode" name="postcode" value="{{ $obprofile->postcode }}" class="form-control clearFields">
+                                    @else
+                                    <input type="text" id="postcode" name="postcode" value="" class="form-control clearFields">
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-actions">
+                        <div class='row'>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('scheme/ob.attr.pobox')</label>
+                                    @if(!empty($obprofile) && $obprofile->pobox != '')
+                                    <input type="text" id="pobox" name="pobox" value="{{ $obprofile->pobox }}" class="form-control clearFields">
+                                    @else
+                                    <input type="text" id="pobox" name="pobox" value="" class="form-control clearFields">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('scheme/ob.attr.lockedbag')</label>
+                                    @if(!empty($obprofile) && $obprofile->lockedbag != '')
+                                    <input type="text" id="lockedbag" name="lockedbag" value="{{ $obprofile->lockedbag }}" class="form-control clearFields">
+                                    @else
+                                    <input type="text" id="lockedbag" name="lockedbag" value="" class="form-control clearFields">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('scheme/ob.attr.wdt')</label>
+                                    @if(!empty($obprofile) && $obprofile->wdt != '')
+                                    <input type="text" id="wdt" name="wdt" value="{{ $obprofile->wdt }}" class="form-control clearFields">
+                                    @else
+                                    <input type="text" id="wdt" name="wdt" value="" class="form-control clearFields">
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('scheme/ob.attr.telNo')</label>
+                                    @if(!empty($obprofile) && $obprofile->telno != '')
+                                    <input type="text" id="telno" name="telno" value="{{ $obprofile->telno }}" class="form-control clearFields">
+                                    @else
+                                    <input type="text" id="telno" name="telno" value="" class="form-control clearFields">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('scheme/ob.attr.mobileNo')</label>
+                                    @if(!empty($obprofile) && $obprofile->mobileno != '')
+                                    <input type="text" id="mobileno" name="mobileno" value="{{ $obprofile->mobileno }}" class="form-control clearFields">
+                                    @else
+                                    <input type="text" id="mobileno" name="mobileno" value="" class="form-control clearFields">
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>@lang('scheme/ob.attr.email')</label>
+                                    @if(!empty($obprofile) && $obprofile->email != '')
+                                    <input type="email" id="email" name="email" value="{{ $obprofile->email }}" class="form-control clearFields">
+                                    @else
+                                    <input type="email" id="email" name="email" value="" class="form-control clearFields">
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('scheme/ob.attr.citizen')</label>
+                                    {{-- <input type="text" id="citizen" value="@if(!empty($obprofile)){{ $obprofile->nationality }} @endif" class="form-control"> --}}
+                                    <select class="form-control" tabindex="1" name='nationality' id='nationality'>
+                                        <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
+                                        @foreach($national as $N)
+                                        @if (!empty($obprofile) && $obprofile->nationality == $N->refcode)
+                                        <option value="{{$N->refcode}}" selected>{{$N->descen}}</option>
+                                        @else
+                                        <option value="{{$N->refcode}}">{{$N->descen}}</option>
+                                        @endif
+                                        @endforeach
+                                        </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
                             <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
                             <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
                             <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>

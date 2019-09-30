@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form action="/odinfo" method="post" id="reset">
+                <form action="/scheme/odinfo" method="post" id="reset">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         @if(Session::get('messageod')) 
@@ -32,7 +32,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('scheme/od.attr.disease_related')</label>
-                                    <select class="form-control">
+                                    <select class="form-control" name="emprelated">
                                         <option>Please select</option>
                                         @if (!empty($oddata) == 'Y')
                                         <option value='Y' selected>@lang('scheme/od.attr.yes')</option>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/insuredPerson.save')</button>
+                        <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
                         {{-- <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('noticetype.back')</button> --}}

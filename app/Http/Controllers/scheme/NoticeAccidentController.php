@@ -97,7 +97,10 @@ class NoticeAccidentController extends CommonController
         //$test = json_encode($jsondecode);
         //return $test;
         //$this->getObContact($jsondecod1);
-        $this->getObFormAssist($jsondecodeAssist);
+
+
+        // $this->getObFormAssist($jsondecodeAssist);
+        //
         $url = $this->getConfirmation($jsondecodeConfirmation);
         //return $url;
         //return json_encode($jsondecodeConfirmation);
@@ -152,7 +155,7 @@ class NoticeAccidentController extends CommonController
         //irina - end
 
         //HANNIS
-        $this->getAssist($jsondecodeAssistEmployer);
+        // $this->getAssist($jsondecodeAssistEmployer);
         
         //return json_encode($jsondecodeEmployer);
         //$jsondecodeWages = array();
@@ -286,8 +289,7 @@ class NoticeAccidentController extends CommonController
         
         return view('scheme.noticeAccident.PK.index', ['obprofile'=>$obprofile,'state'=>$state,
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'mcsts'=>$mcsts, 'transport'=>$transport,
-            'accdplace'=>$accdplace, 'accdwhen'=>$accdwhen , 'obformassist' => $jsondecodeAssist, 'accinfo'=>$accddata,
-            'employer' => $jsondecodeAssistEmployer, 'emprecord' => $emprecord,'wagesinfo' => $wagesinfo, 'contribution'=>$contrinfo,
+            'accdplace'=>$accdplace, 'accdwhen'=>$accdwhen , 'accinfo'=>$accddata, 'emprecord' => $emprecord,'wagesinfo' => $wagesinfo, 'contribution'=>$contrinfo,
             'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank,
             'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode,
             'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
@@ -774,9 +776,9 @@ class NoticeAccidentController extends CommonController
         $result = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        
+        return $result;
         $jsondecod3 = json_decode($result);
-
+        // return $result;
         // return $jsondecod3;
         //close connection
         curl_close($ch);
@@ -1523,7 +1525,8 @@ class NoticeAccidentController extends CommonController
         //$test = json_encode($jsondecode);
         // return $jsondecode;
         //$this->getObContact($jsondecod1);
-        $this->getObFormAssist($jsondecodeAssist);
+        // $this->getObFormAssist($jsondecodeAssist);
+        
         
         //irina - begin
         $caserefno = session('caserefno');

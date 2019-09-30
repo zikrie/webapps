@@ -8,6 +8,12 @@ use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 
+use Illuminate\Support\Facades\Cache;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
+
 
 class CommonController extends Controller
 {
@@ -121,6 +127,7 @@ class CommonController extends Controller
 
     public function UpdMC(Request $req)
     {
+        // dd('ya');
         $operid = session('loginname');
         $brcode = session('loginbranchcode');
         //$idno= session('idno');
@@ -207,7 +214,7 @@ class CommonController extends Controller
         
         if ($retcode == 0)
         {
-            return redirect()->back()->with('messagemc','Save successful');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
+            return redirect()->back()->with('messagemc','Save successful')->with('messageemployer','Save successful');
         }
         else
         {
@@ -220,75 +227,71 @@ class CommonController extends Controller
     //POST EMPLOYER AT DB - HANNIS
     public function postEmployer(Request $req)
     {
-        $caserefno= session('caserefno');
-        $operid= session('loginname');
-        $brcode= session('loginbranchcode');
-        $empcode= $req->empcode;
-        $empname = $req->empname;
-        $emptype= $req->emptype;
-        $bussentity= $req->bussentity;
-        $subbussentity= $req->subbussentity;
-        $subbussentitylist= $req->subbussentitylist;
-        $servicetype= $req->servicetype;
-        $indscode= $req->indscode;
-        $subindscodelist= $req->subindscodelist;
-        $add1 = $req->add1;
-        $add2 = $req->add2;
-        $add3 = $req->add3;
-        $postcode = $req->postcode;
-        $city = $req->city;
-        $statecode = $req->state;
-        $pobox = $req->pobox;
-        $lockedbag = $req->lockedbag;
-        $wdt = $req->wdt;
-        $telno = $req->telno;
-        $faxno = $req->faxno;
-        $email = $req->email;
+         $url = env('WS_IP', 'localhost').'/api/wsmotion/';
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                "empcode"=> $req->empcode,
+                "empname"=> $req->empname,
+                "emptype"=> $req->emptype,
+                "bussentity"=> $req->bussentity,
+                "subbussentity"=> $req->subbussentity,
+                "subbussentitylist"=> $req->subbussentitylist,
+                "servicetype"=> $req->servicetype,
+                "indscode"=> $req->indscode,
+                "subindscodelist"=> $req->subindscodelist,
+                "add1"=> $req->add1,
+                "add2"=> $req->add2,
+                "add3"=> $req->add3,
+                "city"=> $req->city,
+                "statecode"=> $req->state,
+                "postcode"=> $req->postcode,
+                // "telno"=> $req->telno,
+                "phoneno"=> $req->phoneno,
+                "faxno"=> $req->faxno,
+                "email"=> $req->email,
+                "pobox"=> $req->pobox,
+                "lockedbag"=> $req->lockedbag,
+                "wdt"=> $req->wdt,
+                "operid"=> session('loginname'),
+                "brcode"=> session('brcode'),
+                "caserefno"=> session('caserefno'),
+            ],
+        ];
+        // dd($options);
+        $client = new Client();
 
-        $employer = ['caserefno'=>$caserefno,'operid'=>$operid,'brcode'=>$brcode, 'empcode'=>$empcode,
-            'empname'=>$empname, 'emptype'=>$emptype, 'bussentity'=> $bussentity, 'subbussentity'=> $subbussentity, 'subbussentitylist'=>$subbussentitylist,'indscode'=>$indscode, 'servicetype'=> $servicetype, 'subindscodelist' =>$subindscodelist, 'add1'=>$add1,'add2'=>$add2,'add3'=>$add3, 'postcode'=>$postcode,
-            'city'=>$city, 'statecode'=>$statecode,'pobox'=>$pobox, 'lockedbag'=>$lockedbag, 'wdt'=>$wdt, 'phoneno'=>$telno, 'faxno'=>$faxno, 'email'=>$email];
+        try {
 
-        $jsondata = json_encode($employer);
-        
-        // return $jsondata;
-
-
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newemployer';
-
-        $ch = curl_init();
-        
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-        
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-
-        curl_close($ch);
-        
-        // return $result;
-        
-        $jsondecode = json_decode($result);
-        
-        if ($jsondecode && $jsondecode != '')
-        {
-            $errorcode = $jsondecode->{'errorcode'};
-            if ($errorcode == 0)
+            $response = $client->post($url.'newemployer',$options);
+            // dd($response);
+            $body = $response->getBody()->getContents();
+            // dd($body);
+            $res = json_decode($body);
+            // return $res;
+            $retcode = $res->{'errorcode'};
+            
+            if ($retcode == 0)
             {
-                // session(['empcode',$empcode]);
+                // return redirect()->back()->with('messagemc','Save successful');//++'.$x.'++'.$accdrefno.'++'.$jsondata.'++');
                 return redirect()->back()->withInput(['tab'=>'employer'])->with('messageemp','Save successful');
             }
             else
             {
+                // return redirect()->back()->with('messagemc','Save unsuccessful');
                 return redirect()->back()->withInput(['tab'=>'employer'])->with('messageemp','Save unsuccessful');
             }
+                  
         }
+
+            catch(\Exception $e)
+            {
+                return $e->getMessage();
+                
+            }
         
     }
 
@@ -376,88 +379,85 @@ class CommonController extends Controller
     //POST OBFORM AT DB 
     public function postObForm(Request $req)
     {
-        $idno  = $req->idno;
-        $previdno = $req->previdno;
-        $idtype = $req->idtype;
-        $oldidno = '';
-        $passportno='';
-        $name = $req->name;
-        $dob = $req->dob;
-        $dob = str_replace('-', '', $dob);
-        //$dob = substr($req->dob,6,4).substr($req->dob, 3,2).substr($req->dob,0,2);
-        //$dob = 
-        $race = $req->race;
-        $gender = $req->gender;
-        $occupation = $req->occupation;
-        $occucode = $req->occucode;
-        $suboccucode = $req->suboccucode;
-        $suboccucodelist = $req->suboccucodelist;
-        $dodeath='';
-        $operid = session('loginname');
-        $brcode = session('loginbranchcode');
+
+        $url = env('WS_IP', 'localhost').'/api/wsmotion/';
         
-        $add1 = $req->add1;
-        $add2 = $req->add2;
-        $add3 = $req->add3;
-        $city = $req->city;
-        $state = $req->state;
-        $postcode = $req->postcode;
-        $telno = $req->telno;
-        $mobileno = $req->mobileno;
-        $email = $req->email;
-        $nationality = $req->nationality;
-        $pobox = $req->pobox;
-        $lockedbag = $req->lockedbag;
-        $wdt = $req->wdt;
+        $options = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+				'Accept' => 'application/json'
+            ],
+            'json' => [
+                "f34recvdate"=> $req->f34recvdate,
+                "idno"=> $req->idno,
+                "previdno"=> $req->previdno,
+                "idtype"=> $req->idtype,
+                "previdno"=> $req->previdno,
+                "oldidno"=> '',
+                "passportno"=> '',
+                "name"=> $req->name,
+                "dob"=> $req->dob,
+                // "dob"=> substr($req->dob,6,4).substr($req->dob, 3,2).substr($req->dob,0,2),
+                "race"=> $req->race,
+                "gender"=> $req->gender,
+                "occupation"=> $req->occupation,
+                "occucode"=> $req->occucode,
+                "suboccucode"=> $req->suboccucode,
+                "suboccucodelist"=> $req->suboccucodelist,
+                "dodeath"=> '',
+                "add1"=> $req->add1,
+                "add2"=> $req->add2,
+                "add3"=> $req->add3,
+                "city"=> $req->city,
+                "statecode"=> $req->statecode,
+                "postcode"=> $req->postcode,
+                "telno"=> $req->telno,
+                "mobileno"=> $req->mobileno,
+                "email"=> $req->email,
+                "nationality"=> $req->nationality,
+                "pobox"=> $req->pobox,
+                "lockedbag"=> $req->lockedbag,
+                "wdt"=> $req->wdt,
+                "operid"=> session('loginname'),
+                "brcode"=> session('brcode'),
+                "caserefno"=> session('caserefno'),
+                "noticetype"=> session('noticetype'),
+            ],
+        ];
+        // dd($options);
+        $client = new Client();
+
+        try {
+
+            $response = $client->post($url.'newobprofile',$options);
+            // dd($response);
+            $body = $response->getBody()->getContents();
+            // dd($body);
+            $jsondecode = json_decode($body);
+            // return redirect()->back();
+            // return $this->index();
         
-        $caserefno = session('caserefno');
-        $noticetype = session('noticetype');
-
-        $obForm = ['caserefno'=>$caserefno,'noticetype'=>$noticetype,'idno'=> $idno,'previdno'=>$previdno, 'idtype'=> $idtype,'oldidno' =>$oldidno, 'passportno'=>$passportno,
-            'name'=> $name, 'dob'=> $dob, 'race'=> $race, 'gender'=> $gender, 'occupation'=> $occupation, 'occucode'=> $occucode, 'suboccucode'=> $suboccucode, 'suboccucodelist'=> $suboccucodelist, 'dodeath'=>$dodeath,
-            'operid'=>$operid, 'brcode'=>$brcode, 'add1'=>$add1,'add2'=>$add2,'add3'=>$add3, 'city'=>$city, 'statecode'=>$state,
-            'postcode'=>$postcode, 'telno'=>$telno, 'mobileno'=>$mobileno, 'email'=>$email,'nationality'=>$nationality,
-            'pobox'=>$pobox,'lockedbag'=>$lockedbag,'wdt'=>$wdt];
-        
-        $jsondata = json_encode($obForm);
-        // return $jsondata;
-
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/newobprofile';
-        $ch = curl_init();
-
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
-
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-
-        // return '++'.$result.'++';
-            //close connection
-        curl_close($ch);
-        //return redirect()->back();
-        // return $this->index();
-
-        //$this->postOBContact($req);
-        $jsondecode = json_decode($result);
-        // return $jsondata.'+'.$result;
-        
-        $errorcode = $jsondecode->{'errorcode'};
-        if ($errorcode == 0)
-        {
-            $uniquerefno = $jsondecode->{'uniquerefno'};
-            session(['uniquerefno'=>$uniquerefno]);
-            return redirect()->back()->withInput(['tab'=>'obform'])->with('messageob','Save successful');
+            $errorcode = $jsondecode->{'errorcode'};
+            // dd($errorcode);
+            if ($errorcode == 0)
+            {
+                $uniquerefno = $jsondecode->{'uniquerefno'};
+                session(['uniquerefno'=>$uniquerefno]);
+                return redirect()->back()->withInput(['tab'=>'obform'])->with('messageob','Save successful');
+            }
+            else
+            {
+                return redirect()->back()->withInput(['tab'=>'obform'])->with('messageob','Save unsuccessful');
+            }
+          
+            
         }
-        else
+        catch(\Exception $e)
         {
-            return redirect()->back()->withInput(['tab'=>'obform'])->with('messageob','Save unsuccessful');
+            return $e->getMessage();
+            
         }
+
         
      }
     

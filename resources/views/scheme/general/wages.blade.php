@@ -2,8 +2,9 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form action="./wagesdetails_od" method="POST">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <form method="POST" action="{{ route('wages') }}">
+                    {{-- <input type="hidden" name="_token" value="{{csrf_token()}}"> --}}
+                    @csrf
                     <div class="form-body">
 
                         @if(Session::get('messagewage')) 
@@ -30,85 +31,80 @@
                         <?php $wagescnt = 0; ?>
                         @foreach ($wagesinfo as $wages)
                         <?php $index++; ?>
-                         <div id="accordion1" role="tablist" aria-multiselectable="true">
+                        <div id="accordion1" role="tablist" aria-multiselectable="true">
                             <div class="card m-b-0">
-                                <div class="card-header" role="tab" id="heading{{$index}}">
-                                    <h6 class="mb-0">
+                                <div role="tab" id="heading{{$index}}">
+                                    <h6 class="card-title-sub">
                                         <a @if($index>1) @endif class="link" data-toggle="collapse" data-parent="#accordion1" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
-                                          @lang('scheme/wages.attr.employer_info') {{$index}}
-                                      </a>
-                                  </h6>
-                              </div>
-                              <div id="collapse{{$index}}" class="collapse show" role="tabpanel" aria-labelledby="heading{{$index}}">
-                                <div class="card-body">
-
-                                    <div class="row p-t-20">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label">@lang('scheme/wages.attr.empcode')</label>
-                                                <input type="text" id="empcode[{{$contrcnt}}]" name="empcode[{{$contrcnt}}]" value="{{$wages->empcode}}" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label">@lang('scheme/wages.attr.company_name')</label>
-                                                <input type="text" id="empname[{{$contrcnt}}]" name="empname[{{$contrcnt}}]" value="{{$wages->empname}}" class="form-control" >
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label">@lang('scheme/wages.attr.commencement_date')</label>
-                                                        <input type="date" id="startdate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="startdate[{{$contrcnt}}]" value="{{substr($wages->startdate,0,4)}}-{{substr($wages->startdate,4,2)}}-{{substr($wages->startdate,6,2)}}" class="form-control"  >
-                                                        <label class="control-label" id='lblerror' style='color:red'></label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label class="control-label">@lang('scheme/wages.attr.end_date')</label>
-                                                        <input type="date" id="enddate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="enddate[{{$contrcnt}}]" value="{{substr($wages->enddate,0,4)}}-{{substr($wages->enddate,4,2)}}-{{substr($wages->enddate,6,2)}}" class="form-control">
-                                                    </div>
+                                          @lang('form/scheme.general.collapse.wages.employer_info') {{$index}}
+                                        </a>
+                                    </h6>
+                                </div>
+                                <div id="collapse{{$index}}" class="collapse show" role="tabpanel" aria-labelledby="heading{{$index}}">
+                                    <div class="card-body">
+                                        <div class="row p-t-20">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.empcode')</label>
+                                                    <input type="text" id="empcode[{{$contrcnt}}]" name="empcode[{{$contrcnt}}]" value="{{$wages->empcode}}" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="row p-t-20">
-                                                <div class="col-12">
-                                                    <div class="card">
-                                                        <label>@lang('scheme/wages.attr.details_wages_od')</label>
-                                                        <div class="table-responsive">
-                                                            <table id="demo-foo-row-toggler" class="table table-bordered" data-toggle-column="first">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th data-breakpoints="xs">@lang('scheme/wages.attr.num')</th>
-                                                                        <th>@lang('scheme/wages.attr.year')</th>
-                                                                        <th>@lang('scheme/wages.attr.month')</th>
-                                                                        <th data-breakpoints="xs sm">@lang('scheme/wages.attr.wages')</th>
-                                                                        <th data-breakpoints="xs">@lang('wages.attr.contribution_paid')</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-
-                                                                   <?php 
-                                                                   $cnt = 0; ?>
-                                                                   @foreach ($wages->wagesinfo as $gaji)
-                                                                   <tr data-expanded="true">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.company_name')</label>
+                                                    <input type="text" id="empname[{{$contrcnt}}]" name="empname[{{$contrcnt}}]" value="{{$wages->empname}}" class="form-control" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.commencement_date')</label>
+                                                    <input type="date" id="startdate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="startdate[{{$contrcnt}}]" value="{{substr($wages->startdate,0,4)}}-{{substr($wages->startdate,4,2)}}-{{substr($wages->startdate,6,2)}}" class="form-control"  >
+                                                    <label class="control-label" id='lblerror' style='color:red'></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.end_date')</label>
+                                                    <input type="date" id="enddate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="enddate[{{$contrcnt}}]" value="{{substr($wages->enddate,0,4)}}-{{substr($wages->enddate,4,2)}}-{{substr($wages->enddate,6,2)}}" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row p-t-20">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <label>@lang('form/scheme.general.collapse.wages.details_wages_od')</label>
+                                                    <div class="table-responsive">
+                                                        <table id="demo-foo-row-toggler" class="table table-bordered" data-toggle-column="first">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th data-breakpoints="xs">@lang('table-header.wages.num')</th>
+                                                                    <th>@lang('table-header.wages.year')</th>
+                                                                    <th>@lang('table-header.wages.month')</th>
+                                                                    <th data-breakpoints="xs sm">@lang('table-header.wages.wages')</th>
+                                                                    <th data-breakpoints="xs">@lang('table-header.wages.contribution_paid')</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <?php 
+                                                               $cnt = 0; ?>
+                                                               @foreach ($wages->wagesinfo as $gaji)
+                                                               <tr data-expanded="true">
                                                                     <td>{{$cnt+1}}</td>
-
                                                                     <td><input type="text" id="year[{{$contrcnt}}][{{$cnt}}]" name="year[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->year}}" class="form-control" readonly></td>
+                                                                    @foreach ($month as $m)
+                                                                    @if ($m->refcode == $gaji->month)
+                                                                    <td><input type="text" value='{{$m->descen}}' class='form-control'readonly>
+                                                                        <input type="hidden" value='{{$gaji->month}}' class='form-control' id="month[{{$contrcnt}}][{{$cnt}}]" name="month[{{$contrcnt}}][{{$cnt}}]" readonly>
+                                                                    </td>
+                                                                    @endif
+                                                                    @endforeach
                                                                     <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->wages}}" class="form-control maskdecimal" ></td>
-                                                                    <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->contrpaid}}" class="form-control maskdecimal" ></td>
+                                                                    <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->contrpaid}}" class="form-control maskdecimal" readonly></td>
                                                                 </tr> 
-
-                                                                @foreach ($month as $m)
-                                                                @if ($m->refcode == $gaji->month)
-                                                                <td><input type="text" value='{{$m->descen}}' class='form-control'readonly>
-                                                                    <input type="hidden" value='{{$gaji->month}}' class='form-control' id="month[{{$contrcnt}}][{{$cnt}}]" name="month[{{$contrcnt}}][{{$cnt}}]" readonly>
-                                                                </td>
-                                                                @endif
-                                                                @endforeach
                                                                 <?php $cnt++; ?>
                                                                 @endforeach
-
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -131,238 +127,160 @@
                         <?php $index++; ?>
                         <div id="accordion2" role="tablist" aria-multiselectable="true">
                             <div class="card m-b-0">
-                                <div class="card-header" role="tab" id="heading{{$index}}">
-                                    <h6 class="mb-0">
+                                <div role="tab" id="heading{{$index}}">
+                                    <h6 class="card-title-sub">
                                         <a @if($index>1) @endif class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
-                                          @lang('scheme/wages.attr.employer_info') {{$index}} 
-                                      </a>
-                                  </h6>
-                              </div>
-                              <div id="collapse{{$index}}" class="collapse show" role="tabpanel" aria-labelledby="heading{{$index}}">
-                                <div class="card-body">
-                                    {{-- <div class="row p-t-20"> --}}
-                          {{--   <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('wages.attr.empcode')</label>
-                                    <input type="hidden" id="empcode[{{$contrcnt}}]" name="empcode[{{$contrcnt}}]" value="" class="form-control">
-                                    <input type="text" id="empname[{{$contrcnt}}]" name="empname[{{$contrcnt}}]" value="" class="form-control">
+                                          @lang('form/scheme.general.collapse.wages.employer_info') {{$index}} 
+                                        </a>
+                                    </h6>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('wages.attr.company_name')</label>
-                                    <input type="hidden" id="empcode[{{$contrcnt}}]" name="empcode[{{$contrcnt}}]" value="" class="form-control" >
-                                    <input type="text" id="empname[{{$contrcnt}}]" name="empname[{{$contrcnt}}]" value="" class="form-control" >
-                                </div>
-                            </div>
-                        <div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('wages.attr.commencement_date')</label>
-                                    <input type="date" id="startdate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="startdate[{{$contrcnt}}]" value="{{substr($wages->startdate,0,4)}}-{{substr($wages->startdate,4,2)}}-{{substr($wages->startdate,6,2)}}" class="form-control"  >
-                                    <label class="control-label" id='lblerror' style='color:red'></label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('wages.attr.end_date')</label>
-                                    <input type="date" id="enddate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="enddate[{{$contrcnt}}]" value="{{substr($wages->enddate,0,4)}}-{{substr($wages->enddate,4,2)}}-{{substr($wages->enddate,6,2)}}" class="form-control">
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="row p-t-20">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('scheme/wages.attr.empcode')</label>
-                                    <input type="text" id="empcode[{{$contrcnt}}]" name="empcode[{{$contrcnt}}]" value="{{$contr->empcode}}" class="form-control" >
+                                <div id="collapse{{$index}}" class="collapse show" role="tabpanel" aria-labelledby="heading{{$index}}">
+                                    <div class="card-body">
+                                        <div class="row p-t-20">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.empcode')</label>
+                                                    <input type="text" id="empcode[{{$contrcnt}}]" name="empcode[{{$contrcnt}}]" value="{{$contr->empcode}}" class="form-control" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.company_name')</label>
+                                                    <input type="text" id="empname[{{$contrcnt}}]" name="empname[{{$contrcnt}}]" value="{{$contr->empname}}" class="form-control" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.commencement_date')</label>
+                                                    <input type="date" id="startdate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="startdate[{{$contrcnt}}]" value="{{substr($contr->startdate,0,4)}}-{{substr($contr->startdate,4,2)}}-{{substr($contr->startdate,6,2)}}" class="form-control"  >
+                                                    <label class="control-label" id='lblerror' style='color:red'></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.end_date')</label>
+                                                    <input type="date" id="enddate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="enddate[{{$contrcnt}}]" value="{{substr($contr->enddate,0,4)}}-{{substr($contr->enddate,4,2)}}-{{substr($contr->enddate,6,2)}}" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row p-t-20">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <label>@lang('form/scheme.general.collapse.wages.details_wages_death')</label>
+                                                    <div class="table-responsive">
+                                                        <table id="demo-foo-row-toggler" class="table table-bordered" data-toggle-column="first">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th data-breakpoints="xs">@lang('form/scheme.general.collapse.wages.num')</th>
+                                                                    <th>@lang('form/scheme.general.collapse.wages.year')</th>
+                                                                    <th>@lang('form/scheme.general.collapse.wages.month')</th>
+                                                                    <th data-breakpoints="xs sm">@lang('form/scheme.general.collapse.wages.wages')</th>
+                                                                    <th data-breakpoints="xs">@lang('form/scheme.general.collapse.wages.contribution_paid')</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php $accdmonth = session('mcmonth'); 
+                                                                $accdyear = session('mcyear'); 
+                                                                $cnt = 0; 
 
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('scheme/wages.attr.company_name')</label>
-                                    <input type="text" id="empname[{{$contrcnt}}]" name="empname[{{$contrcnt}}]" value="{{$contr->empname}}" class="form-control" >
+                                                                if ($accdmonth == '')
+                                                                {
+                                                                  $accdmonth = date('m');
+                                                                }
+                                                                if ($accdyear == '')
+                                                                {
+                                                                $accdyear = date('Y');
+                                                                }?>
+                                                                @while ($cnt < 6)   
+                                                                <?php 
+                                                                $accdmonth = $accdmonth - 1;
+                                                                if ($accdmonth <= 0)
+                                                                {
+                                                                $accdmonth = 12 + $accdmonth;
+                                                                $accdyear  = $accdyear - 1;
+                                                                }
+                                                                ?>
+                                                                <tr data-expanded="true">
+                                                                    <td>{{$cnt+1}}</td>
+                                                                    <td><input type="text" id="year[{{$contrcnt}}][{{$cnt}}]" name="year[{{$contrcnt}}][{{$cnt}}]" value="{{$accdyear}}" class="form-control" readonly></td>
+                                                                    @foreach ($month as $m)
+                                                                    @if ($m->refcode == $accdmonth)
+                                                                    <td><input type="text" value='{{$m->descen}}' class='form-control'readonly>
+                                                                        <input type="hidden" value='{{$accdmonth}}' class='form-control' id="month[{{$contrcnt}}][{{$cnt}}]" name="month[{{$contrcnt}}][{{$cnt}}]" readonly>
+                                                                    </td>
+                                                                    @endif
+                                                                    @endforeach
 
+
+                                                                    <?php $wagefound = false; ?>
+                                                                    @if (!empty($wagesinfo))
+                                                                    @foreach ($wagesinfo as $w)
+                                                                    @if ($w->empcode == $contr->empcode)
+                                                                    @foreach ($w->wagesinfo as $gaji)
+                                                                    @if ($gaji->month == $accdmonth && $gaji->year == $accdyear)
+                                                                    <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->wages}}" class="form-control maskdecimal" ></td>
+                                                                    <?php $wagefound = true; ?>
+                                                                    @endif
+                                                                    @endforeach
+                                                                    @endif
+                                                                    @endforeach
+                                                                    @endif
+                                                                    @if ($wagefound == false)
+                                                                    <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="" class="form-control maskdecimal" ></td>
+                                                                    @endif
+
+                                                                    <?php $contrfound = false; ?>
+                                                                    
+                                                                    
+                                                                    @if (!empty($contr))
+                                                                    @foreach ($contr->contribution as $c)
+                                                                    @if ($c->month == $accdmonth && $c->year == $accdyear)
+                                                                    <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$c->contribution}}" class="form-control maskdecimal" readonly></td>
+                                                                    <?php $contrfound = true; ?>
+                                                                    @endif
+                                                                    @endforeach
+                                                                    @endif
+
+                                                                    @if ($contrfound == false)
+                                                                    <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="" class="form-control maskdecimal" readonly></td>
+                                                                    @endif
+
+                                                                </tr>
+                                                                <?php $cnt++; 
+                                                                ?>
+                                                                @endwhile  
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('scheme/wages.attr.commencement_date')</label>
-                                    <input type="date" id="startdate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="startdate[{{$contrcnt}}]" value="{{substr($contr->startdate,0,4)}}-{{substr($contr->startdate,4,2)}}-{{substr($contr->startdate,6,2)}}" class="form-control"  >
-                                    <label class="control-label" id='lblerror' style='color:red'></label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('scheme/wages.attr.end_date')</label>
-                                    <input type="date" id="enddate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="enddate[{{$contrcnt}}]" value="{{substr($contr->enddate,0,4)}}-{{substr($contr->enddate,4,2)}}-{{substr($contr->enddate,6,2)}}" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row p-t-20">
-                            <div class="col-12">
-                                <div class="card">
-                                    <label>@lang('scheme/wages.attr.details_wages_accd')</label>
-                                    <div class="table-responsive">
-                                        <table id="demo-foo-row-toggler" class="table table-bordered" data-toggle-column="first">
-                                            <thead>
-                                                <tr>
-                                                    <th data-breakpoints="xs">@lang('scheme/wages.attr.num')</th>
-                                                    <th>@lang('scheme/wages.attr.year')</th>
-                                                    <th>@lang('scheme/wages.attr.month')</th>
-                                                    <th data-breakpoints="xs sm">@lang('scheme/wages.attr.wages')</th>
-                                                    <th data-breakpoints="xs">@lang('scheme/wages.attr.contribution_paid')</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $accdmonth = session('mcmonth'); 
-                                                $accdyear = session('mcyear'); 
-                                                $cnt = 0; 
+                        @endforeach
+                        <?php $contrcnt++; ?>  
+                        @endif
 
-                                                if ($accdmonth == '')
-                                                {
-                                                  $accdmonth = date('m');
-                                              }
-                                              if ($accdyear == '')
-                                              {
-                                                  $accdyear = date('Y');
-                                              }?>
-                                              @while ($cnt < 6)   
-                                              <?php 
-                                              $accdmonth = $accdmonth - 1;
-                                              if ($accdmonth <= 0)
-                                              {
-                                                $accdmonth = 12 + $accdmonth;
-                                                $accdyear  = $accdyear - 1;
-                                            }
-                                            ?>
-                                            <tr data-expanded="true">
-                                                <td>{{$cnt+1}}</td>
-                                                    {{--<td>
-
-                                                        <select id="month[{{$contrcnt}}][{{$cnt}}]" name="month[{{$contrcnt}}][{{$cnt}}]" class="form-control" readonly>
-                                                            @foreach ($month as $m)
-                                                            @if ($m->refcode == $accdmonth)
-                                                            <option value='{{$m->refcode}}' selected>{{$m->descen}}</option>
-                                                            @else
-                                                            <option value='{{$m->refcode}}'>{{$m->descen}}</option>
-                                                            @endif
-                                                            @endforeach
-                                                        </select>
-                                                    </td>--}}
-
-                                                    <td><input type="text" id="year[{{$contrcnt}}][{{$cnt}}]" name="year[{{$contrcnt}}][{{$cnt}}]" value="{{$accdyear}}" class="form-control" readonly></td>
-                                                    
-                                                    @foreach ($month as $m)
-                                                    @if ($m->refcode == $accdmonth)
-                                                    <td><input type="text" value='{{$m->descen}}' class='form-control'readonly>
-                                                        <input type="hidden" value='{{$accdmonth}}' class='form-control' id="month[{{$contrcnt}}][{{$cnt}}]" name="month[{{$contrcnt}}][{{$cnt}}]" readonly>
-                                                    </td>
-                                                    @endif
-                                                    @endforeach
-
-
-                                                    <?php $wagefound = false; ?>
-                                                    @if (!empty($wagesinfo))
-                                                    @foreach ($wagesinfo as $w)
-                                                    @if ($w->empcode == $contr->empcode)
-                                                    @foreach ($w->wagesinfo as $gaji)
-                                                    @if ($gaji->month == $accdmonth && $gaji->year == $accdyear)
-                                                    <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->wages}}" class="form-control maskdecimal" ></td>
-                                                    <?php $wagefound = true; ?>
-                                                    @endif
-                                                    @endforeach
-                                                    @endif
-                                                    @endforeach
-                                                    @endif
-                                                    @if ($wagefound == false)
-                                                    <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="" class="form-control maskdecimal" ></td>
-                                                    @endif
-
-                                                    <?php $contrfound = false; ?>
-                                                    
-                                                    
-                                                    @if (!empty($contr))
-                                                    @foreach ($contr->contribution as $c)
-                                                    @if ($c->month == $accdmonth && $c->year == $accdyear)
-                                                    <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$c->contribution}}" class="form-control maskdecimal" readonly></td>
-                                                    <?php $contrfound = true; ?>
-                                                    @endif
-                                                    @endforeach
-                                                    @endif
-
-                                                    @if ($contrfound == false)
-                                                    <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="" class="form-control maskdecimal" readonly></td>
-                                                    @endif
-
-                                                </tr>
-                                                <?php $cnt++; 
-                                                ?>
-                                                @endwhile
-
-
-
-
-
-                                            <!--    @for ($i = 0; $i < 6; $i++)
-                                                <tr data-expanded="true">
-                                                    <td>{{$i+1}}</td>
-                                                    <td>
-                                                        <select id="month[{{$i}}]" name="month[{{$i}}]">
-                                                            @foreach ($month as $m)
-
-                                                            <option value='{{$m->refcode}}'>{{$m->descen}}</option>
-                                                            @endforeach
-
-                                                        </select>
-                                                    </td>
-                                                    <td><input type="text" id="year[{{$i}}]" name="year[{{$i}}]" value="" class="form-control" ></td>
-                                                    <td><input type="text" id="wages[{{$i}}]" name="wages[{{$i}}]" value="" class="form-control" ></td>
-                                                    <td><input type="text" id="contrpaid[{{$i}}]" name="contrpaid[{{$i}}]" value="" class="form-control"></td>
-                                                </tr>
-                                                @endfor 
-                                            -->
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                            <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-    @endforeach
-    <?php $contrcnt++; ?>  
-    @endif
+</div>
 
-                                    <div class="form-actions">
-                                <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
-                                    <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
-                                        <!--button type="button" class="btn btn waves-effect waves-light btn-secondary" id="addWages" onclick="datafield();">Add Wages</button-->
-                                        <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
-                                        <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
-                                        <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
-                                        {{-- <button type="button" name="action" value="Back" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('noticetype.back')</button> --}}
+<script>
+    function checkdate(cnt)
+    {
 
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-                function checkdate(cnt)
-                {
-
-                    var startdate = document.getElementById('startdate['+cnt+']').value;
+        var startdate = document.getElementById('startdate['+cnt+']').value;
     //var startdate = document.getElementById('startdate[0]').value;
     //alert(startdate);
     var enddate = document.getElementById('enddate['+cnt+']').value;
@@ -378,14 +296,14 @@
     } 
 
     if(mm<10) {
-     mm  = '0'+mm;
- } 
+       mm  = '0'+mm;
+   } 
 
- var currdate = yyyy + '-' + mm + '-' + dd;
- var days = GetDays(startdate,currdate);
+   var currdate = yyyy + '-' + mm + '-' + dd;
+   var days = GetDays(startdate,currdate);
 
- if (days <= 0)
- {
+   if (days <= 0)
+   {
     var lblerror = document.getElementById('lblerror');
     lblerror.innerHTML  = 'Start date must not after current date';
     total.value = "";

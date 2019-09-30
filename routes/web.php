@@ -183,10 +183,10 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/noticeod', 'NoticeOdController@index');
     Route::post('/noticeod', 'CommonController@postObForm');
     Route::post('/employerdetails_od', 'CommonController@postEmployer');
-    Route::post('/odupdmc', 'NoticeOdController@UpdMC');
-    Route::post('/confirmation_od', 'NoticeOdController@postConfirmation');
-    Route::post('/bankinformation_od', 'NoticeOdController@postBankInfo');
-    Route::post('/wagesdetails_od', 'NoticeOdController@postWages');
+    Route::post('/updmckai', 'NoticeOdController@UpdMC');
+    Route::post('/confirmation', 'NoticeOdController@postConfirmation');
+    Route::post('/bankinformation', 'NoticeOdController@postBankInfo');
+    Route::post('/wages', 'NoticeOdController@postWages')->name('wages');
     Route::post('/odinfo', 'NoticeOdController@postOdinfo');
     Route::post('/odemphistory', 'NoticeOdController@postOdEmphistory');
     Route::get('/odpreview', 'NoticeOdController@Preview');
@@ -199,6 +199,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
 
     /* --------------------------- NOTICE OD(IO) ------------------------------------ */
     Route::get('/noticeod_io', 'NoticeOdController@indexIO');
+    Route::post('/preparer', 'NoticeOdController@postPreparer');
     /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */
 
     /* --------------------------- NOTICE OD(SAO) ------------------------------------ */

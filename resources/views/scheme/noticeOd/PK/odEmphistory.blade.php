@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form action="/odemphistory" method="post">
+                <form action="/scheme/odemphistory" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         @if(Session::get('msgodemphist')) 

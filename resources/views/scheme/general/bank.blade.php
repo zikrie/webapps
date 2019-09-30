@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="/bankinformation_od" id="reset">
+                <form method="POST" action="/scheme/bankinformation" id="reset">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                     <div class="form-body">
@@ -58,15 +58,34 @@
                             </div>
                         </div>
                         <div id="bank_reason">
+                            {{-- <div class="col-md-4" id='divaccexist'>
+                                <div class="form-group">
+                                    <label class="control-label">@lang('confirmation.attr.recipient_bank')</label>
+                                    <!--input type="text" name="sub_status_description" id="sub_status_description" class="form-control" value="@if(!empty($bankinfo)) {{$bankinfo->accexist}} @endif">-->
+                                    <select class="form-control select" name="accexist" id="accexist"
+                                    onchange='accountexist()'>
+                                    @if(!empty($bankinfo) && $bankinfo->accexist=='Y')
+                                    <option value='Y' selected>Yes</option>
+                                    <option value='N'>No</option>
+                                    @elseif (!empty($bankinfo) && $bankinfo->accexist=='N')
+                                    <option value='Y'>Yes</option>
+                                    <option value='N' selected>No</option>
+                                    @else
+                                    <option value='Y'>Yes</option>
+                                    <option value='N'>No</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div> --}}
                             <div class="row p-t-20">
                                 <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label class="control-label">@lang('form/scheme.general.collapse.bank.reason')</label>
-                                        @if (!empty($bankinfo) && $bankinfo->accexist=='N')
+                                        {{-- @if (!empty($bankinfo) && $bankinfo->accexist=='N')
                                         <select class="form-control select" name='reasonnoacc' id='reasonnoacc'>
-                                        @else
+                                        @else --}}
                                         <select class="form-control select" name='reasonnoacc' id='reasonnoacc'>
-                                        @endif
+                                        {{-- @endif --}}
                                         @foreach($optionreason as $or)
                                         @if (!empty($bankinfo) && $bankinfo->reasonnoacc == $or->refcode)
                                         <option value="{{$or->refcode}}" selected>{{$or->descen}}</option>
@@ -157,11 +176,11 @@
                                         <div class="form-group">
                                             <label class="control-label">@lang('form/scheme.general.collapse.bank.bank_address')</label>
                                             @if (!empty($bankinfo) && $bankinfo->bankloc=='O')
-                                            <input type="text" name="ovbankaddr" id="ovbankaddr" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->bankaddr}}">
+                                            <input type="text" name="localbankaddr" id="localbankaddr" class="form-control selectOverseasBank clearFields" value="">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
-                                            <input type="text" name="ovbankaddr" id="ovbankaddr" class="form-control selectOverseasBank clearFields" value="">
+                                            <input type="text" name="localbankaddr" id="localbankaddr" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->bankaddr}}">
                                             @else
-                                            <input type="text" name="ovbankaddr" id="ovbankaddr" class="form-control selectOverseasBank clearFields" value="">
+                                            <input type="text" name="localbankaddr" id="localbankaddr" class="form-control selectOverseasBank clearFields" value="">
                                             @endif
                                         </div>
                                     </div>

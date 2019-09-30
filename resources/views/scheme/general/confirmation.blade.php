@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form action="confirmationilat" method="POST">
+                <form action="confirmation" method="POST">
 
                     @if(Session::get('messageconf'))
                     <div class="card-footer">
@@ -110,7 +110,7 @@
                     <div class="form-actions">
                         <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                             <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
-                        <button type="submit"
+                        <button type="submit" 
                             class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
                         <button type="button" class="btn btn waves-effect waves-light btn-info"
                             onclick="submitform()">@lang('scheme/noticetype.reset')</button>

@@ -1,17 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\scheme;
+namespace App\Http\Controllers\Scheme;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\Input;
-
-use Illuminate\Support\Facades\Cache;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Exception\ClientException;
 
 class NoticeTypeController extends Controller
 {
@@ -20,17 +14,20 @@ class NoticeTypeController extends Controller
     public function index()
     {
         $operid = session('loginname');
-        if ($operid == '') {
+        if ($operid == '')
+        {
             return redirect('/login');
         }
         $idtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
         $noticetype =DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['casetype']);
         return view('scheme.general.notice_type', ['idtype'=>$idtype, 'noticetype'=>$noticetype]);
+        
     }
 
     public function noticeType(Request $request)
     {
-        $idtype = $request->idtype;
+
+    	$idtype = $request->idtype;
         $idno = $request->idno;
         $empcode = $request->empcode;
         $noticetype = $request->notice_type;
@@ -41,9 +38,9 @@ class NoticeTypeController extends Controller
         
 
         session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
-        // session(['accdrefno'=>'', 'caserefno'=>'']);
-        session(['caserefno'=>'']);
-        session(['uniquerefno'=>'']);
+        // session(['accdrefno'=>'', 'caserefno'=>'']); 
+        session(['caserefno'=>'']); 
+        session(['uniquerefno'=>'']); 
         session(['message'=>'']);
         session(['noticetype'=>$noticetype]);
 
@@ -56,26 +53,24 @@ class NoticeTypeController extends Controller
         session(['casestatus'=>'','source'=>'','messagemc'=>'','messageacc'=>'','messagebank'=>'']);
         session(['messagecert'=>'','messageemp'=>'','messageod'=>'']);
 
-        if ($request->action == 'search') {
-            if ($noticetype != '02'||$noticetype != '03') {
+        if ($request->action == 'search'){
+
+            if($noticetype != '02'||$noticetype != '03'){
                 $in_employment=null;
             }
-            if ($noticetype != '04') {
+            if ($noticetype != '04'){
                 $select_death_accident = null;
             }
             
-            
-            $jsondecodeAssistEmployer='';
-            $this->getAssist($jsondecodeAssistEmployer);
-            
-            // dd($jsondecodeAssistEmployer);
-            $jsonOBAssist= '';
-            $this->getOBAssist($idno, $idtype, $jsonOBAssist);
-           
-           
-    
+            $jsondecodeAssistEmployer="";
 
-        //    dd($testing);
+            $this->getAssist($jsondecodeAssistEmployer);
+
+            $jsonOBAssist= '';
+            $retcode = $this->getOBAssist($idno, $idtype, $jsonOBAssist);
+        
+            
+
             $listidtype=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['idtype']);
             $listnoticetype =DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['casetype']);
             
@@ -83,63 +78,79 @@ class NoticeTypeController extends Controller
             //     return redirect()->back()->withInput(Input::all())->with('messagent','Record Is Not Found');
             // }
 
-            if ($jsonOBAssist == null && $jsonOBAssist == '') {
+            if($jsonOBAssist == null && $jsonOBAssist == ''){
                 $idnoassist=null;
-            } else {
-                
-                foreach ($jsonOBAssist as $testing) {
-                    $idnoassist=$testing->{'identificationInfoList'};
+            }else
+            {
+                foreach($jsonOBAssist as $testing){
+                    $idnoassist=$testing->{'idinfo'}; 
                 }
             }
-            // return $idnoassist;
-            // dd($idnoassist);
-            return view('scheme.general.notice_type', ['idtype'=>$listidtype, 'noticetype'=>$listnoticetype,'empinfo'=>$jsondecodeAssistEmployer,'obassist'=>$idnoassist,'empcode'=>$empcode,'idno'=>$idno,'selectidtype'=>$idtype,'selectnoticetype'=>$noticetype,'nameid'=>$jsonOBAssist,'in_employment'=>$in_employment,'select_death_accident'=>$select_death_accident]);
+            
+          
+                return view('scheme.general.notice_type', ['idtype'=>$listidtype, 'noticetype'=>$listnoticetype,'empinfo'=>$jsondecodeAssistEmployer,'obassist'=>$idnoassist,'empcode'=>$empcode,'idno'=>$idno,'selectidtype'=>$idtype,'selectnoticetype'=>$noticetype,'nameid'=>$jsonOBAssist,'in_employment'=>$in_employment,'select_death_accident'=>$select_death_accident]);     
+            
+        
         }
-        if ($noticetype == "01") { //accident
-            if ($empcode == '') {
-                return redirect()->back()->withInput(Input::all())->with('messagent', 'Please fill in employer code');
+        if ($noticetype == "01") //accident
+        {
+            
+            if ($empcode == '')
+            {
+                return redirect()->back()->withInput(Input::all())->with('messagent','Please fill in employer code');
             }
             
-            if ($idno == '') {
-                return redirect()->back()->withInput(Input::all())->with('messagent', 'Please fill in Identification No.');
+            if ($idno == '')
+            {
+                return redirect()->back()->withInput(Input::all())->with('messagent','Please fill in Identification No.');
             }
             $jsondecodeAssistEmployer="";
             $this->getAssist($jsondecodeAssistEmployer);
             
-            if ($jsondecodeAssistEmployer) {
-                return redirect('/scheme/accdatetime');
-            } else {
-                return redirect()->back()->withInput(Input::all())->with('messagent', 'Employer record not found');
+            if ($jsondecodeAssistEmployer)
+            {
+                return redirect('scheme/accdatetime');
             }
-        } elseif ($noticetype == "02") { //od
-            if ($empcode == '') {
-                return redirect()->back()->withInput(Input::all())->with('messagent', 'Please fill in employer code');
+            else
+            {
+                return redirect()->back()->withInput(Input::all())->with('messagent','Employer record not found');
+            }
+            
+        }
+
+        else if ($noticetype == "02") //od
+        {
+            if ($empcode == '')
+            {
+                return redirect()->back()->withInput(Input::all())->with('messagent','Please fill in employer code');
             }
             
             $jsondecodeAssistEmployer="";
 
             $this->getAssist($jsondecodeAssistEmployer);
             
-            if (!$jsondecodeAssistEmployer) {
+            if (!$jsondecodeAssistEmployer)
+            {
                 // return redirect('/obform_od');
-                return redirect()->back()->withInput(Input::all())->with('messagent', 'Employer record not found');
+                return redirect()->back()->withInput(Input::all())->with('messagent','Employer record not found');
             }
             
             $jsondecodeOdRecord="";
             $a=$this->checkOdRecordExist($jsondecodeOdRecord);
-            dd($jsondecodeOdRecord);
-            // return($jsondecodeOdRecord);
-            // dd($jsondecodeOdRecord);
+            // return $a;
+
             $record = $jsondecodeOdRecord->{'record'};
 
-            // return $record;
-            if ($record=='0') {
+        // return $record;
+            if($record=='0')
+            {
                 session(['caserefno'=>'']);
 
                 $noticedraft = $this->createnoticedraft();
                 $errorcode = $noticedraft->{'errorcode'};
 
-                if ($errorcode == 0) {
+                if ($errorcode == 0)
+                {
                     $caserefno = $noticedraft->{'caserefno'};
                     session(['caserefno'=>$caserefno]);
                     //chg07072019 - get wbid & put into session
@@ -147,12 +158,17 @@ class NoticeTypeController extends Controller
                     session(['wbid'=>$wbid]);
                     
                     
-                    return redirect('/scheme/noticeod');
-                } else {
-                    return redirect()->back()->with('messagent', 'Failed to create draft');
+                    return redirect('scheme/noticeod');
                 }
-                //return $this->index();//irina comment
-            } else {
+                else
+                {
+                    return redirect()->back()->with('messagent','Failed to create draft');
+                }
+            //return $this->index();//irina comment
+
+            }
+            else
+            {
                 $caserefno= $jsondecodeOdRecord->{'caserefno'};
                 session(['caserefno' => $caserefno]);
                 
@@ -160,16 +176,25 @@ class NoticeTypeController extends Controller
                 $wbid = $jsondecodeOdRecord->{'wbid'};
                 session(['wbid'=>$wbid]);
                 //return $this->index();//irina comment
-                return redirect('/scheme/noticeod');
+                return redirect('scheme/noticeod');
+        
             }
             //return $this->index();//irina comment
-            return redirect('/scheme/noticeod');
-        } elseif ($noticetype == "03") { //invalidity
+            return redirect('scheme/noticeod');
+
+
+
+            
+        }
+
+        else if ($noticetype == "03") //invalidity
+        {
             $jsonOBAssist= '';
             $retcode = $this->getOBAssist($idno, $idtype, $jsonOBAssist);
             
-            if ($retcode < 0) {
-                return redirect()->back()->withInput(Input::all())->with('messagent', 'Insured Person\'s profile not found');
+            if ($retcode < 0)
+            {
+                return redirect()->back()->withInput(Input::all())->with('messagent','Insured Person\'s profile not found');
             }
             
             $jsondecode="";
@@ -180,178 +205,131 @@ class NoticeTypeController extends Controller
 
             // return $record;
                 
-            if ($record=='0') {
-                session(['caserefno'=>'', 'schemerefno'=>'']);
+                if($record=='0')
+                {
+                    session(['caserefno'=>'', 'schemerefno'=>'']);
                     
-                $noticedraft = $this->createnoticedraft();
-                $errorcode = $noticedraft->{'errorcode'};
+                    $noticedraft = $this->createnoticedraft();
+                    $errorcode = $noticedraft->{'errorcode'};
                     
-                if ($errorcode == 0) {
-                    $caserefno = $noticedraft->{'caserefno'};
-                    session(['caserefno'=>$caserefno]);
+                    if ($errorcode == 0)
+                    {
+                        $caserefno = $noticedraft->{'caserefno'};
+                        session(['caserefno'=>$caserefno]);
                         
+                        //chg07072019 - get wbid & put into session
+                        $wbid = $noticedraft->{'wbid'};
+                        session(['wbid'=>$wbid]);
+                    
+                        return redirect('scheme/noticeilat');
+                    }
+                    else
+                    {
+                        return redirect()->back()->withInput(Input::all())->with('messagent','Failed to create draft');
+                    }
+                    //return $this->index();//irina comment
+                    
+                }
+                else
+                {
+                    $schemerefno = $jsondecode->{'schemerefno'};
+                    
+                    if ($schemerefno != '')
+                    {
+                        $message = 'Invalidity notice application for this Insured Person is already exist. Scheme Ref No: '.$schemerefno;
+                        
+                        return redirect()->back()->withInput(Input::all())->with('messagent',$message);
+                    }
+                    $caserefno= $jsondecode->{'caserefno'};
+                    session(['caserefno'=>$caserefno]);
+                    
                     //chg07072019 - get wbid & put into session
-                    $wbid = $noticedraft->{'wbid'};
+                    $wbid = $jsondecode->{'wbid'};
                     session(['wbid'=>$wbid]);
                     
-                    return redirect('/scheme/noticeinvalidity');
-                } else {
-                    return redirect()->back()->withInput(Input::all())->with('messagent', 'Failed to create draft');
+                    return redirect('scheme/noticeilat');
                 }
-                //return $this->index();//irina comment
-            } else {
-                $schemerefno = $jsondecode->{'schemerefno'};
-                    
-                if ($schemerefno != '') {
-                    $message = 'Invalidity notice application for this Insured Person is already exist. Scheme Ref No: '.$schemerefno;
-                        
-                    return redirect()->back()->withInput(Input::all())->with('messagent', $message);
-                }
-                $caserefno= $jsondecode->{'caserefno'};
-                session(['caserefno'=>$caserefno]);
-                    
-                //chg07072019 - get wbid & put into session
-                $wbid = $jsondecode->{'wbid'};
-                session(['wbid'=>$wbid]);
-                    
-                return redirect('/scheme/noticeinvalidity');
-            }
-            //return redirect('/obformilat');
-        } elseif ($noticetype == "04") { //death
-            $jsondecodeDeathRecord = "";
-            $a = $this->checkDeathRecord($jsondecodeDeathRecord);
-            // return $a;
-            $record = $jsondecodeDeathRecord->{'record'};
-        
-            // return $record;
-            if ($record=='0') {
-                session(['caserefno'=>'', 'schemerefno'=>'']);
-
-                $noticedraft = $this->createnoticedraft();
-                $errorcode = $noticedraft->{'errorcode'};
-
-                if ($errorcode == 0) {
-                    $caserefno = $noticedraft->{'caserefno'};
-                    session(['caserefno'=>$caserefno]);
-                    $wbid = $noticedraft->{'wbid'};
-                    session(['wbid'=>$wbid]);
-                    return redirect('/scheme/noticedeath');
-                } else {
-                    return redirect()->back()->with('messagent', 'Failed to create draft');
-                }
-            } else {
-                $schemerefno = $jsondecodeDeathRecord->{'schemerefno'};
-                    
-                if ($schemerefno != '') {
-                    $message = 'Death notice application for this Insured Person is already exist. Scheme Ref No: '.$schemerefno;
-                    return redirect()->back()->withInput(Input::all())->with('messagent', $message);
-                }
-                $caserefno= $jsondecodeDeathRecord->{'caserefno'};
-                session(['caserefno'=>$caserefno]);
-
-                //chg07072019 - get wbid & put into session
-                $wbid = $jsondecodeDeathRecord->{'wbid'};
-                session(['wbid'=>$wbid]);
-                
-                return redirect('/scheme/noticedeath');
-            }
-
-            //return redirect('/obform_death');
+                //return redirect('/obformilat');
         }
+        
+        
+        else if ($noticetype == "04") //death
+            return view('noticeDeath.index');
+
     }
-    public function checkDeathRecord(&$jsondecodeDeathRecord)
-    {
-        $idno=session('idno');
-        $idtype=session('idtype');
+        // {
+        //     $jsondecodeOdRecord ="";
+        //     $this->checkOdRecordExist($jsondecodeOdRecord);
+
+        //     if ($jsondecodeOdRecord && $jsondecodeOdRecord!='')//hannis
+        //     {
+        //     $record = $jsondecodeOdRecord->{'record'};
+        //         if ($record > 0)
+        //         {
+        //         $odrecord = $jsondecodeOdRecord->{'data'};
+        //             if ($record == 1)
+        //             {
+        //                 $odrecord = $odrecord[0]->{'data'};
+        //                 session(['odrefno'=>$odrefno]);
+        //                 return redirect('/obform_od');
+        //             }
+        //             else
+        //             {
+        //                 return redirect()->back()->with('messagent','OD record not exist');
+        //             }
+        //         }
+        //         else
+        //         {
+        //         return redirect()->back()->with('messagent','OD record not exist');
+        //         } 
+        //     }
+        // }
        
-        $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/deathrecordexist?idno='.$idno.'&idtype='.$idtype;
 
-        // return $url;
-        $ch = curl_init();
-        
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        //return '++'.$result.'++';
-        $jsondecodeDeathRecord = json_decode($result);
-        //close connection
-        curl_close($ch);
-    }
+        //irina comment out
+    	/*
+        $result = DB::selectOne('select idno from obprofile where idno=?' , [$idno]);
+        if(is_null($result))
+        {
+                return view('/accidentdatetime');
+        }
+         return view('/accidentdatetime', ['idno'=>$result->idno]);
+         */
+	
+	// return redirect('/accdatetime');
      
     public function getOBAssist($idno, $idtype, &$jsonOBAssist)
     {
-        try
-        {
-            $client = new Client([
-                // Base URI is used with relative requests
-                'base_uri' => env('WS_DB2_IP', 'localhost').'/api/common/',
-                // You can set any number of default request options.
-                'timeout'  => 2.0,
-            ]);
-
-        
-            $resource = array(
-            // "refNo"=> $refno,
-            "identificationType"=> "4",
-            "identificationNo"=> $idno);
-            $j = json_encode($resource);
-            
-            $response = $client->request('GET', 'ip', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
-           
-            $body = $response->getBody()->getContents();
-          
-            $stringBody = (string) $body;
-            
-            $jsonOBAssist = json_decode($stringBody);
-            //  dd($jsonOBAssist);
-            
-         $jsonOBAssist = $jsonOBAssist->{'employeeInfoList'};
-            // dd($jsondecodeAssistEmployer);
-         
-           // $_content = json_encode($stringBody,true);
-           // return new ApiResource($_content);
-            
-            }
-            catch(\Exception $e)
-            {
-                return $e->getMessage();
-               
-            }
         //$idno = '1';
 
-        // $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/obprofile/'.$idno.'/'.$idtype;
-        // $ch = curl_init();
+        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/obprofile/'.$idno.'/'.$idtype;
+        $ch = curl_init();
         
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_PROXY, '');
+        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PROXY, '');
         
-        // curl_setopt($ch, CURLOPT_HTTPGET, true);
+        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
 
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
         
         
-        // $result = curl_exec($ch);
-        // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        $result = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
     
-        // //close connection
-        // curl_close($ch);
+        //close connection
+        curl_close($ch);
 
-        // $jsonOBAssist = json_decode($result);
+        $jsonOBAssist = json_decode ($result);
         
-        // if ($jsonOBAssist != null) {
-        //     return 0;
-        // }
+        if ($jsonOBAssist != null)
+        {
+            return 0;
+        }
         
-        // return -1;
+        return -1;
+    
     }
     
     public function checkIlatNotice(&$jsondecode)
@@ -361,101 +339,57 @@ class NoticeTypeController extends Controller
 
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/ilatrecordexist?idno='.$idno.'&idtype='.$idtype;
                        
-        // return $url;
-        $ch = curl_init();
+            // return $url;
+            $ch = curl_init();
             
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_PROXY, '');
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_PROXY, '');
             
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+            curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
     
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        //return $result;
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        //return '++'.$result.'++';
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $result = curl_exec($ch);
+            //return $result;
+            $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+            //return '++'.$result.'++';
 
-        //close connection
-        curl_close($ch);
+             //close connection
+             curl_close($ch);
 
-        $jsondecode = json_decode($result);
+            $jsondecode = json_decode($result);
+
     }
     
-    public function getAssist(&$jsondecodeAssistEmployer)
+     public function getAssist(&$jsondecodeAssistEmployer)
     {
         //$idno = '1';
 
         $idno = session('idno');
         $empcode = session('empcode');
+        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
+        $ch = curl_init();
+        
+        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_PROXY, '');
+        
+        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
 
-        try
-        {
-            $client = new Client([
-                // Base URI is used with relative requests
-                'base_uri' => env('WS_DB2_IP', 'localhost').'/api/common/',
-                // You can set any number of default request options.
-                'timeout'  => 2.0,
-            ]);
-
-        
-            $resource = array(
-            // "refNo"=> $refno,
-            "employerCode"=> $empcode,
-            "employerName"=> "f");
-            $j = json_encode($resource);
-            
-            $response = $client->request('GET', 'employers', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
-            
-            $body = $response->getBody()->getContents();
-           
-            $stringBody = (string) $body;
-           
-            
-            $jsondecodeAssistEmployer = json_decode($stringBody);
-            $jsondecodeAssistEmployer = $jsondecodeAssistEmployer->{'businessInfo'};
-            // dd($jsondecodeAssistEmployer);
-         
-           // $_content = json_encode($stringBody,true);
-           // return new ApiResource($_content);
-            
-            }
-            catch(\Exception $e)
-            {
-                return $e->getMessage();
-               
-            }
-        
-        // $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
-        // $ch = curl_init();
-        
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_PROXY, '');
-        
-        // curl_setopt($ch, CURLOPT_HTTPGET, true);
-
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
         
         
-        // $result = curl_exec($ch);
-        // $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
+        $result = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
     
-        // //close connection
-        // curl_close($ch);
+        //close connection
+        curl_close($ch);
 
-        // $jsondecodeAssistEmployer = json_decode($response);
+        $jsondecodeAssistEmployer = json_decode ($result);
+    
     }
-    public function testing(Request $request)
-    {
-              //  return 'yeay';
-              $empcode = $request->empcode;
-            
-            //   $idno = session('idno');
-            //   $empcode = session('empcode');  
-        }
 
     public function checkOdRecordExist(&$jsondecodeOdRecord)
     {
@@ -469,23 +403,21 @@ class NoticeTypeController extends Controller
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
+        curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
-        // dd($result);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         // $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
-        // return '++'.$result.'++';
+        //return '++'.$result.'++';
 
         //close connection
         curl_close($ch);
         // return $result;
         $jsondecodeOdRecord = json_decode($result);
+        
 
-        // dd($jsondecodeOdRecord);
-        // return
     }
 
     public function createnoticedraft()
@@ -498,28 +430,33 @@ class NoticeTypeController extends Controller
         $empcode = session('empcode');//chg27062019 - to send empcode to ws
 
         //chg27062019 - send accddate & accdtime to ws but null value
-        $notice = ['noticetype'=> $noticetype, 'operid'=> $operid,'brcode'=> $brcode, 'idno'=>$idno,
+        $notice = ['noticetype'=> $noticetype, 'operid'=> $operid,'brcode'=> $brcode, 'idno'=>$idno, 
             'idtype'=>$idtype, 'empcode'=>$empcode,'accddate'=>'', 'accdtime'=>''];
         $jsondata = json_encode($notice);
        
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/createdraft';
         $ch = curl_init();
         
-        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch,CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, false);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
+        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
         
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
 
-        //close connection
+            //close connection
         curl_close($ch);
         
         return json_decode($result);
     }
+
 }
+
+    
+    
+

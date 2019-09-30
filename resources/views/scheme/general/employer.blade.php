@@ -266,8 +266,8 @@
                                     <label>@lang('scheme/employer.attr.telNo')</label>
                                     @if(!empty($emprecord) && $emprecord->telno != '')
                                     <input type="text" id="telno" name="telno" value="{{$emprecord->telno}}" class="form-control clearFields">
-                                    @elseif(!empty($employer) && $employer->phoneno != '')
-                                    <input type="text" id="telno" name="telno" value="{{$employer->phoneno}}" class="form-control clearFields">
+                                    @elseif(!empty($employer) && $employer->telno != '')
+                                    <input type="text" id="telno" name="telno" value="{{$employer->telno}}" class="form-control clearFields">
                                     @else
                                     <input type="text" id="telno" name="telno" value="" class="form-control clearFields">
                                     @endif
