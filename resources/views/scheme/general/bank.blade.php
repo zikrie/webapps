@@ -1,16 +1,20 @@
 <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <form method="POST" action="/scheme/bankinformation" id="reset">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-
-                    <div class="form-body">
-                        @if(Session::get('messagebank'))
-                        <div class="card-footer">
-
-                            <div class="alert alert-warning">
-                                {{Session::get('messagebank')}}
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" action="/bankinformation_od">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+    
+                        <div class="form-body">
+                            <h5 class="card-title">@lang('confirmation.bank_info')</h5>
+                            <hr>
+                            @if(Session::get('messagebank'))
+                            <div class="card-footer">
+    
+                                <div class="alert alert-warning">
+                                    {{Session::get('messagebank')}}
+                                </div>
+    
                             </div>
                             @elseif (!empty($messagebank))
                             <div class="card-footer">
@@ -102,41 +106,27 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="bank_reason">
-                            {{-- <div class="col-md-4" id='divaccexist'>
-                                <div class="form-group">
-                                    <label class="control-label">@lang('confirmation.attr.recipient_bank')</label>
-                                    <!--input type="text" name="sub_status_description" id="sub_status_description" class="form-control" value="@if(!empty($bankinfo)) {{$bankinfo->accexist}} @endif">-->
-                                    <select class="form-control select" name="accexist" id="accexist"
-                                    onchange='accountexist()'>
-                                    @if(!empty($bankinfo) && $bankinfo->accexist=='Y')
-                                    <option value='Y' selected>Yes</option>
-                                    <option value='N'>No</option>
-                                    @elseif (!empty($bankinfo) && $bankinfo->accexist=='N')
-                                    <option value='Y'>Yes</option>
-                                    <option value='N' selected>No</option>
-                                    @else
-                                    <option value='Y'>Yes</option>
-                                    <option value='N'>No</option>
-                                    @endif
-                                </select>
-                            </div>
-                        </div> --}}
                             <div class="row p-t-20">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('form/scheme.general.collapse.bank.reason')</label>
-                                        {{-- @if (!empty($bankinfo) && $bankinfo->accexist=='N')
-                                        <select class="form-control select" name='reasonnoacc' id='reasonnoacc'>
-                                        @else --}}
-                                        <select class="form-control select" name='reasonnoacc' id='reasonnoacc'>
-                                        {{-- @endif --}}
-                                        @foreach($optionreason as $or)
-                                        @if (!empty($bankinfo) && $bankinfo->reasonnoacc == $or->refcode)
-                                        <option value="{{$or->refcode}}" selected>{{$or->descen}}</option>
-                                        <option>@lang('scheme/bank.attr.senior')</option>
-                                        <option>@lang('scheme/bank.attr.legal')</option>
+                                        <label class="control-label">@lang('confirmation.attr.bai_status')</label>
+                                        <select class="form-control select" name='baists' id='baists'>
+    
+                                            @foreach($optionbai as $obai)
+                                            @if (!empty($bankinfo) && $bankinfo->baists == $obai->refcode)
+                                            <option value="{{$obai->refcode}}" selected>{{$obai->descen}}</option>
+                                            @else
+                                            <option value="{{$obai->refcode}}">{{$obai->descen}}</option>
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">@lang('confirmation.attr.substatus_desc')</label>
+                                        @if(!empty($bankinfo) && $bankinfo->substsdesc != '')
+                                        <input type="text" id="substsdesc" name="substsdesc" value="{{$bankinfo->substsdesc}}" class="form-control select">
                                         @else
                                         <input type="text" id="substsdesc" name="substsdesc" value="" class="form-control select">
                                         @endif
@@ -281,13 +271,16 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label">@lang('form/scheme.general.collapse.bank.bank_address')</label>
-                                            @if (!empty($bankinfo) && $bankinfo->bankloc=='O')
-                                            <input type="text" name="localbankaddr" id="localbankaddr" class="form-control selectOverseasBank clearFields" value="">
+                                            <label class="control-label">@lang('confirmation.attr.bank_branch')</label>
+                                            @if (!empty($bankinfo) && $bankinfo->bankloc=='O' && $bankinfo->bankbr)
+                                            <input type="text" name="ovbankbr" id="ovbankbr"
+                                            class="form-control selectOverseasBank" value="{{$bankinfo->bankbr}}">
                                             @elseif (!empty($bankinfo) && $bankinfo->bankloc=='L')
-                                            <input type="text" name="localbankaddr" id="localbankaddr" class="form-control selectOverseasBank clearFields" value="{{$bankinfo->bankaddr}}">
+                                            <input type="text" name="ovbankbr" id="ovbankbr"
+                                            class="form-control selectOverseasBank" value="">
                                             @else
-                                            <input type="text" name="localbankaddr" id="localbankaddr" class="form-control selectOverseasBank clearFields" value="">
+                                            <input type="text" name="ovbankbr" id="ovbankbr"
+                                            class="form-control selectOverseasBank" value="">
                                             @endif
     
                                         </div>
@@ -546,5 +539,3 @@
         //     }
     
         // }  --}}
-    
-    
