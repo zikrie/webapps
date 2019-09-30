@@ -380,11 +380,10 @@ class NoticeOdController extends CommonController
         curl_close($ch);
     }
     
-    public function UpdMC(Request $req)//kai chg27092019
+    public function UpdMC(Request $req)
     {
         if ($req->action== 'Submit') {
 
-            // dd($req->all());
             dd($req->all());
 
             $parent = count($req->hussts);
@@ -584,6 +583,8 @@ class NoticeOdController extends CommonController
 
 
         // return $jsondata;
+    
+    //irina
     
     public function checkOdRecordExist($jsondecodeOdRecord)
     {
@@ -2465,52 +2466,8 @@ public function postConfirmation(Request $req)
             'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts, 
             'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
             'docinfo'=>$docinfo, 'odempinfo' => $odempinfo, 'oddata'=>$oddata, 'confirmation'=>$confirmation,
-            'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'doclist_select'=>$alldoclist]);  
+            'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'doclist_select'=>$alldoclist]);
 
-    }
-
-    public function postPreparer(Request $req)
-    {
-        $name = $req->name;
-        $date = $req->date;
-
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json'
-            ],
-
-            'json' => [
-                "name" => $name,
-                "date" => $date,
-                "operid"=> session('loginname'),
-                "brcode"=> session('brcode'),
-                "caserefno"=> session('caserefno')
-            ],
-
-        ];
-
-        // dd($options);
-
-        return redirect()->back()->with('msgpreparer','Save Successful');
-    }
-
-    public function getPreparer()
-    {
-        $caserefno = session('caserefno');
-
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json'
-            ],
-
-            'json' => [
-                "caserefno" => $caserefno
-            ],
-
-        ];
-        dd($options);
     }
 
     public function indexSCO()

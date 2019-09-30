@@ -118,9 +118,9 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     // Route::post('/bankinformation','NewClaim\NoticeAccidentController@postBankInfo');
 
     //irina
-    Route::post('/noticeaccident', 'NoticeAccidentController@postAccident');
+    Route::post('/noticeaccident', 'NewClaim\NoticeAccidentController@postAccident');
     //zik
-    Route::post('/HUS', 'NoticeAccidentController@postHusInfo');
+    Route::post('/HUS', 'NewClaim\NoticeAccidentController@postHusInfo');
     /* --------------------------END OF NOTICE ACCIDENT(PK) ------------------------ */
 
     /* -------------------------- NOTICE ACCIDENT -- SCO ----------------------------- */
@@ -181,16 +181,16 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ----------------------END OF NOTICE ACCIDENT -- OTHERS --------------------------- */
 
     /* --------------------------- NOTICE OD(PK) ------------------------------------ */
-    Route::get('/noticeod', 'NoticeOdController@index');
-    Route::post('/noticeod', 'CommonController@postObForm');
-    Route::post('/employerdetails_od', 'CommonController@postEmployer');
-    Route::post('/updmckai', 'NoticeOdController@UpdMC');
-    Route::post('/confirmation', 'NoticeOdController@postConfirmation');
-    Route::post('/bankinformation', 'NoticeOdController@postBankInfo');
-    Route::post('/wages', 'NoticeOdController@postWages')->name('wages');
-    Route::post('/odinfo', 'NoticeOdController@postOdinfo');
-    Route::post('/odemphistory', 'NoticeOdController@postOdEmphistory');
-    Route::get('/odpreview', 'NoticeOdController@Preview');
+    Route::get('/noticeod', 'NewClaim\NoticeOdController@index');
+    Route::post('/noticeod', 'NewClaim\CommonController@postObForm');
+    Route::post('/employerdetails_od', 'NewClaim\CommonController@postEmployer');
+    Route::post('/updmc', 'NewClaim\NoticeOdController@UpdMC');
+    Route::post('/confirmation_od', 'NewClaim\NoticeOdController@postConfirmation');
+    Route::post('/bankinformation_od', 'NewClaim\NoticeOdController@postBankInfo');
+    Route::post('/wagesdetails_od', 'NewClaim\NoticeOdController@postWages');
+    Route::post('/odinfo', 'NewClaim\NoticeOdController@postOdinfo');
+    Route::post('/odemphistory', 'NewClaim\NoticeOdController@postOdEmphistory');
+    Route::get('/odpreview', 'NewClaim\NoticeOdController@Preview');
     // Route::get('/branch/{statecode}', 'NoticeOdController@getbranchname');
     /* ---------------------------END OF NOTICE OD(PK) ------------------------------- */
 
@@ -199,8 +199,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */
 
     /* --------------------------- NOTICE OD(IO) ------------------------------------ */
-    Route::get('/noticeod_io', 'NoticeOdController@indexIO');
-    Route::post('/preparer', 'NoticeOdController@postPreparer');
+    Route::get('/noticeod_io', 'NewClaim\NoticeOdController@indexIO');
     /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */
 
     /* --------------------------- NOTICE OD(SAO) ------------------------------------ */

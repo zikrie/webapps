@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('wages') }}">
+                <form method="POST" action="/wages">
                     {{-- <input type="hidden" name="_token" value="{{csrf_token()}}"> --}}
                     @csrf
                     <div class="form-body">
