@@ -42,18 +42,15 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Identification Type</label>
-                                    <select class="form-control clearfields" readonly name='idtype' id='idtype' required>
-                                        <option selected disabled hidden >Please Select </option>
-                                        @foreach ($idtype as $id)
-                                        @if (old('idtype') == $id->refcode)
-                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
-                                        @elseif(!empty($selectidtype)&&$id->refcode == $selectidtype)
-                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
-                                        @else
-                                        <option value="{{$id->refcode}}">{{$id->descen}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>                               
+                                    <select class="form-control" data-placeholder="idType_invalidity" tabindex="2">
+                                        <option selected disabled hidden>Please Choose </option>
+                                        <option value="New IC">@lang('New IC')</option>
+                                        <option value="Old IC">@lang('Old IC')</option>
+                                        <option value="Army ID">@lang('Army ID')</option>
+                                        <option value="Police ID">@lang('Police ID')</option>
+                                        <option value="Social Security ID">@lang('Social Security ID')</option>
+                                        <option value="CID">@lang('CID')</option>
+                                </select>                                
                                </div>
                             </div>
                             <div class="col-md-6">
@@ -94,7 +91,6 @@
                         <div class="form-actions">
                                 <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                                
                                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
                                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
                             </div>

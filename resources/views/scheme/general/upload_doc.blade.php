@@ -146,8 +146,8 @@
                                                     <td><a href='testing?docname={{$d->docname}}&notes={{$d->notes}}&docid={{$d ->docid}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td>
                                                     {{-- <td><a href='viewdoc?docname={{$d->docname}}'
-                                                    target="_blank"><i class="far fa-file-alt"></i></a></td>
-                                                    --}}
+                                                    target="_blank"><i class="far fa-file-alt"></i></a></td> --}}
+
 
                                                 </tr>
                                                 <?php $cnt++; ?>
@@ -210,4 +210,5 @@
         </div>
     </div>
     <!-- Row -->
+</div>
 </div>

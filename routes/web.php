@@ -51,9 +51,9 @@ Route::get('/homeADM', function () {
 /* ------------------- ALL NOTICE -------------------- */
 
 
-//Route::resource('noticeOd', 'CommonController@GetOBDetails');
-//Route::post('/accidentdatetime', 'NoticeAccidentController@index');//irina comment out
-//Route::post('/remark', 'NoticeAccidentController@postRemark');
+//Route::resource('noticeOd', 'NewClaim\CommonController@GetOBDetails');
+//Route::post('/accidentdatetime', 'NewClaim\NoticeAccidentController@index');//irina comment out
+//Route::post('/remark', 'NewClaim\NoticeAccidentController@postRemark');
 
 //testing
 Route::get('/testmc', 'NoticeAccidentController@DisplayMC');
@@ -64,13 +64,13 @@ Route::post('/testuploaddoc', 'UploadclaimController@upload');
 
 Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* -------------------------------- COMMON ------------------------------------ */
-    Route::post('/obform', 'CommonController@postObForm');
-    Route::post('/bankinformation', 'CommonController@postBankInfo');
+    Route::post('/obform', 'NewClaim\CommonController@postObForm');
+    Route::post('/bankinformation', 'NewClaim\CommonController@postBankInfo');
     //HANNIS
-    Route::post('/employerDetails', 'CommonController@postEmployer');
-    Route::get('/success', 'CommonController@success');
-    Route::post('/backhome', 'CommonController@backhome');
-    Route::post('/back', 'CommonController@BacktoConfirmation');//chg07072019
+    Route::post('/employerDetails', 'NewClaim\CommonController@postEmployer');
+    Route::get('/success', 'NewClaim\CommonController@success');
+    Route::post('/backhome', 'NewClaim\CommonController@backhome');
+    Route::post('/back', 'NewClaim\CommonController@BacktoConfirmation');//chg07072019
     /* ----------------------------- END OF COMMON --------------------------------- */
 
     /* ---------------------------------- UPLOAD FILE ------------------------------------------ */
@@ -100,40 +100,41 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ------------------------END OF NOTICE TYPE --------------------------------- */
 
     /* -------------------------- NOTICE ACCIDENT(PK) ----------------------------- */
-    Route::get('/noticeaccident', 'NoticeAccidentController@index');
-    Route::get('/branch/{statecode}', 'NoticeAccidentController@getbranchname');
-    Route::get('/reftable/{accdwhen}', 'NoticeAccidentController@getaccwhen');
-    Route::get('/obform', 'NoticeAccidentController@index');
-    Route::post('/employerdetails_accd', 'CommonController@postEmployer');
-    Route::get('/accdatetime', 'NoticeAccidentController@AccidentDate');
-    Route::post('/accidentdatetime', 'NoticeAccidentController@checkAccidentDate');
-    Route::post('/wagesdetails', 'NoticeAccidentController@postWages');
-    Route::post('/certificateemployee', 'NoticeAccidentController@postCertificateEmployee');
+    Route::get('/noticeaccident', 'NewClaim\NoticeAccidentController@index');
+    Route::get('/branch/{statecode}', 'NewClaim\NoticeAccidentController@getbranchname');
+    Route::get('/reftable/{accdwhen}', 'NewClaim\NoticeAccidentController@getaccwhen');
+    Route::get('/obform', 'NewClaim\NoticeAccidentController@index');
+    Route::post('/employerdetails_accd', 'NewClaim\CommonController@postEmployer');
+    Route::get('/accdatetime', 'NewClaim\NoticeAccidentController@AccidentDate');
+    Route::post('/accidentdatetime', 'NewClaim\NoticeAccidentController@checkAccidentDate');
+    Route::post('/wagesdetails', 'NewClaim\NoticeAccidentController@postWages');
+    Route::post('/certificateemployee', 'NewClaim\NoticeAccidentController@postCertificateEmployee');
 
     //Confirmation & Preview
-    Route::post('/accsave', 'NoticeAccidentController@postConfirmation');
-    Route::get('/preview', 'NoticeAccidentController@Preview');
-    Route::post('/accsubmit', 'NoticeAccidentController@Submit');
-    Route::post('/back', 'CommonController@BacktoConfirmation');
-    // Route::post('/bankinformation','NoticeAccidentController@postBankInfo');
+    Route::post('/accsave', 'NewClaim\NoticeAccidentController@postConfirmation');
+    Route::get('/preview', 'NewClaim\NoticeAccidentController@Preview');
+    Route::post('/accsubmit', 'NewClaim\NoticeAccidentController@Submit');
+    Route::post('/back', 'NewClaim\CommonController@BacktoConfirmation');
+    // Route::post('/bankinformation','NewClaim\NoticeAccidentController@postBankInfo');
 
     //irina
     Route::post('/noticeaccident', 'NoticeAccidentController@postAccident');
-    Route::post('/updmc', 'NoticeAccidentController@UpdMC');
+    //zik
+    Route::post('/HUS', 'NoticeAccidentController@postHusInfo');
     /* --------------------------END OF NOTICE ACCIDENT(PK) ------------------------ */
 
     /* -------------------------- NOTICE ACCIDENT -- SCO ----------------------------- */
-    Route::get('/noticeaccident_sco', 'NoticeAccidentController@indexSCO');
-    Route::post('/obform_sco', 'CommonController@postObForm');
-    Route::post('/accidentDetails_sco', 'NoticeAccidentController@postAccident');
-    Route::post('/employerdetails_sco', 'CommonController@postEmployer');
+    Route::get('/noticeaccident_sco', 'NewClaim\NoticeAccidentController@indexSCO');
+    Route::post('/obform_sco', 'NewClaim\CommonController@postObForm');
+    Route::post('/accidentDetails_sco', 'NewClaim\NoticeAccidentController@postAccident');
+    Route::post('/employerdetails_sco', 'NewClaim\CommonController@postEmployer');
 
     /* --------------------------- NOTICE ACCIDENT -- IO --------------------------- */
-    Route::get('/noticeaccident_io', 'NoticeAccidentController@indexIO');
+    Route::get('/noticeaccident_io', 'NewClaim\NoticeAccidentController@indexIO');
     /* ---------------------------END OF NOTICE ACCIDENT -- IO ---------------------- */
 
     /* -------------------------- NOTICE ACCIDENT -- SAO --------==------------------- */
-    Route::get('/noticeaccident_sao', 'NoticeAccidentController@indexSAO');
+    Route::get('/noticeaccident_sao', 'NewClaim\NoticeAccidentController@indexSAO');
     /* ----------------------END OF NOTICE ACCIDENT -- SAO --------------------------- */
 
     /* -------------------------- NOTICE ACCIDENT -- REVISION (Date Of Accident) ----------------------- */
@@ -194,7 +195,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ---------------------------END OF NOTICE OD(PK) ------------------------------- */
 
     /* --------------------------- NOTICE OD(SCO) ------------------------------------ */
-    Route::get('/noticeod_sco', 'NoticeOdController@indexSCO');
+    Route::get('/noticeod_sco', 'NewClaim\NoticeOdController@indexSCO');
     /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */
 
     /* --------------------------- NOTICE OD(IO) ------------------------------------ */
@@ -203,7 +204,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ------------------------ END OF NOTICE OD(IO) ---------------------------------- */
 
     /* --------------------------- NOTICE OD(SAO) ------------------------------------ */
-    Route::get('/noticeod_sao', 'NoticeOdController@indexSAO');
+    Route::get('/noticeod_sao', 'NewClaim\NoticeOdController@indexSAO');
     /* ------------------------ END OF NOTICE OD(SAO) ---------------------------------- */
 
     /* --------------------------- NOTICE OD(REVISION) ------------------------------------ */
@@ -234,31 +235,31 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ------------------------ END OF NOTICE OD(OTHERS) ---------------------------------- */
 
     /* ------------------------------ NOTICE ILAT(PK) -------------------------------- */
-    Route::get('/noticeinvalidity', 'NoticeInvalidityController@index');
-    Route::post('/wagesilat', 'NoticeInvalidityController@postWages');
-    Route::post('/noticeinvalidity', 'CommonController@postObForm');
-    Route::post('/ilatinfo', 'NoticeInvalidityController@postIlat_info');
-    Route::post('/emphistory', 'NoticeInvalidityController@postEmphistory');
-    Route::post('/confirmationilat', 'NoticeInvalidityController@postConfirmation');
-    Route::post('/bankinformationilat', 'NoticeInvalidityController@postBankInfo');
-    Route::get('/ilatpreview', 'NoticeInvalidityController@Preview');
-    Route::post('/Back', 'NoticeInvalidityController@Back');
-    // Route::get('/checkIlatNotice', 'NoticeInvalidityController@checkIlatNotice');
-    //Route::get('/noticeinvalidity','NoticeInvalidityController@index');
+    Route::get('/noticeinvalidity', 'NewClaim\NoticeInvalidityController@index');
+    Route::post('/wagesilat', 'NewClaim\NoticeInvalidityController@postWages');
+    Route::post('/noticeinvalidity', 'NewClaim\CommonController@postObForm');
+    Route::post('/ilatinfo', 'NewClaim\NoticeInvalidityController@postIlat_info');
+    Route::post('/emphistory', 'NewClaim\NoticeInvalidityController@postEmphistory');
+    Route::post('/confirmationilat', 'NewClaim\NoticeInvalidityController@postConfirmation');
+    Route::post('/bankinformationilat', 'NewClaim\NoticeInvalidityController@postBankInfo');
+    Route::get('/ilatpreview', 'NewClaim\NoticeInvalidityController@Preview');
+    Route::post('/Back', 'NewClaim\NoticeInvalidityController@Back');
+    // Route::get('/checkIlatNotice', 'NewClaim\NoticeInvalidityController@checkIlatNotice');
+    //Route::get('/noticeinvalidity','NewClaim\NoticeInvalidityController@index');
     /* ----------------------------END OF NOTICE ILAT(PK) -------------------------------- */
 
     /* ---------------------------- NOTICE ILAT(SCO) ------------------------------------- */
-    Route::get('/noticeinvalidity_sco', 'NoticeInvalidityController@indexsco');
+    Route::get('/noticeinvalidity_sco', 'NewClaim\NoticeInvalidityController@indexsco');
     /* ----------------------------END OF NOTICE ILAT(SCO) -------------------------------- */
 
     
     /* ---------------------------- NOTICE ILAT(IO) ------------------------------------- */
-    Route::get('/noticeinvalidity_io', 'NoticeInvalidityController@indexio');
+    Route::get('/noticeinvalidity_io', 'NewClaim\NoticeInvalidityController@indexio');
     /* ----------------------------END OF NOTICE ILAT(IO) -------------------------------- */
 
     
     /* ---------------------------- NOTICE ILAT(SAO) ------------------------------------- */
-    Route::get('/noticeinvalidity_sao', 'NoticeInvalidityController@indexsao');
+    Route::get('/noticeinvalidity_sao', 'NewClaim\NoticeInvalidityController@indexsao');
     /* ----------------------------END OF NOTICE ILAT(SAO) -------------------------------- */
     Route::get('/revisioninvalidity', 'Revision\InvalidityController@index_PK');
     Route::get('/revisioninvalidity_sco', 'Revision\InvalidityController@index_SCO');
@@ -276,6 +277,7 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
   
     Route::get('/revisionpaymentoption', 'Revision\PaymentOptionController@index_PK');
     Route::get('/revisionpaymentoption_sao', 'Revision\PaymentOptionController@index_SAO');
+    Route::get('/revisionpaymentoption_sco', 'Revision\PaymentOptionController@index_SCO');
 
     Route::get('/permanentrepresentatives', 'others\PermanentrepresentativesController@index_PK');
     Route::get('/permanentrepresentatives_sco', 'others\PermanentrepresentativesController@index_SCO');
@@ -288,37 +290,37 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
 
 
     /* --------------------------------- NOTICE DEATH(PK) --------------------------------- */
-    Route::post('/noticedeath', 'NoticeDeathController@postObForm');
-    Route::post('/employerDetails_death', 'CommonController@postEmployer');
-    Route::post('/deathdetails', 'NoticeDeathController@postDeathWithMC');
-    Route::get('/deathdetails', 'NoticeDeathController@index');
-    Route::post('/confirmation_death', 'NoticeDeathController@postConfirmation');
-    Route::get('/noticedeath', 'NoticeDeathController@index');
-    Route::post('/applicantinfo', 'NoticeDeathController@postApplicantInfo');
-    Route::get('/applicantinfo', 'NoticeDeathController@index');
-    Route::post('/wagesdetails_death', 'NoticeDeathController@postWages');
-    Route::post('/bankinformation_death', 'NoticeDeathController@postBankInfo');
-    Route::post('/otinfo', 'NoticeDeathController@postOtInfo');
-    Route::get('/otinfo', 'NoticeDeathController@index');
-    Route::get('/preview', 'NoticeDeathController@Preview');
-    Route::get('/reftable/{accdwhen}', 'NoticeDeathController@getaccwhen');
-    Route::get('/reftable1/{suboccucode}', 'NoticeDeathController@getsuboccucode');
+    Route::post('/noticedeath', 'NewClaim\NoticeDeathController@postObForm');
+    Route::post('/employerDetails_death', 'NewClaim\CommonController@postEmployer');
+    Route::post('/deathdetails', 'NewClaim\NoticeDeathController@postDeathWithMC');
+    Route::get('/deathdetails', 'NewClaim\NoticeDeathController@index');
+    Route::post('/confirmation_death', 'NewClaim\NoticeDeathController@postConfirmation');
+    Route::get('/noticedeath', 'NewClaim\NoticeDeathController@index');
+    Route::post('/applicantinfo', 'NewClaim\NoticeDeathController@postApplicantInfo');
+    Route::get('/applicantinfo', 'NewClaim\NoticeDeathController@index');
+    Route::post('/wagesdetails_death', 'NewClaim\NoticeDeathController@postWages');
+    Route::post('/bankinformation_death', 'NewClaim\NoticeDeathController@postBankInfo');
+    Route::post('/otinfo', 'NewClaim\NoticeDeathController@postOtInfo');
+    Route::get('/otinfo', 'NewClaim\NoticeDeathController@index');
+    Route::get('/preview', 'NewClaim\NoticeDeathController@Preview');
+    Route::get('/reftable/{accdwhen}', 'NewClaim\NoticeDeathController@getaccwhen');
+    Route::get('/reftable1/{suboccucode}', 'NewClaim\NoticeDeathController@getsuboccucode');
 
     // Anis
-    Route::post('/guardianinfo', 'NoticeDeathController@postGuardianInfo');
-    Route::get('/guardianinfo', 'NoticeDeathController@index');
+    Route::post('/guardianinfo', 'NewClaim\NoticeDeathController@postGuardianInfo');
+    Route::get('/guardianinfo', 'NewClaim\NoticeDeathController@index');
     /* ------------------------------ END OF NOTICE DEATH(PK) --------------------------------- */
 
     /* ------------------------------ NOTICE DEATH -- SCO ------------------------------------- */
-    Route::get('/noticedeath_sco', 'NoticeDeathController@indexSCO');
+    Route::get('/noticedeath_sco', 'NewClaim\NoticeDeathController@indexSCO');
     /* ------------------------- END OF NOTICE DEATH -- SCO ------------------------------------- */
 
     /* ---------------- NOTICE DEATH -- IO-------------------- */
-    Route::get('/noticedeath_io', 'NoticeDeathController@indexIO');
+    Route::get('/noticedeath_io', 'NewClaim\NoticeDeathController@indexIO');
     /* ------------------------- END OF NOTICE DEATH -- IO ------------------------------------- */
 
     /* ------------------------------- NOTICE DEATH -- SAO -------------------------------------- */
-    Route::get('/noticedeath_sao', 'NoticeDeathController@indexSAO');
+    Route::get('/noticedeath_sao', 'NewClaim\NoticeDeathController@indexSAO');
     /* ------------------------------ END OF NOTICE DEATH(SAO) --------------------------------- */
 });
 

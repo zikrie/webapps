@@ -68,6 +68,37 @@ return [
             'driver' => 'local',
             'root'   => 'C:/MOTION',
         ],
+        'ftp' => [
+            'driver'   => 'ftp',
+            'host'     => '10.6.20.20',
+            //  'port'    => '',
+            'username' => 'root',
+            'password' => 'p455w0rd',
+            'root'     => '/var/www/html/image', 
+        
+            // Optional FTP Settings...
+            // 'port'     => 21,
+            // 'root'     => '',
+            // 'passive'  => true,
+            // 'ssl'      => true,
+            // 'timeout'  => 30,
+        ],
+        'sftp' => [
+            'driver' => 'sftp',
+            'host' => '10.6.20.20',
+            'username' => 'root',
+            'password' => 'p455w0rd',
+            'root' => '/var/www/html/image',
+        
+            // Settings for SSH key based authentication...
+            // 'privateKey' => '/path/to/privateKey',
+            // 'password' => 'encryption-password',
+        
+            // Optional SFTP Settings...
+            // 'port' => 22,
+            // 'root' => '',
+            // 'timeout' => 30,
+        ],
 
     ],
 

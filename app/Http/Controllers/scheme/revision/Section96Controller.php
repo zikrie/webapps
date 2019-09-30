@@ -21,7 +21,7 @@ class Section96Controller extends Controller
         $noticetype="03";
         $doclist = DB::select($sql,[$noticetype]);
         $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
-        $docinfo =DB::select('Select  r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        $docinfo =DB::select('Select  r.notes,r.docid,r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
         $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
         return view('scheme.noticeInvalidity.Revision.section96.PK.index',['idtype'=>$idtype,'doclist'=>$doclist,'docinfo'=>$docinfo,'doclist_select'=>$alldoclist, 'month' => $month]);
     }
@@ -36,7 +36,7 @@ class Section96Controller extends Controller
         $noticetype="03";
         $doclist = DB::select($sql,[$noticetype]);
         $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
-        $docinfo =DB::select('Select  r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        $docinfo =DB::select('Select  r.notes,r.docid,r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
         $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
         return view('scheme.noticeInvalidity.Revision.section96.SCO.index',['idtype'=>$idtype,'doclist'=>$doclist,'docinfo'=>$docinfo,'doclist_select'=>$alldoclist, 'month' => $month]);
     }
@@ -51,7 +51,7 @@ class Section96Controller extends Controller
         $noticetype="03";
         $doclist = DB::select($sql,[$noticetype]);
         $alldoclist = DB::select('select docdescen,doctype,docdescbm, doccat from doctype order by doccat desc, doctype');
-        $docinfo =DB::select('Select  r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
+        $docinfo =DB::select('Select  r.notes,r.docid,r.date, r.time, r.doccat, r.doctype, r.docname, r.doccount, t.docdescen from docrepository r,doctype t where r.doctype=t.doctype AND caserefno=? AND idno=?', [$caserefno,$uniquerefno]);
         $month = DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['month']);
         return view('scheme.noticeInvalidity.Revision.section96.SAO.index',['idtype'=>$idtype,'doclist'=>$doclist,'docinfo'=>$docinfo,'doclist_select'=>$alldoclist, 'month' => $month]);
     }

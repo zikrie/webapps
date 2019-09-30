@@ -27,13 +27,10 @@ return [
         'no' => 'No',
     ],
 
-    'save' => 'SAVE',
     'next' => 'NEXT',
     'cancel' => 'CANCEL',
     'reset' => 'RESET',
     'back' => 'BACK',
     'close' => 'CLOSE',
-    'submit' => 'Submit',
-    'preview' => 'Preview',
  
 ];

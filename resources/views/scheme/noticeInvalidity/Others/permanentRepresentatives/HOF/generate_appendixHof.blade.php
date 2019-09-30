@@ -102,8 +102,8 @@
                                     <label>@lang('Source')</label>
                                     <select class="form-control" data-placeholder="source_wages" readonly tabindex="2">
                                         <option selected readonly disabled hidden>Please Choose </option>
-                                        <option value="Akuan117">@lang('wages.attr.akuan117')</option>
-                                        <option value="Counter">@lang('wages.attr.counter')</option>
+                                        <option value="Akuan117">@lang('Akuan 117')</option>
+                                        <option value="Counter">@lang('Counter')</option>
                                     </select>
                                 </div>
                             </div>

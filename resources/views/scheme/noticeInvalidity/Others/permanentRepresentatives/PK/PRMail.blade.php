@@ -27,14 +27,14 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.contracterIncharge')</label>
+                                    <label>@lang('Contractor Incharge')</label>
                                     <input type="text" id="contracterIncharge" name="contracterIncharge" value=""
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.contractedInchargePhoneNo')</label>
+                                    <label>@lang('Contractor Incharge Phone Number')</label>
                                     <input type="text" id="contractedInchargePhoneNo" name="contractedInchargePhoneNo"
                                         value="" class="form-control">
                                 </div>
@@ -43,14 +43,14 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.managerPPName')</label>
+                                    <label>@lang('Manager PP Name')</label>
                                     <input type="text" readonly id="managerPPName" name="managerPPName" value=""
                                         class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.managerPPDesignation')</label>
+                                    <label>@lang('Manager PP Designation')</label>
                                     <input type="text" readonly id="managerPPDesignation" name="managerPPDesignation"
                                         value="" class="form-control">
                                 </div>
@@ -58,16 +58,18 @@
                         </div>
 
                         <div class="form-actions">
-                                <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
-                                <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                              
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
-                                <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
-                            </div>
+                            <button type="submit"
+                                class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                            <button type="button" class="btn btn waves-effect waves-light btn-info"
+                                onclick="submitform()">@lang('button.reset')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
+                                onclick="window.location='/noticetype'">@lang('button.cancel')</button>
+                            <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
+                                onclick="window.location='/obform_od'">@lang('button.back')</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-

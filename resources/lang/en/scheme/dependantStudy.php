@@ -2,17 +2,17 @@
  
 return [
 
-	'title' => 'Dependant Study Information',
+	'title' => 'Education Information',
 
     'attr' => [
     	
-        'study_start_date' => 'Study Start Date',
-        'study_end_date' => 'Expected Study End Date',
+        'study_start_date' => 'Start Date',
+        'study_end_date' => 'End Date',
         'status' => 'Status',
         'edu_level' => 'Education Level',
 		'pls_specify' => 'Please  Specify',
 		'course_name' => 'Course Name',
-        'inst_univer_name' => 'Institute/University Name',		  
+        'inst_univer_name' => 'Institution',		  
         
     ],
 

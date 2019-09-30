@@ -137,8 +137,9 @@ class NoticeTypeController extends Controller
             
             $jsondecodeOdRecord="";
             $a=$this->checkOdRecordExist($jsondecodeOdRecord);
-            // return $a;
-
+           
+            // return($jsondecodeOdRecord);
+            // dd($jsondecodeOdRecord);
             $record = $jsondecodeOdRecord->{'record'};
 
         // return $record;
@@ -368,8 +369,46 @@ class NoticeTypeController extends Controller
 
         $idno = session('idno');
         $empcode = session('empcode');
-        $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
-        $ch = curl_init();
+   
+        try
+        {
+            $client = new Client([
+                // Base URI is used with relative requests
+                'base_uri' => env('WS_DB2_IP', 'localhost').'/api/common/',
+                // You can set any number of default request options.
+                'timeout'  => 2.0,
+            ]);
+
+        
+            $resource = array(
+            // "refNo"=> $refno,
+            "employerCode"=> $empcode,
+            "employerName"=> "f");
+            $j = json_encode($resource);
+            
+            $response = $client->request('GET', 'employers', ['headers' => ['Content-Type' => 'application/json'],'body' => $j]);
+            
+            $body = $response->getBody()->getContents();
+           
+            $stringBody = (string) $body;
+           
+            
+            $jsondecodeAssistEmployer = json_decode($stringBody);
+            $jsondecodeAssistEmployer = $jsondecodeAssistEmployer->{'businessInfo'};
+             
+         
+           // $_content = json_encode($stringBody,true);
+           // return new ApiResource($_content);
+            
+            }
+            catch(\Exception $e)
+            {
+                return $e->getMessage();
+               
+            }
+        
+        // $url = 'http://'.env('ASSIST_IP', 'localhost').'/wsassistsimulation/employer/'.$empcode;
+        // $ch = curl_init();
         
         curl_setopt($ch,CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');

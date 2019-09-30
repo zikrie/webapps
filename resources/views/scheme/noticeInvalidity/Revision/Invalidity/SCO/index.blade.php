@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card-body">
-            <h4 class="card-title">@lang('index.attr.invalidity')</h4>
+            <h4 class="card-title">@lang('Invalidity')</h4>
             <!-- Tab panes -->
 
 

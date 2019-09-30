@@ -9,7 +9,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label ">@lang('scheme/ob.attr.form34_receivedDate')</label><span class="required">*</span>
-                                    <input type="date" id="f34recvdate" name="f34recvdate" value="{{ $obprofile->f34recvdate }}" class="form-control clearFields" required>
+                                <input type="date" id="f34recvdate" name="f34recvdate" value="{{ $obprofile->f34recvdate }}" class="form-control clearFields" required>
                                 </div>
                             </div>
                         </div>

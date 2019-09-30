@@ -27,20 +27,16 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Identification Type</label><span
-                                        class="required">*</span>
-                                        <select class="form-control clearfields" name='idtype' id='idtype' required>
-                                        <option selected readonly disabled hidden>Please Select </option>
-                                        @foreach ($idtype as $id)
-                                        @if (old('idtype') == $id->refcode)
-                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
-                                        @elseif(!empty($selectidtype)&&$id->refcode == $selectidtype)
-                                        <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
-                                        @else
-                                        <option value="{{$id->refcode}}">{{$id->descen}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
+                                    <label class="control-label">Identification Type</label><span class="required">*</span>
+                                        <select class="form-control" data-placeholder="idType_invalidity" tabindex="2">
+                                        <option selected disabled hidden>Please Choose </option>
+                                        <option value="New IC">@lang('New IC')</option>
+                                        <option value="Old IC">@lang('Old IC')</option>
+                                        <option value="Army ID">@lang('Army ID')</option>
+                                        <option value="Police ID">@lang('Police ID')</option>
+                                        <option value="Social Security ID">@lang('Social Security ID')</option>
+                                        <option value="CID">@lang('CID')</option>
+                                </select> 
                                 </div>
                             </div>
                             <div class="col-md-6">

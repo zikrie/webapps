@@ -27,20 +27,20 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.ceoName')</label>
+                                    <label>@lang('CEO Name')</label>
                                     <input type="text" readonly id="ceoName" name="ceoName" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('insuredPerson.attr.ceoID')</label>
+                                    <label>@lang('CEO ID')</label>
                                     <input type="text" readonly id="ceoID" name="ceoID" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-13">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.hqAddress')</label>
+                                <label>@lang('HQ Address')</label>
                                 <input type="text" name="add1" value="" class="form-control">
                             </div>
                         </div>
@@ -58,19 +58,19 @@
                     <div class='row'>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label"> @lang('insuredPerson.attr.postcode')</label>
+                                <label class="control-label"> @lang('Postcode')</label>
                                 <input type="text" id="postcode" name="postcode" value="" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.city')</label>
+                                <label class="control-label">@lang('City')</label>
                                 <input type="text" id="city" class="form-control" name="city" value="">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.state')</label>
+                                <label class="control-label">@lang('State')</label>
                                 <input type="text" id="state" name="state" value="" class="form-control">
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                     <div class='row'>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.scoBranchName')</label>
+                                <label>@lang('SCO Branch Name')</label>
                                 <input type="text" id="scoBranchName" name="scoBranchName" value=""
                                     class="form-control">
                             </div>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-md-13">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.scoOfficeAddress')</label>
+                                <label>@lang('SCO Office Address')</label>
                                 <input type="text" name="add1" value="" class="form-control">
                             </div>
                         </div>
@@ -104,19 +104,19 @@
                     <div class='row'>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label"> @lang('insuredPerson.attr.postcode')</label>
+                                <label class="control-label"> @lang('Postcode')</label>
                                 <input type="text" id="postcode" name="postcode" value="" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.city')</label>
+                                <label class="control-label">@lang('City')</label>
                                 <input type="text" id="city" class="form-control" name="city" value="">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.state')</label>
+                                <label class="control-label">@lang('State')</label>
                                 <input type="text" id="state" name="state" value="" class="form-control">
                             </div>
                         </div>
@@ -124,14 +124,14 @@
                     <div class='row'>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.positionPNPP')</label>
+                                <label>@lang('Position PN/PP')</label>
                                 <input type="text" readonly id="branchPerkesoName" name="branchPerkesoName" value=""
                                     class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.positionSCO')</label>
+                                <label>@lang('Position SCO')</label>
                                 <input type="text" readonly id="positionSCO" name="positionSCO" value="" class="form-control">
                             </div>
                         </div>
@@ -139,13 +139,13 @@
                     <div class='row'>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.month')</label>
+                                <label>@lang('Month')</label>
                                 <input type="text" readonly id="month" name="month" value="" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>@lang('insuredPerson.attr.signedDate')</label>
+                                <label>@lang('Signed Date')</label>
                                 <input type="date" id="signedDate" name="signedDate" value="" class="form-control">
                             </div>
                         </div>
@@ -153,7 +153,6 @@
                     <div class="form-actions">
                             <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
                             <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                          
                             <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
                             <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
                         </div>

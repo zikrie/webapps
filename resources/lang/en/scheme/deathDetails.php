@@ -11,14 +11,13 @@ return [
         'death_due_accident' => 'Is the death due to Accident?',
         'yes' => 'Yes',
         'no' => 'No',
-        'status' => 'Insured Person Status(at the time of death)',
+        'status' => 'Marital Status of Insured Person (At the time of Death)',
         'single' => 'Single',
         'married' => 'Married',
         'divorced' => 'Divorced',
-        'inpayment_case' => 'Inpayment Case',
+        'periodical' => 'Periodical Payment Receiver?',
         'pencen' => 'Pencen Ilat',
         'huk' => 'HUK',
-        'inpayment_case' => 'Inpayment Case',
         
     ],
 

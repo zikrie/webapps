@@ -27,13 +27,13 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                   <label class="control-label">@lang('insuredPerson.attr.date_generated')</label>
+                                   <label class="control-label">@lang('Date generated for Carian Insolvensi Letter')</label>
                                     <input type="date" id="dateGen_bankruptcy" name="date_generated" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.insolvency_add')</label>
+                                    <label class="control-label">@lang('Insolvency Address')</label>
                                     <input type="text"  id="insolAdd_bankruptcy" name="insolvency_letter" value="" class="form-control">
                                 </div>
                             </div>
@@ -41,13 +41,13 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                <label class="control-label">@lang('insuredPerson.attr.branch_insolvency')</label>
+                                <label class="control-label">@lang('Branch Insolvency')</label>
                                 <input type="text" id="branch_bankruptcy" name="branch_insolvency" value="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.chequeNo')</label>
+                                    <label class="control-label">@lang('Cheque No')</label>
                                     <input type="text" id="chequeNo_bankruptcy" name="chequeNo" value="" class="form-control">
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                         <div class='row'>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.cheque_date')</label>
+                                    <label class="control-label">@lang('Cheque Date')</label>
                                     <input type="date" id="chequeDate_bankruptcy" name="cheque_date" value="" class="form-control">
                                 </div>
                             </div>
