@@ -1482,10 +1482,12 @@ class NoticeAccidentController extends CommonController
     public function postConfirmation(Request $req)
     {
         if ($req->action== 'Save') {
+    
             $caserefno = session('caserefno');
             $operid = session('loginname');
             $brcode = session('loginbranchcode');
             $uniquerefno = session('uniquerefno');
+            
             
             $preferedbranch = $req->brname;
             $stampdate = $req->stampdate;
@@ -2720,7 +2722,28 @@ class NoticeAccidentController extends CommonController
             }
         }
                 
-        //  dd($jsondecodehus);
+       //  dd($jsondecodehus);    
+       
+       
+
+       
+        //zik preparer info(sco)
+        $jsondecodepreparer = '';
+        $this->getPreparerInfo($jsondecodepreparer);
+
+        // dd(jsondecodepreparer);
+        // if ($jsondecodepreparer && $jsondecodepreparer != '') {
+
+        //     $errorcode = $jsondecodepreparer->{'errorcode'};
+        //     if ($errorcode == 0) {
+        //         $preparerinfo = $jsondecodepreparer;
+        //     }
+        //     else
+        //     {
+        //         $preparerinfo = null;
+        //     }
+        // }
+             
         
         
         //irina - end
@@ -2867,7 +2890,7 @@ class NoticeAccidentController extends CommonController
             'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
             'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts,
             'mcdata'=>$mcdata,'caserefno'=>$caserefno, 'accdrefno'=>$accdrefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
-            'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,
+            'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,'jsondecodehus'=>$jsondecodehus,'jsondecodepreparer'=>$jsondecodepreparer,
             'doclist_select'=>$alldoclist, 'occucode'=>$occucode, 'question1' => $question1 , 'question2' => $question2,'husinfo'=>$jsondecodehus]);
     }
 
@@ -3177,7 +3200,7 @@ class NoticeAccidentController extends CommonController
         // dd($response);
         $ioappt = json_decode($response->getContents());
         
-        dd($ioappt);
+        // dd($ioappt);
         
         //$accdwhen=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdwhen']);
         //return $accdwhen;
@@ -3487,13 +3510,40 @@ class NoticeAccidentController extends CommonController
 
 
 
+        //zik (Preparer Info)
+        public function getPreparerInfo($jsondecodepreparer)
+        {
+            $caserefno = session('caserefno');
 
+            $endpoint ='api.com/api/preparerInfo?caserefno='.$caserefno;
+            
+            $client = new Client();
+            // $url = config('endpoint.url');
+            // $url = config('services.endpoint.url');
 
+            // dd($url);
+            $response = $client->get($endpoint)->getBody();
+            $content = json_decode($response->getContents());
+            $jsondecodepreparer = $content;
 
+            if ($jsondecodepreparer && $jsondecodepreparer != '') 
+            {
+                $errorcode = $jsondecodepreparer->{'errorcode'};
+                if ($errorcode == 0) {
+                    $preparerinfo = $jsondecodepreparer;
+                }
+                else
+                {
+                    $preparerinfo = null;
+                }
+            }
 
+            return view('scheme.noticeAccident.SCO.index', ['preparer'=>$preparerinfo]);
 
-
-
+            // return json_encode($jsondecode);
+            // dd($jsondecode);
+            
+        }    
 
 
 
@@ -3590,7 +3640,7 @@ class NoticeAccidentController extends CommonController
                 $jsondecode = json_decode($response->getBody()->getContents());
                 // return $jsondata. '++' .$result;
 
-                //  dd($jsondecode);
+        // dd($jsondecode);
             
                 $errorcode = $jsondecode->{'errorcode'};
                 // return $errorcode;

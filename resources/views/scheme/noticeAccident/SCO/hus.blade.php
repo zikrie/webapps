@@ -34,7 +34,7 @@
                     <div class="table-responsive" id="table-medical">
                         <div class="form-actions">
                             <button type="button" id="btn_add_mc0" value='0' class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addhus')</button>
-                        </div>{{-- <label class="control-label">@lang('medicalDetails.attr.medicalleave')</label> --}}
+                        </div>
                         
                         
                         <table  id="table-medical-details0" class="table table-sm table-bordered" data-toggle-column="first">
@@ -50,11 +50,15 @@
                                     <th style='width:15%'>@lang('scheme/mc.attr.hus_recommendation')</th>
                                 </tr>
                             </thead>
-                            <!-- @php print_r($husinfo); @endphp -->
+
+
                             @if(!empty($husinfo->parent))
+
+            
+
                                 @foreach($husinfo->parent as $key => $parent)
 
-                                <tr data-expanded="true" class="workrow" id="tr0_0">
+                                <tr data-expanded="true" class="workrow" id="tr0_{{$key}}">
                                     <td>
                                         <div class="col-md-12">
                                             <select class="form-control" name="hussts[]">
@@ -66,25 +70,25 @@
                                     </td> 
                                     <td>
                                         <div class="col-md-12">
-                                            <input id="clinicname" name="clinicinfo[]" type="text" value="@if (!empty($parent)){{ $parent->clinicinfo }}@endif" class="form-control counttotalmc" required>
+                                            <input id="clinicname_0_{{$key}}" name="clinicinfo[]" type="text" value="@if (!empty($parent)){{ $parent->clinicinfo }}@endif" class="form-control counttotalmc" required>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input id="mcstartdate_0_0" name="startdate[]" type="date" value="@if (!empty($parent) && $parent->startdate!=''){{ (DateTime::createFromFormat('Ymd', $parent->startdate))->format('Y-m-d') }}@endif" class="form-control counttotalmc" required>
+                                            <input id="mcstartdate_0_{{$key}}" name="startdate[]" type="date" value="@if (!empty($parent) && $parent->startdate!=''){{ (DateTime::createFromFormat('Ymd', $parent->startdate))->format('Y-m-d') }}@endif" class="form-control counttotalmc" required>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input type="date" id="mcenddate_0_0" name="enddate[]" value="@if (!empty($parent) && $parent->enddate!=''){{ (DateTime::createFromFormat('Ymd', $parent->enddate ))->format('Y-m-d') }}@endif" class="form-control counttotalmc" >
+                                            <input type="date" id="mcenddate_0_{{$key}}" name="enddate[]" value="@if (!empty($parent) && $parent->enddate!=''){{ (DateTime::createFromFormat('Ymd', $parent->enddate ))->format('Y-m-d') }}@endif" class="form-control counttotalmc" >
                                         </div>
                                     </td>
                                     <td>
-                                        <input type="text" id="totalmc_0_0" name="totalmc[]" value="@if (!empty($parent)){{ $parent->totalmc }}@endif" class="form-control" readonly>
+                                        <input type="text" id="totalmc_0_{{$key}}" name="totalmc[]" value="@if (!empty($parent)){{ $parent->totalmc }}@endif" class="form-control" readonly>
                                     </td>
                                     <td>
-                                        <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work0_0"><i class="fas fa-trash-alt fa-sm"></i></button>
-                                        <button id="add_attended_work0_0" value='0_0' type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">
+                                        <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work0_{{$key}}"><i class="fas fa-trash-alt fa-sm"></i></button>
+                                        <button id="add_attended_work0_{{$key}}" value='0_{{$key}}' type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">
                                             <i class="ti-plus text" aria-hidden="true"></i>
                                             <i class="ti-plus text-active" aria-hidden="true"></i>
                                         </button>
@@ -105,42 +109,42 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @if(!empty($husinfo->child))
+                                @if(!empty($husinfo->child[$key]))
                                 {
-                                        @foreach($husinfo->child[$key] as  $child)
+                                        @foreach($husinfo->child[$key] as $num => $child)
                                         {
                                                             <!-- @php print_r($child); @endphp  -->
                                                         <tr id="tr'+i+'_'+j+'_'+w+'">
                                                                 <td>
                                                                     <div class="col-md-12"> 
-                                                                        <input  name="attendedwork" type="text" value="" class="form-control counttotalwork" readonly>
+                                                                        <input  name="attendedwork[{{$key}}][]" type="text" value="" class="form-control counttotalwork" readonly>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <input id="clinicname" name="clinicinfo['+j+'][]" type="text"  value="" class="form-control counttotalmc" disabled>
+                                                                        <input id="clinicname" name="clinicinfo[{{$key}}][]" type="text"  value="" class="form-control counttotalmc" disabled>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <input   type="date" id="workstartdate_'+i+'_'+j+'_'+w+'" name="mcitemstartdate['+j+'][]" value="@if (!empty($parent) && $child->mcitemstartdate!=''){{ (DateTime::createFromFormat('Ymd', $child->mcitemstartdate))->format('Y-m-d') }}@endif"  class="form-control counttotalwork" >
+                                                                        <input   type="date" id="workstartdate_0_{{$key}}_{{$num}}" name="mcitemstartdate[{{$key}}][]" value="@if (!empty($parent) && $child->mcitemstartdate!=''){{ (DateTime::createFromFormat('Ymd', $child->mcitemstartdate))->format('Y-m-d') }}@endif"  class="form-control counttotalwork" >
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="col-md-12">
-                                                                        <input type="date"  id="workenddate_'+i+'_'+j+'_'+w+'" name="mcitemenddate['+j+'][]" value="@if (!empty($parent) && $child->mcitemenddate!=''){{ (DateTime::createFromFormat('Ymd', $child->mcitemenddate))->format('Y-m-d') }}@endif"  class="form-control counttotalwork" >
+                                                                        <input type="date"  id="workenddate_0_{{$key}}_{{$num}}" name="mcitemenddate[{{$key}}][]" value="@if (!empty($parent) && $child->mcitemenddate!=''){{ (DateTime::createFromFormat('Ymd', $child->mcitemenddate))->format('Y-m-d') }}@endif"  class="form-control counttotalwork" >
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalmcitem['+j+'][]" value="@if (!empty($child)){{ $child ->totalmcitem }}@endif" class="form-control" readonly>
+                                                                    <input type="text" id="totalwork_0_{{$key}}_{{$num}}" name="totalmcitem[{{$key}}][]" value="@if (!empty($child)){{ $child ->totalmcitem }}@endif" class="form-control" readonly>
                                                                         <td>
-                                                                            <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'">
+                                                                            <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work0_{{$key}}_{{$num}}">
                                                                                 <i class="fas fa-trash-alt fa-sm"></i>
                                                                             </button>
                                                                         </td>
                                                                         <td>
                                                                             <div class="col-md-12">
-                                                                                <select class="form-control" name="approvalsts['+j+'][]">
+                                                                                <select class="form-control" name="approvalsts[{{$key}}][]">
                                                                                     <option value="">Please select</option><option value="approved" selected>Approved</option>
                                                                                     <option value="rejected" >Rejected</option><option value="pending" >Pending</option>
                                                                                     <option value="paidduring" >Attended Work and Salary Paid during MC</option>
@@ -156,6 +160,16 @@
                                     
                                          @endforeach
                                     @endif
+                                    <script> 
+                                      $(document).ready(function() {
+                                    var key = {!! $key !!};
+                                    console.log(key);
+                                    if(key !=0){
+                                        add_attend_work(0,key); 
+                                    }
+                                    
+                                    });
+                                    </script>
                                 @endforeach
                                     
                             @else
@@ -272,7 +286,7 @@
 </div>
 
 {{-- Confirm modal --}}
-<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="deletemodalmc_sco" tabindex="-1" role="dialog" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
@@ -294,14 +308,18 @@
 </div>
 
 
+
+
 <script>
     $(document).ready(function() {
+
+     
         addmc(0);
         add_attend_work(0,0);
         modal_delete();
         totalmc();
         //alert("Masuk");
-        var i=0;
+        //var i=0;
 
         // Get the total work day
         $('.counttotalwork').on('change',function(){
@@ -355,6 +373,7 @@
 
             //add attended work
             $('button[id=add_attended_work'+i+'_'+j+']').click(function(){ 
+                // alert("hiiii");
                 var val = $(this).val();
                 var values = val.split('_');
                 var i = values[0];
@@ -405,8 +424,8 @@
             console.log('id3:'+id3);
             console.log('no_of_child:'+no_of_child);
             console.log(delete_id);
-            $("#deletemodal").modal('show');
-            $("#deletemodal .modal-footer button").on('click', function(e) {
+            $("#deletemodalmc_sco").modal('show');
+            $("#deletemodalmc_sco .modal-footer button").on('click', function(e) {
                 var btn_id = event.target.id;
                 if(btn_id == 'btn_delete'){
                     e.preventDefault();

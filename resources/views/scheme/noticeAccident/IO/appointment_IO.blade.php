@@ -49,6 +49,7 @@
                                         <!-- </tr> -->
                                         
                                         <tbody>
+                                        {{ dd($ioappt)}}
                                             @foreach ($ioappt as $ioappts)
                                     
                                                 <tr>
