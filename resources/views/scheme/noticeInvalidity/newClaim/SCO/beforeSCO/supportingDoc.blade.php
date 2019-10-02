@@ -27,7 +27,7 @@
         </div>
         <div id="ob" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeInvalidity.newClaim.SCO.generated_doc')
+                @include('scheme.noticeInvalidity.newClaim.SCO.beforeSCO.generated_doc')
             </div>
         </div>
     </div>
@@ -44,11 +44,10 @@
         </div>
         <div id="noti" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeInvalidity.newClaim.SCO.notification')
+                @include('scheme.noticeInvalidity.newClaim.SCO.beforeSCO.notification')
             </div>
         </div>
     </div>
-    
 </div>
 
 

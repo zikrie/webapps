@@ -2561,7 +2561,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         //  return $empinfo;
           
         //chg28062019 - send alldoclist to blade
-        return view('scheme.noticeInvalidity.newClaim.SCO.index',['obprofile'=>$obprofile,'state'=>$state, 
+        return view('scheme.noticeInvalidity.newClaim.SCO.beforeSCO.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
             'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
             'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 
