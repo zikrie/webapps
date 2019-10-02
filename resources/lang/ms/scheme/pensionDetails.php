@@ -2,27 +2,32 @@
  
 return [
 
-	'title' => 'Maklumat Notis Keilatan',
-    'employment_info' => 'Maklumat Pengambilan Kerja',
+	'title' => 'Invalidity Information',
+    'employment_info' => 'Employment History',
 
     'attr' => [
     	
-        'desc' => 'Perihal Keuzuran',
-        'year' => 'Tahun Mula Menghidap Keuzuran',
-        'engaged_employemnt' => 'Adakah orang berinsurans masih bekerja?',
-        'yes' => 'Ya',
-        'no' => 'Tidak',
-        'date_cessation' => 'Tarikh berhenti kerja (jika terpakai)',
-        'employer_name' => 'Nama Majikan',
-        'employer_address' => 'Alamat Majikan',
-        'period' => 'Tempoh Bekerja (Tahun)',
-        'occupation' => 'Pekerjaan',
-        'monthly_wages' => 'Gaji Bulanan(RM)',
+        'desc' => 'Description of Morbidity',
+        'year' => 'Year Morbidity is First Suffered',
+        'engaged_employment' => 'Is the insured person still engaged in employment?',
+        'yes' => 'Yes',
+        'no' => 'No',
+        'date_cessation' => 'Date of Cessation of Employment (if applicable)',
+        'num' => 'No',
+        'employer_name' => 'Employer Name',
+        'employer_address' => 'Employer Address',
+        'period' => 'Period of Employment',
+        'occupation' => 'Occupation',
+        'monthly_wages' => 'Monthly Wages (RM)',
+        'nameAddress' => 'Name & Address of Employer  for the last 5 years of Employment',
+        'num' => 'No',
+        'nameAddress_employer' => 'Name & Address of Employer',
+
         
     ],
 
-    'save' => 'Simpan',
-    'cancel' => 'Batal',
-    'clear' => 'Padam',
+    'save' => 'SAVE',
+    'cancel' => 'CANCEL',
+    'clear' => 'CLEAR',
  
 ];

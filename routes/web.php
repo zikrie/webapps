@@ -56,8 +56,8 @@ Route::get('/homeADM', function () {
 //Route::post('/remark', 'NewClaim\NoticeAccidentController@postRemark');
 
 //testing
-Route::get('/testmc', 'NoticeAccidentController@DisplayMC');
-Route::post('/testmc', 'NoticeAccidentController@TestUpdMC');
+Route::get('/testmc', 'NewClaim\NoticeAccidentController@DisplayMC');
+Route::post('/testmc', 'NewClaim\NoticeAccidentController@TestUpdMC');
 Route::get('/testuploaddoc', 'UploadclaimController@getdoc');
 Route::post('/testuploaddoc', 'UploadclaimController@upload');
 
@@ -118,9 +118,9 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     // Route::post('/bankinformation','NewClaim\NoticeAccidentController@postBankInfo');
 
     //irina
-    Route::post('/noticeaccident', 'NoticeAccidentController@postAccident');
+    Route::post('/noticeaccident', 'NewClaim\NoticeAccidentController@postAccident');
     //zik
-    Route::post('/HUS', 'NoticeAccidentController@postHusInfo');
+    Route::post('/HUS', 'NewClaim\NoticeAccidentController@postHusInfo');
     /* --------------------------END OF NOTICE ACCIDENT(PK) ------------------------ */
 
     /* -------------------------- NOTICE ACCIDENT -- SCO ----------------------------- */

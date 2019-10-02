@@ -160,6 +160,4 @@ $('.customRadio').on('change' , function () {
 
 
 });
-//QUESTION_NO
-//QUESTION 1  
 </script>

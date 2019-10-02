@@ -444,272 +444,653 @@
                                                                                      <label class="control-label">Question Bank Type</label>
                                                                                      <select name="ques_bank_type" class="form-control">
                                                                                          <option value="">Please Select</option>
-                                                                                         <option value="216">Panduan Soalan Pernyataan Orang Tanggungan Balu Duda</option>
-                                                                                         <option value="217">Panduan Soalan Pernyataan Orang Tanggungan Ibu Bapa</option>
-                                                                                         <option value="218">Panduan Soalan Pernyataan Orang Tanggungan Datuk Nenek</option>
-                                                                                         <option value="219">Panduan Soalan Pernyataan Perbelanjaan FPM</option>
+                                                                                        <option value="50">@lang('form/scheme.notice_accident.SCO.investigation_doc.appendix50')</option>
+                                                                                        <option value="51">@lang('form/scheme.notice_accident.SCO.investigation_doc.appendix51')</option>
+                                                                                        <option value="52">@lang('form/scheme.notice_accident.SCO.investigation_doc.appendix52')</option>
+                                                                                        <option value="53">@lang('form/scheme.notice_accident.SCO.investigation_doc.appendix53')</option>
+                                                                                        <option value="54">@lang('form/scheme.notice_accident.SCO.investigation_doc.appendix54')</option>
+                                                                                        <option value="55">@lang('form/scheme.notice_accident.SCO.investigation_doc.appendix55')</option>
+                                                                                        
                                                                                      </select>                                                                    
                                                                                  </div>
                                                                              </div>
                                                                          </div>
      
-                                                                         <!-- ========================================= START QUESTION 216 ================================================ -->
-                                                                         <!-- ============================================================================================================= -->
+                                                                         <!-- =========================================== START QUESTION 50 ================================================ -->
+                                                                        <!-- =============================================================================================================== -->
+                                                                        <div class="col-sm-12" id="question_bank_50" style="display: none">
+                                                                            <div class="table-responsive m-t-40" style="height:260px">
+                                                                                <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                    <th width="6%">No</th>
+                                                                                    <th>Question</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_1')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_1')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_2')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_2')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_3')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_3')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_4')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_4')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_5')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_5')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_6')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_6')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_7')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_7')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_8')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_8')</td>
+                                                                                    </tr>    
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_9')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_9')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_10')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_10')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_11')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_11')
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_12')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_12')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_13')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_13')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_14')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_14')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_15')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_15')</td>
+                                                                                    </tr> 
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_16')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_16')</td>
+                                                                                    </tr>      
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_17')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_17')</td>
+                                                                                    </tr> 
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_18')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_18') <br>
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question3_18a') <br>
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question3_18b') <br>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_19')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_19')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.3_20')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question3_20')</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
      
-                                                                         <div class="col-sm-12" id="question_bank_216" style="display: none">
-                                                                             <div class="table-responsive m-t-40" style="height:260px">
-                                                                                 <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
-                                                                                 <thead>
-                                                                                     <tr>
-                                                                                     <th width="6%">No</th>
-                                                                                     <th>Question</th>
-                                                                                     </tr>
-                                                                                 </thead>
-                                                                                 <tbody>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">HUBUNGAN</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.1</td>
-                                                                                         <td>Apakah hubungan dengan OB?</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.2</td>
-                                                                                         <td>Bilakah Tarikh Perkahwinan dengan OB?</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.3</td>
-                                                                                         <td>Perkahwinan selepas 01/03/1982, Adakah perkahwinan didaftarkan?</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.3 (a)</td>
-                                                                                         <td>Perkahwinan sebelum 01/03/1982, Adakah perkahwinan didaftarkan?</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">KEBERGANTUNGAN (KEMATIAN SEBELUM 01/05/2005)</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.4</td>
-                                                                                         <td>Jika duda, nyatakan jumlah pendapatan dan perbelanjaan bulanan sebulan sebelum bulan kematian.</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td></td>
-                                                                                         <td>Pendapatan Suami dan Isteri:<br>
-                                                                                                 1) Jumlah pendapatan suami.<br>
-                                                                                                 2) Jumlah pendapatan isteri.<br>
-                                                                                                 3) Jumlah pendapatan suami dan isteri.<br><br>
-                                                                                                 
-                                                                                                 Perbelanjaan: <br>
-                                                                                                 1) Sewa rumah<br>
-                                                                                                 2) Bil utiliti<br>
-                                                                                                 3) Perbelanjaan Rumah<br>
-                                                                                                 4) Perbelanjaan Anak-anak<br>
-                                                                                                 5) Sumbangan OB<br>
-                                                                                                 6) Lain-lain. Sila Nyatakan:_______________<br>
-                                                                                                 7) Jumlah perbelanjaan<br>
-                                                                                                 </td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.5</td>
-                                                                                         <td>Adakah mempunyai balu/duda lain?</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">ANAK-ANAK</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.6</td>
-                                                                                         <td>Bilangan anak berumur dibawah 21 tahun pada masa kematian.</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.7</td>
-                                                                                         <td>Senaraikan nama, umur dan status anak.</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.8</td>
-                                                                                         <td>Status anak angkat<br>
-                                                                                             Status anak cacat<br>
-                                                                                             Status kahwin<br>
-                                                                                             Status mati<br>
-                                                                                             Status belajar<br>
-                                                                                             Status anak tiri<br>
-                                                                                         </td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">STATUS FPM</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.9</td>
-                                                                                         <td>Siapa mengeluarkan perbelanjaan FPM</td>
-                                                                                     </tr>
-                                                                                 </tbody>
-                                                                                 </table>
-                                                                             </div>
-                                                                         </div>
+                                                                        <!-- ========================================= START QUESTION 51 ================================================ -->
+                                                                        <!-- ============================================================================================================= -->
+
+                                                                        <div class="col-sm-12" id="question_bank_51" style="display: none">
+                                                                            <div class="table-responsive m-t-40" style="height:260px">
+                                                                                <table id="tablePeriodical" class="display nowrap table tableS-hover table-striped table-bordered" cellspacing="10">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                    <th width="6%">No</th>
+                                                                                    <th>Question</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_1')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_1')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_2')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_2')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_3')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_3')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_4')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_4')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_5')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_5')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_6')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_6')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_7')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_7')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_8')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_8')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_9')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_9')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_10')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_10')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_11')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_11')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_12')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_12')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_13')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_13')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_14')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_14')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_15')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_15')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_16')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_16')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_17')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_17')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_18')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_18') <br>
+                                                                                            @lang('form/scheme.notice_accident.SCO.investigation_doc.question1_18a') <br>
+                                                                                            @lang('form/scheme.notice_accident.SCO.investigation_doc.question1_18b')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_19')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_19')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_20')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_20')
+                                                                                            @lang('form/scheme.notice_accident.SCO.investigation_doc.question1_20a') <br>
+                                                                                            @lang('form/scheme.notice_accident.SCO.investigation_doc.question1_20b') <br></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_21')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_21')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.1_22')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question1_22')</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+        
+                                                                         <!-- ========================================== START QUESTION 52 ================================================ -->
+                                                                        <!-- ============================================================================================================== -->
+
+                                                                        <div class="col-sm-12" id="question_bank_52" style="display: none">
+                                                                            <div class="table-responsive m-t-40" style="height:260px">
+                                                                                <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                    <th width="6%">No</th>
+                                                                                    <th>Question</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_1')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_1')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_2')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_2')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_3')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_3')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_4')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_4')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_5')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_5')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_6')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_6')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_7')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_7')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_8')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_8')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_9')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_9')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_10')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_10')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_11')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_11')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_12')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_12')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_13')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_13')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_14')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_14')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_15')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_15')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_16')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_16')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_17')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_17')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_18')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_18')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_19')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_19') <br>
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question2_19a') <br>
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question2_19b') <br>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_20')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_20')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.2_21')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question2_21')</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
      
-                                                                         <!-- ========================================== START QUESTION 217 ================================================ -->
-                                                                         <!-- ============================================================================================================== -->
-     
-                                                                         <div class="col-sm-12" id="question_bank_217" style="display: none">
-                                                                             <div class="table-responsive m-t-40" style="height:260px">
-                                                                                 <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
-                                                                                 <thead>
-                                                                                     <tr>
-                                                                                     <th width="6%">No</th>
-                                                                                     <th>Question</th>
-                                                                                     </tr>
-                                                                                 </thead>
-                                                                                 <tbody>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">HUBUNGAN</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.1</td>
-                                                                                         <td>Apakah hubungan dengan OB?</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">KEBERGANTUNGAN (KEMATIAN SEBELUM 05/2005)</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.2</td>
-                                                                                         <td>Nyatakan jumlah pendapatan dan perbelanjaan bulanan sebulan sebelum bulan kematian.</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.3</td>
-                                                                                         <td>Pendapatan Ibu dan Bapa:<br>
-                                                                                                 1) Jumlah pendapatan Ibu.<br>
-                                                                                                 2) Jumlah pendapatan Bapa.<br>
-                                                                                                 3) Sumbangan si mati.<br>
-                                                                                                 4) Sumbangan adik beradik yang lain.<br>
-                                                                                                 5) Jumlah pendapatan semua di atas.<br><br>
-                                                                                                 
-                                                                                                 Perbelanjaan: <br>
-                                                                                                 1) Sewa rumah<br>
-                                                                                                 2) Bil utiliti<br>
-                                                                                                 3) Perbelanjaan Rumah<br>
-                                                                                                 4) Perbelanjaan Anak-anak<br>
-                                                                                                 5) Sumbangan si mati<br>
-                                                                                                 6) Lain-lain. Sila Nyatakan:_______________<br>
-                                                                                                 7) Jumlah perbelanjaan<br>
-                                                                                         </td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">ADIK BERADIK</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.4</td>
-                                                                                         <td>Bilangan adik beradik berumur dibawah 21 tahun pada masa kematian.</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.5</td>
-                                                                                         <td>Senaraikan nama, umur dan status adik beradik.</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.6</td>
-                                                                                         <td>Status kahwin<br>
-                                                                                             Status mati
-                                                                                         </td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">STATUS FPM</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.7</td>
-                                                                                         <td>Siapa mengeluarkan perbelanjaan FPM</td>
-                                                                                     </tr>
-                                                                                 </tbody>
-                                                                                 </table>
-                                                                             </div>
-                                                                         </div>
-     
-                                                                         <!-- =========================================== START QUESTION 218 ================================================ -->
-                                                                         <!-- =============================================================================================================== -->
-     
-                                                                         <div class="col-sm-12" id="question_bank_218" style="display: none">
-                                                                             <div class="table-responsive m-t-40" style="height:260px">
-                                                                                 <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
-                                                                                 <thead>
-                                                                                     <tr>
-                                                                                     <th width="6%">No</th>
-                                                                                     <th>Question</th>
-                                                                                     </tr>
-                                                                                 </thead>
-                                                                                 <tbody>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">HUBUNGAN</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.1</td>
-                                                                                         <td>Apakah hubungan dengan OB?</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">KEBERGANTUNGAN (KEMATIAN SEBELUM 05/2005)</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.2</td>
-                                                                                         <td>Nyatakan jumlah pendapatan dan perbelanjaan bulanan sebulan sebelum bulan kematian.</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.3</td>
-                                                                                         <td>Pendapatan Ibu dan Bapa:<br>
-                                                                                             1) Jumlah pendapatan Ibu.<br>
-                                                                                             2) Jumlah pendapatan Bapa.<br>
-                                                                                             3) Sumbangan si mati.<br>
-                                                                                             4) Sumbangan adik beradik yang lain.<br>
-                                                                                             5) Jumlah pendapatan semua di atas.<br><br>
-                                                                                             
-                                                                                             Perbelanjaan: <br>
-                                                                                             1) Sewa rumah<br>
-                                                                                             2) Bil utiliti<br>
-                                                                                             3) Perbelanjaan Rumah<br>
-                                                                                             4) Perbelanjaan Anak-anak<br>
-                                                                                             5) Sumbangan si mati<br>
-                                                                                             6) Lain-lain. Sila Nyatakan:_______________<br>
-                                                                                             7) Jumlah perbelanjaan<br>
-                                                                                         </td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">STATUS FPM</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.4</td>
-                                                                                         <td>Siapa mengeluarkan perbelanjaan FPM</td>
-                                                                                     </tr>
-                                                                                 </tbody>
-                                                                                 </table>
-                                                                             </div>
-                                                                         </div>
-     
-                                                                         <!-- ============================================ START QUESTION 219 ================================================ -->
-                                                                         <!-- ================================================================================================================ -->
-     
-                                                                         <div class="col-sm-12" id="question_bank_219" style="display: none">
-                                                                             <div class="table-responsive m-t-40" style="height:260px">
-                                                                                 <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
-                                                                                 <thead>
-                                                                                     <tr>
-                                                                                     <th width="6%">No</th>
-                                                                                     <th>Question</th>
-                                                                                     </tr>
-                                                                                 </thead>
-                                                                                 <tbody>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">HUBUNGAN</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.1</td>
-                                                                                         <td>Apakah hubungan dengan OB?</td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td colspan="2"><span style="font-weight: bold">STATUS FPM</span></td>
-                                                                                     </tr>
-                                                                                     <tr>
-                                                                                         <td>1.2</td>
-                                                                                         <td>Siapa mengeluarkan perbelanjaan FPM</td>
-                                                                                     </tr>
-                                                                                 </tbody>
-                                                                                 </table>
-                                                                             </div>
-                                                                         </div>
+                                                                         <!-- ========================================== START QUESTION 53 ================================================ -->
+                                                                        <!-- ============================================================================================================== -->
+
+                                                                        <div class="col-sm-12" id="question_bank_53" style="display: none">
+                                                                            <div class="table-responsive m-t-40" style="height:260px">
+                                                                                <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                    <th width="6%">No</th>
+                                                                                    <th>Question</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_1')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_1')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_2')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_2')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_3')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_3')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_5')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_5')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_6')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_6')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_7')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_7')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_8')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_8')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_9')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_9')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_10')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_10')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_11')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_11')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_16')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_16')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_13')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_13')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_14')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_14')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_15')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_15')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_16')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_16')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_17')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_17')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_19')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_19')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_18')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_18') <br>
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question6_18a') <br>
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question6_18b') <br>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.6_60')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question6_60')</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- ========================================== START QUESTION 54 ================================================ -->
+                                                                        <!-- ============================================================================================================== -->
+
+                                                                        <div class="col-sm-12" id="question_bank_54" style="display: none">
+                                                                            <div class="table-responsive m-t-40" style="height:260px">
+                                                                                <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                    <th width="6%">No</th>
+                                                                                    <th>Question</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_1')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_1')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_2')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_2')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_3')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_3')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_4')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_4')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_5')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_5')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_6')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_6')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_7')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_7')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_8')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_8')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_9')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_9')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_10')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_10')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_11')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_11')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_15')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_15')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_13')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_13')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_14')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_14')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_15')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_15')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_16')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_16')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_17')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_17')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_18')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_18')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_19')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_19')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_20')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_20')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_21')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_21')
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question5_21a') <br>
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question5_21b') <br>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_22')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_22')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.5_23')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question5_23')</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- ========================================== START QUESTION 55 ================================================ -->
+                                                                        <!-- ============================================================================================================== -->
+
+                                                                        <div class="col-sm-12" id="question_bank_55" style="display: none">
+                                                                            <div class="table-responsive m-t-40" style="height:260px">
+                                                                                <table id="tablePeriodical" class="display nowrap table table-hover table-striped table-bordered" cellspacing="10">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                    <th width="6%">No</th>
+                                                                                    <th>Question</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_1')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_1')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_2')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_2')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_3')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_3')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_4')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_4')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_5')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_5')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_6')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_6')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_7')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_7')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_8')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_8')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_9')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_9')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_10')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_10')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_11')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_11')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_12')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_12')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_14')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_14')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_15')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_15')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_16')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_16')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_17')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_17')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_18')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_18')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_19')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_19')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_20')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_20')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_21')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_21')
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question4_21a') <br>
+                                                                                            &nbsp; @lang('form/scheme.notice_accident.SCO.investigation_doc.question4_21b') <br>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_22')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_22')</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.4_23')</td>
+                                                                                        <td>@lang('form/scheme.notice_accident.SCO.investigation_doc.question4_23')</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+
                                                                      </div>
                                                                  </div>
                                                              </div>
@@ -755,31 +1136,31 @@
                                  <div id="carpenter" class="do_left" style="display:none">
                                      <div class="form-actions">
                                      <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalCarpenter" data-whatever="@fat">+ ADD</button>
-                                         @include('scheme.noticeDeath.newClaim.IO.carpenter')
+                                         @include('scheme.noticeAccident.SCO.carpenter')
                                      </div>
                                  </div>
                                  <div id="director" class="do_left" style="display:none">
                                      <div class="form-actions">
                                      <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalDirector" data-whatever="@fat">+ ADD</button>
-                                         @include('scheme.noticeDeath.newClaim.IO.director')
+                                         @include('scheme.noticeAccident.SCO.director')
                                      </div>
                                  </div>
                                  <div id="driver" class="do_left" style="display:none">
                                      <div class="form-actions">
                                      <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalDriver" data-whatever="@fat">+ ADD</button>
-                                         @include('scheme.noticeDeath.newClaim.IO.driver')
+                                         @include('scheme.noticeAccident.SCO.driver')
                                      </div>
                                  </div>
                                  <div id="mandor" class="do_left" style="display:none">
                                      <div class="form-actions">
                                      <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalMandor" data-whatever="@fat">+ ADD</button>
-                                         @include('scheme.noticeDeath.newClaim.IO.mandor')
+                                         @include('scheme.noticeAccident.SCO.mandor')
                                      </div>
                                  </div>
                                  <div id="general" class="do_left" style="display:none">
                                      <div class="form-actions">
                                      <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalGeneral" data-whatever="@fat">+ ADD</button>
-                                         @include('scheme.noticeDeath.newClaim.IO.general')
+                                         @include('scheme.noticeAccident.SCO.general')
                                      </div>
                                  </div>
                              </div>
@@ -951,35 +1332,61 @@
         });
      
         $('select[name=ques_bank_type]').change(function () {
-             if (this.value == '216') {
-                 $("#question_bank_216").show();
-                 $("#question_bank_217").hide();
-                 $("#question_bank_218").hide();
-                 $("#question_bank_218").hide();
+             if (this.value == '50') {
+                 $("#question_bank_50").show();
+                 $("#question_bank_51").hide();
+                 $("#question_bank_52").hide();
+                 $("#question_bank_53").hide();
+                 $("#question_bank_54").hide();
+                 $("#question_bank_55").hide();
              } 
-             else if (this.value == '217') {
-                 $("#question_bank_217").show();
-                 $("#question_bank_216").hide();
-                 $("#question_bank_218").hide();
-                 $("#question_bank_219").hide();
+             else if (this.value == '51') {
+                 $("#question_bank_51").show();
+                 $("#question_bank_50").hide();
+                 $("#question_bank_52").hide();
+                 $("#question_bank_53").hide();
+                 $("#question_bank_54").hide();
+                 $("#question_bank_55").hide();
              }
-             else if (this.value == '218') {
-                 $("#question_bank_218").show();
-                 $("#question_bank_216").hide();
-                 $("#question_bank_217").hide();
-                 $("#question_bank_219").hide();
+             else if (this.value == '52') {
+                 $("#question_bank_52").show();
+                 $("#question_bank_50").hide();
+                 $("#question_bank_51").hide();
+                 $("#question_bank_53").hide();
+                 $("#question_bank_54").hide();
+                 $("#question_bank_55").hide();
              }
-             else if (this.value == '219') {
-                 $("#question_bank_219").show();
-                 $("#question_bank_216").hide();
-                 $("#question_bank_217").hide();
-                 $("#question_bank_218").hide();
+             else if (this.value == '53') {
+                 $("#question_bank_53").show();
+                 $("#question_bank_50").hide();
+                 $("#question_bank_51").hide();
+                 $("#question_bank_52").hide();
+                 $("#question_bank_54").hide();
+                 $("#question_bank_55").hide();
+             }
+             else if (this.value == '54'){
+                 $("#question_bank_50").hide();
+                 $("#question_bank_51").hide();
+                 $("#question_bank_52").hide();
+                 $("#question_bank_53").hide();
+                 $("#question_bank_54").show();
+                 $("#question_bank_55").hide();
+             }
+             else if (this.value == '55'){
+                 $("#question_bank_50").hide();
+                 $("#question_bank_51").hide();
+                 $("#question_bank_52").hide();
+                 $("#question_bank_53").hide();
+                 $("#question_bank_54").hide();
+                 $("#question_bank_55").show();
              }
              else {
-                 $("#question_bank_216").hide();
-                 $("#question_bank_217").hide();
-                 $("#question_bank_218").hide();
-                 $("#question_bank_219").hide();
+                 $("#question_bank_50").hide();
+                 $("#question_bank_51").hide();
+                 $("#question_bank_52").hide();
+                 $("#question_bank_53").hide();
+                 $("#question_bank_54").hide();
+                 $("#question_bank_55").hide();
              }
          });
      });

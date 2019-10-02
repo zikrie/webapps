@@ -204,19 +204,128 @@
     </div>
 </div> --}}
 <div class="row p-t-20">
-    
-    {{-- <div class="col-md-4">
-        <div class="form-group">
-            <label class="control-label">@lang('scheme/appointment.attr.investigate_site')</label>
-                <input type="text" name="investigate_site" id="investigate_site" class="form-control">
-        </div>
-    </div> --}}
-</div>
-<div class="row p-t-20">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="control-label">@lang('scheme/appointment.attr.docToReq')</label>
-            <textarea type="text" class="form-control"></textarea>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">Interview Attendees</label>
+                <div class="col-md-4">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_Employer1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input">
+                        <label class="custom-control-label" for="custom_Radio_Employer1">Employer</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_insured_person1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input" onclick="recommendationview_no3()">
+                        <label class="custom-control-label" for="custom_Radio_insured_person1">Insured Person</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="others_attendess1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input" onclick="recommendationview_no3()">
+                        <label class="custom-control-label" for="others_attendess1">Others</label>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <div id="others_A1" style="display:none">
+        <div class="row p-t-20">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">Name</label>
+                        <input type="text" name="name" id="name" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row p-t-20">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">@lang('scheme/appointment.attr.address')</label>
+                        <input type="text" name="address" id="address" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row p-t-20">
+            <div class="col-md-12">
+                <div class="form-group">    
+                    {{-- <label class="control-label">@lang('scheme/appointment.attr.a  ddress')</label> --}}
+                        <input type="text" name="address" id="address" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="row p-t-20">
+            <div class="col-md-12">
+                <div class="form-group">
+                    {{-- <label class="control-label">@lang('scheme/appointment.attr.address')</label> --}}
+                        <input type="text" name="address" id="address" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">Document to Request </label>
+                <div class="col-md-4">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_document11" name="custom_Radio" onClick="others_document1()"  class="custom-control-input">
+                        <label class="custom-control-label" for="custom_Radio_document11">Document 1</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_document21" name="custom_Radio" onClick="others_document1()" class="custom-control-input" onclick="recommendationview_no3()">
+                        <label class="custom-control-label" for="custom_Radio_document21">Document 2</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="document_others1" name="custom_Radio" onClick="others_document1()" class="custom-control-input" onclick="recommendationview_no3()">
+                        <label class="custom-control-label" for="document_others1">Others</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="others_B1" class="row p-t-20" style="display:none">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                    <input type="text" name="description" id="description" class="form-control">
+            </div>
+        </div>
+    </div>
+
+<script>
+        function others_attendes_list1() {
+    
+            // Get the checkbox
+            var checkBox = document.getElementById("others_attendess1");
+            // Get the output text
+            var others_A1 = document.getElementById("others_A1");
+    
+            // If the checkbox is checked, display the output text
+            if (checkBox.checked == true){
+            others_A1.style.display = "block";
+            } else {
+            others_A1.style.display = "none";
+            }
+        }
+    
+        function others_document1() {
+    
+            // Get the checkbox
+            var checkBox = document.getElementById("document_others1");
+            // Get the output text
+            var others_B1 = document.getElementById("others_B1");
+    
+            // If the checkbox is checked, display the output text
+            if (checkBox.checked == true){
+            others_B1.style.display = "block";
+            } else {
+            others_B1.style.display = "none";
+            }
+        }
+    
+    </script>

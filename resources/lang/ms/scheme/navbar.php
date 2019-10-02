@@ -2,10 +2,10 @@
  
 return [
 
-	'new_claim' => 'Tuntutan Baru',
-	'upload_doc' => 'Muat Naik Dokumen',
-	'home' => 'Halaman Utama',
-	'ob_profile' => 'Profil OB',
-	'claim_info' => 'Maklumat Tuntutan',
+	'new_claim' => 'New Claim',
+	'upload_doc' => 'Upload Document',
+	'home' => 'My BeAMS',
+	'ob_profile' => 'OB Profile',
+	'claim_info' => 'Claim Info',
  
 ];

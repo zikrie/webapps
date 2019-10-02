@@ -1,8 +1,8 @@
 <div class="col-lg-12">
     <div class="card">
     <div class="card-body">
-        <form method="post" action="{{url ('/updmc')}}">
-            <input type="hidden" name="_token" value="{{csrf_token()}}">
+        <form method="post" action="updmc">
+            @csrf
             <input type="hidden" name="caserefno" value="{{-- {{$caserefno}} --}}">
             <div class="form-body ">
                 @if(Session::get('messagemc')) 
@@ -40,7 +40,7 @@
                 </div> --}}
                 <div class="col-md-12" id="container">
                     <div class="table-responsive" id="table-medical">
-                        <div class="form-actions text-right">
+                        <div class="form-actions">
                             <button type="button" id="btn_add_mc0" value='0' class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addMc')</button>
                         </div>{{-- <label class="control-label">@lang('medicalDetails.attr.medicalleave')</label> --}}
                         <table  id="table-medical-details0" class="table table-sm table-bordered" data-toggle-column="first">
@@ -50,11 +50,13 @@
                                     <th style='width:20%'>@lang('scheme/mc.attr.nameAddress_clinic')</th> 
                                     <th style='width:17%'>@lang('scheme/mc.attr.start_date')</th>
                                     <th style='width:18%'>@lang('scheme/mc.attr.end_date')</th>
-                                    <th style='width:15%'>@lang('scheme/mc.attr.days_work')</th>
-                                    <th style='width: 8%'>@lang('scheme/mc.attr.action')</th>
+                                    <th style='width:10%'>@lang('scheme/mc.attr.days_work')</th>
+                                    <th style='width: 12%'>@lang('scheme/mc.attr.action')</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @if(!empty($husinfo->parent))
+                                @foreach($husinfo->parent as $key => $parent)
                                 <tr data-expanded="true" class="workrow" id="tr0_0">
                                     <td>
                                         <div class="col-md-12">
@@ -67,31 +69,115 @@
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input id="clinicname" name="clinicinfo" type="text" value="@if (!empty($mcdata)){{ $mcdata->clinicinfo }}@endif" class="form-control counttotalmc" required>
+                                            <input id="clinicname" name="clinicinfo[]" type="text" value="@if (!empty($mcdata)){{ $mcdata->clinicinfo }}@endif" class="form-control counttotalmc" required>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input id="mcstartdate_0_0" name="mcstartdate_0_0[]" type="date" value="@if (!empty($mc) && $mc->startdate!=''){{ (DateTime::createFromFormat('Ymd', $mc->startdate))->format('Y-m-d') }}@endif" class="form-control counttotalmc" required>
+                                            <input id="mcstartdate_0_0" name="startdate[]" type="date" value="@if (!empty($mc) && $mc->startdate!=''){{ (DateTime::createFromFormat('Ymd', $mc->startdate))->format('Y-m-d') }}@endif" class="form-control counttotalmc" required>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-md-12">
-                                            <input type="date" id="mcenddate_0_0" name="mcenddate_0_0[]" value="" class="form-control counttotalmc" >
+                                            <input type="date" id="mcenddate_0_0" name="enddate[]" value="" class="form-control counttotalmc" >
                                         </div>
                                     </td>
                                     <td>
-                                        <input type="text" id="totalmc_0_0" name="totalmc_0_0[]" value="" class="form-control" readonly>
+                                        <input type="text" id="totalmc_0_0" name="totalmc[]" value="" class="form-control" readonly>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work0_0"><i class="fas fa-trash-alt fa-sm"></i></button>
+                                        <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work0_0"><i class="fas fa-trash-alt fa-sm"></i></button>
                                         <button id="add_attended_work0_0" value='0_0' type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">
                                             <i class="ti-plus text" aria-hidden="true"></i>
                                             <i class="ti-plus text-active" aria-hidden="true"></i>
                                         </button>
                                     </td>
                                 </tr>
-                                {{-- <tr>
+                                @if(!empty($husinfo->child))
+                                {
+                                        @foreach($husinfo->child[$key] as  $child)
+                                        {
+
+                                            <tr id="tr'+i+'_'+j+'_'+w+'">
+                                                                <td>
+                                                                    <div class="col-md-12"> 
+                                                                        <input  name="attendedwork" type="text" value="" class="form-control counttotalwork" readonly>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <input id="clinicname" name="clinicinfo['+j+'][]" type="text"  value="" class="form-control counttotalmc" disabled>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <input   type="date" id="workstartdate_'+i+'_'+j+'_'+w+'" name="mcitemstartdate['+j+'][]" value="@if (!empty($parent) && $child->mcitemstartdate!=''){{ (DateTime::createFromFormat('Ymd', $child->mcitemstartdate))->format('Y-m-d') }}@endif"  class="form-control counttotalwork" >
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-12">
+                                                                        <input type="date"  id="workenddate_'+i+'_'+j+'_'+w+'" name="mcitemenddate['+j+'][]" value="@if (!empty($parent) && $child->mcitemenddate!=''){{ (DateTime::createFromFormat('Ymd', $child->mcitemenddate))->format('Y-m-d') }}@endif"  class="form-control counttotalwork" >
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalmcitem['+j+'][]" value="@if (!empty($child)){{ $child ->totalmcitem }}@endif" class="form-control" readonly>
+                                                                        <td>
+                                                                            <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'">
+                                                                                <i class="fas fa-trash-alt fa-sm"></i>
+                                                                            </button>
+                                                                        </td>
+                                                                </td> 
+                                                            
+                                                        </tr>
+                                    
+                                         @endforeach
+                                    @endif
+                                @endforeach
+                                    
+                            @else
+
+                            <tbody>
+                                <tr data-expanded="true" class="workrow" id="tr0_0">
+                                    <td>
+                                        <div class="col-md-12">
+                                            <select class="form-control" name="hussts[]">
+                                            <option value="">Please select</option>
+                                            <option value="mc" selected> MC </option>
+                                            <option value="ld" > Light Duty </option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-md-12">
+                                            <input id="clinicname" name="clinicinfo[]" type="text" value="{{-- @if (!empty($mcdata)){{ $mcdata->clinicinfo }}@endif --}}" class="form-control counttotalmc" required>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-md-12">
+                                            <input id="mcstartdate_0_0" name="startdate[]" type="date" value="{{-- @if (!empty($mc) && $mc->startdate!=''){{ (DateTime::createFromFormat('Ymd', $mc->startdate))->format('Y-m-d') }}@endif --}}" class="form-control counttotalmc" required>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-md-12">
+                                            <input type="date" id="mcenddate_0_0" name="enddate[]" value="" class="form-control counttotalmc" >
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="totalmc_0_0" name="totalmc[]" value="" class="form-control" readonly>
+                                    </td>
+                                    <td>
+                                        <button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work0_0"><i class="fas fa-trash-alt fa-sm"></i></button>
+                                        <button id="add_attended_work0_0" value='0_0' type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">
+                                            <i class="ti-plus text" aria-hidden="true"></i>
+                                            <i class="ti-plus text-active" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                   
+                                </tr>
+                               
+                            </tbody>
+                            @endif
+                               {{--  <tr>
                                     <td>
                                         <div class="form-group">
                                             <input  name="attendedwork" type="text" value="Attended Work" class="form-control counttotalwork" readonly>
@@ -118,7 +204,6 @@
                                         </button> 
                                     </td>
                                 </tr> --}}
-                            </tbody>
                         </table>     
                         <label class="control-label" id='lblmcerror0' style='color:red'></label>
                     </div>
@@ -127,36 +212,37 @@
             </div>
             <div class="form-actions text-right">
                 <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' onclick="mcsubmit()">@lang('scheme/ob.save')</button>
-                <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button>
+                {{-- <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button> --}}
                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
                 <button type="submit" name="action" value="Back" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticeaccident'">@lang('scheme/noticetype.back')</button>
                 
             </div>
+        </form>
         </div>
     </div>
 </div>
 
 {{-- Confirm modal --}}
 <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to delete?
+            <input type="hidden" class="form-control" name="id" id="id">
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="btn_close" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+            <button type="button" id="btn_delete" class="btn btn-danger btn-sm" data-dismiss="modal">Delete</button>
+        </div>
+        </div>
     </div>
-    <div class="modal-body">
-        Are you sure you want to delete?
-        <input type="hidden" class="form-control" name="id" id="id">
-    </div>
-    <div class="modal-footer">
-        <button type="button" id="btn_close" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" id="btn_delete" class="btn btn-danger btn-sm" data-dismiss="modal">Delete</button>
-    </div>
-    </div>
-</div>
 </div>
 
 
@@ -168,81 +254,6 @@
         totalmc();
         //alert("Masuk");
         var i=0;
-
-        //Append New MC
-        $('#btn_add_clinic').click(function(){
-            i++;
-            html = "<br><br> Clinic Name<hr>" +
-            "<div class='col-md-12' id='container'>"+
-                "<div class='col-md-12'>"+
-                "<div class='table-responsive   ' id='table-medical'>"+
-                        "<div class='form-actions text-right'>"+
-                        "<button type='button' id='btn_add_mc"+i+"'value='"+i+"' class='btn btn-sm waves-effect waves-light btn-info'>@lang('scheme/mc.addMc')</button>"+
-                        "</div>"+
-                        "<table  id='table-medical-details"+i+"' class='table table-sm table-bordered' data-toggle-column='first'>"+
-                            "<thead>"+
-                                "<tr>"+
-                                    "<th style='width:20%'>@lang('scheme/mc.attr.type_hus')</th>"+
-                                    "<th style='width:20%'>@lang('scheme/mc.attr.nameAddress_clinic')</th>"+ 
-                                    "<th style='width:17%'>@lang('scheme/mc.attr.start_date')</th>"+
-                                    "<th style='width:18%'>@lang('scheme/mc.attr.end_date')</th>"+
-                                    "<th style='width:15%'>@lang('scheme/mc.attr.days_work')</th>"+
-                                    "<th style='width: 8%'>@lang('scheme/mc.attr.action')</th>"+
-                                "</tr>"+
-                            "</thead>"+
-                            "<tbody>"+
-                                "<tr data-expanded='true' class='workrow' id='tr"+i+"_0'>"+
-                                    "<td>"+
-                                        "<div class='col-md-12'>"+
-                                            "<select class='form-control' name='hussts[]'>"+
-                                            "<option value=''>Please select</option>"+
-                                            "<option value='' selected> MC </option>"+
-                                            "<option value='' > Light Duty </option>"+
-                                            "</select>"+
-                                        "</div>"+
-                                    "</td>"+
-                                    "<td>"+
-                                        "<div class='col-md-12'>"+
-                                            "<input id='clinicname' name='clinicinfo' type='text' value='' required>"+
-                                        "</div>"+
-                                    "</td>"+
-                                    "<td>"+
-                                        "<div class='col-md-12'>"+
-                                        " <input type='date' value='' id='mcstartdate_"+i+"_0' name='mcstartdate_"+i+"_0[]' class='form-control counttotalmc' >"+
-                                        "</div>"+
-                                    "</td>"+
-                                    "<td>"+
-                                        "<div class='col-md-12'>"+
-                                            "<input type='date' value='' id='mcenddate_"+i+"_0' name='mcenddate_"+i+"_0[]' class='form-control counttotalmc' >"+
-                                        "</div>"+
-                                " </td>"+
-                                    "<td>"+
-                                        "<input type='text' value='' id='totalmc_"+i+"_0' name='totalmc_"+i+"_0[]' class='form-control' readonly>"+
-                                    "</td>"+
-                                    "<td>"+
-                                        "<button type='button'  class='btn btn-sm btn-danger btn_del_workmc' id='del_attended_work"+i+"_0'><i class='fas fa-trash-alt fa-sm'></i></button>"+
-                                        "<button id='add_attended_work"+i+"_0' value='"+i+"_0' type='button' class='btn btn-info' data-toggle='button' data-more='#sh' aria-pressed='false'>"+
-                                            "<i class='ti-plus text' aria-hidden='true'></i>"+
-                                            "<i class='ti-plus text-active' aria-hidden='true'></i>"+
-                                        "</button>"+
-                                    "</td>"+
-                            "</tr>"+
-                            "</tbody>"+
-                        "</table>"+ 
-                        "<label class='control-label' id='lblmcerror"+i+"' style='color:red'></label>"+
-                    "</div>"+
-                "</div>"+
-            "</div>";
-
-            $('#new-mc').append(html);   
-            
-            addmc(i);
-            add_attend_work(i,0);
-            modal_delete();
-            totalmc();
-            
-
-        });
 
         // Get the total work day
         $('.counttotalwork').on('change',function(){
@@ -268,13 +279,13 @@
             for (k = 0; k <= j; k++) { 
                 if($("#add_attended_work"+i+"_"+k).length == 0) { //if doesn't exist
 
-                    $('#table-medical-details'+i+' > tbody:last-child').append('<tr data-expanded="true" class="workrow" id="tr'+i+'_'+k+'"><td><div class="col-md-12"><select class="form-control" name="hussts[]"><option value="">Please select</option><option value="" selected> MC </option><option value="" > Light Duty </option></select></div></td>'+
+                    $('#table-medical-details'+i+' > tbody:last-child').append('<tr data-expanded="true" class="workrow" id="tr'+i+'_'+k+'"><td><div class="col-md-12"><select class="form-control" name="hussts['+k+']"><option value="">Please select</option><option value="mc" selected> MC </option><option value="ld" > Light Duty </option></select></div></td>'+
                         "<td>"+
                                         "<div class='col-md-12'>"+
-                                            "<input id='clinicname' name='clinicinfo' type='text' value='' class='form-control counttotalmc' required>"+
+                                            "<input id='clinicname' name='clinicinfo["+k+"]' type='text' value='' class='form-control counttotalmc' required>"+
                                         "</div>"+
                                     "</td>"+
-                    '<td><div class="col-md-12"><input type="date" value="" id="mcstartdate_'+i+'_'+k+'" name="mcstartdate_'+i+'_'+k+'[]" class="form-control counttotalmc" ></div></td><td><div class="col-md-12"><input type="date" value="" id="mcenddate_'+i+'_'+k+'" name="mcenddate_'+i+'_'+k+'[]" class="form-control counttotalmc" ></div></td><td><input type="text" id="totalmc_'+i+'_'+k+'" name="totalmc_'+i+'_'+k+'[]" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+k+'"><i class="fas fa-trash-alt fa-sm"></i></button><button id="add_attended_work'+i+'_'+k+'" value="'+i+'_'+k+'" type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">'+
+                    '<td><div class="col-md-12"><input type="date" value="" id="mcstartdate_'+i+'_'+k+'" name="startdate['+k+']" class="form-control counttotalmc" ></div></td><td><div class="col-md-12"><input type="date" value="" id="mcenddate_'+i+'_'+k+'" name="enddate['+k+']" class="form-control counttotalmc" ></div></td><td><input type="text" id="totalmc_'+i+'_'+k+'" name="totalmc['+k+']" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+k+'"><i class="fas fa-trash-alt fa-sm"></i></button><button id="add_attended_work'+i+'_'+k+'" value="'+i+'_'+k+'" type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">'+
                                             '<i class="ti-plus text" aria-hidden="true"></i>'+
                                             '<i class="ti-plus text-active" aria-hidden="true"></i>'+
                                         '</button></td></tr>');
@@ -308,7 +319,7 @@
                     if($("#tr"+i+"_"+j+"_"+w).length == 0) { 
                         // alert("hihihihi");
 
-                        $('#tr'+i+'_'+j).after('<tr id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="Attended Work" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo" type="text" value="" class="form-control counttotalmc" required></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="workstartdate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="workenddate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalwork_'+i+'_'+j+'_'+w+'" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td> </tr>');
+                        $('#tr'+i+'_'+j).after('<tr id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="Attended Work" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo" type="text" value="" class="form-control counttotalmc" readonly></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="workstartdate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="workenddate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalwork_'+i+'_'+j+'_'+w+'" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td> </tr>');
             
                         modal_delete();
                         totalwork();

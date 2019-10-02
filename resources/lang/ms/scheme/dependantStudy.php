@@ -2,23 +2,22 @@
  
 return [
 
-	'title' => 'Maklumat Pengesahan Belajar',
+	'title' => 'Dependant Study Information',
 
     'attr' => [
     	
-        'study_start_date' => 'Tarikh Mula Belajar',
-        'study_end_date' => 'Tarikh Dijangka Tamat Belajar',
+        'study_start_date' => 'Study Start Date',
+        'study_end_date' => 'Expected Study End Date',
         'status' => 'Status',
-        'edu_level' => 'Tahap Pendidikan',
-		'pls_specify' => 'Sila Nyatakan',
-		'course_name' => 'Nama Kursus',
-        'inst_univer_name' => 'Nama Institut/Universiti',		  
+        'edu_level' => 'Education Level',
+		'pls_specify' => 'Please  Specify',
+		'course_name' => 'Course Name',
+        'inst_univer_name' => 'Institute/University Name',		  
         
     ],
 
-    'save' => 'Simpan',
-    'cancel' => 'Batal',
-    'clear' => 'Padam',
+    'save' => 'SAVE',
+    'cancel' => 'CANCEL',
+    'clear' => 'CLEAR',
  
 ];
-

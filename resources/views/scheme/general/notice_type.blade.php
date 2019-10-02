@@ -17,19 +17,19 @@
                 <form action="/scheme/idno" method="post">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
-                        <h5 class="card-title">@lang('scheme/noticetype.title')</h5>
+                        <h5 class="card-title">@lang('noticetype.title')</h5>
                         <hr>
                         <div class="row">
                             <div class="col-md-4">
-                                @lang('scheme/noticetype.details')<br /><br />
+                                @lang('noticetype.details')<br /><br />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/noticetype.attr.notice_type')</label>
+                                    <label class="control-label">@lang('noticetype.attr.notice_type')</label>
                                     <select name="notice_type" id='notice_type' class="form-control clearfields">
-                                        <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
+                                        <option selected hidden readonly value="please select">@lang('noticetype.attr.please_select')</option>
                                         @foreach ($noticetype as $nt)
                                         @if (old('notice_type') == $nt->refcode)
                                         <option value="{{$nt->refcode}}" selected>{{$nt->descen}}</option>
@@ -39,32 +39,32 @@
                                         <option value="{{$nt->refcode}}">{{$nt->descen}}</option>
                                         @endif
                                         @endforeach
-                                        <!--option value="Accident Notice">@lang('scheme/noticetype.attr.accident_notice')</option>
-                                    <option value="Occupational Decease Notice">@lang('scheme/noticetype.attr.od_notice')</option>
-                                    <option value="Invalidity Notice">@lang('scheme/noticetype.attr.invalidity_notice')</option>
-                                    <option value="Death Notice">@lang('scheme/noticetype.attr.death_notice')</option-->
+                                        <!--option value="Accident Notice">@lang('noticetype.attr.accident_notice')</option>
+                                    <option value="Occupational Decease Notice">@lang('noticetype.attr.od_notice')</option>
+                                    <option value="Invalidity Notice">@lang('noticetype.attr.invalidity_notice')</option>
+                                    <option value="Death Notice">@lang('noticetype.attr.death_notice')</option-->
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-md-4" id="still_employment" style="display:none;">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/noticetype.attr.in_employment')</label>
+                                    <label class="control-label">@lang('noticetype.attr.in_employment')</label>
                                     <select name="in_employment" id="in_employment" class="form-control clearfields">
 
                                         @if(!empty($in_employment))
                                         @if($in_employment=='Yes')
-                                        <option value="Yes" selected>@lang('scheme/noticetype.attr.yes')</option>
-                                        <option value="No">@lang('scheme/noticetype.attr.no')</option>
+                                        <option value="Yes" selected>@lang('noticetype.attr.yes')</option>
+                                        <option value="No">@lang('noticetype.attr.no')</option>
                                         @else
-                                        <option value="Yes">@lang('scheme/noticetype.attr.yes')</option>
-                                        <option value="No" selected>@lang('scheme/noticetype.attr.no')</option>
+                                        <option value="Yes">@lang('noticetype.attr.yes')</option>
+                                        <option value="No" selected>@lang('noticetype.attr.no')</option>
                                         @endif
                                         @else
                                         <option value="please select" selected hidden readonly>
-                                            @lang('scheme/noticetype.attr.please_select')</option>
-                                        <option value="Yes">@lang('scheme/noticetype.attr.yes')</option>
-                                        <option value="No">@lang('scheme/noticetype.attr.no')</option>
+                                            @lang('noticetype.attr.please_select')</option>
+                                        <option value="Yes">@lang('noticetype.attr.yes')</option>
+                                        <option value="No">@lang('noticetype.attr.no')</option>
                                         @endif
 
 
@@ -73,22 +73,22 @@
                             </div>
                             <div class="col-md-4" id="death_accident" style="display:none;">
                                     <div class="form-group">
-                                        <label class="control-label">@lang('scheme/noticetype.attr.death_accident')</label>
+                                        <label class="control-label">@lang('noticetype.attr.death_accident')</label>
                                         <select name="select_death_accident" id="select_death_accident" class="form-control clearfields">
     
                                             @if(!empty($select_death_accident))
                                             @if($select_death_accident=='Yes')
-                                            <option value="Yes" selected>@lang('scheme/noticetype.attr.yes')</option>
-                                            <option value="No">@lang('scheme/noticetype.attr.no')</option>
+                                            <option value="Yes" selected>@lang('noticetype.attr.yes')</option>
+                                            <option value="No">@lang('noticetype.attr.no')</option>
                                             @else
-                                            <option value="Yes">@lang('scheme/noticetype.attr.yes')</option>
-                                            <option value="No" selected>@lang('scheme/noticetype.attr.no')</option>
+                                            <option value="Yes">@lang('noticetype.attr.yes')</option>
+                                            <option value="No" selected>@lang('noticetype.attr.no')</option>
                                             @endif
                                             @else
                                             <option value="please select" selected hidden readonly>
-                                                @lang('scheme/noticetype.attr.please_select')</option>
-                                            <option value="Yes">@lang('scheme/noticetype.attr.yes')</option>
-                                            <option value="No">@lang('scheme/noticetype.attr.no')</option>
+                                                @lang('noticetype.attr.please_select')</option>
+                                            <option value="Yes">@lang('noticetype.attr.yes')</option>
+                                            <option value="No">@lang('noticetype.attr.no')</option>
                                             @endif
     
     
@@ -99,12 +99,12 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/employer.attr.employerCode')</label>
-                                    @if(!empty($employerCode))
-                                    <input type="text" id='empcode' name="empcode" value="{{ $employerCode }}"
+                                    <label class="control-label">@lang('employerDetails.attr.employerCode')</label>
+                                    @if(!empty($empcode))
+                                    <input type="text" id='empcode' name="empcode" value="{{ $empcode }}"
                                         class="form-control clearfields">
                                     @else
-                                    <input type="text" id='empcode' name="empcode" value="{{ old('employerCode') }}"
+                                    <input type="text" id='empcode' name="empcode" value="{{ old('empcode') }}"
                                         class="form-control clearfields">{{-- {{Session::get('empcode')}} --}}
                                     <!--label class="" >{{Session::get('error')}}</label-->
                                     @endif
@@ -114,9 +114,9 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/noticetype.attr.id_type')</label>
+                                    <label class="control-label">@lang('noticetype.attr.id_type')</label>
                                     <select class="form-control clearfields" name='idtype' id='idtype' required>
-                                        <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
+                                        <option selected hidden readonly value="please select">@lang('noticetype.attr.please_select')</option>
                                         @foreach ($idtype as $id)
                                         @if (old('idtype') == $id->refcode)
                                         <option value="{{$id->refcode}}" selected>{{$id->descen}}</option>
@@ -126,18 +126,18 @@
                                         <option value="{{$id->refcode}}">{{$id->descen}}</option>
                                         @endif
                                         @endforeach
-                                        <!--option value="">@lang('scheme/noticetype.attr.new_ic')</option>
-                                <option value="">@lang('scheme/noticetype.attr.old_ic')</option>
-                                <option value="">@lang('scheme/noticetype.attr.army_id')</option>
-                                <option value="">@lang('scheme/noticetype.attr.police_id')</option>
-                                <option value="">@lang('scheme/noticetype.attr.ssn_id')</option>
-                                <option value="">@lang('scheme/noticetype.attr.cid')</option-->
+                                        <!--option value="">@lang('noticetype.attr.new_ic')</option>
+                                <option value="">@lang('noticetype.attr.old_ic')</option>
+                                <option value="">@lang('noticetype.attr.army_id')</option>
+                                <option value="">@lang('noticetype.attr.police_id')</option>
+                                <option value="">@lang('noticetype.attr.ssn_id')</option>
+                                <option value="">@lang('noticetype.attr.cid')</option-->
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/noticetype.attr.enter_ic')</label>
+                                    <label class="control-label">@lang('noticetype.attr.enter_ic')</label>
                                     @if(!empty($idno))
                                     <input type="text" name="idno" id='idno' class="form-control clearfields"
                                         value="{{ $idno }}" required>
@@ -152,6 +152,7 @@
                             <div class="col-md-0">
                                 <div class="form-group">
                                     <br>
+                                    <br>
                                     <button type="submit" name="action" id="action" value="search"
                                         class="btn btn-facebook waves-effect waves-light"><i
                                             class="fas fa-search"></i></button>
@@ -163,7 +164,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="card">
-                                <label class="control-label">@lang('scheme/noticetype.attr.Employer')</label>
+                                <label class="control-label">@lang('noticetype.attr.Employer')</label>
                                 <table id="tblwb" class="table table-sm table-bordered" cellspacing="0" width="50%">
                                     <thead>
                                         <tr>
@@ -180,8 +181,8 @@
                                                     <center>No Record Found</center>
                                                 </td>
                                                 @else
-                                            <td>{{ $empinfo -> employerCode}}</td>
-                                            <td>{{ $empinfo -> employerName}}</td>
+                                            <td>{{ $empinfo -> empcode}}</td>
+                                            <td>{{ $empinfo -> empname}}</td>
                                             @endif
                                         </tr>
 
@@ -193,7 +194,7 @@
                     <div class="row">
                     <div class="col-6">
                             <div class="card">
-                                <label class="control-label">@lang('scheme/noticetype.attr.Insured_Person')</label>
+                                <label class="control-label">@lang('noticetype.attr.Insured_Person')</label>
 
                                 <table id="tblwb" class="table table-sm table-bordered" cellspacing="0" width="50%">
                                     <thead>
@@ -205,7 +206,6 @@
 
                                     <tbody class='align-middle'>
                                         @if (empty($obassist))
-                                        
                                         <tr>
                                                 <td colspan="2">
                                                     <center>No Record Found</center>
@@ -215,13 +215,13 @@
                                         @foreach($obassist as $data)
                                      
                                         @foreach($nameid as $data_name)
-                                                  {{-- @if($data ->identificationTypeId ==$selectidtype) --}}
+                                                  @if($data ->idtype ==$selectidtype)
                                                          <tr>
-                                                          <td>{{ $data -> identificationNo}}</td>
+                                                          <td>{{ $data -> idno}}</td>
                                                            <td>{{ $data_name -> name }}</td>
 
                                                           </tr>
-                                                     {{-- @endif --}}
+                                                     @endif
                                                      @if( $loop->iteration > 1)
                                                    <input type="hidden" value="2" id="ic_more">
                                                  @endif
@@ -250,15 +250,15 @@
 
                   
                     <div class="form-actions">
-                        <button type="submit" id="btnnotice"
-                            class="btn btn waves-effect waves-light btn-success">@lang('scheme/noticetype.next')</button>
+                        <button type="submit"
+                            class="btn btn waves-effect waves-light btn-success">@lang('noticetype.next')</button>
                         <button type="button" id="btn_reset" class="btn btn waves-effect waves-light btn-info"
-                            onclick="submitform()">@lang('scheme/noticetype.reset')</button>
+                            onclick="submitform()">@lang('noticetype.reset')</button>
 
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                            onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
+                            onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc'
-                            onclick="window.location='/obform_od'">@lang('scheme/noticetype.back')</button>
+                            onclick="window.location='/obform_od'">@lang('noticetype.back')</button>
                     </div>
                 </form>
 
