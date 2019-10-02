@@ -56,8 +56,8 @@ Route::get('/homeADM', function () {
 //Route::post('/remark', 'NewClaim\NoticeAccidentController@postRemark');
 
 //testing
-Route::get('/testmc', 'NoticeAccidentController@DisplayMC');
-Route::post('/testmc', 'NoticeAccidentController@TestUpdMC');
+Route::get('/testmc', 'NewClaim\NoticeAccidentController@DisplayMC');
+Route::post('/testmc', 'NewClaim\NoticeAccidentController@TestUpdMC');
 Route::get('/testuploaddoc', 'UploadclaimController@getdoc');
 Route::post('/testuploaddoc', 'UploadclaimController@upload');
 
@@ -100,15 +100,15 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     /* ------------------------END OF NOTICE TYPE --------------------------------- */
 
     /* -------------------------- NOTICE ACCIDENT(PK) ----------------------------- */
-    Route::get('/noticeaccident', 'NoticeAccidentController@index');
-    Route::get('/branch/{statecode}', 'NoticeAccidentController@getbranchname');
-    Route::get('/reftable/{accdwhen}', 'NoticeAccidentController@getaccwhen');
-    Route::get('/obform', 'NoticeAccidentController@index');
+    Route::get('/noticeaccident', 'NewClaim\NoticeAccidentController@index');
+    Route::get('/branch/{statecode}', 'NewClaim\NoticeAccidentController@getbranchname');
+    Route::get('/reftable/{accdwhen}', 'NewClaim\NoticeAccidentController@getaccwhen');
+    Route::get('/obform', 'NewClaim\NoticeAccidentController@index');
     Route::post('/employerdetails_accd', 'CommonController@postEmployer');
-    Route::get('/accdatetime', 'NoticeAccidentController@AccidentDate');
-    Route::post('/accidentdatetime', 'NoticeAccidentController@checkAccidentDate');
-    Route::post('/wages', 'NoticeAccidentController@postWages');
-    Route::post('/certificateemployee', 'NoticeAccidentController@postCertificateEmployee');
+    Route::get('/accdatetime', 'NewClaim\NoticeAccidentController@AccidentDate');
+    Route::post('/accidentdatetime', 'NewClaim\NoticeAccidentController@checkAccidentDate');
+    Route::post('/wages', 'NewClaim\NoticeAccidentController@postWages');
+    Route::post('/certificateemployee', 'NewClaim\NoticeAccidentController@postCertificateEmployee');
 
     //Confirmation & Preview
    Route::post('/accsave', 'NewClaim\NoticeAccidentController@postConfirmation');

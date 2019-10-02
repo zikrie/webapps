@@ -2471,7 +2471,7 @@ class NoticeAccidentController extends CommonController
 
 
 
-
+//zik
     
     public function indexSCO()
     {
@@ -3095,7 +3095,7 @@ class NoticeAccidentController extends CommonController
 
 
 
-    //zik
+  
     public function indexSAO()
     {
         //return session('caserefno');
@@ -3393,7 +3393,7 @@ class NoticeAccidentController extends CommonController
 
     
 
-    //zik (hus info)
+    //zik ( get hus info)
     public function getHusInfo(&$jsondecode)
     {
         $caserefno = session('caserefno');
@@ -3414,6 +3414,8 @@ class NoticeAccidentController extends CommonController
         
     }
 
+
+    //zik (post hus info)
     public function postHusInfo(Request $req)
     {
         $caserefno = session('caserefno');
