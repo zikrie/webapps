@@ -11,7 +11,7 @@
                                 </h6>
                         </div>
                         <div id="collapseTwenty20" class="collapse" role="tabpanel" aria-labelledby="headingTwenty20">
-                                <div class="card-body">@include('scheme.noticeAccident.IO.appointment_test')</div>
+                                <div class="card-body">@include('scheme.noticeAccident.IO.appointment_IO')</div>
                         </div>
                 </div>
                 <div class="card m-b-0">
