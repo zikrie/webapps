@@ -204,7 +204,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/scheme/obform_od');
+               return redirect('/scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -223,7 +223,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/scheme/obformilat');
+                return redirect('/scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -296,7 +296,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/scheme/obform_od');
+               return redirect('/scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -315,7 +315,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/scheme/obformilat');
+                return redirect('/scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -389,7 +389,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/scheme/obform_od');
+               return redirect('/scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -408,7 +408,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/scheme/obformilat');
+                return redirect('/scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -481,7 +481,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/scheme/obform_od');
+               return redirect('/scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -500,7 +500,7 @@ class WorkbasketController extends Controller
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                 
-                return redirect('/scheme/obformilat');
+                return redirect('/scheme/noticeinvalidity');
             }
             else if ($casetype == '04')
             {
@@ -553,11 +553,7 @@ class WorkbasketController extends Controller
         session(['messagecert'=>'','messageemp'=>'','messageod'=>'']);
 
         //chg23072019 - tambah get column status from caseinfo
-        // $result = DB::select('select w.wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
-        //     w.rtwrefno, r.descen, w.caserefno, c.casetype, c.status from BEAMS.workbasket w, BEAMS.caseinfo c, BEAMS.reftable r where 
-        //     w.caserefno = c.caserefno and w.taskcode = r.refcode and r.tablerefcode =? and w.operid=? order by w.date,w.time',
-        //         ['taskcode', $operid]);
-        $result = DB::select('select w.wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
+        $result = DB::select('select w  .wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
             w.rtwrefno, r.descen, w.caserefno, c.casetype, c.status from workbasket w, caseinfo c, reftable r where 
             w.caserefno = c.caserefno and w.taskcode = r.refcode and r.tablerefcode =? and w.operid=? order by w.date,w.time',
                 ['taskcode', $operid]);

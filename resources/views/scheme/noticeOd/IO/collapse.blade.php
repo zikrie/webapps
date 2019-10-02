@@ -55,7 +55,7 @@
         </div>
         <div id="obform" class="collapse" role="tabpanel" aria-labelledby="headingOne2">
             <div class="card-body">
-                @include('scheme.noticeOd.IO.ob')
+                {{-- @include('scheme.noticeOd.IO.ob') --}}
             </div>
         </div>
     </div>	
@@ -70,7 +70,7 @@
         </div>
         <div id="employer" class="collapse" role="tabpanel" aria-labelledby="headingOne3">
             <div class="card-body">
-                @include('scheme.general.employer')
+                {{-- @include('scheme.general.employer') --}}
             </div>
         </div>
     </div>  

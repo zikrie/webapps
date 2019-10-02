@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <form action="/odinfo" method="post" id="reset">
+                <form action="/scheme/odinfo" method="post" id="reset">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
                         @if(Session::get('messageod')) 
@@ -21,7 +21,7 @@
                         <div class="row p-t-20">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/odDetails.attr.desc')</label>
+                                    <label class="control-label">@lang('scheme/od.attr.desc')</label>
                                     @if(!empty($oddata) && $oddata->oddesc != '')
                                     <textarea type="text" id="oddesc" name="oddesc" value="" class="form-control form-control clearFields">{{$oddata->oddesc}}</textarea>
                                     @else
@@ -31,25 +31,25 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('scheme/odDetails.attr.disease_related')</label>
-                                    <select class="form-control">
+                                    <label>@lang('scheme/od.attr.disease_related')</label>
+                                    <select class="form-control" name="emprelated">
                                         <option>Please select</option>
                                         @if (!empty($oddata) == 'Y')
-                                        <option value='Y' selected>@lang('scheme/odDetails.attr.yes')</option>
-                                        <option value='N'>@lang('scheme/odDetails.attr.no')</option>
+                                        <option value='Y' selected>@lang('scheme/od.attr.yes')</option>
+                                        <option value='N'>@lang('scheme/od.attr.no')</option>
                                         @elseif (!empty($oddata) == 'N')
-                                        <option value='Y'>@lang('scheme/odDetails.attr.yes')</option>
-                                        <option value='N' selected>@lang('scheme/odDetails.attr.no')</option>
+                                        <option value='Y'>@lang('scheme/od.attr.yes')</option>
+                                        <option value='N' selected>@lang('scheme/od.attr.no')</option>
                                         @else
-                                        <option value='Y'>@lang('scheme/odDetails.attr.yes')</option>
-                                        <option value='N'>@lang('scheme/odDetails.attr.no')</option>
+                                        <option value='Y'>@lang('scheme/od.attr.yes')</option>
+                                        <option value='N'>@lang('scheme/od.attr.no')</option>
                                         @endif
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/odDetails.attr.duties')</label>
+                                    <label class="control-label">@lang('scheme/od.attr.duties')</label>
                                     @if(!empty($oddata) && $oddata->dutydesc != '')
                                     <textarea type="text" id="dutydesc" name="dutydesc" value="" class="form-control form-control clearFields">{{$oddata->dutydesc}}</textarea>
                                     @else
@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/odDetails.attr.symptoms')</label>
+                                    <label class="control-label">@lang('scheme/od.attr.symptoms')</label>
                                     @if(!empty($oddata) && $oddata->symptom != '')
                                     <textarea type="text" id="symptom" name="symptom" value="" class="form-control form-control clearFields">{{$oddata->symptom}}</textarea>
                                     @else
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/insuredPerson.save')</button>
+                        <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('scheme/ob.save')</button>
                         {{-- <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('noticetype.reset')</button>
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('noticetype.cancel')</button>
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('noticetype.back')</button> --}}
