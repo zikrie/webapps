@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="tab-pane p-20" id="investigate" role="tabpanel">
-                    @include('scheme.noticeInvalidity.newClaim.SCO.investigation')
+                    @include('scheme.noticeInvalidity.newClaim.SCO.collapse_investigation')
                 </div>
 
 

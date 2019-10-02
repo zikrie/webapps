@@ -84,8 +84,6 @@
                             class="hidden-sm-up"><i class="ti-email"></i></span> <span
                             class="hidden-xs-down"> @lang('scheme/index.attr.investigation')</span></a> </li>
 
-                 
-
                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#obconfirm" role="tab"><span
                             class="hidden-sm-up"><i class="ti-email"></i></span> <span
                             class="hidden-xs-down"> @lang('scheme/index.attr.confirmation_ob')</span></a> </li>
@@ -175,7 +173,7 @@
                 </div> --}}
 
                 <div class="tab-pane p-20" id="investigation" role="tabpanel">
-                    @include('scheme.noticeInvalidity.sco.sco_investigationDetails')
+                    @include('scheme.noticeInvalidity.sco.collapse_investigation')
                 </div>
 
                 <div class="tab-pane p-20" id="comment" role="tabpanel">
@@ -189,8 +187,6 @@
                 <div class="tab-pane p-20" id="suggestion" role="tabpanel">
                     @include('scheme.noticeInvalidity.sco.sco_recommend')
                 </div>
-
-
             </div>
         </div>
     </div>

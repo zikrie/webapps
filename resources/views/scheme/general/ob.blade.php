@@ -269,9 +269,9 @@
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.sub_list')</label>
                                     @if(!empty($obprofile) && $obprofile->suboccucodelist != '')
-                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obprofile->suboccupation }}" class="form-control">
+                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obprofile->suboccucodelist }}" class="form-control">
                                     @elseif(!empty($obformassist) && $obformassist->suboccucodelist != '')
-                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obformassist->suboccupation }}" class="form-control">
+                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obformassist->suboccucodelist }}" class="form-control">
                                     @else
                                     <input type="text" id="suboccucodelist" name="suboccucodelist" value="" class="form-control">
                                     @endif

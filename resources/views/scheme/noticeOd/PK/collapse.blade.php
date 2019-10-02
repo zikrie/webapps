@@ -13,7 +13,7 @@
                     </div>
                     <div id="obform" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.obForm')
+                            @include('scheme.noticeOd.obForm')
                         </div>
                     </div>
                 </div>	
@@ -28,7 +28,7 @@
                     </div>
                     <div id="employer" class="collapse" role="tabpanel" aria-labelledby="headingOne2">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.employerDetails')
+                            @include('scheme.noticeOd.employerDetails')
                         </div>
                     </div>
                 </div>  
@@ -43,7 +43,7 @@
                     </div>
                     <div id="odempinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne3">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.odEmphistory')
+                            @include('scheme.noticeOd.odEmphistory')
                         </div>
                     </div>
                 </div> 	
@@ -58,7 +58,7 @@
                     </div>
                     <div id="odinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne4">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.odInformation')
+                            @include('scheme.noticeOd.odInformation')
                         </div>
                     </div>
                 </div> 	
@@ -73,7 +73,7 @@
                     </div>
                     <div id="mcdetails" class="collapse" role="tabpanel" aria-labelledby="headingOne5">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.medicalCertificate_PK')
+                            @include('scheme.general.mc')
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                     </div>
                     <div id="wages" class="collapse" role="tabpanel" aria-labelledby="headingOne6">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.wagesDetails')
+                            @include('scheme.noticeOd.wagesDetails')
                         </div>
                     </div>
                 </div> 
@@ -103,7 +103,7 @@
                     </div>
                     <div id="office" class="collapse" role="tabpanel" aria-labelledby="headingOne7">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.socsoOffice')
+                            @include('scheme.noticeOd.socsoOffice')
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                     </div>
                     <div id="bankinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne8">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.bankInformation')
+                            @include('scheme.noticeOd.bankInformation')
                         </div>
                     </div>
                 </div> 
@@ -133,7 +133,7 @@
                     </div>
                     <div id="certificate" class="collapse" role="tabpanel" aria-labelledby="headingOne9">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.certificateEmployer')
+                            @include('scheme.noticeOd.certificateEmployer')
                         </div>
                     </div>
                 </div> 
@@ -148,7 +148,7 @@
                     </div>
                     <div id="confirmation" class="collapse" role="tabpanel" aria-labelledby="headingOne10">
                         <div class="card-body">
-                            @include('Scheme.noticeOd.confirmation')
+                            @include('scheme.noticeOd.confirmation')
                         </div>
                     </div>
                 </div>  

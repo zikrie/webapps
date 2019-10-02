@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('general.layouts.app')
 
 @section('content')
 <div class="col-md-12">
@@ -13,7 +13,7 @@
            <!-- Nav tabs -->
             <div class="tab-content tabcontent-border">
                 <div class="tab-pane p-20 active" id="claim" role="tabpanel">
-                    @include('Scheme.noticeOd.collapse')
+                    @include('Scheme.noticeOd.PK.collapse')
                 </div>
 
                 <div class="tab-pane p-20" id="uploaddoc" role="tabpanel">

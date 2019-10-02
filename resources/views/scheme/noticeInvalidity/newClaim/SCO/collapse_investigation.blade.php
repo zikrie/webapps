@@ -26,7 +26,7 @@
         </div>
         <div id="investigation_doc" class="collapse" role="tabpanel" aria-labelledby="headingOne2">
             <div class="card-body">
-                @include('scheme.noticeOd.SCO.investigation_doc')
+                @include('scheme.noticeInvalidity.newClaim.SCO.investigation_doc')
             </div>
         </div>
     </div>
