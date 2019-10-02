@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Scheme\NewClaim;
+namespace App\Http\Controllers\scheme\NewClaim;
 
 use Illuminate\Http\Request;
 use DB;

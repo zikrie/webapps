@@ -56,8 +56,8 @@ Route::get('/homeADM', function () {
 //Route::post('/remark', 'NewClaim\NoticeAccidentController@postRemark');
 
 //testing
-Route::get('/testmc', 'NoticeAccidentController@DisplayMC');
-Route::post('/testmc', 'NoticeAccidentController@TestUpdMC');
+Route::get('/testmc', 'NewClaim\NoticeAccidentController@DisplayMC');
+Route::post('/testmc', 'NewClaim\NoticeAccidentController@TestUpdMC');
 Route::get('/testuploaddoc', 'UploadclaimController@getdoc');
 Route::post('/testuploaddoc', 'UploadclaimController@upload');
 
