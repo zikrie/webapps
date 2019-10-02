@@ -13,13 +13,13 @@
                             <div class="alert alert-warning">
                                 {{Session::get('messagewage')}}
                             </div>
-
-                        </div>
-                        @elseif (!empty($messagewage))
-                        <div class="card-footer">
-
-                            <div class="alert alert-warning">
-                                {{$messagewage}}
+                            @elseif (!empty($messagewage))
+                            <div class="card-footer">
+    
+                                <div class="alert alert-warning">
+                                    {{$messagewage}}
+                                </div>
+    
                             </div>
 
                         </div>
@@ -55,44 +55,50 @@
                                                     <input type="text" id="empname[{{$contrcnt}}]" name="empname[{{$contrcnt}}]" value="{{$wages->empname}}" class="form-control" >
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.commencement_date')</label>
-                                                    <input type="date" id="startdate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="startdate[{{$contrcnt}}]" value="{{substr($wages->startdate,0,4)}}-{{substr($wages->startdate,4,2)}}-{{substr($wages->startdate,6,2)}}" class="form-control"  >
-                                                    <label class="control-label" id='lblerror' style='color:red'></label>
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">@lang('form/scheme.general.collapse.wages.commencement_date')</label>
+                                                            <input type="date" id="startdate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="startdate[{{$contrcnt}}]" value="{{substr($wages->startdate,0,4)}}-{{substr($wages->startdate,4,2)}}-{{substr($wages->startdate,6,2)}}" class="form-control"  >
+                                                            <label class="control-label" id='lblerror' style='color:red'></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">@lang('form/scheme.general.collapse.wages.end_date')</label>
+                                                            <input type="date" id="enddate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="enddate[{{$contrcnt}}]" value="{{substr($wages->enddate,0,4)}}-{{substr($wages->enddate,4,2)}}-{{substr($wages->enddate,6,2)}}" class="form-control">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="control-label">@lang('form/scheme.general.collapse.wages.end_date')</label>
-                                                    <input type="date" id="enddate[{{$contrcnt}}]" onchange='checkdate({{$contrcnt}})' name="enddate[{{$contrcnt}}]" value="{{substr($wages->enddate,0,4)}}-{{substr($wages->enddate,4,2)}}-{{substr($wages->enddate,6,2)}}" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row p-t-20">
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <label>@lang('form/scheme.general.collapse.wages.details_wages_od')</label>
-                                                    <div class="table-responsive">
-                                                        <table id="demo-foo-row-toggler" class="table table-bordered" data-toggle-column="first">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th data-breakpoints="xs">@lang('table-header.wages.num')</th>
-                                                                    <th>@lang('table-header.wages.year')</th>
-                                                                    <th>@lang('table-header.wages.month')</th>
-                                                                    <th data-breakpoints="xs sm">@lang('table-header.wages.wages')</th>
-                                                                    <th data-breakpoints="xs">@lang('table-header.wages.contribution_paid')</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                               <?php 
-                                                               $cnt = 0; ?>
-                                                               @foreach ($wages->wagesinfo as $gaji)
-                                                               <tr data-expanded="true">
-                                                                    <td>{{$cnt+1}}</td>
-                                                                    <td><input type="text" id="year[{{$contrcnt}}][{{$cnt}}]" name="year[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->year}}" class="form-control" readonly></td>
+                                                <div class="row p-t-20">
+                                                    <div class="col-12">
+                                                        <div class="card">
+                                                            <label>@lang('form/scheme.general.collapse.wages.details_wages_od')</label>
+                                                            <div class="table-responsive">
+                                                                <table id="demo-foo-row-toggler" class="table table-bordered" data-toggle-column="first">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th data-breakpoints="xs">@lang('table-header.wages.num')</th>
+                                                                            <th>@lang('table-header.wages.year')</th>
+                                                                            <th>@lang('table-header.wages.month')</th>
+                                                                            <th data-breakpoints="xs sm">@lang('table-header.wages.wages')</th>
+                                                                            <th data-breakpoints="xs">@lang('table-header.wages.contribution_paid')</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+    
+                                                                       <?php 
+                                                                       $cnt = 0; ?>
+                                                                       @foreach ($wages->wagesinfo as $gaji)
+                                                                       <tr data-expanded="true">
+                                                                        <td>{{$cnt+1}}</td>
+    
+                                                                        <td><input type="text" id="year[{{$contrcnt}}][{{$cnt}}]" name="year[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->year}}" class="form-control" readonly></td>
+                                                                        <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->wages}}" class="form-control maskdecimal" ></td>
+                                                                        <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->contrpaid}}" class="form-control maskdecimal" ></td>
+                                                                    </tr> 
+    
                                                                     @foreach ($month as $m)
                                                                     @if ($m->refcode == $gaji->month)
                                                                     <td><input type="text" value='{{$m->descen}}' class='form-control'readonly>
@@ -327,46 +333,28 @@ if(startdate != "" && enddate != ""){
     }
     else
     {
-        var lblmcerror = document.getElementById('lblmcerror');
+        var lblerror = document.getElementById('lblerror');
         lblerror.innerHTML  = '';
     }
-
-}
-
-
-}
-
-function GetDays(startdate, enddate){
-    var dropdt = new Date(startdate);
-    var pickdt = new Date(enddate);
-    //alert(pickdt-dropdt);
-    return parseInt(((pickdt - dropdt) / (24 * 3600 * 1000)) + 1);
-    //return Math.round((dropdt - pickdt) / (24 * 3600 * 1000));
-}   
-</script>
-<script>
-
-
-    $(document).on("input", ".maskdecimal", function (e) {
-        this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-
-    });
-</script>
-<!-- Row -->
-<script>
-    var room =1;
     
-    function datafield() {
-        room++;
-        var objTo = document.getElementById('id1')
-        var divtest =document.createElement("div");
-        divtest.setAttribute("id","mcDetails" + room);
-        //var rdiv = 'removeclass' + room;
-
-        divtest.innerHTML = '<div class="col-lg-12"><div class="card"><div class="card-body"><form action="#"><div class="form-body"><hr><div class="row p-t-20"><div class="col-md-6"><div class="form-group"><label class="control-label">Company Name</label><input type="text" id="compname" name="compname" value="" class="form-control" ></div></div></div><div class="row p-t-20"><div class="col-md-4"><div class="form-group"><label class="control-label">@lang('wages.attr.commencement_date')</label><input type="date" class="form-control" ></div></div><div class="col-md-4"><div class="form-group"><label class="control-label">@lang('wages.attr.end_date')</label><input type="date" class="form-control" ></div></div><div class="col-md-4"><div class="form-group"><label>Are wages paid on the day of accident?</label><select class="form-control custom- ;select" data-placeholder="Choose a Category" tabindex="1"><option value="yes">@lang('wages.attr.yes')</option><option value="no">@lang('wages.attr.no')</option></select> </div></div></div><!-- Column --><div class="row p-t-20"><div class="col-12"><div class="card"><label>@lang('wages.attr.details_wages')</label><div class="table-responsive"><table id="demo-foo-row-toggler" class="table table-bordered" data-toggle-column="first"><thead><tr><th data-breakpoints="xs">@lang('wages.attr.num')</th><th>@lang('wages.attr.month')</th><th>@lang('wages.attr.year')</th><th data-breakpoints="xs sm">@lang('wages.attr.wages')</th><th data-breakpoints="xs">@lang('wages.attr.contribution')</th></tr></thead><tbody><tr data-expanded="true"><td>1</td><td><div class="col-md-10"><select class="form-control custom-select" data-placeholder="Month" tabindex="2">{{-- <option>@lang('wages.select_month')</option> --}}<option value="January">@lang('wages.attr.january')</option><option value="February">@lang('wages.attr.february')</option><option value="March">@lang('wages.attr.march')</option><option value="April">@lang('wages.attr.april')</option><option value="May">@lang('wages.attr.may')</option><option value="June">@lang('wages.attr.june')</option><option value="July">@lang('wages.attr.july')</option><option value="August">@lang('wages.attr.august')</option><option value="September">@lang('wages.attr.september')</option><option value="October">@lang('wages.attr.october')</option><option value="November">@lang('wages.attr.november')</option><option value="December">@lang('wages.attr.december')</option></select></div></td><td><div class="col-md-10"><input type="text" class="form-control"></div></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr><tr><td>2</td><td><div class="col-md-10"><select class="form-control custom-select" data-placeholder="Month" tabindex="2">{{-- <option>@lang('wages.select_month')</option> --}}<option value="January">@lang('wages.attr.january')</option><option value="February">@lang('wages.attr.february')</option><option value="March">@lang('wages.attr.march')</option><option value="April">@lang('wages.attr.april')</option><option value="May">@lang('wages.attr.may')</option><option value="June">@lang('wages.attr.june')</option><option value="July">@lang('wages.attr.july')</option><option value="August">@lang('wages.attr.august')</option><option value="September">@lang('wages.attr.september')</option><option value="October">@lang('wages.attr.october')</option><option value="November">@lang('wages.attr.november')</option><option value="December">@lang('wages.attr.december')</option></select></div></td><td><div class="col-md-10"><input type="text" class="form-control"></div></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr><tr><td>3</td><td><div class="col-md-10"><select class="form-control custom-select" data-placeholder="Month" tabindex="2">{{-- <option>@lang('wages.select_month')</option> --}}<option value="January">@lang('wages.attr.january')</option><option value="February">@lang('wages.attr.february')</option><option value="March">@lang('wages.attr.march')</option><option value="April">@lang('wages.attr.april')</option><option value="May">@lang('wages.attr.may')</option><option value="June">@lang('wages.attr.june')</option><option value="July">@lang('wages.attr.july')</option><option value="August">@lang('wages.attr.august')</option><option value="September">@lang('wages.attr.september')</option><option value="October">@lang('wages.attr.october')</option><option value="November">@lang('wages.attr.november')</option><option value="December">@lang('wages.attr.december')</option></select></div></td><td><div class="col-md-10"><input type="text" class="form-control"></div></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr><tr><td>4</td><td><div class="col-md-10"><select class="form-control custom-select" data-placeholder="Month" tabindex="2">{{-- <option>@lang('wages.select_month')</option> --}}<option value="January">@lang('wages.attr.january')</option><option value="February">@lang('wages.attr.february')</option><option value="March">@lang('wages.attr.march')</option><option value="April">@lang('wages.attr.april')</option><option value="May">@lang('wages.attr.may')</option><option value="June">@lang('wages.attr.june')</option><option value="July">@lang('wages.attr.july')</option><option value="August">@lang('wages.attr.august')</option><option value="September">@lang('wages.attr.september')</option><option value="October">@lang('wages.attr.october')</option><option value="November">@lang('wages.attr.november')</option><option value="December">@lang('wages.attr.december')</option></select></div></td><td><div class="col-md-10"><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr><tr><td>5</td><td><div class="col-md-10"><select class="form-control custom-select" data-placeholder="Month" tabindex="2">{{-- <option>@lang('wages.select_month')</option> --}}<option value="January">@lang('wages.attr.january')</option><option value="February">@lang('wages.attr.february')</option><option value="March">@lang('wages.attr.march')</option><option value="April">@lang('wages.attr.april')</option><option value="May">@lang('wages.attr.may')</option><option value="June">@lang('wages.attr.june')</option><option value="July">@lang('wages.attr.july')</option><option value="August">@lang('wages.attr.august')</option><option value="September">@lang('wages.attr.september')</option><option value="October">@lang('wages.attr.october')</option><option value="November">@lang('wages.attr.november')</option><option value="December">@lang('wages.attr.december')</option></select></div></td><td><div class="col-md-10"><input type="text" class="form-control"></div></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr><tr><td>6</td><td><div class="col-md-10"><select class="form-control custom-select" data-placeholder="Month" tabindex="2">{{-- <option>@lang('wages.select_month')</option> --}}<option value="January">@lang('wages.attr.january')</option><option value="February">@lang('wages.attr.february')</option><option value="March">@lang('wages.attr.march')</option><option value="April">@lang('wages.attr.april')</option><option value="May">@lang('wages.attr.may')</option><option value="June">@lang('wages.attr.june')</option><option value="July">@lang('wages.attr.july')</option><option value="August">@lang('wages.attr.august')</option><option value="September">@lang('wages.attr.september')</option><option value="October">@lang('wages.attr.october')</option><option value="November">@lang('wages.attr.november')</option><option value="December">@lang('wages.attr.december')</option></select></div></td><td><div class="col-md-10"><input type="text" class="form-control"></div></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td></tr></tbody></table><div id="id1"></div></div></div></div></div></div></form></div></div></div>';
-
-        objTo.appendChild(divtest)
-
-        document.getElementById('btn1').disabled = true;
+    if(startdate != "" && enddate != ""){
+    
+        var totaldays = GetDays(startdate,enddate);
+        if (totaldays <= 0)
+        {
+            var lblmcerror = document.getElementById('lblmcerror');
+            lblerror.innerHTML  = 'End date must not before start date';
+    
+            return;
+        }
+        else
+        {
+            var lblmcerror = document.getElementById('lblmcerror');
+            lblerror.innerHTML  = '';
+        }
+    
+    }
+    
+    
     }
 </script>

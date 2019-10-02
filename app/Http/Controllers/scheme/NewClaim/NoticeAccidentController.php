@@ -2447,6 +2447,32 @@ class NoticeAccidentController extends CommonController
     //     return view('scheme.noticeAccident.index_SCO');
     // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     public function indexSCO()
     {
         //return session('caserefno');
@@ -2571,6 +2597,9 @@ class NoticeAccidentController extends CommonController
                 $jsondecodemc = null;
             }
         }
+
+
+
         
 
         //zik hus info(sco)
@@ -2580,16 +2609,20 @@ class NoticeAccidentController extends CommonController
         // return $jsondecodemc;
         if ($jsondecodehus && $jsondecodehus != '') {
 
-            // $jsondecodehus = $jsondecodehus->{'parent'};
-            // $errorcode = $jsondecodehus->{'errorcode'};
+            $jsondecodehus = $jsondecodehus;
 
-            if ($errorcode != 0) {
-                $jsondecodehus = null;
-            }
         }
                 
         // dd($jsondecodehus);       
         
+
+
+
+
+
+
+
+
         
         //irina - end
 
@@ -2722,9 +2755,11 @@ class NoticeAccidentController extends CommonController
                 //return $accdwhen;
             }
         }
-        
-        //$accdwhen=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdwhen']);
-        //return $accdwhen;
+
+        $jsondecodepreparer = '';
+        $jsondecodepreparer = $this->getPreparerInfo($jsondecodepreparer);
+        $jsondecodepreparer =json_decode($jsondecodepreparer);
+     
         
         return view('scheme.noticeAccident.SCO.index', ['obprofile'=>$obprofile,'state'=>$state,
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'mcsts'=>$mcsts, 'transport'=>$transport,
@@ -2736,8 +2771,32 @@ class NoticeAccidentController extends CommonController
             'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts,
             'mcdata'=>$mcdata,'caserefno'=>$caserefno, 'accdrefno'=>$accdrefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
             'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,'jsondecodehus'=>$jsondecodehus,
-            'doclist_select'=>$alldoclist, 'occucode'=>$occucode,'husinfo'=>$jsondecodehus]);
+            'doclist_select'=>$alldoclist, 'occucode'=>$occucode,'husinfo'=>$jsondecodehus, 'jsondecodepreparer'=>$jsondecodepreparer]);
     }
+
+    public function getPreparerInfo(&$jsondecodepreparer)
+    {
+       
+        $caserefno = session('caserefno');
+
+        $endpoint ='api.com/api/preparerInfo?caserefno='.$caserefno;
+      //  dd($endpoint);
+
+        
+        $client = new Client();
+        // $url = config('endpoint.url');
+        // $url = config('services.endpoint.url');
+
+        // dd($url);
+        $response = $client->get($endpoint)->getBody();
+        $content = json_decode($response->getContents());
+        $jsondecodepreparer = $content;
+
+        return json_encode($jsondecodepreparer);
+        // dd($jsondecodepreparer);
+
+    }
+
 
     /* ---------------- NOTICE ACCIDENT -- IO-------------------- */
 
@@ -3332,9 +3391,6 @@ class NoticeAccidentController extends CommonController
 
 
 
-
-
-
     
 
     //zik (hus info)
@@ -3352,9 +3408,9 @@ class NoticeAccidentController extends CommonController
 		$response = $client->get( $endpoint)->getBody();
 		$content = json_decode($response->getContents());
         $jsondecode = $content;
-
+// dd($jsondecode);
         return json_encode($jsondecode);
-    //   dd($content);
+     //  dd($content);
         
     }
 
@@ -3384,7 +3440,8 @@ class NoticeAccidentController extends CommonController
                     $totalmc = $req->input('totalmc')[$i];
                     $scorecommend = $req->input('scorecommend')[$i];
 
-                    if($req->mcitemstartdate[$i]){
+                    if(isset($req->mcitemstartdate[$i]))
+                    {
                         $child = count($req->mcitemstartdate[$i]);
 
 
@@ -3433,10 +3490,10 @@ class NoticeAccidentController extends CommonController
             $jsondecode = json_decode($response->getBody()->getContents());
             // return $jsondata. '++' .$result;
 
-        //  dd($jsondecode);
+       //dd($jsondecode);
             
             $errorcode = $jsondecode->{'errorcode'};
-            // return $errorcode;
+           //  return $errorcode;
             if ($errorcode == 0)
             {
                 return redirect()->back()->with('messagemc','Save Successful');

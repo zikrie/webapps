@@ -2,27 +2,28 @@
  
 return [
 
-	'title' => 'Maklumat Notis Kematian',
+	'title' => 'Death Information',
 
     'attr' => [
     	
-        'date_death' => 'Tarikh Kematian',
-        'cause_death' => 'Sebab Kematian',
-        'death_due_accident' => 'Adakah kematian berkait dengan kemalangan?',
-        'yes' => 'Ya',
-        'no' => 'Tidak',
-        'status' => 'Status Orang Berinsurans(pada masa kematian)',
-        'single' => 'Bujang',
-        'married' => 'Berkahwin',
-        'divorced' => 'Bercerai',
-        'inpayment_case' => 'Kes Bayaran',
+        'date_death' => 'Date of Death',
+        'cause_death' => 'Cause of Death',
+        'death_due_accident' => 'Is the death due to Accident?',
+        'yes' => 'Yes',
+        'no' => 'No',
+        'status' => 'Insured Person Status(at the time of death)',
+        'single' => 'Single',
+        'married' => 'Married',
+        'divorced' => 'Divorced',
+        'inpayment_case' => 'Inpayment Case',
         'pencen' => 'Pencen Ilat',
         'huk' => 'HUK',
+        'inpayment_case' => 'Inpayment Case',
         
     ],
 
-    'save' => 'Save',
-    'cancel' => 'Cancel',
-    'clear' => 'Clear',
+    'save' => 'SAVE',
+    'cancel' => 'CANCEL',
+    'clear' => 'CLEAR',
  
 ];

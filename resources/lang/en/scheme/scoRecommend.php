@@ -1,10 +1,11 @@
 <?php
  
+ $question1 = session('question1');
+ $question2 = session('question2');
+
 return [
 
   'title' => 'SCO Recommendation',
-    
-
 
     'attr' => [
       
@@ -31,8 +32,8 @@ return [
        'remark'=>'Remark',
        'in_process'=> 'In Process',
        'appeal_jdr'=>'Appeal to JDR',
-       'question_1'=>'Whether the insured person is an employee under the SOCSO Act?',
-       'question_2'=>' Whether the SOCSO Act applies to this industry?',
+       'question_1'=> $question1,
+       'question_2'=>$question2,
        'question_3'=>' Whether the personal injury is caused by an OD?',
        'question_4'=>' Whether the accident or OD is in the course of his/her employment?',
        'question_5'=>' Whether the OD arised out of his employment? ',
@@ -42,13 +43,7 @@ return [
        'scheme_by'=>' Scheme Recommended By',
        'potential_96'=>'Potential 96',
 
-       // For Death Notice
-        'question1'=>'Whether the insured person is an employee under the SOCSO Act?',
-        'question2'=>'Whether the SOCSO Act applies to this industry?',
-        'question3'=>'Whether the personal injury is caused by an Accident?',
-        'question4'=>'Whether the Accident is in the course of his/her employment?',
-        'question5'=>'Whether the Accident arised out of his employment? ',
- 
+      // 
     ],
 
     'save' => 'Save',

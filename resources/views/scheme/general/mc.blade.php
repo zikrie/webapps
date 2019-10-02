@@ -1,10 +1,9 @@
 <div class="col-lg-12">
     <div class="card">
     <div class="card-body">
-        <form method="post" action="updmckai" novalidate>
-            {{-- <input type="hidden" name="_token" value="{{csrf_token()}}"> --}}
-            <input type="hidden" name="caserefno" value="{{$caserefno}}">
+        <form method="post" action="updmc">
             @csrf
+            <input type="hidden" name="caserefno" value="{{-- {{$caserefno}} --}}">
             <div class="form-body ">
                 @if(Session::get('messagemc')) 
                 <div class="card-footer">
@@ -212,7 +211,7 @@
                 <div id="new-mc"></div>
             </div>
             <div class="form-actions text-right">
-                <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' >@lang('scheme/ob.save')</button>
+                <button type="submit" name="action" value="Submit" class="btn btn-sm waves-effect waves-light btn-success btn-newMC" id='btnsubmit' onclick="mcsubmit()">@lang('scheme/ob.save')</button>
                 {{-- <button type="button" id="btn_add_clinic" class="btn btn-sm waves-effect waves-light btn-info">@lang('scheme/mc.addClinic')</button> --}}
                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('scheme/noticetype.reset')</button>
                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('scheme/noticetype.cancel')</button>
@@ -320,7 +319,7 @@
                     if($("#tr"+i+"_"+j+"_"+w).length == 0) { 
                         // alert("hihihihi");
 
-                        $('#tr'+i+'_'+j).after('<tr id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo['+j+'][]" type="text" value="" class="form-control counttotalmc" disabled></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="mcitemstartdate['+j+'][]" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="mcitemenddate['+j+'][]" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalmcitem['+j+'][]" value="" class="form-control" readonly><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td> </tr>');
+                        $('#tr'+i+'_'+j).after('<tr id="tr'+i+'_'+j+'_'+w+'"><td><div class="col-md-12"> <input  name="attendedwork" type="text" value="Attended Work" class="form-control counttotalwork" readonly></div></td><td><div class="col-md-12"><input id="clinicname" name="clinicinfo" type="text" value="" class="form-control counttotalmc" readonly></div></td><td><div class="col-md-12"><input   type="date" value="" id="workstartdate_'+i+'_'+j+'_'+w+'" name="workstartdate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><div class="col-md-12"><input type="date" value="" id="workenddate_'+i+'_'+j+'_'+w+'" name="workenddate_'+i+'_'+j+'_'+w+'" class="form-control counttotalwork" ></div></td><td><input type="text" id="totalwork_'+i+'_'+j+'_'+w+'" name="totalwork_'+i+'_'+j+'_'+w+'" value="" class="form-control" readonly></td><td><button type="button"  class="btn btn-sm btn-danger btn_del_workmc" id="del_attended_work'+i+'_'+j+'_'+w+'"><i class="fas fa-trash-alt fa-sm"></i></button></td> </tr>');
             
                         modal_delete();
                         totalwork();

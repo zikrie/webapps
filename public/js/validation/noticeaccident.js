@@ -1,5 +1,4 @@
 // For select 2
-
 $(document).ready(function () {
     var language= $('#change_language').val();
     if(language=="BM"){
@@ -187,3 +186,29 @@ $("select[name=bankloc]").each(function() {
     });
 });
 
+//Recommendation
+// $("#ddNext").click(function () {
+//     var dd_recommendation = $('#dd_recommendation').val();
+//     if (dd_recommendation == 'recommend') {
+      
+//         var testing ="#exampleModal1";
+
+//     } 
+//     else if(dd_recommendation == 'wrong_benefit_type') {
+       
+//        var testing ="#exampleModal11";
+//     }  
+//     else if(dd_recommendation == 'transfer_case') {
+       
+//         var testing ="#exampleModal12";
+//     }
+//     else if(dd_recommendation == 'query') {
+       
+//        var testing ="#exampleModal13";
+//     }
+//     else if(dd_recommendation == 'send_notification') {
+       
+//        var testing ="#exampleModal14";
+//     }
+//     $("#ddNext").attr('data-target', testing);
+// });
