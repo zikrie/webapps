@@ -22,7 +22,6 @@ class WorkbasketController extends Controller
      */
     public function index()
     {
-       
     }
 
     /**
@@ -91,7 +90,7 @@ class WorkbasketController extends Controller
         //
     }
     
-    function deletedraft(Request $req)
+    public function deletedraft(Request $req)
     {
         $caserefno = $req->query('caserefno');
         $wbid = $req->query('wbid');
@@ -100,41 +99,38 @@ class WorkbasketController extends Controller
         
         //return redirect()->back();
         
-    $draft = ['caserefno'=> $caserefno, 'operid'=> $operid,'brcode'=> $brcode, 'wbid'=>$wbid];
+        $draft = ['caserefno'=> $caserefno, 'operid'=> $operid,'brcode'=> $brcode, 'wbid'=>$wbid];
         $jsondata = json_encode($draft);
         
         $url = 'http://'.env('WS_IP', 'localhost').'/api/wsmotion/deletedraft';
         $ch = curl_init();
         
-        curl_setopt($ch,CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_PROXY, '');
         
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $jsondata);
-        curl_setopt($ch, CURLOPT_HTTPGET, FALSE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
+        curl_setopt($ch, CURLOPT_HTTPGET, false);
         
-        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $response = curl_getinfo($ch, CURLINFO_HEADER_OUT);
 
-            //close connection
+        //close connection
         curl_close($ch);
         
         $jsonresult = json_decode($result);
         
         $errorcode = $jsonresult->{'errorcode'};
-        if ($errorcode == 0)
-        {
+        if ($errorcode == 0) {
             return redirect()->back();
-        }
-        else
-        {
-            return redirect()->back()->with('errorwb','Failed to delete draft');
+        } else {
+            return redirect()->back()->with('errorwb', 'Failed to delete draft');
         }
     }
     
-    function getnotice(Request $req)
+    public function getnotice(Request $req)
     {
         $caserefno = $req->query('caserefno');
         $casetype = $req->query('casetype');
@@ -147,39 +143,31 @@ class WorkbasketController extends Controller
         session(['noticetype'=>$casetype]);
         session(['wbid'=>$wbid]);
         
-        $caseinfo = DB::selectOne('select * from caseinfo where caserefno=?',[$caserefno]);
-        if (!$caseinfo)
-        {
+        $caseinfo = DB::selectOne('select * from caseinfo where caserefno=?', [$caserefno]);
+        if (!$caseinfo) {
             return redirect()->back();
         }
         
-        if ($caseinfo->status == '01')//draft
-        {
-            
-            
-            if ($casetype == '01')
-            {
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
+        if ($caseinfo->status == '01') {//draft
+            if ($casetype == '01') {
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?', [$caserefno]);
+                if ($obprofile) {
                     $idno=$obprofile->idno;
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
-                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?',[$caserefno]);
-                if ($accdinfo)
-                {
+                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?', [$caserefno]);
+                if ($accdinfo) {
                     $accddate=$accdinfo->accddate;
                     $accdtime=$accdinfo->accdtime;
                     
-                    $accdyear = substr($accddate,0,4);
-                    $accdmonth = substr($accddate,4,2);
+                    $accdyear = substr($accddate, 0, 4);
+                    $accdmonth = substr($accddate, 4, 2);
                 }
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
@@ -196,15 +184,14 @@ class WorkbasketController extends Controller
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/scheme/obform_od');
+               return redirect('/scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -215,9 +202,8 @@ class WorkbasketController extends Controller
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
@@ -228,16 +214,14 @@ class WorkbasketController extends Controller
             else if ($casetype == '04')
             {
                 $obprofile = DB::selectOne('select c.idno, c.idtype from caseobprofile c, personcat p '
-                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?',[$caserefno,'OB']);
-                if ($obprofile)
-                {
+                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?', [$caserefno,'OB']);
+                if ($obprofile) {
                     $idno=$obprofile->idno;
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
@@ -246,32 +230,26 @@ class WorkbasketController extends Controller
                 
                 return redirect('/scheme/noticedeath');
             }
-        }
-        else if ($caseinfo->status == '02')//submitted to SCO - nanti change routing to screen SCO
-        {
-            if ($casetype == '01')
-            {
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
+        } elseif ($caseinfo->status == '02') {//submitted to SCO - nanti change routing to screen SCO
+            if ($casetype == '01') {
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?', [$caserefno]);
+                if ($obprofile) {
                     $idno=$obprofile->idno;
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
-                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?',[$caserefno]);
-                if ($accdinfo)
-                {
+                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?', [$caserefno]);
+                if ($accdinfo) {
                     $accddate=$accdinfo->accddate;
                     $accdtime=$accdinfo->accdtime;
                     
-                    $accdyear = substr($accddate,0,4);
-                    $accdmonth = substr($accddate,4,2);
+                    $accdyear = substr($accddate, 0, 4);
+                    $accdmonth = substr($accddate, 4, 2);
                 }
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
@@ -288,15 +266,14 @@ class WorkbasketController extends Controller
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/scheme/obform_od');
+               return redirect('/scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -307,9 +284,8 @@ class WorkbasketController extends Controller
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
@@ -320,16 +296,14 @@ class WorkbasketController extends Controller
             else if ($casetype == '04')
             {
                 $obprofile = DB::selectOne('select c.idno, c.idtype from caseobprofile c, personcat p '
-                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?',[$caserefno,'OB']);
-                if ($obprofile)
-                {
+                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?', [$caserefno,'OB']);
+                if ($obprofile) {
                     $idno=$obprofile->idno;
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
@@ -338,33 +312,26 @@ class WorkbasketController extends Controller
                 
                 return redirect('/scheme/noticedeath');
             }
-        }
-        
-        else if ($caseinfo->status == '03')//submitted to IO - nanti change routing to screen IO
-        {
-            if ($casetype == '01')
-            {
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
+        } elseif ($caseinfo->status == '03') {//submitted to IO - nanti change routing to screen IO
+            if ($casetype == '01') {
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?', [$caserefno]);
+                if ($obprofile) {
                     $idno=$obprofile->idno;
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
-                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?',[$caserefno]);
-                if ($accdinfo)
-                {
+                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?', [$caserefno]);
+                if ($accdinfo) {
                     $accddate=$accdinfo->accddate;
                     $accdtime=$accdinfo->accdtime;
                     
-                    $accdyear = substr($accddate,0,4);
-                    $accdmonth = substr($accddate,4,2);
+                    $accdyear = substr($accddate, 0, 4);
+                    $accdmonth = substr($accddate, 4, 2);
                 }
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
@@ -381,15 +348,14 @@ class WorkbasketController extends Controller
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/Scheme/obform_od');
+               return redirect('/scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -400,9 +366,8 @@ class WorkbasketController extends Controller
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
@@ -413,16 +378,14 @@ class WorkbasketController extends Controller
             else if ($casetype == '04')
             {
                 $obprofile = DB::selectOne('select c.idno, c.idtype from caseobprofile c, personcat p '
-                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?',[$caserefno,'OB']);
-                if ($obprofile)
-                {
+                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?', [$caserefno,'OB']);
+                if ($obprofile) {
                     $idno=$obprofile->idno;
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
@@ -431,32 +394,26 @@ class WorkbasketController extends Controller
                 
                 return redirect('/scheme/noticedeath');
             }
-        }
-        else if ($caseinfo->status == '07')//submitted to SAO - nanti change routing to screen SAO
-        {
-            if ($casetype == '01')
-            {
-                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?',[$caserefno]);
-                if ($obprofile)
-                {
+        } elseif ($caseinfo->status == '07') {//submitted to SAO - nanti change routing to screen SAO
+            if ($casetype == '01') {
+                $obprofile = DB::selectOne('select idno, idtype from caseobprofile where caserefno=?', [$caserefno]);
+                if ($obprofile) {
                     $idno=$obprofile->idno;
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
-                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?',[$caserefno]);
-                if ($accdinfo)
-                {
+                $accdinfo = DB::selectOne('select accddate, accdtime from accidentinfo where caserefno=?', [$caserefno]);
+                if ($accdinfo) {
                     $accddate=$accdinfo->accddate;
                     $accdtime=$accdinfo->accdtime;
                     
-                    $accdyear = substr($accddate,0,4);
-                    $accdmonth = substr($accddate,4,2);
+                    $accdyear = substr($accddate, 0, 4);
+                    $accdmonth = substr($accddate, 4, 2);
                 }
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
@@ -473,15 +430,14 @@ class WorkbasketController extends Controller
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
                 session(['idtype' =>$idtype, 'idno' => $idno, 'empcode' => $empcode]);
                
-               return redirect('/scheme/obform_od');
+               return redirect('/scheme/noticeod');
             }
             else if ($casetype == '03')
             { 
@@ -492,9 +448,8 @@ class WorkbasketController extends Controller
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
@@ -505,16 +460,14 @@ class WorkbasketController extends Controller
             else if ($casetype == '04')
             {
                 $obprofile = DB::selectOne('select c.idno, c.idtype from caseobprofile c, personcat p '
-                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?',[$caserefno,'OB']);
-                if ($obprofile)
-                {
+                        . 'where c.caserefno=? and c.uniquerefno=p.uniquerefno and p.category=?', [$caserefno,'OB']);
+                if ($obprofile) {
                     $idno=$obprofile->idno;
                     $idtype=$obprofile->idtype;
                 }
                 
-                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?',[$caserefno]);
-                if ($employer)
-                {
+                $employer = DB::selectOne('select empcode from caseemployer where caserefno=?', [$caserefno]);
+                if ($employer) {
                     $empcode=$employer->empcode;
                 }
                 
@@ -524,9 +477,6 @@ class WorkbasketController extends Controller
                 return redirect('/scheme/noticedeath');
             }
         }
-        
-        
-        
     }
 
     public function wblist()
@@ -536,13 +486,12 @@ class WorkbasketController extends Controller
 
         $operid = session('loginname');
         
-        if ($operid == '')
-        {
+        if ($operid == '') {
             return redirect('/login');
         }
         
-        session(['caserefno'=>'']); 
-        session(['uniquerefno'=>'']); 
+        session(['caserefno'=>'']);
+        session(['uniquerefno'=>'']);
         session(['message'=>'']);
         session(['noticetype'=>'']);
         
@@ -553,37 +502,28 @@ class WorkbasketController extends Controller
         session(['messagecert'=>'','messageemp'=>'','messageod'=>'']);
 
         //chg23072019 - tambah get column status from caseinfo
-        $result = DB::select('select w.wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
+        $result = DB::select('select w  .wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
             w.rtwrefno, r.descen, w.caserefno, c.casetype, c.status from workbasket w, caseinfo c, reftable r where 
             w.caserefno = c.caserefno and w.taskcode = r.refcode and r.tablerefcode =? and w.operid=? order by w.date,w.time',
                 ['taskcode', $operid]);
-        // $result = DB::select('select w.wbid, w.date, w.time, c.schemerefno, w.caseid, w.revisionrefno, w.medrefno, 
-        //     w.rtwrefno, r.descen, w.caserefno, c.casetype, c.status from "workbasket" w, caseinfo c, reftable r where 
-        //     w.caserefno = c.caserefno and w.taskcode = r.refcode and r.tablerefcode =? and w.operid=? order by w.date,w.time',
-        //         ['taskcode', $operid]);
 
         // $now = time(); // or your date as well
         // $your_date = strtotime('date');
         // $datediff = $now - $your_date;
-        if (!$result)
-        {
+        if (!$result) {
             $item = null;
-            //$workbasket->workbasket = null;
-        }
-        else
-        {
+        //$workbasket->workbasket = null;
+        } else {
             $cnt = 0;
             $item = array();
-            foreach($result as $res)
-            {
-                $reftable = DB::selectOne('select descen from reftable where refcode=? and tablerefcode=?',
-                        [$res->casetype,'casetype']);
-                if ($reftable)
-                {
+            foreach ($result as $res) {
+                $reftable = DB::selectOne(
+                    'select descen from reftable where refcode=? and tablerefcode=?',
+                    [$res->casetype,'casetype']
+                );
+                if ($reftable) {
                     $casetypedesc = $reftable->descen;
-                }
-                else
-                {
+                } else {
                     $casetypedesc = null;
                 }
                 
@@ -591,23 +531,22 @@ class WorkbasketController extends Controller
                 
                 //chg22072019 - check if noticetype = '04', get caseobprofile & personcat
                 
-                if ($res->casetype != '04')
-                {
-                    $caseobprofile = DB::selectOne('select idno from caseobprofile where caserefno=?',[$res->caserefno]);
-                    if ($caseobprofile)
-                    {
+                if ($res->casetype != '04') {
+                    $caseobprofile = DB::selectOne('select idno from caseobprofile where caserefno=?', [$res->caserefno]);
+                    if ($caseobprofile) {
                         $idno = $caseobprofile->idno;
                     }
-                }
-                else
-                {
-                    $personcat = DB::selectOne('select uniquerefno from personcat where caserefno=? and category=?',
-                            [$res->caserefno, 'OB']);
+                } else {
+                    $personcat = DB::selectOne(
+                        'select uniquerefno from personcat where caserefno=? and category=?',
+                        [$res->caserefno, 'OB']
+                    );
                     
-                    $caseobprofile = DB::selectOne('select idno from caseobprofile where caserefno=? and uniquerefno=?',
-                            [$res->caserefno,$personcat->uniquerefno]);
-                    if ($caseobprofile)
-                    {
+                    $caseobprofile = DB::selectOne(
+                        'select idno from caseobprofile where caserefno=? and uniquerefno=?',
+                        [$res->caserefno,$personcat->uniquerefno]
+                    );
+                    if ($caseobprofile) {
                         $idno = $caseobprofile->idno;
                     }
                 }
@@ -628,11 +567,9 @@ class WorkbasketController extends Controller
 
         
         //return $item;
-        return view('general.home',['workbasket'=>$item]);
+        return view('general.home', ['workbasket'=>$item]);
 
         // $workbasket = Workbasket::all();
         // return view('home', compact ('workbasket'));
-
     }
-
 }

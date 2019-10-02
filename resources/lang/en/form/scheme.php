@@ -4,7 +4,7 @@
 
 return [
 
-   'general' => [
+    'general' => [
                     
       'tab_title' => [
 
@@ -14,8 +14,8 @@ return [
          'investigation' => 'Investigation Details',
          'recommendation' => ' Recommendation',
          'supporting_document' => 'Supporting Document',
-         'queryOpinion' => 'Query and Opinion',
-         
+         'query_opinion' => 'Query and Opinion',
+         'inconsistenct_info' => 'Inconsistent Information',
 
       ],
 
@@ -54,6 +54,12 @@ return [
 
       ],
 
+      'preview_page' => [
+
+         'title' => 'Preview',
+
+      ],
+
       /* ==================================================== COLLAPSE TAB ========================================================== */
 
       'collapse' => [
@@ -62,52 +68,28 @@ return [
 
             'title' => 'Insured Person Information',
             
-            'form34_date' => 'Form 34 Received Date',
-            'pobox' => 'P.O Box',
-            'locked_bag' => 'Locked Bag',
-            'wdt' => 'W.D.T',
-            'notice' => 'Notice',
-            'case_type' => 'Case Type',
-            'notice_ID' => 'Notice ID',
-            'status' => 'Status',
-
          ],
 
          'employer' => [
 
             'title' => 'Employer Information',
 
-            'empcode' => 'Employer Code',
-            'emptype' => 'Employer Type',
-            'empname' => 'Employer Name',
-            'business_entity' => 'Business Entity',
-            'sub_business' => 'Sub-Business Entity',
-            'sub_businesslist' => 'Sub-Business Entity List',
-            'service_type' => 'Service Type',
-            'industry_code' => 'Industry Code',
-            'sub_industry' => 'Sub-Industry Code List',
-            'pobox' => 'P.O Box',
-            'locked_bag' => 'Locked Bag',
-            'wdt' => 'W.D.T',
          ],
 
          'wages' => [
 
             'title' => 'Wages Information',
-            'title_additional' => 'Additional Wages Information',
 
             'empcode' => 'Employer Code',
             'company_name' => 'Employer Name',
             'status_work' => 'Status Attended Work',
             'commencement_date' => 'Employment Start Date',
             'end_date' => 'Employment End Date',
-            'wages_paid_accident' => 'Do Wages Paid On Day Accident?',
-            'month_contribution' => 'Month of Contribution',
+            'wages_paid_accident' => 'Do Wages Paid On Day Accident',
             'details_wages_accd' => 'Details of Wages for the Period of 6 Consecutive Months Before the Month of Accident',
             'details_wages_od' => 'Details of Wages for the Period of 6 Consecutive Months Before the Month of Notice of Occupational Disease',
             'details_wages_ilat' => 'Details of Wages for the Period of 6 Consecutive Months Before the Month of Notice of Invalidity',
             'details_wages_death' => 'Details of Wages for the Period of 6 Consecutive Months Before the Month of Death',
-            'employer_info' => 'Employer Information',
             'recommended' => 'Recommended',
             'minimum_wages' => 'Minimum Wages',
             'wages_type' => 'Wages Type',
@@ -119,45 +101,34 @@ return [
             'recommended' => 'Recommended',
             'employer_info' => 'Employer Information',
             'remarks' => 'Remarks',
-            'num' =>'No.',
+
+            'num' =>'No',
             'month' => 'Month',
             'year' => 'Year',
             'wages' => 'Wages (RM)',
             'contribution_paid' => 'Contribution Paid (RM)',
-            'contribution_payable' => 'Contribution Payable (RM)',
-            'contribution_surplus' => 'Contribution Surplus/Deficit (RM)',
-            'contribution' => 'Contribution (RM)',
-            'reason' => 'Reason',
-
+      
          ],
 
          'socso' => [
 
-            'title' => 'SOCSO Office',
-
-            'state' => 'State',
-            'city' => 'City',
-            'preferred_socso' => 'Preferred SOCSO Office',
-            'origin' => 'Origin',
-            'current' => 'Current',
+            'title' => 'Preferred SOCSO',
 
          ],
 
          'confirmation' => [
 
-            'title' => 'Confirmation of Dependant',
+            'title' => 'Confirmation of Insured Person/Dependant/Claimant',
             'title_ob'=>'Confirmation of Insured Person',
             'title_ot'=>'Confirmation of Claimant',
+            'title_confirmation' => 'Confirmation',
             'bank_info' => 'Bank Information',
             'bankrupt' => 'Bankrupt',
             'preparer' => 'Preparer',
             'approver' => 'Approver',
 
-            'bank_completed' => 'Bank Information Completed?',
-            'stamp_date' => 'Acceptance Stamp Date',
-            'completion_completed' => 'Completion Completed?',
-            'completion_date' => 'Completion Date',
-            'remarks' => 'Remarks',
+            'sectionj_received' => 'Section J Received',
+            'complete_sectionj' => 'Complete Section J Received Date',
            
 
          ],
@@ -174,7 +145,7 @@ return [
             'suspense' => 'Suspense',
             'closed' => 'Closed',
             'substatus_desc' => 'Sub Status Description',
-            'payment' => 'Payment Method',
+            'payment' => 'Payment Mode',
             'cheque' => 'Cheque',
             'eft' => 'EFT',
             'no_payment' => 'No Payment',
@@ -201,6 +172,7 @@ return [
             'country' => 'Country',
             'currency' => 'Currency',
             'ov_bank_address' => 'Overseas Bank Address',
+            'joint' => 'Joint',
 
          ],
 
@@ -208,30 +180,13 @@ return [
 
             'title' => 'Accident Information',
 
-            'accident_date' => 'Accident Date',
-            'accident_time' => 'Accident Time',
-            'place_accident' => 'Place Accident',
-
          ],
 
          'mc' => [
 
             'title' => 'Medical Certification',
+            'title1' => 'HUS Information',
 
-            'title_hus' => 'HUS Information',
-            'type_hus' => 'Type of HUS',
-            'mc' => 'MC',
-            'clinic_details' => 'Name and Address of Clinic of Which Provides Treatment',
-            'start_date' => 'Start Date',
-            'end-date' => 'End Date',
-            'total_days' => 'Total Days',
-            'hus_status' => 'HUS Approval Status',
-            'hus_recommendation_date' => 'HUS Recommendation Date',
-            'hus_recommendation_status' => 'HUS Recommendation Status',
-            'mc_recommendation' => 'MC Recommendation by IO',
-            'total_hus' => 'Total HUS',
-            'remarks' => 'Remarks',
-            'action' => 'Action',
          ],
 
          'certification' => [
@@ -257,18 +212,13 @@ return [
             'SPIeligible' => 'SPI Eligible',
             'notice_date' => 'Notice Date',
             'form34_date' => 'Form 34 Received Date',
-            'received_date' => 'Received Date',
             'registrationDate' => 'Registration Date',
             'notice_type' => 'Notice Type',
             'working' => 'Is Still Working?',
-            'acceptance_declaration' => 'Acceptance Declaration 117',
             'declare_117' => 'Declaration 117',
             'acc_potential' => 'Accident Potential',
-            'type_revision' => 'Type of Revision',
-            'reason_revision' => 'Reason Revision',
-            'year' => 'Year',
-            'SSN_received' => 'SSN Appendix A Received',
-            'received_revision' => 'Received Revision Notice Date',
+            'yes' => 'Yes',
+            'no' => 'No',
 
             // OD_RTW
             
@@ -297,8 +247,6 @@ return [
             'socsoRegistrationOffice' => 'SOCSO Registration Office ',
             'socsoOffice'=> 'SOCSO Office ',
             'accident_date' => 'Accident Date',
-            'received_revision' => 'Received Revision Notice Date',
-            'source' => 'Source',
 
             //DEATH NOTICE
 
@@ -338,138 +286,23 @@ return [
 
          'investigation' => [
 
-            'title' => 'Investigation',
-         ],
+            'title' => 'Investigation Document',
 
-         'investigation_report' => [
-
-            'title' => 'Investigation Report',
-
-            'date' => 'Investigation Date',
-            'question1' => 'Whether the insured person is an employee under the SOCSO Act?',
-            'question2' => 'Whether the SOCSO Act applies to this industry?',
-            'question3' => 'Whether the personal injury is caused by an accident or an OD?',
-            'question4' => 'Whether the accident or OD is in the course of his/her employment?',
-            'question5' => 'Whether the accident or the OD arised out of his employment?',
-            'system_recommendation' => 'System Recommendation from IO',
-            'recommendation_date' => 'Recommendation Date',
-
-         ],
-
-         'appointment' => [
-
-            'title' => 'Appointment',
-
-            'investigation_date' => 'Investigation Date',
-            'investigation_time' => 'Investigation Time',
-            'type_person' => 'Type of Person in an Appointment',
-            'address' => 'Address',
-            'name_officer' => 'Name of Investigating Officer',
-            'email_officer' => 'Email of Investigating Officer',
-            'place_officer' => 'Place of Investigating Officer',
-
-         ],
-
-
-         'interviewee_info' => [
-
-            'title' => 'Interviewee Information',
-
-            'inspector_name' => 'Inspector Name',
-            'age' => 'Age',
-            'about_investigation' => 'About the Investigation',
-            
          ],
 
          'case_fact' => [
 
             'title' => 'Case Fact',
-
-            'list_tasks' => 'List of Tasks',
-            'reviewer_comment' => 'Reviewer Comment',
-            'approval_comment' => 'Approval Comment',
-            'reviewer_reviews' => 'Reviewer Reviews',
-            'recommendation' => 'Recommendation',
-            'investigator_name' => 'Investigator Name',
-            'date' => 'Date',
-         ],
-
-         'case_transfer' => [
-
-            'title' => 'Case Transfer',
-
-            'transfer' => 'Transfer',
-            'remarks' => 'Remarks',
-            'origin' => 'Origin',
-            'current' => 'Current',
-
-         ],
-
-         'statement' => [
-
-            'title' => 'Statement',
-
-            'download' => 'Download',
-            'no' => 'No.',
-            'doc_name' => 'Document Name',
-
-         ],
-
-         'witness_information' => [
-
-            'title' => 'Witness Information',
-
-            'language' => 'Language',
-            'witness_statement' => 'Witness Statement',
-            'translator_name' => 'Translator Name',
-            'investigation_date' => 'Investigation Date',
-            'investigation_start' => 'Investigation Start Time',
-            'investigation_end' => 'Investigation End Time',
-
-         ],
-
-         'employer_information' => [
-
-            'title' => 'Employer Information',
-
-            'language' => 'Language',
-            'employers_statement' => 'Employers Statement',
-            'translator_name' => 'Translator Name',
-            'investigation_date' => 'Investigation Date',
-            'investigation_start' => 'Investigation Start Time',
-            'investigation_end' => 'Investigation End Time',
-
-         ],
-
-         'approval' => [
-
-            'title' => 'Approval',
          ],
 
          'recommendation' => [
 
             'title' => 'Recommendation',
-            'updatedBy' => 'Updated By',
-            'updatedDate' => 'Updated Date',
-            'recommendationIO' => 'Recommended IO',
-            'recommended_by' => 'Recommended By',
-            'recommended_date' => 'Recommended Date',
-            'created_date' => 'Created Date',
-            'created_by' => 'Created By',
-            'route' => 'Route',
          ],
 
-         'IO_recommendation' => [
+         'inconsistent' => [
 
-            'title' => 'IO Recommendation',
-            'recommendation' => 'Recommendation',
-            'recommended_by' => 'Recommended By',
-            'recommended_date' => 'Recommended Date',
-         ],
-
-         'inconsistency' => [
-
-            'title' => 'Inconsistency',
+            'title' => 'Inconsistent Information',
             'add_item' => 'Add Item',
             'section' => 'Section',
             'item' => 'Item',
@@ -505,39 +338,16 @@ return [
 
          ],
 
-         'declaration' => [
-
-            'title' => 'Declaration 117',
-            'doc' => 'Document',
-            'action' => 'Action',
-
-         ],
-
          'investigation_document' => [
 
             'title' => 'Investigation Document',
-            'doc' => 'Document',
-            'action' => 'Action',
 
          ],
 
          'supporting_document' => [
 
             'title' => 'Supporting Document',
-
-         ],
-
-         'upload_document' => [
-
-            'title' => 'Upload Document',
-            'revisionNoticeID' => 'Revision Notice ID',
-            'updateBy' => 'Update By',
-            'updateDate' => 'Update Date',
-            'docdesc' => 'Document Description',
-            'docpath' => 'Document Path',
-            'date' => 'Date',
-            'view' => 'View',
-            'delete' => 'Delete',
+            'title1' => 'Upload Document',
 
          ],
 
@@ -545,10 +355,6 @@ return [
 
             'title' => 'Generate Document',
 
-            'doc_description' => 'Document Description',
-            'date' => 'Generated Date',
-            'view' => 'View',
-            
          ],
 
          'preparer' => [
@@ -558,14 +364,17 @@ return [
             'prepared_by' => 'Prepared By',
             'prepared_date' => 'Prepared Date',
 
-
          ],
-            /*========= FOR REVISION =========*/
-         'pks' => [
 
-            'title' => 'PKS',
+         'query_opinion' => [
 
+            'title' => 'Query and Opinion',
+
+            'prepared_by' => 'Prepared By',
+            'prepared_date' => 'Prepared Date',
+            
          ],
+
       ],
             
    ],
@@ -575,169 +384,669 @@ return [
    'notice_accident' => [
 
       'PK' => [
+         'accident_info' => [
+
+            'title' => 'Accident Information',
+            'accident_date' => 'Accident Date',
+            'accident_time' => 'Accident Time',
+            'place_accident' => 'Place of Accident',
+            'when_accident' => 'When Accident Happen?',
+            'date_death' => 'Date of Death',
+            'how_accident' => 'How the Accident Happened?',
+            'mode_transport' => 'Mode of Transport',
+            'causeOfAccd' => 'Cause of Accident',
+            'typeInjury' => 'Type of Injury',
+            'locationOfInjury'=> 'Location of Injury',
+            'causative_agent' => 'Causative Agent',
+            'accident_code' => 'Accident Code',
+            'industrial_code' => 'Industrial Code',
+            'employment_code' => 'Employment Code',
+            'reason_travelling' => 'Reason for Travelling on The Day of Accident (For road accident only)',
+            'injury_desc' => 'Injury Description',
+            'accident_workingDay' => 'Is Accident Date a Working Day For The Insured Person',
+            'nameAddress_clinic' => 'Name and Address of Clinic Which Provides First Treatment',
+            'start_date' => 'Attended Work Start Date',
+            'end_date' => 'Attended Work End Date',
+            'start_workingTime' => 'Start Working Time on Accident Day',
+            'rest_period' => 'Time Of Recess On The Accident Date',
+            'end_workingTime' => 'Ending Time of Work on The Accident Date',
+            'witness_name' => 'Name of Witness(If any)',
+            'witness_no' => 'Witness Phone No.',
+            'are_wagesPaid'=> 'Are wages paid on the day of accident?',
+            'during_work' => 'During Work',
+            'during_emergency' => 'During Emergency',
+            'during_travel' => 'During Travel Between Residence',
+            'during_tarvel_time' => 'During Travel Time Allowed',
+            'during_course' => 'During The Course of Employment Related Activities',
+            'during_travel_related' => 'During Travel Related To Work',
+            'others' => 'Others',
+            'add_acc_place' => 'Address Accident Place', 
+         ],
 
       ],
 
-   ],
+      'SCO' => [
 
-   'notice_invalidity' => [
+         'investigation_doc' => [
+            //Notice Accident
+            'appendix50' => 'Panduan Soalan Pernyataan Kes Kemalangan KEMALANGAN SEMASA PERJALANAN ANTARA TEMPAT TINGGAL KEDIAMAN',
+            'appendix51' => 'Panduan Soalan Pernyataan Kes Kemalangan SEMASA BEKERJA',
+            'appendix52' => 'Panduan Soalan Pernyataan Kes Kemalangan SEMASA KECEMASAN',
+            'appendix53' => 'Panduan Soalan Pernyataan Kes Kemalangan SEMASA MELAKUKAN LAIN-LAIN AKTIVITI LUARAN',
+            'appendix54' => 'Panduan Soalan Pernyataan Kes Kemalangan SEMASA PERJALANAN BERKAITAN DENGAN PEKERJAAN',
+            'appendix55' => 'Panduan Soalan Pernyataan Kes Kemalangan SEMASA PERJALANAN DALAM MASA REHAT YANG DIBENARKAN',
+           
+            //Question50
+            '3_1' => '3.1',
+            'question3_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '3_2' => '3.2',
+            'question3_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh kemalangan? Sila nyatakan? ',
+            '3_3' => '3.3',
+            'question3_3' => 'Nyatakan masa kerja biasa termasuk kerja lebih masa, hari bekerja dan hari cuti OB?',
+            '3_4' => '3.4',
+            'question3_4' => 'Adakah OB mohon cuti pada hari kemalangan? ',
+            '3_5' => '3.5',
+            'question3_5' => 'Nyatakan tarikh, tempat dan masa kemalangan?',
+            '3_6' => '3.6',
+            'question3_6' => 'Bagaimana kemalangan berlaku ?',
+            '3_7' => '3.7',
+            'question3_7' => 'Apakah jenis kecederaan yang dialami? Kali pertama atau terdapat kecederaan terdahulu? Adakah pernah membuat tuntutan terdahulu?',
+            '3_8' => '3.8',
+            'question3_8' => 'Nyatakan tujuan dan kaedah perjalanan semasa kemalangan berlaku.',
+            '3_9' => '3.9',
+            'question3_9' => 'Adakah wujudnya saksi semasa kemalangan berlaku? Jika ADA, nyatakan nama dan no.tel saksi untuk dihubungi.',
+            '3_10' => '3.10',
+            'question3_10' => 'Siapakah orang pertama yang diberitahu tentang kemalangan? Nyatakan tarikh dan masa?',
+            '3_11' => '3.11',
+            'question3_11' => 'Nama dan alamat Hospital/ Klinik di mana pekerja mendapat rawatan pertama / tarikh rawatan?',
+            '3_12' => '3.12',
+            'question3_12' => 'Sila jelaskan sekiranya terdapat cuti sakit yang ketara tidak berturutan?',
+            '3_13' => '3.13',
+            'question3_13' => 'Sila jelaskan sekiranya OB bertukar tempat rawatan.',
+            '3_14' => '3.14',
+            'question3_14' => 'Nyatakan tempoh cuti sakit dan adakah OB bekerja dalam tempoh tersebut?',
+            '3_15' => '3.15',
+            'question3_15' => 'Adakah majikan menyediakan kerja ringan? Jika YA Adakah OB hadir bekerja bagi tempoh tersebut?',
+            '3_16' => '3.16',
+            'question3_16' => 'Bilakah OB kembali bekerja semula?',
+            '3_17' => '3.17',
+            'question3_17' => 'Sekiranya wujud ketidakseragaman dan kemunasabahan fakta (keraguan dari segi masa dan laluan kemalangan), 
+                              dapatkan penjelasan perihal dan butiran aktiviti yang dilakukan sebelum kemalangan.',
+            '3_18' => '3.18',
+            'question3_18' => 'Sekiranya kemalangan menyebabkan KEMATIAN.',
+            'question3_18a' =>  'a)	Bilakah tarikh kematian? ',
+            'question3_18b' => 'b)	Maklumat waris, no telefon / alamat waris?',
+            '3_19' => '3.19',
+            'question3_19' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan?',
+            '3_20' => '3.20',
+            'question3_20' => 'Tempat dan masa penyataan diambil. (Cadangan Penambahbaikan Lampiran 1- Borang Penyataan)',
+        
+            //Question51
+            '1_1' => '1.1',
+            'question1_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '1_2' => '1.2',
+            'question1_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh kemalangan? Sila nyatakan? ',
+            '1_3' => '1.3',
+            'question1_3' => 'Nyatakan masa kerja biasa termasuk kerja lebih masa, hari bekerja dan hari cuti OB? ',      
+            '1_4' => '1.4',
+            'question1_4' => 'Adakah gaji dibayar pada hari kemalangan?',  
+            '1_5' => '1.5',
+            'question1_5' => 'Apakah aktiviti yang dilakukan oleh OB semasa berlakunya kemalangan?',  
+            '1_6' => '1.6',
+            'question1_6' => 'Nyatakan tarikh, tempat dan masa kemalangan?',  
+            '1_7' => '1.7',
+            'question1_7' => 'Bagaimana kemalangan berlaku ?',  
+            '1_8' => '1.8',
+            'question1_8' => 'Apakah jenis kecederaan yang dialami? Kali pertama atau terdapat kecederaan terdahulu? Adakah pernah membuat tuntutan terdahulu?',  
+            '1_9' => '1.9',
+            'question1_9' => 'Adakah wujudnya saksi semasa kemalangan berlaku? Jika ADA, nyatakan nama dan no.tel saksi untuk dihubungi.',  
+            '1_10' => '1.10',
+            'question1_10' => 'Siapakah orang pertama yang diberitahu tentang kemalangan? Nyatakan tarikh dan masa?',  
+            '1_11' => '1.11',
+            'question1_11' => 'Nama dan Alamat Hospital/ Klinik di mana pekerja mendapat rawatan pertama / tarikh rawatan?',  
+            '1_12' => '1.12',
+            'question1_12' => 'Sila jelaskan sekiranya cuti sakit tidak berturutan dengan tarikh rawatan pertama.',  
+            '1_13' => '1.13',
+            'question1_13' => 'Sila jelaskan sekiranya terdapat cuti sakit yang ketara tidak berturutan? ',  
+            '1_14' => '1.14',
+            'question1_14' => 'Sila jelaskan sekiranya OB bertukar tempat rawatan.',  
+            '1_15' => '1.15',
+            'question1_15' => 'Nyatakan tempoh cuti sakit dan adakah OB bekerja dalam tempoh tersebut?',  
+            '1_16' => '1.16',
+            'question1_16' => 'Adakah majikan menyediakan kerja ringan? Jika YA ,adakah OB hadir bekerja bagi tempoh tersebut? ',  
+            '1_17' => '1.17',
+            'question1_17' => 'Bilakah OB kembali bekerja semula?',  
+            '1_18' => '1.18',
+            'question1_18' => 'Sekiranya kemalangan berlaku DI LUAR PREMIS MAJIKAN. Adakah aktiviti yang dilakukan oleh OB :-',
+            'question1_18a' =>  'a)	Merupakan tugas hakiki?',
+            'question1_18b' => 'b)	Mendapat kebenaran majikan?',  
+            '1_19' => '1.19',
+            'question1_19' => 'Sekiranya wujud ketidakseragaman dan kemunasabahan fakta (keraguan dari segi masa dan laluan kemalangan), 
+            dapatkan penjelasan perihal dan butiran aktiviti yang dilakukan sebelum kemalangan.',  
+            '1_20' => '1.20',
+            'question1_20' => 'Sekiranya kemalangan menyebabkan KEMATIAN.',
+            'question1_20a' =>  'a)	Bilakah tarikh kematian?', 
+            'question1_20b' =>  'b)	Maklumat waris, no telefon / alamat waris? ',  
+            '1_21' => '1.21',
+            'question1_21' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan?',  
+            '1_22' => '1.22',
+            'question1_22' => 'Nyatakan tempat dan masa peryataan diambil. (penambahbaikan Lampiran 1- Borang Pernyataan)',  
 
-      'PK' => [
+            //Question52
+            '2_1' => '2.1',
+            'question2_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '2_2' => '2.2',
+            'question2_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh kemalangan? Sila nyatakan?',
+            '2_3' => '2.3',
+            'question2_3' => 'Nyatakan masa kerja biasa termasuk kerja lebih masa, hari bekerja dan hari cuti OB?',
+            '2_4' => '2.4',
+            'question2_4' => 'Adakah gaji dibayar pada hari kemalangan?',
+            '2_5' => '2.5',
+            'question2_5' => 'Apakah aktiviti yang dilakukan oleh OB semasa berlakunya kemalangan?',
+            '2_6' => '2.6',
+            'question2_6' => 'Nyatakan tarikh, tempat dan masa kemalangan?',
+            '2_7' => '2.7',
+            'question2_7' => 'Bagaimana kemalangan berlaku ?',
+            '2_8' => '2.8',
+            'question2_8' => 'Apakah jenis kecederaan yang dialami? Kali pertama atau terdapat kecederaan terdahulu? Adakah pernah membuat tuntutan terdahulu?',
+            '2_9' => '2.9',
+            'question2_9' => 'Adakah wujudnya saksi semasa kemalangan berlaku? Jika ADA, nyatakan nama dan no.tel saksi untuk dihubungi.',
+            '2_10' => '2.10',
+            'question2_10' => 'Siapakah orang pertama yang diberitahu tentang kemalangan? Nyatakan tarikh dan masa?',
+            '2_11' => '2.11',
+            'question2_11' => 'Nama dan Alamat Hospital/ Klinik di mana pekerja mendapat rawatan pertama / tarikh rawatan?',
+            '2_12' => '2.12',
+            'question2_12' => 'Sila jelaskan sekiranya cuti sakit tidak berturutan dengan tarikh rawatan pertama.',
+            '2_13' => '2.13',
+            'question2_13' => 'Sila jelaskan sekiranya terdapat cuti sakit yang ketara tidak berturutan?',
+            '2_14' => '2.14',
+            'question2_14' => 'Sila jelaskan sekiranya OB bertukar tempat rawatan.',
+            '2_15' => '2.15',
+            'question2_15' => 'Nyatakan tempoh cuti sakit dan adakah OB bekerja dalam tempoh tersebut?',
+            '2_16' => '2.16',
+            'question2_16' => 'Adakah majikan menyediakan kerja ringan? Jika YA ,adakah OB hadir bekerja bagi tempoh tersebut?',
+            '2_17' => '2.17',
+            'question2_17' => 'Bilakah OB kembali bekerja semula?',
+            '2_18' => '2.18',
+            'question2_18' => 'Sekiranya wujud ketidakseragaman dan kemunasabahan fakta (keraguan dari segi masa dan laluan kemalangan), 
+                              dapatkan penjelasan perihal dan butiran aktiviti yang dilakukan sebelum kemalangan.',
+            '2_19' => '2.19',
+            'question2_19' => 'Sekiranya kemalangan menyebabkan KEMATIAN.',
+            'question2_19a' => 'a)	Bilakah tarikh kematian? ',
+            'question2_19b' => 'b)	Maklumat waris, no telefon / alamat waris? ',
+            '2_20' => '2.20',
+            'question2_20' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan?',
+            '2_21' => '2.21',
+            'question2_21' => 'Nyatakan tempat dan masa peryataan diambil. (penambahbaikan Lampiran 1- Borang Pernyataan)',
+
+            //Question53
+            '6_1' => '6.1',
+            'question6_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '6_2' => '6.2',
+            'question6_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh kemalangan? Sila nyatakan?',
+            '6_3' => '6.3',
+            'question6_3' => 'Nyatakan masa kerja biasa termasuk kerja lebih masa, hari bekerja dan hari cuti OB.',
+            '6_5' => '6.5',
+            'question6_5' => 'Bagaimana kemalangan berlaku?',
+            '6_6' => '6.6',
+            'question6_6' => 'Apakah jenis kecederaan yang dialami? Kali pertama atau terdapat kecederaan terdahulu? Adakah pernah membuat tuntutan terdahulu?',
+            '6_7' => '6.7',
+            'question6_7' => 'Nyatakan tarikh, tempat dan masa kemalangan?',
+            '6_8' => '6.8',
+            'question6_8' => 'Adakah wujudnya saksi semasa kemalangan berlaku? Jika ADA, nyatakan nama dan no.tel saksi untuk dihubungi.',
+            '6_9' => '6.9',
+            'question6_9' => 'Siapakah orang pertama yang diberitahu tentang kemalangan? Nyatakan tarikh dan masa?',
+            '6_10' => '6.10',
+            'question6_10' => 'Nama dan alamat Hospital/ Klinik di mana pekerja mendapat rawatan pertama / tarikh rawatan?',
+            '6_11' => '6.11',
+            'question6_11' => 'Nyatakan tempoh cuti sakit dan adakah OB bekerja dalam tempoh tersebut?',
+            '6_12' => '6.12',
+            'question6_12' => 'Sila jelaskan sekiranya terdapat cuti sakit yang ketara tidak berturutan?',
+            '6_13' => '6.13',
+            'question6_13' => 'Sila jelaskan sekiranya OB bertukar tempat rawatan.',
+            '6_14' => '6.14',
+            'question6_14' => 'Adakah majikan menyediakan kerja ringan? Jika YA Adakah OB hadir bekerja bagi tempoh tersebut?',
+            '6_15' => '6.15',
+            'question6_15' => 'Bilakah OB kembali bekerja semula?',
+            '6_16' => '6.16',
+            'question6_16' => 'Adakah aktiviti yang dilakukan sebelum berlakunya kemalangan adalah merupakan suatu aktiviti umum atau anjuran majikan? ',
+            '6_17' => '6.17',
+            'question6_17' => 'Sekiranya wujud ketidakseragaman dan kemunasabahan fakta (keraguan dari segi masa dan laluan kemalangan), 
+            dapatkan penjelasan perihal dan butiran aktiviti yang dilakukan sebelum kemalangan.',
+            '6_18' => '6.18',
+            'question6_18' => 'Sekiranya kemalangan menyebabkan KEMATIAN.',
+            'question6_18a' => 'a)	Bilakah tarikh kematian? ',
+            'question6_18b' => 'b)	Maklumat waris, no telefon / alamat waris?',
+            '6_19' => '6.19',
+            'question6_19' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan?',
+            '6_20' => '6.20',
+            'question6_20' => 'Tempat dan masa peryataan diambil. (penambahbaikan Lampiran 1- Borang Pernyataan)',
+            
+            //Question54
+            '5_1' => '5.1',
+            'question5_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '5_2' => '5.2',
+            'question5_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh kemalangan? Sila nyatakan? ',
+            '5_3' => '5.3',
+            'question5_3' =>  'Nyatakan masa kerja biasa termasuk kerja lebih masa, hari bekerja dan hari cuti OB.',
+            '5_4' => '5.4',
+            'question5_4' =>  'Nyatakan masa rehat yang dibenarkan majikan.',
+            '5_5' => '5.5',
+            'question5_5' =>  '',
+            '5_6' => '5.6',
+            'question5_6' =>  'Bagaimana kemalangan berlaku?',
+            '5_7' => '5.7',
+            'question5_7' =>  'Apakah jenis kecederaan yang dialami? Kali pertama atau terdapat kecederaan terdahulu? Adakah pernah membuat tuntutan terdahulu?',
+            '5_8' => '5.8',
+            'question5_8' =>  'Nyatakan tarikh, tempat dan masa kemalangan?',
+            '5_9' => '5.9',
+            'question5_9' =>  'Adakah wujudnya saksi semasa kemalangan berlaku? Jika ADA, nyatakan nama dan no.tel saksi untuk dihubungi.',
+            '5_10' => '5.10',
+            'question5_10' =>  'Siapakah orang pertama yang diberitahu tentang kemalangan? Nyatakan tarikh dan masa? ',
+            '5_11' => '5.11',
+            'question5_11' =>  'Nama dan alamat Hospital/ Klinik di mana pekerja mendapat rawatan pertama / tarikh rawatan?',
+            '5_12' => '5.12',
+            'question5_12' =>  'Sila jelaskan sekiranya terdapat cuti sakit yang ketara tidak berturutan? ',
+            '5_13' => '5.13',
+            'question5_13' =>  'Sila jelaskan sekiranya OB bertukar tempat rawatan.',
+            '5_14' => '5.14',
+            'question5_14' =>  'Nyatakan tempoh cuti sakit dan adakah OB bekerja dalam tempoh tersebut?',
+            '5_15' => '5.15',
+            'question5_15' =>  'Adakah majikan menyediakan kerja ringan? Jika YA Adakah OB hadir bekerja bagi tempoh tersebut?',
+            '5_16' => '5.16',
+            'question5_16' =>  'Bilakah OB kembali bekerja semula?',
+            '5_17' => '5.17',
+            'question5_17' =>  'Adakah kemalangan berlaku DI DALAM WAKTU KERJA BIASA atau LUAR WAKTU KERJA BIASA?',
+            '5_18' => '5.18',
+            'question5_18' =>  'Apakah aktiviti yang dilakukan oleh OB semasa berlakunya kemalangan?',
+            '5_19' => '5.19',
+            'question5_19' =>  'Adakah aktiviti yang dilakukan oleh OB merupakan tugas hakiki atau atas arahan majikan?',
+            '5_20' => '5.20',
+            'question5_20' =>  'Sekiranya wujud ketidakseragaman dan kemunasabahan fakta (keraguan dari segi masa dan laluan kemalangan), 
+                                 dapatkan penjelasan perihal dan butiran aktiviti yang dilakukan sebelum kemalangan.',
+            '5_21' => '5.21',
+            'question5_21' =>  'Sekiranya kemalangan menyebabkan KEMATIAN.',
+            'question5_21a' => 'a)	Bilakah tarikh kematian? ',
+            'question5_21b' => 'b)	Maklumat waris, no telefon / alamat waris?',
+            '5_22' => '5.22',
+            'question5_22' =>  'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan?',
+            '5_23' => '5.23',
+            'question5_23' =>  'Tempat dan masa peryataan diambil. (penambahbaikan Lampiran 1- Borang Pernyataan)',
+            
+            //Question55
+            '4_1' => '4.1',
+            'question4_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '4_2' => '4.2',
+            'question4_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh kemalangan? Sila nyatakan?',
+            '4_3' => '4.3',
+            'question4_3' =>  'Nyatakan masa kerja biasa termasuk kerja lebih masa, hari bekerja dan hari cuti OB.',
+            '4_4' => '4.4',
+            'question4_4' =>  'Nyatakan masa rehat yang dibenarkan majikan.',
+            '4_5' => '4.5',
+            'question4_5' =>  'Bagaimana kemalangan berlaku?',
+            '4_6' => '4.6',
+            'question4_6' =>  'Apakah jenis kecederaan yang dialami? Kali pertama atau terdapat kecederaan terdahulu? Adakah pernah membuat tuntutan terdahulu?',
+            '4_7' => '4.7',
+            'question4_7' =>  'Nyatakan tarikh, tempat dan masa kemalangan?',
+            '4_8' => '4.8',
+            'question4_8' =>  'Nyatakan tujuan dan kaedah perjalanan semasa kemalangan berlaku.',
+            '4_9' => '4.9',
+            'question4_9' =>  'Adakah tempat makan disediakan oleh majikan? Jika YA adakah pekerja juga dibenarkan keluar premis?',
+            '4_10' => '4.10',
+            'question4_10' =>  'Adakah wujudnya saksi semasa kemalangan berlaku? Jika ADA, nyatakan nama dan no.tel saksi untuk dihubungi.',
+            '4_11' => '4.11',
+            'question4_11' =>  'Siapakah orang pertama yang diberitahu tentang kemalangan? Nyatakan tarikh dan masa?',
+            '4_12' => '4.12',
+            'question4_12' =>  'Nama dan alamat Hospital/ Klinik di mana pekerja mendapat rawatan pertama / tarikh rawatan? ',
+            '4_14' => '4.14',
+            'question4_14' =>  'Sila jelaskan sekiranya terdapat cuti sakit yang ketara tidak berturutan?',
+            '4_15' => '4.15',
+            'question4_15' =>  'Sila jelaskan sekiranya OB bertukar tempat rawatan.',
+            '4_16' => '4.16',
+            'question4_16' =>  'Nyatakan tempoh cuti sakit dan adakah OB bekerja dalam tempoh tersebut?',
+            '4_17' => '4.17',
+            'question4_17' =>  'Adakah majikan menyediakan kerja ringan? Jika YA, adakah OB hadir bekerja bagi tempoh tersebut? ',
+            '4_18' => '4.18',
+            'question4_18' =>  'Bilakah OB kembali bekerja semula?',
+            '4_19' => '4.19',
+            'question4_19' =>  'Adakah wujud pemberhentian semasa perjalanan pergi atau balik makan? Jika YA, apakah tujuan pemberhentian perjalanan sebelum kemalangan berlaku?',
+            '4_20' => '4.20',
+            'question4_20' =>  'Sekiranya wujud ketidakseragaman dan kemunasabahan fakta (keraguan dari segi masa dan laluan kemalangan), 
+                                 dapatkan penjelasan perihal dan butiran aktiviti yang dilakukan sebelum kemalangan. ',
+            '4_21' => '4.21',
+            'question4_21' =>  'Sekiranya kemalangan menyebabkan KEMATIAN.',
+            'question4_21' =>  'a)	Bilakah tarikh kematian?' ,
+            'question4_21' =>   'b)	Maklumat waris, no telefon / alamat waris?',
+            '4_22' => '4.22',
+            'question4_22' =>  'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Sek.20, Sek.22, Sek.26, Jadual Keempat AKSP1969',
+            '4_23' => '4.23',
+            'question4_23' =>  'Tempat dan masa peryataan diambil. (penambahbaikan Lampiran 1- Borang Pernyataan)',
+
+         ],
 
       ],
+
    ],
 
    'notice_od' => [
 
       'PK' => [
 
-         'employment_history' => [
-            
-            'title' => 'Employment History',
-
-            'details' => 'Name & Address of Employer for the Last 5 Years of Employment',
-            'no' => 'No.',
-            'name' => 'Employer Name',
-            'address' => 'Employer Address',
-            'working_period' => 'Working Period',
-            'designation' => 'Designation',
-            'delete' => 'Delete',
-
-         ],
-
-         'od_info' => [
-            
-            'title' => 'Occupational Disease Information',
-
-            'od_date' => 'Occupational Disease Date',
-            'description' => 'Description of Occupational Disease',
-            'disease_related' => 'Is the Disease Related to Employment?',
-            'duties' => 'Specify Duties and How Insured Person Exposed to the Danger',
-            'symptoms' => 'Please Explain Symptoms/Sign Encountered',
-            'date_death' => 'Date of Death (if applicable)',
-            'about_disease' => 'About the Disease',
-
-         ],
       ],
 
       'SCO' => [
 
-         'jdk_decision' => [
+         'investigation_doc' => [
+            //Notice OD
+            'appendix64' => 'Panduan Soalan Pernyataan Kes Penyakit Khidmat  Hilang Pendengaran Akibat Bunyi Bising  (SEK 28, JADUAL KELIMA, PENYAKIT KHIDMAT)',
+            'appendix65' => 'Panduan Soalan Pernyataan Kes Penyakit Khidmat Sakit Tulang Belakang Atau Tengkuk Back or Neck Pain',
+            'appendix66' => 'Panduan Soalan Pernyataan Kes Penyakit Khidmat Asma Pekerjaan Occupational Asthma',
+            'appendix67' => 'Panduan Soalan Pernyataan Kes Penyakit Khidmat Carpal Tunnel Syndrome CTS',
+            'appendix68' => 'Panduan Soalan Pernyataan Kes Penyakit Khidmat Penyakit Kulit Pekerjaan Occupational Skin Disease',
+            'appendix69' => 'Panduan Soalan Pernyataan Kes Penyakit Khidmat  Kanser Pekerjaan Occupation Cancer',
+            'appendix70' => 'Panduan Soalan Pernyataan Kes Penyakit Khidmat Penyakit Paru-Paru Pekerjaan Occupational Lung Disease Silicosis , Asbestosis',
+            'appendix71' => ' Panduan Soalan Pernyataan Kes Penyakit Khidmat Rotator Cuff Syndrome Supraspinatus Tendinitis',
+
+            //Question 64
+            '1_1' => '1.1',
+            'question1_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '1_2' => '1.2',
+            'question1_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh notis Penyakit Khidmat diterima? Sila nyatakan?',
+            '1_3' => '1.3',
+            'question1_3' => 'Nyatakan berapa lama masa kerja biasa termasuk kerja lebih masa, OB terdedah pada kawasan bising di tempat kerja.',
+            '1_4' => '1.4',
+            'question1_4' => 'Adakah OB bekerja dikawasan bising, nyatakan tempat / kawasan kerjanya.',
+            '1_5' => '1.5',
+            'question1_5' => 'Adakah OB pernah bekerja di majikan lain yang mana ia terdedah pada kawasan bising. Nyatakan nama dan alamat majikan terdahulu',
+            '1_6' => '1.6',
+            'question1_6' => 'Bila mula mendapat rawatan akibat masalah hilang pendengaran ? Adakah cuti sakit telah di perolehi, sila nyatakan. Jika dari hospital lain , adakah cuti sakit itu berkaitan dengan masalah pendengaran.',
+            '1_7' => '1.7',
+            'question1_7' => 'Adakah OB hadir bekerja dan dibayar gaji dalam tempoh cuti sakit / Sijil Kerja Ringan.',
+            '1_8' => '1.8',
+            'question1_8' => 'Nyatakan nama Hospital dimana OB mendapat rawatan',
+            '1_9' => '1.9',
+            'question1_9' => 'Adakah OB telah menjalani rawatan Audiogram',
+            '1_10' => '1.10',
+            'question1_10' => 'Adakah majkan ada membuat Laporan Audiometric Testing Screening tempat kerja',
+            '1_11' => '1.11',
+            'question1_11' => 'Adakah majikan ada membuat Personal Noise Monitoring dari pihak majikan',
+            '1_12' => '1.12',
+            'question1_12' => 'Sila nyatakan hobi / kegemaran OB dimasa lapang.',
+            '1_13' => '1.13',
+            'question1_13' => 'Sekiranya Penyakit Khidmat  menyebabkan KEMATIAN.',
+            'question1_13a' => 'a)	Bilakah tarikh kematian? ',
+            'question1_13b' => 'b)	Maklumat waris, no telefon / alamat waris? ',
+            '1_14' => '1.14',
+            'question1_14' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Seperti kemalangan terdahulu , jenis kecederaan, Pejabat Perkeso yang menguruskan kes. ',
             
-            'title' => 'JDK Decision',
+            //Question 65
+            '2_1' => '2.1',
+            'question2_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.', 
+            '2_2' => '2.2',
+            'question2_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Penyakit Khidmat di terima? Sila nyatakan?', 
+            '2_3' => '2.3',
+            'question2_3' => 'Nyatakan berapa lama masa kerja biasa termasuk kerja lebih masa, OB terdedah pada kerja yang menyebabkan sakit belakang atau tengkuk. Nyatakan cara kerja OB', 
+            '2_4' => '2.4',
+            'question2_4' => 'Adakah OB pernah bekerja di majikan lain yang mana ia terdedah pada kerja yang menyebabkan sakit belakang atau tenguk. Nyatakan nama dan alamat majikan terdahulu', 
+            '2_5' => '2.5',
+            'question2_5' => 'Bila mula mendapat rawatan akibat masalah sakit belakang atau tengkuk ? Adakah cuti sakit telah di perolehi, sila nyatakan. Jika dari hospital lain , adakah cuti sakit itu berkaitan dengan masalah sakit belakang atau tengkuk.', 
+            '2_6' => '2.6',
+            'question2_6' => 'Adakah OB hadir bekerja dan dibayar gaji dalam tempoh cuti sakit / Sijil Kerja Ringan.', 
+            '2_7' => '2.7',
+            'question2_7' => 'Nyatakan nama Hospital dimana OB mendapat rawatan', 
+            '2_8' => '2.8',
+            'question2_8' => 'Adakah OB ada menjalani ujian MRI', 
+            '2_9' => '2.9',
+            'question2_9' => 'Adakah majikan ada membuat ujian Penilian Risiko Ergonomic.', 
+            '2_10' => '2.10',
+            'question2_10' => 'Dapatkan maklumat bergambar atau video – cara kerja OB focus kepada Risiko Ergonomik', 
+            '2_11' => '2.11',
+            'question2_11' => 'Sekiranya Penyakit Khidmat  menyebabkan KEMATIAN.',
+            'question2_11a' => 'a)	Bilakah tarikh kematian? ',
+            'question2_11b' => 'b)	Maklumat waris, no telefon / alamat waris? ', 
+            '2_20' => '2.20',
+            'question2_20' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Seperti kemalangan terdahulu , jenis kecederaan, Pejabat Perkeso yang menguruskan kes.', 
 
-            'potential' => 'Potential Not Employment Injury',
-            'session_date' => 'Session Date',
-            'od_decision' => 'OD Decision',
-            'jdk_decision' => 'JDK Decision',
-            'jdk_type' => 'JDK Type',
-            'assessment_type' => 'Assessment Type',
-            'assessment' => 'Assessment(%)',
-            'provisional_enddate' => 'Provisional Assessment End Date',
-            'els' => 'ELS',
-            'remarks' => 'Remarks',
-            'hus_enddate' => 'HUS End Date',
-            'accrual_date' => 'Accrual Date',
-            'provisional_accrual' => 'Provisional Assessment Accrual Date',
-            'final_accrual' => 'Final Assessment Accrual Date',
+             //Question 66
+             '3_1' => '3.1',
+             'question3_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+             '3_2' => '3.2',
+             'question3_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Penyakit Khidmat di terima? Sila nyatakan? ',
+             '3_3' => '3.3',
+             'question3_3' => 'Nyatakan berapa lama masa kerja biasa termasuk kerja lebih masa, OB terdedah pada kerja yang menyebabkan Asma Pekerjaan. Nyatakan cara kerja OB dan  Bahan yang selalu digunakan .',
+             '3_4' => '3.4',
+             'question3_4' => 'Adakah OB pernah bekerja di majikan lain yang mana ia terdedah pada kerja yang menyebabkan Asma Pekerjaan. Nyatakan nama dan alamat majikan terdahulu',
+             '3_5' => '3.5',
+             'question3_5' => 'Bila mula mendapat rawatan akibat masalah sakit Asma Pekerjaan ? Adakah cuti sakit telah di perolehi, sila nyatakan. Jika dari hospital lain , adakah cuti sakit itu berkaitan dengan masalah sakit Asma Pekerjaan.',
+             '3_6' => '3.6',
+             'question3_6' => 'Adakah OB hadir bekerja dan dibayar gaji dalam tempoh cuti sakit / Sijil Kerja Ringan.',
+             '3_7' => '3.7',
+             'question3_7' => 'Nyatakan nama Hospital dimana OB mendapat rawatan',
+             '3_8' => '3.8',
+             'question3_8' => 'Adakah OB ada menjalani ujian Laporan Spiromentry / Lung Function Test ',
+             '3_9' => '3.9',
+             'question3_9' => 'Adakah majikan ada menyimpan bukti pendedahan kepada hazad atau bahan yang terdedah dalam proses kerja',
+             '3_10' => '3.10',
+             'question3_10' => 'Dapatkan maklumat bergambar atau video – cara kerja OB focus kepada Risiko Penyakit Asma Pekerjaan.',
+             '3_11' => '3.11',
+             'question3_11' => 'Sekiranya Penyakit Khidmat menyebabkan KEMATIAN.',
+             'question3_11a' => 'a)	Bilakah tarikh kematian? ',
+             'question3_11a' => 'b)	Maklumat waris, no telefon / alamat waris? ',
+             '3_12' => '3.12',
+             'question3_12' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Seperti kemalangan terdahulu , jenis kecederaan, Pejabat Perkeso yang menguruskan kes.',
 
-            //sao
+             //Question 67
+             '4_1' => '4.1',
+             'question4_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+             '4_2' => '4.2',
+             'question4_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Penyakit Khidmat di terima? Sila nyatakan? ',
+             '4_3' => '4.3',
+             'question4_3' => 'Nyatakan berapa lama masa kerja biasa termasuk kerja lebih masa, OB terdedah pada kerja yang menyebabkan Carpal Tunnel Syndrome. Nyatakan cara kerja OB.',
+             '4_4' => '4.4',
+             'question4_4' => 'Adakah OB pernah bekerja di majikan lain yang mana ia terdedah pada kerja yang menyebabkan Carpal Tunnel Syndrome. Nyatakan nama dan alamat majikan terdahulu',
+             '4_5' => '4.5',
+             'question4_5' => 'Bila mula mendapat rawatan akibat masalah Carpal Tunnel Syndrome? Adakah cuti sakit telah di perolehi, sila nyatakan. Jika dari hospital lain , adakah cuti sakit itu berkaitan dengan masalah Carpal Tunnel Syndrome.',
+             '4_6' => '4.6',
+             'question4_6' => 'Adakah OB hadir bekerja dan dibayar gaji dalam tempoh cuti sakit / Sijil Kerja Ringan.',
+             '4_7' => '4.7',
+             'question4_7' => 'Nyatakan nama Hospital dimana OB mendapat rawatan',
+             '4_8' => '4.8',
+             'question4_8' => 'Adakah OB ada menjalani ujian Nerve Conduction Study (NCS)',
+             '4_9' => '4.9',
+             'question4_9' => 'Adakah majikan ada membuat Penilaian Risiko Ergonomik (ERA).',
+             '4_10' => '4.10',
+             'question4_10' => 'Dapatkan maklumat bergambar atau video – lokasi dan cara kerja OB focus kepada factor risiko ergonomik.',
+             '4_11' => '4.11',
+             'question4_11' => 'Sekiranya Penyakit Khidmat menyebabkan KEMATIAN.',
+             'question4_11a' => 'a)	Bilakah tarikh kematian? ',
+             'question4_11b' => 'b)	Maklumat waris, no telefon / alamat waris?',
+             '4_12' => '4.12',
+             'question4_12' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Seperti kemalangan terdahulu , jenis kecederaan, Pejabat Perkeso yang menguruskan kes.',
+        
+            //Question 68
+            '5_1' => '5.1',
+            'question5_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '5_2' => '5.2',
+            'question5_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Penyakit Khidmat di terima? Sila nyatakan? ',
+            '5_3' => '5.3',
+            'question5_3' => 'Nyatakan berapa lama masa kerja biasa termasuk kerja lebih masa, OB terdedah pada kerja yang menyebabkan Penyakit Kulit Pekerjaan. Nyatakan cara kerja OB dan Bahan yang digunakan.',
+            '5_4' => '5.4',
+            'question5_4' => 'Adakah OB pernah bekerja di majikan lain yang mana ia terdedah pada kerja yang menyebabkan Penyakit Kulit Pekerjaan. Nyatakan nama dan alamat majikan terdahulu',
+            '5_6' => '5.6',
+            'question5_6' => 'Bila mula mendapat rawatan akibat masalah Penyakit Kulit Pekerjaan? Adakah cuti sakit telah di perolehi, sila nyatakan. Jika dari hospital lain , adakah cuti sakit itu berkaitan dengan masalah Penyakit Kulit Pekerjaan.',
+            '5_7' => '5.7',
+            'question5_7' => 'Adakah OB hadir bekerja dan dibayar gaji dalam tempoh cuti sakit / Sijil Kerja Ringan.',
+            '5_8' => '5.8',
+            'question5_8' => 'Nyatakan nama Hospital dimana OB mendapat rawatan',
+            '5_9' => '5.9',
+            'question5_9' => 'Adakah OB ada menjalani  Patch Test ',
+            '5_10' => '5.10',
+            'question5_10' => 'Adakah majikan ada menyimpan bukti pendedahan kepada hazad atau bahan yang terdedah dalam proses kerja',
+            '5_11' => '5.11',
+            'question5_11' => 'Dapatkan maklumat bergambar atau video – cara kerja OB fokus kepada Risiko Penyakit Kulit Pekerjaan.',
+            '5_12' => '5.12',
+            'question5_12' => 'Sekiranya Penyakit Khidmat menyebabkan KEMATIAN.',
+            'question5_12a' => 'a)	Bilakah tarikh kematian?', 
+            'question5_12b' =>  'b)	Maklumat waris, no telefon / alamat waris?',
+            '5_13' => '5.13',
+            'question5_13' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Seperti kemalangan terdahulu , jenis kecederaan, Pejabat Perkeso yang menguruskan kes.',
 
-            'speciality' => 'Speciality',
-            'part_injury' => 'Part of Injury',
-            'location' => 'Appointment Location',
-            'session_date' => 'Session Date',
-            'od_decision' => 'OD Decision',
+            //Question69
+            '6_1' => '6.1',
+            'question6_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '6_2' => '6.2',
+            'question6_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Penyakit Khidmat di terima? Sila nyatakan? ',
+            '6_3' => '6.3',
+            'question6_3' => 'Nyatakan berapa lama masa kerja biasa termasuk kerja lebih masa, OB terdedah pada kerja yang menyebabkan Penyakit Kanser Pekerjaan. Nyatakan cara kerja OB dan Bahan yang digunakan.',
+            '6_5' => '6.5',
+            'question6_5' => 'Adakah OB pernah bekerja di majikan lain yang mana ia terdedah pada kerja yang menyebabkan Penyakit Kanser Pekerjaan. Nyatakan nama dan alamat majikan terdahulu',
+            '6_6' => '6.6',
+            'question6_6' => 'Bila mula mendapat rawatan akibat masalah Penyakit Kanser Pekerjaan? Adakah cuti sakit telah di perolehi, sila nyatakan. Jika dari hospital lain , adakah cuti sakit itu berkaitan dengan masalah Penyakit Kanser Pekerjaan.',
+            '6_7' => '6.7',
+            'question6_7' => 'Adakah OB hadir bekerja dan dibayar gaji dalam tempoh cuti sakit / Sijil Kerja Ringan.',
+            '6_8' => '6.8',
+            'question6_8' => 'Nyatakan nama Hospital dimana OB mendapat rawatan',
+            '6_9' => '6.9',
+            'question6_9' => 'Adakah OB ada menjalani ujian Laporan Spiromentry / Lung Function Test',
+            '6_10' => '6.10',
+            'question6_10' => 'Adakah majikan ada menyimpan bukti pendedahan kepada hazad atau bahan yang terdedah dalam proses kerja.',
+            '6_11' => '6.11',
+            'question6_11' => 'Sekiranya Penyakit Khidmat menyebabkan KEMATIAN.',
+            'question6_11a' => 'a)	Bilakah tarikh kematian? ',
+            'question6_11b' => ' b)	Maklumat waris, no telefon / alamat waris?',
+            '6_12' => '6.12',
+            'question6_12' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Seperti kemalangan terdahulu , jenis kecederaan, Pejabat Perkeso yang menguruskan kes.',
 
-         ],
+             //Question70
+             '7_1' => '7.1',
+             'question7_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+             '7_2' => '7.2',
+             'question7_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Penyakit Khidmat di terima? Sila nyatakan? ',
+             '7_3' => '7.3',
+             'question7_3' => 'Nyatakan berapa lama masa kerja biasa termasuk kerja lebih masa, OB terdedah pada kerja yang menyebabkan Penyakit Paru-paru Pekerjaan. Nyatakan cara kerja OB dan Bahan yang digunakan.',
+             '7_4' => '7.4',
+             'question7_4' => 'Adakah OB pernah bekerja di majikan lain yang mana ia terdedah pada kerja yang menyebabkan Penyakit Paru-paru Pekerjaan. Nyatakan nama dan alamat majikan terdahulu',
+             '7_5' => '7.5',
+             'question7_5' => 'Bila mula mendapat rawatan akibat masalah Penyakit Paru-paru Pekerjaan? Adakah cuti sakit telah di perolehi, sila nyatakan. Jika dari hospital lain , adakah cuti sakit itu berkaitan dengan masalah Penyakit Paru-paru Pekerjaan.',
+             '7_5d' => '7.5',
+             'question7_5d' => 'Adakah OB hadir bekerja dan dibayar gaji dalam tempoh cuti sakit / Sijil Kerja Ringan.',
+             '7_6' => '7.6',
+             'question7_6' => 'Nyatakan nama Hospital dimana OB mendapat rawatan',
+             '7_7' => '7.7',
+             'question7_7' => 'Adakah OB ada menjalani ujian Laporan Spiromentry / Lung Function Test',
+             '7_8' => '7.8',
+             'question7_8' => 'Adakah OB ada menjalani ujian CT Scan / X-Ray dada yang terkini',
+             '7_9' => '7.9',
+             'question7_9' => 'Adakah majikan ada menyimpan bukti pendedahan kepada hazad atau bahan yang terdedah dalam proses kerja.',
+             '7_10' => '7.10',
+             'question7_10' => 'Dapatkan maklumat bergambar atau video – cara kerja OB fokus kepada Risiko Penyakit Paru-paru Pekerjaan.',
+             '7_11' => '7.11',
+             'question7_11' => 'Sekiranya Penyakit Khidmat menyebabkan KEMATIAN.',
+             'question7_11a' => 'a)	Bilakah tarikh kematian? ',
+             'question7_11b' => 'b)	Maklumat waris, no telefon / alamat waris?',
+             '7_12' => '7.12',
+             'question7_12' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Seperti kemalangan terdahulu , jenis kecederaan, Pejabat Perkeso yang menguruskan kes.',
 
-         'od_report' => [
-            
-            'title' => 'OD Report',
-
-            'disease' => 'Disease',
-            'type_illness' => 'Type of Illness',
-            'type_questionbank' => 'Type of Question Bank',
-            'question_bank' => 'Question Bank',
-            'no' => 'No.',
-            'question' => 'Question',
-            'evidence' => 'Evidence',
-            'reference' => 'Reference',
-            'recommendation' => 'Recommendation refer to JDK',
-
-         ],
-
-      ],
-
-      'SAO' => [
-
-         'sao_approval' => [
-            
-            'title' => 'SAO Approval',
-
-            'case_status' => 'Case Status',
-            'question1' => 'Whether the insured person is an employee under the SOCSO Act?',
-            'question2' => 'Whether the insured person is an employee under the SOCSO Act?',
-            'question3' => 'Whether the personal injury is caused by an OD?',
-            'question4' => 'Whether the OD is in the course of his/her employment?',
-            'question5' => 'Whether the OD arised out of his/her employment?',
-            'wrong_benefit' => 'Wrong Benefit Type',
-            'status_scheme' => 'Status Scheme EI Decision',
-            'sao_approval' => 'SAO Approval',
-            'reject_reason' => 'Reject Reason',
-            'close_reason' => 'Close Reason',
-            'approval' => 'Approval Refer to JDK',
-            'mar_opinion' => 'MAR Opinion',
-            'approved_date' => 'Scheme Approved Date',
-            'approved_by' => 'Scheme Approved By',
-            'route' => 'Route',
-
-         ],
-
-         'ms_opinion' => [
-            
-            'title' => 'MS Opinion',
-
-            'opinion_type' => 'Opinion Type',
-            'ms_opinion' => 'MS Opinion',
-
-         ],
-
-         'payment_option' => [
-            
-            'title' => 'Payment Option',
-
-            'huk_payment' => 'HUK Payment Option',
-            'date_payment' => 'Date Payment Option',
-            'updated_by' => 'Updated by',
-            'updated_date' => 'Updated Date',
-            'approved_by' => 'Approved By',
-            'approved_date' => 'Approved Date',
-
-         ],
-
-         'benefit_decision' => [
-            
-            'title' => 'Benefit Management Decision',
-
-            'benefit_date' => 'Benefit Approved Date',
-            'benefit_by' => 'Benefit Approved By',
-            'remarks' => 'Remarks',
-
-         ],
-
-         'overpayment' => [
-            
-            'title' => 'Overpayment Information',
-
-            'reason' => 'Overpayment Reason',
-            'debtor_id' => "Debtor's ID",
-            'period' => 'Overpayment Period',
-
-         ],
+             //Question71
+             '8_1' => '8.1',
+             'question8_1' => 'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+             '8_2' => '8.2',
+             'question8_2' => 'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Penyakit Khidmat di terima? Sila nyatakan? ',
+             '8_3' => '8.3',
+             'question8_3' => 'Nyatakan berapa lama masa kerja biasa termasuk kerja lebih masa, OB terdedah pada kerja yang menyebabkan Rotator Cuff Syndrome . Nyatakan cara kerja OB dan Bahan yang digunakan.',
+             '8_4' => '8.4',
+             'question8_4' => 'Adakah OB pernah bekerja di majikan lain yang mana ia terdedah pada kerja yang menyebabkan Rotator Cuff Syndrome. Nyatakan nama dan alamat majikan terdahulu',
+             '8_5' => '8.5',
+             'question8_5' => 'Bila mula mendapat rawatan akibat masalah Rotator Cuff Syndrome? Adakah cuti sakit telah di perolehi, sila nyatakan. Jika dari hospital lain , adakah cuti sakit itu berkaitan dengan masalah Rotator Cuff Syndrome.',
+             '8_6' => '8.6',
+             'question8_6' => 'Adakah OB hadir bekerja dan dibayar gaji dalam tempoh cuti sakit / Sijil Kerja Ringan.',
+             '8_7' => '8.7',
+             'question8_7' => 'Nyatakan nama Hospital dimana OB mendapat rawatan',
+             '8_8' => '8.8',
+             'question8_8' => 'Adakah OB ada menjalani ujian MRI',
+             '8_9' => '8.9',
+             'question8_9' => 'Adakah majikan ada membuat ujian Penilian Risiko Ergonomic',
+             '8_10' => '8.10',
+             'question8_10' => 'Dapatkan maklumat bergambar atau video – cara kerja OB fokus kepada Rotator Cuff Syndrome',
+             '8_11' => '8.11',
+             'question8_11' => 'Sekiranya Penyakit Khidmat menyebabkan KEMATIAN.',
+             'question8_11a' => 'a)	Bilakah tarikh kematian? ',
+             'question8_11b' => 'b)	Maklumat waris, no telefon / alamat waris?',
+             '8_12' => '8.12',
+             'question8_12' => 'Adakah apa-apa maklumat tambahan yang ingin anda nyatakan? Seperti kemalangan terdahulu , jenis kecederaan, Pejabat Perkeso yang menguruskan kes.',
+            ],
       ],
    ],
 
+    'notice_invalidity' => [
+
+      'PK' => [
+
+      ],
+
+      'SCO' => [
+
+      'investigation_doc' => [
+         //Notice Accident
+         'appendix59' => 'Panduan Soalan Pernyataan Kes ILAT NOTIS KEILATAN SETELAH MENCAPAI UMUR 60 TAHUN (PERATURAN 46, PPAKSP 1971)',
+         'appendix60' => 'Panduan Soalan Pernyataan Kes BANTUAN ILAT (SEK.21 AKSP 1969)',
+         'appendix61' => 'Panduan Soalan Pernyataan Kes ILAT TARIKH MULA MASUK SKIM',
+         'appendix62' => 'Panduan Soalan Pernyataan Kes ILAT Melibatkan Badan Berkanun',
+
+         //Question59
+         '1_1' => '1.1',
+         'question1_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+         '1_2' => '1.2',
+         'question1_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh notis Keilatan? Sila nyatakan?',
+         '1_3' => '1.3',
+         'question1_3' =>  'Adakah OB telah berhenti kerja, nyatakan tarikh. Jika OB masih bekerja setelah mencapai umur 60 tahun ,adakah OB masih menerima Gaji.',
+         '1_4' => '1.4',
+         'question1_4' =>  'Adakah OB menerima gaji bagi 24 bulan sebelum bulan notis keilatan diterima atau sebelum mencapai 60 tahun',
+         '1_5' => '1.5',
+         'question1_5' =>  'Apakah jenis Penyakit yang dihiidapi? ',
+         '1_6' => '1.6',
+         'question1_6' =>  'Bila OB mula mendapat cuti sakit atas penyakit yang dihadapi itu.',
+         '1_7' => '1.7',
+         'question1_7' =>  'Adakah cuti sakit lain di perolehi , selain dari cuti sakit diatas.(Dalam tempoh 6 bulan dari tarikh notis Keilatan)',
+         '1_8' => '1.8',
+         'question1_8' =>  'Sekiranya OB telah mula menjadi Ilat, adakah ia tidak lagi hadir bekerja ?. (Tidak lagi bekerja bermaksud tidak lagi membuat atau menjalankan kerja seperti yang ditetapkan dalam bidang tugasnya walaupun dia masih lagi dalam pekerjaan atau pengajian mana-mana majikan yang mengambilnya bekerja). ',
+         '1_9' => '1.9',
+         'question1_9' =>  'Adakah OB mengambil cuti tanpa gaji yang berpanjangan berikutan penyakitnya',
+         '1_10' => '1.10',
+         'question1_10' =>  'Sekiranya OB tidak hadir bekerja, Adakah ia masih menerima pendapatan. Adakah pendapatan itu dikira gaji oleh majikan atau sebagai satu pemberian ehsan @ sumbangan @ saguhati.',
+         '1_11' => '1.11',
+         'question1_11' =>  'Adakah OB pernah mengemukan notis Keilatan sebelum ini dan nyatakan pejabat yang menguruskannya.',
+         
+          //Question60
+          '2_1' => '2.1',
+          'question2_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+          '2_2' => '2.2',
+          'question2_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Keilatan diterima? Sila nyatakan?',
+          '2_3' => '2.3',
+          'question2_3' =>  'Adakah OB telah berhenti kerja, nyatakan tarikh.',
+          '2_4' => '2.4',
+          'question2_4' =>  'Adakah OB menerima gaji bagi 24 bulan sebelum bulan notis keilatan diterima.',
+          '2_5' => '2.5',
+          'question2_5' =>  'Adakah OB bekerja dan menerima gaji dalam tempoh yang tiada caruman di CPO.',
+          '2_6' => '2.6',
+          'question2_6' =>  'Adakah OB masih bekerja dan menerima Gaji seperti di maklumat Borang 34, tetapi tiada caruman di CPO',
+      
+           //Question61
+           '4_1' => '4.1',
+           'question4_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+           '4_2' => '4.2',
+           'question4_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Keilatan di terima? Sila nyatakan?',
+
+           //Question62
+           '3_1' => '3.1',
+           'question3_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+           '3_2' => '3.2',
+           'question3_2' =>  'Nyatakan status perjawatan  semasa bekerja di Badan Berkanun tersebut.',
+           '3_3' => '3.3',
+           'question3_3' =>  'Nyatakan bila tarikh OB di tawarkan ke jawatan Tetap',
+      ], 
+      ],
+   ],
 
    'notice_death' => [
 
@@ -799,6 +1108,10 @@ return [
             'T_name' => 'Name',
             'T_idno' => 'ID No',
             'M_guardian_info' => 'Guardian Info',
+            
+            // NEW 04/09/2019
+
+            'dependant_available' => 'Dependant Information Available?',
 
          ],
 
@@ -819,7 +1132,7 @@ return [
          'applicant' => [
 
             'title' => 'FPM Information',
-            'claimant_title' => 'Claimant Profile',
+            'claimant_title' => 'Applicant Profile',
 
          ],
 
@@ -863,7 +1176,7 @@ return [
             'total_months_entry_death' => 'Total months between Scheme Entry & Death Date',
             'total_months_contributed' => 'Total Months Contributed',
             'qualifying_condition' => 'Qualifying Condition',
-            'pension' => 'Pension %',
+            'pension' => 'ILT Pension Receiver',
 
          ],
 

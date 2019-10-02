@@ -5,20 +5,22 @@
             <div id="accordion2" role="tablist" class="accordion" >
                     <div class="card">
                             <div class="card-body">
-                                    <h5 class="card-title">@lang('scheme/index.attr.supporting')</h5>
+                                    <h5 class="card-title">@lang('form/scheme.general.collapse.supporting_document.title')</h5>
                                     <!-- upload doc -->
                                     <div class="card m-b-0">
                                             <div class="card-header" role="tab" id="headingOne1">
-                                            <h5 class="mb-0">                           
-                                                    <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#uploadDoc" aria-expanded="true" aria-controls="collapseOne1">
-                                                    <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.upload_documents')</h5>
-                                                    </a>
-                                            </h5>
+                                                <h5 class="mb-0">                           
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#uploadDoc" aria-expanded="true" aria-controls="collapseOne1">
+                                                                <h5 class="card-title"><i class="fa fa-plus"></i> 
+                                                                        @lang('form/scheme.general.collapse.supporting_document.title1')
+                                                                </h5>
+                                                        </a>
+                                                </h5>
                                             </div>
                                             <div id="uploadDoc" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
-                                            <div class="card-body">
-                                                    @include('scheme.general.upload_doc')
-                                            </div>
+                                                <div class="card-body">
+                                                        @include('scheme.general.upload_doc')
+                                                </div>
                                             </div>
                                     </div>
                                     <!-- generated doc -->
@@ -47,7 +49,7 @@
 <script>
     //redirect to specific tab
     $(document).ready(function () {
-    $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
+    //$('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
     });
     
     $(document).ready(function(){

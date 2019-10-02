@@ -25,17 +25,17 @@
                         </div>
                         @endif
                         <div class="row">
-                        	{{-- <div class="col-md-3">
-                        		<div class="form-group">
-                        			<label class="control-label">Employer Code</label>
-                        			<input type="text" class="form-control" name="empcode" value={{$checkaccddate->empcode}} required>
-                        			<div class="input-group-append">
-                        			</div>
-                        		</div>
-                        	</div>
-                        	<div class="form-actions">
-                        		<button type="submit" class="btn btn waves-effect waves-light btn-secondary">Search</button>
-                        	</div> --}}
+                            {{-- <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">Employer Code</label>
+                                    <input type="text" class="form-control" name="empcode" value={{$checkaccddate->empcode}} required>
+                                    <div class="input-group-append">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn waves-effect waves-light btn-secondary">Search</button>
+                            </div> --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/employer.attr.employerCode')</label>
@@ -49,9 +49,9 @@
                                     @endif
                                 </div>
                             </div>
-							{{-- <div class="form-actions">
-                        		<button type="submit" class="btn btn waves-effect waves-light btn-secondary">Search</button>
-                        	</div> --}}
+                            {{-- <div class="form-actions">
+                                <button type="submit" class="btn btn waves-effect waves-light btn-secondary">Search</button>
+                            </div> --}}
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/employer.attr.employerName')</label>

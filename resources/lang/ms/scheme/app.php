@@ -2,10 +2,10 @@
 
 return [
 
-	'profile' => 'Profile Saya',
-	'balance' => 'Baki Saya',
-	'inbox' => 'Peti',
-	'account' => 'Tetapan Akaun',
-	'logout' => 'Log Keluar'
+	'profile' => 'My Profile',
+	'balance' => 'My Balance',
+	'inbox' => 'Inbox',
+	'account' => 'Account Setting',
+	'logout' => 'Logout'
 	
 ];

@@ -5,14 +5,17 @@ $(document).ready(function () {
     var in_employment = document.getElementById("in_employment");
     var ic_more = document.getElementById("ic_more");
 
-    if (noticetype.value == '02' || noticetype.value == '03') {
-        $('#still_employment').show();
-        $('#death_accident').hide();
-    } else if (noticetype.value == '04') {
-        $('#death_accident').show();
-        $('#still_employment').hide();
-        // alert("Hello world");
+    if(noticetype != null){
+        if (noticetype.value == '02' || noticetype.value == '03') {
+            $('#still_employment').show();
+            $('#death_accident').hide();
+        } else if (noticetype.value == '04') {
+            $('#death_accident').show();
+            $('#still_employment').hide();
+            // alert("Hello world");
+        }
     }
+    
     $('select[name=notice_type]').change(function () {
         if (this.value == '02' || this.value == '03') {
             
@@ -74,7 +77,7 @@ $(document).ready(function () {
         
     });
 
-    if (ic_more.value == "2") {
+    if (ic_more != null && ic_more.value == "2") {
         $('#btnnotice').prop("disabled", true);
     } else {
         $('#btnnotice').prop("disabled", false);

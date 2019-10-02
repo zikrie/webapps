@@ -2,32 +2,38 @@
  
 return [
 
-    'title' => 'Maklumat Penuntut',
+	'title' => 'Claimant Profile',
 
     'attr' => [
-        
-        'name' => 'Nama',
-        'relationship' => 'Hubungan dengan OB',
-        'postal_address' => 'Alamat Surat Menyurat',
-        'postcode' => 'Poskod',
-        'state' => 'Negeri',
-        'id_type' => 'Jenis Pengenalan Diri',
-        'id_no' => 'Nombor Pengenalan Diri',
-        'telNo' => 'No. Telefon',
-        'mobileNo' => 'No. Telefon Bimbit',
-        'email' => 'E-mel',
-        'amount' => 'Amaun yang dituntut',
-        'receipt' => 'Resit Perbelanjaan Pengurusan Mayat',
-        'notice_date' => 'Tarikh Notis',
-        'acceptance_stamp' => 'Tarikh Cop Terima',
-        'date' => 'Tarikh',
-        'state_origin' => 'Negeri (Origin)',
-        'city' => 'Bandar (Origin)',
+    	
+        'name' => 'Applicant Name',
+        'relationship' => 'Relationship with Insured Person',
+        'postal_address' => 'Address',
+        'postcode' => 'Postcode',
+        'state' => 'State',
+        'id_type' => 'Identification Type',
+        'id_no' => 'Identification Number',
+        'telNo' => 'Telephone No.',
+        'mobileNo' => 'Mobile No.',
+        'email' => 'Email Address',
+        'amount' => 'Amount',
+        'receipt' => 'Receipt of the Funeral Expenses',
+        'notice_date' => 'Notice Date',
+        'acceptance_stamp' => 'Acceptance Stamp Date',
+        'date' => 'Date',
+        'state_origin' => 'State (Origin)',
+        'city' => 'City (Origin)',
+        'son' => 'Son',
+        'eldest' => 'The eldest',
+        'others' => 'Others',
+        'pobox' => 'P.O Box',
+        'lockedbag' => 'Locked Bag',
+        'wdt' => 'W.D.T',
 
     ],
 
-    'save' => 'Simpan',
-    'cancel' => 'Batal',
-    'clear' => 'Padam',
+    'save' => 'SAVE',
+    'cancel' => 'CANCEL',
+    'clear' => 'CLEAR',
  
 ];

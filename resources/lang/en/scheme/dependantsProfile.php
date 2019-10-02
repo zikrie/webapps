@@ -2,7 +2,7 @@
  
 return [
 
-	'title' => 'Dependant Information',
+	'title' => 'Dependants Info',
 
     'attr' => [
     	
@@ -25,11 +25,10 @@ return [
         'eligibility_start' => 'Eligibility Start Date',
         'eligibility_end' => 'Eligibility End Date',
         'status' => 'Dependant Status',
-        'demised_date' => 'Demised Date',
-        'date_death' => 'Demised Date',
+        'date_death' => 'Date of Death',
         'date_marriedOb' => 'Date Married with Insured Person',
-        'disability_beforeAfter_death' => 'Disability Before of After the Death of Insured Person',
-        'address' => 'Address',
+        'disability_beforeAfter_death' => 'Disability of death day for the Insured Person',
+        'postal_address' => 'Postal Address day for the Insured Person',
         'city' => 'City',
         'state' => 'State',
         'postcode' => 'Postcode',
@@ -39,7 +38,7 @@ return [
         'telephoneNo' => 'Telephone No.',
         'mobileNo' => 'Mobile No.',
         'email' => 'Email Address',
-        'ot_guardian' => 'Is This Dependant Has Guardian?',
+        'ot_guardian' => 'Dependant has guardian?',
         'yes' => 'Yes',
         'no' => 'No',
         'otobdependence' => 'Dependence',
@@ -48,12 +47,15 @@ return [
         'pendingpay' => 'Pending Pay',
         'maritalstatus' => 'Marital Status',
         'address' => 'Address',
-        'still_study' => 'Still Study?',
+        'T_select' => 'Select',
+        'T_name' => 'Name',
+        'T_idno' => 'ID No',
+        'M_guardian_info' => 'Guardian Info',
         
     ],
 
-    'save' => 'SAVE',
-    'cancel' => 'CANCEL',
-    'clear' => 'CLEAR',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    'clear' => 'Clear',
  
 ];
