@@ -9,7 +9,7 @@
                         <div class="row p-t-20">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/caseDetails.attr.caseCategory')</label>
+                                    <label class="control-label">Case Category</label>
                                     <input type="text" name="caseCategory" id="caseCategory" class="form-control" required>
                                 </div>
                             </div>
@@ -17,13 +17,13 @@
                         <div class="row p-t-20">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/caseDetails.attr.scheme_ref_no')</label>
+                                    <label class="control-label">Scheme Ref. No.</label>
                                     <input type="text" name="scheme_ref_no" id="scheme_ref_no" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/caseDetails.attr.typeOfScheme')</label>
+                                    <label class="control-label">Type of Scheme</label>
                                     <input type="text" name="typeOfScheme" id="typeOfScheme" class="form-control" required>
                                 </div>
                             </div>
@@ -31,13 +31,13 @@
                         <div class="row">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/caseDetails.attr.SPIeligible')</label>
+                                    <label class="control-label">SPI Eligible</label>
                                     <input type="text" id="SPIeligible" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/caseDetails.attr.notice_type')</label>
+                                    <label class="control-label">Notice Type</label>
                                     <input type="text" id="notice_type" class="form-control" required>
                                 </div>
                             </div>
@@ -45,13 +45,13 @@
                         <div class="row">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                        <label class="control-label">@lang('scheme/caseDetails.attr.notice_date')</label>
+                                        <label class="control-label"> Notice Date</label>
                                     <input type="date" name="notice_date" id="notice_date" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/caseDetails.attr.accident_date')</label>
+                                    <label class="control-label">Accident Date</label>
                                     <input type="date" name="registrationDate" id="registrationDate" class="form-control">
                                 </div>
                             </div>
@@ -59,13 +59,13 @@
                         <div class="row">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                        <label class="control-label">@lang('scheme/caseDetails.attr.form34_date')</label>
+                                        <label class="control-label">Form 34 Received Date</label>
                                     <input type="date" name="form34_date" id="form34_date" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/caseDetails.attr.registrationDate')</label>
+                                    <label class="control-label">Registration Date</label>
                                     <input type="date" name="registrationDate" id="registrationDate" class="form-control">
                                 </div>
                             </div>
@@ -73,13 +73,13 @@
                         <div class="row">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                        <label class="control-label">@lang('scheme/caseDetails.attr.socsoRegistrationOffice')</label>
+                                        <label class="control-label">SOCSO Registration Office</label>
                                     <input type="text" name="socsoOffice" id="socsoOffice" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/caseDetails.attr.socsoOffice')</label>
+                                    <label class="control-label">SOCSO Office</label>
                                     <input type="text" name="socsoOffice" id="socsoOffice" class="form-control">
                                 </div>
                             </div>

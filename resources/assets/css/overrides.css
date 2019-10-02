@@ -727,3 +727,13 @@ body#login{
   .required {
     color: red;
   }
+  
+  .card .card-title-sub {
+    font-weight: 600;
+    background-color: #98cb5b !important;
+    padding: 14px 15px !important;
+    font-style: italic !important;
+    color: #000 !important;
+    border-bottom: 5px solid #74ad30;
+    box-shadow: #737375 2px 3px 4px 2px !important;
+}

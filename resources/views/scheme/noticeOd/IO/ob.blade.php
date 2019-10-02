@@ -154,9 +154,9 @@
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.dateOfBirth')</label>
                                     @if(!empty($obprofile) && $obprofile->dob !='')
-                                    <input type="date" id="dob" name="dob" value="{{substr($obprofile->dob,0,4)}}-{{substr($obprofile->dob,4,2)}}-{{substr($obprofile->dob,6,2)}}" class="form-control clearFields">
+                                    <input type="date" id="dob" name="dob" value="{{$obprofile->dob}}{{-- {{substr($obprofile->dob,0,4)}}-{{substr($obprofile->dob,4,2)}}-{{substr($obprofile->dob,6,2)}} --}}" class="form-control clearFields">
                                     @elseif(!empty($obformassist) && $obformassist->dob !='')
-                                    <input type="date" id="dob" name="dob" value="{{substr($obformassist->dob,0,4)}}-{{substr($obformassist->dob,4,2)}}-{{substr($obformassist->dob,6,2)}}" class="form-control clearFields">
+                                    <input type="date" id="dob" name="dob" value="{{$obprofile->dob}}{{-- {{substr($obformassist->dob,0,4)}}-{{substr($obformassist->dob,4,2)}}-{{substr($obformassist->dob,6,2)}} --}}" class="form-control clearFields">
                                     @else
                                     <input type="date" id="dob" name="dob" value="" class="form-control clearFields">
                                     @endif
@@ -269,9 +269,9 @@
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.sub_list')</label>
                                     @if(!empty($obprofile) && $obprofile->suboccucodelist != '')
-                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obprofile->suboccupation }}" class="form-control">
+                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obprofile->suboccucodelist }}" class="form-control">
                                     @elseif(!empty($obformassist) && $obformassist->suboccucodelist != '')
-                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obformassist->suboccupation }}" class="form-control">
+                                    <input type="text" id="suboccucodelist" name="suboccucodelist" value="{{ $obformassist->suboccucodelist }}" class="form-control">
                                     @else
                                     <input type="text" id="suboccucodelist" name="suboccucodelist" value="" class="form-control">
                                     @endif

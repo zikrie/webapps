@@ -1,107 +1,157 @@
-<div id="accordion2" role="tablist" class="accordion" >
-     <!-- Ob Form -->
-     <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingOb">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseOb" aria-expanded="false" aria-controls="collapseOb"><h5 class="card-title"><i class="fa fa-plus"></i>
-                @lang('form/scheme.general.collapse.ob.title')</h5>
-                </a>
-            </h6>
-        </div>
-        <div id="collapseOb" class="collapse" role="tabpanel" aria-labelledby="headingOb">
-            <div class="card-body">
-                @include('scheme.general.ob')
-            </div>
-        </div>
-    </div>
-    <!-- Employer Details -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingEmployer">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseEmployer" aria-expanded="false" aria-controls="collapseEmployer">
-                <h5 class="card-title"><i class="fa fa-plus"></i>
-                @lang('form/scheme.general.collapse.employer.title')</h5>
-                </a>
-            </h6>
-        </div>
-        <div id="collapseEmployer" class="collapse" role="tabpanel" aria-labelledby="headingEmployer">
-            <div class="card-body">
-                @include('scheme.general.employer')
-            </div>
-        </div>
-    </div>
-    <!-- employment history -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingOdHist">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#odempOdHist" aria-expanded="false" aria-controls="collapseOne3">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.notice_od.PK.employment_history.title')</h5>
-                </a>
-            </h5>
-        </div>
-        <div id="odempOdHist" class="collapse" role="tabpanel" aria-labelledby="headingOdHist">
-            <div class="card-body">
-                @include('scheme.noticeOd.PK.odEmphistory')
-            </div>
-        </div>
-    </div> 	
-    <!-- od info -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingOdInfo">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#odinfo" aria-expanded="false" aria-controls="collapseOne4">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.notice_od.PK.od_info.title')</h5>
-                </a>
-            </h5>
-        </div>
-        <div id="odinfo" class="collapse" role="tabpanel" aria-labelledby="headingOdInfo">
-            <div class="card-body">
-                @include('scheme.noticeOd.PK.odInformation')
-            </div>
-        </div>
-    </div> 	
-    <!-- mc info -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingMC">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#mcdetails" aria-expanded="false" aria-controls="collapseOne5">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.mc.title')</h5>
-                </a>
-            </h5>
-        </div>
-        <div id="mcdetails" class="collapse" role="tabpanel" aria-labelledby="headingMC">
-            <div class="card-body">
-                @include('scheme.general.mc')
-            </div>
-        </div>
-    </div>
-    <!-- wages info -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingWages">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#wages" aria-expanded="false" aria-controls="collapseOne6">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.wages.title')</h5>
-                </a>
-            </h5>
-        </div>
-        <div id="wages" class="collapse" role="tabpanel" aria-labelledby="headingWages">
-            <div class="card-body">
-                @include('scheme.general.wages')
-            </div>
-        </div>
-    </div> 
-    <!-- socso office -->
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingSocso">
-            <h5 class="mb-0">                           
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#office" aria-expanded="false" aria-controls="collapseOne7">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.socso.title')</h5>
-                </a>
-            </h5>
-        </div>
-        <div id="office" class="collapse" role="tabpanel" aria-labelledby="headingSocso">
-            <div class="card-body">
-                @include('scheme.general.socso')
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <div id="accordion2" role="tablist" class="accordion" >
+                <!-- obform -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne1">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#obform" aria-expanded="true" aria-controls="collapseOne1">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.insured_details')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="obform" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.obForm')
+                        </div>
+                    </div>
+                </div>	
+                <!-- employer -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne2">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#employer" aria-expanded="false" aria-controls="collapseOne2">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.employer_details')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="employer" class="collapse" role="tabpanel" aria-labelledby="headingOne2">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.employerDetails')
+                        </div>
+                    </div>
+                </div>  
+                <!-- employment history -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne3">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#odempinfo" aria-expanded="false" aria-controls="collapseOne3">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.employer_history')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="odempinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne3">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.odEmphistory')
+                        </div>
+                    </div>
+                </div> 	
+                <!-- od info -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne4">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#odinfo" aria-expanded="false" aria-controls="collapseOne4">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.od_information')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="odinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne4">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.odInformation')
+                        </div>
+                    </div>
+                </div> 	
+                <!-- mc info -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne5">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#mcdetails" aria-expanded="false" aria-controls="collapseOne5">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.medical_details')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="mcdetails" class="collapse" role="tabpanel" aria-labelledby="headingOne5">
+                        <div class="card-body">
+                            @include('scheme.general.mc')
+                        </div>
+                    </div>
+                </div>
+                <!-- wages info -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne6">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#wages" aria-expanded="false" aria-controls="collapseOne6">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.wages_details')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="wages" class="collapse" role="tabpanel" aria-labelledby="headingOne6">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.wagesDetails')
+                        </div>
+                    </div>
+                </div> 
+                <!-- socso office -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne7">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#office" aria-expanded="false" aria-controls="collapseOne7">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.preferred_socso')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="office" class="collapse" role="tabpanel" aria-labelledby="headingOne7">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.socsoOffice')
+                        </div>
+                    </div>
+                </div>
+                <!-- bank info -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne8">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#bankinfo" aria-expanded="false" aria-controls="collapseOne8">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.bank_information')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="bankinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne8">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.bankInformation')
+                        </div>
+                    </div>
+                </div> 
+                <!-- certificate -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne9">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#certificate" aria-expanded="false" aria-controls="collapseOne9">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.certificate')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="certificate" class="collapse" role="tabpanel" aria-labelledby="headingOne9">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.certificateEmployer')
+                        </div>
+                    </div>
+                </div> 
+                <!-- bank info -->
+                <div class="card m-b-0">
+                    <div class="card-header" role="tab" id="headingOne10">
+                        <h5 class="mb-0">                           
+                            <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#confirmation" aria-expanded="false" aria-controls="collapseOne10">
+                            <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.confirmation')</h5>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="confirmation" class="collapse" role="tabpanel" aria-labelledby="headingOne10">
+                        <div class="card-body">
+                            @include('scheme.noticeOd.confirmation')
+                        </div>
+                    </div>
+                </div>  
             </div>
         </div>
     </div>

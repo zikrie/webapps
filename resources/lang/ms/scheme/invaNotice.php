@@ -1,0 +1,50 @@
+<?php
+ 
+return [
+  'title'=>'Invalidity Notice',
+    'attr' => [
+
+      'start_date' => 'Invalidity Start Date ',
+      'end_date' => 'Invalidity End Date',
+      'restart_date' => 'Reemployment Start Date',
+      'reend_date' => 'Reemployment End Date',
+      'scheme_entry_date' => 'Scheme Entry Date',
+      'ob_work' => 'Does The Insured Person Is still ',
+      'scheme_entry_age' => 'Age At The Time Of Scheme Entry Date',
+      'notice_entry_age' =>'Age At The Time Of Notice Entry Date',
+      'begin_illness' =>'Age At The Time Of The Illness',
+      'morbid_date' =>'Age On Morbid Dates',
+      'eligibility_age' =>'Eligibility Based On Age On The Date Of Entry Scheme',
+      'statuotary_body' =>'Statuotary Body',
+      'spi_eligible' =>'SPI Eligible',
+      'total_months_notice' =>'Total Months Between Scheme Entry And A Month Before Notice Date',
+      'total_months_morbid' =>'Total Months Between Scheme Entry And A Month Before Morbid Date',
+      'total_months_contribute' =>'Total Month Contributed',
+      'qualifying_ondition' =>'Qualifying Condition',
+      'invalid_date_req' =>'Invalidity Starting Date Requirements',
+      'morbid_date_req' =>'Morbid Starting Date Requirements',
+      'cp_req' =>'Credit Period Request',
+      's56_req' => 'Section 56 Requirement',
+      'about_illness' => 'Modility',
+      'illness_year' => 'The Year Began To Suffer From Illness',
+      'emp_name' => 'Employment Name',
+      'emp_address' => 'Employment Address',
+      'working_period' => 'Working Period',
+      'job' => 'Job',
+      'salary' => 'Monthly Salary (RM)',
+      'meet_age' => 'Meet Age',
+      'not_meet_age' =>'Not Meet Age',
+      'yes'=>'Yes',
+      'no' => 'No',
+      'full' => 'Full',
+      'reduced' => 'Reduced',
+      'full2440' => 'Full (24/40)',
+      'full3660' => 'Full (36/60)',
+      'invalidity_assist' => 'Invalidity Assist',
+      'not_qualified' => 'Not Qualified',
+      'qualified' => 'Qualified',
+       
+    ],
+
+ 
+];

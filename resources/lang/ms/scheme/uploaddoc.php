@@ -2,20 +2,29 @@
  
 return [
 
-	'title' => 'Upload Document',
+'title' => 'Upload Document',
 
     'attr' => [
-    	
-        'docdesc' => 'Penerangan Dokumen',
-        'docpath' => 'Laluan Dokumen',
-        'view' => 'Lihat',
-        'delete' => 'Padam',
-        'remove' => 'Keluarkan',
+    
+        'docdesc' => 'Document Description',
+        'docpath' => 'Document Path',
+        'recvdate' => 'Received Date',
+        'uploaddate' => 'Upload Date',
+        'certify' => 'Certify True',
+        'source' => 'Source of Documents',
+        'doctype' => 'Document Type',
+        'verify' => 'Document Verification',
+        'view' => 'View',
+        'delete' => 'Delete',
+        'remove' => 'Remove',
+        'date' => 'Date',
+        'doc_desc' => 'Document Description',
+        'generated_date' => 'Generated Date',
         
     ],
 
-    'uploadall' => 'Muat Naik Semua',
-    'adddoc' => 'Tambah Dokumen',
-    'clear' => 'Padam',
+    'uploadall' => 'UPLOAD ALL',
+    'adddoc' => 'ADD DOCUMENT',
+    'clear' => 'CLEAR',
  
 ];

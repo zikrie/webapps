@@ -3,9 +3,24 @@
         <div class="card">
             <div class="card-body">
                 <div class="p-20">
-                    <form action="#">
-                        {{-- <h5 class="card-title">@lang('scheme/caseinfo.title')</h5>
-                        <hr> --}}
+                    <form action="preparer" method="POST">
+                      @csrf
+                      @if(Session::get('msgpreparer')) 
+                        <div class="card-footer">
+
+                            <div class="alert alert-warning">
+                                {{Session::get('msgpreparer')}}
+                            </div>
+
+                        </div>
+                        @elseif (!empty($msgpreparer))
+                        <div class="card-footer">
+
+                            <div class="alert alert-warning">
+                                {{$msgpreparer}}
+                            </div>
+                        </div>
+                        @endif
                         <div class="row p-t-20">
                           <div class="col-md-8">
                             <div class="form-group">
