@@ -2,251 +2,132 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <div class="p-20">
-                    <form action="#">
-                       
-                            <div class="row p-t-20">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">Employment Start Date</label>
-                                        <input type="date" name="startDate" id="startDate" class="form-control">
-                                    </div>
-                                </div>
+                <form action="/ilatinfo" id="pensiondetails" method="POST">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <div class="form-body">
+                        {{-- <h5 class="card-title">@lang('scheme/pensionDetails.title')</h5>
+                        <hr> --}}
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">\Employment End Date</label>
-                                        <input type="date" name="endDate" id="endDate" class="form-control">
-                                    </div>
+                        @if(Session::get('messageilat'))
+                        <div class="card-footer">
+
+                            <div class="alert alert-warning">
+                                {{Session::get('messageilat')}}
+                            </div>
+
+                        </div>
+                        @elseif (!empty($messageilat))
+                        <div class="card-footer">
+
+                            <div class="alert alert-warning">
+                                {{$messageilat}}
+                            </div>
+
+                        </div>
+                        @endif
+                        <div class="row p-t-20">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('scheme/pensionDetails.attr.desc')</label>
+
+                                    <span class="required">*</span>
+                                    @if(!empty($ilatinfo) && $ilatinfo->morbiddesc !='')
+                                    {{--<input type="text" value="{{ $ilatinfo->morbiddesc }}"
+                                    name="descriptionmorbidity" id="descriptionmorbidity" class="form-control">--}}
+                                    <textarea name="descriptionmorbidity" id="descriptionmorbidity"
+                                        class="form-control">{{ $ilatinfo->morbiddesc }}</textarea>
+                                    @else
+                                    {{--<input type="text"  name="descriptionmorbidity" id="descriptionmorbidity" class="form-control">--}}
+                                    <textarea name="descriptionmorbidity" id="descriptionmorbidity"
+                                        class="form-control"></textarea>
+                                    @endif
+                                    <!--<small class="form-control-feedback"> This is inline help </small>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-t-12">
+
+                        </div>
+                        <div class="row p-t-12">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">@lang('scheme/pensionDetails.attr.year')</label>
+                                    <span class="required">*</span>
+                                    <select class="form-control" name="year_morbidity" onchange='checkyear()'
+                                        id='year_morbidity'>
+                                        <option></option>
+                                        <?php $curryear = date('Y'); ?>
+                                        @for ($i = $curryear; $i >= 1974; $i--)
+                                        @if (!empty($ilatinfo) && $ilatinfo->morbidyear !='' && $ilatinfo->morbidyear ==
+                                        $i)
+                                        <option value="{{$i}}" selected>{{$i}}</option>
+                                        @else
+                                        <option value="{{$i}}">{{$i}}</option>
+                                        @endif
+                                        @endfor
+
+                                        {{--@if (!empty($ilatinfo) && $ilatinfo->morbidyear !='')
+                                         <option value="{{$ilatinfo->morbidyear}}" hidden
+                                        selected>{{$ilatinfo->morbidyear}}</option>
+
+                                        @endif --}}
+                                    </select>
+                                    <label class="control-label" id='lblerror' style='color:red'></label>
                                 </div>
                             </div>
 
 
-                            <div class="row p-t-20">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.restart_date')</label>
-                                        <input type="date" name="restartDate" id="restartDate" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.reend_date')</label>
-                                        <input type="date" id="reendDate" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row p-t-20">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.scheme_entry_date')</label>
-                                        <input type="date" id="schemeDate" class="form-control">
-                                    </div>
-                                </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="white-space:nowrap"
+                                        class="control-label">@lang('scheme/pensionDetails.attr.date_cessation')</label>
+                                    @if(!empty($ilatinfo) && $ilatinfo->endempdate !='')
+                                    <input type="date"
+                                        value="{{substr($ilatinfo->endempdate,0,4)}}-{{substr($ilatinfo->endempdate,4,2)}}-{{substr($ilatinfo->endempdate,6,2)}}"
+                                        name="dafe_of_cessation" id="date_of_cessation" class="form-control">
+                                    @else
+                                    <input type="date" name="dafe_of_cessation" id="date_of_cessation"
+                                        class="form-control">
+                                    @endif
 
 
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.ob_work')</label>
-                                        <select class="form-control" name="person_working">
-                                            <option value="yes">Yes</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.scheme_entry_age')</label>
-                                        <input type="text" name="schemeAge" id="schemeAge" class="form-control">
-                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <br />
 
-                            <div class="row p-t-20">
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.begin_illness')</label>
-                                        <input type="text" id="beginIllness" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">@lang('scheme/invaNotice.attr.notice_entry_age')</label>
-                                            <input type="text" name="noticeAge" id="noticeAge" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label class="control-label">@lang('scheme/invaNotice.attr.morbid_date')</label>
-                                                <input type="date" id="morbidDate" class="form-control">
-                                            </div>
-                                        </div>
-                            </div>
-
-                            <div class="row p-t-20">
-                                
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.eligibility_age')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.meet_age')</option>
-                                            <option>@lang('scheme/invaNotice.attr.notmeet_age')</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.statuotary_body')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.yes')</option>
-                                            <option>@lang('scheme/invaNotice.attr.no')</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">@lang('scheme/invaNotice.attr.spi_eligible')</label>
-                                            <select class="form-control">
-                                                <option>@lang('scheme/invaNotice.attr.qualified')</option>
-                                                <option>@lang('scheme/invaNotice.attr.not_qualified')</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                
-                            </div>
-
-                            <div class="row p-t-20">
-                             
-
-                                    <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label
-                                                    class="control-label">@lang('scheme/invaNotice.attr.total_months_notice')</label>
-                                                <input type="text" id="totalNoticeDate" class="form-control">
-                                            </div>
-                                        </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label
-                                            class="control-label">@lang('scheme/invaNotice.attr.total_months_morbid')</label>
-                                        <input type="text" id="totalMorbidDate" class="form-control">
-                                    </div>
-                                </div>
-                             
-    
-                            </div>
-
-                            <div class="row p-t-20">
-                                    <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label
-                                                    class="control-label">@lang('scheme/invaNotice.attr.total_months_contribute')</label>
-                                                <input type="text" id="totalMonthContribute" class="form-control">
-                                            </div>
-                                        </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label
-                                            class="control-label">@lang('scheme/invaNotice.attr.qualifying_ondition')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.full')</option>
-                                            <option>@lang('scheme/invaNotice.attr.reduced')</option>
-                                            <option>@lang('scheme/invaNotice.attr.full2440')</option>
-                                            <option>@lang('scheme/invaNotice.attr.full3660')</option>
-                                            <option>@lang('scheme/invaNotice.attr.invalidity_assist')</option>
-                                            <option>@lang('scheme/invaNotice.attr.not_qualified')</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label
-                                            class="control-label">@lang('scheme/invaNotice.attr.total_months_morbid')</label>
-                                        <input type="text" id="totalMorbidDate" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row p-t-20">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.invalid_date_req')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.yes')</option>
-                                            <option>@lang('scheme/invaNotice.attr.no')</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.morbid_date_req')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.yes')</option>
-                                            <option>@lang('scheme/invaNotice.attr.no')</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.cp_req')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.yes')</option>
-                                            <option>@lang('scheme/invaNotice.attr.no')</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row p-t-20">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.s56_req')</label>
-                                        <select class="form-control">
-                                            <option>@lang('scheme/invaNotice.attr.yes')</option>
-                                            <option>@lang('scheme/invaNotice.attr.no')</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.about_illness')</label>
-                                        <input type="text" id="aboutIllness" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/invaNotice.attr.illness_year')</label>
-                                        <input type="text" id="illnessYear" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-
-                           
-
+                    {{--<button type="button" class="btn btn waves-effect waves-light btn-secondary"
+                        id="add_emp_info">Add Employer Information</button>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
+                        <button type="button"class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button>--}}
                             <div class="form-actions">
                                 <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
-                              
                                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>
                                 <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/obform_od'">@lang('button.back')</button>
                             </div>
-
-                    </form>
-
-                </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function checkyear() {
+        var morbidyear = document.getElementById('year_morbidity').value;
+
+        var lblerror = document.getElementById('lblerror');
+        var today = new Date();
+
+        var curryear = today.getFullYear();
+
+        if (morbidyear > curryear) {
+            lblerror.innerHTML = 'Morbid date must not be after current year';
+        } else {
+            lblerror.innerHTML = '';
+        }
+    }
+
+</script>

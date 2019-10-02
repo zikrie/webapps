@@ -10,13 +10,15 @@
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('Perpared By')</label>
-                                    <input type="text" name="scheme_ref_no" id="scheme_ref_no" class="form-control">
+                                    <input type="text" name="scheme_ref_no" id="scheme_ref_no" class="form-control"
+                                        required>
                                 </div>
                             </div>
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('Prepared Date')</label>
-                                    <input type="date" name="prepared_date" id="PreparedDate" class="form-control">
+                                    <input type="date" name="prepared_date" id="PreparedDate" class="form-control"
+                                        required>
                                 </div>
                             </div>
                         </div>

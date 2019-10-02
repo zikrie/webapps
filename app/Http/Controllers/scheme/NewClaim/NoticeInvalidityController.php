@@ -2182,27 +2182,27 @@ public function getConfirmation(&$jsondecodeConfirmation)
 
         //HANNIS
         //return json_encode($jsondecodeEmployer);
-        /*if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
-        {
-            $record = $jsondecodeEmployer->{'record'};
-            if ($record > 0)
-            {
+        // if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
+        // {
+        //     $record = $jsondecodeEmployer->{'record'};
+        //     if ($record > 0)
+        //     {
                 
-                $emprecord = $jsondecodeEmployer->{'emprecord'};
-                if ($record == 1)
-                {
-                    $empcode = $emprecord[0]->{'empcode'};
-                    session(['empcode'=>$empcode]);
-                }
-            }
-            else
-            {
-                $emprecord = null;
-            }
-            //$date = $jsondecodeEmployer->{'data'};
-        }*/
+        //         $emprecord = $jsondecodeEmployer->{'emprecord'};
+        //         if ($record == 1)
+        //         {
+        //             $empcode = $emprecord[0]->{'empcode'};
+        //             session(['empcode'=>$empcode]);
+        //         }
+        //     }
+        //     else
+        //     {
+        //         $emprecord = null;
+        //     }
+        //     //$date = $jsondecodeEmployer->{'data'};
+        // }
 
-        /*$empcert = null;
+        $empcert = null;
         //SYAHIRAH
      
         
@@ -2241,7 +2241,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
             else
             {
                 $confirmation = $jsondecodeConfirmation->{'data'};
-                //return $confirmation;
+                //return $confirmation;jsondecodeEmployer
             }
             
             // if ($record > 0)
@@ -2273,7 +2273,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         //  return $empinfo;
           
         //chg28062019 - send alldoclist to blade
-        return view('scheme.noticeInvalidity.newClaim.SCO.index',['obprofile'=>$obprofile,'state'=>$state, 
+        return view('scheme.noticeInvalidity.newClaim.SCO.beforeSCO.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
             'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
             'empcert'=>$empcert,'bankinfo'=>$bankinfo, 'permanentrep'=>$permanentrep, 'optionbank'=>$optionbank, 

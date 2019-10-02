@@ -24,21 +24,7 @@
     
                             </div>
                             @endif
-                            <div class="row p-t-20">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">@lang('scheme/ob.attr.form_34')</label>
-                                            <input type="date" id="form_34" name="form_34" value="" class="form-control" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label">@lang('scheme/ob.attr.source')</label>
-                                                <input type="text" id="source" name="source" value="" class="form-control" disabled>
-                                            </div>
-                                        </div>
-                                </div>
-
+                
                             <div class="row p-t-20">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -123,19 +109,27 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">@lang('scheme/ob.attr.occupation')</label>
                                         <input class="form-control" type="text" name="occupation" id="occupation" value="">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">@lang('scheme/ob.attr.occupation')</label>
+                                        <input class="form-control" type="text" name="occupation" id="occupation" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label">@lang('scheme/ob.attr.sub_occupation')</label>
                                         <input class="form-control" type="text" name="sub_occupation" id="sub_occupation" value="">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="control-label">@lang('scheme/ob.attr.sub_occupation_list')</label>
                                         <input class="form-control" type="text" name="sub_occupation_list" id="sub_occupation_list" value="">
@@ -208,27 +202,27 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>@lang('scheme/ob.attr.telNo')</label>
                                         <input type="text" id="telno" name="telno" value="" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>@lang('scheme/ob.attr.mobileNo')</label>
                                         <input type="text" id="mobileno" name="mobileno" value="" class="form-control">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>@lang('scheme/ob.attr.email')</label>
                                         <input type="text" id="email" name="email"  value="" class="form-control">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">@lang('scheme/ob.attr.citizen')</label>
                                         {{-- <input type="text" id="citizen" value="@if(!empty($obprofile)){{ $obprofile->nationality }} @endif" class="form-control"> --}}
@@ -243,58 +237,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>@lang('scheme/ob.attr.worker_under')</label>
-                                        <input type="text" id="worker_under" name="worker_under"  value="" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/ob.attr.worker_not_under')</label>
-                                        <input type="date" id="worker_not_under" name="worker_not_under"  value="" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>@lang('scheme/ob.attr.dod')</label>
-                                        <input type="Date" id="dofdeath" name="dofdeath"  value="" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/ob.attr.age_death')</label>
-                                        <input type="text" id="age" name="age"  value="" class="form-control">
-                                 </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/ob.attr.source_death')</label>
-                                        <input type="text" id="source_death" name="source_death"  value="" class="form-control">
-                                 </div>
-                                </div>
-                            </div> --}}
-                            <div class="row">
-                                {{-- <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>@lang('scheme/ob.attr.worker_under')</label>
-                                        <input type="text" id="worker_under" name="worker_under"  value="" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/ob.attr.worker_not_under')</label>
-                                        <input type="date" id="worker_not_under" name="worker_not_under"  value="" class="form-control">
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">@lang('scheme/ob.attr.ssab_decision')</label>
-                                        <input type="text" id="ssab_decision" name="ssab_decision"  value="" class="form-control">
-                                    </div>
-                                </div> --}}
                             </div>
                             <div class="form-actions">
                                 <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>

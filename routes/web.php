@@ -104,15 +104,14 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/branch/{statecode}', 'NewClaim\NoticeAccidentController@getbranchname');
     Route::get('/reftable/{accdwhen}', 'NewClaim\NoticeAccidentController@getaccwhen');
     Route::get('/obform', 'NewClaim\NoticeAccidentController@index');
-    Route::post('/employerdetails_accd', 'CommonController@postEmployer');
+    Route::post('/employerdetails_accd', 'NewClaim\CommonController@postEmployer');
     Route::get('/accdatetime', 'NewClaim\NoticeAccidentController@AccidentDate');
     Route::post('/accidentdatetime', 'NewClaim\NoticeAccidentController@checkAccidentDate');
-    Route::post('/wages', 'NewClaim\NoticeAccidentController@postWages');
+    Route::post('/wagesdetails', 'NewClaim\NoticeAccidentController@postWages');
     Route::post('/certificateemployee', 'NewClaim\NoticeAccidentController@postCertificateEmployee');
 
     //Confirmation & Preview
-   Route::post('/accsave', 'NewClaim\NoticeAccidentController@postConfirmation');
-    // Route::post('/accsave', 'NewClaim\NoticeAccidentController@getPreparerInfo');
+    Route::post('/accsave', 'NewClaim\NoticeAccidentController@postConfirmation');
     Route::get('/preview', 'NewClaim\NoticeAccidentController@Preview');
     Route::post('/accsubmit', 'NewClaim\NoticeAccidentController@Submit');
     Route::post('/back', 'NewClaim\CommonController@BacktoConfirmation');
@@ -126,7 +125,6 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
 
     /* -------------------------- NOTICE ACCIDENT -- SCO ----------------------------- */
     Route::get('/noticeaccident_sco', 'NewClaim\NoticeAccidentController@indexSCO');
-    // Route::post('/preparer', 'NewClaim\NoticeAccidentController@getPreparerInfo');
     Route::post('/obform_sco', 'NewClaim\CommonController@postObForm');
     Route::post('/accidentDetails_sco', 'NewClaim\NoticeAccidentController@postAccident');
     Route::post('/employerdetails_sco', 'NewClaim\CommonController@postEmployer');
