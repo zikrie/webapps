@@ -9,7 +9,7 @@
                                                         <div class="card-header" role="tab" id="headingEleven11">
                                                                 <h6 class="mb-0">                           
                                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseEleven11" aria-expanded="false" aria-controls="collapseEleven11">
-                                                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.recommendation') </h4> </a>
+                                                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.recommendation.title') </h4> </a>
                                                                 </h6>
                                                         </div>
                                                         <div id="collapseEleven11" class="collapse" role="tabpanel" aria-labelledby="headingEleven11">
@@ -38,7 +38,7 @@
                                 <div class="card-header" role="tab" id="headingMCReco">
                                         <h6 class="mb-0">                           
                                                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix6" aria-expanded="false" aria-controls="collapseSix6">
-                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.HUS_info')</h4>
+                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.mc.title1')</h4>
                                                 </a>
                                         </h6>
                                 </div>
