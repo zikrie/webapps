@@ -30,7 +30,7 @@
 <script src="/PERKESO_UI/assets/node_modules/sweetalert/sweetalert.min.js"></script>
 
  <script src="/PERKESO_UI/assets/node_modules/sweetalert/jquery.sweet-alert.custom.js"></script>
- <script src="/PERKESO_UI/assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
+ <!-- <script src="/PERKESO_UI/assets/node_modules/jquery/jquery-3.2.1.min.js"></script> -->
 
  <!--Wave Effects -->
  <script src="/PERKESO_UI/horizontal-nav-fullwidth/dist/js/waves.js"></script>
