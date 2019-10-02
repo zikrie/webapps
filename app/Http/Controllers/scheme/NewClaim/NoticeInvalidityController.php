@@ -2182,27 +2182,27 @@ public function getConfirmation(&$jsondecodeConfirmation)
 
         //HANNIS
         //return json_encode($jsondecodeEmployer);
-        /*if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
-        {
-            $record = $jsondecodeEmployer->{'record'};
-            if ($record > 0)
-            {
+        // if ($jsondecodeEmployer && $jsondecodeEmployer!='')//irina
+        // {
+        //     $record = $jsondecodeEmployer->{'record'};
+        //     if ($record > 0)
+        //     {
                 
-                $emprecord = $jsondecodeEmployer->{'emprecord'};
-                if ($record == 1)
-                {
-                    $empcode = $emprecord[0]->{'empcode'};
-                    session(['empcode'=>$empcode]);
-                }
-            }
-            else
-            {
-                $emprecord = null;
-            }
-            //$date = $jsondecodeEmployer->{'data'};
-        }*/
+        //         $emprecord = $jsondecodeEmployer->{'emprecord'};
+        //         if ($record == 1)
+        //         {
+        //             $empcode = $emprecord[0]->{'empcode'};
+        //             session(['empcode'=>$empcode]);
+        //         }
+        //     }
+        //     else
+        //     {
+        //         $emprecord = null;
+        //     }
+        //     //$date = $jsondecodeEmployer->{'data'};
+        // }
 
-        /*$empcert = null;
+        $empcert = null;
         //SYAHIRAH
      
         
@@ -2241,7 +2241,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
             else
             {
                 $confirmation = $jsondecodeConfirmation->{'data'};
-                //return $confirmation;
+                //return $confirmation;jsondecodeEmployer
             }
             
             // if ($record > 0)
