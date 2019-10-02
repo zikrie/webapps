@@ -3028,7 +3028,7 @@ class NoticeAccidentController extends CommonController
         // dd($response);
         $ioappt = json_decode($response->getContents());
         
-        dd($ioappt);
+        // dd($ioappt);
         
         //$accdwhen=DB::select('Select refcode, descen from reftable where tablerefcode=? order by refcode', ['accdwhen']);
         //return $accdwhen;
