@@ -1,8 +1,9 @@
+@foreach($ioappt as $io)
 <div class="row p-t-20">  
     <div class="col-md-4">
         <div class="form-group">
             <label class="control-label">Date Appointment</label>
-                <input type="date" name="current_date" id="current_date" class="form-control">
+            <input type="date" name="current_date" id="current_date" value="{{ $io->ia_date }}" class="form-control">
         </div>
     </div>
     <div class="col-md-4">
@@ -10,7 +11,7 @@
             <label class="control-label">Time</label>
                 <div class="input-group clockpicker" data-placement="bottom" data-align="top"
                     data-autoclose="true">
-                    <input type="text" class="form-control" name="time" value={{-- {{$checkaccddate->accdtime}} --}}>
+                    <input type="text" class="form-control" name="time" value="{{$io->ia_time}}">
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                     </div>
@@ -22,12 +23,12 @@
     <div class="col-md-4">
         <div class="form-group">
             <label class="control-label">@lang('scheme/appointment.attr.correspondenceAddress')</label>
-            <select class="form-control clearFields" name="category_type">
+            <select class="form-control clearFields" name="category_type" onchange="onLoc(this.options[this.selectedIndex].value)">
                     <!--option value="">@if(!empty($accinfo)){{$accinfo->accwork}} @endif</option-->
                     <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
-                    <option value='' >Employer Premise</option>
-                    <option value='' >Insured Person Premise</option>
-                    <option value='' >Others</option>
+                    <option value="empPremise" >Employer Premise</option>
+                    <option value="obPremise">Insured Person Premise</option>
+                    <option value="others">Others</option>
             </select>
         </div>
     </div>
@@ -36,18 +37,11 @@
     <div class="col-md-12">
         <div class="form-group">
             <label class="control-label">@lang('scheme/appointment.attr.name')</label>
-                <input type="text" name="name" id="name" class="form-control">
+                
+                    <input type="text" name="name" id="name" class="form-control">
         </div>
     </div>
 </div>
-     {{-- <div class="row p-t-20"> --}}
-        {{-- <div class="col-md-6">
-            <div class="form-group">
-                <label class="control-label">@lang('scheme/appointment.attr.interviewee_name')</label>
-                    <input type="text" name="interviewee_name" id="interviewee_name" class="form-control">
-            </div>
-        </div>
-    </div> --}}
 <div class="row p-t-20">
     <div class="col-md-12">
         <div class="form-group">
@@ -163,7 +157,7 @@
         <div class="col-md-4">
         <div class="form-group">
             <label class="control-label">@lang('scheme/appointment.attr.interviewAttendees')</label>
-            <select class="form-control clearFields" name="interviewLocation">
+            <select class="form-control clearFields" name="interviewLocation" onchange="onLoc()">
                     <!--option value="">@if(!empty($accinfo)){{$accinfo->accwork}} @endif</option-->
                     <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
                     <option value='' >Employer </option>
@@ -192,20 +186,20 @@
             <div class="form-group">
                 <label class="control-label">Interview Attendees</label>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="custom_Radio_Employer" name="custom_Radio2" onClick="others_attendes_list()" class="custom-control-input">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_Employer" name="custom_Radio2" onClick="others_attendes_list()" class="custom-control-input">
                         <label class="custom-control-label" for="custom_Radio_Employer">Employer</label>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="custom_Radio_insured_person" name="custom_Radio2" onClick="others_attendes_list()" class="custom-control-input" onclick="recommendationview_no3()">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_insured_person" name="custom_Radio2" onClick="others_attendes_list()" class="custom-control-input" onclick="recommendationview_no3()">
                         <label class="custom-control-label" for="custom_Radio_insured_person">Insured Person</label>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="others_attendess" name="custom_Radio2" onClick="others_attendes_list()" class="custom-control-input" onclick="recommendationview_no3()">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="others_attendess" name="custom_Radio2" onClick="others_attendes_list()" class="custom-control-input" onclick="recommendationview_no3()">
                         <label class="custom-control-label" for="others_attendess">Others</label>
                     </div>
                 </div>
@@ -252,20 +246,20 @@
             <div class="form-group">
                 <label class="control-label">Document to Request </label>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="custom_Radio_document1" name="custom_Radio" onClick="others_document()"  class="custom-control-input">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_document1" name="custom_Radio" onClick="others_document()"  class="custom-control-input">
                         <label class="custom-control-label" for="custom_Radio_document1">Document 1</label>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="custom_Radio_document2" name="custom_Radio" onClick="others_document()" class="custom-control-input" onclick="recommendationview_no3()">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_document2" name="custom_Radio" onClick="others_document()" class="custom-control-input" onclick="recommendationview_no3()">
                         <label class="custom-control-label" for="custom_Radio_document2">Document 2</label>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="document_others" name="custom_Radio" onClick="others_document()" class="custom-control-input" onclick="recommendationview_no3()">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="document_others" name="custom_Radio" onClick="others_document()" class="custom-control-input" onclick="recommendationview_no3()">
                         <label class="custom-control-label" for="document_others">Others</label>
                     </div>
                 </div>
@@ -280,7 +274,7 @@
             </div>
         </div>
     </div>
-
+@endforeach
 <script>
     function others_attendes_list() {
 
@@ -294,7 +288,22 @@
         others_A.style.display = "block";
         } else {
         others_A.style.display = "none";
+        }P
+    }
+
+    function onLoc() {
+        if(name == 'empPremise') {
+            
         }
+        else if(name == 'obPremise'){
+
+        }
+        else if(name == 'others'){
+            
+        }
+        else {
+            
+        } 
     }
 
     function others_document() {

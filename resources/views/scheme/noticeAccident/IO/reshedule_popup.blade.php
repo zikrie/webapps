@@ -208,20 +208,20 @@
             <div class="form-group">
                 <label class="control-label">Interview Attendees</label>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="custom_Radio_Employer1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_Employer1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input">
                         <label class="custom-control-label" for="custom_Radio_Employer1">Employer</label>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="custom_Radio_insured_person1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input" onclick="recommendationview_no3()">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_insured_person1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input" onclick="recommendationview_no3()">
                         <label class="custom-control-label" for="custom_Radio_insured_person1">Insured Person</label>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="others_attendess1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input" onclick="recommendationview_no3()">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="others_attendess1" name="custom_Radio2" onClick="others_attendes_list1()" class="custom-control-input" onclick="recommendationview_no3()">
                         <label class="custom-control-label" for="others_attendess1">Others</label>
                     </div>
                 </div>
@@ -267,22 +267,21 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label class="control-label">Document to Request </label>
-
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="custom_Radio_document11" name="custom_Radio" onClick="others_document1()"  class="custom-control-input">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_document11" name="custom_Radio" onClick="others_document1()"  class="custom-control-input">
                         <label class="custom-control-label" for="custom_Radio_document11">Document 1</label>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="custom_Radio_document21" name="custom_Radio" onClick="others_document1()" class="custom-control-input" onclick="recommendationview_no3()">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="custom_Radio_document21" name="custom_Radio" onClick="others_document1()" class="custom-control-input" onclick="recommendationview_no3()">
                         <label class="custom-control-label" for="custom_Radio_document21">Document 2</label>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                        <input type="checkbox" id="document_others1" name="custom_Radio" onClick="others_document1()" class="custom-control-input" onclick="recommendationview_no3()">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="document_others1" name="custom_Radio" onClick="others_document1()" class="custom-control-input" onclick="recommendationview_no3()">
                         <label class="custom-control-label" for="document_others1">Others</label>
                     </div>
                 </div>

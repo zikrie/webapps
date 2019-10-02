@@ -155,27 +155,73 @@
             </div>
         </div>
     </div>
+    <!-- bank info -->
+    <div class="card m-b-0">
+        <div class="card-header" role="tab" id="headingBank">
+            <h5 class="mb-0">                           
+                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#bankinfo" aria-expanded="false" aria-controls="collapseOne8">
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.bank.title')</h5>
+                </a>
+            </h5>
+        </div>
+        <div id="bankinfo" class="collapse" role="tabpanel" aria-labelledby="headingBank">
+            <div class="card-body">
+                @include('scheme.general.bank')
+            </div>
+        </div>
+    </div> 
+    <!-- certificate -->
+    <div class="card m-b-0">
+        <div class="card-header" role="tab" id="headingCert">
+            <h5 class="mb-0">                           
+                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#certificate" aria-expanded="false" aria-controls="collapseOne9">
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.certification.title')</h5>
+                </a>
+            </h5>
+        </div>
+        <div id="certificate" class="collapse" role="tabpanel" aria-labelledby="headingCert">
+            <div class="card-body">
+                @include('scheme.general.certification')
+            </div>
+        </div>
+    </div> 
+    <!-- bank info -->
+    <div class="card m-b-0">
+        <div class="card-header" role="tab" id="headingConfirm">
+            <h5 class="mb-0">                           
+                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#confirmation" aria-expanded="false" aria-controls="collapseOne10">
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.confirmation.title_confirmation')</h5>
+                </a>
+            </h5>
+        </div>
+        <div id="confirmation" class="collapse" role="tabpanel" aria-labelledby="headingConfirm">
+            <div class="card-body">
+                @include('scheme.general.confirmation')
+            </div>
+        </div>
+    </div>  
 </div>
+
 <!-- Row -->
 
 <script>
-//redirect to specific tab
-$(document).ready(function () {
-$('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
-});
+    //redirect to specific tab
+    $(document).ready(function () {
+    $('#tabMenu a[href="#{{ old('tab') }}"]').tab('show')
+    });
 
-$(document).ready(function(){
-    // Add minus icon for collapse element which is open by default
-    $(".collapse.show").each(function(){
-    $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+    $(document).ready(function(){
+        // Add minus icon for collapse element which is open by default
+        $(".collapse.show").each(function(){
+        $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+        });
+        
+        // Toggle plus minus icon on show hide of collapse element
+        $(".collapse").on('show.bs.collapse', function(){
+        $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+        }).on('hide.bs.collapse', function(){
+        $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+        });
     });
-    
-    // Toggle plus minus icon on show hide of collapse element
-    $(".collapse").on('show.bs.collapse', function(){
-    $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
-    }).on('hide.bs.collapse', function(){
-    $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
-    });
-});
 
 </script>

@@ -19,19 +19,18 @@
                                             <th style='width:8%'>@lang('scheme/appointment.attr.action')</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr data-expanded="true">
+                                       
+                                        <!-- <tr data-expanded="true">
                                             <td><input type="date" name="investigate_date" id="investigate_date" class="form-control"></td>
                                             <td><div class="input-group clockpicker" data-placement="bottom" data-align="top"
                                                 data-autoclose="true">
-                                                <input type="text" class="form-control" name="time" value={{-- {{$checkaccddate->accdtime}} --}}>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                                </div>
+                                                    <input type="text" class="form-control" name="time" value="{{-- {{$checkaccddate->accdtime}} --}}">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td><select class="form-control clearFields" name="interviewLocation">
-                                                    <!--option value="">@if(!empty($accinfo)){{$accinfo->accwork}} @endif</option-->
                                                     <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
                                                     <option value='' >SOCSO Office</option>
                                                     <option value='' >Employer Premise</option>
@@ -46,17 +45,32 @@
                                                 <button type="button"  name="action" id="action" class="btn btn-facebook waves-effect waves-light" type="button"><i class="fas fa-trash"></i> </button>
                                                 <button type="button"  name="action" id="action" class="btn btn-facebook waves-effect waves-light" type="button" data-toggle="modal" data-target="#reshedule_popup" data-whatever="@fat"><i class="fas fa-calendar-alt"></i> </button>
                                                 {{-- <button type="button" name="action" id="action" class="btn btn-facebook waves-effect waves-light" data-toggle="modal" data-target="#reshedule_popup" data-whatever="@fat">Reshedule</button> --}}
-                                             </td>
-                                        </tr>
+                                             </td> -->
+                                        <!-- </tr> -->
+                                        
+                                        <tbody>
+                                            @foreach ($ioappt as $ioappts)
+                                    
+                                                <tr>
+                                                    <td>{{ $ioappts->ia_date }}</td>
+                                                    <td>{{ $ioappts->ia_time }}</td>
+                                                    <td>{{ $ioappts->ia_intvloc }}</td>
+                                                    <td>{{ $ioappts->ia_officerid }}</td>
+                                                    <td><a id='selectdraft' href="" data-toggle="modal" data-target="#reshedule_popup" data-whatever="@fat"><i class="fas fa-calendar-alt"></i></a>
+                                                        <a id="deletedraft" onclick="return confirm('Are you sure want to delete the draft?');" ><i class="fas fa-trash-alt fa-sm"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
+
                                     <div class="form-actions"><br>
                                         <button type="button" name="action" id="action" class="btn btn-facebook waves-effect waves-light" data-toggle="modal" data-target="#appointment_popup" data-whatever="@fat">ADD APPOINTMENT</button>
                                     </div>
                                 </div>
                             </div>
 
-                             {{-- POPUP From Dropdown  --}}
+                            {{-- POPUP From Dropdown  --}}
                             {{-- Appointment --}}
                             <div class="modal fade" id="appointment_popup" tabindex="-1" role="dialog" aria-labelledby="appointmentPopup">
                                 <div class="modal-dialog modal-xl" role="document">
@@ -84,7 +98,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         </div>
                                         <div class="modal-body">
-                                            @include('scheme.noticeAccident.IO.reshedule_popup') 
+                                            @include('scheme.noticeAccident.IO.reshedule_popup')
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>

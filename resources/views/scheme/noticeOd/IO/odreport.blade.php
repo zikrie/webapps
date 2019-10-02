@@ -3,8 +3,8 @@
         <div class="card">
             <div class="card-body">
                 <form action="#">
-                    <h5 class="card-title">@lang('scheme/odreport.title')</h5>
-                    <hr>
+                    {{-- <h5 class="card-title">@lang('scheme/odreport.title')</h5>
+                    <hr> --}}
                         <div class="row p-t-20">
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -107,7 +107,7 @@
                         <div class="form-actions">
                             {{-- <button data-toggle="tab" href="#employer" role="tab" class="btn waves-effect waves-light btn-info" id="btn-nextEmpDetails">@lang('insuredPerson.next')</button> --}}
                             <button type="submit" class="btn waves-effect waves-light btn-success">
-                            @lang('scheme/insuredPerson.save')</button>
+                            @lang('scheme/ob.save')</button>
                             {{-- <button type="button" class="btn waves-effect waves-light btn-info">@lang('insuredPerson.previous')</button> --}}
                         </div>
                     </form>

@@ -370,7 +370,7 @@ class NoticeDeathController extends CommonController
             
            
         }
-
+// dd($bankinfo);
         if ($jsondecodepermanent && $jsondecodepermanent!='')//irina
         {
             $permanentrep = $jsondecodepermanent->{'data'};

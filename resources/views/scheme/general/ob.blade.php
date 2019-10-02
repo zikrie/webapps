@@ -9,7 +9,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label ">@lang('scheme/ob.attr.form34_receivedDate')</label><span class="required">*</span>
-                                    <input type="date" id="form34" name="form34" value="" class="form-control clearFields" required>
+                                <input type="date" id="f34recvdate" name="f34recvdate" value="{{ $obprofile->f34recvdate }}" class="form-control clearFields" required>
                                 </div>
                             </div>
                         </div>
@@ -236,23 +236,6 @@
                                     </select>
                                 </div>
                             </div>
-                            {{-- <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="control-label">@lang('insuredPerson.attr.sub_occupation')</label>
-                                    <select name="suboccupation" id="suboccupation" class="form-control" onchange='fieldchange()'required>
-                                        <option value=""></option>
-                                        @foreach($suboccupation as $so)
-                                        @if (!empty($obprofile) && $obprofile->suboccupation == $so->so_occcode)
-                                        <option value="{{$so->so_occcode}}" selected>{{$so->so_occcode}}</option>
-                                        @elseif (!empty($obformassist) && $obformassist->suboccupation == $so->so_occcode)
-                                        <option value="{{$so->so_occcode}}" selected>{{$so->so_occcode}}</option>
-                                        @else
-                                        <option value="{{$so->so_occcode}}">{{$so->so_occcode}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div> --}}
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/ob.attr.sub_occupation')</label>

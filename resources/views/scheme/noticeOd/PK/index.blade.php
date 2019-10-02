@@ -7,17 +7,17 @@
             
             <ul class="nav customtab" role="tablist" >
                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down"> @lang('scheme/index.attr.claim_info')</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploaddoc" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.upload_documents')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#uploaddoc" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Upload Documents</span></a> </li>
            </ul>
 
            <!-- Nav tabs -->
             <div class="tab-content tabcontent-border">
                 <div class="tab-pane p-20 active" id="claim" role="tabpanel">
-                    @include('Scheme.noticeOd.PK.collapse')
+                    @include('scheme.noticeOd.PK.collapse')
                 </div>
 
                 <div class="tab-pane p-20" id="uploaddoc" role="tabpanel">
-                    @include('Scheme.noticeOd.uploadDocument')
+                    {{-- @include('scheme.general.upload_doc') --}}
                 </div>
             </div>
         </div>
