@@ -13,7 +13,7 @@
         </div>
         <div id="caseinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeInvalidity.newClaim.SCO.beforeSCO.caseinfo')
+                @include('scheme.noticeInvalidity.newClaim.SCO.caseinfo')
             </div>
         </div>
     </div>
@@ -97,7 +97,7 @@
         </div>
         <div id="contri56" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeInvalidity.newClaim.SCO.beforeSCO.contribution56')
+                @include('scheme.noticeInvalidity.newClaim.SCO.contribution56')
             </div>
         </div>
     </div>
