@@ -19,13 +19,13 @@
                     @endif 
                     <input type='hidden' name='caserefno' id='caserefno' value=''>
                     <input type="hidden" name="_token" value="">
-                
+                @foreach($jsondecodepreparer as $jsondecode)
                     <div class="row p-t-20">
                         <!--/span-->
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>@lang('scheme/preparer.attr.preparedBy')</label>
-                                <input type="text" class="form-control clearFields" name="operid"  value="@if (!empty($jsondecodepreparer)){{ $jsondecodepreparer->addby }}@endif" readonly>
+                                <input type="text" class="form-control clearFields" name="operid"  value="@if (!empty($jsondecode)){{ $jsondecode->addby }}@endif" readonly>
                             </div>
                         </div>
                     </div>
@@ -35,10 +35,11 @@
                         <div class="col-md-12 col-lg-4">
                             <div class="form-group">
                                 <label>@lang('scheme/preparer.attr.preparedDate')</label>
-                                <input type="date" class="form-control clearFields" name="origin"  value="@if (!empty($jsondecodepreparer) && $jsondecodepreparer->dateadd!=''){{ (DateTime::createFromFormat('Ymd', $jsondecodepreparer->dateadd))->format('Y-m-d') }}@endif" readonly>
+                                <input type="date" class="form-control clearFields" name="origin"  value="@if (!empty($jsondecode) && $jsondecode->dateadd!=''){{ (DateTime::createFromFormat('Ymd', $jsondecode->dateadd))->format('Y-m-d') }}@endif" readonly>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <div class="form-actions">
                         <button type="submit" name="action" value="Save" class="btn btn waves-effect waves-light btn-success"   >@lang('scheme/noticetype.next')</button>
                     </div> 

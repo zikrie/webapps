@@ -2759,6 +2759,8 @@ class NoticeAccidentController extends CommonController
         $jsondecodepreparer = '';
         $jsondecodepreparer = $this->getPreparerInfo($jsondecodepreparer);
         $jsondecodepreparer =json_decode($jsondecodepreparer);
+
+        // dd($jsondecodepreparer);
      
         
         return view('scheme.noticeAccident.SCO.index', ['obprofile'=>$obprofile,'state'=>$state,
@@ -2779,7 +2781,8 @@ class NoticeAccidentController extends CommonController
        
         $caserefno = session('caserefno');
 
-        $endpoint ='api.com/api/preparerInfo?caserefno='.$caserefno;
+        //$endpoint ='api.com/api/preparerInfo?caserefno='.$caserefno;
+          $endpoint ='webserve.com/api/getpreparerInfo?caserefno='.$caserefno;
       //  dd($endpoint);
 
         
@@ -2790,7 +2793,8 @@ class NoticeAccidentController extends CommonController
         // dd($url);
         $response = $client->get($endpoint)->getBody();
         $content = json_decode($response->getContents());
-        $jsondecodepreparer = $content;
+        // dd($content);
+         $jsondecodepreparer = $content;
 
         return json_encode($jsondecodepreparer);
         // dd($jsondecodepreparer);
@@ -3425,7 +3429,8 @@ class NoticeAccidentController extends CommonController
 		// $url = config('endpoint.url');
         // $url = config('services.endpoint.url');
         
-        $endpoint ='api.com/api/mcinfoo?caserefno='.$caserefno;
+        // $endpoint ='api.com/api/mcinfoo?caserefno='.$caserefno;
+        $endpoint ='webserve.com/api/gethusinfo?caserefno='.$caserefno;
 
 		// dd($url);
 		$response = $client->get( $endpoint)->getBody();
@@ -3495,7 +3500,9 @@ class NoticeAccidentController extends CommonController
             // dd($data);
 
                 // dd($data);
-                $endpoint ='api.com/api/mcinfo';
+                // $endpoint ='api.com/api/mcinfo';
+                $endpoint ='webserve.com/api/husinfo';
+                
                 $options = [
                     'exceptions' => false,
                     'headers' => [
