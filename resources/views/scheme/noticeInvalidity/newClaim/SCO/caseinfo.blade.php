@@ -55,8 +55,7 @@
                             <div class="col-mdcol-md-12 col-lg-3">
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/caseDetails.attr.scheme_ref_no')</label>
-                                    <input type="text" name="scheme_ref_no" id="scheme_ref_no" class="form-control"
-                                        required>
+                                    <input type="text" name="scheme_ref_no" id="scheme_ref_no" class="form-control">
                                 </div>
                             </div>
                             <div class="col-mdcol-md-12 col-lg-3">
@@ -114,7 +113,7 @@
                                                     id="inEmployment1" type="radio" /> Yes</label>
                                         </div>
                                         <div class="col-sm-6 m-b-10">
-                                            <label class="radio-inline m-b-10" onclick=""><input name="InEmployment2"
+                                            <label class="radio-inline m-b-10" onclick=""><input name="InEmployment1"
                                                     id="inEmployment12" type="radio" /> No</label>
                                         </div>
                                     </div>
@@ -131,7 +130,7 @@
                                                     id="accidentPotential1" type="radio" /> Yes</label>
                                         </div>
                                         <div class="col-sm-6 m-b-10">
-                                            <label class="radio-inline m-b-10" onclick=""><input name="AccidentPotential2"
+                                            <label class="radio-inline m-b-10" onclick=""><input name="AccidentPotential1"
                                                     id="accidentPotential2" type="radio" /> No</label>
                                         </div>
                                     </div>
@@ -143,8 +142,7 @@
                                 <div class="form-group">
                                     <label
                                         class="control-label">@lang('scheme/caseDetails.attr.socsoRegistrationOffice')</label>
-                                    <input type="text" name="socsoOffice" id="socsoOffice" class="form-control"
-                                        required>
+                                    <input type="text" name="socsoOffice" id="socsoOffice" class="form-control">
                                 </div>
                             </div>
                             <div class="col-mdcol-md-12 col-lg-3">
