@@ -38,12 +38,14 @@
                                     <table  id="table-medical-details0" class="table table-sm table-bordered" data-toggle-column="first">
                                         <thead>
                                             <tr>
+                                                <th style='width:1%'>@lang('No.')</th>
                                                 <th style='width:20%'>@lang('scheme/ob.attr.id_type')</th> 
                                                 <th style='width:17%'>@lang('scheme/ob.attr.id_no')</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr data-expanded="true" class="workrow">
+                                            <td>1.</td>
                                                 <td>
                                                     <div class="form-group">
                                                     </div>
@@ -238,6 +240,50 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <h5 class="card-title"><i class="fa fa-plus"></i> Case History</h5>
+
+                            <br>
+
+                            <div class='row'>
+                                <div class="col-md-9">
+                                    <table  id="table-medical-details0" class="table table-sm table-bordered" data-toggle-column="first">
+                                        <thead>
+                                            <tr>
+                                                <th style='width:1%'>@lang('No.')</th>
+                                                <th style='width:40%'>@lang('Scheme Ref. No./ Benefit Ref. No.')</th> 
+                                                <th style='width:25%'>@lang('Notice Date')</th>
+                                                <th style='width:20%'>@lang('Status')</th> 
+                                                <th style='width:5%'>@lang('Action')</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-expanded="true" class="workrow">
+                                            <td>1.</td>
+                                                <td>
+                                                    <div class="form-group">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="col-md-12">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>   
+                                </div>
+                            </div>
+
+                            <br>
+                            
                             <div class="form-actions">
                                 <button type="submit" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
                                 <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>

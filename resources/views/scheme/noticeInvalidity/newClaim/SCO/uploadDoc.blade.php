@@ -48,16 +48,16 @@
                                             <thead>
                                                 <tr>
                                                     <th style="display:none;">Doctype </th>
-                                                    <th style="width:5%">@lang('scheme/uploaddoc.attr.docdesc')</th>
-                                                    <th style="width:5%">@lang('scheme/uploaddoc.attr.recvdate')</th>
-                                                    <th style="width:5%">@lang('scheme/uploaddoc.attr.uploaddate')</th>
+                                                    <th style="width:5%">@lang('Document Description')</th>
+                                                    <th style="width:5%">@lang('Received Date')</th>
+                                                    <th style="width:5%">@lang('Upload Date')</th>
                                                     
-                                                    <th style="width:10%">@lang('scheme/uploaddoc.attr.source')</th>
+                                                    <th style="width:10%">@lang('Source Of Documents')</th>
                                                     <th style="width:10%">@lang('Document Type')</th>
-                                                    <th style="width:10%">@lang('scheme/uploaddoc.attr.docpath')</th>
+                                                    <th style="width:10%">@lang('Document Path')</th>
                                                     <th style="width:20%">@lang('Status')</th>
                                                   
-                                                    <th style="width:5%">@lang('scheme/uploaddoc.attr.view')</th>
+                                                    <th style="width:5%">@lang('View')</th>
                                                     {{-- <th>@lang('scheme/uploaddoc.attr.delete')</th>  --}}
 
                                                 </tr>
@@ -84,29 +84,30 @@
                                                     <td><input type="date" class="form-control"></td>
                                                     <td>
                                                         <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                                            <input type="checkbox" class="custom-control-input" id="checkbox[{{$cnt}}" value="check">
-                                                            <label class="custom-control-label" for="checkbox[{{$cnt}}]"></label>
+                                                            <select class="form-control" name="" id="">
+                                                                <option readonly hidden selected>Please Choose</option>
+                                                                <option value="">Online</option>
+                                                                <option value="">Offline</option>
+                                                              
+                                                            </select>
                                                         </div>
                                                     </td> 
                                                     <td>
-                                                        <input type="text" class="form-control">
+                                                            <select class="form-control" name="" id="">
+                                                                    <option readonly hidden selected>Please Choose</option>
+                                                                    <option value="">Copy</option>
+                                                                    <option value="">Original</option>
+                                                                </select>
                                                     </td>
                                                    <td></td>
                                                     <td>
-                                                        <div class="col-md-1">
-                                                            <div class="custom-control custom-radio">
-                                                                <input type="radio" id="customRadioView" name="customRadio" class="custom-control-input">
-                                                                <label class="custom-control-label" for="customRadioView">Viewed</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="custom-control custom-radio">
-                                                                <input type="radio" id="customRadioNot" name="customRadio" class="custom-control-input">
-                                                                <label class="custom-control-label" for="customRadioNot">Not Required</label>
-                                                            </div>
-                                                        </div>
+                                                            <select class="form-control" name="" id="">
+                                                                    <option readonly hidden selected>Please Choose</option>
+                                                                    <option value="">Required</option>
+                                                                    <option value="">Not Required</option>
+                                                                </select>
                                                     </td>
-                                                    <td></td>
+                                                   
                                                     <td><a href='/viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a>
                                                     </td>
@@ -133,12 +134,14 @@
                                                     <td>
                                                         {{-- <input type="text" class="form-control"> --}}
                                                         <select class="form-control" name="" id="">
+                                                                <option readonly hidden selected>Please Choose</option>
                                                             <option value="">Online</option>
                                                             <option value="">Offline</option>
                                                           
                                                         </select>
                                                     </td>
                                                     <td><select class="form-control" name="" id="">
+                                                            <option readonly hidden selected>Please Choose</option>
                                                             <option value="">Copy</option>
                                                             <option value="">Original</option>
                                                         </select>
@@ -153,7 +156,7 @@
                                                     </td> --}}
                                                     <td>
                                                         <select class="form-control" name="" id="">
-                                                            
+                                                                <option readonly hidden selected>Please Choose</option>
                                                             <option value="">Required</option>
                                                             <option value="">Not Required</option>
                                                         </select>
@@ -197,31 +200,41 @@
                                                         <td><input type="date" class="form-control"></td>
                                                         <td><input type="date" class="form-control"></td> 
                                                         <td>
-                                                                <div class="custom-control custom-checkbox mr-sm-2 mb-3">
-                                                                    <input type="checkbox" class="custom-control-input" id="checkbox[{{$cnt}}]" value="check">
-                                                                    <label class="custom-control-label" for="checkbox[{{$cnt}}]"></label>
-                                                                </div>
-                                                            </td>   
-                                                            <td>
-                                                                    <input type="text" class="form-control">
-                                                                </td>
-                                                                <td><input type="date" class="form-control"></td>
-                                                                <td>
-                                                                    <div class="col-md-1">
-                                                                        <div class="custom-control custom-radio">
-                                                                            <input type="radio" id="customRadioView" name="customRadio" class="custom-control-input">
-                                                                            <label class="custom-control-label" for="customRadioView">Viewed</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-1">
-                                                                        <div class="custom-control custom-radio">
-                                                                            <input type="radio" id="customRadioNot" name="customRadio" class="custom-control-input">
-                                                                            <label class="custom-control-label" for="customRadioNot">Not Required</label>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
+                                                                {{-- <input type="text" class="form-control"> --}}
+                                                                <select class="form-control" name="" id="">
+                                                                        <option readonly hidden selected>Please Choose</option>
+                                                                    <option value="">Online</option>
+                                                                    <option value="">Offline</option>
+                                                                  
+                                                                </select>
+                                                            </td>
+                                                            <td><select class="form-control" name="" id="">
+                                                                    <option readonly hidden selected>Please Choose</option>
+                                                                    <option value="">Copy</option>
+                                                                    <option value="">Original</option>
+                                                                </select>
+                                                            </td> 
                                                                 <td></td>
-                                                           
+                                                                <td>
+                                                                        <select class="form-control" name="" id="">
+                                                                                <option readonly hidden selected>Please Choose</option>
+                                                                            <option value="">Required</option>
+                                                                            <option value="">Not Required</option>
+                                                                        </select>
+                                                                        {{-- <div class="col-md-1">
+                                                                            <div class="custom-control custom-radio">
+                                                                                <input type="radio" id="customRadioView" name="customRadio" class="custom-control-input">
+                                                                                <label class="custom-control-label" for="customRadioView">Viewed</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-1">
+                                                                            <div class="custom-control custom-radio">
+                                                                                <input type="radio" id="customRadioNot" name="customRadio" class="custom-control-input">
+                                                                                <label class="custom-control-label" for="customRadioNot">Not Required</label>
+                                                                            </div>
+                                                                        </div> --}}
+                                                                    </td>
+                                                               
 
                                                     <td><a href='/viewdoc?docname={{$d->docname}}'
                                                             target="_blank"><i class="far fa-file-alt"></i></a></td>

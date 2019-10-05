@@ -72,8 +72,6 @@
                                         class="form-control">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="control-label">@lang('Employment End Date')</label>
