@@ -26,75 +26,203 @@
             <select class="form-control clearFields" name="category_type" onchange="onLoc(this.options[this.selectedIndex].value)">
                     <!--option value="">@if(!empty($accinfo)){{$accinfo->accwork}} @endif</option-->
                     <option selected hidden readonly value="please select">@lang('scheme/noticetype.attr.please_select')</option>
-                    <option value="empPremise" >Employer Premise</option>
-                    <option value="obPremise">Insured Person Premise</option>
-                    <option value="others">Others</option>
+                    <option value="01" >Employer Premise</option>
+                    <option value="02">Insured Person Premise</option>
+                    <option value="03">Others</option>
             </select>
         </div>
     </div>
 </div>
-<div class="row p-t-20">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="control-label">@lang('scheme/appointment.attr.name')</label>
-                
-                    <input type="text" name="name" id="name" class="form-control">
+
+<div id="hide_01" class="form-group" style="display:none">
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/appointment.attr.name')</label>
+                <input type="text" name="name" id="name" class="form-control" value="{{ $io->empname }}">
+            </div>
+        </div>
+    </div>
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/appointment.attr.address')</label>
+                    <input type="text" name="address" id="address" class="form-control" value="{{ $io->add1 }}">
+            </div>
+        </div>
+    </div>
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" name="address" id="address" class="form-control" value="{{ $io->add2 }}">
+            </div>
+        </div>
+    </div>
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" name="address" id="address" class="form-control" value="{{ $io->add3 }}">
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>@lang('scheme/ob.attr.postcode')</label>
+                <input type="text" id="postcode" name="postcode" value="{{ $io->add3 }}" class="form-control clearFields">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>@lang('scheme/ob.attr.city')</label>
+                <input type="text" name="city"  value="{{ $io->city }}" class="form-control clearFields" >
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/ob.attr.state')</label>
+                <!--input type="text" name="state" id="state" value="@if(!empty($obcontact)){{ $obcontact->statecode }} @endif" class="form-control"-->
+                <select name='state' id='state' class='form-control'>
+                    <!-- <option value='{{ $io->statecode }}' selected>{{ $io->statecode }}</option> -->
+                    @foreach($state as $s)
+                        <!-- <option value='{{ $io->statecode }}' selected>{{ $s->descen }}</option> -->
+                        @if(!empty($obprofile) && $obprofile->statecode == $s->refcode)
+                        <option value='{{$s->refcode}}' selected>{{$s->descen}}</option>
+                        @else
+                        <option value='{{$s->refcode}}'>{{$s->descen}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
         </div>
     </div>
 </div>
+<div id="hide_02" class="form-group" style="display:none">
 <div class="row p-t-20">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label class="control-label">@lang('scheme/appointment.attr.address')</label>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/appointment.attr.name')</label>
+                <input type="text" name="name" id="name" class="form-control" value="{{ $io->name }}">
+            </div>
+        </div>
+    </div>
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/appointment.attr.address')</label>
+                    <input type="text" name="address" id="address" class="form-control" value="{{ $io->copadd1 }}">
+            </div>
+        </div>
+    </div>
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" name="address" id="address" class="form-control" value="{{ $io->copadd2 }}">
+            </div>
+        </div>
+    </div>
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" name="address" id="address" class="form-control" value="{{ $io->copadd3 }}">
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>@lang('scheme/ob.attr.postcode')</label>
+                <input type="text" id="postcode" name="postcode" value="{{ $io->copadd3 }}" class="form-control clearFields">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>@lang('scheme/ob.attr.city')</label>
+                <input type="text" name="city"  value="{{ $io->cop_city }}" class="form-control clearFields" >
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/ob.attr.state')</label>
+                <!--input type="text" name="state" id="state" value="@if(!empty($obcontact)){{ $obcontact->statecode }} @endif" class="form-control"-->
+                <select name='state' id='state' class='form-control'>
+                    <!-- <option value='{{ $io->statecode }}' selected>{{ $io->statecode }}</option> -->
+                    @foreach($state as $s)
+                        <!-- <option value='{{ $io->statecode }}' selected>{{ $s->descen }}</option> -->
+                        @if(!empty($obprofile) && $obprofile->statecode == $s->refcode)
+                        <option value='{{$s->refcode}}' selected>{{$s->descen}}</option>
+                        @else
+                        <option value='{{$s->refcode}}'>{{$s->descen}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="hide_03" class="form-group" style="display:none">
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/appointment.attr.name')</label>
+                <input type="text" name="name" id="name" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/appointment.attr.address')</label>
+                    <input type="text" name="address" id="address" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
                 <input type="text" name="address" id="address" class="form-control">
+            </div>
         </div>
     </div>
-</div>
-<div class="row p-t-20">
-    <div class="col-md-12">
-        <div class="form-group">
-            {{-- <label class="control-label">@lang('scheme/appointment.attr.address')</label> --}}
+    <div class="row p-t-20">
+        <div class="col-md-12">
+            <div class="form-group">
                 <input type="text" name="address" id="address" class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>@lang('scheme/ob.attr.postcode')</label>
+                <input type="text" id="postcode" name="postcode" value="" class="form-control clearFields">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>@lang('scheme/ob.attr.city')</label>
+                <input type="text" name="city"  value="" class="form-control clearFields" >
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">@lang('scheme/ob.attr.state')</label>
+                <!--input type="text" name="state" id="state" value="@if(!empty($obcontact)){{ $obcontact->statecode }} @endif" class="form-control"-->
+                <select name='state' id='state' class='form-control'>
+                    @foreach($state as $s)
+                    @if(!empty($obprofile) && $obprofile->statecode == $s->refcode)
+                    <option value='{{$s->refcode}}' selected>{{$s->descen}}</option>
+                    @else
+                    <option value='{{$s->refcode}}'>{{$s->descen}}</option>
+                    @endif
+                    @endforeach
+                </select>
+            </div>
         </div>
     </div>
 </div>
-<div class="row p-t-20">
-    <div class="col-md-12">
-        <div class="form-group">
-            {{-- <label class="control-label">@lang('scheme/appointment.attr.address')</label> --}}
-                <input type="text" name="address" id="address" class="form-control">
-        </div>
-    </div>
-</div>
-<div class='row'>
-    <div class="col-md-4">
-        <div class="form-group">
-            <label>@lang('scheme/ob.attr.postcode')</label>
-            <input type="text" id="postcode" name="postcode" value="" class="form-control clearFields">
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-            <label>@lang('scheme/ob.attr.city')</label>
-            <input type="text" name="city"  value="" class="form-control clearFields" >
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-            <label class="control-label">@lang('scheme/ob.attr.state')</label>
-            <!--input type="text" name="state" id="state" value="@if(!empty($obcontact)){{ $obcontact->statecode }} @endif" class="form-control"-->
-            <select name='state' id='state' class='form-control'>
-                @foreach($state as $s)
-                @if(!empty($obprofile) && $obprofile->statecode == $s->refcode)
-                <option value='{{$s->refcode}}' selected>{{$s->descen}}</option>
-                @else
-                <option value='{{$s->refcode}}'>{{$s->descen}}</option>
-                @endif
-                @endforeach
-            </select>
-        </div>
-    </div>
-</div>
+
+
 <div class="row p-t-20">
     <div class="col-md-4">
         <div class="form-group">
@@ -274,7 +402,8 @@
             </div>
         </div>
     </div>
-@endforeach
+@endforeach            
+
 <script>
     function others_attendes_list() {
 
@@ -291,19 +420,30 @@
         }P
     }
 
-    function onLoc() {
-        if(name == 'empPremise') {
-            
-        }
-        else if(name == 'obPremise'){
+    function onLoc(aval){
+
+        if (aval == "01") {
+            $('#hide_01').show();
+            $('#hide_02').hide();
+            $('#hide_03').hide();
+
+        } 
+        else if (aval == "02"){
+            $('#hide_01').hide();
+            $('#hide_02').show();
+            $('#hide_03').hide();
 
         }
-        else if(name == 'others'){
-            
+        else if (aval == "03"){
+            $('#hide_01').hide();
+            $('#hide_02').hide();
+            $('#hide_03').show();
         }
         else {
-            
-        } 
+            $('#hide_01').hide();
+            $('#hide_02').hide();
+            $('#hide_03').hide();
+        }
     }
 
     function others_document() {
