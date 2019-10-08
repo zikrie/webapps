@@ -5,14 +5,6 @@
                 <form action="obform" method="POST" id="reset">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-body">
-                        <div class="row p-t-20">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="control-label ">@lang('scheme/ob.attr.form34_receivedDate')</label><span class="required">*</span>
-                                <input type="date" id="f34recvdate" name="f34recvdate" value="{{ $obprofile->f34recvdate }}" class="form-control clearFields" required>
-                                </div>
-                            </div>
-                        </div>
                         {{-- <h5 class="card-title">@lang('insuredPerson.title')</h5>
                         <hr> --}}
                         @if(Session::get('messageob')) 

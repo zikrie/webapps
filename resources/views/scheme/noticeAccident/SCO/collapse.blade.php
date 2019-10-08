@@ -19,7 +19,7 @@
                                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.prepare')</div>
                                                         </div>
                                                 </div>
-                                        <!-- Case Info-->
+                                                <!-- Case Info-->
                                                 <div class="card m-b-0">
                                                         <div class="card-header" role="tab" id="headingOne1">
                                                                 <h6 class="mb-0">                           

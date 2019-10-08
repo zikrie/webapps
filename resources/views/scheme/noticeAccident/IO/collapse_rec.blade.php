@@ -1,18 +1,25 @@
 <div class="row">
         <div class="col-sm-12">
                 <div class="card">
-                <form class="form"> 
-                        <div class="card m-b-0">
-                                <div class="card-header" role="tab" id="headingEleven100">
-                                        <h6 class="mb-0">                           
-                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseEleven11" aria-expanded="false" aria-controls="collapseEleven11">
-                                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.recommendation') </h4> </a>
-                                        </h6>
-                                </div>
-                                <div id="collapseEleven11" class="collapse" role="tabpanel" aria-labelledby="headingEleven100">
-                                        <div class="card-body">@include('scheme.noticeAccident.SCO.recommendation')</div>
+                <form class="form">     
+                        <div class="row">
+                                <div class="col-sm-12">
+                                        <form class="form">
+                                                <div class="card m-b-0">
+                                                        <div class="card-header" role="tab" id="headingEleven11">
+                                                                <h6 class="mb-0">                           
+                                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseEleven11" aria-expanded="false" aria-controls="collapseEleven11">
+                                                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.recommendation.title') </h4> </a>
+                                                                </h6>
+                                                        </div>
+                                                        <div id="collapseEleven11" class="collapse" role="tabpanel" aria-labelledby="headingEleven11">
+                                                                <div class="card-body">@include('scheme.noticeAccident.IO.recommendation')</div>
+                                                        </div>
+                                                </div>
+                                        </form>
                                 </div>
                         </div>
+                        <!-- Initial Assessment Disabled Details--> 
                         <div class="card m-b-0">
                                 <div class="card-header" role="tab" id="headingEight8">
                                         <h6 class="mb-0">                           
@@ -28,26 +35,26 @@
                                 </div>
                         </div>
                         <div class="card m-b-0">
-                                <div class="card-header" role="tab" id="headingMcIo">
+                                <div class="card-header" role="tab" id="headingMCReco">
                                         <h6 class="mb-0">                           
-                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseMcIo" aria-expanded="false" aria-controls="collapseMcIo">
-                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.HUS_info')</h4>
+                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix6" aria-expanded="false" aria-controls="collapseSix6">
+                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.mc.title1')</h4>
                                                 </a>
                                         </h6>
                                 </div>
-                                <div id="collapseMcIo" class="collapse" role="tabpanel" aria-labelledby="headingMcIo">
+                                <div id="collapseSix6" class="collapse" role="tabpanel" aria-labelledby="headingMCReco">
                                         {{-- <div class="card-body">@include('scheme.noticeAccident.SCO.medicalCertificate_SCO')</div> --}}
                                 </div>
                         </div>
                         <div class="card m-b-0">
-                                <div class="card-header" role="tab" id="headingBankIo">
+                                <div class="card-header" role="tab" id="headingBanK">
                                         <h6 class="mb-0">                           
-                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseBankIo" aria-expanded="false" aria-controls="collapseBankIo">
+                                                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseBank" aria-expanded="false" aria-controls="collapseBank">
                                                         <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.bank_information')</h4>
                                                 </a>
                                         </h6>
                                 </div>
-                                <div id="collapseBankIo" class="collapse" role="tabpanel" aria-labelledby="headingBankIo">
+                                <div id="collapseBank" class="collapse" role="tabpanel" aria-labelledby="headingBanK">
                                         <div class="card-body">@include('scheme.general.bank')</div>
                                 </div>
                         </div>

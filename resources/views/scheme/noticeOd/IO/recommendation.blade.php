@@ -7,11 +7,10 @@
                         <div class="row p-t-20">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/scoRecommend.attr.action')</label>
+                                    <label class="control-label">Action</label>
                                         <select name="dd_recommendation" id="dd_recommendation" class="form-control">
                                             <option value=""  >Please Select</option> 
                                             <option value="recommend"  >Recommend</option> 
-                                            <option value="investigation" >@lang('scheme/scoRecommend.attr.investigation')</option> 
                                             <option value="wrong_benefit_type">Wrong Notice Type</option>
                                             <option value="transfer_case">Case Transfer</option> 
                                             <option value="close">Close</option> 
@@ -48,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="row p-t-20">
-                                <div class="col-md-12 col-lg-12">
+                                <div class="col-md-12 col-lg-8">
                                     <table class="table table-sm table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
@@ -96,7 +95,7 @@
                             <h5 class="card-title-sub"> Occupational Disease Decision </h5>
                             <hr>
                             <div class='row'>
-                                <div class="col-md-12 col-lg-12">
+                                <div class="col-md-12 col-lg-8">
                                     <div class="card">
                                         <table class="table table-sm table-bordered" cellspacing="0" width="100%">
                                             <thead>
@@ -106,20 +105,24 @@
                                                     <th style='width:20%'>Recommend By</th>
                                                     <th style='width:15%'>Role</th>
                                                     <th style='width:8%'>Occupational Disease</th>
-                                                    <th style='width:12%'>@lang('scheme/mc.attr.action')</th>
+                                                    <th style='width:5%'>@lang('scheme/mc.attr.action')</th>
                                                 </tr>
                                             </thead>
                                             <tbody class='align-middle'>
                                                 <tr> 
                                                     <td>1</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td><input type="date" name="recommendation_date" value="" class="form-control" ></td>
+                                                    <td><input type="text" name="recommend_by" value="" class="form-control" ></td>
+                                                    <td><input type="text" name="role" value="" class="form-control" ></td>
+                                                    <td>
+                                                        <select class="form-control" required>
+                                                            <option>@lang('scheme/scoRecommend.attr.yes')</option> 
+                                                            <option>@lang('scheme/scoRecommend.attr.no')</option> 
+                                                        </select>
+                                                    </td>
                                                     <td>
                                                         <div class="col-md-0">
                                                             <button type="button" name="action" id="action" class="btn btn-facebook waves-effect waves-light" data-toggle="modal" data-target="#recommendationview_popup" data-whatever="@fat">View</button>
-                                                            <button type="button" name="action" id="btn_recommendation_update" class="btn btn-facebook waves-effect waves-light" data-toggle="modal" data-target="#recommendation_update" data-whatever="@fat">Update</button>
                                                         </div>
                                                     </td> 
                                                 </tr>
@@ -271,26 +274,6 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
                                         {{-- <button type="submit" class="btn btn-primary">@lang('scheme/accidentDetails.save')</button> --}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{--UPDATE POPUP --}}
-                        <div class="modal fade" id="recommendation_update" tabindex="-1" role="dialog" aria-labelledby="recommendation_update1">
-                            <div class="modal-dialog modal-xl" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header  card-title">
-                                        <h4 class="modal-title" id="recommendation_update1">Employment Injury Decision</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        @include('scheme.noticeOd.SCO.recommendationupdate_popup') 
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
-                                        <button type="submit" class="btn btn-primary">@lang('scheme/accidentDetails.save')</button>
                                     </div>
                                 </div>
                             </div>

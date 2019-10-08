@@ -7,11 +7,11 @@
                         <div class="row p-t-20">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">@lang('scheme/scoRecommend.attr.action')</label>
+                                    <label class="control-label">Action</label>
                                         <select name="dd_recommendation" id="dd_recommendation" class="form-control">
                                             <option value=""  >Please Select</option> 
-                                            <option value="recommend"  >Recommend</option> 
-                                            <option value="investigation" >@lang('scheme/scoRecommend.attr.investigation')</option> 
+                                            <option value="recommend">Recommend</option>
+                                            {{-- <option value="investigation">Investigation</option>   --}}
                                             <option value="wrong_benefit_type">Wrong Notice Type</option>
                                             <option value="transfer_case">Case Transfer</option> 
                                             <option value="close">Close</option> 
@@ -24,77 +24,10 @@
                         </div>
 
                         {{-- Recommend Section --}}
+                        
                         <div  id="viewTable" style="display:none">
-                        {{-- POTENTIALS SECTION --}}
-                        <h5 class="card-title-sub"> Occupational Disease (Fifth Schedule) </h5>
-                        <hr>
-                            <div class="row p-t-20"> 
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="control-label">Listed in  Occupational Disease (5th Schedule)?</label><span class="required">*</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-1">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input customRadio" value="yes">
-                                        <label class="custom-control-label" for="customRadio1">@lang('scheme/scoRecommend.attr.yes')</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-0">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input customRadio" value="no">
-                                        <label class="custom-control-label" for="customRadio2">@lang('scheme/scoRecommend.attr.no')</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row p-t-20">
-                                <div class="col-md-12 col-lg-12">
-                                    <table class="table table-sm table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th style='width:2%'>No</th>
-                                                <th style='width:15%'>Occupational Disease</th>  
-                                                <th style='width:15%'>Causative Agent</th>
-                                                <th style='width:15%'>Reference</th>
-                                                <th style='width:5%'>@lang('scheme/mc.attr.action')</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class='align-middle'>
-                                            <tr> 
-                                                <td>1</td>
-                                                <td><select class="form-control" required>
-                                                        <option>Please Select</option> 
-                                                        <option>@lang('scheme/scoRecommend.attr.yes')</option> 
-                                                        <option>@lang('scheme/scoRecommend.attr.no')</option> 
-                                                    </select>
-                                                </td>
-                                                <td><select class="form-control" required>
-                                                        <option>Please Select</option> 
-                                                        <option>@lang('scheme/scoRecommend.attr.yes')</option> 
-                                                        <option>@lang('scheme/scoRecommend.attr.no')</option> 
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="recommend_by" value="" class="form-control" >
-                                                </td>
-                                                <td>
-                                                    <div class="col-md-0">
-                                                        <button type="button" name="action" id="action" class="btn btn-facebook waves-effect waves-light" data-toggle="modal"  data-whatever="@fat">Reset</button>
-                                                    </div>
-                                                </td> 
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-8">
-                                <div class="form-group">
-                                    <label class="control-label">Remarks</label>
-                                    <textarea type="text" name="reason_reject" id="reason_reject" row="2"  class="form-control"></textarea>
-                                </div>
-                            </div>
-                            <h5 class="card-title-sub"> Occupational Disease Decision </h5>
-                            <hr>
+                                <h5 class="card-title-sub"> Recommendation </h5>
+                                <hr>
                             <div class='row'>
                                 <div class="col-md-12 col-lg-12">
                                     <div class="card">
@@ -105,7 +38,7 @@
                                                     <th style='width:8%'>Recommendation Date</th>  
                                                     <th style='width:20%'>Recommend By</th>
                                                     <th style='width:15%'>Role</th>
-                                                    <th style='width:8%'>Occupational Disease</th>
+                                                    <th style='width:8%'>Employment Injury</th>
                                                     <th style='width:12%'>@lang('scheme/mc.attr.action')</th>
                                                 </tr>
                                             </thead>
@@ -131,18 +64,45 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-2">
-                                <div class="form-group">
-                                    <label class="control-label">Occupational Disease</label>
-                                        <input type="text" name="employment_injury" id="employment_injury1" class="form-control" disabled>
+                            {{-- <div class="row p-t-20"> --}}
+                                <div class="col-md-12 col-lg-2">
+                                    <div class="form-group">
+                                        <label class="control-label">Employment Injury</label>
+                                            <input type="text" name="employment_injury" id="employment_injury1" class="form-control" disabled>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label">Reason reject</label>
-                                        <textarea type="text" name="reason_reject" id="reason_reject" row="2"  class="form-control" disabled></textarea>
+                            {{-- </div>     --}}
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Reason reject</label>
+                                            <textarea type="text" name="reason_reject" id="reason_reject" row="2"  class="form-control" disabled></textarea>
+                                    </div>
                                 </div>
-                            </div>
+                            
+
+                            {{-- POTENTIALS SECTION--}}
+                            <h5 class="card-title-sub"> Potentials </h5>
+                            <hr>
+                                <div class="row p-t-20">
+                                    <div class="col-md-12 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Potential HUK</label>
+                                                <select class="form-control">
+                                                    <option></option> 
+                                                    <option></option> 
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Potential Invalidity</label>
+                                                <select class="form-control">
+                                                    <option></option> 
+                                                    <option></option> 
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                             
                         {{-- WRONG NOTICE TYPE SECTION--}}
@@ -245,7 +205,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        @include('scheme.noticeAccident.SCO.recommendation_popup') 
+                                        @include('scheme.noticeAccident.IO.recommendation_popup') 
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
@@ -254,9 +214,8 @@
                                 </div>
                             </div>
                         </div> 
-                        {{-- End POPUP From Dropdown  --}}
 
-                        {{--View POPUP --}}
+                        {{--VIEW POPUP --}}
                         <div class="modal fade" id="recommendationview_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel0">
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
@@ -265,7 +224,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        @include('scheme.noticeAccident.SCO.recommendationview_popup') 
+                                        @include('scheme.noticeAccident.IO.recommendationview_popup') 
                                     </div>
 
                                     <div class="modal-footer">
@@ -285,7 +244,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        @include('scheme.noticeOd.SCO.recommendationupdate_popup') 
+                                        @include('scheme.noticeAccident.IO.recommendationupdate_popup') 
                                     </div>
 
                                     <div class="modal-footer">

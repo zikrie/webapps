@@ -3064,9 +3064,9 @@ class NoticeAccidentController extends CommonController
         //return $accdwhen;
 
         //mat 20191001:1101
-        $url = config('services.endpoint.url');
-        // $endpoint ='http://127.0.0.1:8000/api/admin/branch';
-        $caseref = "201907240012";
+        // $url = config('services.endpoint.url');
+        // // $endpoint ='http://127.0.0.1:8000/api/admin/branch';
+        // $caseref = "201907240012";
         // dd($url);
         // $options = [
         // 	'headers' => [
@@ -3079,11 +3079,11 @@ class NoticeAccidentController extends CommonController
         // ];
         // dd($options);
 
-        $client = new Client();
+        // $client = new Client();
         
-        $response = $client->get($url.'/ioappointment?ia_caserefno='.$caseref)->getBody();
-        // dd($response);
-        $ioappt = json_decode($response->getContents());
+        // $response = $client->get($url.'/ioappointment?ia_caserefno='.$caseref)->getBody();
+        // // dd($response);
+        // $ioappt = json_decode($response->getContents());
 
         
         return view('scheme.noticeAccident.IO.index', ['obprofile'=>$obprofile,'state'=>$state,
@@ -3096,7 +3096,7 @@ class NoticeAccidentController extends CommonController
             'causative'=>$causative,'accdcode'=>$accdcode,'industcode'=>$industcode, 'profcode'=>$profcode, 'worksts'=>$worksts,
             'mcdata'=>$mcdata,'caserefno'=>$caserefno, 'accdrefno'=>$accdrefno, 'doclist'=>$doclist, 'emptype'=>$emptype,
             'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,
-            'doclist_select'=>$alldoclist, 'occucode'=>$occucode,'ioappt'=>$ioappt->data]);
+            'doclist_select'=>$alldoclist, 'occucode'=>$occucode]);
     }
     // public function indexIO()
     // {

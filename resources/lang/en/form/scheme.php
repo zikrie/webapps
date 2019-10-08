@@ -15,7 +15,8 @@ return [
          'recommendation' => ' Recommendation',
          'supporting_document' => 'Supporting Document',
          'query_opinion' => 'Query and Opinion',
-         'inconsistenct_info' => 'Inconsistent Information',
+         'investigation' => 'Investigation',
+         'medical_board' => 'Medical Board Decision',
 
       ],
 
@@ -76,6 +77,9 @@ return [
 
          ],
 
+         'employer_history' => [
+            'title' => 'Employer History',
+         ],
          'wages' => [
 
             'title' => 'Wages Information',
@@ -112,7 +116,7 @@ return [
 
          'socso' => [
 
-            'title' => 'Preferred SOCSO',
+            'title' => 'SOCSO Office',
 
          ],
 
@@ -191,7 +195,7 @@ return [
 
          'certification' => [
 
-            'title' => 'Employer Certification',
+            'title' => 'Certification By Employer',
 
             'details' => 'I hereby certify to the best of my knowledge and belief that all particulars given are true.',
             'sign' => 'Signature',
@@ -286,13 +290,18 @@ return [
 
          'investigation' => [
 
-            'title' => 'Investigation Document',
+            'title' => 'Investigation Documents',
 
          ],
 
          'case_fact' => [
 
             'title' => 'Case Fact',
+         ],
+
+         'od_info' => [
+
+            'title' => 'OD Info',
          ],
 
          'recommendation' => [
@@ -302,7 +311,7 @@ return [
 
          'inconsistent' => [
 
-            'title' => 'Inconsistent Information',
+            'title' => 'Inconsistency and Doubtful Info',
             'add_item' => 'Add Item',
             'section' => 'Section',
             'item' => 'Item',
@@ -329,12 +338,21 @@ return [
 
          ],
 
+         'statement' => [
+            'title' => 'Statement',
+         ],
          'investigation_assistant' => [
 
             'title' => 'Investigation Assistant',
             'sender_note' => 'Sender Note',
             'office' => 'Office',
             'notes' => "Recipient's Notes",
+
+         ],
+
+         'appointment' => [
+
+            'title' => 'Appointment',
 
          ],
 
@@ -726,12 +744,21 @@ return [
 
       ],
 
+      'IO' => [
+         'appointment' => [
+               'title' => 'Appointment'            
+         ],
+      ],
+
    ],
 
    'notice_od' => [
 
       'PK' => [
 
+         'medical_decision' => [
+            'title' => 'Medical Board Decision',
+         ],
       ],
 
       'SCO' => [
@@ -978,7 +1005,7 @@ return [
       ],
    ],
 
-    'notice_invalidity' => [
+   'notice_invalidity' => [
 
       'PK' => [
 
@@ -986,65 +1013,65 @@ return [
 
       'SCO' => [
 
-      'investigation_doc' => [
-         //Notice Accident
-         'appendix59' => 'Panduan Soalan Pernyataan Kes ILAT NOTIS KEILATAN SETELAH MENCAPAI UMUR 60 TAHUN (PERATURAN 46, PPAKSP 1971)',
-         'appendix60' => 'Panduan Soalan Pernyataan Kes BANTUAN ILAT (SEK.21 AKSP 1969)',
-         'appendix61' => 'Panduan Soalan Pernyataan Kes ILAT TARIKH MULA MASUK SKIM',
-         'appendix62' => 'Panduan Soalan Pernyataan Kes ILAT Melibatkan Badan Berkanun',
+         'investigation_doc' => [
+            //Notice Accident
+            'appendix59' => 'Panduan Soalan Pernyataan Kes ILAT NOTIS KEILATAN SETELAH MENCAPAI UMUR 60 TAHUN (PERATURAN 46, PPAKSP 1971)',
+            'appendix60' => 'Panduan Soalan Pernyataan Kes BANTUAN ILAT (SEK.21 AKSP 1969)',
+            'appendix61' => 'Panduan Soalan Pernyataan Kes ILAT TARIKH MULA MASUK SKIM',
+            'appendix62' => 'Panduan Soalan Pernyataan Kes ILAT Melibatkan Badan Berkanun',
 
-         //Question59
-         '1_1' => '1.1',
-         'question1_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
-         '1_2' => '1.2',
-         'question1_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh notis Keilatan? Sila nyatakan?',
-         '1_3' => '1.3',
-         'question1_3' =>  'Adakah OB telah berhenti kerja, nyatakan tarikh. Jika OB masih bekerja setelah mencapai umur 60 tahun ,adakah OB masih menerima Gaji.',
-         '1_4' => '1.4',
-         'question1_4' =>  'Adakah OB menerima gaji bagi 24 bulan sebelum bulan notis keilatan diterima atau sebelum mencapai 60 tahun',
-         '1_5' => '1.5',
-         'question1_5' =>  'Apakah jenis Penyakit yang dihiidapi? ',
-         '1_6' => '1.6',
-         'question1_6' =>  'Bila OB mula mendapat cuti sakit atas penyakit yang dihadapi itu.',
-         '1_7' => '1.7',
-         'question1_7' =>  'Adakah cuti sakit lain di perolehi , selain dari cuti sakit diatas.(Dalam tempoh 6 bulan dari tarikh notis Keilatan)',
-         '1_8' => '1.8',
-         'question1_8' =>  'Sekiranya OB telah mula menjadi Ilat, adakah ia tidak lagi hadir bekerja ?. (Tidak lagi bekerja bermaksud tidak lagi membuat atau menjalankan kerja seperti yang ditetapkan dalam bidang tugasnya walaupun dia masih lagi dalam pekerjaan atau pengajian mana-mana majikan yang mengambilnya bekerja). ',
-         '1_9' => '1.9',
-         'question1_9' =>  'Adakah OB mengambil cuti tanpa gaji yang berpanjangan berikutan penyakitnya',
-         '1_10' => '1.10',
-         'question1_10' =>  'Sekiranya OB tidak hadir bekerja, Adakah ia masih menerima pendapatan. Adakah pendapatan itu dikira gaji oleh majikan atau sebagai satu pemberian ehsan @ sumbangan @ saguhati.',
-         '1_11' => '1.11',
-         'question1_11' =>  'Adakah OB pernah mengemukan notis Keilatan sebelum ini dan nyatakan pejabat yang menguruskannya.',
+            //Question59
+            '1_1' => '1.1',
+            'question1_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '1_2' => '1.2',
+            'question1_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh notis Keilatan? Sila nyatakan?',
+            '1_3' => '1.3',
+            'question1_3' =>  'Adakah OB telah berhenti kerja, nyatakan tarikh. Jika OB masih bekerja setelah mencapai umur 60 tahun ,adakah OB masih menerima Gaji.',
+            '1_4' => '1.4',
+            'question1_4' =>  'Adakah OB menerima gaji bagi 24 bulan sebelum bulan notis keilatan diterima atau sebelum mencapai 60 tahun',
+            '1_5' => '1.5',
+            'question1_5' =>  'Apakah jenis Penyakit yang dihiidapi? ',
+            '1_6' => '1.6',
+            'question1_6' =>  'Bila OB mula mendapat cuti sakit atas penyakit yang dihadapi itu.',
+            '1_7' => '1.7',
+            'question1_7' =>  'Adakah cuti sakit lain di perolehi , selain dari cuti sakit diatas.(Dalam tempoh 6 bulan dari tarikh notis Keilatan)',
+            '1_8' => '1.8',
+            'question1_8' =>  'Sekiranya OB telah mula menjadi Ilat, adakah ia tidak lagi hadir bekerja ?. (Tidak lagi bekerja bermaksud tidak lagi membuat atau menjalankan kerja seperti yang ditetapkan dalam bidang tugasnya walaupun dia masih lagi dalam pekerjaan atau pengajian mana-mana majikan yang mengambilnya bekerja). ',
+            '1_9' => '1.9',
+            'question1_9' =>  'Adakah OB mengambil cuti tanpa gaji yang berpanjangan berikutan penyakitnya',
+            '1_10' => '1.10',
+            'question1_10' =>  'Sekiranya OB tidak hadir bekerja, Adakah ia masih menerima pendapatan. Adakah pendapatan itu dikira gaji oleh majikan atau sebagai satu pemberian ehsan @ sumbangan @ saguhati.',
+            '1_11' => '1.11',
+            'question1_11' =>  'Adakah OB pernah mengemukan notis Keilatan sebelum ini dan nyatakan pejabat yang menguruskannya.',
+            
+            //Question60
+            '2_1' => '2.1',
+            'question2_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '2_2' => '2.2',
+            'question2_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Keilatan diterima? Sila nyatakan?',
+            '2_3' => '2.3',
+            'question2_3' =>  'Adakah OB telah berhenti kerja, nyatakan tarikh.',
+            '2_4' => '2.4',
+            'question2_4' =>  'Adakah OB menerima gaji bagi 24 bulan sebelum bulan notis keilatan diterima.',
+            '2_5' => '2.5',
+            'question2_5' =>  'Adakah OB bekerja dan menerima gaji dalam tempoh yang tiada caruman di CPO.',
+            '2_6' => '2.6',
+            'question2_6' =>  'Adakah OB masih bekerja dan menerima Gaji seperti di maklumat Borang 34, tetapi tiada caruman di CPO',
          
-          //Question60
-          '2_1' => '2.1',
-          'question2_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
-          '2_2' => '2.2',
-          'question2_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Keilatan diterima? Sila nyatakan?',
-          '2_3' => '2.3',
-          'question2_3' =>  'Adakah OB telah berhenti kerja, nyatakan tarikh.',
-          '2_4' => '2.4',
-          'question2_4' =>  'Adakah OB menerima gaji bagi 24 bulan sebelum bulan notis keilatan diterima.',
-          '2_5' => '2.5',
-          'question2_5' =>  'Adakah OB bekerja dan menerima gaji dalam tempoh yang tiada caruman di CPO.',
-          '2_6' => '2.6',
-          'question2_6' =>  'Adakah OB masih bekerja dan menerima Gaji seperti di maklumat Borang 34, tetapi tiada caruman di CPO',
-      
-           //Question61
-           '4_1' => '4.1',
-           'question4_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
-           '4_2' => '4.2',
-           'question4_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Keilatan di terima? Sila nyatakan?',
+            //Question61
+            '4_1' => '4.1',
+            'question4_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '4_2' => '4.2',
+            'question4_2' =>  'Adakah OB pernah bekerja dengan majikan lain 6 bulan ke belakang sebelum tarikh Notis Keilatan di terima? Sila nyatakan?',
 
-           //Question62
-           '3_1' => '3.1',
-           'question3_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
-           '3_2' => '3.2',
-           'question3_2' =>  'Nyatakan status perjawatan  semasa bekerja di Badan Berkanun tersebut.',
-           '3_3' => '3.3',
-           'question3_3' =>  'Nyatakan bila tarikh OB di tawarkan ke jawatan Tetap',
-      ], 
+            //Question62
+            '3_1' => '3.1',
+            'question3_1' =>  'Nyatakan jawatan, tarikh mula kerja , senarai tugas OB dan kaedah pembayaran gaji.',
+            '3_2' => '3.2',
+            'question3_2' =>  'Nyatakan status perjawatan  semasa bekerja di Badan Berkanun tersebut.',
+            '3_3' => '3.3',
+            'question3_3' =>  'Nyatakan bila tarikh OB di tawarkan ke jawatan Tetap',
+         ], 
       ],
    ],
 

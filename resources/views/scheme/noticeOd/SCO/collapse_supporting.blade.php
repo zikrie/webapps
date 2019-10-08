@@ -1,7 +1,7 @@
 <div id="accordion2" role="tablist" class="accordion" >
     <div class="card">
         <div class="card-body">
-        <h5 class="card-title">@lang('scheme/index.attr.supporting')</h5>
+        {{-- <h5 class="card-title">@lang('scheme/index.attr.supporting')</h5> --}}
             <!-- preparer -->
             <div class="card m-b-0">
                 <div class="card-header" role="tab" id="headingOne1">
