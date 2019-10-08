@@ -124,7 +124,7 @@
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#aidWages" aria-expanded="false"
                     aria-controls="collapseOne1">
                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                        @lang('Invalidity Wages ')</h4>
+                        @lang('scheme/index.attr.aid_wages')</h4>
                 </a>
             </h5>
         </div>
@@ -188,7 +188,7 @@
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#socso" aria-expanded="false"
                     aria-controls="collapseOne1">
                     <h4 class="card-title"><i class="fa fa-plus"></i>
-                        @lang('SOCSO Office')</h4>
+                        @lang('scheme/index.attr.social_developing')</h4>
                 </a>
             </h5>
         </div>
@@ -303,39 +303,7 @@
         </div>
         <div id="schemeQualifying" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeInvalidity.newClaim.SCO.scheme_qualifying')
-            </div>
-        </div>
-    </div>
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="accInfo">
-            <h5 class="mb-0">
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#acc_Info" aria-expanded="false"
-                    aria-controls="collapseOne1">
-                    <h4 class="card-title"><i class="fa fa-plus"></i>
-                        @lang('Accident Information')</h4>
-                </a>
-            </h5>
-        </div>
-        <div id="acc_Info" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
-            <div class="card-body">
-                @include('scheme.noticeInvalidity.newClaim.SCO.acc_info')
-            </div>
-        </div>
-    </div>
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="inconsistent">
-            <h5 class="mb-0">
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#incon" aria-expanded="false"
-                    aria-controls="collapseOne1">
-                    <h4 class="card-title"><i class="fa fa-plus"></i>
-                        @lang('Inconsistent and Doubtful Info')</h4>
-                </a>
-            </h5>
-        </div>
-        <div id="incon" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
-            <div class="card-body">
-                @include('scheme.noticeInvalidity.newClaim.SCO.inconsistent')
+                @include('scheme.noticeInvalidity.newClaim.SCO.beforeSCO.scheme_qualifying')
             </div>
         </div>
     </div>

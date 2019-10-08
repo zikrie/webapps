@@ -151,6 +151,8 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
 
     /* --------------------------- NOTICE ACCIDENT -- IO --------------------------- */
     Route::get('/noticeaccident_io', 'NewClaim\NoticeAccidentController@indexIO');
+    Route::post('/noticeaccident_io/addappointment', 'NewClaim\NoticeAccidentController@storeAppt')->name('addappt');
+    Route::post('/noticeaccident_io/updateappointment', 'NewClaim\NoticeAccidentController@rescheduleAppt')->name('rescheduleappt');
     /* ---------------------------END OF NOTICE ACCIDENT -- IO ---------------------- */
 
     /* -------------------------- NOTICE ACCIDENT -- SAO --------==------------------- */

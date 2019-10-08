@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="p-20">
-                    <form action="#">
+                    <form action="{{ route('addappt') }}" method="POST">
                         <div class="row p-t-20">
                             <div class="col-md-12">
                                 <div class="table-responsive">
@@ -75,17 +75,19 @@
                             <div class="modal fade" id="appointment_popup" tabindex="-1" role="dialog" aria-labelledby="appointmentPopup">
                                 <div class="modal-dialog modal-xl" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header  card-title">
-                                            <h4 class="modal-title" id="appointmentPopup">Appointment</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            @include('scheme.noticeAccident.IO.appointment_popup') 
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
-                                            <button type="submit" class="btn btn-primary">@lang('scheme/accidentDetails.save')</button>
-                                        </div>
+                                        <form action="{{ route('addappt') }}" method="POST">
+                                            <div class="modal-header  card-title">
+                                                <h4 class="modal-title" id="appointmentPopup">Appointment</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @include('scheme.noticeAccident.IO.appointment_popup') 
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('scheme/accidentDetails.close')</button>
+                                                <button type="submit" class="btn btn-primary">@lang('scheme/accidentDetails.save')</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>     

@@ -1869,28 +1869,6 @@ class NoticeAccidentController extends CommonController
             dd($response->getBody()->getContents());
         // dd($response);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             $mcmonth = '';
             $mcyear = '';
             $mcinfo = array();
@@ -2759,6 +2737,8 @@ class NoticeAccidentController extends CommonController
         $jsondecodepreparer = '';
         $jsondecodepreparer = $this->getPreparerInfo($jsondecodepreparer);
         $jsondecodepreparer =json_decode($jsondecodepreparer);
+
+        // dd($jsondecodepreparer);
      
         
         return view('scheme.noticeAccident.SCO.index', ['obprofile'=>$obprofile,'state'=>$state,
@@ -2779,7 +2759,8 @@ class NoticeAccidentController extends CommonController
        
         $caserefno = session('caserefno');
 
-        $endpoint ='api.com/api/preparerInfo?caserefno='.$caserefno;
+        //$endpoint ='api.com/api/preparerInfo?caserefno='.$caserefno;
+          $endpoint ='webserve.com/api/getpreparerInfo?caserefno='.$caserefno;
       //  dd($endpoint);
 
         
@@ -2790,7 +2771,8 @@ class NoticeAccidentController extends CommonController
         // dd($url);
         $response = $client->get($endpoint)->getBody();
         $content = json_decode($response->getContents());
-        $jsondecodepreparer = $content;
+        // dd($content);
+         $jsondecodepreparer = $content;
 
         return json_encode($jsondecodepreparer);
         // dd($jsondecodepreparer);
@@ -3098,6 +3080,178 @@ class NoticeAccidentController extends CommonController
             'docinfo'=>$docinfo, 'hussts'=>$hussts,'mcdata'=>$jsondecodemc,'confirmation'=>$confirmation,
             'doclist_select'=>$alldoclist, 'occucode'=>$occucode]);
     }
+
+    //MAT 3/10/2019-Appointment
+
+public function storeAppt(Request $request){
+    
+    $operid = session('loginname');
+        
+        if ($operid == '')
+        {
+            return redirect('/login');
+        }
+        
+
+        // $todayDate = date('Ymd');
+
+        $url = config('services.endpoint.url');
+        // $endpoint ='http://127.0.0.1:8000/api/admin/branch';
+        
+        
+        $options = [
+			'headers' => [
+				'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'addby' => $operid,
+                'ia_caserefno' => $request->caserefno,
+                'ia_date' => $request->current_date,
+                'ia_time' => $request->time,
+                'ia_correspaddtype' => $request->type,
+                'ia_name' => $request->name,
+                'ia_add1' => $request->add1,
+                'ia_add2' => $request->add2,
+                'ia_add3' => $request->add3,
+                'ia_postcode' => $request->postcode,
+                'ia_city' => $request->city,
+                'ia_statecode' => $request->statecode,
+                'ia_pobox' => $request->pobox,
+                'ia_lockedbag' => $request->lockedbag,
+                'ia_wdt' => $request->wdt,
+                'ia_attentionto' => $request->ia_attentionto,
+                'ia_intvloc' => $request->intvloc,
+                'ia_intvadd1' => $request->intvadd1,
+                'ia_intvadd2' => $request->intvadd2,
+                'ia_intvadd3' => $request->intvadd3,
+                'ia_addby' => $request->addby,
+                'ia_dateadd' => $request->dateadd,
+                'ia_updby' => $request->updby,
+                'ia_dateupd' => $request->dateupd,
+                'aa_attendeestype' => $request->attendeestype,
+                'aa_othersname' => $request->othersname,
+                'aa_othersadd1' => $request->othersadd1,
+                'aa_othersadd2' => $request->othersadd2,
+                'aa_othersadd3' => $request->othersadd3,
+                'aa_addby' => $request->addby,
+                'aa_dateadd' => $request->dateadd,
+                'aa_updby' => $request->updby,
+                'aa_dateupd' => $request->dateupd,
+                'ard_reqdoctype' => $request->reqdoctype,
+                'ard_reqdocothers' => $request->reqdocothers,
+                'ard_othersadd1' => $request->othersadd1,
+                'ard_othersadd2' => $request->othersadd2,
+                'ard_othersadd3' => $request->othersadd3,
+                'ard_addby' => $request->addby,
+                'ard_dateadd' => $request->dateadd,
+                'ard_updby' => $request->updby,
+                'ard_dateupd' => $request->dateupd, 
+
+            ]
+        ];
+        dd($options);
+
+		$client = new Client();
+		
+		$response = $client->post( $url.'/insertIOAppointment', $options)->getBody();
+        $addappt = json_decode($response->getContents());
+        // toast();
+        return redirect()->route('noticeaccident_io');
+}
+
+public function editAppt($ia_apptid)
+	{
+		$client = new Client();
+		$url = config('services.endpoint.url');
+		$token = session('API_token');
+		$options = [
+			'headers' => [
+				// 'Authorization' => $token
+			],
+		];
+
+		$response = $client->get( $url.'/ioappointment/'.$ia_apptid, $options)->getBody();
+		$content = json_decode($response->getContents());
+		return view('#', ['result' => $content]);
+	}
+
+public function rescheduleAppt(Request $request){
+    
+    $operid = session('loginname');
+        
+        if ($operid == '')
+        {
+            return redirect('/login');
+        }
+        
+
+        // $todayDate = date('Ymd');
+
+        $url = config('services.endpoint.url');
+        // $endpoint ='http://127.0.0.1:8000/api/admin/branch';
+        
+        
+        $options = [
+			'headers' => [
+				'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ],
+            'json' => [
+                'addby' => $operid,
+                'ia_caserefno' => $request->caserefno,
+                'ia_date' => $request->date,
+                'ia_time' => $request->time,
+                'ia_correspaddtype' => $request->type,
+                'ia_name' => $request->name,
+                'ia_add1' => $request->add1,
+                'ia_add2' => $request->add2,
+                'ia_add3' => $request->add3,
+                'ia_postcode' => $request->postcode,
+                'ia_city' => $request->city,
+                'ia_statecode' => $request->statecode,
+                'ia_pobox' => $request->pobox,
+                'ia_lockedbag' => $request->lockedbag,
+                'ia_wdt' => $request->wdt,
+                'ia_attentionto' => $request->ia_attentionto,
+                'ia_intvloc' => $request->intvloc,
+                'ia_intvadd1' => $request->intvadd1,
+                'ia_intvadd2' => $request->intvadd2,
+                'ia_intvadd3' => $request->intvadd3,
+                'ia_addby' => $request->addby,
+                'ia_dateadd' => $request->dateadd,
+                'ia_updby' => $request->updby,
+                'ia_dateupd' => $request->dateupd,
+                'aa_attendeestype' => $request->attendeestype,
+                'aa_othersname' => $request->othersname,
+                'aa_othersadd1' => $request->othersadd1,
+                'aa_othersadd2' => $request->othersadd2,
+                'aa_othersadd3' => $request->othersadd3,
+                'aa_addby' => $request->addby,
+                'aa_dateadd' => $request->dateadd,
+                'aa_updby' => $request->updby,
+                'aa_dateupd' => $request->dateupd,
+                'ard_reqdoctype' => $request->reqdoctype,
+                'ard_reqdocothers' => $request->reqdocothers,
+                'ard_othersadd1' => $request->othersadd1,
+                'ard_othersadd2' => $request->othersadd2,
+                'ard_othersadd3' => $request->othersadd3,
+                'ard_addby' => $request->addby,
+                'ard_dateadd' => $request->dateadd,
+                'ard_updby' => $request->updby,
+                'ard_dateupd' => $request->dateupd, 
+
+            ]
+        ];
+        // dd($options);
+
+		$client = new Client();
+		
+		$response = $client->put( $url.'/rescheduleIOappointment/'.$request->ia_apptid, $options)->getBody();
+        $reschedule = json_decode($response->getContents());
+        // toast();
+        return redirect()->route('noticeaccident_io');
+}
     // public function indexIO()
     // {
     //     return view('scheme.noticeAccident.IO.index_IO');
@@ -3425,7 +3579,8 @@ class NoticeAccidentController extends CommonController
 		// $url = config('endpoint.url');
         // $url = config('services.endpoint.url');
         
-        $endpoint ='api.com/api/mcinfoo?caserefno='.$caserefno;
+        // $endpoint ='api.com/api/mcinfoo?caserefno='.$caserefno;
+        $endpoint ='webserve.com/api/gethusinfo?caserefno='.$caserefno;
 
 		// dd($url);
 		$response = $client->get( $endpoint)->getBody();
@@ -3495,7 +3650,9 @@ class NoticeAccidentController extends CommonController
             // dd($data);
 
                 // dd($data);
-                $endpoint ='api.com/api/mcinfo';
+                // $endpoint ='api.com/api/mcinfo';
+                $endpoint ='webserve.com/api/husinfo';
+                
                 $options = [
                     'exceptions' => false,
                     'headers' => [
@@ -3539,6 +3696,7 @@ class NoticeAccidentController extends CommonController
         }
     }
 }
+
 
     
 
