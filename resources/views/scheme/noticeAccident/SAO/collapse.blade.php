@@ -6,7 +6,8 @@
                                 <div class="card m-b-0">
                                         <div class="card-header" role="tab" id="headingZero0">
                                                 <h6 class="mb-0">                           
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseZero0" aria-expanded="false" aria-controls="collapseZero0"><h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.preparer')</h4></a>
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseZero0" aria-expanded="false" aria-controls="collapseZero0"><h4 class="card-title"><i class="fa fa-plus"></i>
+                                                                @lang('form/scheme.general.collapse.preparer.title')</h4></a>
                                                 </h6>
                                         </div>
                                         <div id="collapseZero0" class="collapse" role="tabpanel" aria-labelledby="headingZero0">
@@ -17,7 +18,8 @@
                                 <div class="card m-b-0">
                                         <div class="card-header" role="tab" id="headingOne1">
                                                 <h6 class="mb-0">                           
-                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1"><h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.case_details')</h4>
+                                                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1"><h4 class="card-title"><i class="fa fa-plus"></i> 
+                                                                @lang('form/scheme.general.collapse.case_info.title')</h4>
                                                 </a>
                                                 </h6>
                                         </div>
@@ -29,7 +31,7 @@
                                         <div class="card-header" role="tab" id="headingTwelve12">
                                                 <h6 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwelve12" aria-expanded="false" aria-controls="collapseTwelve12">
-                                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.certificate') </h4>
+                                                                <h4 class="card-title"><i class="fa fa-plus"></i>@lang('form/scheme.general.collapse.certification.title') </h4>
                                                         </a>
                                                 </h6>
                                         </div>
@@ -42,7 +44,7 @@
                                         <div class="card-header" role="tab" id="headingTwo2">
                                                 <h6 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
-                                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.insured_details')</h4>
+                                                        <h4 class="card-title"><i class="fa fa-plus"></i>  @lang('form/scheme.general.collapse.ob.title')</h4>
                                                         </a>
                                                 </h6>
                                         </div>
@@ -56,7 +58,7 @@
                                         <div class="card-header" role="tab" id="headingSeven7">
                                                 <h6 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven7" aria-expanded="false" aria-controls="collapseSeven7">
-                                                                <h4 class="card-title"><i class="fa fa-plus"></i>  @lang('scheme/index.attr.employer_details') </h4>
+                                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.employer.title') </h4>
                                                         </a>
                                                 </h6>
                                         </div>
@@ -71,7 +73,7 @@
                                         <div class="card-header" role="tab" id="headingFive5">
                                                 <h6 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive5" aria-expanded="false" aria-controls="collapseFive5">
-                                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.accident_details')</h4>
+                                                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.accident.title')</h4>
                                                         </a>
                                                 </h6>
                                         </div>
@@ -85,7 +87,7 @@
                                                 <h6 class="mb-0">                           
                                                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseEight8" aria-expanded="false" aria-controls="collapseEight8">
                                                         <h4 class="card-title"><i class="fa fa-plus"></i>
-                                                        @lang('scheme/index.attr.wages_con')
+                                                                @lang('form/scheme.general.collapse.wages.title')
                                                         </h4>
                                                 </a>
                                                 </h6>
@@ -99,7 +101,7 @@
                                         <div class="card-header" role="tab" id="headingSix6">
                                                 <h6 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix6" aria-expanded="false" aria-controls="collapseSix6">
-                                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.HUS_info')</h4>
+                                                        <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.mc.title1')</h4>
                                                         </a>
                                                 </h6>
                                         </div>
@@ -177,7 +179,7 @@
                                                 <div class="card-body">@include('scheme.noticeAccident.SCO.permanentPresentative')</div>
                                         </div>
                                 </div> --}}
-                                <div class="card m-b-0">
+                                {{-- <div class="card m-b-0">
                                         <div class="card-header" role="tab" id="headingNine19">
                                                 <h6 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseNine19" aria-expanded="false" aria-controls="collapseNine19">
@@ -246,7 +248,7 @@
                                                 </h6>
                                         </div>
                                         <div id="collapseSixteen16" class="collapse" role="tabpanel" aria-labelledby="headingSixteen16">
-                                                <div class="card-body">@include('scheme.noticeAccident.SCO.investigation_SCO')</div>
+                                                <div class="card-body">@include('scheme.noticeAccident.SCO.investigation_doc')</div>
                                         </div>
                                 </div>
                                 <div class="card m-b-0">
@@ -296,7 +298,7 @@
                                         <div id="collapseEighteen30" class="collapse" role="tabpanel" aria-labelledby="headingEighteen30">
                                                 <div class="card-body">@include('scheme.noticeAccident.SAO.approval_SAO')</div>
                                         </div>
-                                </div> 
+                                </div>  --}}
                                 <div class="card m-b-0">
                                         <div class="card-header" role="tab" id="headingThirteen13">
                                                 <h6 class="mb-0">                           

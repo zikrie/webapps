@@ -6,12 +6,13 @@
             <h4 class="card-title">@lang('scheme/index.attr.od_notice')</h4>
             
             <ul class="nav customtab" role="tablist" >
-            	  <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down"> @lang('scheme/index.attr.remarks')</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down"> @lang('scheme/index.attr.claim_info')</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistency" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down"> Investigation Details</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#query" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down"> Query and Opinion</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#rec" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.recommendation')</span></a> </li>
-                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supporting" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('scheme/index.attr.supporting')</span></a> </li>
+            	  <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#remarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.remarks')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#claim" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.claim')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inconsistency" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.investigation')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#medical_board" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.medical_board')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#query" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.query_opinion')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#rec" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.recommendation')</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#supporting" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">@lang('form/scheme.general.tab_title.supporting_document')</span></a> </li>
            </ul>
            <br>
            <div class="row" id="rowindex">
@@ -54,8 +55,11 @@
           <div class="tab-pane p-20" id="inconsistency" role="tabpanel">
             @include('scheme.noticeOd.SCO.collapse_investigation')
           </div>
+          <div class="tab-pane p-20" id="medical_board" role="tabpanel">
+              @include('scheme.noticeOd.SCO.collapse_medical')
+            </div>
           <div class="tab-pane p-20" id="query" role="tabpanel">
-            {{-- @include('scheme.noticeOd.SCO.collapse_investigation') --}}
+            @include('scheme.noticeOd.SCO.collapse_query')
           </div>
           <div class="tab-pane p-20" id="rec" role="tabpanel">
             @include('scheme.noticeOd.SCO.collapse_recommendation')

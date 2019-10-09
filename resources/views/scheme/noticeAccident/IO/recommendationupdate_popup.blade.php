@@ -7,7 +7,7 @@
                         <div class="row p-t-20"> 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                <label class="control-label">Whether the insured person is an employee under the SOCSO Act? </label><span class="required">*</span>
+                                <label class="control-label">Whether the insured person is an employee under the SOCSO Act?</label><span class="required">*</span>
                                         {{-- <select class="form-control" required>
                                             <option>@lang('scheme/scoRecommend.attr.yes')</option> 
                                             <option>@lang('scheme/scoRecommend.attr.no')</option> 
@@ -115,13 +115,13 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="control-label">Recommmendation Date</label>
-                                        <input type="date" name="ilatNotice" id="ilatNotice" class="form-control" disabled>
+                                        <input type="date" name="ilatNotice" id="ilatNotice" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="control-label">Recommmendation By</label>
-                                    <input type="text" id="SPIEligible" name="SPIEligible" value="" class="form-control" disabled>
+                                    <input type="text" id="SPIEligible" name="SPIEligible" value="" class="form-control" >
                                 </div>
                             </div>
                         </div>            

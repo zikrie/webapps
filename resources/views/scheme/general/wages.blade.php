@@ -77,50 +77,50 @@
                                                             <label>@lang('form/scheme.general.collapse.wages.details_wages_od')</label>
                                                             <div class="table-responsive">
                                                                 <table id="demo-foo-row-toggler" class="table table-bordered" data-toggle-column="first">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th data-breakpoints="xs">@lang('table-header.wages.num')</th>
-                                                                            <th>@lang('table-header.wages.year')</th>
-                                                                            <th>@lang('table-header.wages.month')</th>
-                                                                            <th data-breakpoints="xs sm">@lang('table-header.wages.wages')</th>
-                                                                            <th data-breakpoints="xs">@lang('table-header.wages.contribution_paid')</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-    
-                                                                       <?php 
-                                                                       $cnt = 0; ?>
-                                                                       @foreach ($wages->wagesinfo as $gaji)
-                                                                       <tr data-expanded="true">
-                                                                        <td>{{$cnt+1}}</td>
-    
-                                                                        <td><input type="text" id="year[{{$contrcnt}}][{{$cnt}}]" name="year[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->year}}" class="form-control" readonly></td>
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th data-breakpoints="xs">@lang('table-header.wages.num')</th>
+                                                                                <th>@lang('table-header.wages.year')</th>
+                                                                                <th>@lang('table-header.wages.month')</th>
+                                                                                <th data-breakpoints="xs sm">@lang('table-header.wages.wages')</th>
+                                                                                <th data-breakpoints="xs">@lang('table-header.wages.contribution_paid')</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+        
+                                                                        <?php 
+                                                                        $cnt = 0; ?>
+                                                                        @foreach ($wages->wagesinfo as $gaji)
+                                                                        <tr data-expanded="true">
+                                                                            <td>{{$cnt+1}}</td>
+        
+                                                                            <td><input type="text" id="year[{{$contrcnt}}][{{$cnt}}]" name="year[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->year}}" class="form-control" readonly></td>
+                                                                            <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->wages}}" class="form-control maskdecimal" ></td>
+                                                                            <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->contrpaid}}" class="form-control maskdecimal" ></td>
+                                                                        </tr> 
+        
+                                                                        @foreach ($month as $m)
+                                                                        @if ($m->refcode == $gaji->month)
+                                                                        <td><input type="text" value='{{$m->descen}}' class='form-control'readonly>
+                                                                            <input type="hidden" value='{{$gaji->month}}' class='form-control' id="month[{{$contrcnt}}][{{$cnt}}]" name="month[{{$contrcnt}}][{{$cnt}}]" readonly>
+                                                                        </td>
+                                                                        @endif
+                                                                        @endforeach
                                                                         <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->wages}}" class="form-control maskdecimal" ></td>
-                                                                        <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->contrpaid}}" class="form-control maskdecimal" ></td>
-                                                                    </tr> 
-    
-                                                                    @foreach ($month as $m)
-                                                                    @if ($m->refcode == $gaji->month)
-                                                                    <td><input type="text" value='{{$m->descen}}' class='form-control'readonly>
-                                                                        <input type="hidden" value='{{$gaji->month}}' class='form-control' id="month[{{$contrcnt}}][{{$cnt}}]" name="month[{{$contrcnt}}][{{$cnt}}]" readonly>
-                                                                    </td>
-                                                                    @endif
-                                                                    @endforeach
-                                                                    <td><input type="text" id="wages[{{$contrcnt}}][{{$cnt}}]" name="wages[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->wages}}" class="form-control maskdecimal" ></td>
-                                                                    <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->contrpaid}}" class="form-control maskdecimal" readonly></td>
-                                                                </tr> 
-                                                                <?php $cnt++; ?>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
+                                                                        <td><input type="text" id="contrpaid[{{$contrcnt}}][{{$cnt}}]" name="contrpaid[{{$contrcnt}}][{{$cnt}}]" value="{{$gaji->contrpaid}}" class="form-control maskdecimal" readonly></td>
+                                                                        </tr> 
+                                                                        <?php $cnt++; ?>
+                                                                        @endforeach
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>                   
+                                </div>                   
                         @endforeach
                         <?php $index++; ?>    
                         <?php $contrcnt++; ?>                     

@@ -19,13 +19,13 @@
         <div class="card-header" role="tab" id="headingOne1">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#recommendation" aria-expanded="true" aria-controls="collapseOne1">
-                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.recommendation')</h5>
+                <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.recommendation.title')</h5>
                 </a>
             </h5>
         </div>
         <div id="recommendation" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeOd.SCO.recommendation')
+                @include('scheme.noticeOd.IO.recommendation')
             </div>
         </div>
     </div>

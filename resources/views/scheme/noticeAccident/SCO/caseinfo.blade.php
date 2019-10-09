@@ -27,8 +27,14 @@
                                     <input type="text" name="typeOfScheme" id="typeOfScheme" class="form-control" required>
                                 </div>
                             </div>
+                            <div class="col-mdcol-md-12 col-lg-4">
+                                <div class="form-group">
+                                    <label class="control-label">Notice</label>
+                                    <input type="text" name="notice" id="notice" class="form-control" required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="control-label">SPI Eligible</label>
@@ -41,7 +47,7 @@
                                     <input type="text" id="notice_type" class="form-control" required>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
@@ -49,12 +55,12 @@
                                     <input type="date" name="notice_date" id="notice_date" class="form-control" required>
                                 </div>
                             </div>
-                            <div class="col-mdcol-md-12 col-lg-4">
+                            {{-- <div class="col-mdcol-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label class="control-label">Accident Date</label>
                                     <input type="date" name="registrationDate" id="registrationDate" class="form-control">
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="row">
                             <div class="col-mdcol-md-12 col-lg-4">
