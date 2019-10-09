@@ -38,23 +38,6 @@
     <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne1">
             <h5 class="mb-0">
-                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#wagesInfo" aria-expanded="false"
-                    aria-controls="collapseOne1">
-                    <h4 class="card-title"><i class="fa fa-plus"></i>
-                        @lang('scheme/index.attr.insurance_details')</h4>
-                </a>
-            </h5>
-        </div>
-        <div id="wagesInfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
-            <div class="card-body">
-                @include('scheme.noticeInvalidity.newClaim.SCO.wagesInfo')
-            </div>
-        </div>
-    </div>
-
-    <div class="card m-b-0">
-        <div class="card-header" role="tab" id="headingOne1">
-            <h5 class="mb-0">
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#contriInfo"
                     aria-expanded="false" aria-controls="collapseOne1">
                     <h4 class="card-title"><i class="fa fa-plus"></i>
@@ -336,6 +319,38 @@
         <div id="incon" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
                 @include('scheme.noticeInvalidity.newClaim.SCO.inconsistent')
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-0">
+        <div class="card-header" role="tab" id="hus">
+            <h5 class="mb-0">
+                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#husinfo" aria-expanded="false"
+                    aria-controls="collapseOne1">
+                    <h4 class="card-title"><i class="fa fa-plus"></i>
+                        @lang('HUS Information')</h4>
+                </a>
+            </h5>
+        </div>
+        <div id="husinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+            <div class="card-body">
+                @include('scheme.noticeInvalidity.newClaim.SCO.hus_info')
+            </div>
+        </div>
+    </div>
+    <div class="card m-b-0">
+        <div class="card-header" role="tab" id="wagesinfo">
+            <h5 class="mb-0">
+                <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#wages" aria-expanded="false"
+                    aria-controls="collapseOne1">
+                    <h4 class="card-title"><i class="fa fa-plus"></i>
+                        @lang('Wages Information')</h4>
+                </a>
+            </h5>
+        </div>
+        <div id="wages" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
+            <div class="card-body">
+                @include('scheme.noticeInvalidity.newClaim.SCO.wages_info')
             </div>
         </div>
     </div>

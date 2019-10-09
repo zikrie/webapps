@@ -2026,7 +2026,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         //return $test;
         //$this->getObContact($jsondecod1);
         $this->getObFormAssist($jsondecodeAssist);
-        
+        $this->getWagesInfo($jsonWagesInfo);
         //irina - begin
         $jsondecodemc = '';
       
@@ -2053,8 +2053,13 @@ public function getConfirmation(&$jsondecodeConfirmation)
         $data = array();
 
         // $all = ['contrinfo'=>$contrinfo, 'wagesonfo'=>$wagesinfo, 'data'=>$data];
-        
+        //wagesInfo
+
         $this->getWages($contrinfo,$wagesinfo);
+        
+        //creditperiod
+
+        $this->getCreditPeriod($jsonCreditPeriod);
        
         //return $wagesinfo;
         
@@ -2273,6 +2278,7 @@ public function getConfirmation(&$jsondecodeConfirmation)
         //  return $empinfo;
           
         //chg28062019 - send alldoclist to blade
+    
         return view('scheme.noticeInvalidity.newClaim.SCO.index',['obprofile'=>$obprofile,'state'=>$state, 
             'idtype'=>$idtype, 'race'=>$race, 'national'=>$national, 'obformassist' => $jsondecodeAssist, 
             'contribution'=>$contrinfo, 'data'=>$data,'contribution'=>$contrinfo,'wagesinfo' => $wagesinfo,
@@ -2280,7 +2286,8 @@ public function getConfirmation(&$jsondecodeConfirmation)
             'optionreason'=>$optionreason,'optionbai'=>$optionbai, 'optionpay'=>$optionpay, 'bankcode'=>$bankcode, 
             'accountype'=>$accountype, 'overseasbank'=>$overseasbank, 'overseasbanktype'=>$overseasbanktype, 'month'=>$month,
             'caserefno'=>$caserefno, 'doclist'=>$doclist, 'emptype'=>$emptype,'docinfo'=>$docinfo,
-            'empinfo'=>$empinfo,'ilatinfo'=>$ilatinfo,'confirmation'=>$confirmation,'doclist_select'=>$alldoclist,'occucode'=>$occucode]);
+            'empinfo'=>$empinfo,'ilatinfo'=>$ilatinfo,'confirmation'=>$confirmation,'doclist_select'=>$alldoclist,'occucode'=>$occucode,
+            'getwages'=>$jsonWagesInfo, 'getCreditPeriod'=>$jsonCreditPeriod]);
             
         // return $empinfo;
     }
@@ -2968,4 +2975,40 @@ public function getConfirmation(&$jsondecodeConfirmation)
             
         // return $empinfo;
     }
+
+    // Add Wages 
+
+    public function getWagesInfo(&$jsonWagesInfo)
+     {
+        $no1 = array( 'emp_code' => "0001",'emp_name' =>"Iqmal Johar",'year' =>"2018",'month' =>"Descember"
+        , 'wages' => "2 000",'assume_wages' => "2 300",'contribution_paid' =>"500",'contribution_payable' =>"200",'contribution_surplusDeficit'=>"Nothing Is Posbile"  );
+        $no2 = array( 'emp_code' => "0004",'emp_name' =>"Ahmad Najmi",'year' =>"2013",'month' =>"January"
+        , 'wages' => "4 000",'assume_wages' => "2 700",'contribution_paid' =>"1000",'contribution_payable' =>"2100",'contribution_surplusDeficit'=>"Coding Is The Best"  );
+        $no3 =array( 'emp_code' => "0012",'emp_name' =>"Shauqi Shazwan",'year' =>"2010",'month' =>"March"
+        , 'wages' => "7 000",'assume_wages' => "3 700",'contribution_paid' =>"2000",'contribution_payable' =>"2700",'contribution_surplusDeficit'=>"Chill With Starbuck"  );
+
+        $jsonWagesInfo = 
+        [
+           $no1,$no2,$no3
+        ];
+          
+     }
+
+    //Credit Period
+
+     public function getCreditPeriod(&$jsonCreditPeriod)
+     {
+        $no1 = array( 'benefit_no' => "0001",'accident_date' =>"20/01/2019",'year' =>"2018",'month' =>"Descember"
+        , 'paid_start' => "01/02/2019",'paid_end' => "05/03/2019",'contri_paid'=>"3 000");
+        $no2 = array( 'benefit_no' => "0012",'accident_date' =>"17/07/2017",'year' =>"2017",'month' =>"August"
+        , 'paid_start' => "03/03/2019",'paid_end' => "08/03/2019",'contri_paid'=>"3 400");
+        $no3 = array( 'benefit_no' => "0009",'accident_date' =>"17/06/2011",'year' =>"2011",'month' =>"September"
+        , 'paid_start' => "07/03/2019",'paid_end' => "11/03/2019",'contri_paid'=>"11 700");
+
+        $jsonCreditPeriod = 
+        [
+           $no1,$no2,$no3
+        ];
+          
+     }
 }
