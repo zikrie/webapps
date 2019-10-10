@@ -5,13 +5,12 @@
                 <div id="accordion2" role="tablist" class="accordion" >
                         <div class="card">
                                 <div class="card-body">
-                                        <h5 class="card-title">@lang('scheme/index.attr.supporting')</h5>
                                         <!-- upload doc -->
                                         <div class="card m-b-0">
                                                 <div class="card-header" role="tab" id="headingOne1">
                                                 <h5 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#uploadDoc" aria-expanded="true" aria-controls="collapseOne1">
-                                                        <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.upload_documents')</h5>
+                                                        <h5 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.supporting_document.title')</h5>
                                                         </a>
                                                 </h5>
                                                 </div>
@@ -26,7 +25,7 @@
                                                 <div class="card-header" role="tab" id="headingOne2">
                                                 <h5 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#generatedDoc" aria-expanded="true" aria-controls="collapseOne1">
-                                                        <h5 class="card-title"><i class="fa fa-plus"></i> @lang('scheme/index.attr.generated_document')</h5>
+                                                        <h5 class="card-title"><i class="fa fa-plus"></i>@lang('form/scheme.general.collapse.generate_document.title')</h5>
                                                         </a>
                                                 </h5>
                                                 </div>
@@ -36,7 +35,7 @@
                                                 </div>
                                                 </div>
                                         </div>
-                                        <div class="card m-b-0">
+                                        {{-- <div class="card m-b-0">
                                                 <div class="card-header" role="tab" id="headingOne2">
                                                 <h5 class="mb-0">                           
                                                         <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#sendNotification" aria-expanded="true" aria-controls="collapseOne1">
@@ -49,7 +48,7 @@
                                                         @include('scheme.noticeAccident.IO.notification')
                                                 </div>
                                                 </div>
-                                        </div>
+                                        </div> --}}
                                 </div>
                         </div>
                 </div><!-- Row -->

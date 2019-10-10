@@ -48,6 +48,26 @@ Route::get('/homeADM', function () {
     return view('homeADM');
 });
 
+/* ------------------ Test Preview --------------------- */
+Route::get('/preview_pk', function () {
+    return view('scheme.noticeAccident.PK.previewPK');
+});
+
+Route::get('/preview_sco', function () {
+    return view('scheme.noticeAccident.SCO.preview_sco');
+});
+
+Route::get('/preview_io', function () {
+    return view('scheme.noticeAccident.IO.preview_io');
+});
+
+Route::get('/preview_sao', function () {
+    return view('scheme.noticeAccident.SAO.preview_sao');
+});
+
+Route::get('/preview1', function () {
+    return view('scheme.noticeAccident.PK.preview');
+});
 /* ------------------- ALL NOTICE -------------------- */
 
 
@@ -217,10 +237,10 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::get('/revisionchangedate_sco', 'Revision\ChangeDateODController@index_SCO');
     Route::get('/revisionchangedate_io', 'Revision\ChangeDateODController@index_IO');
     Route::get('/revisionchangedate_sao', 'Revision\ChangeDateODController@index_SAO');
-    Route::get('/revisionmedical_pk','Revision\MedicalController@index_pk');
-    Route::get('/revisionmedical_sco','Revision\MedicalController@index_sco');
-    Route::get('/revisionmedical_io','Revision\MedicalController@index_io');
-    Route::get('/revisionmedical_sao','Revision\MedicalController@index_sao');
+    Route::get('/revisionmedical_pk', 'Revision\MedicalController@index_pk');
+    Route::get('/revisionmedical_sco', 'Revision\MedicalController@index_sco');
+    Route::get('/revisionmedical_io', 'Revision\MedicalController@index_io');
+    Route::get('/revisionmedical_sao', 'Revision\MedicalController@index_sao');
     Route::get('/revisionassess_sco', 'Revision\AssessmentController@indexRevisionSCO');
     Route::get('/revisionassess_sao', 'Revision\AssessmentController@indexRevisionSAO');
     Route::get('/revisionels', 'Revision\ElsController@index');

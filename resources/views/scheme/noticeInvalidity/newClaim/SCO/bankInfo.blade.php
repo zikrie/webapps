@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label class="control-label">@lang('scheme/confirmation.attr.payment')</label>
                                     <select class="form-control" name='paymode' id='paymode' required>
-                                        {{-- <option value=""></option>     --}}
+                                        <option selected readonly disabled hidden>Please Choose </option>
                                         @foreach($optionpay as $opay)
                                         @if (!empty($bankinfo) && $bankinfo->paymode == $opay->refcode)
                                         <option value="{{$opay->refcode}}" selected>{{$opay->descen}}</option>
@@ -52,6 +52,7 @@
                                     <!--input type="text" name="sub_status_description" id="sub_status_description" class="form-control" value="@if(!empty($bankinfo)) {{$bankinfo->accexist}}
                             @endif">-->
                             <select class="form-control select" name="accexist" id="accexist" onchange='accountexist()'>
+                            <option selected readonly disabled hidden>Please Choose </option>
                                 @if(!empty($bankinfo) && $bankinfo->accexist=='Y')
                                 <option value='Y' selected>Yes</option>
                                 <option value='N'>No</option>
@@ -93,7 +94,7 @@
                         <div class="form-group">
                             <label class="control-label">@lang('scheme/confirmation.attr.bank_location')</label>
                             <select class="form-control select" id="bankloc" name='bankloc' onchange="myFunction()">
-
+                                <option selected readonly disabled hidden>Please Choose </option>
                                 @foreach($optionbank as $ob)
                                 @if (!empty($bankinfo) && $bankinfo->bankloc == $ob->refcode)
                                 <option value="{{$ob->refcode}}" selected>{{$ob->descen}}</option>
@@ -239,6 +240,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div id="oversea_bank">
                     <h3 class="box-title m-t-40" id="cardOverseas">@lang('scheme/confirmation.overseas_bank')</h3>
                     <hr>

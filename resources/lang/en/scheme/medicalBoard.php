@@ -22,4 +22,4 @@ return [
     'submit' => 'Submit',
     'view'=> 'View',
  
-];,
+];

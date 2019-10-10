@@ -111,6 +111,7 @@
                         <!--button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.cancel')</button>
                             <button type="button" class="btn btn waves-effect waves-light btn-secondary">@lang('insuredPerson.clear')</button-->
                         <button type="submit" value="Save" class="btn btn waves-effect waves-light btn-success">@lang('button.save')</button>
+                        <button type="submit" value="preview" class="btn btn waves-effect waves-light btn-success">Preview</button>
                         <button type="submit" value="Submit" class="btn btn waves-effect waves-light btn-success">@lang('button.submit')</button>
                         <button type="button" class="btn btn waves-effect waves-light btn-info" onclick="submitform()">@lang('button.reset')</button>
                         <button type="button" class="btn waves-effect waves-light btn-secondary" id='btncancelacc' onclick="window.location='/noticetype'">@lang('button.cancel')</button>

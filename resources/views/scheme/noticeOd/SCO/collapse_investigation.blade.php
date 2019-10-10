@@ -1,5 +1,20 @@
 <div id="accordion2" role="tablist" class="accordion">
     {{-- <h5 class="card-title">@lang('scheme/index.attr.appointment')</h5> --}}
+    <!-- inconsistency -->
+    <div class="card m-b-0">
+        <div class="card-header" role="tab" id="headingInSao">
+                <h6 class="mb-0">                           
+                        <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#collapseInSao" aria-expanded="false" aria-controls="collapseInSao">
+                                <h4 class="card-title"><i class="fa fa-plus"></i> @lang('form/scheme.general.collapse.inconsistent.title')</h4> 
+                        </a>
+                </h6>
+        </div>
+        <div id="collapseInSao" class="collapse" role="tabpanel" aria-labelledby="headingInSao">
+                <div class="card-body">
+                        @include('scheme.noticeAccident.SCO.inconsistency')
+                </div>
+        </div>
+    </div>
     <!-- appointment -->
     <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne1">
@@ -11,7 +26,7 @@
         </div>
         <div id="appointment" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
             <div class="card-body">
-                @include('scheme.noticeOd.IO.appointment')
+                @include('scheme.noticeOd.IO.appointment_IO')
             </div>
         </div>
     </div>
@@ -31,7 +46,7 @@
         </div>
     </div>
     <!-- od report -->
-    <div class="card m-b-0">
+    {{-- <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne11">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#odreport" aria-expanded="false" aria-controls="collapseOne6">
@@ -44,9 +59,9 @@
                 @include('scheme.noticeOd.IO.odreport')
             </div>
         </div>
-    </div> 
+    </div>  --}}
     <!-- jdk decision -->
-    <div class="card m-b-0">
+    {{-- <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne8">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#jdkdecision" aria-expanded="false" aria-controls="collapseOne6">
@@ -59,9 +74,9 @@
                 @include('scheme.noticeOd.SCO.jdk_decision')
             </div>
         </div>
-    </div> 
+    </div>  --}}
     <!-- investigation -->
-    <div class="card m-b-0">
+    {{-- <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne9">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigation" aria-expanded="false" aria-controls="collapseOne6">
@@ -74,9 +89,9 @@
                 @include('scheme.noticeOd.IO.investigation')
             </div>
         </div>
-    </div> 
+    </div>  --}}
     <!-- investigation info -->
-    <div class="card m-b-0">
+    {{-- <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne10">
             <h5 class="mb-0">                           
                 <a class="link" data-toggle="collapse" data-parent="#accordion2" href="#investigation_info" aria-expanded="false" aria-controls="collapseOne6">
@@ -89,7 +104,7 @@
                 @include('scheme.noticeOd.IO.investigationInfo')
             </div>
         </div>
-    </div> 
+    </div>  --}}
     <!-- inconsistency -->
     {{-- <div class="card m-b-0">
         <div class="card-header" role="tab" id="headingOne2">

@@ -186,13 +186,6 @@
                                                                 <input type="checkbox" class="custom-control-input"name="list_doc[]" id="checkbox12" value="check3">
                                                                 <label class="custom-control-label" for="checkbox12">Others</label>
                                                             </div>
-
-                                                        <!-- <div class=" p-t-20" style="display:none;" id="description"> -->
-                                                            <!-- <div style="display:none;" id="description">
-                                                                <input type="text" name="description"
-                                                                        id="Description" >
-                                                                </div> -->
-                                                            </div>
                                                         </div>
                                                     </td>
                                                     <td>

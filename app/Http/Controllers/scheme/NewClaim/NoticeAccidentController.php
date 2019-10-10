@@ -3053,7 +3053,7 @@ class NoticeAccidentController extends CommonController
         // $caseref = "201907240012";
         // dd($caserefno);
 
-        $client = new Client();
+        // $client = new Client();
         
         $response = $client->get($url.'/ioappointment?ia_caserefno='.$caserefno)->getBody();
         // dd($response);

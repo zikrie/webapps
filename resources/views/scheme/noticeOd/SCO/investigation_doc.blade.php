@@ -1051,37 +1051,37 @@
                             </div>
                             <div id="pls_select" class="do_left">
                                 <div class="form-actions">
-                                <button type="button" class="btn btn waves-effect waves-light btn-success text-left">+ ADD</button>
+                                <button type="button" class="btn btn waves-effect waves-light btn-success text-left"> ADD</button>
                                 </div>
                             </div>
                             <div id="carpenter" class="do_left" style="display:none">
                                 <div class="form-actions">
                                 <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalCarpenter" data-whatever="@fat">+ ADD</button>
-                                    @include('scheme.newClaim.noticeInvalidity.SCO.carpenter')
+                                    @include('scheme.noticeInvalidity.newClaim.SCO.carpenter')
                                 </div>
                             </div>
                             <div id="director" class="do_left" style="display:none">
                                 <div class="form-actions">
                                 <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalDirector" data-whatever="@fat">+ ADD</button>
-                                    @include('scheme.newClaim.noticeInvalidity.SCO.director')
+                                    @include('scheme.noticeInvalidity.newClaim.SCO.director')
                                 </div>
                             </div>
                             <div id="driver" class="do_left" style="display:none">
                                 <div class="form-actions">
                                 <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalDriver" data-whatever="@fat">+ ADD</button>
-                                    @include('scheme.newClaim.noticeInvalidity.SCO.driver')
+                                    @include('scheme.noticeInvalidity.newClaim.SCO.driver')
                                 </div>
                             </div>
                             <div id="mandor" class="do_left" style="display:none">
                                 <div class="form-actions">
                                 <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalMandor" data-whatever="@fat">+ ADD</button>
-                                    @include('scheme.newClaim.noticeInvalidity.SCO.mandor')
+                                    @include('scheme.noticeInvalidity.newClaim.SCO.mandor')
                                 </div>
                             </div>
                             <div id="general" class="do_left" style="display:none">
                                 <div class="form-actions">
                                 <button type="button" class="btn btn waves-effect waves-light btn-success text-left" data-toggle="modal" data-target="#exampleModalGeneral" data-whatever="@fat">+ ADD</button>
-                                    @include('scheme.newClaim.noticeInvalidity.SCO.general')
+                                    @include('scheme.noticeInvalidity.newClaim.SCO.general')
                                 </div>
                             </div>
                         </div>

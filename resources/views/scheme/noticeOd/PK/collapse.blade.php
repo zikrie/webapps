@@ -13,7 +13,7 @@
                     </div>
                     <div id="obform" class="collapse" role="tabpanel" aria-labelledby="headingOne1">
                         <div class="card-body">
-                            @include('scheme.noticeOd.obForm')
+                            @include('scheme.general.ob')
                         </div>
                     </div>
                 </div>	
@@ -28,7 +28,7 @@
                     </div>
                     <div id="employer" class="collapse" role="tabpanel" aria-labelledby="headingOne2">
                         <div class="card-body">
-                            @include('scheme.noticeOd.employerDetails')
+                            @include('scheme.general.employer')
                         </div>
                     </div>
                 </div>  
@@ -43,7 +43,7 @@
                     </div>
                     <div id="odempinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne3">
                         <div class="card-body">
-                            @include('scheme.noticeOd.odEmphistory')
+                            @include('scheme.noticeOd.PK.odEmphistory')
                         </div>
                     </div>
                 </div> 	
@@ -58,7 +58,7 @@
                     </div>
                     <div id="odinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne4">
                         <div class="card-body">
-                            @include('scheme.noticeOd.odInformation')
+                            @include('scheme.noticeOd.PK.odInformation')
                         </div>
                     </div>
                 </div> 	
@@ -88,7 +88,7 @@
                     </div>
                     <div id="wages" class="collapse" role="tabpanel" aria-labelledby="headingOne6">
                         <div class="card-body">
-                            @include('scheme.noticeOd.wagesDetails')
+                            @include('scheme.general.wages')
                         </div>
                     </div>
                 </div> 
@@ -103,7 +103,7 @@
                     </div>
                     <div id="office" class="collapse" role="tabpanel" aria-labelledby="headingOne7">
                         <div class="card-body">
-                            @include('scheme.noticeOd.socsoOffice')
+                            @include('scheme.general.socso')
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                     </div>
                     <div id="bankinfo" class="collapse" role="tabpanel" aria-labelledby="headingOne8">
                         <div class="card-body">
-                            @include('scheme.noticeOd.bankInformation')
+                            @include('scheme.general.bank')
                         </div>
                     </div>
                 </div> 
@@ -133,7 +133,7 @@
                     </div>
                     <div id="certificate" class="collapse" role="tabpanel" aria-labelledby="headingOne9">
                         <div class="card-body">
-                            @include('scheme.noticeOd.certificateEmployer')
+                            @include('scheme.general.certification')
                         </div>
                     </div>
                 </div> 
@@ -148,7 +148,7 @@
                     </div>
                     <div id="confirmation" class="collapse" role="tabpanel" aria-labelledby="headingOne10">
                         <div class="card-body">
-                            @include('scheme.noticeOd.confirmation')
+                            @include('scheme.general.confirmation')
                         </div>
                     </div>
                 </div>  
