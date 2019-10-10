@@ -11,7 +11,7 @@ use Log;//asma
 
 
 
-// use GuzzleHttp\Psr7; //atikah
+use GuzzleHttp\Psr7; //atikah
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\ClientException;
@@ -2931,8 +2931,6 @@ class NoticeAccidentController extends CommonController
         $jsondecodepermanent = null;
         $jsondecodebank='';
         $this->getBankInfo($jsondecodebank);
-        // $this->editAppt($getAppt);
-        // dd($getAppt);
         
         //return '++'.json_encode($jsondecodebank).'++';
         //$this->getPermanentInfo($jsondecodepermanent);
@@ -3053,7 +3051,7 @@ class NoticeAccidentController extends CommonController
         // $caseref = "201907240012";
         // dd($caserefno);
 
-        // $client = new Client();
+        $client = new Client();
         
         $response = $client->get($url.'/ioappointment?ia_caserefno='.$caserefno)->getBody();
         // dd($response);
