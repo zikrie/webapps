@@ -130,9 +130,11 @@ Route::group(['prefix' => 'scheme','namespace'=>'scheme'], function () {
     Route::post('/employerdetails_sco', 'NewClaim\CommonController@postEmployer');
 
     /* --------------------------- NOTICE ACCIDENT -- IO --------------------------- */
-    Route::get('/noticeaccident_io', 'NewClaim\NoticeAccidentController@indexIO');
+    Route::get('/noticeaccident_io', 'NewClaim\NoticeAccidentController@indexIO')->name('noticeaccident_io');
     Route::post('/noticeaccident_io/addappointment', 'NewClaim\NoticeAccidentController@storeAppt')->name('addappt');
+    Route::get('/noticeaccident_io/reschedule', 'NewClaim\NoticeAccidentController@editAppt')->name('reschedule');
     Route::post('/noticeaccident_io/updateappointment', 'NewClaim\NoticeAccidentController@rescheduleAppt')->name('rescheduleappt');
+    Route::delete('/noticeaccident_io/delete/{ia_apptid}', 'NewClaim\NoticeAccidentController@delete_appt')->name('delete_appt');
     /* ---------------------------END OF NOTICE ACCIDENT -- IO ---------------------- */
 
     /* -------------------------- NOTICE ACCIDENT -- SAO --------==------------------- */

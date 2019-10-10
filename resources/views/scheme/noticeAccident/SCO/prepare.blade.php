@@ -19,7 +19,7 @@
                     @endif 
                     <input type='hidden' name='caserefno' id='caserefno' value=''>
                     <input type="hidden" name="_token" value="">
-                @foreach($jsondecodepreparer as $jsondecode)
+                {{--@foreach($jsondecodepreparer as $jsondecode)--}}
                     <div class="row p-t-20">
                         <!--/span-->
                         <div class="col-md-12">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    {{--@endforeach--}}
                     <div class="form-actions">
                         <button type="submit" name="action" value="Save" class="btn btn waves-effect waves-light btn-success"   >@lang('scheme/noticetype.next')</button>
                     </div> 
